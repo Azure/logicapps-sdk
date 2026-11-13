@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
     public class ShorturlActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ShortUrlCreateShortUrl(Expression<Func<string>> longUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> shortUrl = null, Expression<Func<string>> generatedBy = null, Expression<Func<int>> maxUses = null, Expression<Func<string>> password = null, Expression<Func<string>> expiryDate = null, Expression<Func<redirectionCodeInput>> redirectionCode = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ShortUrlCreateShortUrl(Expression<Func<string>> longUrl, Expression<Func<BaseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> shortUrl = null, Expression<Func<string>> generatedBy = null, Expression<Func<int>> maxUses = null, Expression<Func<string>> password = null, Expression<Func<string>> expiryDate = null, Expression<Func<RedirectionCodeInput>> redirectionCode = null)
         {
             var __workflow_longUrl = WorkflowExpression.Compile(longUrl, nameof(longUrl), required: true);
             var __workflow_baseDomain = WorkflowExpression.Compile(baseDomain, nameof(baseDomain), required: true);
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ShortUrlDeleteShortUrl(Expression<Func<string>> shortUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ShortUrlDeleteShortUrl(Expression<Func<string>> shortUrl, Expression<Func<BaseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey)
         {
             var __workflow_shortUrl = WorkflowExpression.Compile(shortUrl, nameof(shortUrl), required: true);
             var __workflow_baseDomain = WorkflowExpression.Compile(baseDomain, nameof(baseDomain), required: true);
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ShortUrlGetAllShortUrls(Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> generatedBy = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ShortUrlGetAllShortUrls(Expression<Func<BaseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> generatedBy = null)
         {
             var __workflow_baseDomain = WorkflowExpression.Compile(baseDomain, nameof(baseDomain), required: true);
             var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ShortUrlModifyShortUrl(Expression<Func<string>> shortUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> newLongUrl = null, Expression<Func<string>> password = null, Expression<Func<int>> maxUses = null, Expression<Func<string>> expiryDate = null, Expression<Func<redirectionCodeInput>> redirectionCode = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ShortUrlModifyShortUrl(Expression<Func<string>> shortUrl, Expression<Func<BaseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> newLongUrl = null, Expression<Func<string>> password = null, Expression<Func<int>> maxUses = null, Expression<Func<string>> expiryDate = null, Expression<Func<RedirectionCodeInput>> redirectionCode = null)
         {
             var __workflow_shortUrl = WorkflowExpression.Compile(shortUrl, nameof(shortUrl), required: true);
             var __workflow_baseDomain = WorkflowExpression.Compile(baseDomain, nameof(baseDomain), required: true);
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum baseDomainInput
+    public enum BaseDomainInput
     {
         [EnumMember(Value = "surl.link")]
         SurlLink,
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum redirectionCodeInput
+    public enum RedirectionCodeInput
     {
         [EnumMember(Value = "301 - Moved Permanently")]
         _301MovedPermanently,

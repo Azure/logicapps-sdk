@@ -26,80 +26,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
-        public IBodyWorkflowAction<CreateWorkflowRunResponse, ApiConnectionActionConfiguration> CreateWorkflowRun(Expression<Func<string>> bodyworkflowId, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodyshared = null)
+        public IBodyWorkflowAction<CreateWorkflowRunResponse, ApiConnectionActionConfiguration> CreateWorkflowRun(Expression<Func<CreateWorkflowRunBodyInput>> body)
         {
-            var __workflow_bodyworkflowId = WorkflowExpression.Compile(bodyworkflowId, nameof(bodyworkflowId), required: true);
-            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyshared = WorkflowExpression.Compile(bodyshared, nameof(bodyshared), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateWorkflowRunResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workflow-runs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydueDate != null)
-                {
-                    body["dueDate"] = ExpressionConverter.ConvertO(__workflow_bodydueDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyshared != null)
-                {
-                    body["shared"] = ExpressionConverter.ConvertO(__workflow_bodyshared);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["workflowId"] = ExpressionConverter.ConvertO(__workflow_bodyworkflowId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateWorkflowRunResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
-        public IBodyWorkflowAction<WorkflowRunResponse, ApiConnectionActionConfiguration> UpdateWorkflowRun(Expression<Func<string>> workflowRunId, Expression<Func<string>> bodyname, Expression<Func<bool>> bodyshared, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodydueDate = null)
+        public IBodyWorkflowAction<WorkflowRunResponse, ApiConnectionActionConfiguration> UpdateWorkflowRun(Expression<Func<string>> workflowRunId, Expression<Func<UpdateWorkflowRunBodyInput>> body)
         {
             var __workflow_workflowRunId = WorkflowExpression.Compile(workflowRunId, nameof(workflowRunId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyshared = WorkflowExpression.Compile(bodyshared, nameof(bodyshared), required: true);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
-            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<WorkflowRunResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflow-runs/{0}", __workflow_workflowRunId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydueDate != null)
-                {
-                    body["dueDate"] = ExpressionConverter.ConvertO(__workflow_bodydueDate);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["shared"] = ExpressionConverter.ConvertO(__workflow_bodyshared);
-                bodypropCount++;
-                body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<WorkflowRunResponse>(callPayload);
             });
         }
@@ -123,53 +73,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
-        public IBodyWorkflowAction<FindWorkflowRunsResponse, ApiConnectionActionConfiguration> FindWorkflowRuns(Expression<Func<string>> workflowId, Expression<Func<string[]>> bodyassignees = null, Expression<Func<object>> bodyformFields = null, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<FindWorkflowRunsResponse, ApiConnectionActionConfiguration> FindWorkflowRuns(Expression<Func<string>> workflowId, Expression<Func<FindWorkflowRunsBodyInput>> body)
         {
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
-            var __workflow_bodyassignees = WorkflowExpression.Compile(bodyassignees, nameof(bodyassignees), required: false);
-            var __workflow_bodyformFields = WorkflowExpression.Compile(bodyformFields, nameof(bodyformFields), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<FindWorkflowRunsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflows/{0}/workflow-runs/search", __workflow_workflowId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyassignees != null)
-                {
-                    body["assignees"] = ExpressionConverter.ConvertO(__workflow_bodyassignees);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyformFields != null)
-                {
-                    body["formFields"] = ExpressionConverter.ConvertO(__workflow_bodyformFields);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<FindWorkflowRunsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
-        public IBodyWorkflowAction<UpdateMultipleFormFieldValuesResponse, ApiConnectionActionConfiguration> UpdateFormFieldValuesWithWorkflowId(Expression<Func<string>> workflowId, Expression<Func<string>> workflowRunId, Expression<Func<string>> taskId = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<UpdateMultipleFormFieldValuesResponse, ApiConnectionActionConfiguration> UpdateFormFieldValuesWithWorkflowId(Expression<Func<string>> workflowId, Expression<Func<string>> workflowRunId, Expression<Func<object>> body, Expression<Func<string>> taskId = null)
         {
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
             var __workflow_workflowRunId = WorkflowExpression.Compile(workflowRunId, nameof(workflowRunId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateMultipleFormFieldValuesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/workflows/{0}/workflow-runs/{1}/form-fields", __workflow_workflowId.WithUrlEncoding(1), __workflow_workflowRunId.WithUrlEncoding(1)));
@@ -185,94 +109,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
 
     public class ProcessstreetTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateTaskStateChangedTrigger(Expression<Func<bodytaskStateInput>> bodytaskState, Expression<Func<string>> bodytaskId = null, Expression<Func<string>> bodyworkflowId = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateTaskStateChangedTrigger(Expression<Func<CreateTaskStateChangedTriggerBodyInput>> body)
         {
-            var __workflow_bodytaskState = WorkflowExpression.Compile(bodytaskState, nameof(bodytaskState), required: true);
-            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: false);
-            var __workflow_bodyworkflowId = WorkflowExpression.Compile(bodyworkflowId, nameof(bodyworkflowId), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/triggers/task-state-changed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytaskId != null)
-                {
-                    body["taskId"] = ExpressionConverter.ConvertO(__workflow_bodytaskId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["triggerType"] = ExpressionConverter.ConvertO(__workflow_bodytaskState);
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (__workflow_bodyworkflowId != null)
-                {
-                    body["workflowId"] = ExpressionConverter.ConvertO(__workflow_bodyworkflowId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateWorkflowRunCompletedTrigger(Expression<Func<string>> bodyworkflowId = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateWorkflowRunCompletedTrigger(Expression<Func<CreateWorkflowRunCompletedTriggerBodyInput>> body)
         {
-            var __workflow_bodyworkflowId = WorkflowExpression.Compile(bodyworkflowId, nameof(bodyworkflowId), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/triggers/workflow-run-completed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (__workflow_bodyworkflowId != null)
-                {
-                    body["workflowId"] = ExpressionConverter.ConvertO(__workflow_bodyworkflowId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateWorkflowRunCreatedTrigger(Expression<Func<string>> bodyworkflowId = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateWorkflowRunCreatedTrigger(Expression<Func<CreateWorkflowRunCompletedTriggerBodyInput>> body)
         {
-            var __workflow_bodyworkflowId = WorkflowExpression.Compile(bodyworkflowId, nameof(bodyworkflowId), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/triggers/workflow-run-created";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (__workflow_bodyworkflowId != null)
-                {
-                    body["workflowId"] = ExpressionConverter.ConvertO(__workflow_bodyworkflowId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }
@@ -358,8 +230,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         Deleted
     }
 
+    public class CreateWorkflowRunBodyInput
+    {
+        public CreateWorkflowRunBodyInput(string workflowId)
+        {
+            this.WorkflowId = workflowId;
+        }
+
+        [JsonProperty("dueDate")]
+        public string DueDate { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("shared")]
+        public bool? Shared { get; set; }
+
+        [JsonProperty("workflowId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkflowId { get; set; }
+    }
+
+    public class UpdateWorkflowRunBodyInput
+    {
+        public UpdateWorkflowRunBodyInput(string name, bool shared, BodyInputStatusType status)
+        {
+            this.Name = name;
+            this.Shared = shared;
+            this.Status = status;
+        }
+
+        [JsonProperty("dueDate")]
+        public string DueDate { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("shared", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool Shared { get; set; }
+
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputStatusType Status { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystatusInput
+    public enum BodyInputStatusType
     {
         Active,
         Completed,
@@ -371,6 +285,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
     {
         [JsonProperty("workflowRuns")]
         public WorkflowRunResponse[] WorkflowRuns { get; set; }
+    }
+
+    public class FindWorkflowRunsBodyInput
+    {
+        [JsonProperty("assignees")]
+        public string[] Assignees { get; set; }
+
+        [JsonProperty("formFields")]
+        public JToken FormFields { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 
     public class UpdateMultipleFormFieldValuesResponse
@@ -439,8 +365,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         public string Username { get; set; }
     }
 
+    public class CreateTaskStateChangedTriggerBodyInput
+    {
+        public CreateTaskStateChangedTriggerBodyInput(BodyInputTaskStateType taskState)
+        {
+            this.TaskState = taskState;
+        }
+
+        [JsonProperty("taskId")]
+        public string TaskId { get; set; }
+
+        [JsonProperty("triggerType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputTaskStateType TaskState { get; set; }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("workflowId")]
+        public string WorkflowId { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytaskStateInput
+    public enum BodyInputTaskStateType
     {
         [EnumMember(Value = "Task Checked")]
         TaskChecked,
@@ -450,6 +396,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         TaskCheckedOrUnchecked,
         [EnumMember(Value = "Task Ready")]
         TaskReady
+    }
+
+    public class CreateWorkflowRunCompletedTriggerBodyInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("workflowId")]
+        public string WorkflowId { get; set; }
     }
 }
 

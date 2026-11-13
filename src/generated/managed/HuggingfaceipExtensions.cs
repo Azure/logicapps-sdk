@@ -13,786 +13,160 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
     public class HuggingfaceipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ModelId(Expression<Func<string>> modelId, Expression<Func<string>> bodyinputs, Expression<Func<string>> bodyquery = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ModelId(Expression<Func<string>> modelId, Expression<Func<ModelIdBodyInput>> body)
         {
             var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
-            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
-            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}", __workflow_modelId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                var parametersObject = new JObject();
-                var parametersObjectpropCount = 0;
-                if (parametersObjectpropCount > 0)
-                {
-                    body["parameters"] = parametersObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyquery != null)
-                {
-                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
-                    bodypropCount++;
-                }
-
-                var tableObject = new JObject();
-                var tableObjectpropCount = 0;
-                if (tableObjectpropCount > 0)
-                {
-                    body["table"] = tableObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsuseCache != null)
-                {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionswaitForModel != null)
-                {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<FillMaskPostResponseItem[], ApiConnectionActionConfiguration> FillMask(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<FillMaskResponseItem[], ApiConnectionActionConfiguration> FillMask(Expression<Func<FillMaskBodyInput>> body)
         {
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
-            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<FillMaskPostResponseItem[], ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<FillMaskResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/bert-base-uncased";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsuseCache != null)
-                {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionswaitForModel != null)
-                {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<FillMaskPostResponseItem[]>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<FillMaskResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<SummarizationPostResponseItem[], ApiConnectionActionConfiguration> Summarization(Expression<Func<string>> bodyinputs = null, Expression<Func<bool>> bodyparametersdoSample = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<SummarizationResponseItem[], ApiConnectionActionConfiguration> Summarization(Expression<Func<SummarizationBodyInput>> body = null)
         {
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
-            var __workflow_bodyparametersdoSample = WorkflowExpression.Compile(bodyparametersdoSample, nameof(bodyparametersdoSample), required: false);
-            var __workflow_bodyparametersminLength = WorkflowExpression.Compile(bodyparametersminLength, nameof(bodyparametersminLength), required: false);
-            var __workflow_bodyparametersmaxLength = WorkflowExpression.Compile(bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
-            var __workflow_bodyparameterstopK = WorkflowExpression.Compile(bodyparameterstopK, nameof(bodyparameterstopK), required: false);
-            var __workflow_bodyparameterstopP = WorkflowExpression.Compile(bodyparameterstopP, nameof(bodyparameterstopP), required: false);
-            var __workflow_bodyparameterstemperature = WorkflowExpression.Compile(bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
-            var __workflow_bodyparametersrepetitionPenalty = WorkflowExpression.Compile(bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
-            var __workflow_bodyparametersmaxTime = WorkflowExpression.Compile(bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
-            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<SummarizationPostResponseItem[], ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<SummarizationResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/facebook/bart-large-cnn";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyinputs != null)
-                {
-                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                    bodypropCount++;
-                }
-
-                var parametersObject = new JObject();
-                var parametersObjectpropCount = 0;
-                if (__workflow_bodyparametersdoSample != null)
-                {
-                    parametersObject["do_sample"] = ExpressionConverter.ConvertO(__workflow_bodyparametersdoSample);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersminLength != null)
-                {
-                    parametersObject["min_length"] = ExpressionConverter.ConvertO(__workflow_bodyparametersminLength);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersmaxLength != null)
-                {
-                    parametersObject["max_length"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmaxLength);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterstopK != null)
-                {
-                    parametersObject["top_k"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstopK);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterstopP != null)
-                {
-                    parametersObject["top_p"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstopP);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterstemperature != null)
-                {
-                    parametersObject["temperature"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstemperature);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersrepetitionPenalty != null)
-                {
-                    parametersObject["repetition_penalty"] = ExpressionConverter.ConvertO(__workflow_bodyparametersrepetitionPenalty);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersmaxTime != null)
-                {
-                    parametersObject["max_time"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmaxTime);
-                    parametersObjectpropCount++;
-                }
-
-                if (parametersObjectpropCount > 0)
-                {
-                    body["parameters"] = parametersObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsuseCache != null)
-                {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionswaitForModel != null)
-                {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<SummarizationPostResponseItem[]>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<SummarizationResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<AnswerPostResponse, ApiConnectionActionConfiguration> Answer(Expression<Func<string>> bodyinputsquestion = null, Expression<Func<string>> bodyinputscontext = null)
+        public IBodyWorkflowAction<AnswerResponse, ApiConnectionActionConfiguration> Answer(Expression<Func<AnswerBodyInput>> body)
         {
-            var __workflow_bodyinputsquestion = WorkflowExpression.Compile(bodyinputsquestion, nameof(bodyinputsquestion), required: false);
-            var __workflow_bodyinputscontext = WorkflowExpression.Compile(bodyinputscontext, nameof(bodyinputscontext), required: false);
-            return new DeferredBodyAction<AnswerPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<AnswerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/deepset/roberta-base-squad2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var inputsObject = new JObject();
-                var inputsObjectpropCount = 0;
-                if (__workflow_bodyinputsquestion != null)
-                {
-                    inputsObject["question"] = ExpressionConverter.ConvertO(__workflow_bodyinputsquestion);
-                    inputsObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputscontext != null)
-                {
-                    inputsObject["context"] = ExpressionConverter.ConvertO(__workflow_bodyinputscontext);
-                    inputsObjectpropCount++;
-                }
-
-                if (inputsObjectpropCount > 0)
-                {
-                    body["inputs"] = inputsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<AnswerPostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<AnswerResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<double[], ApiConnectionActionConfiguration> SentenceSimilarity(Expression<Func<string>> bodyinputssourceSentence = null, Expression<Func<string[]>> bodyinputssentences = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<double[], ApiConnectionActionConfiguration> SentenceSimilarity(Expression<Func<SentenceSimilarityBodyInput>> body)
         {
-            var __workflow_bodyinputssourceSentence = WorkflowExpression.Compile(bodyinputssourceSentence, nameof(bodyinputssourceSentence), required: false);
-            var __workflow_bodyinputssentences = WorkflowExpression.Compile(bodyinputssentences, nameof(bodyinputssentences), required: false);
-            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<double[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sentence-transformers/all-MiniLM-L6-v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var inputsObject = new JObject();
-                var inputsObjectpropCount = 0;
-                if (__workflow_bodyinputssourceSentence != null)
-                {
-                    inputsObject["source_sentence"] = ExpressionConverter.ConvertO(__workflow_bodyinputssourceSentence);
-                    inputsObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputssentences != null)
-                {
-                    inputsObject["sentences"] = ExpressionConverter.ConvertO(__workflow_bodyinputssentences);
-                    inputsObjectpropCount++;
-                }
-
-                if (inputsObjectpropCount > 0)
-                {
-                    body["inputs"] = inputsObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsuseCache != null)
-                {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionswaitForModel != null)
-                {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<double[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TextClassificationPostResponseItemItem[][], ApiConnectionActionConfiguration> TextClassification(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<TextClassificationResponseItemItem[][], ApiConnectionActionConfiguration> TextClassification(Expression<Func<FillMaskBodyInput>> body)
         {
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
-            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<TextClassificationPostResponseItemItem[][], ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<TextClassificationResponseItemItem[][], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/distilbert-base-uncased-finetuned-sst-2-english";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsuseCache != null)
-                {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionswaitForModel != null)
-                {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<TextClassificationPostResponseItemItem[][]>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<TextClassificationResponseItemItem[][]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TextGenerationPostResponseItem[], ApiConnectionActionConfiguration> TextGeneration(Expression<Func<string>> bodyinputs = null, Expression<Func<bool>> bodyparametersdoSample = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<TextGenerationResponseItem[], ApiConnectionActionConfiguration> TextGeneration(Expression<Func<SummarizationBodyInput>> body = null)
         {
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
-            var __workflow_bodyparametersdoSample = WorkflowExpression.Compile(bodyparametersdoSample, nameof(bodyparametersdoSample), required: false);
-            var __workflow_bodyparametersminLength = WorkflowExpression.Compile(bodyparametersminLength, nameof(bodyparametersminLength), required: false);
-            var __workflow_bodyparametersmaxLength = WorkflowExpression.Compile(bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
-            var __workflow_bodyparameterstopK = WorkflowExpression.Compile(bodyparameterstopK, nameof(bodyparameterstopK), required: false);
-            var __workflow_bodyparameterstopP = WorkflowExpression.Compile(bodyparameterstopP, nameof(bodyparameterstopP), required: false);
-            var __workflow_bodyparameterstemperature = WorkflowExpression.Compile(bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
-            var __workflow_bodyparametersrepetitionPenalty = WorkflowExpression.Compile(bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
-            var __workflow_bodyparametersmaxTime = WorkflowExpression.Compile(bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
-            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<TextGenerationPostResponseItem[], ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<TextGenerationResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/gpt2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyinputs != null)
-                {
-                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                    bodypropCount++;
-                }
-
-                var parametersObject = new JObject();
-                var parametersObjectpropCount = 0;
-                if (__workflow_bodyparametersdoSample != null)
-                {
-                    parametersObject["do_sample"] = ExpressionConverter.ConvertO(__workflow_bodyparametersdoSample);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersminLength != null)
-                {
-                    parametersObject["min_length"] = ExpressionConverter.ConvertO(__workflow_bodyparametersminLength);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersmaxLength != null)
-                {
-                    parametersObject["max_length"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmaxLength);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterstopK != null)
-                {
-                    parametersObject["top_k"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstopK);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterstopP != null)
-                {
-                    parametersObject["top_p"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstopP);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterstemperature != null)
-                {
-                    parametersObject["temperature"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstemperature);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersrepetitionPenalty != null)
-                {
-                    parametersObject["repetition_penalty"] = ExpressionConverter.ConvertO(__workflow_bodyparametersrepetitionPenalty);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersmaxTime != null)
-                {
-                    parametersObject["max_time"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmaxTime);
-                    parametersObjectpropCount++;
-                }
-
-                if (parametersObjectpropCount > 0)
-                {
-                    body["parameters"] = parametersObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsuseCache != null)
-                {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionswaitForModel != null)
-                {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<TextGenerationPostResponseItem[]>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<TextGenerationResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TokenClassificationPostResponseItem[], ApiConnectionActionConfiguration> TokenClassification(Expression<Func<string>> bodyinputs, Expression<Func<string>> bodyparametersaggregationStrategy = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<TokenClassificationResponseItem[], ApiConnectionActionConfiguration> TokenClassification(Expression<Func<TokenClassificationBodyInput>> body)
         {
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
-            var __workflow_bodyparametersaggregationStrategy = WorkflowExpression.Compile(bodyparametersaggregationStrategy, nameof(bodyparametersaggregationStrategy), required: false);
-            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<TokenClassificationPostResponseItem[], ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<TokenClassificationResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/dbmdz/bert-large-cased-finetuned-conll03-english";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                var parametersObject = new JObject();
-                var parametersObjectpropCount = 0;
-                if (__workflow_bodyparametersaggregationStrategy != null)
-                {
-                    parametersObject["aggregation_strategy"] = ExpressionConverter.ConvertO(__workflow_bodyparametersaggregationStrategy);
-                    parametersObjectpropCount++;
-                }
-
-                if (parametersObjectpropCount > 0)
-                {
-                    body["parameters"] = parametersObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsuseCache != null)
-                {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionswaitForModel != null)
-                {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<TokenClassificationPostResponseItem[]>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<TokenClassificationResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<TranslationPostResponseItem[], ApiConnectionActionConfiguration> Translation(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<TranslationResponseItem[], ApiConnectionActionConfiguration> Translation(Expression<Func<FillMaskBodyInput>> body)
         {
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
-            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<TranslationPostResponseItem[], ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<TranslationResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/t5-base";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsuseCache != null)
-                {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionswaitForModel != null)
-                {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<TranslationPostResponseItem[]>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<TranslationResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<ZeroShotPostResponse, ApiConnectionActionConfiguration> ZeroShot(Expression<Func<string>> bodyinputs = null, Expression<Func<string[]>> bodyparameterscandidateLabels = null, Expression<Func<bool>> bodyparametersmultiLabel = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<ZeroShotResponse, ApiConnectionActionConfiguration> ZeroShot(Expression<Func<ZeroShotBodyInput>> body = null)
         {
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
-            var __workflow_bodyparameterscandidateLabels = WorkflowExpression.Compile(bodyparameterscandidateLabels, nameof(bodyparameterscandidateLabels), required: false);
-            var __workflow_bodyparametersmultiLabel = WorkflowExpression.Compile(bodyparametersmultiLabel, nameof(bodyparametersmultiLabel), required: false);
-            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<ZeroShotPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<ZeroShotResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/facebook/bart-large-mnli";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyinputs != null)
-                {
-                    body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                    bodypropCount++;
-                }
-
-                var parametersObject = new JObject();
-                var parametersObjectpropCount = 0;
-                if (__workflow_bodyparameterscandidateLabels != null)
-                {
-                    parametersObject["candidate_labels"] = ExpressionConverter.ConvertO(__workflow_bodyparameterscandidateLabels);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersmultiLabel != null)
-                {
-                    parametersObject["multi_label"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmultiLabel);
-                    parametersObjectpropCount++;
-                }
-
-                if (parametersObjectpropCount > 0)
-                {
-                    body["parameters"] = parametersObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsuseCache != null)
-                {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionswaitForModel != null)
-                {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<ZeroShotPostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<ZeroShotResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
-        public IBodyWorkflowAction<ConversationalPostResponse, ApiConnectionActionConfiguration> Conversational(Expression<Func<string[]>> bodyinputspastUserInputs = null, Expression<Func<string[]>> bodyinputsgeneratedResponses = null, Expression<Func<string>> bodyinputstext = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
+        public IBodyWorkflowAction<ConversationalResponse, ApiConnectionActionConfiguration> Conversational(Expression<Func<ConversationalBodyInput>> body)
         {
-            var __workflow_bodyinputspastUserInputs = WorkflowExpression.Compile(bodyinputspastUserInputs, nameof(bodyinputspastUserInputs), required: false);
-            var __workflow_bodyinputsgeneratedResponses = WorkflowExpression.Compile(bodyinputsgeneratedResponses, nameof(bodyinputsgeneratedResponses), required: false);
-            var __workflow_bodyinputstext = WorkflowExpression.Compile(bodyinputstext, nameof(bodyinputstext), required: false);
-            var __workflow_bodyparametersminLength = WorkflowExpression.Compile(bodyparametersminLength, nameof(bodyparametersminLength), required: false);
-            var __workflow_bodyparametersmaxLength = WorkflowExpression.Compile(bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
-            var __workflow_bodyparameterstopK = WorkflowExpression.Compile(bodyparameterstopK, nameof(bodyparameterstopK), required: false);
-            var __workflow_bodyparameterstopP = WorkflowExpression.Compile(bodyparameterstopP, nameof(bodyparameterstopP), required: false);
-            var __workflow_bodyparameterstemperature = WorkflowExpression.Compile(bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
-            var __workflow_bodyparametersrepetitionPenalty = WorkflowExpression.Compile(bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
-            var __workflow_bodyparametersmaxTime = WorkflowExpression.Compile(bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
-            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
-            return new DeferredBodyAction<ConversationalPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<ConversationalResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/microsoft/DialoGPT-large";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var inputsObject = new JObject();
-                var inputsObjectpropCount = 0;
-                if (__workflow_bodyinputspastUserInputs != null)
-                {
-                    inputsObject["past_user_inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputspastUserInputs);
-                    inputsObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputsgeneratedResponses != null)
-                {
-                    inputsObject["generated_responses"] = ExpressionConverter.ConvertO(__workflow_bodyinputsgeneratedResponses);
-                    inputsObjectpropCount++;
-                }
-
-                if (__workflow_bodyinputstext != null)
-                {
-                    inputsObject["text"] = ExpressionConverter.ConvertO(__workflow_bodyinputstext);
-                    inputsObjectpropCount++;
-                }
-
-                if (inputsObjectpropCount > 0)
-                {
-                    body["inputs"] = inputsObject;
-                    bodypropCount++;
-                }
-
-                var parametersObject = new JObject();
-                var parametersObjectpropCount = 0;
-                if (__workflow_bodyparametersminLength != null)
-                {
-                    parametersObject["min_length"] = ExpressionConverter.ConvertO(__workflow_bodyparametersminLength);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersmaxLength != null)
-                {
-                    parametersObject["max_length"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmaxLength);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterstopK != null)
-                {
-                    parametersObject["top_k"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstopK);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterstopP != null)
-                {
-                    parametersObject["top_p"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstopP);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparameterstemperature != null)
-                {
-                    parametersObject["temperature"] = ExpressionConverter.ConvertO(__workflow_bodyparameterstemperature);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersrepetitionPenalty != null)
-                {
-                    parametersObject["repetition_penalty"] = ExpressionConverter.ConvertO(__workflow_bodyparametersrepetitionPenalty);
-                    parametersObjectpropCount++;
-                }
-
-                if (__workflow_bodyparametersmaxTime != null)
-                {
-                    parametersObject["max_time"] = ExpressionConverter.ConvertO(__workflow_bodyparametersmaxTime);
-                    parametersObjectpropCount++;
-                }
-
-                if (parametersObjectpropCount > 0)
-                {
-                    body["parameters"] = parametersObject;
-                    bodypropCount++;
-                }
-
-                var optionsObject = new JObject();
-                var optionsObjectpropCount = 0;
-                if (__workflow_bodyoptionsuseCache != null)
-                {
-                    optionsObject["use_cache"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsuseCache);
-                    optionsObjectpropCount++;
-                }
-
-                if (__workflow_bodyoptionswaitForModel != null)
-                {
-                    optionsObject["wait_for_model"] = ExpressionConverter.ConvertO(__workflow_bodyoptionswaitForModel);
-                    optionsObjectpropCount++;
-                }
-
-                if (optionsObjectpropCount > 0)
-                {
-                    body["options"] = optionsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<ConversationalPostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<ConversationalResponse>(callPayload);
             });
         }
     }
@@ -801,7 +175,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
     {
     }
 
-    public class FillMaskPostResponseItem
+    public class ModelIdBodyInput
+    {
+        public ModelIdBodyInput(string inputs)
+        {
+            this.Inputs = inputs;
+        }
+
+        [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Inputs { get; set; }
+
+        [JsonProperty("parameters")]
+        public JToken Parameters { get; set; }
+
+        [JsonProperty("query")]
+        public string Query { get; set; }
+
+        [JsonProperty("table")]
+        public JToken Table { get; set; }
+
+        [JsonProperty("options")]
+        public BodyInputOptionsType Options { get; set; }
+    }
+
+    public class BodyInputOptionsType
+    {
+        [JsonProperty("use_cache")]
+        public bool? UseCache { get; set; }
+
+        [JsonProperty("wait_for_model")]
+        public bool? WaitForModel { get; set; }
+    }
+
+    public class FillMaskResponseItem
     {
         [JsonProperty("score")]
         public double Score { get; set; }
@@ -816,13 +222,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public string Sequence { get; set; }
     }
 
-    public class SummarizationPostResponseItem
+    public class FillMaskBodyInput
+    {
+        public FillMaskBodyInput(string inputs)
+        {
+            this.Inputs = inputs;
+        }
+
+        [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Inputs { get; set; }
+
+        [JsonProperty("options")]
+        public BodyInputOptionsType Options { get; set; }
+    }
+
+    public class SummarizationResponseItem
     {
         [JsonProperty("summary_text")]
         public string SummaryText { get; set; }
     }
 
-    public class AnswerPostResponse
+    public class SummarizationBodyInput
+    {
+        [JsonProperty("inputs")]
+        public string Inputs { get; set; }
+
+        [JsonProperty("parameters")]
+        public SummarizationBodyInputParametersType Parameters { get; set; }
+
+        [JsonProperty("options")]
+        public BodyInputOptionsType Options { get; set; }
+    }
+
+    public class SummarizationBodyInputParametersType
+    {
+        [JsonProperty("do_sample")]
+        public bool? DoSample { get; set; }
+
+        [JsonProperty("min_length")]
+        public int? MinLength { get; set; }
+
+        [JsonProperty("max_length")]
+        public int? MaxLength { get; set; }
+
+        [JsonProperty("top_k")]
+        public int? TopK { get; set; }
+
+        [JsonProperty("top_p")]
+        public int? TopP { get; set; }
+
+        [JsonProperty("temperature")]
+        public double? Temperature { get; set; }
+
+        [JsonProperty("repetition_penalty")]
+        public double? RepetitionPenalty { get; set; }
+
+        [JsonProperty("max_time")]
+        public double? MaxTime { get; set; }
+    }
+
+    public class AnswerResponse
     {
         [JsonProperty("score")]
         public double Score { get; set; }
@@ -837,7 +296,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public string Answer { get; set; }
     }
 
-    public class TextClassificationPostResponseItemItem
+    public class AnswerBodyInput
+    {
+        public AnswerBodyInput(AnswerBodyInputInputsType inputs)
+        {
+            this.Inputs = inputs;
+        }
+
+        [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AnswerBodyInputInputsType Inputs { get; set; }
+    }
+
+    public class AnswerBodyInputInputsType
+    {
+        public AnswerBodyInputInputsType(string question, string context)
+        {
+            this.Question = question;
+            this.Context = context;
+        }
+
+        [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Question { get; set; }
+
+        [JsonProperty("context", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Context { get; set; }
+    }
+
+    public class SentenceSimilarityBodyInput
+    {
+        public SentenceSimilarityBodyInput(SentenceSimilarityBodyInputInputsType inputs)
+        {
+            this.Inputs = inputs;
+        }
+
+        [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SentenceSimilarityBodyInputInputsType Inputs { get; set; }
+
+        [JsonProperty("options")]
+        public BodyInputOptionsType Options { get; set; }
+    }
+
+    public class SentenceSimilarityBodyInputInputsType
+    {
+        public SentenceSimilarityBodyInputInputsType(string sourceSentence, string[] sentences)
+        {
+            this.SourceSentence = sourceSentence;
+            this.Sentences = sentences;
+        }
+
+        [JsonProperty("source_sentence", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SourceSentence { get; set; }
+
+        [JsonProperty("sentences", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Sentences { get; set; }
+    }
+
+    public class TextClassificationResponseItemItem
     {
         [JsonProperty("label")]
         public string Label { get; set; }
@@ -846,13 +360,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public double Score { get; set; }
     }
 
-    public class TextGenerationPostResponseItem
+    public class TextGenerationResponseItem
     {
         [JsonProperty("generated_text")]
         public string GeneratedText { get; set; }
     }
 
-    public class TokenClassificationPostResponseItem
+    public class TokenClassificationResponseItem
     {
         [JsonProperty("entity_group")]
         public string EntityGroup { get; set; }
@@ -870,13 +384,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public int End { get; set; }
     }
 
-    public class TranslationPostResponseItem
+    public class TokenClassificationBodyInput
+    {
+        public TokenClassificationBodyInput(string inputs)
+        {
+            this.Inputs = inputs;
+        }
+
+        [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Inputs { get; set; }
+
+        [JsonProperty("parameters")]
+        public TokenClassificationBodyInputParametersType Parameters { get; set; }
+
+        [JsonProperty("options")]
+        public BodyInputOptionsType Options { get; set; }
+    }
+
+    public class TokenClassificationBodyInputParametersType
+    {
+        [JsonProperty("aggregation_strategy")]
+        public string AggregationStrategy { get; set; }
+    }
+
+    public class TranslationResponseItem
     {
         [JsonProperty("translation_text")]
         public string TranslationText { get; set; }
     }
 
-    public class ZeroShotPostResponse
+    public class ZeroShotResponse
     {
         [JsonProperty("sequence")]
         public string Sequence { get; set; }
@@ -888,22 +425,101 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         public double[] Scores { get; set; }
     }
 
-    public class ConversationalPostResponse
+    public class ZeroShotBodyInput
+    {
+        [JsonProperty("inputs")]
+        public string Inputs { get; set; }
+
+        [JsonProperty("parameters")]
+        public ZeroShotBodyInputParametersType Parameters { get; set; }
+
+        [JsonProperty("options")]
+        public BodyInputOptionsType Options { get; set; }
+    }
+
+    public class ZeroShotBodyInputParametersType
+    {
+        [JsonProperty("candidate_labels")]
+        public string[] CandidateLabels { get; set; }
+
+        [JsonProperty("multi_label")]
+        public bool? MultiLabel { get; set; }
+    }
+
+    public class ConversationalResponse
     {
         [JsonProperty("generated_text")]
         public string GeneratedText { get; set; }
 
         [JsonProperty("conversation")]
-        public ConversationalPostResponseConversationType Conversation { get; set; }
+        public ConversationalResponseConversationType Conversation { get; set; }
     }
 
-    public class ConversationalPostResponseConversationType
+    public class ConversationalResponseConversationType
     {
         [JsonProperty("past_user_inputs")]
         public string[] PastUserInputs { get; set; }
 
         [JsonProperty("generated_responses")]
         public string[] GeneratedResponses { get; set; }
+    }
+
+    public class ConversationalBodyInput
+    {
+        public ConversationalBodyInput(ConversationalBodyInputInputsType inputs)
+        {
+            this.Inputs = inputs;
+        }
+
+        [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ConversationalBodyInputInputsType Inputs { get; set; }
+
+        [JsonProperty("parameters")]
+        public ConversationalBodyInputParametersType Parameters { get; set; }
+
+        [JsonProperty("options")]
+        public BodyInputOptionsType Options { get; set; }
+    }
+
+    public class ConversationalBodyInputInputsType
+    {
+        public ConversationalBodyInputInputsType(string text)
+        {
+            this.Text = text;
+        }
+
+        [JsonProperty("past_user_inputs")]
+        public string[] PastUserInputs { get; set; }
+
+        [JsonProperty("generated_responses")]
+        public string[] GeneratedResponses { get; set; }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+    }
+
+    public class ConversationalBodyInputParametersType
+    {
+        [JsonProperty("min_length")]
+        public int? MinLength { get; set; }
+
+        [JsonProperty("max_length")]
+        public int? MaxLength { get; set; }
+
+        [JsonProperty("top_k")]
+        public int? TopK { get; set; }
+
+        [JsonProperty("top_p")]
+        public int? TopP { get; set; }
+
+        [JsonProperty("temperature")]
+        public double? Temperature { get; set; }
+
+        [JsonProperty("repetition_penalty")]
+        public double? RepetitionPenalty { get; set; }
+
+        [JsonProperty("max_time")]
+        public double? MaxTime { get; set; }
     }
 }
 

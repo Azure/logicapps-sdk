@@ -13,28 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
     public class PrioritymatrixhipaaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prioritymatrixhipaa")]
-        public IBodyWorkflowAction<AddCommentToItemResponse, ApiConnectionActionConfiguration> AddCommentToItem(Expression<Func<int>> project, Expression<Func<string>> bodyitem, Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<AddCommentToItemResponse, ApiConnectionActionConfiguration> AddCommentToItem(Expression<Func<int>> project, Expression<Func<AddCommentToItemBodyInput>> body)
         {
             var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
-            var __workflow_bodyitem = WorkflowExpression.Compile(bodyitem, nameof(bodyitem), required: true);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AddCommentToItemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/comment/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Project"] = ExpressionConverter.Convert(__workflow_project);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["item"] = ExpressionConverter.ConvertO(__workflow_bodyitem);
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AddCommentToItemResponse>(callPayload);
             });
         }
@@ -60,72 +49,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prioritymatrixhipaa")]
-        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<string>> bodyname, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodytextFirstQuadrant = null, Expression<Func<string>> bodytextFourthQuadrant = null, Expression<Func<string>> bodytextSecondQuadrant = null, Expression<Func<string>> bodytextThirdQuadrant = null)
+        public IBodyWorkflowAction<CreateProjectResponse, ApiConnectionActionConfiguration> CreateProject(Expression<Func<CreateProjectBodyInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
-            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodytextFirstQuadrant = WorkflowExpression.Compile(bodytextFirstQuadrant, nameof(bodytextFirstQuadrant), required: false);
-            var __workflow_bodytextFourthQuadrant = WorkflowExpression.Compile(bodytextFourthQuadrant, nameof(bodytextFourthQuadrant), required: false);
-            var __workflow_bodytextSecondQuadrant = WorkflowExpression.Compile(bodytextSecondQuadrant, nameof(bodytextSecondQuadrant), required: false);
-            var __workflow_bodytextThirdQuadrant = WorkflowExpression.Compile(bodytextThirdQuadrant, nameof(bodytextThirdQuadrant), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/project/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyendDate != null)
-                {
-                    body["endDate"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodynotes != null)
-                {
-                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartDate != null)
-                {
-                    body["startDate"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytextFirstQuadrant != null)
-                {
-                    body["textFirstQuadrant"] = ExpressionConverter.ConvertO(__workflow_bodytextFirstQuadrant);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytextFourthQuadrant != null)
-                {
-                    body["textFourthQuadrant"] = ExpressionConverter.ConvertO(__workflow_bodytextFourthQuadrant);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytextSecondQuadrant != null)
-                {
-                    body["textSecondQuadrant"] = ExpressionConverter.ConvertO(__workflow_bodytextSecondQuadrant);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytextThirdQuadrant != null)
-                {
-                    body["textThirdQuadrant"] = ExpressionConverter.ConvertO(__workflow_bodytextThirdQuadrant);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateProjectResponse>(callPayload);
             });
         }
@@ -144,77 +76,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prioritymatrixhipaa")]
-        public IBodyWorkflowAction<UpdateProjectResponse, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<int>> projectId, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodytextFirstQuadrant = null, Expression<Func<string>> bodytextFourthQuadrant = null, Expression<Func<string>> bodytextSecondQuadrant = null, Expression<Func<string>> bodytextThirdQuadrant = null)
+        public IBodyWorkflowAction<UpdateProjectResponse, ApiConnectionActionConfiguration> UpdateProject(Expression<Func<int>> projectId, Expression<Func<UpdateProjectBodyInput>> body = null)
         {
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
-            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
-            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodytextFirstQuadrant = WorkflowExpression.Compile(bodytextFirstQuadrant, nameof(bodytextFirstQuadrant), required: false);
-            var __workflow_bodytextFourthQuadrant = WorkflowExpression.Compile(bodytextFourthQuadrant, nameof(bodytextFourthQuadrant), required: false);
-            var __workflow_bodytextSecondQuadrant = WorkflowExpression.Compile(bodytextSecondQuadrant, nameof(bodytextSecondQuadrant), required: false);
-            var __workflow_bodytextThirdQuadrant = WorkflowExpression.Compile(bodytextThirdQuadrant, nameof(bodytextThirdQuadrant), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateProjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/project/{0}/", __workflow_projectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyendDate != null)
-                {
-                    body["endDate"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotes != null)
-                {
-                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartDate != null)
-                {
-                    body["startDate"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytextFirstQuadrant != null)
-                {
-                    body["textFirstQuadrant"] = ExpressionConverter.ConvertO(__workflow_bodytextFirstQuadrant);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytextFourthQuadrant != null)
-                {
-                    body["textFourthQuadrant"] = ExpressionConverter.ConvertO(__workflow_bodytextFourthQuadrant);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytextSecondQuadrant != null)
-                {
-                    body["textSecondQuadrant"] = ExpressionConverter.ConvertO(__workflow_bodytextSecondQuadrant);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytextThirdQuadrant != null)
-                {
-                    body["textThirdQuadrant"] = ExpressionConverter.ConvertO(__workflow_bodytextThirdQuadrant);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateProjectResponse>(callPayload);
             });
         }
@@ -222,165 +94,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
 
     public class PrioritymatrixhipaaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ItemCompletedHookResponse, ApiConnectionTriggerConfiguration> ItemCompletedHook(Expression<Func<string>> bodyproject = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemCompletedHookResponse, ApiConnectionPollingTriggerConfiguration> ItemCompletedHook(Expression<Func<ItemCompletedHookBodyInput>> body)
         {
-            var __workflow_bodyproject = WorkflowExpression.Compile(bodyproject, nameof(bodyproject), required: false);
-            return new DeferredBodyTrigger<ItemCompletedHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyTrigger<ItemCompletedHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/hook/item.completed/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproject != null)
-                {
-                    body["project"] = ExpressionConverter.ConvertO(__workflow_bodyproject);
-                    bodypropCount++;
-                }
-
-                body["target"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<ItemCompletedHookResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger<ItemCompletedHookResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemCreatedHookResponse, ApiConnectionTriggerConfiguration> ItemCreatedHook(Expression<Func<string>> bodyproject = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemCreatedHookResponse, ApiConnectionPollingTriggerConfiguration> ItemCreatedHook(Expression<Func<ItemCompletedHookBodyInput>> body)
         {
-            var __workflow_bodyproject = WorkflowExpression.Compile(bodyproject, nameof(bodyproject), required: false);
-            return new DeferredBodyTrigger<ItemCreatedHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyTrigger<ItemCreatedHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/hook/item.created/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproject != null)
-                {
-                    body["project"] = ExpressionConverter.ConvertO(__workflow_bodyproject);
-                    bodypropCount++;
-                }
-
-                body["target"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<ItemCreatedHookResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger<ItemCreatedHookResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemDelegatedHookResponse, ApiConnectionTriggerConfiguration> ItemDelegatedHook(Expression<Func<string>> bodyproject = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemDelegatedHookResponse, ApiConnectionPollingTriggerConfiguration> ItemDelegatedHook(Expression<Func<ItemCompletedHookBodyInput>> body)
         {
-            var __workflow_bodyproject = WorkflowExpression.Compile(bodyproject, nameof(bodyproject), required: false);
-            return new DeferredBodyTrigger<ItemDelegatedHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyTrigger<ItemDelegatedHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/hook/item.delegated/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproject != null)
-                {
-                    body["project"] = ExpressionConverter.ConvertO(__workflow_bodyproject);
-                    bodypropCount++;
-                }
-
-                body["target"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<ItemDelegatedHookResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger<ItemDelegatedHookResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemDeletedHookResponse, ApiConnectionTriggerConfiguration> ItemDeletedHook(Expression<Func<string>> bodyproject = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemDeletedHookResponse, ApiConnectionPollingTriggerConfiguration> ItemDeletedHook(Expression<Func<ItemCompletedHookBodyInput>> body)
         {
-            var __workflow_bodyproject = WorkflowExpression.Compile(bodyproject, nameof(bodyproject), required: false);
-            return new DeferredBodyTrigger<ItemDeletedHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyTrigger<ItemDeletedHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/hook/item.deleted/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproject != null)
-                {
-                    body["project"] = ExpressionConverter.ConvertO(__workflow_bodyproject);
-                    bodypropCount++;
-                }
-
-                body["target"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<ItemDeletedHookResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger<ItemDeletedHookResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemDueHookResponse, ApiConnectionTriggerConfiguration> ItemDueHook(Expression<Func<string>> bodyproject = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemDueHookResponse, ApiConnectionPollingTriggerConfiguration> ItemDueHook(Expression<Func<ItemCompletedHookBodyInput>> body)
         {
-            var __workflow_bodyproject = WorkflowExpression.Compile(bodyproject, nameof(bodyproject), required: false);
-            return new DeferredBodyTrigger<ItemDueHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyTrigger<ItemDueHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/hook/item.due/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproject != null)
-                {
-                    body["project"] = ExpressionConverter.ConvertO(__workflow_bodyproject);
-                    bodypropCount++;
-                }
-
-                body["target"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<ItemDueHookResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger<ItemDueHookResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ItemStartHookResponse, ApiConnectionTriggerConfiguration> ItemStartHook(Expression<Func<string>> bodyproject = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemStartHookResponse, ApiConnectionPollingTriggerConfiguration> ItemStartHook(Expression<Func<ItemCompletedHookBodyInput>> body)
         {
-            var __workflow_bodyproject = WorkflowExpression.Compile(bodyproject, nameof(bodyproject), required: false);
-            return new DeferredBodyTrigger<ItemStartHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyTrigger<ItemStartHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/hook/item.start/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyproject != null)
-                {
-                    body["project"] = ExpressionConverter.ConvertO(__workflow_bodyproject);
-                    bodypropCount++;
-                }
-
-                body["target"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<ItemStartHookResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger<ItemStartHookResponse>(callPayload);
             });
         }
     }
@@ -476,6 +264,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
 
         [JsonProperty("tooltip")]
         public string Tooltip { get; set; }
+    }
+
+    public class AddCommentToItemBodyInput
+    {
+        public AddCommentToItemBodyInput(string item, string text)
+        {
+            this.Item = item;
+            this.Text = text;
+        }
+
+        [JsonProperty("item", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Item { get; set; }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
     }
 
     public class GetProjectsResponse
@@ -790,6 +593,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
         public string Slug { get; set; }
     }
 
+    public class CreateProjectBodyInput
+    {
+        public CreateProjectBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
+        [JsonProperty("endDate")]
+        public string EndDate { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+
+        [JsonProperty("startDate")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("textFirstQuadrant")]
+        public string TextFirstQuadrant { get; set; }
+
+        [JsonProperty("textFourthQuadrant")]
+        public string TextFourthQuadrant { get; set; }
+
+        [JsonProperty("textSecondQuadrant")]
+        public string TextSecondQuadrant { get; set; }
+
+        [JsonProperty("textThirdQuadrant")]
+        public string TextThirdQuadrant { get; set; }
+    }
+
     public class GetProjectResponse
     {
         [JsonProperty("account_uri")]
@@ -1069,6 +904,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
         public string Slug { get; set; }
     }
 
+    public class UpdateProjectBodyInput
+    {
+        [JsonProperty("endDate")]
+        public string EndDate { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
+
+        [JsonProperty("startDate")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("textFirstQuadrant")]
+        public string TextFirstQuadrant { get; set; }
+
+        [JsonProperty("textFourthQuadrant")]
+        public string TextFourthQuadrant { get; set; }
+
+        [JsonProperty("textSecondQuadrant")]
+        public string TextSecondQuadrant { get; set; }
+
+        [JsonProperty("textThirdQuadrant")]
+        public string TextThirdQuadrant { get; set; }
+    }
+
     public class ItemCompletedHookResponse
     {
         [JsonProperty("account")]
@@ -1088,6 +950,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prioritymatrixhipaa
 
         [JsonProperty("user")]
         public string User { get; set; }
+    }
+
+    public class ItemCompletedHookBodyInput
+    {
+        [JsonProperty("project")]
+        public string Project { get; set; }
+
+        [JsonProperty("target", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Target { get; set; } = "#{listCallbackUrl()}";
     }
 
     public class ItemCreatedHookResponse

@@ -13,187 +13,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
     public class XbridgerdocumentmanagerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<Convert2ModernPageResponse, ApiConnectionActionConfiguration> Convert2ModernPage(Expression<Func<string>> requestfileContent, Expression<Func<string>> requestsiteUrl, Expression<Func<string>> requestpageTitle, Expression<Func<string>> requestauthor, Expression<Func<string>> requestfolderPath = null, Expression<Func<string>> requestbannerImageUrl = null)
+        public IBodyWorkflowAction<Convert2ModernPageResponse, ApiConnectionActionConfiguration> Convert2ModernPage(Expression<Func<Convert2ModernPageRequestInput>> request)
         {
-            var __workflow_requestfileContent = WorkflowExpression.Compile(requestfileContent, nameof(requestfileContent), required: true);
-            var __workflow_requestsiteUrl = WorkflowExpression.Compile(requestsiteUrl, nameof(requestsiteUrl), required: true);
-            var __workflow_requestpageTitle = WorkflowExpression.Compile(requestpageTitle, nameof(requestpageTitle), required: true);
-            var __workflow_requestauthor = WorkflowExpression.Compile(requestauthor, nameof(requestauthor), required: true);
-            var __workflow_requestfolderPath = WorkflowExpression.Compile(requestfolderPath, nameof(requestfolderPath), required: false);
-            var __workflow_requestbannerImageUrl = WorkflowExpression.Compile(requestbannerImageUrl, nameof(requestbannerImageUrl), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<Convert2ModernPageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ConvertWord2ModernPage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["FileContent"] = ExpressionConverter.ConvertO(__workflow_requestfileContent);
-                if (__workflow_requestfolderPath != null)
-                {
-                    request["FolderPath"] = ExpressionConverter.ConvertO(__workflow_requestfolderPath);
-                    requestpropCount++;
-                }
-
-                requestpropCount++;
-                request["SiteUrl"] = ExpressionConverter.ConvertO(__workflow_requestsiteUrl);
-                requestpropCount++;
-                request["PageTitle"] = ExpressionConverter.ConvertO(__workflow_requestpageTitle);
-                requestpropCount++;
-                request["Author"] = ExpressionConverter.ConvertO(__workflow_requestauthor);
-                if (__workflow_requestbannerImageUrl != null)
-                {
-                    request["BannerImageUrl"] = ExpressionConverter.ConvertO(__workflow_requestbannerImageUrl);
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<Convert2ModernPageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<Convert2NonModernPageResponse, ApiConnectionActionConfiguration> Convert2NonModernPage(Expression<Func<string>> requestfileContent)
+        public IBodyWorkflowAction<Convert2NonModernPageResponse, ApiConnectionActionConfiguration> Convert2NonModernPage(Expression<Func<Convert2NonModernPageRequestInput>> request)
         {
-            var __workflow_requestfileContent = WorkflowExpression.Compile(requestfileContent, nameof(requestfileContent), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<Convert2NonModernPageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/ConvertWord2StaticHMTLPage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["FileContent"] = ExpressionConverter.ConvertO(__workflow_requestfileContent);
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<Convert2NonModernPageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<ExportList2PDFResponse, ApiConnectionActionConfiguration> ExportList2PDF(Expression<Func<string>> requestdocumentTitle, Expression<Func<string>> requestdata, Expression<Func<string>> requestfieldArray)
+        public IBodyWorkflowAction<ExportList2PDFResponse, ApiConnectionActionConfiguration> ExportList2PDF(Expression<Func<ExportList2PDFRequestInput>> request)
         {
-            var __workflow_requestdocumentTitle = WorkflowExpression.Compile(requestdocumentTitle, nameof(requestdocumentTitle), required: true);
-            var __workflow_requestdata = WorkflowExpression.Compile(requestdata, nameof(requestdata), required: true);
-            var __workflow_requestfieldArray = WorkflowExpression.Compile(requestfieldArray, nameof(requestfieldArray), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ExportList2PDFResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Export2PDFFromFlow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["DocumentTitle"] = ExpressionConverter.ConvertO(__workflow_requestdocumentTitle);
-                requestpropCount++;
-                request["Data"] = ExpressionConverter.ConvertO(__workflow_requestdata);
-                requestpropCount++;
-                request["FieldArray"] = ExpressionConverter.ConvertO(__workflow_requestfieldArray);
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<ExportList2PDFResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<ExtractWordImagesResponse, ApiConnectionActionConfiguration> ExtractWordImages(Expression<Func<string>> requestfileContent)
+        public IBodyWorkflowAction<ExtractWordImagesResponse, ApiConnectionActionConfiguration> ExtractWordImages(Expression<Func<Convert2NonModernPageRequestInput>> request)
         {
-            var __workflow_requestfileContent = WorkflowExpression.Compile(requestfileContent, nameof(requestfileContent), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ExtractWordImagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Extractworddocimages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["FileContent"] = ExpressionConverter.ConvertO(__workflow_requestfileContent);
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<ExtractWordImagesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<PDFMergeResponse, ApiConnectionActionConfiguration> PDFMerge(Expression<Func<string>> requestfileContentArray)
+        public IBodyWorkflowAction<PDFMergeResponse, ApiConnectionActionConfiguration> PDFMerge(Expression<Func<PDFMergeRequestInput>> request)
         {
-            var __workflow_requestfileContentArray = WorkflowExpression.Compile(requestfileContentArray, nameof(requestfileContentArray), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<PDFMergeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/PDFMerge";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["FileContentArray"] = ExpressionConverter.ConvertO(__workflow_requestfileContentArray);
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<PDFMergeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<WordMergeResponse, ApiConnectionActionConfiguration> WordMerge(Expression<Func<string>> requestfileContentArray)
+        public IBodyWorkflowAction<WordMergeResponse, ApiConnectionActionConfiguration> WordMerge(Expression<Func<PDFMergeRequestInput>> request)
         {
-            var __workflow_requestfileContentArray = WorkflowExpression.Compile(requestfileContentArray, nameof(requestfileContentArray), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<WordMergeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/WordMerge";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["FileContentArray"] = ExpressionConverter.ConvertO(__workflow_requestfileContentArray);
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<WordMergeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xbridgerdocumentmanager")]
-        public IBodyWorkflowAction<WordtopdfResponse, ApiConnectionActionConfiguration> Wordtopdf(Expression<Func<string>> requestfileContent, Expression<Func<string>> requestfileName)
+        public IBodyWorkflowAction<WordtopdfResponse, ApiConnectionActionConfiguration> Wordtopdf(Expression<Func<WordtopdfRequestInput>> request)
         {
-            var __workflow_requestfileContent = WorkflowExpression.Compile(requestfileContent, nameof(requestfileContent), required: true);
-            var __workflow_requestfileName = WorkflowExpression.Compile(requestfileName, nameof(requestfileName), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<WordtopdfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Wordtopdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["FileContent"] = ExpressionConverter.ConvertO(__workflow_requestfileContent);
-                requestpropCount++;
-                request["FileName"] = ExpressionConverter.ConvertO(__workflow_requestfileName);
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<WordtopdfResponse>(callPayload);
             });
         }
@@ -211,14 +123,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         public string SiteUrl { get; set; }
     }
 
+    public class Convert2ModernPageRequestInput
+    {
+        public Convert2ModernPageRequestInput(string fileContent, string siteUrl, string pageTitle, string author)
+        {
+            this.FileContent = fileContent;
+            this.SiteUrl = siteUrl;
+            this.PageTitle = pageTitle;
+            this.Author = author;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileContent { get; set; }
+        public string FolderPath { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SiteUrl { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PageTitle { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Author { get; set; }
+        public string BannerImageUrl { get; set; }
+    }
+
     public class Convert2NonModernPageResponse
     {
+        public string FileContent { get; set; }
+    }
+
+    public class Convert2NonModernPageRequestInput
+    {
+        public Convert2NonModernPageRequestInput(string fileContent)
+        {
+            this.FileContent = fileContent;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileContent { get; set; }
     }
 
     public class ExportList2PDFResponse
     {
         public string FileContent { get; set; }
+    }
+
+    public class ExportList2PDFRequestInput
+    {
+        public ExportList2PDFRequestInput(string documentTitle, string data, string fieldArray)
+        {
+            this.DocumentTitle = documentTitle;
+            this.Data = data;
+            this.FieldArray = fieldArray;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocumentTitle { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Data { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FieldArray { get; set; }
     }
 
     public class ExtractWordImagesResponse
@@ -239,6 +206,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
         public string FileContent { get; set; }
     }
 
+    public class PDFMergeRequestInput
+    {
+        public PDFMergeRequestInput(string fileContentArray)
+        {
+            this.FileContentArray = fileContentArray;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileContentArray { get; set; }
+    }
+
     public class WordMergeResponse
     {
         public string FileContent { get; set; }
@@ -247,6 +225,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xbridgerdocumentmanager
     public class WordtopdfResponse
     {
         public string FileContent { get; set; }
+        public string FileName { get; set; }
+    }
+
+    public class WordtopdfRequestInput
+    {
+        public WordtopdfRequestInput(string fileContent, string fileName)
+        {
+            this.FileContent = fileContent;
+            this.FileName = fileName;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileContent { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
     }
 }

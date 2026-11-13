@@ -101,12 +101,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
 
     public class Amazons3Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<S3ObjectDeepMetadata, ApiConnectionTriggerConfiguration> OnObjectUpdate(Expression<Func<string>> bucketName, Expression<Func<string>> objectKey, Expression<Func<string>> bucketRegion = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<S3ObjectDeepMetadata, ApiConnectionPollingTriggerConfiguration> OnObjectUpdate(Expression<Func<string>> bucketName, Expression<Func<string>> objectKey, Expression<Func<string>> bucketRegion = null)
         {
             var __workflow_bucketName = WorkflowExpression.Compile(bucketName, nameof(bucketName), required: true);
             var __workflow_objectKey = WorkflowExpression.Compile(objectKey, nameof(objectKey), required: true);
             var __workflow_bucketRegion = WorkflowExpression.Compile(bucketRegion, nameof(bucketRegion), required: false);
-            return new DeferredBodyTrigger<S3ObjectDeepMetadata, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<S3ObjectDeepMetadata, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/buckets/objects/onupdate";
                 var apiCallHttpMethod = "get";
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
                 callPayload.Queries["objectKey"] = ExpressionConverter.Convert(__workflow_objectKey);
                 if (__workflow_bucketRegion != null)
                     callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(__workflow_bucketRegion);
-                return new ApiConnectionTrigger<S3ObjectDeepMetadata>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<S3ObjectDeepMetadata>(callPayload);
             });
         }
     }

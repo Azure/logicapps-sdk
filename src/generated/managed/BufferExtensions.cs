@@ -46,27 +46,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
 
     public class BufferTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListPendingUpdatesResponse, ApiConnectionTriggerConfiguration> TrigPendingUpdates(Expression<Func<string>> profileId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListPendingUpdatesResponse, ApiConnectionPollingTriggerConfiguration> TrigPendingUpdates(Expression<Func<string>> profileId)
         {
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
-            return new DeferredBodyTrigger<ListPendingUpdatesResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListPendingUpdatesResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/1/profiles/{0}/updates/pending.json", __workflow_profileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListPendingUpdatesResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListPendingUpdatesResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ListSentUpdatesResponse, ApiConnectionTriggerConfiguration> TrigSentUpdates(Expression<Func<string>> profileId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListSentUpdatesResponse, ApiConnectionPollingTriggerConfiguration> TrigSentUpdates(Expression<Func<string>> profileId)
         {
             var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
-            return new DeferredBodyTrigger<ListSentUpdatesResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListSentUpdatesResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger/1/profiles/{0}/updates/sent.json", __workflow_profileId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListSentUpdatesResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListSentUpdatesResponse>(callPayload);
             });
         }
     }

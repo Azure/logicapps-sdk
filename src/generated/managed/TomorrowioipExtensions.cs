@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
     public class TomorrowioipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tomorrowioip")]
-        public IBodyWorkflowAction<ForecastGetResponse, ApiConnectionActionConfiguration> ForecastGet(Expression<Func<string>> location, Expression<Func<string[]>> timesteps = null, Expression<Func<unitsInput>> units = null)
+        public IBodyWorkflowAction<ForecastGetResponse, ApiConnectionActionConfiguration> ForecastGet(Expression<Func<string>> location, Expression<Func<string[]>> timesteps = null, Expression<Func<UnitsInput>> units = null)
         {
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             var __workflow_timesteps = WorkflowExpression.Compile(timesteps, nameof(timesteps), required: false);
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tomorrowioip")]
-        public IBodyWorkflowAction<RealtimeGetResponse, ApiConnectionActionConfiguration> RealtimeGet(Expression<Func<string>> location, Expression<Func<unitsInput>> units = null)
+        public IBodyWorkflowAction<RealtimeGetResponse, ApiConnectionActionConfiguration> RealtimeGet(Expression<Func<string>> location, Expression<Func<UnitsInput>> units = null)
         {
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: false);
@@ -50,62 +50,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tomorrowioip")]
-        public IBodyWorkflowAction<TimelinePostResponse, ApiConnectionActionConfiguration> Timeline(Expression<Func<string>> bodylocation, Expression<Func<string[]>> bodyfields, Expression<Func<bodyunitsInput>> bodyunits = null, Expression<Func<string[]>> bodytimesteps = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodytimezone = null)
+        public IBodyWorkflowAction<TimelineResponse, ApiConnectionActionConfiguration> Timeline(Expression<Func<BodyInput>> body)
         {
-            var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: true);
-            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: true);
-            var __workflow_bodyunits = WorkflowExpression.Compile(bodyunits, nameof(bodyunits), required: false);
-            var __workflow_bodytimesteps = WorkflowExpression.Compile(bodytimesteps, nameof(bodytimesteps), required: false);
-            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
-            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
-            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
-            return new DeferredBodyAction<TimelinePostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<TimelineResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/timelines";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["location"] = ExpressionConverter.ConvertO(__workflow_bodylocation);
-                bodypropCount++;
-                body["fields"] = ExpressionConverter.ConvertO(__workflow_bodyfields);
-                if (__workflow_bodyunits != null)
-                {
-                    body["units"] = ExpressionConverter.ConvertO(__workflow_bodyunits);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimesteps != null)
-                {
-                    body["timesteps"] = ExpressionConverter.ConvertO(__workflow_bodytimesteps);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystartTime != null)
-                {
-                    body["startTime"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyendTime != null)
-                {
-                    body["endTime"] = ExpressionConverter.ConvertO(__workflow_bodyendTime);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimezone != null)
-                {
-                    body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<TimelinePostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<TimelineResponse>(callPayload);
             });
         }
 
@@ -624,7 +578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum unitsInput
+    public enum UnitsInput
     {
         [EnumMember(Value = "metric")]
         Metric,
@@ -722,19 +676,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
         public string Type { get; set; }
     }
 
-    public class TimelinePostResponse
+    public class TimelineResponse
     {
         [JsonProperty("data")]
-        public TimelinePostResponseDataType Data { get; set; }
+        public TimelineResponseDataType Data { get; set; }
     }
 
-    public class TimelinePostResponseDataType
+    public class TimelineResponseDataType
     {
         [JsonProperty("timelines")]
-        public TimelinePostResponseDataTypeTimelinesTypeItem[] Timelines { get; set; }
+        public TimelineResponseDataTypeTimelinesTypeItem[] Timelines { get; set; }
     }
 
-    public class TimelinePostResponseDataTypeTimelinesTypeItem
+    public class TimelineResponseDataTypeTimelinesTypeItem
     {
         [JsonProperty("timestep")]
         public string Timestep { get; set; }
@@ -746,26 +700,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tomorrowioip
         public string StartTime { get; set; }
 
         [JsonProperty("intervals")]
-        public TimelinePostResponseDataTypeTimelinesTypeItemIntervalsTypeItem[] Intervals { get; set; }
+        public TimelineResponseDataTypeTimelinesTypeItemIntervalsTypeItem[] Intervals { get; set; }
     }
 
-    public class TimelinePostResponseDataTypeTimelinesTypeItemIntervalsTypeItem
+    public class TimelineResponseDataTypeTimelinesTypeItemIntervalsTypeItem
     {
         [JsonProperty("startTime")]
         public string StartTime { get; set; }
 
         [JsonProperty("values")]
-        public TimelinePostResponseDataTypeTimelinesTypeItemIntervalsTypeItemValuesType Values { get; set; }
+        public TimelineResponseDataTypeTimelinesTypeItemIntervalsTypeItemValuesType Values { get; set; }
     }
 
-    public class TimelinePostResponseDataTypeTimelinesTypeItemIntervalsTypeItemValuesType
+    public class TimelineResponseDataTypeTimelinesTypeItemIntervalsTypeItemValuesType
     {
         [JsonProperty("temperature")]
         public double Temperature { get; set; }
     }
 
+    public class BodyInput
+    {
+        public BodyInput(string location, string[] fields)
+        {
+            this.Location = location;
+            this.Fields = fields;
+        }
+
+        [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Location { get; set; }
+
+        [JsonProperty("fields", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Fields { get; set; }
+
+        [JsonProperty("units")]
+        public BodyInputUnitsType? Units { get; set; }
+
+        [JsonProperty("timesteps")]
+        public string[] Timesteps { get; set; }
+
+        [JsonProperty("startTime")]
+        public string StartTime { get; set; }
+
+        [JsonProperty("endTime")]
+        public string EndTime { get; set; }
+
+        [JsonProperty("timezone")]
+        public string Timezone { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyunitsInput
+    public enum BodyInputUnitsType
     {
         [EnumMember(Value = "metric")]
         Metric,

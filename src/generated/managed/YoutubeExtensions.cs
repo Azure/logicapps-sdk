@@ -16,40 +16,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtube
 
     public class YoutubeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<VideoList, ApiConnectionTriggerConfiguration> OnNewVideoInChannel(Expression<Func<string>> channelId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VideoList, ApiConnectionPollingTriggerConfiguration> OnNewVideoInChannel(Expression<Func<string>> channelId)
         {
             var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
-            return new DeferredBodyTrigger<VideoList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<VideoList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/activities";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["channelId"] = ExpressionConverter.Convert(__workflow_channelId);
-                return new ApiConnectionTrigger<VideoList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<VideoList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<VideoList, ApiConnectionTriggerConfiguration> OnMyNewVideo(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VideoList, ApiConnectionPollingTriggerConfiguration> OnMyNewVideo()
         {
-            return new DeferredBodyTrigger<VideoList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<VideoList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/mine";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<VideoList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<VideoList>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<VideoList, ApiConnectionTriggerConfiguration> OnNewVideoMatchingSearch(Expression<Func<string>> q, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VideoList, ApiConnectionPollingTriggerConfiguration> OnNewVideoMatchingSearch(Expression<Func<string>> q)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
-            return new DeferredBodyTrigger<VideoList, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<VideoList, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
-                return new ApiConnectionTrigger<VideoList>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<VideoList>(callPayload);
             });
         }
     }

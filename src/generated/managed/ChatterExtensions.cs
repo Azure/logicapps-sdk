@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
     public class ChatterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
-        public IBodyWorkflowAction<CreatePostInGroupResponse, ApiConnectionActionConfiguration> CreatePostInGroup(Expression<Func<string>> bodygroupId, Expression<Func<string>> createPostInGroupText)
+        public IBodyWorkflowAction<CreatePostInGroupResponse, ApiConnectionActionConfiguration> CreatePostInGroup(Expression<Func<CreatePostInGroupBodyInput>> body, Expression<Func<string>> createPostInGroupText)
         {
-            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_createPostInGroupText = WorkflowExpression.Compile(createPostInGroupText, nameof(createPostInGroupText), required: true);
             return new DeferredBodyAction<CreatePostInGroupResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -23,15 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["CreatePostInGroupText"] = ExpressionConverter.Convert(__workflow_createPostInGroupText);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["subjectId"] = ExpressionConverter.ConvertO(__workflow_bodygroupId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatePostInGroupResponse>(callPayload);
             });
         }
@@ -50,24 +42,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chatter")]
-        public IBodyWorkflowAction<GroupMemberResponse, ApiConnectionActionConfiguration> AddUserToGroup(Expression<Func<string>> groupId, Expression<Func<string>> bodysalesforceUserId)
+        public IBodyWorkflowAction<GroupMemberResponse, ApiConnectionActionConfiguration> AddUserToGroup(Expression<Func<string>> groupId, Expression<Func<AddUserToGroupBodyInput>> body)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            var __workflow_bodysalesforceUserId = WorkflowExpression.Compile(bodysalesforceUserId, nameof(bodysalesforceUserId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<GroupMemberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/data/v38.0/chatter/groups/{0}/members", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["userId"] = ExpressionConverter.ConvertO(__workflow_bodysalesforceUserId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<GroupMemberResponse>(callPayload);
             });
         }
@@ -101,15 +85,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
 
     public class ChatterTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListPostsByGroupResponse, ApiConnectionTriggerConfiguration> TrigNewPostInGroup(Expression<Func<string>> groupId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListPostsByGroupResponse, ApiConnectionPollingTriggerConfiguration> TrigNewPostInGroup(Expression<Func<string>> groupId)
         {
             var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
-            return new DeferredBodyTrigger<ListPostsByGroupResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ListPostsByGroupResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/new_post_trigger/services/data/v38.0/chatter/feeds/record/{0}/feed-elements", __workflow_groupId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListPostsByGroupResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ListPostsByGroupResponse>(callPayload);
             });
         }
     }
@@ -249,6 +233,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
         public string Small { get; set; }
     }
 
+    public class CreatePostInGroupBodyInput
+    {
+        public CreatePostInGroupBodyInput(string groupId)
+        {
+            this.GroupId = groupId;
+        }
+
+        [JsonProperty("subjectId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string GroupId { get; set; }
+    }
+
     public class ListGroupMembersResponse
     {
         [JsonProperty("members")]
@@ -304,6 +299,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
 
         [JsonProperty("smallPhotoUrl")]
         public string Small { get; set; }
+    }
+
+    public class AddUserToGroupBodyInput
+    {
+        public AddUserToGroupBodyInput(string salesforceUserId)
+        {
+            this.SalesforceUserId = salesforceUserId;
+        }
+
+        [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SalesforceUserId { get; set; }
     }
 
     public class GetPostResponse

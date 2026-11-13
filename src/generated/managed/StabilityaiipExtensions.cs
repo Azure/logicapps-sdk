@@ -52,20 +52,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<GenerationTextImagePostResponse, ApiConnectionActionConfiguration> GenerationTextImage(Expression<Func<string>> engineId, Expression<Func<string>> organization = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodywidth = null, Expression<Func<bodytextPromptsInputItem[]>> bodytextPrompts = null, Expression<Func<int>> bodycfgScale = null, Expression<Func<string>> bodyclipGuidancePreset = null, Expression<Func<string>> bodysampler = null, Expression<Func<int>> bodysamples = null, Expression<Func<int>> bodyseed = null, Expression<Func<int>> bodysteps = null)
+        public IBodyWorkflowAction<GenerationTextImageResponse, ApiConnectionActionConfiguration> GenerationTextImage(Expression<Func<string>> engineId, Expression<Func<string>> organization = null, Expression<Func<GenerationTextImageBodyInput>> body = null)
         {
             var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
-            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
-            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
-            var __workflow_bodytextPrompts = WorkflowExpression.Compile(bodytextPrompts, nameof(bodytextPrompts), required: false);
-            var __workflow_bodycfgScale = WorkflowExpression.Compile(bodycfgScale, nameof(bodycfgScale), required: false);
-            var __workflow_bodyclipGuidancePreset = WorkflowExpression.Compile(bodyclipGuidancePreset, nameof(bodyclipGuidancePreset), required: false);
-            var __workflow_bodysampler = WorkflowExpression.Compile(bodysampler, nameof(bodysampler), required: false);
-            var __workflow_bodysamples = WorkflowExpression.Compile(bodysamples, nameof(bodysamples), required: false);
-            var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
-            var __workflow_bodysteps = WorkflowExpression.Compile(bodysteps, nameof(bodysteps), required: false);
-            return new DeferredBodyAction<GenerationTextImagePostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<GenerationTextImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/generation/{0}/text-to-image", __workflow_engineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -74,89 +66,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 if (__workflow_organization != null)
                     callPayload.Headers["Organization"] = ExpressionConverter.Convert(__workflow_organization);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyheight != null)
-                {
-                    body["height"] = ExpressionConverter.ConvertO(__workflow_bodyheight);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywidth != null)
-                {
-                    body["width"] = ExpressionConverter.ConvertO(__workflow_bodywidth);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytextPrompts != null)
-                {
-                    body["text_prompts"] = ExpressionConverter.ConvertO(__workflow_bodytextPrompts);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycfgScale != null)
-                {
-                    body["cfg_scale"] = ExpressionConverter.ConvertO(__workflow_bodycfgScale);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyclipGuidancePreset != null)
-                {
-                    body["clip_guidance_preset"] = ExpressionConverter.ConvertO(__workflow_bodyclipGuidancePreset);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysampler != null)
-                {
-                    body["sampler"] = ExpressionConverter.ConvertO(__workflow_bodysampler);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysamples != null)
-                {
-                    body["samples"] = ExpressionConverter.ConvertO(__workflow_bodysamples);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyseed != null)
-                {
-                    body["seed"] = ExpressionConverter.ConvertO(__workflow_bodyseed);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysteps != null)
-                {
-                    body["steps"] = ExpressionConverter.ConvertO(__workflow_bodysteps);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<GenerationTextImagePostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<GenerationTextImageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<GenerationImageImagePostResponse, ApiConnectionActionConfiguration> GenerationImageImage(Expression<Func<string>> engineId, Expression<Func<string>> bodyinitImage, Expression<Func<string>> organization = null, Expression<Func<bodytextPromptsInputItem[]>> bodytextPrompts = null, Expression<Func<bodyinitImageModeInput>> bodyinitImageMode = null, Expression<Func<double>> bodyimageStrength = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodycfgScale = null, Expression<Func<string>> bodyclipGuidancePreset = null, Expression<Func<string>> bodysampler = null, Expression<Func<int>> bodysamples = null, Expression<Func<int>> bodyseed = null, Expression<Func<int>> bodysteps = null)
+        public IBodyWorkflowAction<GenerationImageImageResponse, ApiConnectionActionConfiguration> GenerationImageImage(Expression<Func<string>> engineId, Expression<Func<GenerationImageImageBodyInput>> body, Expression<Func<string>> organization = null)
         {
             var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
-            var __workflow_bodyinitImage = WorkflowExpression.Compile(bodyinitImage, nameof(bodyinitImage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
-            var __workflow_bodytextPrompts = WorkflowExpression.Compile(bodytextPrompts, nameof(bodytextPrompts), required: false);
-            var __workflow_bodyinitImageMode = WorkflowExpression.Compile(bodyinitImageMode, nameof(bodyinitImageMode), required: false);
-            var __workflow_bodyimageStrength = WorkflowExpression.Compile(bodyimageStrength, nameof(bodyimageStrength), required: false);
-            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
-            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
-            var __workflow_bodycfgScale = WorkflowExpression.Compile(bodycfgScale, nameof(bodycfgScale), required: false);
-            var __workflow_bodyclipGuidancePreset = WorkflowExpression.Compile(bodyclipGuidancePreset, nameof(bodyclipGuidancePreset), required: false);
-            var __workflow_bodysampler = WorkflowExpression.Compile(bodysampler, nameof(bodysampler), required: false);
-            var __workflow_bodysamples = WorkflowExpression.Compile(bodysamples, nameof(bodysamples), required: false);
-            var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
-            var __workflow_bodysteps = WorkflowExpression.Compile(bodysteps, nameof(bodysteps), required: false);
-            return new DeferredBodyAction<GenerationImageImagePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GenerationImageImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/generation/{0}/image-to-image", __workflow_engineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -165,94 +87,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 if (__workflow_organization != null)
                     callPayload.Headers["Organization"] = ExpressionConverter.Convert(__workflow_organization);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytextPrompts != null)
-                {
-                    body["text_prompts"] = ExpressionConverter.ConvertO(__workflow_bodytextPrompts);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["init_image"] = ExpressionConverter.ConvertO(__workflow_bodyinitImage);
-                if (__workflow_bodyinitImageMode != null)
-                {
-                    body["init_image_mode"] = ExpressionConverter.ConvertO(__workflow_bodyinitImageMode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimageStrength != null)
-                {
-                    body["image_strength"] = ExpressionConverter.ConvertO(__workflow_bodyimageStrength);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyheight != null)
-                {
-                    body["height"] = ExpressionConverter.ConvertO(__workflow_bodyheight);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywidth != null)
-                {
-                    body["width"] = ExpressionConverter.ConvertO(__workflow_bodywidth);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycfgScale != null)
-                {
-                    body["cfg_scale"] = ExpressionConverter.ConvertO(__workflow_bodycfgScale);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyclipGuidancePreset != null)
-                {
-                    body["clip_guidance_preset"] = ExpressionConverter.ConvertO(__workflow_bodyclipGuidancePreset);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysampler != null)
-                {
-                    body["sampler"] = ExpressionConverter.ConvertO(__workflow_bodysampler);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysamples != null)
-                {
-                    body["samples"] = ExpressionConverter.ConvertO(__workflow_bodysamples);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyseed != null)
-                {
-                    body["seed"] = ExpressionConverter.ConvertO(__workflow_bodyseed);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysteps != null)
-                {
-                    body["steps"] = ExpressionConverter.ConvertO(__workflow_bodysteps);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<GenerationImageImagePostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<GenerationImageImageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<GenerationUpscalePostResponse, ApiConnectionActionConfiguration> GenerationUpscale(Expression<Func<string>> engineId, Expression<Func<string>> bodyimage, Expression<Func<string>> organization = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodywidth = null)
+        public IBodyWorkflowAction<GenerationUpscaleResponse, ApiConnectionActionConfiguration> GenerationUpscale(Expression<Func<string>> engineId, Expression<Func<GenerationUpscaleBodyInput>> body, Expression<Func<string>> organization = null)
         {
             var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
-            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
-            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
-            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
-            return new DeferredBodyAction<GenerationUpscalePostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GenerationUpscaleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/generation/{0}/image-to-image/upscale", __workflow_engineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -261,49 +107,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 if (__workflow_organization != null)
                     callPayload.Headers["Organization"] = ExpressionConverter.Convert(__workflow_organization);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["image"] = ExpressionConverter.ConvertO(__workflow_bodyimage);
-                if (__workflow_bodyheight != null)
-                {
-                    body["height"] = ExpressionConverter.ConvertO(__workflow_bodyheight);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywidth != null)
-                {
-                    body["width"] = ExpressionConverter.ConvertO(__workflow_bodywidth);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<GenerationUpscalePostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<GenerationUpscaleResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<GenerationMaskPostResponse, ApiConnectionActionConfiguration> GenerationMask(Expression<Func<string>> engineId, Expression<Func<string>> bodyinitImage, Expression<Func<bodymaskSourceInput>> bodymaskSource, Expression<Func<string>> bodymaskImage, Expression<Func<string>> organization = null, Expression<Func<bodytextPromptsInputItem[]>> bodytextPrompts = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodycfgScale = null, Expression<Func<string>> bodyclipGuidancePreset = null, Expression<Func<string>> bodysampler = null, Expression<Func<int>> bodysamples = null, Expression<Func<int>> bodyseed = null, Expression<Func<int>> bodysteps = null)
+        public IBodyWorkflowAction<GenerationMaskResponse, ApiConnectionActionConfiguration> GenerationMask(Expression<Func<string>> engineId, Expression<Func<GenerationMaskBodyInput>> body, Expression<Func<string>> organization = null)
         {
             var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
-            var __workflow_bodyinitImage = WorkflowExpression.Compile(bodyinitImage, nameof(bodyinitImage), required: true);
-            var __workflow_bodymaskSource = WorkflowExpression.Compile(bodymaskSource, nameof(bodymaskSource), required: true);
-            var __workflow_bodymaskImage = WorkflowExpression.Compile(bodymaskImage, nameof(bodymaskImage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
-            var __workflow_bodytextPrompts = WorkflowExpression.Compile(bodytextPrompts, nameof(bodytextPrompts), required: false);
-            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
-            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
-            var __workflow_bodycfgScale = WorkflowExpression.Compile(bodycfgScale, nameof(bodycfgScale), required: false);
-            var __workflow_bodyclipGuidancePreset = WorkflowExpression.Compile(bodyclipGuidancePreset, nameof(bodyclipGuidancePreset), required: false);
-            var __workflow_bodysampler = WorkflowExpression.Compile(bodysampler, nameof(bodysampler), required: false);
-            var __workflow_bodysamples = WorkflowExpression.Compile(bodysamples, nameof(bodysamples), required: false);
-            var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
-            var __workflow_bodysteps = WorkflowExpression.Compile(bodysteps, nameof(bodysteps), required: false);
-            return new DeferredBodyAction<GenerationMaskPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GenerationMaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/generation/{0}/image-to-image/masking", __workflow_engineId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -312,213 +127,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 if (__workflow_organization != null)
                     callPayload.Headers["Organization"] = ExpressionConverter.Convert(__workflow_organization);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytextPrompts != null)
-                {
-                    body["text_prompts"] = ExpressionConverter.ConvertO(__workflow_bodytextPrompts);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["init_image"] = ExpressionConverter.ConvertO(__workflow_bodyinitImage);
-                bodypropCount++;
-                body["mask_source"] = ExpressionConverter.ConvertO(__workflow_bodymaskSource);
-                bodypropCount++;
-                body["mask_image"] = ExpressionConverter.ConvertO(__workflow_bodymaskImage);
-                if (__workflow_bodyheight != null)
-                {
-                    body["height"] = ExpressionConverter.ConvertO(__workflow_bodyheight);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywidth != null)
-                {
-                    body["width"] = ExpressionConverter.ConvertO(__workflow_bodywidth);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycfgScale != null)
-                {
-                    body["cfg_scale"] = ExpressionConverter.ConvertO(__workflow_bodycfgScale);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyclipGuidancePreset != null)
-                {
-                    body["clip_guidance_preset"] = ExpressionConverter.ConvertO(__workflow_bodyclipGuidancePreset);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysampler != null)
-                {
-                    body["sampler"] = ExpressionConverter.ConvertO(__workflow_bodysampler);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysamples != null)
-                {
-                    body["samples"] = ExpressionConverter.ConvertO(__workflow_bodysamples);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyseed != null)
-                {
-                    body["seed"] = ExpressionConverter.ConvertO(__workflow_bodyseed);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysteps != null)
-                {
-                    body["steps"] = ExpressionConverter.ConvertO(__workflow_bodysteps);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<GenerationMaskPostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<GenerationMaskResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<StableImageCorePostResponse, ApiConnectionActionConfiguration> StableImageCore(Expression<Func<string>> bodyprompt, Expression<Func<bodyaspectRatioInput>> bodyaspectRatio = null, Expression<Func<string>> bodynegativePrompt = null, Expression<Func<int>> bodyseed = null, Expression<Func<bodystylePresetInput>> bodystylePreset = null)
+        public IBodyWorkflowAction<StableImageCoreResponse, ApiConnectionActionConfiguration> StableImageCore(Expression<Func<StableImageCoreBodyInput>> body)
         {
-            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
-            var __workflow_bodyaspectRatio = WorkflowExpression.Compile(bodyaspectRatio, nameof(bodyaspectRatio), required: false);
-            var __workflow_bodynegativePrompt = WorkflowExpression.Compile(bodynegativePrompt, nameof(bodynegativePrompt), required: false);
-            var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
-            var __workflow_bodystylePreset = WorkflowExpression.Compile(bodystylePreset, nameof(bodystylePreset), required: false);
-            return new DeferredBodyAction<StableImageCorePostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<StableImageCoreResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api.stability.ai/v2beta/stable-image/generate/core";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
-                if (__workflow_bodyaspectRatio != null)
-                {
-                    if (__workflow_bodyaspectRatio != null)
-                    {
-                        body["aspect_ratio"] = ExpressionConverter.ConvertO(__workflow_bodyaspectRatio);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["aspect_ratio"] = "1:1";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynegativePrompt != null)
-                {
-                    body["negative_prompt"] = ExpressionConverter.ConvertO(__workflow_bodynegativePrompt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyseed != null)
-                {
-                    body["seed"] = ExpressionConverter.ConvertO(__workflow_bodyseed);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystylePreset != null)
-                {
-                    body["style_preset"] = ExpressionConverter.ConvertO(__workflow_bodystylePreset);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<StableImageCorePostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<StableImageCoreResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
-        public IBodyWorkflowAction<StableDiffusionPostResponse, ApiConnectionActionConfiguration> StableDiffusion(Expression<Func<string>> bodyprompt, Expression<Func<bodyaspectRatioInput>> bodyaspectRatio = null, Expression<Func<string>> bodynegativePrompt = null, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<int>> bodyseed = null, Expression<Func<bodystylePresetInput>> bodystylePreset = null)
+        public IBodyWorkflowAction<StableDiffusionResponse, ApiConnectionActionConfiguration> StableDiffusion(Expression<Func<StableDiffusionBodyInput>> body)
         {
-            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
-            var __workflow_bodyaspectRatio = WorkflowExpression.Compile(bodyaspectRatio, nameof(bodyaspectRatio), required: false);
-            var __workflow_bodynegativePrompt = WorkflowExpression.Compile(bodynegativePrompt, nameof(bodynegativePrompt), required: false);
-            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
-            var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
-            var __workflow_bodystylePreset = WorkflowExpression.Compile(bodystylePreset, nameof(bodystylePreset), required: false);
-            return new DeferredBodyAction<StableDiffusionPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<StableDiffusionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api.stability.ai/v2beta/stable-image/generate/sd3";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
-                if (__workflow_bodyaspectRatio != null)
-                {
-                    if (__workflow_bodyaspectRatio != null)
-                    {
-                        body["aspect_ratio"] = ExpressionConverter.ConvertO(__workflow_bodyaspectRatio);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["aspect_ratio"] = "1:1";
-                    bodypropCount++;
-                }
-
-                body["mode"] = "text-to-image";
-                bodypropCount++;
-                if (__workflow_bodynegativePrompt != null)
-                {
-                    body["negative_prompt"] = ExpressionConverter.ConvertO(__workflow_bodynegativePrompt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymodel != null)
-                {
-                    if (__workflow_bodymodel != null)
-                    {
-                        body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["model"] = "sd3";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyseed != null)
-                {
-                    body["seed"] = ExpressionConverter.ConvertO(__workflow_bodyseed);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystylePreset != null)
-                {
-                    body["style_preset"] = ExpressionConverter.ConvertO(__workflow_bodystylePreset);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<StableDiffusionPostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<StableDiffusionResponse>(callPayload);
             });
         }
     }
@@ -578,13 +216,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public double Credits { get; set; }
     }
 
-    public class GenerationTextImagePostResponse
+    public class GenerationTextImageResponse
     {
         [JsonProperty("artifacts")]
-        public GenerationTextImagePostResponseArtifactsTypeItem[] Artifacts { get; set; }
+        public GenerationTextImageResponseArtifactsTypeItem[] Artifacts { get; set; }
     }
 
-    public class GenerationTextImagePostResponseArtifactsTypeItem
+    public class GenerationTextImageResponseArtifactsTypeItem
     {
         [JsonProperty("base64")]
         public string Base64 { get; set; }
@@ -596,22 +234,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public string FinishReason { get; set; }
     }
 
-    public class bodytextPromptsInputItem
+    public class GenerationTextImageBodyInput
     {
-        [JsonProperty("text")]
+        [JsonProperty("height")]
+        public int? Height { get; set; }
+
+        [JsonProperty("width")]
+        public int? Width { get; set; }
+
+        [JsonProperty("text_prompts")]
+        public BodyInputTextPromptsTypeItem[] TextPrompts { get; set; }
+
+        [JsonProperty("cfg_scale")]
+        public int? CfgScale { get; set; }
+
+        [JsonProperty("clip_guidance_preset")]
+        public string ClipGuidancePreset { get; set; }
+
+        [JsonProperty("sampler")]
+        public string Sampler { get; set; }
+
+        [JsonProperty("samples")]
+        public int? Samples { get; set; }
+
+        [JsonProperty("seed")]
+        public int? Seed { get; set; }
+
+        [JsonProperty("steps")]
+        public int? Steps { get; set; }
+    }
+
+    public class BodyInputTextPromptsTypeItem
+    {
+        public BodyInputTextPromptsTypeItem(string text)
+        {
+            this.Text = text;
+        }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
         [JsonProperty("weight")]
-        public int Weight { get; set; }
+        public int? Weight { get; set; }
     }
 
-    public class GenerationImageImagePostResponse
+    public class GenerationImageImageResponse
     {
         [JsonProperty("artifacts")]
-        public GenerationImageImagePostResponseArtifactsTypeItem[] Artifacts { get; set; }
+        public GenerationImageImageResponseArtifactsTypeItem[] Artifacts { get; set; }
     }
 
-    public class GenerationImageImagePostResponseArtifactsTypeItem
+    public class GenerationImageImageResponseArtifactsTypeItem
     {
         [JsonProperty("base64")]
         public string Base64 { get; set; }
@@ -623,8 +296,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public string FinishReason { get; set; }
     }
 
+    public class GenerationImageImageBodyInput
+    {
+        public GenerationImageImageBodyInput(string initImage)
+        {
+            this.InitImage = initImage;
+        }
+
+        [JsonProperty("text_prompts")]
+        public BodyInputTextPromptsTypeItem[] TextPrompts { get; set; }
+
+        [JsonProperty("init_image", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string InitImage { get; set; }
+
+        [JsonProperty("init_image_mode")]
+        public BodyInputInitImageModeType? InitImageMode { get; set; }
+
+        [JsonProperty("image_strength")]
+        public double? ImageStrength { get; set; }
+
+        [JsonProperty("height")]
+        public int? Height { get; set; }
+
+        [JsonProperty("width")]
+        public int? Width { get; set; }
+
+        [JsonProperty("cfg_scale")]
+        public int? CfgScale { get; set; }
+
+        [JsonProperty("clip_guidance_preset")]
+        public string ClipGuidancePreset { get; set; }
+
+        [JsonProperty("sampler")]
+        public string Sampler { get; set; }
+
+        [JsonProperty("samples")]
+        public int? Samples { get; set; }
+
+        [JsonProperty("seed")]
+        public int? Seed { get; set; }
+
+        [JsonProperty("steps")]
+        public int? Steps { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyinitImageModeInput
+    public enum BodyInputInitImageModeType
     {
         [EnumMember(Value = "image_strength")]
         ImageStrength,
@@ -632,13 +349,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         StepSchedule
     }
 
-    public class GenerationUpscalePostResponse
+    public class GenerationUpscaleResponse
     {
         [JsonProperty("artifacts")]
-        public GenerationUpscalePostResponseArtifactsTypeItem[] Artifacts { get; set; }
+        public GenerationUpscaleResponseArtifactsTypeItem[] Artifacts { get; set; }
     }
 
-    public class GenerationUpscalePostResponseArtifactsTypeItem
+    public class GenerationUpscaleResponseArtifactsTypeItem
     {
         [JsonProperty("base64")]
         public string Base64 { get; set; }
@@ -650,13 +367,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public string FinishReason { get; set; }
     }
 
-    public class GenerationMaskPostResponse
+    public class GenerationUpscaleBodyInput
     {
-        [JsonProperty("artifacts")]
-        public GenerationMaskPostResponseArtifactsTypeItem[] Artifacts { get; set; }
+        public GenerationUpscaleBodyInput(string image)
+        {
+            this.Image = image;
+        }
+
+        [JsonProperty("image", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Image { get; set; }
+
+        [JsonProperty("height")]
+        public int? Height { get; set; }
+
+        [JsonProperty("width")]
+        public int? Width { get; set; }
     }
 
-    public class GenerationMaskPostResponseArtifactsTypeItem
+    public class GenerationMaskResponse
+    {
+        [JsonProperty("artifacts")]
+        public GenerationMaskResponseArtifactsTypeItem[] Artifacts { get; set; }
+    }
+
+    public class GenerationMaskResponseArtifactsTypeItem
     {
         [JsonProperty("base64")]
         public string Base64 { get; set; }
@@ -666,10 +400,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
 
         [JsonProperty("finishReason")]
         public string FinishReason { get; set; }
+    }
+
+    public class GenerationMaskBodyInput
+    {
+        public GenerationMaskBodyInput(string initImage, string maskImage)
+        {
+            this.InitImage = initImage;
+            this.MaskImage = maskImage;
+        }
+
+        [JsonProperty("text_prompts")]
+        public BodyInputTextPromptsTypeItem[] TextPrompts { get; set; }
+
+        [JsonProperty("init_image", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string InitImage { get; set; }
+
+        [JsonProperty("mask_source", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputMaskSourceType MaskSource { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip.BodyInputMaskSourceType.MASKIMAGEWHITE;
+
+        [JsonProperty("mask_image", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MaskImage { get; set; }
+
+        [JsonProperty("height")]
+        public int? Height { get; set; }
+
+        [JsonProperty("width")]
+        public int? Width { get; set; }
+
+        [JsonProperty("cfg_scale")]
+        public int? CfgScale { get; set; }
+
+        [JsonProperty("clip_guidance_preset")]
+        public string ClipGuidancePreset { get; set; }
+
+        [JsonProperty("sampler")]
+        public string Sampler { get; set; }
+
+        [JsonProperty("samples")]
+        public int? Samples { get; set; }
+
+        [JsonProperty("seed")]
+        public int? Seed { get; set; }
+
+        [JsonProperty("steps")]
+        public int? Steps { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymaskSourceInput
+    public enum BodyInputMaskSourceType
     {
         [EnumMember(Value = "MASK_IMAGE_WHITE")]
         MASKIMAGEWHITE,
@@ -679,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         INITIMAGEALPHA
     }
 
-    public class StableImageCorePostResponse
+    public class StableImageCoreResponse
     {
         [JsonProperty("image")]
         public string Image { get; set; }
@@ -691,8 +470,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public int Seed { get; set; }
     }
 
+    public class StableImageCoreBodyInput
+    {
+        public StableImageCoreBodyInput(string prompt)
+        {
+            this.Prompt = prompt;
+        }
+
+        [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Prompt { get; set; }
+
+        [JsonProperty("aspect_ratio", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputAspectRatioType? AspectRatio { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip.BodyInputAspectRatioType._11;
+
+        [JsonProperty("negative_prompt")]
+        public string NegativePrompt { get; set; }
+
+        [JsonProperty("seed")]
+        public int? Seed { get; set; }
+
+        [JsonProperty("style_preset")]
+        public BodyInputStylePresetType? StylePreset { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyaspectRatioInput
+    public enum BodyInputAspectRatioType
     {
         [EnumMember(Value = "1:1")]
         _11,
@@ -715,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystylePresetInput
+    public enum BodyInputStylePresetType
     {
         [EnumMember(Value = "3d-model")]
         _3dModel,
@@ -753,7 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         TileTexture
     }
 
-    public class StableDiffusionPostResponse
+    public class StableDiffusionResponse
     {
         [JsonProperty("image")]
         public string Image { get; set; }
@@ -765,8 +567,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public int Seed { get; set; }
     }
 
+    public class StableDiffusionBodyInput
+    {
+        public StableDiffusionBodyInput(string prompt)
+        {
+            this.Prompt = prompt;
+        }
+
+        [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Prompt { get; set; }
+
+        [JsonProperty("aspect_ratio", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputAspectRatioType? AspectRatio { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip.BodyInputAspectRatioType._11;
+
+        [JsonProperty("mode", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Mode { get; set; } = "text-to-image";
+
+        [JsonProperty("negative_prompt")]
+        public string NegativePrompt { get; set; }
+
+        [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputModelType? Model { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip.BodyInputModelType.Sd3;
+
+        [JsonProperty("seed")]
+        public int? Seed { get; set; }
+
+        [JsonProperty("style_preset")]
+        public BodyInputStylePresetType? StylePreset { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymodelInput
+    public enum BodyInputModelType
     {
         [EnumMember(Value = "sd3")]
         Sd3,

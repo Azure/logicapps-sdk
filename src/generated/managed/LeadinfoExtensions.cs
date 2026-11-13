@@ -1,0 +1,182 @@
+//------------------------------------------------------------
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+//------------------------------------------------------------
+
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leadinfo
+{
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
+    using System.Runtime.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    public class LeadinfoActions([ConnectionName] string connectionId)
+    {
+    }
+
+    public class LeadinfoTriggers([ConnectionName] string connectionId)
+    {
+        public IBodyWorkflowTrigger<TriggerCompanyResponse, ApiConnectionPollingTriggerConfiguration> TriggerCompany()
+        {
+            return new DeferredBodyTrigger<TriggerCompanyResponse, ApiConnectionPollingTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/webhook";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["version"] = Convert.ToString("2");
+                callPayload.Body = new TriggerCompanyBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<TriggerCompanyResponse>(callPayload);
+            });
+        }
+
+        public IBodyWorkflowTrigger<ShareContactResponse, ApiConnectionPollingTriggerConfiguration> ShareContact()
+        {
+            return new DeferredBodyTrigger<ShareContactResponse, ApiConnectionPollingTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/webhook/share_contact";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["version"] = Convert.ToString("2");
+                callPayload.Body = new ShareContactBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<ShareContactResponse>(callPayload);
+            });
+        }
+
+        public IBodyWorkflowTrigger<TriggerContactResponse, ApiConnectionPollingTriggerConfiguration> TriggerContact()
+        {
+            return new DeferredBodyTrigger<TriggerContactResponse, ApiConnectionPollingTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/webhook/trigger_contact";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["version"] = Convert.ToString("2");
+                callPayload.Body = new TriggerContactBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<TriggerContactResponse>(callPayload);
+            });
+        }
+
+        public IBodyWorkflowTrigger<ShareCompanyResponse, ApiConnectionPollingTriggerConfiguration> ShareCompany()
+        {
+            return new DeferredBodyTrigger<ShareCompanyResponse, ApiConnectionPollingTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/v1/webhook/share";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["version"] = Convert.ToString("2");
+                callPayload.Body = new ShareCompanyBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<ShareCompanyResponse>(callPayload);
+            });
+        }
+    }
+
+    public class TriggerCompanyResponse
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class TriggerCompanyBodyInput
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "trigger";
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("integration", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Integration { get; set; } = "microsoftpowerautomate";
+    }
+
+    public class ShareContactResponse
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class ShareContactBodyInput
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "share_contact";
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("integration", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Integration { get; set; } = "microsoftpowerautomate";
+    }
+
+    public class TriggerContactResponse
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class TriggerContactBodyInput
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "trigger_contact";
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("integration", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Integration { get; set; } = "microsoftpowerautomate";
+    }
+
+    public class ShareCompanyResponse
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class ShareCompanyBodyInput
+    {
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "share";
+
+        [JsonProperty("integration", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Integration { get; set; } = "microsoftpowerautomate";
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+    }
+}
+
+namespace Microsoft.Azure.Workflows.Sdk
+{
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Leadinfo;
+
+    public partial class WorkflowManagedActions
+    {
+        public LeadinfoActions Leadinfo(string connectionId) => new LeadinfoActions(connectionId);
+    }
+
+    public partial class WorkflowManagedTriggers
+    {
+        public LeadinfoTriggers Leadinfo(string connectionId) => new LeadinfoTriggers(connectionId);
+    }
+}

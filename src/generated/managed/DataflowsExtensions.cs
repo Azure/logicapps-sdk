@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
     public class DataflowsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflows")]
-        public IBodyWorkflowAction<DataflowModel, ApiConnectionActionConfiguration> RefreshDataflow(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForRefreshDataflow, Expression<Func<string>> dataflowIdForRefreshDataflow)
+        public IBodyWorkflowAction<DataflowModel, ApiConnectionActionConfiguration> RefreshDataflow(Expression<Func<WorkspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForRefreshDataflow, Expression<Func<string>> dataflowIdForRefreshDataflow)
         {
             var __workflow_workspaceType = WorkflowExpression.Compile(workspaceType, nameof(workspaceType), required: true);
             var __workflow_groupIdForRefreshDataflow = WorkflowExpression.Compile(groupIdForRefreshDataflow, nameof(groupIdForRefreshDataflow), required: true);
@@ -31,18 +31,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
 
     public class DataflowsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<RefreshModel, ApiConnectionTriggerConfiguration> OnRefreshComplete(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForOnRefreshComplete, Expression<Func<string>> dataflowIdForOnRefreshComplete, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RefreshModel, ApiConnectionPollingTriggerConfiguration> OnRefreshComplete(Expression<Func<WorkspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForOnRefreshComplete, Expression<Func<string>> dataflowIdForOnRefreshComplete)
         {
             var __workflow_workspaceType = WorkflowExpression.Compile(workspaceType, nameof(workspaceType), required: true);
             var __workflow_groupIdForOnRefreshComplete = WorkflowExpression.Compile(groupIdForOnRefreshComplete, nameof(groupIdForOnRefreshComplete), required: true);
             var __workflow_dataflowIdForOnRefreshComplete = WorkflowExpression.Compile(dataflowIdForOnRefreshComplete, nameof(dataflowIdForOnRefreshComplete), required: true);
-            return new DeferredBodyTrigger<RefreshModel, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RefreshModel, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/groups/{0}/dataflows/{1}/onrefreshcomplete", __workflow_groupIdForOnRefreshComplete.WithUrlEncoding(1), __workflow_dataflowIdForOnRefreshComplete.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(__workflow_workspaceType);
-                return new ApiConnectionTrigger<RefreshModel>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<RefreshModel>(callPayload);
             });
         }
     }
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum workspaceTypeInput
+    public enum WorkspaceTypeInput
     {
         Workspace,
         Environment

@@ -13,49 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
     public class SupportivekoalaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<ImagesPostResponse, ApiConnectionActionConfiguration> Images(Expression<Func<string>> bodytemplate, Expression<Func<bodyformatInput>> bodyformat = null)
+        public IBodyWorkflowAction<ImagesResponse, ApiConnectionActionConfiguration> Images(Expression<Func<ImagesBodyInput>> body)
         {
-            var __workflow_bodytemplate = WorkflowExpression.Compile(bodytemplate, nameof(bodytemplate), required: true);
-            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
-            return new DeferredBodyAction<ImagesPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<ImagesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/images/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["template"] = ExpressionConverter.ConvertO(__workflow_bodytemplate);
-                var @paramsObject = new JObject();
-                var @paramsObjectpropCount = 0;
-                if (@paramsObjectpropCount > 0)
-                {
-                    body["params"] = @paramsObject;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyformat != null)
-                {
-                    if (__workflow_bodyformat != null)
-                    {
-                        body["format"] = ExpressionConverter.ConvertO(__workflow_bodyformat);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["format"] = "png";
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<ImagesPostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<ImagesResponse>(callPayload);
             });
         }
 
@@ -85,45 +52,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<TemplatePostResponse, ApiConnectionActionConfiguration> Template(Expression<Func<string>> bodyname, Expression<Func<string>> bodyParams = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null)
+        public IBodyWorkflowAction<TemplateResponse, ApiConnectionActionConfiguration> Template(Expression<Func<TemplateBodyInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyParams = WorkflowExpression.Compile(bodyParams, nameof(bodyParams), required: false);
-            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
-            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
-            return new DeferredBodyAction<TemplatePostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<TemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/templates/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodyParams != null)
-                {
-                    body["params"] = ExpressionConverter.ConvertO(__workflow_bodyParams);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodywidth != null)
-                {
-                    body["width"] = ExpressionConverter.ConvertO(__workflow_bodywidth);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyheight != null)
-                {
-                    body["height"] = ExpressionConverter.ConvertO(__workflow_bodyheight);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<TemplatePostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<TemplateResponse>(callPayload);
             });
         }
 
@@ -157,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
     {
     }
 
-    public class ImagesPostResponse
+    public class ImagesResponse
     {
         [JsonProperty("_id")]
         public string Id { get; set; }
@@ -178,8 +116,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         public int V { get; set; }
     }
 
+    public class ImagesBodyInput
+    {
+        public ImagesBodyInput(string template)
+        {
+            this.Template = template;
+        }
+
+        [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Template { get; set; }
+
+        [JsonProperty("params")]
+        public JToken Params { get; set; }
+
+        [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputFormatType? Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip.BodyInputFormatType.Png;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyformatInput
+    public enum BodyInputFormatType
     {
         [EnumMember(Value = "png")]
         Png,
@@ -231,10 +186,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         public int V { get; set; }
     }
 
-    public class TemplatePostResponse
+    public class TemplateResponse
     {
         [JsonProperty("generatedImages")]
-        public TemplatePostResponseGeneratedImagesTypeItem[] GeneratedImages { get; set; }
+        public TemplateResponseGeneratedImagesTypeItem[] GeneratedImages { get; set; }
 
         [JsonProperty("width")]
         public int Width { get; set; }
@@ -267,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         public int V { get; set; }
     }
 
-    public class TemplatePostResponseGeneratedImagesTypeItem
+    public class TemplateResponseGeneratedImagesTypeItem
     {
         [JsonProperty("_id")]
         public string Id { get; set; }
@@ -286,6 +241,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
 
         [JsonProperty("__v")]
         public int V { get; set; }
+    }
+
+    public class TemplateBodyInput
+    {
+        public TemplateBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("params")]
+        public string Params { get; set; }
+
+        [JsonProperty("width")]
+        public int? Width { get; set; }
+
+        [JsonProperty("height")]
+        public int? Height { get; set; }
     }
 
     public class TemplateGetResponse

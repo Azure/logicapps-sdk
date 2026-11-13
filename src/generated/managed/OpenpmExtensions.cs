@@ -31,114 +31,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesPOST(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymachineName = null, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodyversion = null, Expression<Func<string>> bodycreatedAt = null, Expression<Func<string>> bodyupdatedAt = null, Expression<Func<string>> bodypublishedAt = null, Expression<Func<string>> bodylogoUrl = null, Expression<Func<string>> bodycontactEmail = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodymachineDescription = null, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyopenapi = null)
+        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesPOST(Expression<Func<BodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodymachineName = WorkflowExpression.Compile(bodymachineName, nameof(bodymachineName), required: false);
-            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: false);
-            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: false);
-            var __workflow_bodycreatedAt = WorkflowExpression.Compile(bodycreatedAt, nameof(bodycreatedAt), required: false);
-            var __workflow_bodyupdatedAt = WorkflowExpression.Compile(bodyupdatedAt, nameof(bodyupdatedAt), required: false);
-            var __workflow_bodypublishedAt = WorkflowExpression.Compile(bodypublishedAt, nameof(bodypublishedAt), required: false);
-            var __workflow_bodylogoUrl = WorkflowExpression.Compile(bodylogoUrl, nameof(bodylogoUrl), required: false);
-            var __workflow_bodycontactEmail = WorkflowExpression.Compile(bodycontactEmail, nameof(bodycontactEmail), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodymachineDescription = WorkflowExpression.Compile(bodymachineDescription, nameof(bodymachineDescription), required: false);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodyopenapi = WorkflowExpression.Compile(bodyopenapi, nameof(bodyopenapi), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Package, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/packages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymachineName != null)
-                {
-                    body["machine_name"] = ExpressionConverter.ConvertO(__workflow_bodymachineName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydomain != null)
-                {
-                    body["domain"] = ExpressionConverter.ConvertO(__workflow_bodydomain);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyversion != null)
-                {
-                    body["version"] = ExpressionConverter.ConvertO(__workflow_bodyversion);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycreatedAt != null)
-                {
-                    body["created_at"] = ExpressionConverter.ConvertO(__workflow_bodycreatedAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyupdatedAt != null)
-                {
-                    body["updated_at"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypublishedAt != null)
-                {
-                    body["published_at"] = ExpressionConverter.ConvertO(__workflow_bodypublishedAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylogoUrl != null)
-                {
-                    body["logo_url"] = ExpressionConverter.ConvertO(__workflow_bodylogoUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontactEmail != null)
-                {
-                    body["contact_email"] = ExpressionConverter.ConvertO(__workflow_bodycontactEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymachineDescription != null)
-                {
-                    body["machine_description"] = ExpressionConverter.ConvertO(__workflow_bodymachineDescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserId != null)
-                {
-                    body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyopenapi != null)
-                {
-                    body["openapi"] = ExpressionConverter.ConvertO(__workflow_bodyopenapi);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Package>(callPayload);
             });
         }
@@ -172,121 +73,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesByPackageIdPOST(Expression<Func<string>> packageId, Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymachineName = null, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodyversion = null, Expression<Func<string>> bodycreatedAt = null, Expression<Func<string>> bodyupdatedAt = null, Expression<Func<string>> bodypublishedAt = null, Expression<Func<string>> bodylogoUrl = null, Expression<Func<string>> bodycontactEmail = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodymachineDescription = null, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyopenapi = null)
+        public IBodyWorkflowAction<Package, ApiConnectionActionConfiguration> PackagesByPackageIdPOST(Expression<Func<string>> packageId, Expression<Func<BodyInput>> body)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodymachineName = WorkflowExpression.Compile(bodymachineName, nameof(bodymachineName), required: false);
-            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: false);
-            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: false);
-            var __workflow_bodycreatedAt = WorkflowExpression.Compile(bodycreatedAt, nameof(bodycreatedAt), required: false);
-            var __workflow_bodyupdatedAt = WorkflowExpression.Compile(bodyupdatedAt, nameof(bodyupdatedAt), required: false);
-            var __workflow_bodypublishedAt = WorkflowExpression.Compile(bodypublishedAt, nameof(bodypublishedAt), required: false);
-            var __workflow_bodylogoUrl = WorkflowExpression.Compile(bodylogoUrl, nameof(bodylogoUrl), required: false);
-            var __workflow_bodycontactEmail = WorkflowExpression.Compile(bodycontactEmail, nameof(bodycontactEmail), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodymachineDescription = WorkflowExpression.Compile(bodymachineDescription, nameof(bodymachineDescription), required: false);
-            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodyopenapi = WorkflowExpression.Compile(bodyopenapi, nameof(bodyopenapi), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Package, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/packages/{0}", __workflow_packageId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymachineName != null)
-                {
-                    body["machine_name"] = ExpressionConverter.ConvertO(__workflow_bodymachineName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydomain != null)
-                {
-                    body["domain"] = ExpressionConverter.ConvertO(__workflow_bodydomain);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyversion != null)
-                {
-                    body["version"] = ExpressionConverter.ConvertO(__workflow_bodyversion);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycreatedAt != null)
-                {
-                    body["created_at"] = ExpressionConverter.ConvertO(__workflow_bodycreatedAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyupdatedAt != null)
-                {
-                    body["updated_at"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypublishedAt != null)
-                {
-                    body["published_at"] = ExpressionConverter.ConvertO(__workflow_bodypublishedAt);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylogoUrl != null)
-                {
-                    body["logo_url"] = ExpressionConverter.ConvertO(__workflow_bodylogoUrl);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontactEmail != null)
-                {
-                    body["contact_email"] = ExpressionConverter.ConvertO(__workflow_bodycontactEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodymachineDescription != null)
-                {
-                    body["machine_description"] = ExpressionConverter.ConvertO(__workflow_bodymachineDescription);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyuserId != null)
-                {
-                    body["user_id"] = ExpressionConverter.ConvertO(__workflow_bodyuserId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyopenapi != null)
-                {
-                    body["openapi"] = ExpressionConverter.ConvertO(__workflow_bodyopenapi);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Package>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openpm")]
-        public IBodyWorkflowAction<PackagesOpenapiResponse, ApiConnectionActionConfiguration> PackagesOpenapiByPackageIdGET(Expression<Func<string>> packageId, Expression<Func<formatInput>> format = null)
+        public IBodyWorkflowAction<PackagesOpenapiResponse, ApiConnectionActionConfiguration> PackagesOpenapiByPackageIdGET(Expression<Func<string>> packageId, Expression<Func<FormatInput>> format = null)
         {
             var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
@@ -453,6 +255,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         public string Openapi { get; set; }
     }
 
+    public class BodyInput
+    {
+        public BodyInput(string id)
+        {
+            this.Id = id;
+        }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("machine_name")]
+        public string MachineName { get; set; }
+
+        [JsonProperty("domain")]
+        public string Domain { get; set; }
+
+        [JsonProperty("version")]
+        public string Version { get; set; }
+
+        [JsonProperty("created_at")]
+        public string CreatedAt { get; set; }
+
+        [JsonProperty("updated_at")]
+        public string UpdatedAt { get; set; }
+
+        [JsonProperty("published_at")]
+        public string PublishedAt { get; set; }
+
+        [JsonProperty("logo_url")]
+        public string LogoUrl { get; set; }
+
+        [JsonProperty("contact_email")]
+        public string ContactEmail { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("machine_description")]
+        public string MachineDescription { get; set; }
+
+        [JsonProperty("user_id")]
+        public string UserId { get; set; }
+
+        [JsonProperty("openapi")]
+        public string Openapi { get; set; }
+    }
+
     public class PackagesOpenapiResponse
     {
         [JsonProperty("openapi")]
@@ -475,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         [EnumMember(Value = "json")]
         Json,

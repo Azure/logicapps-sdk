@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mediastack
     public class MediastackActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mediastack")]
-        public IBodyWorkflowAction<ListNewsResponse, ApiConnectionActionConfiguration> ListNews(Expression<Func<string>> sources = null, Expression<Func<string>> categories = null, Expression<Func<string>> countries = null, Expression<Func<string>> languages = null, Expression<Func<string>> keywords = null, Expression<Func<string>> date = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListNewsResponse, ApiConnectionActionConfiguration> ListNews(Expression<Func<string>> sources = null, Expression<Func<string>> categories = null, Expression<Func<string>> countries = null, Expression<Func<string>> languages = null, Expression<Func<string>> keywords = null, Expression<Func<string>> date = null, Expression<Func<SortInput>> sort = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_sources = WorkflowExpression.Compile(sources, nameof(sources), required: false);
             var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mediastack
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortInput
+    public enum SortInput
     {
         [EnumMember(Value = "published_desc")]
         PublishedDesc,

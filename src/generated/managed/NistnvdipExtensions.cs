@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
     public class NistnvdipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nistnvdip")]
-        public IBodyWorkflowAction<GetCVECollectionResponse, ApiConnectionActionConfiguration> GetCVECollection(Expression<Func<addOnsInput>> addOns = null, Expression<Func<string>> cpeMatchString = null, Expression<Func<string>> cvssV2Metrics = null, Expression<Func<cvssV2SeverityInput>> cvssV2Severity = null, Expression<Func<string>> cvssV3Metrics = null, Expression<Func<cvssV3SeverityInput>> cvssV3Severity = null, Expression<Func<string>> cweId = null, Expression<Func<bool>> includeMatchStringChange = null, Expression<Func<bool>> isExactMatch = null, Expression<Func<string>> keyword = null, Expression<Func<string>> modStartDate = null, Expression<Func<string>> modEndDate = null, Expression<Func<string>> pubStartDate = null, Expression<Func<string>> pubEndDate = null, Expression<Func<int>> resultsPerPage = null, Expression<Func<int>> startIndex = null)
+        public IBodyWorkflowAction<GetCVECollectionResponse, ApiConnectionActionConfiguration> GetCVECollection(Expression<Func<GetCVECollectionAddOnsInput>> addOns = null, Expression<Func<string>> cpeMatchString = null, Expression<Func<string>> cvssV2Metrics = null, Expression<Func<CvssV2SeverityInput>> cvssV2Severity = null, Expression<Func<string>> cvssV3Metrics = null, Expression<Func<CvssV3SeverityInput>> cvssV3Severity = null, Expression<Func<string>> cweId = null, Expression<Func<bool>> includeMatchStringChange = null, Expression<Func<bool>> isExactMatch = null, Expression<Func<string>> keyword = null, Expression<Func<string>> modStartDate = null, Expression<Func<string>> modEndDate = null, Expression<Func<string>> pubStartDate = null, Expression<Func<string>> pubEndDate = null, Expression<Func<int>> resultsPerPage = null, Expression<Func<int>> startIndex = null)
         {
             var __workflow_addOns = WorkflowExpression.Compile(addOns, nameof(addOns), required: false);
             var __workflow_cpeMatchString = WorkflowExpression.Compile(cpeMatchString, nameof(cpeMatchString), required: false);
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nistnvdip")]
-        public IBodyWorkflowAction<GetCPECollectionResponse, ApiConnectionActionConfiguration> GetCPECollection(Expression<Func<addOnsInput>> addOns = null, Expression<Func<string>> cpeMatchString = null, Expression<Func<bool>> includeDeprecated = null, Expression<Func<string>> keyword = null, Expression<Func<string>> modStartDate = null, Expression<Func<string>> modEndDate = null, Expression<Func<int>> resultsPerPage = null, Expression<Func<int>> startIndex = null)
+        public IBodyWorkflowAction<GetCPECollectionResponse, ApiConnectionActionConfiguration> GetCPECollection(Expression<Func<GetCPECollectionAddOnsInput>> addOns = null, Expression<Func<string>> cpeMatchString = null, Expression<Func<bool>> includeDeprecated = null, Expression<Func<string>> keyword = null, Expression<Func<string>> modStartDate = null, Expression<Func<string>> modEndDate = null, Expression<Func<int>> resultsPerPage = null, Expression<Func<int>> startIndex = null)
         {
             var __workflow_addOns = WorkflowExpression.Compile(addOns, nameof(addOns), required: false);
             var __workflow_cpeMatchString = WorkflowExpression.Compile(cpeMatchString, nameof(cpeMatchString), required: false);
@@ -420,14 +420,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addOnsInput
+    public enum GetCVECollectionAddOnsInput
     {
-        [EnumMember(Value = "cves")]
-        Cves
+        [EnumMember(Value = "dictionaryCpes")]
+        DictionaryCpes
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum cvssV2SeverityInput
+    public enum CvssV2SeverityInput
     {
         LOW,
         MEDIUM,
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum cvssV3SeverityInput
+    public enum CvssV3SeverityInput
     {
         LOW,
         MEDIUM,
@@ -507,6 +507,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
 
         [JsonProperty("lang")]
         public string Lang { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum GetCPECollectionAddOnsInput
+    {
+        [EnumMember(Value = "cves")]
+        Cves
     }
 }
 

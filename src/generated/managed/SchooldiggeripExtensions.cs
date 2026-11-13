@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
     public class SchooldiggeripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APIAutocompleteSchoolResult, ApiConnectionActionConfiguration> AutocompleteGetSchools(Expression<Func<string>> q, Expression<Func<bool>> qSearchCityStateName = null, Expression<Func<string>> st = null, Expression<Func<levelInput>> level = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> returnCount = null)
+        public IBodyWorkflowAction<APIAutocompleteSchoolResult, ApiConnectionActionConfiguration> AutocompleteGetSchools(Expression<Func<string>> q, Expression<Func<bool>> qSearchCityStateName = null, Expression<Func<string>> st = null, Expression<Func<AutocompleteGetSchoolsLevelInput>> level = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> returnCount = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_qSearchCityStateName = WorkflowExpression.Compile(qSearchCityStateName, nameof(qSearchCityStateName), required: false);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APIDistrictList2, ApiConnectionActionConfiguration> DistrictsGetAllDistricts2(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedDistrictsInRankSort = null)
+        public IBodyWorkflowAction<APIDistrictList2, ApiConnectionActionConfiguration> DistrictsGetAllDistricts2(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<DistrictsGetAllDistricts2SortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedDistrictsInRankSort = null)
         {
             var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APISchoolListRank2, ApiConnectionActionConfiguration> RankingGet(Expression<Func<string>> st, Expression<Func<int>> year = null, Expression<Func<levelInput>> level = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<APISchoolListRank2, ApiConnectionActionConfiguration> RankingGet(Expression<Func<string>> st, Expression<Func<int>> year = null, Expression<Func<RankingGetLevelInput>> level = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APISchoolList2, ApiConnectionActionConfiguration> SchoolsGetAllSchools20(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<bool>> qSearchSchoolNameOnly = null, Expression<Func<string>> districtId = null, Expression<Func<levelInput>> level = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<bool>> isMagnet = null, Expression<Func<bool>> isCharter = null, Expression<Func<bool>> isVirtual = null, Expression<Func<bool>> isTitleI = null, Expression<Func<bool>> isTitleISchoolwide = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> nearAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<double>> boundaryLatitude = null, Expression<Func<double>> boundaryLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedSchoolsInRankSort = null)
+        public IBodyWorkflowAction<APISchoolList2, ApiConnectionActionConfiguration> SchoolsGetAllSchools20(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<bool>> qSearchSchoolNameOnly = null, Expression<Func<string>> districtId = null, Expression<Func<SchoolsGetAllSchools20LevelInput>> level = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<bool>> isMagnet = null, Expression<Func<bool>> isCharter = null, Expression<Func<bool>> isVirtual = null, Expression<Func<bool>> isTitleI = null, Expression<Func<bool>> isTitleISchoolwide = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> nearAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<double>> boundaryLatitude = null, Expression<Func<double>> boundaryLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<SchoolsGetAllSchools20SortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedSchoolsInRankSort = null)
         {
             var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
@@ -337,13 +337,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum levelInput
+    public enum AutocompleteGetSchoolsLevelInput
     {
         Elementary,
         Middle,
         High,
         Alt,
-        Public,
         Private
     }
 
@@ -561,10 +560,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortByInput
+    public enum DistrictsGetAllDistricts2SortByInput
     {
-        [EnumMember(Value = "schoolname")]
-        Schoolname,
+        [EnumMember(Value = "districtname")]
+        Districtname,
         [EnumMember(Value = "distance")]
         Distance,
         [EnumMember(Value = "rank")]
@@ -952,6 +951,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public int NumberofUnspecifiedRaceStudents { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum RankingGetLevelInput
+    {
+        Elementary,
+        Middle,
+        High
+    }
+
     public class APIDistrictListRank2
     {
         [JsonProperty("rankYear")]
@@ -986,6 +993,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
 
         [JsonProperty("schoolList")]
         public APISchool2Summary[] SchoolList { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum SchoolsGetAllSchools20LevelInput
+    {
+        Elementary,
+        Middle,
+        High,
+        Alt,
+        Public,
+        Private
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum SchoolsGetAllSchools20SortByInput
+    {
+        [EnumMember(Value = "schoolname")]
+        Schoolname,
+        [EnumMember(Value = "distance")]
+        Distance,
+        [EnumMember(Value = "rank")]
+        Rank
     }
 
     public class APISchool20Full

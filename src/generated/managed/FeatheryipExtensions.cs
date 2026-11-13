@@ -38,48 +38,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Form(Expression<Func<string>> bodyformId = null, Expression<Func<string>> bodytemplateFormId = null, Expression<Func<bodystepsInputItem[]>> bodysteps = null, Expression<Func<bodynavigationRulesInputItem[]>> bodynavigationRules = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Form(Expression<Func<FormBodyInput>> body = null)
         {
-            var __workflow_bodyformId = WorkflowExpression.Compile(bodyformId, nameof(bodyformId), required: false);
-            var __workflow_bodytemplateFormId = WorkflowExpression.Compile(bodytemplateFormId, nameof(bodytemplateFormId), required: false);
-            var __workflow_bodysteps = WorkflowExpression.Compile(bodysteps, nameof(bodysteps), required: false);
-            var __workflow_bodynavigationRules = WorkflowExpression.Compile(bodynavigationRules, nameof(bodynavigationRules), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/form/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyformId != null)
-                {
-                    body["form_id"] = ExpressionConverter.ConvertO(__workflow_bodyformId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytemplateFormId != null)
-                {
-                    body["template_form_id"] = ExpressionConverter.ConvertO(__workflow_bodytemplateFormId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysteps != null)
-                {
-                    body["steps"] = ExpressionConverter.ConvertO(__workflow_bodysteps);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynavigationRules != null)
-                {
-                    body["navigation_rules"] = ExpressionConverter.ConvertO(__workflow_bodynavigationRules);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -111,31 +79,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<UserPostResponse, ApiConnectionActionConfiguration> User(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> User(Expression<Func<UserBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            return new DeferredBodyAction<UserPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<UserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/user/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<UserPostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<UserResponse>(callPayload);
             });
         }
 
@@ -168,36 +121,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "featheryip")]
-        public IBodyWorkflowAction<UserFieldPostResponse, ApiConnectionActionConfiguration> UserField(Expression<Func<string>> id, Expression<Func<string>> bodyfieldId = null, Expression<Func<string>> bodyvalue = null)
+        public IBodyWorkflowAction<UserFieldResponse, ApiConnectionActionConfiguration> UserField(Expression<Func<string>> id, Expression<Func<UserFieldBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodyfieldId = WorkflowExpression.Compile(bodyfieldId, nameof(bodyfieldId), required: false);
-            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
-            return new DeferredBodyAction<UserFieldPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<UserFieldResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/field/{0}/", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfieldId != null)
-                {
-                    body["field_id"] = ExpressionConverter.ConvertO(__workflow_bodyfieldId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyvalue != null)
-                {
-                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<UserFieldPostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<UserFieldResponse>(callPayload);
             });
         }
     }
@@ -605,7 +540,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         public string PreviousStepKey { get; set; }
     }
 
-    public class bodystepsInputItem
+    public class FormBodyInput
+    {
+        [JsonProperty("form_id")]
+        public string FormId { get; set; }
+
+        [JsonProperty("template_form_id")]
+        public string TemplateFormId { get; set; }
+
+        [JsonProperty("steps")]
+        public BodyInputStepsTypeItem[] Steps { get; set; }
+
+        [JsonProperty("navigation_rules")]
+        public BodyInputNavigationRulesTypeItem[] NavigationRules { get; set; }
+    }
+
+    public class BodyInputStepsTypeItem
     {
         [JsonProperty("step_id")]
         public string StepId { get; set; }
@@ -614,25 +564,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         public string TemplateStepId { get; set; }
 
         [JsonProperty("origin")]
-        public bool Origin { get; set; }
+        public bool? Origin { get; set; }
 
         [JsonProperty("fields")]
-        public bodystepsInputItemFieldsTypeItem[] Fields { get; set; }
+        public BodyInputStepsTypeItemFieldsTypeItem[] Fields { get; set; }
 
         [JsonProperty("texts")]
-        public bodystepsInputItemTextsTypeItem[] Texts { get; set; }
+        public BodyInputStepsTypeItemTextsTypeItem[] Texts { get; set; }
 
         [JsonProperty("buttons")]
-        public bodystepsInputItemButtonsTypeItem[] Buttons { get; set; }
+        public BodyInputStepsTypeItemButtonsTypeItem[] Buttons { get; set; }
 
         [JsonProperty("images")]
-        public bodystepsInputItemImagesTypeItem[] Images { get; set; }
+        public BodyInputStepsTypeItemImagesTypeItem[] Images { get; set; }
 
         [JsonProperty("progress_bars")]
-        public bodystepsInputItemProgressBarsTypeItem[] ProgressBars { get; set; }
+        public BodyInputStepsTypeItemProgressBarsTypeItem[] ProgressBars { get; set; }
     }
 
-    public class bodystepsInputItemFieldsTypeItem
+    public class BodyInputStepsTypeItemFieldsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -641,7 +591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         public string FieldId { get; set; }
     }
 
-    public class bodystepsInputItemTextsTypeItem
+    public class BodyInputStepsTypeItemTextsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -650,7 +600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         public string Text { get; set; }
     }
 
-    public class bodystepsInputItemButtonsTypeItem
+    public class BodyInputStepsTypeItemButtonsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -659,7 +609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         public string Text { get; set; }
     }
 
-    public class bodystepsInputItemImagesTypeItem
+    public class BodyInputStepsTypeItemImagesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -668,16 +618,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         public string SourceUrl { get; set; }
     }
 
-    public class bodystepsInputItemProgressBarsTypeItem
+    public class BodyInputStepsTypeItemProgressBarsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
         [JsonProperty("progress")]
-        public int Progress { get; set; }
+        public int? Progress { get; set; }
     }
 
-    public class bodynavigationRulesInputItem
+    public class BodyInputNavigationRulesTypeItem
     {
         [JsonProperty("previous_step_id")]
         public string PreviousStepId { get; set; }
@@ -695,10 +645,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         public string ElementId { get; set; }
 
         [JsonProperty("rules")]
-        public bodynavigationRulesInputItemRulesTypeItem[] Rules { get; set; }
+        public BodyInputNavigationRulesTypeItemRulesTypeItem[] Rules { get; set; }
     }
 
-    public class bodynavigationRulesInputItemRulesTypeItem
+    public class BodyInputNavigationRulesTypeItemRulesTypeItem
     {
         [JsonProperty("comparison")]
         public string Comparison { get; set; }
@@ -740,7 +690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         public string AuthPhone { get; set; }
     }
 
-    public class UserPostResponse
+    public class UserResponse
     {
         [JsonProperty("api_key")]
         public string ApiKey { get; set; }
@@ -756,6 +706,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
+    }
+
+    public class UserBodyInput
+    {
+        public UserBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 
     public class UserFieldsGetResponseItem
@@ -782,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
         public bool Hidden { get; set; }
     }
 
-    public class UserFieldPostResponse
+    public class UserFieldResponse
     {
         [JsonProperty("field_id")]
         public string FieldId { get; set; }
@@ -795,6 +759,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryip
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
+    }
+
+    public class UserFieldBodyInput
+    {
+        [JsonProperty("field_id")]
+        public string FieldId { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
     }
 }
 

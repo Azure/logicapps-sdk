@@ -13,106 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bastiongpt
     public class BastiongptActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bastiongpt")]
-        public IBodyWorkflowAction<AskQuestionResponse, ApiConnectionActionConfiguration> AskQuestion(Expression<Func<string>> bodyquestion, Expression<Func<int>> bodymaxTokens, Expression<Func<string>> bodyinstructions = null, Expression<Func<string>> bodydocumentId = null, Expression<Func<double>> bodytemperature = null)
+        public IBodyWorkflowAction<AskQuestionResponse, ApiConnectionActionConfiguration> AskQuestion(Expression<Func<AskQuestionBodyInput>> body)
         {
-            var __workflow_bodyquestion = WorkflowExpression.Compile(bodyquestion, nameof(bodyquestion), required: true);
-            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: true);
-            var __workflow_bodyinstructions = WorkflowExpression.Compile(bodyinstructions, nameof(bodyinstructions), required: false);
-            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: false);
-            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AskQuestionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/Ask";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["question"] = ExpressionConverter.ConvertO(__workflow_bodyquestion);
-                if (__workflow_bodyinstructions != null)
-                {
-                    body["instructions"] = ExpressionConverter.ConvertO(__workflow_bodyinstructions);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydocumentId != null)
-                {
-                    body["document_id"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
-                if (__workflow_bodytemperature != null)
-                {
-                    if (__workflow_bodytemperature != null)
-                    {
-                        body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["temperature"] = 0;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AskQuestionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bastiongpt")]
-        public IBodyWorkflowAction<ChatCompletionResponse, ApiConnectionActionConfiguration> ChatCompletion(Expression<Func<Message[]>> bodymessages, Expression<Func<int>> bodymaxTokens, Expression<Func<double>> bodytemperature = null, Expression<Func<string>> bodydocumentId = null)
+        public IBodyWorkflowAction<ChatCompletionResponse, ApiConnectionActionConfiguration> ChatCompletion(Expression<Func<ChatCompletionBodyInput>> body)
         {
-            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
-            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: true);
-            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
-            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ChatCompletionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/ChatCompletion";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
-                bodypropCount++;
-                body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
-                if (__workflow_bodytemperature != null)
-                {
-                    if (__workflow_bodytemperature != null)
-                    {
-                        body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["temperature"] = 0;
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydocumentId != null)
-                {
-                    body["document_id"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
             });
         }
@@ -157,6 +80,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bastiongpt
         public int TotalTokens { get; set; }
     }
 
+    public class AskQuestionBodyInput
+    {
+        public AskQuestionBodyInput(string question)
+        {
+            this.Question = question;
+        }
+
+        [JsonProperty("question", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Question { get; set; }
+
+        [JsonProperty("instructions")]
+        public string Instructions { get; set; }
+
+        [JsonProperty("document_id")]
+        public string DocumentId { get; set; }
+
+        [JsonProperty("max_tokens", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int MaxTokens { get; set; } = 1000;
+
+        [JsonProperty("temperature", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? Temperature { get; set; } = 0;
+    }
+
     public class ChatCompletionResponse
     {
         [JsonProperty("choices")]
@@ -199,12 +145,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bastiongpt
         public int TotalTokens { get; set; }
     }
 
+    public class ChatCompletionBodyInput
+    {
+        public ChatCompletionBodyInput(Message[] messages)
+        {
+            this.Messages = messages;
+        }
+
+        [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
+        public Message[] Messages { get; set; }
+
+        [JsonProperty("max_tokens", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int MaxTokens { get; set; } = 1000;
+
+        [JsonProperty("temperature", DefaultValueHandling = DefaultValueHandling.Include)]
+        public double? Temperature { get; set; } = 0;
+
+        [JsonProperty("document_id")]
+        public string DocumentId { get; set; }
+    }
+
     public class Message
     {
-        [JsonProperty("role")]
+        public Message(MessageRoleType role, string content)
+        {
+            this.Role = role;
+            this.Content = content;
+        }
+
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         public MessageRoleType Role { get; set; }
 
-        [JsonProperty("content")]
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
     }
 

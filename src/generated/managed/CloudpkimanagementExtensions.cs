@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     public class CloudpkimanagementActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<QueryCertificatesResponseItem[], ApiConnectionActionConfiguration> QueryCertificates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<timevalidInput>> timevalid = null, Expression<Func<string>> important = null, Expression<Func<string>> renewalstatus = null, Expression<Func<int>> expiring = null, Expression<Func<string>> subject = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> serialnumber = null, Expression<Func<string>> ski = null, Expression<Func<string>> aki = null, Expression<Func<string>> keytype = null, Expression<Func<int>> keylength = null, Expression<Func<string>> owneremail = null)
+        public IBodyWorkflowAction<QueryCertificatesResponseItem[], ApiConnectionActionConfiguration> QueryCertificates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<TimevalidInput>> timevalid = null, Expression<Func<string>> important = null, Expression<Func<string>> renewalstatus = null, Expression<Func<int>> expiring = null, Expression<Func<string>> subject = null, Expression<Func<QueryCertificatesStatusInput>> status = null, Expression<Func<string>> serialnumber = null, Expression<Func<string>> ski = null, Expression<Func<string>> aki = null, Expression<Func<string>> keytype = null, Expression<Func<int>> keylength = null, Expression<Func<string>> owneremail = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -78,18 +78,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<UpdateCertificateResponse, ApiConnectionActionConfiguration> UpdateCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> thumbprint, Expression<Func<powerappsInput>> powerapps, Expression<Func<bodyimportantInput>> bodyimportant = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<bodyrenewalstatusInput>> bodyrenewalstatus = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyreference = null, Expression<Func<string>> bodyowneremail = null)
+        public IBodyWorkflowAction<UpdateCertificateResponse, ApiConnectionActionConfiguration> UpdateCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> thumbprint, Expression<Func<PowerappsInput>> powerapps, Expression<Func<UpdateCertificateBodyInput>> body = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_thumbprint = WorkflowExpression.Compile(thumbprint, nameof(thumbprint), required: true);
             var __workflow_powerapps = WorkflowExpression.Compile(powerapps, nameof(powerapps), required: true);
-            var __workflow_bodyimportant = WorkflowExpression.Compile(bodyimportant, nameof(bodyimportant), required: false);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyrenewalstatus = WorkflowExpression.Compile(bodyrenewalstatus, nameof(bodyrenewalstatus), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodyreference = WorkflowExpression.Compile(bodyreference, nameof(bodyreference), required: false);
-            var __workflow_bodyowneremail = WorkflowExpression.Compile(bodyowneremail, nameof(bodyowneremail), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateCertificateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/certificates/{2}", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1), __workflow_thumbprint.WithUrlEncoding(1)));
@@ -97,49 +92,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["powerapps"] = ExpressionConverter.Convert(__workflow_powerapps);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/merge-patch+json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyimportant != null)
-                {
-                    body["important"] = ExpressionConverter.ConvertO(__workflow_bodyimportant);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodystatus != null)
-                {
-                    body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrenewalstatus != null)
-                {
-                    body["renewalstatus"] = ExpressionConverter.ConvertO(__workflow_bodyrenewalstatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreference != null)
-                {
-                    body["reference"] = ExpressionConverter.ConvertO(__workflow_bodyreference);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyowneremail != null)
-                {
-                    body["owneremail"] = ExpressionConverter.ConvertO(__workflow_bodyowneremail);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateCertificateResponse>(callPayload);
             });
         }
@@ -160,17 +114,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<UpdateTemplateResponse, ApiConnectionActionConfiguration> UpdateTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> templateid, Expression<Func<powerappsInput>> powerapps, Expression<Func<bodyimportantInput>> bodyimportant = null, Expression<Func<bodyrenewalstatusInput>> bodyrenewalstatus = null, Expression<Func<bodyhiddenInput>> bodyhidden = null, Expression<Func<string>> bodyowneremail = null, Expression<Func<string>> bodyautoapproveid = null)
+        public IBodyWorkflowAction<UpdateTemplateResponse, ApiConnectionActionConfiguration> UpdateTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> templateid, Expression<Func<PowerappsInput>> powerapps, Expression<Func<UpdateTemplateBodyInput>> body = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_templateid = WorkflowExpression.Compile(templateid, nameof(templateid), required: true);
             var __workflow_powerapps = WorkflowExpression.Compile(powerapps, nameof(powerapps), required: true);
-            var __workflow_bodyimportant = WorkflowExpression.Compile(bodyimportant, nameof(bodyimportant), required: false);
-            var __workflow_bodyrenewalstatus = WorkflowExpression.Compile(bodyrenewalstatus, nameof(bodyrenewalstatus), required: false);
-            var __workflow_bodyhidden = WorkflowExpression.Compile(bodyhidden, nameof(bodyhidden), required: false);
-            var __workflow_bodyowneremail = WorkflowExpression.Compile(bodyowneremail, nameof(bodyowneremail), required: false);
-            var __workflow_bodyautoapproveid = WorkflowExpression.Compile(bodyautoapproveid, nameof(bodyautoapproveid), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateTemplateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/templates/{2}", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1), __workflow_templateid.WithUrlEncoding(1)));
@@ -178,49 +128,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["powerapps"] = ExpressionConverter.Convert(__workflow_powerapps);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/merge-patch+json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyimportant != null)
-                {
-                    body["important"] = ExpressionConverter.ConvertO(__workflow_bodyimportant);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrenewalstatus != null)
-                {
-                    body["renewalstatus"] = ExpressionConverter.ConvertO(__workflow_bodyrenewalstatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhidden != null)
-                {
-                    body["hidden"] = ExpressionConverter.ConvertO(__workflow_bodyhidden);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyowneremail != null)
-                {
-                    body["owneremail"] = ExpressionConverter.ConvertO(__workflow_bodyowneremail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyautoapproveid != null)
-                {
-                    body["autoapproveid"] = ExpressionConverter.ConvertO(__workflow_bodyautoapproveid);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateTemplateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<QueryTemplatesResponseItem[], ApiConnectionActionConfiguration> QueryTemplates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<statusInput>> status = null, Expression<Func<typeInput>> type = null, Expression<Func<versionInput>> version = null, Expression<Func<string>> templateoid = null, Expression<Func<keytypeInput>> keytype = null, Expression<Func<int>> minMinkeylength = null, Expression<Func<int>> maxMinkeylength = null, Expression<Func<int>> minValidity = null, Expression<Func<int>> maxValidity = null)
+        public IBodyWorkflowAction<QueryTemplatesResponseItem[], ApiConnectionActionConfiguration> QueryTemplates(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<QueryTemplatesStatusInput>> status = null, Expression<Func<QueryTemplatesTypeInput>> type = null, Expression<Func<VersionInput>> version = null, Expression<Func<string>> templateoid = null, Expression<Func<KeytypeInput>> keytype = null, Expression<Func<int>> minMinkeylength = null, Expression<Func<int>> maxMinkeylength = null, Expression<Func<int>> minValidity = null, Expression<Func<int>> maxValidity = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -276,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<QueryCRLsResponseItem[], ApiConnectionActionConfiguration> QueryCRLs(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> crlid = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> issued = null, Expression<Func<int>> expiring = null, Expression<Func<string>> crlnumber = null, Expression<Func<string>> crlnumberdecimal = null, Expression<Func<string>> aki = null, Expression<Func<string>> serialnumber = null)
+        public IBodyWorkflowAction<QueryCRLsResponseItem[], ApiConnectionActionConfiguration> QueryCRLs(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> crlid = null, Expression<Func<QueryCRLsStatusInput>> status = null, Expression<Func<int>> issued = null, Expression<Func<int>> expiring = null, Expression<Func<string>> crlnumber = null, Expression<Func<string>> crlnumberdecimal = null, Expression<Func<string>> aki = null, Expression<Func<string>> serialnumber = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -314,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<QueryRequestsResponseItem[], ApiConnectionActionConfiguration> QueryRequests(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<statusInput>> status = null, Expression<Func<string>> source = null, Expression<Func<string>> approverid = null, Expression<Func<string>> approveremail = null, Expression<Func<string>> submitterid = null, Expression<Func<string>> submitteremail = null, Expression<Func<string>> owneremail = null)
+        public IBodyWorkflowAction<QueryRequestsResponseItem[], ApiConnectionActionConfiguration> QueryRequests(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<QueryRequestsStatusInput>> status = null, Expression<Func<string>> source = null, Expression<Func<string>> approverid = null, Expression<Func<string>> approveremail = null, Expression<Func<string>> submitterid = null, Expression<Func<string>> submitteremail = null, Expression<Func<string>> owneremail = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -349,140 +264,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<NewRequestResponse, ApiConnectionActionConfiguration> NewRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<powerappsInput>> powerapps, Expression<Func<string>> bodycsr, Expression<Func<string>> bodytemplateid = null, Expression<Func<string>> bodyowneremail = null, Expression<Func<string>> bodyreference = null, Expression<Func<string>> bodycomment = null, Expression<Func<bodyurgentInput>> bodyurgent = null, Expression<Func<bodyimportantInput>> bodyimportant = null, Expression<Func<bodyrenewalInput>> bodyrenewal = null, Expression<Func<string>> bodypreviouscertificate = null, Expression<Func<bodyrenewalstatusInput>> bodyrenewalstatus = null)
+        public IBodyWorkflowAction<NewRequestResponse, ApiConnectionActionConfiguration> NewRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<PowerappsInput>> powerapps, Expression<Func<NewRequestBodyInput>> body)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_powerapps = WorkflowExpression.Compile(powerapps, nameof(powerapps), required: true);
-            var __workflow_bodycsr = WorkflowExpression.Compile(bodycsr, nameof(bodycsr), required: true);
-            var __workflow_bodytemplateid = WorkflowExpression.Compile(bodytemplateid, nameof(bodytemplateid), required: false);
-            var __workflow_bodyowneremail = WorkflowExpression.Compile(bodyowneremail, nameof(bodyowneremail), required: false);
-            var __workflow_bodyreference = WorkflowExpression.Compile(bodyreference, nameof(bodyreference), required: false);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodyurgent = WorkflowExpression.Compile(bodyurgent, nameof(bodyurgent), required: false);
-            var __workflow_bodyimportant = WorkflowExpression.Compile(bodyimportant, nameof(bodyimportant), required: false);
-            var __workflow_bodyrenewal = WorkflowExpression.Compile(bodyrenewal, nameof(bodyrenewal), required: false);
-            var __workflow_bodypreviouscertificate = WorkflowExpression.Compile(bodypreviouscertificate, nameof(bodypreviouscertificate), required: false);
-            var __workflow_bodyrenewalstatus = WorkflowExpression.Compile(bodyrenewalstatus, nameof(bodyrenewalstatus), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NewRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/requests", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["powerapps"] = ExpressionConverter.Convert(__workflow_powerapps);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["csr"] = ExpressionConverter.ConvertO(__workflow_bodycsr);
-                if (__workflow_bodytemplateid != null)
-                {
-                    body["templateid"] = ExpressionConverter.ConvertO(__workflow_bodytemplateid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyowneremail != null)
-                {
-                    body["owneremail"] = ExpressionConverter.ConvertO(__workflow_bodyowneremail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreference != null)
-                {
-                    body["reference"] = ExpressionConverter.ConvertO(__workflow_bodyreference);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyurgent != null)
-                {
-                    if (__workflow_bodyurgent != null)
-                    {
-                        body["urgent"] = ExpressionConverter.ConvertO(__workflow_bodyurgent);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["urgent"] = "false";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimportant != null)
-                {
-                    if (__workflow_bodyimportant != null)
-                    {
-                        body["important"] = ExpressionConverter.ConvertO(__workflow_bodyimportant);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["important"] = "false";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrenewal != null)
-                {
-                    if (__workflow_bodyrenewal != null)
-                    {
-                        body["renewal"] = ExpressionConverter.ConvertO(__workflow_bodyrenewal);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["renewal"] = "false";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypreviouscertificate != null)
-                {
-                    if (__workflow_bodypreviouscertificate != null)
-                    {
-                        body["previouscertificate"] = ExpressionConverter.ConvertO(__workflow_bodypreviouscertificate);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["previouscertificate"] = "";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrenewalstatus != null)
-                {
-                    if (__workflow_bodyrenewalstatus != null)
-                    {
-                        body["renewalstatus"] = ExpressionConverter.ConvertO(__workflow_bodyrenewalstatus);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["renewalstatus"] = "false";
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<NewRequestResponse>(callPayload);
             });
         }
@@ -503,20 +297,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<UpdateRequestResponse, ApiConnectionActionConfiguration> UpdateRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> requestid, Expression<Func<powerappsInput>> powerapps, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyreference = null, Expression<Func<bodyurgentInput>> bodyurgent = null, Expression<Func<bodyimportantInput>> bodyimportant = null, Expression<Func<bodyrenewalstatusInput>> bodyrenewalstatus = null, Expression<Func<string>> bodytemplateid = null, Expression<Func<string>> bodyowneremail = null)
+        public IBodyWorkflowAction<UpdateRequestResponse, ApiConnectionActionConfiguration> UpdateRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<string>> requestid, Expression<Func<PowerappsInput>> powerapps, Expression<Func<UpdateRequestBodyInput>> body = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_requestid = WorkflowExpression.Compile(requestid, nameof(requestid), required: true);
             var __workflow_powerapps = WorkflowExpression.Compile(powerapps, nameof(powerapps), required: true);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
-            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodyreference = WorkflowExpression.Compile(bodyreference, nameof(bodyreference), required: false);
-            var __workflow_bodyurgent = WorkflowExpression.Compile(bodyurgent, nameof(bodyurgent), required: false);
-            var __workflow_bodyimportant = WorkflowExpression.Compile(bodyimportant, nameof(bodyimportant), required: false);
-            var __workflow_bodyrenewalstatus = WorkflowExpression.Compile(bodyrenewalstatus, nameof(bodyrenewalstatus), required: false);
-            var __workflow_bodytemplateid = WorkflowExpression.Compile(bodytemplateid, nameof(bodytemplateid), required: false);
-            var __workflow_bodyowneremail = WorkflowExpression.Compile(bodyowneremail, nameof(bodyowneremail), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/requests/{2}", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1), __workflow_requestid.WithUrlEncoding(1)));
@@ -524,63 +311,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["powerapps"] = ExpressionConverter.Convert(__workflow_powerapps);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/merge-patch+json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                if (__workflow_bodycomment != null)
-                {
-                    body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreference != null)
-                {
-                    body["reference"] = ExpressionConverter.ConvertO(__workflow_bodyreference);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyurgent != null)
-                {
-                    body["urgent"] = ExpressionConverter.ConvertO(__workflow_bodyurgent);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyimportant != null)
-                {
-                    body["important"] = ExpressionConverter.ConvertO(__workflow_bodyimportant);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyrenewalstatus != null)
-                {
-                    body["renewalstatus"] = ExpressionConverter.ConvertO(__workflow_bodyrenewalstatus);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytemplateid != null)
-                {
-                    body["templateid"] = ExpressionConverter.ConvertO(__workflow_bodytemplateid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyowneremail != null)
-                {
-                    body["owneremail"] = ExpressionConverter.ConvertO(__workflow_bodyowneremail);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                else
+                    callPayload.Body = new UpdateRequestBodyInput().ToJToken();
                 return new ApiConnectionAction<UpdateRequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<QueryHooksResponseItem[], ApiConnectionActionConfiguration> QueryHooks(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<statusInput>> status = null, Expression<Func<typeInput>> type = null, Expression<Func<@eventInput>> @event = null)
+        public IBodyWorkflowAction<QueryHooksResponseItem[], ApiConnectionActionConfiguration> QueryHooks(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<QueryHooksStatusInput>> status = null, Expression<Func<QueryHooksTypeInput>> type = null, Expression<Func<EventInput>> @event = null)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
@@ -603,44 +343,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
-        public IBodyWorkflowAction<NewHookResponse, ApiConnectionActionConfiguration> NewHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<powerappsInput>> powerapps, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodyeventsInputItem[]>> bodyevents, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodycallbackurl = null)
+        public IBodyWorkflowAction<NewHookResponse, ApiConnectionActionConfiguration> NewHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, Expression<Func<PowerappsInput>> powerapps, Expression<Func<NewHookBodyInput>> body)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
             var __workflow_powerapps = WorkflowExpression.Compile(powerapps, nameof(powerapps), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyevents = WorkflowExpression.Compile(bodyevents, nameof(bodyevents), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodycallbackurl = WorkflowExpression.Compile(bodycallbackurl, nameof(bodycallbackurl), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<NewHookResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["powerapps"] = ExpressionConverter.Convert(__workflow_powerapps);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycallbackurl != null)
-                {
-                    body["callbackurl"] = ExpressionConverter.ConvertO(__workflow_bodycallbackurl);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["events"] = ExpressionConverter.ConvertO(__workflow_bodyevents);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<NewHookResponse>(callPayload);
             });
         }
@@ -744,553 +459,313 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudpkimanagement")]
+        public IBodyWorkflowAction<GetUserDeploymentsResponseItem[], ApiConnectionActionConfiguration> GetUserDeployments()
+        {
+            return new DeferredBodyAction<GetUserDeploymentsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/userdeployments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetUserDeploymentsResponseItem[]>(callPayload);
+            });
+        }
     }
 
     public class CloudpkimanagementTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<AddedHookResponse, ApiConnectionTriggerConfiguration> AddedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AddedHookResponse, ApiConnectionPollingTriggerConfiguration> AddedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<AddedHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<AddedHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/added-hook", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "added-hook";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<AddedHookResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new AddedHookBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<AddedHookResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<RemovedHookResponse, ApiConnectionTriggerConfiguration> RemovedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RemovedHookResponse, ApiConnectionPollingTriggerConfiguration> RemovedHook(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<RemovedHookResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RemovedHookResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/removed-hook", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "removed-hook";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<RemovedHookResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new RemovedHookBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<RemovedHookResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IssuedCertificateResponse, ApiConnectionTriggerConfiguration> IssuedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IssuedCertificateResponse, ApiConnectionPollingTriggerConfiguration> IssuedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<IssuedCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IssuedCertificateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/issued-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "issued-certificate";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<IssuedCertificateResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new IssuedCertificateBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<IssuedCertificateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<RevokedCertificateResponse, ApiConnectionTriggerConfiguration> RevokedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RevokedCertificateResponse, ApiConnectionPollingTriggerConfiguration> RevokedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<RevokedCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RevokedCertificateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/revoked-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "revoked-certificate";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<RevokedCertificateResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new RevokedCertificateBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<RevokedCertificateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<UpdatedCertificateResponse, ApiConnectionTriggerConfiguration> UpdatedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedCertificateResponse, ApiConnectionPollingTriggerConfiguration> UpdatedCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<UpdatedCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<UpdatedCertificateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/updated-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "updated-certificate";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<UpdatedCertificateResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new UpdatedCertificateBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<UpdatedCertificateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ExpiringCertificateResponse, ApiConnectionTriggerConfiguration> ExpiringCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ExpiringCertificateResponse, ApiConnectionPollingTriggerConfiguration> ExpiringCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<ExpiringCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ExpiringCertificateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/expiring-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "expiring-certificate";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<ExpiringCertificateResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new ExpiringCertificateBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<ExpiringCertificateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ExpiredCertificateResponse, ApiConnectionTriggerConfiguration> ExpiredCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ExpiredCertificateResponse, ApiConnectionPollingTriggerConfiguration> ExpiredCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<ExpiredCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ExpiredCertificateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/expired-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "expired-certificate";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<ExpiredCertificateResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new ExpiredCertificateBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<ExpiredCertificateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<RenewingCertificateResponse, ApiConnectionTriggerConfiguration> RenewingCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RenewingCertificateResponse, ApiConnectionPollingTriggerConfiguration> RenewingCertificate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<RenewingCertificateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RenewingCertificateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/renewing-certificate", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "renewing-certificate";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<RenewingCertificateResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new RenewingCertificateBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<RenewingCertificateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PendingRequestResponse, ApiConnectionTriggerConfiguration> PendingRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PendingRequestResponse, ApiConnectionPollingTriggerConfiguration> PendingRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<PendingRequestResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PendingRequestResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/pending-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "pending-request";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<PendingRequestResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new PendingRequestBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<PendingRequestResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ApprovedRequestResponse, ApiConnectionTriggerConfiguration> ApprovedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ApprovedRequestResponse, ApiConnectionPollingTriggerConfiguration> ApprovedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<ApprovedRequestResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ApprovedRequestResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/approved-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "approved-request";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<ApprovedRequestResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new ApprovedRequestBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<ApprovedRequestResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<DeniedRequestResponse, ApiConnectionTriggerConfiguration> DeniedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DeniedRequestResponse, ApiConnectionPollingTriggerConfiguration> DeniedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<DeniedRequestResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<DeniedRequestResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/denied-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "denied-request";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<DeniedRequestResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new DeniedRequestBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<DeniedRequestResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<UpdatedRequestResponse, ApiConnectionTriggerConfiguration> UpdatedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedRequestResponse, ApiConnectionPollingTriggerConfiguration> UpdatedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<UpdatedRequestResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<UpdatedRequestResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/updated-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "updated-request";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<UpdatedRequestResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new UpdatedRequestBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<UpdatedRequestResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<FailedRequestResponse, ApiConnectionTriggerConfiguration> FailedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FailedRequestResponse, ApiConnectionPollingTriggerConfiguration> FailedRequest(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<FailedRequestResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<FailedRequestResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/failed-request", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "failed-request";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<FailedRequestResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new FailedRequestBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<FailedRequestResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PublishedTemplateResponse, ApiConnectionTriggerConfiguration> PublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PublishedTemplateResponse, ApiConnectionPollingTriggerConfiguration> PublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<PublishedTemplateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PublishedTemplateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/published-template", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "published-template";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<PublishedTemplateResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new PublishedTemplateBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<PublishedTemplateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<UnpublishedTemplateResponse, ApiConnectionTriggerConfiguration> UnpublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UnpublishedTemplateResponse, ApiConnectionPollingTriggerConfiguration> UnpublishedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<UnpublishedTemplateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<UnpublishedTemplateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/unpublished-template", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "unpublished-template";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<UnpublishedTemplateResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new UnpublishedTemplateBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<UnpublishedTemplateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<UpdatedTemplateResponse, ApiConnectionTriggerConfiguration> UpdatedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedTemplateResponse, ApiConnectionPollingTriggerConfiguration> UpdatedTemplate(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<UpdatedTemplateResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<UpdatedTemplateResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/updated-template", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "updated-template";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<UpdatedTemplateResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new UpdatedTemplateBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<UpdatedTemplateResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IssuedCRLResponse, ApiConnectionTriggerConfiguration> IssuedCRL(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IssuedCRLResponse, ApiConnectionPollingTriggerConfiguration> IssuedCRL(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<IssuedCRLResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IssuedCRLResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/issued-crl", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "issued-crl";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<IssuedCRLResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new IssuedCRLBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<IssuedCRLResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<NewConnectorActionResponse, ApiConnectionTriggerConfiguration> NewConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewConnectorActionResponse, ApiConnectionPollingTriggerConfiguration> NewConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<NewConnectorActionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewConnectorActionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/new-connectoraction", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "new-connectoraction";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<NewConnectorActionResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new NewConnectorActionBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<NewConnectorActionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<CompletedConnectorActionResponse, ApiConnectionTriggerConfiguration> CompletedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CompletedConnectorActionResponse, ApiConnectionPollingTriggerConfiguration> CompletedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<CompletedConnectorActionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CompletedConnectorActionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/completed-action", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "completed-connectoraction";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<CompletedConnectorActionResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new CompletedConnectorActionBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<CompletedConnectorActionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<FailedConnectorActionResponse, ApiConnectionTriggerConfiguration> FailedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FailedConnectorActionResponse, ApiConnectionPollingTriggerConfiguration> FailedConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<FailedConnectorActionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<FailedConnectorActionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/failed-connectoraction", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "failed-connectoraction";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<FailedConnectorActionResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new FailedConnectorActionBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<FailedConnectorActionResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<StalledConnectorActionResponse, ApiConnectionTriggerConfiguration> StalledConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<StalledConnectorActionResponse, ApiConnectionPollingTriggerConfiguration> StalledConnectorAction(Expression<Func<string>> regionid, Expression<Func<string>> deploymentid)
         {
             var __workflow_regionid = WorkflowExpression.Compile(regionid, nameof(regionid), required: true);
             var __workflow_deploymentid = WorkflowExpression.Compile(deploymentid, nameof(deploymentid), required: true);
-            return new DeferredBodyTrigger<StalledConnectorActionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<StalledConnectorActionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/deployments/{1}/hooks/stalled-connectoraction", __workflow_regionid.WithUrlEncoding(1), __workflow_deploymentid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callbackurl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["events"] = "stalled-connectoraction";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<StalledConnectorActionResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new StalledConnectorActionBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<StalledConnectorActionResponse>(callPayload);
             });
         }
     }
@@ -1356,7 +831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum timevalidInput
+    public enum TimevalidInput
     {
         [EnumMember(Value = "true")]
         True,
@@ -1365,10 +840,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum QueryCertificatesStatusInput
     {
-        Enabled,
-        Disabled
+        Issued,
+        Revoked
     }
 
     public class GetCertificateResponse
@@ -1576,7 +1051,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum powerappsInput
+    public enum PowerappsInput
     {
         [EnumMember(Value = "false")]
         False,
@@ -1584,9 +1059,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         True
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyimportantInput
+    public class UpdateCertificateBodyInput
     {
+        [JsonProperty("important")]
+        public NewRequestBodyInputImportantType? Important { get; set; }
+
+        [JsonProperty("status")]
+        public UpdateCertificateBodyInputStatusType? Status { get; set; }
+
+        [JsonProperty("renewalstatus")]
+        public UpdateCertificateBodyInputRenewalstatusType? Renewalstatus { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("owneremail")]
+        public string Owneremail { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum NewRequestBodyInputImportantType
+    {
+        [EnumMember(Value = "")]
+        None,
         [EnumMember(Value = "true")]
         True,
         [EnumMember(Value = "false")]
@@ -1594,15 +1092,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystatusInput
+    public enum UpdateCertificateBodyInputStatusType
     {
-        Approved,
-        Denied,
-        UpdateOnly
+        Revoked,
+        Unrevoked
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyrenewalstatusInput
+    public enum UpdateCertificateBodyInputRenewalstatusType
     {
         [EnumMember(Value = "approved")]
         Approved,
@@ -1885,8 +1382,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Templateid { get; set; }
     }
 
+    public class UpdateTemplateBodyInput
+    {
+        [JsonProperty("important")]
+        public NewRequestBodyInputImportantType? Important { get; set; }
+
+        [JsonProperty("renewalstatus")]
+        public UpdateCertificateBodyInputRenewalstatusType? Renewalstatus { get; set; }
+
+        [JsonProperty("hidden")]
+        public BodyInputHiddenType? Hidden { get; set; }
+
+        [JsonProperty("owneremail")]
+        public string Owneremail { get; set; }
+
+        [JsonProperty("autoapproveid")]
+        public string Autoapproveid { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyhiddenInput
+    public enum BodyInputHiddenType
     {
         [EnumMember(Value = "")]
         None,
@@ -2187,15 +1702,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum QueryTemplatesStatusInput
     {
-        Email,
-        Web,
-        PowerBI
+        Published,
+        Unpublished
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum versionInput
+    public enum QueryTemplatesTypeInput
+    {
+        User,
+        Computer
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum VersionInput
     {
         [EnumMember(Value = "1")]
         _1,
@@ -2208,7 +1729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum keytypeInput
+    public enum KeytypeInput
     {
         RSA,
         ECC
@@ -2310,6 +1831,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string[] Crlentries { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum QueryCRLsStatusInput
+    {
+        [EnumMember(Value = "valid")]
+        Valid,
+        [EnumMember(Value = "expired")]
+        Expired
+    }
+
     public class QueryRequestsResponseItem
     {
         [JsonProperty("requestid")]
@@ -2373,6 +1903,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Submitteremail { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum QueryRequestsStatusInput
+    {
+        [EnumMember(Value = "pending")]
+        Pending,
+        [EnumMember(Value = "denied")]
+        Denied,
+        [EnumMember(Value = "failed")]
+        Failed,
+        [EnumMember(Value = "approved")]
+        Approved
+    }
+
     public class NewRequestResponse
     {
         [JsonProperty("status")]
@@ -2388,15 +1931,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyurgentInput
+    public class NewRequestBodyInput
     {
+        public NewRequestBodyInput(string csr)
+        {
+            this.Csr = csr;
+        }
+
+        [JsonProperty("csr", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Csr { get; set; }
+
+        [JsonProperty("templateid")]
+        public string Templateid { get; set; }
+
+        [JsonProperty("owneremail")]
+        public string Owneremail { get; set; }
+
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+
+        [JsonProperty("urgent", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NewRequestBodyInputUrgentType? Urgent { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement.NewRequestBodyInputUrgentType.False;
+
+        [JsonProperty("important", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NewRequestBodyInputImportantType? Important { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement.NewRequestBodyInputImportantType.False;
+
+        [JsonProperty("renewal", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputRenewalType? Renewal { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement.BodyInputRenewalType.False;
+
+        [JsonProperty("previouscertificate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Previouscertificate { get; set; } = "";
+
+        [JsonProperty("renewalstatus", DefaultValueHandling = DefaultValueHandling.Include)]
+        public NewRequestBodyInputRenewalstatusType? Renewalstatus { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement.NewRequestBodyInputRenewalstatusType.False;
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum NewRequestBodyInputUrgentType
+    {
+        [EnumMember(Value = "")]
+        None,
+        [EnumMember(Value = "true")]
         True,
+        [EnumMember(Value = "false")]
         False
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyrenewalInput
+    public enum BodyInputRenewalType
+    {
+        [EnumMember(Value = "")]
+        None,
+        [EnumMember(Value = "true")]
+        True,
+        [EnumMember(Value = "false")]
+        False
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum NewRequestBodyInputRenewalstatusType
     {
         [EnumMember(Value = "")]
         None,
@@ -2616,6 +2212,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Connectoractionid { get; set; }
     }
 
+    public class UpdateRequestBodyInput
+    {
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        public UpdateRequestBodyInputStatusType Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement.UpdateRequestBodyInputStatusType.UpdateOnly;
+
+        [JsonProperty("comment")]
+        public string Comment { get; set; }
+
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("urgent")]
+        public UpdateRequestBodyInputUrgentType? Urgent { get; set; }
+
+        [JsonProperty("important")]
+        public UpdateRequestBodyInputImportantType? Important { get; set; }
+
+        [JsonProperty("renewalstatus")]
+        public UpdateCertificateBodyInputRenewalstatusType? Renewalstatus { get; set; }
+
+        [JsonProperty("templateid")]
+        public string Templateid { get; set; }
+
+        [JsonProperty("owneremail")]
+        public string Owneremail { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateRequestBodyInputStatusType
+    {
+        Approved,
+        Denied,
+        UpdateOnly
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateRequestBodyInputUrgentType
+    {
+        True,
+        False
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum UpdateRequestBodyInputImportantType
+    {
+        [EnumMember(Value = "true")]
+        True,
+        [EnumMember(Value = "false")]
+        False
+    }
+
     public class QueryHooksResponseItem
     {
         [JsonProperty("hookid")]
@@ -2677,7 +2324,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum @eventInput
+    public enum QueryHooksStatusInput
+    {
+        Enabled,
+        Disabled
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum QueryHooksTypeInput
+    {
+        Email,
+        Web,
+        PowerBI
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum EventInput
     {
         [EnumMember(Value = "issued-certificate")]
         IssuedCertificate,
@@ -2723,8 +2385,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Hookid { get; set; }
     }
 
+    public class NewHookBodyInput
+    {
+        public NewHookBodyInput(BodyInputTypeType type, BodyInputEventsTypeItem[] events)
+        {
+            this.Type = type;
+            this.Events = events;
+        }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("callbackurl")]
+        public string Callbackurl { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputTypeType Type { get; set; }
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputEventsTypeItem[] Events { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypeInput
+    public enum BodyInputTypeType
     {
         Web,
         Email,
@@ -2732,7 +2415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyeventsInputItem
+    public enum BodyInputEventsTypeItem
     {
         [EnumMember(Value = "issued-certificate")]
         IssuedCertificate,
@@ -2919,6 +2602,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Displaysubject { get; set; }
     }
 
+    public class GetUserDeploymentsResponseItem
+    {
+        [JsonProperty("default")]
+        public string Default { get; set; }
+
+        [JsonProperty("regionid")]
+        public string Regionid { get; set; }
+
+        [JsonProperty("deploymentid")]
+        public string Deploymentid { get; set; }
+
+        [JsonProperty("friendlyname")]
+        public string Friendlyname { get; set; }
+    }
+
     public class AddedHookResponse
     {
         [JsonProperty("status")]
@@ -2929,6 +2627,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class AddedHookBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "added-hook";
     }
 
     public class RemovedHookResponse
@@ -2943,6 +2653,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
+    public class RemovedHookBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "removed-hook";
+    }
+
     public class IssuedCertificateResponse
     {
         [JsonProperty("status")]
@@ -2953,6 +2675,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class IssuedCertificateBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "issued-certificate";
     }
 
     public class RevokedCertificateResponse
@@ -2967,6 +2701,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
+    public class RevokedCertificateBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "revoked-certificate";
+    }
+
     public class UpdatedCertificateResponse
     {
         [JsonProperty("status")]
@@ -2977,6 +2723,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class UpdatedCertificateBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "updated-certificate";
     }
 
     public class ExpiringCertificateResponse
@@ -2991,6 +2749,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
+    public class ExpiringCertificateBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "expiring-certificate";
+    }
+
     public class ExpiredCertificateResponse
     {
         [JsonProperty("status")]
@@ -3001,6 +2771,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class ExpiredCertificateBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "expired-certificate";
     }
 
     public class RenewingCertificateResponse
@@ -3015,6 +2797,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
+    public class RenewingCertificateBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "renewing-certificate";
+    }
+
     public class PendingRequestResponse
     {
         [JsonProperty("status")]
@@ -3025,6 +2819,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class PendingRequestBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "pending-request";
     }
 
     public class ApprovedRequestResponse
@@ -3039,6 +2845,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
+    public class ApprovedRequestBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "approved-request";
+    }
+
     public class DeniedRequestResponse
     {
         [JsonProperty("status")]
@@ -3049,6 +2867,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class DeniedRequestBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "denied-request";
     }
 
     public class UpdatedRequestResponse
@@ -3063,6 +2893,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
+    public class UpdatedRequestBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "updated-request";
+    }
+
     public class FailedRequestResponse
     {
         [JsonProperty("status")]
@@ -3073,6 +2915,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class FailedRequestBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "failed-request";
     }
 
     public class PublishedTemplateResponse
@@ -3087,6 +2941,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
+    public class PublishedTemplateBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "published-template";
+    }
+
     public class UnpublishedTemplateResponse
     {
         [JsonProperty("status")]
@@ -3097,6 +2963,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class UnpublishedTemplateBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "unpublished-template";
     }
 
     public class UpdatedTemplateResponse
@@ -3111,6 +2989,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
+    public class UpdatedTemplateBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "updated-template";
+    }
+
     public class IssuedCRLResponse
     {
         [JsonProperty("status")]
@@ -3121,6 +3011,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class IssuedCRLBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "issued-crl";
     }
 
     public class NewConnectorActionResponse
@@ -3135,6 +3037,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
+    public class NewConnectorActionBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "new-connectoraction";
+    }
+
     public class CompletedConnectorActionResponse
     {
         [JsonProperty("status")]
@@ -3145,6 +3059,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class CompletedConnectorActionBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "completed-connectoraction";
     }
 
     public class FailedConnectorActionResponse
@@ -3159,6 +3085,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
+    public class FailedConnectorActionBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "failed-connectoraction";
+    }
+
     public class StalledConnectorActionResponse
     {
         [JsonProperty("status")]
@@ -3169,6 +3107,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
 
         [JsonProperty("message")]
         public string Message { get; set; }
+    }
+
+    public class StalledConnectorActionBodyInput
+    {
+        [JsonProperty("callbackurl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Callbackurl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("events", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Events { get; set; } = "stalled-connectoraction";
     }
 }
 

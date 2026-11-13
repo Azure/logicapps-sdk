@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
-        public IBodyWorkflowAction<TopCitiesListResponseItem[], ApiConnectionActionConfiguration> TopCitiesList(Expression<Func<groupInput>> group, Expression<Func<string>> language = null, Expression<Func<bool>> details = null)
+        public IBodyWorkflowAction<TopCitiesListResponseItem[], ApiConnectionActionConfiguration> TopCitiesList(Expression<Func<GroupInput>> group, Expression<Func<string>> language = null, Expression<Func<bool>> details = null)
         {
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
-        public IBodyWorkflowAction<DailyForcastsResponse, ApiConnectionActionConfiguration> DailyForcasts(Expression<Func<durationInput>> duration, Expression<Func<int>> locationKey, Expression<Func<string>> language = null, Expression<Func<bool>> details = null, Expression<Func<bool>> metric = null)
+        public IBodyWorkflowAction<DailyForcastsResponse, ApiConnectionActionConfiguration> DailyForcasts(Expression<Func<DailyForcastsDurationInput>> duration, Expression<Func<int>> locationKey, Expression<Func<string>> language = null, Expression<Func<bool>> details = null, Expression<Func<bool>> metric = null)
         {
             var __workflow_duration = WorkflowExpression.Compile(duration, nameof(duration), required: true);
             var __workflow_locationKey = WorkflowExpression.Compile(locationKey, nameof(locationKey), required: true);
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
-        public IBodyWorkflowAction<HourlyForcastsResponseItem[], ApiConnectionActionConfiguration> HourlyForcasts(Expression<Func<durationInput>> duration, Expression<Func<int>> locationKey, Expression<Func<string>> language = null, Expression<Func<bool>> details = null, Expression<Func<bool>> metric = null)
+        public IBodyWorkflowAction<HourlyForcastsResponseItem[], ApiConnectionActionConfiguration> HourlyForcasts(Expression<Func<HourlyForcastsDurationInput>> duration, Expression<Func<int>> locationKey, Expression<Func<string>> language = null, Expression<Func<bool>> details = null, Expression<Func<bool>> metric = null)
         {
             var __workflow_duration = WorkflowExpression.Compile(duration, nameof(duration), required: true);
             var __workflow_locationKey = WorkflowExpression.Compile(locationKey, nameof(locationKey), required: true);
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
-        public IBodyWorkflowAction<CurrentConditionsTopCitiesResponseItem[], ApiConnectionActionConfiguration> CurrentConditionsTopCities(Expression<Func<groupInput>> group, Expression<Func<string>> language = null)
+        public IBodyWorkflowAction<CurrentConditionsTopCitiesResponseItem[], ApiConnectionActionConfiguration> CurrentConditionsTopCities(Expression<Func<GroupInput>> group, Expression<Func<string>> language = null)
         {
             var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
-        public IBodyWorkflowAction<DailyIndexValuesByGroupOfIndiciesResponseItem[], ApiConnectionActionConfiguration> DailyIndexValuesByGroupOfIndicies(Expression<Func<durationInput>> duration, Expression<Func<int>> locationKey, Expression<Func<string>> groupId, Expression<Func<string>> language = null, Expression<Func<bool>> details = null)
+        public IBodyWorkflowAction<DailyIndexValuesByGroupOfIndiciesResponseItem[], ApiConnectionActionConfiguration> DailyIndexValuesByGroupOfIndicies(Expression<Func<DailyForcastsDurationInput>> duration, Expression<Func<int>> locationKey, Expression<Func<string>> groupId, Expression<Func<string>> language = null, Expression<Func<bool>> details = null)
         {
             var __workflow_duration = WorkflowExpression.Compile(duration, nameof(duration), required: true);
             var __workflow_locationKey = WorkflowExpression.Compile(locationKey, nameof(locationKey), required: true);
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
-        public IBodyWorkflowAction<DailyIndexValuesBySpecificIndexResponseItem[], ApiConnectionActionConfiguration> DailyIndexValuesBySpecificIndex(Expression<Func<durationInput>> duration, Expression<Func<int>> locationKey, Expression<Func<int>> indexId, Expression<Func<string>> language = null, Expression<Func<bool>> details = null)
+        public IBodyWorkflowAction<DailyIndexValuesBySpecificIndexResponseItem[], ApiConnectionActionConfiguration> DailyIndexValuesBySpecificIndex(Expression<Func<DailyForcastsDurationInput>> duration, Expression<Func<int>> locationKey, Expression<Func<int>> indexId, Expression<Func<string>> language = null, Expression<Func<bool>> details = null)
         {
             var __workflow_duration = WorkflowExpression.Compile(duration, nameof(duration), required: true);
             var __workflow_locationKey = WorkflowExpression.Compile(locationKey, nameof(locationKey), required: true);
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "accuweatherip")]
-        public IBodyWorkflowAction<DailyIndexValuesForAllIndicesResponseItem[], ApiConnectionActionConfiguration> DailyIndexValuesForAllIndices(Expression<Func<int>> locationKey, Expression<Func<durationInput>> duration, Expression<Func<string>> language = null, Expression<Func<bool>> details = null)
+        public IBodyWorkflowAction<DailyIndexValuesForAllIndicesResponseItem[], ApiConnectionActionConfiguration> DailyIndexValuesForAllIndices(Expression<Func<int>> locationKey, Expression<Func<DailyForcastsDurationInput>> duration, Expression<Func<string>> language = null, Expression<Func<bool>> details = null)
         {
             var __workflow_locationKey = WorkflowExpression.Compile(locationKey, nameof(locationKey), required: true);
             var __workflow_duration = WorkflowExpression.Compile(duration, nameof(duration), required: true);
@@ -683,7 +683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         public string PartnerSourceUrl { get; set; }
     }
 
-    public enum groupInput
+    public enum GroupInput
     {
         _50 = 50,
         _100 = 100,
@@ -1223,7 +1223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         public int UnitType { get; set; }
     }
 
-    public enum durationInput
+    public enum DailyForcastsDurationInput
     {
         _1 = 1,
         _5 = 5,
@@ -1389,6 +1389,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Accuweatherip
         public double Value { get; set; }
         public string Unit { get; set; }
         public int UnitType { get; set; }
+    }
+
+    public enum HourlyForcastsDurationInput
+    {
+        _1 = 1,
+        _12 = 12,
+        _24 = 24,
+        _72 = 72,
+        _120 = 120
     }
 
     public class CurrentConditionsResponseItem

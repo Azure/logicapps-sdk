@@ -306,6 +306,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
 
     public class VectorSearchInputSearchVectorType
     {
+        public VectorSearchInputSearchVectorType(string fieldName, double[] vector)
+        {
+            this.FieldName = fieldName;
+            this.Vector = vector;
+        }
+
         [JsonProperty("fieldName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FieldName { get; set; }
 
@@ -343,9 +349,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
 
     public class KnowledgeAgentRetrievalInputAgentMessageContentTypeItem
     {
+        public KnowledgeAgentRetrievalInputAgentMessageContentTypeItem(string content)
+        {
+            this.Content = content;
+        }
+
         [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
         [System.ComponentModel.DefaultValue(KnowledgeAgentRetrievalInputAgentMessageContentTypeItemRoleType.User)]
-        public KnowledgeAgentRetrievalInputAgentMessageContentTypeItemRoleType Role { get; set; } = KnowledgeAgentRetrievalInputAgentMessageContentTypeItemRoleType.User;
+        public KnowledgeAgentRetrievalInputAgentMessageContentTypeItemRoleType Role { get; set; } = global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch.KnowledgeAgentRetrievalInputAgentMessageContentTypeItemRoleType.User;
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }

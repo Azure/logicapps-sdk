@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<PlateDecodeResponse, ApiConnectionActionConfiguration> PlateDecode(Expression<Func<string>> plate, Expression<Func<string>> state, Expression<Func<countryInput>> country = null)
+        public IBodyWorkflowAction<PlateDecodeResponse, ApiConnectionActionConfiguration> PlateDecode(Expression<Func<string>> plate, Expression<Func<string>> state, Expression<Func<CountryInput>> country = null)
         {
             var __workflow_plate = WorkflowExpression.Compile(plate, nameof(plate), required: true);
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<ImageGetResponse, ApiConnectionActionConfiguration> ImageGet(Expression<Func<string>> make, Expression<Func<string>> model, Expression<Func<int>> year = null, Expression<Func<string>> trim = null, Expression<Func<string>> color = null, Expression<Func<bool>> transparent = null, Expression<Func<angleInput>> angle = null, Expression<Func<photoTypeInput>> photoType = null, Expression<Func<sizeInput>> size = null, Expression<Func<licenseInput>> license = null)
+        public IBodyWorkflowAction<ImageGetResponse, ApiConnectionActionConfiguration> ImageGet(Expression<Func<string>> make, Expression<Func<string>> model, Expression<Func<int>> year = null, Expression<Func<string>> trim = null, Expression<Func<string>> color = null, Expression<Func<bool>> transparent = null, Expression<Func<AngleInput>> angle = null, Expression<Func<PhotoTypeInput>> photoType = null, Expression<Func<SizeInput>> size = null, Expression<Func<LicenseInput>> license = null)
         {
             var __workflow_make = WorkflowExpression.Compile(make, nameof(make), required: true);
             var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
@@ -124,7 +124,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("text/plain");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PlateRecogResponse>(callPayload);
             });
         }
@@ -1028,7 +1029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum countryInput
+    public enum CountryInput
     {
         [EnumMember(Value = "au")]
         Au
@@ -1104,7 +1105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum angleInput
+    public enum AngleInput
     {
         [EnumMember(Value = "front")]
         Front,
@@ -1115,7 +1116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum photoTypeInput
+    public enum PhotoTypeInput
     {
         [EnumMember(Value = "interior")]
         Interior,
@@ -1126,7 +1127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sizeInput
+    public enum SizeInput
     {
         All,
         Small,
@@ -1136,7 +1137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum licenseInput
+    public enum LicenseInput
     {
         Public,
         Share,

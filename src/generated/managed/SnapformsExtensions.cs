@@ -44,30 +44,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Snapforms
 
     public class SnapformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResource, ApiConnectionTriggerConfiguration> WebhookTrigger(Expression<Func<string>> formSlug, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResource, ApiConnectionPollingTriggerConfiguration> WebhookTrigger(Expression<Func<string>> formSlug)
         {
             var __workflow_formSlug = WorkflowExpression.Compile(formSlug, nameof(formSlug), required: true);
-            return new DeferredBodyTrigger<WebhookCreationResource, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookCreationResource, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/forms/{0}/responses/hooks", __workflow_formSlug.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["active"] = true;
-                bodypropCount++;
-                body["type"] = "web";
-                bodypropCount++;
-                body["event"] = "responses";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<WebhookCreationResource>(callPayload, recurrence: recurrence);
+                callPayload.Body = new BodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<WebhookCreationResource>(callPayload);
             });
         }
     }
@@ -103,6 +89,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Snapforms
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
+    }
+
+    public class BodyInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("active", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool Active { get; set; } = true;
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Type { get; set; } = "web";
+
+        [JsonProperty("event", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Event { get; set; } = "responses";
     }
 }
 

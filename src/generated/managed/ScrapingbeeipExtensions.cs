@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
     public class ScrapingbeeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scrapingbeeip")]
-        public IBodyWorkflowAction<HTMLResponse, ApiConnectionActionConfiguration> HTML(Expression<Func<string>> url, Expression<Func<bool>> renderJs, Expression<Func<string>> jsScenario = null, Expression<Func<int>> wait = null, Expression<Func<string>> waitFor = null, Expression<Func<bool>> blockAds = null, Expression<Func<bool>> blockResources = null, Expression<Func<int>> windowWidth = null, Expression<Func<int>> windowHeight = null, Expression<Func<bool>> premiumProxy = null, Expression<Func<string>> countryCode = null, Expression<Func<bool>> stealthProxy = null, Expression<Func<string>> ownProxy = null, Expression<Func<string>> extractRules = null, Expression<Func<bool>> screenshot = null, Expression<Func<string>> screenshotSelector = null, Expression<Func<bool>> screenshotFullPage = null, Expression<Func<bool>> returnPageSource = null, Expression<Func<int>> sessionId = null, Expression<Func<int>> timeout = null, Expression<Func<string>> cookies = null, Expression<Func<deviceInput>> device = null, Expression<Func<bool>> customGoogle = null)
+        public IBodyWorkflowAction<HTMLResponse, ApiConnectionActionConfiguration> HTML(Expression<Func<string>> url, Expression<Func<bool>> renderJs, Expression<Func<string>> jsScenario = null, Expression<Func<int>> wait = null, Expression<Func<string>> waitFor = null, Expression<Func<bool>> blockAds = null, Expression<Func<bool>> blockResources = null, Expression<Func<int>> windowWidth = null, Expression<Func<int>> windowHeight = null, Expression<Func<bool>> premiumProxy = null, Expression<Func<string>> countryCode = null, Expression<Func<bool>> stealthProxy = null, Expression<Func<string>> ownProxy = null, Expression<Func<string>> extractRules = null, Expression<Func<bool>> screenshot = null, Expression<Func<string>> screenshotSelector = null, Expression<Func<bool>> screenshotFullPage = null, Expression<Func<bool>> returnPageSource = null, Expression<Func<int>> sessionId = null, Expression<Func<int>> timeout = null, Expression<Func<string>> cookies = null, Expression<Func<DeviceInput>> device = null, Expression<Func<bool>> customGoogle = null)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             var __workflow_renderJs = WorkflowExpression.Compile(renderJs, nameof(renderJs), required: true);
@@ -486,7 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum deviceInput
+    public enum DeviceInput
     {
         [EnumMember(Value = "desktop")]
         Desktop,

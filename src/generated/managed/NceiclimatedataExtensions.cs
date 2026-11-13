@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
     public class NceiclimatedataActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<DatasetsGetResponse, ApiConnectionActionConfiguration> DatasetsGet(Expression<Func<string>> datatypeid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<DatasetsGetResponse, ApiConnectionActionConfiguration> DatasetsGet(Expression<Func<string>> datatypeid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<SortfieldInput>> sortfield = null, Expression<Func<SortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_datatypeid = WorkflowExpression.Compile(datatypeid, nameof(datatypeid), required: false);
             var __workflow_locationid = WorkflowExpression.Compile(locationid, nameof(locationid), required: false);
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<CatagoriesGetResponse, ApiConnectionActionConfiguration> CatagoriesGet(Expression<Func<string>> datatsetid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<CatagoriesGetResponse, ApiConnectionActionConfiguration> CatagoriesGet(Expression<Func<string>> datatsetid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<SortfieldInput>> sortfield = null, Expression<Func<SortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_datatsetid = WorkflowExpression.Compile(datatsetid, nameof(datatsetid), required: false);
             var __workflow_locationid = WorkflowExpression.Compile(locationid, nameof(locationid), required: false);
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<TypesGetResponse, ApiConnectionActionConfiguration> TypesGet(Expression<Func<string>> datatsetid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<string>> datacategoryid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TypesGetResponse, ApiConnectionActionConfiguration> TypesGet(Expression<Func<string>> datatsetid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<string>> datacategoryid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<SortfieldInput>> sortfield = null, Expression<Func<SortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_datatsetid = WorkflowExpression.Compile(datatsetid, nameof(datatsetid), required: false);
             var __workflow_locationid = WorkflowExpression.Compile(locationid, nameof(locationid), required: false);
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<LocationCategoriesGetResponse, ApiConnectionActionConfiguration> LocationCategoriesGet(Expression<Func<string>> datasetid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<LocationCategoriesGetResponse, ApiConnectionActionConfiguration> LocationCategoriesGet(Expression<Func<string>> datasetid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<SortfieldInput>> sortfield = null, Expression<Func<SortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_datasetid = WorkflowExpression.Compile(datasetid, nameof(datasetid), required: false);
             var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: false);
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<LocationsGetResponse, ApiConnectionActionConfiguration> LocationsGet(Expression<Func<string>> datatypeid = null, Expression<Func<string>> locationcategoryid = null, Expression<Func<string>> datacategoryid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<LocationsGetResponse, ApiConnectionActionConfiguration> LocationsGet(Expression<Func<string>> datatypeid = null, Expression<Func<string>> locationcategoryid = null, Expression<Func<string>> datacategoryid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<SortfieldInput>> sortfield = null, Expression<Func<SortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_datatypeid = WorkflowExpression.Compile(datatypeid, nameof(datatypeid), required: false);
             var __workflow_locationcategoryid = WorkflowExpression.Compile(locationcategoryid, nameof(locationcategoryid), required: false);
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<StationsGetResponse, ApiConnectionActionConfiguration> StationsGet(Expression<Func<string>> datasetid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> datacategoryid = null, Expression<Func<string>> datatypeid = null, Expression<Func<string>> extent = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<StationsGetResponse, ApiConnectionActionConfiguration> StationsGet(Expression<Func<string>> datasetid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> datacategoryid = null, Expression<Func<string>> datatypeid = null, Expression<Func<string>> extent = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<SortfieldInput>> sortfield = null, Expression<Func<SortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_datasetid = WorkflowExpression.Compile(datasetid, nameof(datasetid), required: false);
             var __workflow_locationid = WorkflowExpression.Compile(locationid, nameof(locationid), required: false);
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<DataGetResponse, ApiConnectionActionConfiguration> DataGet(Expression<Func<string>> datasetid, Expression<Func<string>> startdate, Expression<Func<string>> enddate, Expression<Func<string>> datatypeid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<unitsInput>> units = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<bool>> includemetadata = null)
+        public IBodyWorkflowAction<DataGetResponse, ApiConnectionActionConfiguration> DataGet(Expression<Func<string>> datasetid, Expression<Func<string>> startdate, Expression<Func<string>> enddate, Expression<Func<string>> datatypeid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<UnitsInput>> units = null, Expression<Func<SortfieldInput>> sortfield = null, Expression<Func<SortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<bool>> includemetadata = null)
         {
             var __workflow_datasetid = WorkflowExpression.Compile(datasetid, nameof(datasetid), required: true);
             var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: true);
@@ -456,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
-        public IBodyWorkflowAction<StationHistoricSearchGetResponse, ApiConnectionActionConfiguration> StationHistoricSearchGet(Expression<Func<string>> qid = null, Expression<Func<string>> qidMod = null, Expression<Func<string>> state = null, Expression<Func<string>> county = null, Expression<Func<string>> country = null, Expression<Func<string>> name = null, Expression<Func<string>> nameMod = null, Expression<Func<string>> platform = null, Expression<Func<string>> date = null, Expression<Func<string>> begindate = null, Expression<Func<string>> enddate = null, Expression<Func<statusInput>> status = null, Expression<Func<bool>> current = null, Expression<Func<string>> headersOnly = null, Expression<Func<bool>> phrData = null, Expression<Func<bool>> definitions = null)
+        public IBodyWorkflowAction<StationHistoricSearchGetResponse, ApiConnectionActionConfiguration> StationHistoricSearchGet(Expression<Func<string>> qid = null, Expression<Func<string>> qidMod = null, Expression<Func<string>> state = null, Expression<Func<string>> county = null, Expression<Func<string>> country = null, Expression<Func<string>> name = null, Expression<Func<string>> nameMod = null, Expression<Func<string>> platform = null, Expression<Func<string>> date = null, Expression<Func<string>> begindate = null, Expression<Func<string>> enddate = null, Expression<Func<StatusInput>> status = null, Expression<Func<bool>> current = null, Expression<Func<string>> headersOnly = null, Expression<Func<bool>> phrData = null, Expression<Func<bool>> definitions = null)
         {
             var __workflow_qid = WorkflowExpression.Compile(qid, nameof(qid), required: false);
             var __workflow_qidMod = WorkflowExpression.Compile(qidMod, nameof(qidMod), required: false);
@@ -569,7 +569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortfieldInput
+    public enum SortfieldInput
     {
         [EnumMember(Value = "id")]
         Id,
@@ -584,7 +584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortorderInput
+    public enum SortorderInput
     {
         [EnumMember(Value = "asc")]
         Asc,
@@ -956,7 +956,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum unitsInput
+    public enum UnitsInput
     {
         [EnumMember(Value = "standard")]
         Standard,
@@ -2273,7 +2273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         CLOSED,
         INACTIVE

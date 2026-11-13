@@ -27,42 +27,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
 
     public class AppfiguresTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Event[], ApiConnectionTriggerConfiguration> OnNewEvent(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Event[], ApiConnectionPollingTriggerConfiguration> OnNewEvent()
         {
-            return new DeferredBodyTrigger<Event[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Event[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/event_trigger/events";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<Event[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Event[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<ReviewInfo[], ApiConnectionTriggerConfiguration> OnNewReview(Expression<Func<string>> products = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ReviewInfo[], ApiConnectionPollingTriggerConfiguration> OnNewReview(Expression<Func<string>> products = null)
         {
             var __workflow_products = WorkflowExpression.Compile(products, nameof(products), required: false);
-            return new DeferredBodyTrigger<ReviewInfo[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<ReviewInfo[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/reviews_trigger/reviews";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_products != null)
                     callPayload.Queries["products"] = ExpressionConverter.Convert(__workflow_products);
-                return new ApiConnectionTrigger<ReviewInfo[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<ReviewInfo[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<Rating[], ApiConnectionTriggerConfiguration> OnNewRating(Expression<Func<string>> products = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Rating[], ApiConnectionPollingTriggerConfiguration> OnNewRating(Expression<Func<string>> products = null)
         {
             var __workflow_products = WorkflowExpression.Compile(products, nameof(products), required: false);
-            return new DeferredBodyTrigger<Rating[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Rating[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/ratings_trigger/ratings";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_products != null)
                     callPayload.Queries["products"] = ExpressionConverter.Convert(__workflow_products);
-                return new ApiConnectionTrigger<Rating[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Rating[]>(callPayload);
             });
         }
     }

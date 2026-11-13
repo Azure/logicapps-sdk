@@ -25,24 +25,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<NotebookPostResponse, ApiConnectionActionConfiguration> Notebook(Expression<Func<string>> bodydisplayName)
+        public IBodyWorkflowAction<NotebookResponse, ApiConnectionActionConfiguration> Notebook(Expression<Func<BodyInput>> body)
         {
-            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
-            return new DeferredBodyAction<NotebookPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<NotebookResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/notebooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<NotebookPostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<NotebookResponse>(callPayload);
             });
         }
 
@@ -100,25 +92,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<SectionPostResponse, ApiConnectionActionConfiguration> Section(Expression<Func<string>> notebookId, Expression<Func<string>> bodydisplayName)
+        public IBodyWorkflowAction<SectionResponse, ApiConnectionActionConfiguration> Section(Expression<Func<string>> notebookId, Expression<Func<BodyInput>> body)
         {
             var __workflow_notebookId = WorkflowExpression.Compile(notebookId, nameof(notebookId), required: true);
-            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
-            return new DeferredBodyAction<SectionPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<SectionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/notebooks/{0}/sections", __workflow_notebookId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<SectionPostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<SectionResponse>(callPayload);
             });
         }
 
@@ -163,19 +147,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<PagePostResponse, ApiConnectionActionConfiguration> Page(Expression<Func<string>> sectionId, Expression<Func<string>> contentType, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<PageResponse, ApiConnectionActionConfiguration> Page(Expression<Func<string>> sectionId, Expression<Func<string>> contentType, Expression<Func<string>> body)
         {
             var __workflow_sectionId = WorkflowExpression.Compile(sectionId, nameof(sectionId), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PagePostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<PageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/sections/{0}/pages", __workflow_sectionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PagePostResponse>(callPayload);
+                return new ApiConnectionAction<PageResponse>(callPayload);
             });
         }
     }
@@ -286,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         public string Href { get; set; }
     }
 
-    public class NotebookPostResponse
+    public class NotebookResponse
     {
         [JsonProperty("@odata.context")]
         public string Context { get; set; }
@@ -313,28 +297,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         public string SectionGroupsUrl { get; set; }
 
         [JsonProperty("links")]
-        public NotebookPostResponseLinksType Links { get; set; }
+        public NotebookResponseLinksType Links { get; set; }
     }
 
-    public class NotebookPostResponseLinksType
+    public class NotebookResponseLinksType
     {
         [JsonProperty("oneNoteClientUrl")]
-        public NotebookPostResponseLinksTypeOneNoteClientUrlType OneNoteClientUrl { get; set; }
+        public NotebookResponseLinksTypeOneNoteClientUrlType OneNoteClientUrl { get; set; }
 
         [JsonProperty("oneNoteWebUrl")]
-        public NotebookPostResponseLinksTypeOneNoteWebUrlType OneNoteWebUrl { get; set; }
+        public NotebookResponseLinksTypeOneNoteWebUrlType OneNoteWebUrl { get; set; }
     }
 
-    public class NotebookPostResponseLinksTypeOneNoteClientUrlType
+    public class NotebookResponseLinksTypeOneNoteClientUrlType
     {
         [JsonProperty("href")]
         public string Href { get; set; }
     }
 
-    public class NotebookPostResponseLinksTypeOneNoteWebUrlType
+    public class NotebookResponseLinksTypeOneNoteWebUrlType
     {
         [JsonProperty("href")]
         public string Href { get; set; }
+    }
+
+    public class BodyInput
+    {
+        public BodyInput(string displayName)
+        {
+            this.DisplayName = displayName;
+        }
+
+        [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DisplayName { get; set; }
     }
 
     public class NotebookGetAResponse
@@ -526,7 +521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         public string Self { get; set; }
     }
 
-    public class SectionPostResponse
+    public class SectionResponse
     {
         [JsonProperty("@odata.context")]
         public string Context { get; set; }
@@ -553,19 +548,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         public string PagesUrl { get; set; }
 
         [JsonProperty("createdBy")]
-        public SectionPostResponseCreatedByType CreatedBy { get; set; }
+        public SectionResponseCreatedByType CreatedBy { get; set; }
 
         [JsonProperty("lastModifiedBy")]
-        public SectionPostResponseLastModifiedByType LastModifiedBy { get; set; }
+        public SectionResponseLastModifiedByType LastModifiedBy { get; set; }
     }
 
-    public class SectionPostResponseCreatedByType
+    public class SectionResponseCreatedByType
     {
         [JsonProperty("user")]
-        public SectionPostResponseCreatedByTypeUserType User { get; set; }
+        public SectionResponseCreatedByTypeUserType User { get; set; }
     }
 
-    public class SectionPostResponseCreatedByTypeUserType
+    public class SectionResponseCreatedByTypeUserType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -574,13 +569,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         public string DisplayName { get; set; }
     }
 
-    public class SectionPostResponseLastModifiedByType
+    public class SectionResponseLastModifiedByType
     {
         [JsonProperty("user")]
-        public SectionPostResponseLastModifiedByTypeUserType User { get; set; }
+        public SectionResponseLastModifiedByTypeUserType User { get; set; }
     }
 
-    public class SectionPostResponseLastModifiedByTypeUserType
+    public class SectionResponseLastModifiedByTypeUserType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -652,7 +647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         public string Href { get; set; }
     }
 
-    public class PagePostResponse
+    public class PageResponse
     {
         [JsonProperty("@odata.context")]
         public string Context { get; set; }
@@ -679,25 +674,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         public string LastModifiedDateTime { get; set; }
 
         [JsonProperty("links")]
-        public PagePostResponseLinksType Links { get; set; }
+        public PageResponseLinksType Links { get; set; }
     }
 
-    public class PagePostResponseLinksType
+    public class PageResponseLinksType
     {
         [JsonProperty("oneNoteClientUrl")]
-        public PagePostResponseLinksTypeOneNoteClientUrlType OneNoteClientUrl { get; set; }
+        public PageResponseLinksTypeOneNoteClientUrlType OneNoteClientUrl { get; set; }
 
         [JsonProperty("oneNoteWebUrl")]
-        public PagePostResponseLinksTypeOneNoteWebUrlType OneNoteWebUrl { get; set; }
+        public PageResponseLinksTypeOneNoteWebUrlType OneNoteWebUrl { get; set; }
     }
 
-    public class PagePostResponseLinksTypeOneNoteClientUrlType
+    public class PageResponseLinksTypeOneNoteClientUrlType
     {
         [JsonProperty("href")]
         public string Href { get; set; }
     }
 
-    public class PagePostResponseLinksTypeOneNoteWebUrlType
+    public class PageResponseLinksTypeOneNoteWebUrlType
     {
         [JsonProperty("href")]
         public string Href { get; set; }

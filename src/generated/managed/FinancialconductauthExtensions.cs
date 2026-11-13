@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
     public class FinancialconductauthActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<CommonSearchResponse, ApiConnectionActionConfiguration> CommonSearch(Expression<Func<string>> q, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<CommonSearchResponse, ApiConnectionActionConfiguration> CommonSearch(Expression<Func<string>> q, Expression<Func<TypeInput>> type)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         [EnumMember(Value = "individual")]
         Individual,
@@ -773,7 +773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public FirmActivitiesAndPermissionsByFRNResponseDataTypeActingAsACBTLAdvisorTypeItem[] ActingAsACBTLAdvisor { get; set; }
 
         [JsonProperty("Acting as a CBTL Administrator")]
-        public FirmActivitiesAndPermissionsByFRNResponseDataTypeActingAsACBTLAdministratorTypeItem2[] ActingAsACBTLAdministrator { get; set; }
+        public FirmActivitiesAndPermissionsByFRNFirmActivitiesAndPermissionsByFRNResponseDataTypeActingAsACBTLAdministratorTypeItemResponse[] ActingAsACBTLAdministrator { get; set; }
 
         [JsonProperty("CBTL Status")]
         public FirmActivitiesAndPermissionsByFRNResponseDataTypeCBTLStatusTypeItem[] CBTLStatus { get; set; }
@@ -794,7 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string[] ActingAsACBTLAdvisor { get; set; }
     }
 
-    public class FirmActivitiesAndPermissionsByFRNResponseDataTypeActingAsACBTLAdministratorTypeItem2
+    public class FirmActivitiesAndPermissionsByFRNFirmActivitiesAndPermissionsByFRNResponseDataTypeActingAsACBTLAdministratorTypeItemResponse
     {
         [JsonProperty("Limitation Not Found")]
         public string[] LimitationNotFound { get; set; }

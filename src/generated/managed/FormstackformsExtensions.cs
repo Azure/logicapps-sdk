@@ -27,30 +27,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Formstackforms
 
     public class FormstackformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<FormstackFormSubmittedResponse, ApiConnectionTriggerConfiguration> FormstackFormSubmitted(Expression<Func<int>> formId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FormstackFormSubmittedResponse, ApiConnectionPollingTriggerConfiguration> FormstackFormSubmitted(Expression<Func<int>> formId)
         {
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            return new DeferredBodyTrigger<FormstackFormSubmittedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<FormstackFormSubmittedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/form/{0}/webhook/", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["content_type"] = "json";
-                bodypropCount++;
-                body["file_transfer_type"] = "base64encode";
-                bodypropCount++;
-                body["standardize_field_values"] = true;
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<FormstackFormSubmittedResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new BodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<FormstackFormSubmittedResponse>(callPayload);
             });
         }
     }
@@ -77,6 +63,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Formstackforms
     {
         [JsonProperty("id")]
         public string Id { get; set; }
+    }
+
+    public class BodyInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("content_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ContentType { get; set; } = "json";
+
+        [JsonProperty("file_transfer_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string FileTransferType { get; set; } = "base64encode";
+
+        [JsonProperty("standardize_field_values", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool StandardizeFieldValues { get; set; } = true;
     }
 }
 

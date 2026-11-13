@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     public class AppstoreconnectActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appstoreconnect")]
-        public IBodyWorkflowAction<AppsAndAppMetadataListAppsResponse, ApiConnectionActionConfiguration> AppsAndAppMetadataListApps(Expression<Func<string>> serviceToken, Expression<Func<fieldsAppsInput>> fieldsApps = null, Expression<Func<fieldsBetaLicenseAgreementsInput>> fieldsBetaLicenseAgreements = null, Expression<Func<fieldsPreReleaseVersionsInput>> fieldsPreReleaseVersions = null, Expression<Func<fieldsBetaAppReviewDetailsInput>> fieldsBetaAppReviewDetails = null, Expression<Func<fieldsBetaAppLocalizationsInput>> fieldsBetaAppLocalizations = null, Expression<Func<fieldsBuildsInput>> fieldsBuilds = null, Expression<Func<fieldsBetaGroupsInput>> fieldsBetaGroups = null, Expression<Func<fieldsEndUserLicenseAgreementsInput>> fieldsEndUserLicenseAgreements = null, Expression<Func<fieldsAppStoreVersionsInput>> fieldsAppStoreVersions = null, Expression<Func<fieldsAppInfosInput>> fieldsAppInfos = null, Expression<Func<fieldsPerfPowerMetricsInput>> fieldsPerfPowerMetrics = null, Expression<Func<fieldsInAppPurchasesInput>> fieldsInAppPurchases = null, Expression<Func<fieldsCiProductsInput>> fieldsCiProducts = null, Expression<Func<fieldsAppClipsInput>> fieldsAppClips = null, Expression<Func<fieldsReviewSubmissionsInput>> fieldsReviewSubmissions = null, Expression<Func<fieldsAppCustomProductPagesInput>> fieldsAppCustomProductPages = null, Expression<Func<fieldsAppEventsInput>> fieldsAppEvents = null, Expression<Func<fieldsAppPricePointsInput>> fieldsAppPricePoints = null, Expression<Func<fieldsCustomerReviewsInput>> fieldsCustomerReviews = null, Expression<Func<fieldsSubscriptionGracePeriodsInput>> fieldsSubscriptionGracePeriods = null, Expression<Func<fieldsPromotedPurchasesInput>> fieldsPromotedPurchases = null, Expression<Func<fieldsSubscriptionGroupsInput>> fieldsSubscriptionGroups = null, Expression<Func<fieldsAppPriceSchedulesInput>> fieldsAppPriceSchedules = null, Expression<Func<fieldsAppStoreVersionExperimentsInput>> fieldsAppStoreVersionExperiments = null, Expression<Func<fieldsAppEncryptionDeclarationsInput>> fieldsAppEncryptionDeclarations = null, Expression<Func<fieldsGameCenterDetailsInput>> fieldsGameCenterDetails = null, Expression<Func<includeInput>> include = null, Expression<Func<string>> filterBundleId = null, Expression<Func<string>> filterId = null, Expression<Func<string>> filterName = null, Expression<Func<string>> filterSku = null, Expression<Func<string>> filterAppStoreVersions = null, Expression<Func<filterAppStoreVersionsPlatformInput>> filterAppStoreVersionsPlatform = null, Expression<Func<filterAppStoreVersionsAppStoreStateInput>> filterAppStoreVersionsAppStoreState = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limitPreReleaseVersions = null, Expression<Func<int>> limitBuilds = null, Expression<Func<int>> limitBetaGroups = null, Expression<Func<int>> limitBetaAppLocalizations = null, Expression<Func<int>> limitAvailableTerritories = null, Expression<Func<int>> limitAppStoreVersions = null, Expression<Func<int>> limitAppInfos = null, Expression<Func<int>> limitAppClips = null, Expression<Func<int>> limitAppCustomProductPages = null, Expression<Func<int>> limitAppEvents = null, Expression<Func<int>> limitReviewSubmissions = null, Expression<Func<int>> limitInAppPurchasesV2 = null, Expression<Func<int>> limitPromotedPurchases = null, Expression<Func<int>> limitSubscriptionGroups = null, Expression<Func<int>> limitAppStoreVersionExperimentsV2 = null, Expression<Func<int>> limitAppEncryptionDeclarations = null)
+        public IBodyWorkflowAction<AppsAndAppMetadataListAppsResponse, ApiConnectionActionConfiguration> AppsAndAppMetadataListApps(Expression<Func<string>> serviceToken, Expression<Func<FieldsAppsInput>> fieldsApps = null, Expression<Func<FieldsBetaLicenseAgreementsInput>> fieldsBetaLicenseAgreements = null, Expression<Func<FieldsPreReleaseVersionsInput>> fieldsPreReleaseVersions = null, Expression<Func<FieldsBetaAppReviewDetailsInput>> fieldsBetaAppReviewDetails = null, Expression<Func<FieldsBetaAppLocalizationsInput>> fieldsBetaAppLocalizations = null, Expression<Func<FieldsBuildsInput>> fieldsBuilds = null, Expression<Func<FieldsBetaGroupsInput>> fieldsBetaGroups = null, Expression<Func<FieldsEndUserLicenseAgreementsInput>> fieldsEndUserLicenseAgreements = null, Expression<Func<FieldsAppStoreVersionsInput>> fieldsAppStoreVersions = null, Expression<Func<FieldsAppInfosInput>> fieldsAppInfos = null, Expression<Func<FieldsPerfPowerMetricsInput>> fieldsPerfPowerMetrics = null, Expression<Func<FieldsInAppPurchasesInput>> fieldsInAppPurchases = null, Expression<Func<FieldsCiProductsInput>> fieldsCiProducts = null, Expression<Func<FieldsAppClipsInput>> fieldsAppClips = null, Expression<Func<FieldsReviewSubmissionsInput>> fieldsReviewSubmissions = null, Expression<Func<FieldsAppCustomProductPagesInput>> fieldsAppCustomProductPages = null, Expression<Func<FieldsAppEventsInput>> fieldsAppEvents = null, Expression<Func<FieldsAppPricePointsInput>> fieldsAppPricePoints = null, Expression<Func<FieldsCustomerReviewsInput>> fieldsCustomerReviews = null, Expression<Func<FieldsSubscriptionGracePeriodsInput>> fieldsSubscriptionGracePeriods = null, Expression<Func<FieldsPromotedPurchasesInput>> fieldsPromotedPurchases = null, Expression<Func<FieldsSubscriptionGroupsInput>> fieldsSubscriptionGroups = null, Expression<Func<FieldsAppPriceSchedulesInput>> fieldsAppPriceSchedules = null, Expression<Func<FieldsAppStoreVersionExperimentsInput>> fieldsAppStoreVersionExperiments = null, Expression<Func<FieldsAppEncryptionDeclarationsInput>> fieldsAppEncryptionDeclarations = null, Expression<Func<FieldsGameCenterDetailsInput>> fieldsGameCenterDetails = null, Expression<Func<IncludeInput>> include = null, Expression<Func<string>> filterBundleId = null, Expression<Func<string>> filterId = null, Expression<Func<string>> filterName = null, Expression<Func<string>> filterSku = null, Expression<Func<string>> filterAppStoreVersions = null, Expression<Func<FilterAppStoreVersionsPlatformInput>> filterAppStoreVersionsPlatform = null, Expression<Func<FilterAppStoreVersionsAppStoreStateInput>> filterAppStoreVersionsAppStoreState = null, Expression<Func<SortInput>> sort = null, Expression<Func<int>> limitPreReleaseVersions = null, Expression<Func<int>> limitBuilds = null, Expression<Func<int>> limitBetaGroups = null, Expression<Func<int>> limitBetaAppLocalizations = null, Expression<Func<int>> limitAvailableTerritories = null, Expression<Func<int>> limitAppStoreVersions = null, Expression<Func<int>> limitAppInfos = null, Expression<Func<int>> limitAppClips = null, Expression<Func<int>> limitAppCustomProductPages = null, Expression<Func<int>> limitAppEvents = null, Expression<Func<int>> limitReviewSubmissions = null, Expression<Func<int>> limitInAppPurchasesV2 = null, Expression<Func<int>> limitPromotedPurchases = null, Expression<Func<int>> limitSubscriptionGroups = null, Expression<Func<int>> limitAppStoreVersionExperimentsV2 = null, Expression<Func<int>> limitAppEncryptionDeclarations = null)
         {
             var __workflow_serviceToken = WorkflowExpression.Compile(serviceToken, nameof(serviceToken), required: true);
             var __workflow_fieldsApps = WorkflowExpression.Compile(fieldsApps, nameof(fieldsApps), required: false);
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appstoreconnect")]
-        public IBodyWorkflowAction<AppsAndAppMetadataReadAppInformationResponse, ApiConnectionActionConfiguration> AppsAndAppMetadataReadAppInformation(Expression<Func<string>> id, Expression<Func<string>> serviceToken, Expression<Func<fieldsAppsInput>> fieldsApps = null, Expression<Func<fieldsBetaLicenseAgreementsInput>> fieldsBetaLicenseAgreements = null, Expression<Func<fieldsPreReleaseVersionsInput>> fieldsPreReleaseVersions = null, Expression<Func<fieldsBetaAppReviewDetailsInput>> fieldsBetaAppReviewDetails = null, Expression<Func<fieldsBetaAppLocalizationsInput>> fieldsBetaAppLocalizations = null, Expression<Func<fieldsBuildsInput>> fieldsBuilds = null, Expression<Func<fieldsBetaGroupsInput>> fieldsBetaGroups = null, Expression<Func<fieldsEndUserLicenseAgreementsInput>> fieldsEndUserLicenseAgreements = null, Expression<Func<fieldsAppStoreVersionsInput>> fieldsAppStoreVersions = null, Expression<Func<fieldsAppInfosInput>> fieldsAppInfos = null, Expression<Func<fieldsPerfPowerMetricsInput>> fieldsPerfPowerMetrics = null, Expression<Func<fieldsInAppPurchasesInput>> fieldsInAppPurchases = null, Expression<Func<fieldsCiProductsInput>> fieldsCiProducts = null, Expression<Func<fieldsAppClipsInput>> fieldsAppClips = null, Expression<Func<fieldsReviewSubmissionsInput>> fieldsReviewSubmissions = null, Expression<Func<fieldsAppCustomProductPagesInput>> fieldsAppCustomProductPages = null, Expression<Func<fieldsAppEventsInput>> fieldsAppEvents = null, Expression<Func<fieldsAppPricePointsInput>> fieldsAppPricePoints = null, Expression<Func<fieldsCustomerReviewsInput>> fieldsCustomerReviews = null, Expression<Func<fieldsSubscriptionGracePeriodsInput>> fieldsSubscriptionGracePeriods = null, Expression<Func<fieldsPromotedPurchasesInput>> fieldsPromotedPurchases = null, Expression<Func<fieldsSubscriptionGroupsInput>> fieldsSubscriptionGroups = null, Expression<Func<fieldsAppPriceSchedulesInput>> fieldsAppPriceSchedules = null, Expression<Func<fieldsAppStoreVersionExperimentsInput>> fieldsAppStoreVersionExperiments = null, Expression<Func<fieldsAppEncryptionDeclarationsInput>> fieldsAppEncryptionDeclarations = null, Expression<Func<fieldsGameCenterDetailsInput>> fieldsGameCenterDetails = null, Expression<Func<includeInput>> include = null, Expression<Func<int>> limitPreReleaseVersions = null, Expression<Func<int>> limitBuilds = null, Expression<Func<int>> limitBetaGroups = null, Expression<Func<int>> limitBetaAppLocalizations = null, Expression<Func<int>> limitAvailableTerritories = null, Expression<Func<int>> limitAppStoreVersions = null, Expression<Func<int>> limitAppInfos = null, Expression<Func<int>> limitAppClips = null, Expression<Func<int>> limitAppCustomProductPages = null, Expression<Func<int>> limitAppEvents = null, Expression<Func<int>> limitReviewSubmissions = null, Expression<Func<int>> limitInAppPurchasesV2 = null, Expression<Func<int>> limitPromotedPurchases = null, Expression<Func<int>> limitSubscriptionGroups = null, Expression<Func<int>> limitAppStoreVersionExperimentsV2 = null, Expression<Func<int>> limitAppEncryptionDeclarations = null)
+        public IBodyWorkflowAction<AppsAndAppMetadataReadAppInformationResponse, ApiConnectionActionConfiguration> AppsAndAppMetadataReadAppInformation(Expression<Func<string>> id, Expression<Func<string>> serviceToken, Expression<Func<FieldsAppsInput>> fieldsApps = null, Expression<Func<FieldsBetaLicenseAgreementsInput>> fieldsBetaLicenseAgreements = null, Expression<Func<FieldsPreReleaseVersionsInput>> fieldsPreReleaseVersions = null, Expression<Func<FieldsBetaAppReviewDetailsInput>> fieldsBetaAppReviewDetails = null, Expression<Func<FieldsBetaAppLocalizationsInput>> fieldsBetaAppLocalizations = null, Expression<Func<FieldsBuildsInput>> fieldsBuilds = null, Expression<Func<FieldsBetaGroupsInput>> fieldsBetaGroups = null, Expression<Func<FieldsEndUserLicenseAgreementsInput>> fieldsEndUserLicenseAgreements = null, Expression<Func<FieldsAppStoreVersionsInput>> fieldsAppStoreVersions = null, Expression<Func<FieldsAppInfosInput>> fieldsAppInfos = null, Expression<Func<FieldsPerfPowerMetricsInput>> fieldsPerfPowerMetrics = null, Expression<Func<FieldsInAppPurchasesInput>> fieldsInAppPurchases = null, Expression<Func<FieldsCiProductsInput>> fieldsCiProducts = null, Expression<Func<FieldsAppClipsInput>> fieldsAppClips = null, Expression<Func<FieldsReviewSubmissionsInput>> fieldsReviewSubmissions = null, Expression<Func<FieldsAppCustomProductPagesInput>> fieldsAppCustomProductPages = null, Expression<Func<FieldsAppEventsInput>> fieldsAppEvents = null, Expression<Func<FieldsAppPricePointsInput>> fieldsAppPricePoints = null, Expression<Func<FieldsCustomerReviewsInput>> fieldsCustomerReviews = null, Expression<Func<FieldsSubscriptionGracePeriodsInput>> fieldsSubscriptionGracePeriods = null, Expression<Func<FieldsPromotedPurchasesInput>> fieldsPromotedPurchases = null, Expression<Func<FieldsSubscriptionGroupsInput>> fieldsSubscriptionGroups = null, Expression<Func<FieldsAppPriceSchedulesInput>> fieldsAppPriceSchedules = null, Expression<Func<FieldsAppStoreVersionExperimentsInput>> fieldsAppStoreVersionExperiments = null, Expression<Func<FieldsAppEncryptionDeclarationsInput>> fieldsAppEncryptionDeclarations = null, Expression<Func<FieldsGameCenterDetailsInput>> fieldsGameCenterDetails = null, Expression<Func<IncludeInput>> include = null, Expression<Func<int>> limitPreReleaseVersions = null, Expression<Func<int>> limitBuilds = null, Expression<Func<int>> limitBetaGroups = null, Expression<Func<int>> limitBetaAppLocalizations = null, Expression<Func<int>> limitAvailableTerritories = null, Expression<Func<int>> limitAppStoreVersions = null, Expression<Func<int>> limitAppInfos = null, Expression<Func<int>> limitAppClips = null, Expression<Func<int>> limitAppCustomProductPages = null, Expression<Func<int>> limitAppEvents = null, Expression<Func<int>> limitReviewSubmissions = null, Expression<Func<int>> limitInAppPurchasesV2 = null, Expression<Func<int>> limitPromotedPurchases = null, Expression<Func<int>> limitSubscriptionGroups = null, Expression<Func<int>> limitAppStoreVersionExperimentsV2 = null, Expression<Func<int>> limitAppEncryptionDeclarations = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_serviceToken = WorkflowExpression.Compile(serviceToken, nameof(serviceToken), required: true);
@@ -470,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsAppsInput
+    public enum FieldsAppsInput
     {
         [EnumMember(Value = "appAvailability")]
         AppAvailability,
@@ -563,7 +563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsBetaLicenseAgreementsInput
+    public enum FieldsBetaLicenseAgreementsInput
     {
         [EnumMember(Value = "agreementText")]
         AgreementText,
@@ -572,7 +572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsPreReleaseVersionsInput
+    public enum FieldsPreReleaseVersionsInput
     {
         [EnumMember(Value = "app")]
         App,
@@ -585,7 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsBetaAppReviewDetailsInput
+    public enum FieldsBetaAppReviewDetailsInput
     {
         [EnumMember(Value = "app")]
         App,
@@ -608,7 +608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsBetaAppLocalizationsInput
+    public enum FieldsBetaAppLocalizationsInput
     {
         [EnumMember(Value = "app")]
         App,
@@ -627,7 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsBuildsInput
+    public enum FieldsBuildsInput
     {
         [EnumMember(Value = "app")]
         App,
@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsBetaGroupsInput
+    public enum FieldsBetaGroupsInput
     {
         [EnumMember(Value = "app")]
         App,
@@ -713,7 +713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsEndUserLicenseAgreementsInput
+    public enum FieldsEndUserLicenseAgreementsInput
     {
         [EnumMember(Value = "agreementText")]
         AgreementText,
@@ -724,7 +724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsAppStoreVersionsInput
+    public enum FieldsAppStoreVersionsInput
     {
         [EnumMember(Value = "ageRatingDeclaration")]
         AgeRatingDeclaration,
@@ -769,7 +769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsAppInfosInput
+    public enum FieldsAppInfosInput
     {
         [EnumMember(Value = "ageRatingDeclaration")]
         AgeRatingDeclaration,
@@ -802,7 +802,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsPerfPowerMetricsInput
+    public enum FieldsPerfPowerMetricsInput
     {
         [EnumMember(Value = "deviceType")]
         DeviceType,
@@ -813,7 +813,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsInAppPurchasesInput
+    public enum FieldsInAppPurchasesInput
     {
         [EnumMember(Value = "app")]
         App,
@@ -852,7 +852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsCiProductsInput
+    public enum FieldsCiProductsInput
     {
         [EnumMember(Value = "additionalRepositories")]
         AdditionalRepositories,
@@ -875,7 +875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsAppClipsInput
+    public enum FieldsAppClipsInput
     {
         [EnumMember(Value = "app")]
         App,
@@ -888,7 +888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsReviewSubmissionsInput
+    public enum FieldsReviewSubmissionsInput
     {
         [EnumMember(Value = "app")]
         App,
@@ -913,7 +913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsAppCustomProductPagesInput
+    public enum FieldsAppCustomProductPagesInput
     {
         [EnumMember(Value = "app")]
         App,
@@ -932,7 +932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsAppEventsInput
+    public enum FieldsAppEventsInput
     {
         [EnumMember(Value = "app")]
         App,
@@ -961,7 +961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsAppPricePointsInput
+    public enum FieldsAppPricePointsInput
     {
         [EnumMember(Value = "app")]
         App,
@@ -978,7 +978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsCustomerReviewsInput
+    public enum FieldsCustomerReviewsInput
     {
         [EnumMember(Value = "body")]
         Body,
@@ -997,7 +997,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsSubscriptionGracePeriodsInput
+    public enum FieldsSubscriptionGracePeriodsInput
     {
         [EnumMember(Value = "duration")]
         Duration,
@@ -1010,7 +1010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsPromotedPurchasesInput
+    public enum FieldsPromotedPurchasesInput
     {
         [EnumMember(Value = "app")]
         App,
@@ -1029,7 +1029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsSubscriptionGroupsInput
+    public enum FieldsSubscriptionGroupsInput
     {
         [EnumMember(Value = "app")]
         App,
@@ -1042,7 +1042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsAppPriceSchedulesInput
+    public enum FieldsAppPriceSchedulesInput
     {
         [EnumMember(Value = "app")]
         App,
@@ -1055,7 +1055,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsAppStoreVersionExperimentsInput
+    public enum FieldsAppStoreVersionExperimentsInput
     {
         [EnumMember(Value = "app")]
         App,
@@ -1084,7 +1084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsAppEncryptionDeclarationsInput
+    public enum FieldsAppEncryptionDeclarationsInput
     {
         [EnumMember(Value = "app")]
         App,
@@ -1123,7 +1123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldsGameCenterDetailsInput
+    public enum FieldsGameCenterDetailsInput
     {
         [EnumMember(Value = "achievementReleases")]
         AchievementReleases,
@@ -1154,7 +1154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum includeInput
+    public enum IncludeInput
     {
         [EnumMember(Value = "appClips")]
         AppClips,
@@ -1211,7 +1211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum filterAppStoreVersionsPlatformInput
+    public enum FilterAppStoreVersionsPlatformInput
     {
         IOS,
         [EnumMember(Value = "MAC_OS")]
@@ -1223,7 +1223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum filterAppStoreVersionsAppStoreStateInput
+    public enum FilterAppStoreVersionsAppStoreStateInput
     {
         ACCEPTED,
         [EnumMember(Value = "DEVELOPER_REMOVED_FROM_SALE")]
@@ -1264,7 +1264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortInput
+    public enum SortInput
     {
         [EnumMember(Value = "bundleId")]
         BundleId2,

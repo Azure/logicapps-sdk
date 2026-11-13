@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
     public class WttrinActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wttrin")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> WeatherGet(Expression<Func<string>> location, Expression<Func<viewInput>> view = null, Expression<Func<langInput>> lang = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> WeatherGet(Expression<Func<string>> location, Expression<Func<ViewInput>> view = null, Expression<Func<LangInput>> lang = null)
         {
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum viewInput
+    public enum ViewInput
     {
         [EnumMember(Value = "1")]
         CurrentWeatherAndTodaySForecast,
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum langInput
+    public enum LangInput
     {
         [EnumMember(Value = "en")]
         En,

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
     public class SmtpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Smtp")]
-        public IOutputWorkflowAction<SendEmailOutput, SendEmailActionConfiguration> SendEmail(Expression<Func<string>> from, Expression<Func<string>> to, Expression<Func<string>> cc = null, Expression<Func<string>> subject = null, Expression<Func<string>> body = null, Expression<Func<bool>> isHTML = null, Expression<Func<string>> bcc = null, Expression<Func<string>> importance = null, Expression<Func<string>> readReceipt = null, Expression<Func<string>> deliveryReceipt = null, Expression<Func<SendEmailInputAttachmentTypeItem[]>> attachment = null)
+        public IBodyWorkflowAction<SendEmailOutput, SendEmailActionConfiguration> SendEmail(Expression<Func<string>> from, Expression<Func<string>> to, Expression<Func<string>> cc = null, Expression<Func<string>> subject = null, Expression<Func<string>> body = null, Expression<Func<bool>> isHTML = null, Expression<Func<string>> bcc = null, Expression<Func<string>> importance = null, Expression<Func<string>> readReceipt = null, Expression<Func<string>> deliveryReceipt = null, Expression<Func<SendEmailInputAttachmentTypeItem[]>> attachment = null)
         {
             var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: true);
             var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: true);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
             var __workflow_readReceipt = WorkflowExpression.Compile(readReceipt, nameof(readReceipt), required: false);
             var __workflow_deliveryReceipt = WorkflowExpression.Compile(deliveryReceipt, nameof(deliveryReceipt), required: false);
             var __workflow_attachment = WorkflowExpression.Compile(attachment, nameof(attachment), required: false);
-            return new DeferredOutputAction<SendEmailOutput, SendEmailActionConfiguration>(() =>
+            return new DeferredBodyAction<SendEmailOutput, SendEmailActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["from"] = ExpressionConverter.ConvertO(__workflow_from);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Smtp", operationId: "sendEmail", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<SendEmailOutput, SendEmailActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<SendEmailOutput, SendEmailActionConfiguration>(serviceProviderInput);
             });
         }
     }
@@ -110,6 +110,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
 
     public class SendEmailInputAttachmentTypeItem
     {
+        public SendEmailInputAttachmentTypeItem(JToken fileName, string contentData)
+        {
+            this.FileName = fileName;
+            this.ContentData = contentData;
+        }
+
         [JsonProperty("fileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken FileName { get; set; }
 

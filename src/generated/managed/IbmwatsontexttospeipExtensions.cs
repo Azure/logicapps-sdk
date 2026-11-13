@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
     public class IbmwatsontexttospeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        public IBodyWorkflowAction<SynthesizeResponse, ApiConnectionActionConfiguration> Synthesize(Expression<Func<string>> bodytext, Expression<Func<voiceInput>> voice = null)
+        public IBodyWorkflowAction<SynthesizeResponse, ApiConnectionActionConfiguration> Synthesize(Expression<Func<BodyInput>> body, Expression<Func<VoiceInput>> voice = null)
         {
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_voice = WorkflowExpression.Compile(voice, nameof(voice), required: false);
             return new DeferredBodyAction<SynthesizeResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -25,15 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
                 callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
                 if (__workflow_voice != null)
                     callPayload.Queries["voice"] = ExpressionConverter.Convert(__workflow_voice);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SynthesizeResponse>(callPayload);
             });
         }
@@ -51,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        public IBodyWorkflowAction<PronunciationResponse, ApiConnectionActionConfiguration> Pronunciation(Expression<Func<voiceInput>> voice = null, Expression<Func<string>> text = null)
+        public IBodyWorkflowAction<PronunciationResponse, ApiConnectionActionConfiguration> Pronunciation(Expression<Func<VoiceInput>> voice = null, Expression<Func<string>> text = null)
         {
             var __workflow_voice = WorkflowExpression.Compile(voice, nameof(voice), required: false);
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
@@ -93,8 +85,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         public string Base64 { get; set; }
     }
 
+    public class BodyInput
+    {
+        public BodyInput(string text)
+        {
+            this.Text = text;
+        }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum voiceInput
+    public enum VoiceInput
     {
         [EnumMember(Value = "ar-MS_OmarVoice")]
         ArMSOmarVoice,

@@ -28,49 +28,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Formspace
 
     public class FormspaceTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Subscription, ApiConnectionTriggerConfiguration> WhenResponseSubmitted(Expression<Func<string>> organizationId, Expression<Func<string>> formId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Subscription, ApiConnectionPollingTriggerConfiguration> WhenResponseSubmitted(Expression<Func<string>> organizationId, Expression<Func<string>> formId)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
-            return new DeferredBodyTrigger<Subscription, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Subscription, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organizations/{0}/forms/{1}/subscriptions", __workflow_organizationId.WithUrlEncoding(1), __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                subscription["notificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    callPayload.Body = subscription;
-                }
-
-                return new ApiConnectionTrigger<Subscription>(callPayload, recurrence: recurrence);
+                callPayload.Body = new WhenResponseSubmittedSubscriptionInput().ToJToken();
+                return new ApiConnectionPollingTrigger<Subscription>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<Subscription, ApiConnectionTriggerConfiguration> WhenInvokedByWorkflow(Expression<Func<string>> organizationId, Expression<Func<string>> subscriptionnameInFormspace, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Subscription, ApiConnectionPollingTriggerConfiguration> WhenInvokedByWorkflow(Expression<Func<string>> organizationId, Expression<Func<WhenInvokedByWorkflowSubscriptionInput>> subscription)
         {
             var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
-            var __workflow_subscriptionnameInFormspace = WorkflowExpression.Compile(subscriptionnameInFormspace, nameof(subscriptionnameInFormspace), required: true);
-            return new DeferredBodyTrigger<Subscription, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_subscription = WorkflowExpression.Compile(subscription, nameof(subscription), required: true);
+            return new DeferredBodyTrigger<Subscription, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organizations/{0}/workflow-subscriptions", __workflow_organizationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var subscription = new JObject();
-                var subscriptionpropCount = 0;
-                subscriptionpropCount++;
-                subscription["name"] = ExpressionConverter.ConvertO(__workflow_subscriptionnameInFormspace);
-                subscription["notificationUrl"] = "#{listCallbackUrl()}";
-                subscriptionpropCount++;
-                if (subscriptionpropCount > 0)
-                {
-                    callPayload.Body = subscription;
-                }
-
-                return new ApiConnectionTrigger<Subscription>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_subscription);
+                return new ApiConnectionPollingTrigger<Subscription>(callPayload);
             });
         }
     }
@@ -103,6 +85,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Formspace
         ResponseSubmitted,
         [EnumMember(Value = "workflowInvoked")]
         WorkflowInvoked
+    }
+
+    public class WhenResponseSubmittedSubscriptionInput
+    {
+        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+    }
+
+    public class WhenInvokedByWorkflowSubscriptionInput
+    {
+        public WhenInvokedByWorkflowSubscriptionInput(string nameInFormspace)
+        {
+            this.NameInFormspace = nameInFormspace;
+        }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string NameInFormspace { get; set; }
+
+        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

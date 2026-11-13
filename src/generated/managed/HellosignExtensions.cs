@@ -13,15 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
     public class HellosignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hellosign")]
-        public IBodyWorkflowAction<RequestResponse, ApiConnectionActionConfiguration> CreateRequest(Expression<Func<string>> templateId, Expression<Func<testModeInput>> testMode = null, Expression<Func<string>> subject = null, Expression<Func<string>> message = null, Expression<Func<string>> signingRedirectUrl = null, Expression<Func<bool>> allowDecline = null, Expression<Func<object>> signers = null)
+        public IBodyWorkflowAction<RequestResponse, ApiConnectionActionConfiguration> CreateRequest(Expression<Func<string>> templateId, Expression<Func<object>> signers, Expression<Func<TestModeInput>> testMode = null, Expression<Func<string>> subject = null, Expression<Func<string>> message = null, Expression<Func<string>> signingRedirectUrl = null, Expression<Func<bool>> allowDecline = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_signers = WorkflowExpression.Compile(signers, nameof(signers), required: true);
             var __workflow_testMode = WorkflowExpression.Compile(testMode, nameof(testMode), required: false);
             var __workflow_subject = WorkflowExpression.Compile(subject, nameof(subject), required: false);
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: false);
             var __workflow_signingRedirectUrl = WorkflowExpression.Compile(signingRedirectUrl, nameof(signingRedirectUrl), required: false);
             var __workflow_allowDecline = WorkflowExpression.Compile(allowDecline, nameof(allowDecline), required: false);
-            var __workflow_signers = WorkflowExpression.Compile(signers, nameof(signers), required: false);
             return new DeferredBodyAction<RequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/signature_request/send_with_template";
@@ -72,36 +72,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
 
     public class HellosignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<RequestResponse[], ApiConnectionTriggerConfiguration> OnNewRequest(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RequestResponse[], ApiConnectionPollingTriggerConfiguration> OnNewRequest()
         {
-            return new DeferredBodyTrigger<RequestResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RequestResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/request_trigger/v3/signature_request/list";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<RequestResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<RequestResponse[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<RequestResponse[], ApiConnectionTriggerConfiguration> OnRequestCompleted(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RequestResponse[], ApiConnectionPollingTriggerConfiguration> OnRequestCompleted()
         {
-            return new DeferredBodyTrigger<RequestResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RequestResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/complete_trigger/v3/signature_request/list";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<RequestResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<RequestResponse[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<RequestResponse[], ApiConnectionTriggerConfiguration> OnRequestDeclined(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RequestResponse[], ApiConnectionPollingTriggerConfiguration> OnRequestDeclined()
         {
-            return new DeferredBodyTrigger<RequestResponse[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RequestResponse[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/decline_trigger/v3/signature_request/list";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<RequestResponse[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<RequestResponse[]>(callPayload);
             });
         }
     }
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum testModeInput
+    public enum TestModeInput
     {
         Free,
         Paid

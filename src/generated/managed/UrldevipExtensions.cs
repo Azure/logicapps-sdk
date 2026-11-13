@@ -13,86 +13,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
     public class UrldevipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        public IBodyWorkflowAction<LinkPostResponse, ApiConnectionActionConfiguration> Link(Expression<Func<string>> bodyurl, Expression<Func<int>> bodyttl = null)
+        public IBodyWorkflowAction<LinkResponse, ApiConnectionActionConfiguration> Link(Expression<Func<LinkBodyInput>> body)
         {
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyttl = WorkflowExpression.Compile(bodyttl, nameof(bodyttl), required: false);
-            return new DeferredBodyAction<LinkPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<LinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/create/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                if (__workflow_bodyttl != null)
-                {
-                    body["ttl"] = ExpressionConverter.ConvertO(__workflow_bodyttl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<LinkPostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<LinkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> LinkDelete(Expression<Func<string>> bodykey = null)
+        public IBodyWorkflowAction<bool, ApiConnectionActionConfiguration> LinkDelete(Expression<Func<LinkDeleteBodyInput>> body = null)
         {
-            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<bool, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/destroy/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodykey != null)
-                {
-                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<bool>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
-        public IBodyWorkflowAction<MessagePostResponse, ApiConnectionActionConfiguration> Message(Expression<Func<string>> bodymessage, Expression<Func<int>> bodyttl = null)
+        public IBodyWorkflowAction<MessageResponse, ApiConnectionActionConfiguration> Message(Expression<Func<MessageBodyInput>> body)
         {
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
-            var __workflow_bodyttl = WorkflowExpression.Compile(bodyttl, nameof(bodyttl), required: false);
-            return new DeferredBodyAction<MessagePostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<MessageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/messages/create/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                if (__workflow_bodyttl != null)
-                {
-                    body["ttl"] = ExpressionConverter.ConvertO(__workflow_bodyttl);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<MessagePostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<MessageResponse>(callPayload);
             });
         }
     }
@@ -101,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
     {
     }
 
-    public class LinkPostResponse
+    public class LinkResponse
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -116,7 +75,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
         public string LinkUrl { get; set; }
     }
 
-    public class MessagePostResponse
+    public class LinkBodyInput
+    {
+        public LinkBodyInput(string url)
+        {
+            this.Url = url;
+        }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Url { get; set; }
+
+        [JsonProperty("ttl")]
+        public int? Ttl { get; set; }
+    }
+
+    public class LinkDeleteBodyInput
+    {
+        [JsonProperty("key")]
+        public string Key { get; set; }
+    }
+
+    public class MessageResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -129,6 +108,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
 
         [JsonProperty("message_url")]
         public string MessageUrl { get; set; }
+    }
+
+    public class MessageBodyInput
+    {
+        public MessageBodyInput(string message)
+        {
+            this.Message = message;
+        }
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; }
+
+        [JsonProperty("ttl")]
+        public int? Ttl { get; set; }
     }
 }
 

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
     public class TicketmasterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
-        public IBodyWorkflowAction<EventsGetResponse, ApiConnectionActionConfiguration> EventsGet(Expression<Func<int>> size = null, Expression<Func<string>> id = null, Expression<Func<string>> keyword = null, Expression<Func<string>> attractionId = null, Expression<Func<string>> venueId = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> latlong = null, Expression<Func<string>> radius = null, Expression<Func<unitInput>> unit = null, Expression<Func<sourceInput>> source = null, Expression<Func<string>> locale = null, Expression<Func<marketIdInput>> marketId = null, Expression<Func<string>> startDateTime = null, Expression<Func<string>> endDateTime = null, Expression<Func<includeTBAInput>> includeTBA = null, Expression<Func<includeTBDInput>> includeTBD = null, Expression<Func<includeTestInput>> includeTest = null, Expression<Func<string>> page = null, Expression<Func<string>> sort = null, Expression<Func<string>> onsaleStartDateTime = null, Expression<Func<string>> onsaleEndDateTime = null, Expression<Func<string[]>> city = null, Expression<Func<countryCodeInput>> countryCode = null, Expression<Func<string>> stateCode = null, Expression<Func<string[]>> classificationName = null, Expression<Func<string[]>> classificationId = null, Expression<Func<string>> dmaId = null, Expression<Func<string[]>> localStartDateTime = null, Expression<Func<string[]>> localStartEndDateTime = null, Expression<Func<string[]>> startEndDateTime = null, Expression<Func<string[]>> publicVisibilityStartDateTime = null, Expression<Func<string[]>> preSaleDateTime = null, Expression<Func<string>> onsaleOnStartDate = null, Expression<Func<string>> onsaleOnAfterStartDate = null, Expression<Func<string[]>> collectionId = null, Expression<Func<string[]>> segmentId = null, Expression<Func<string[]>> segmentName = null, Expression<Func<includeFamilyInput>> includeFamily = null, Expression<Func<string>> promoterId = null, Expression<Func<string[]>> genreId = null, Expression<Func<string[]>> subGenreId = null, Expression<Func<string[]>> typeId = null, Expression<Func<string[]>> subTypeId = null, Expression<Func<string>> geoPoint = null, Expression<Func<preferredCountryInput>> preferredCountry = null, Expression<Func<includeSpellcheckInput>> includeSpellcheck = null, Expression<Func<string[]>> domain = null)
+        public IBodyWorkflowAction<EventsGetResponse, ApiConnectionActionConfiguration> EventsGet(Expression<Func<int>> size = null, Expression<Func<string>> id = null, Expression<Func<string>> keyword = null, Expression<Func<string>> attractionId = null, Expression<Func<string>> venueId = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> latlong = null, Expression<Func<string>> radius = null, Expression<Func<UnitInput>> unit = null, Expression<Func<SourceInput>> source = null, Expression<Func<string>> locale = null, Expression<Func<MarketIdInput>> marketId = null, Expression<Func<string>> startDateTime = null, Expression<Func<string>> endDateTime = null, Expression<Func<IncludeTBAInput>> includeTBA = null, Expression<Func<IncludeTBDInput>> includeTBD = null, Expression<Func<IncludeTestInput>> includeTest = null, Expression<Func<string>> page = null, Expression<Func<string>> sort = null, Expression<Func<string>> onsaleStartDateTime = null, Expression<Func<string>> onsaleEndDateTime = null, Expression<Func<string[]>> city = null, Expression<Func<CountryCodeInput>> countryCode = null, Expression<Func<string>> stateCode = null, Expression<Func<string[]>> classificationName = null, Expression<Func<string[]>> classificationId = null, Expression<Func<string>> dmaId = null, Expression<Func<string[]>> localStartDateTime = null, Expression<Func<string[]>> localStartEndDateTime = null, Expression<Func<string[]>> startEndDateTime = null, Expression<Func<string[]>> publicVisibilityStartDateTime = null, Expression<Func<string[]>> preSaleDateTime = null, Expression<Func<string>> onsaleOnStartDate = null, Expression<Func<string>> onsaleOnAfterStartDate = null, Expression<Func<string[]>> collectionId = null, Expression<Func<string[]>> segmentId = null, Expression<Func<string[]>> segmentName = null, Expression<Func<IncludeFamilyInput>> includeFamily = null, Expression<Func<string>> promoterId = null, Expression<Func<string[]>> genreId = null, Expression<Func<string[]>> subGenreId = null, Expression<Func<string[]>> typeId = null, Expression<Func<string[]>> subTypeId = null, Expression<Func<string>> geoPoint = null, Expression<Func<PreferredCountryInput>> preferredCountry = null, Expression<Func<IncludeSpellcheckInput>> includeSpellcheck = null, Expression<Func<string[]>> domain = null)
         {
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
-        public IBodyWorkflowAction<AttractionsGetResponse, ApiConnectionActionConfiguration> AttractionsGet(Expression<Func<string>> id = null, Expression<Func<string>> keyword = null, Expression<Func<sourceInput>> source = null, Expression<Func<string>> locale = null, Expression<Func<includeTestInput>> includeTest = null, Expression<Func<string>> size = null, Expression<Func<string>> page = null, Expression<Func<string>> sort = null, Expression<Func<string[]>> classificationName = null, Expression<Func<string[]>> classificationId = null, Expression<Func<includeFamilyInput>> includeFamily = null, Expression<Func<string[]>> segmentId = null, Expression<Func<string[]>> genreId = null, Expression<Func<string[]>> subGenreId = null, Expression<Func<string[]>> typeId = null, Expression<Func<string[]>> subTypeId = null, Expression<Func<countryCodeInput>> countryCode = null, Expression<Func<preferredCountryInput>> preferredCountry = null, Expression<Func<includeSpellcheckInput>> includeSpellcheck = null, Expression<Func<string[]>> domain = null)
+        public IBodyWorkflowAction<AttractionsGetResponse, ApiConnectionActionConfiguration> AttractionsGet(Expression<Func<string>> id = null, Expression<Func<string>> keyword = null, Expression<Func<SourceInput>> source = null, Expression<Func<string>> locale = null, Expression<Func<IncludeTestInput>> includeTest = null, Expression<Func<string>> size = null, Expression<Func<string>> page = null, Expression<Func<string>> sort = null, Expression<Func<string[]>> classificationName = null, Expression<Func<string[]>> classificationId = null, Expression<Func<IncludeFamilyInput>> includeFamily = null, Expression<Func<string[]>> segmentId = null, Expression<Func<string[]>> genreId = null, Expression<Func<string[]>> subGenreId = null, Expression<Func<string[]>> typeId = null, Expression<Func<string[]>> subTypeId = null, Expression<Func<CountryCodeInput>> countryCode = null, Expression<Func<PreferredCountryInput>> preferredCountry = null, Expression<Func<IncludeSpellcheckInput>> includeSpellcheck = null, Expression<Func<string[]>> domain = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_keyword = WorkflowExpression.Compile(keyword, nameof(keyword), required: false);
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
-        public IBodyWorkflowAction<ClassificationsGetResponse, ApiConnectionActionConfiguration> ClassificationsGet(Expression<Func<string>> id = null, Expression<Func<string>> keyword = null, Expression<Func<sourceInput>> source = null, Expression<Func<string>> locale = null, Expression<Func<includeTestInput>> includeTest = null, Expression<Func<string>> size = null, Expression<Func<string>> page = null, Expression<Func<string>> sort = null, Expression<Func<countryCodeInput>> countryCode = null, Expression<Func<preferredCountryInput>> preferredCountry = null, Expression<Func<includeSpellcheckInput>> includeSpellcheck = null, Expression<Func<string[]>> domain = null)
+        public IBodyWorkflowAction<ClassificationsGetResponse, ApiConnectionActionConfiguration> ClassificationsGet(Expression<Func<string>> id = null, Expression<Func<string>> keyword = null, Expression<Func<SourceInput>> source = null, Expression<Func<string>> locale = null, Expression<Func<IncludeTestInput>> includeTest = null, Expression<Func<string>> size = null, Expression<Func<string>> page = null, Expression<Func<string>> sort = null, Expression<Func<CountryCodeInput>> countryCode = null, Expression<Func<PreferredCountryInput>> preferredCountry = null, Expression<Func<IncludeSpellcheckInput>> includeSpellcheck = null, Expression<Func<string[]>> domain = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_keyword = WorkflowExpression.Compile(keyword, nameof(keyword), required: false);
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
-        public IBodyWorkflowAction<VenuesGetResponse, ApiConnectionActionConfiguration> VenuesGet(Expression<Func<string>> id = null, Expression<Func<string>> keyword = null, Expression<Func<string>> latlong = null, Expression<Func<string>> radius = null, Expression<Func<unitInput>> unit = null, Expression<Func<sourceInput>> source = null, Expression<Func<string>> locale = null, Expression<Func<includeTestInput>> includeTest = null, Expression<Func<string>> size = null, Expression<Func<string>> page = null, Expression<Func<sortInput>> sort = null, Expression<Func<countryCodeInput>> countryCode = null, Expression<Func<string>> stateCode = null, Expression<Func<string>> geoPoint = null, Expression<Func<preferredCountryInput>> preferredCountry = null, Expression<Func<includeSpellcheckInput>> includeSpellcheck = null, Expression<Func<string[]>> domain = null)
+        public IBodyWorkflowAction<VenuesGetResponse, ApiConnectionActionConfiguration> VenuesGet(Expression<Func<string>> id = null, Expression<Func<string>> keyword = null, Expression<Func<string>> latlong = null, Expression<Func<string>> radius = null, Expression<Func<UnitInput>> unit = null, Expression<Func<SourceInput>> source = null, Expression<Func<string>> locale = null, Expression<Func<IncludeTestInput>> includeTest = null, Expression<Func<string>> size = null, Expression<Func<string>> page = null, Expression<Func<SortInput>> sort = null, Expression<Func<CountryCodeInput>> countryCode = null, Expression<Func<string>> stateCode = null, Expression<Func<string>> geoPoint = null, Expression<Func<PreferredCountryInput>> preferredCountry = null, Expression<Func<IncludeSpellcheckInput>> includeSpellcheck = null, Expression<Func<string[]>> domain = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_keyword = WorkflowExpression.Compile(keyword, nameof(keyword), required: false);
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ticketmaster")]
-        public IBodyWorkflowAction<SuggestionsGetResponse, ApiConnectionActionConfiguration> SuggestionsGet(Expression<Func<string>> keyword = null, Expression<Func<string>> latlong = null, Expression<Func<string>> radius = null, Expression<Func<unitInput>> unit = null, Expression<Func<sourceInput>> source = null, Expression<Func<string>> locale = null, Expression<Func<includeTBAInput>> includeTBA = null, Expression<Func<includeTBDInput>> includeTBD = null, Expression<Func<includeTestInput>> includeTest = null, Expression<Func<string>> size = null, Expression<Func<countryCodeInput>> countryCode = null, Expression<Func<string[]>> segmentId = null, Expression<Func<string>> geoPoint = null, Expression<Func<string[]>> resource = null, Expression<Func<preferredCountryInput>> preferredCountry = null, Expression<Func<string[]>> startEndDateTime = null, Expression<Func<string[]>> localStartEndDateTime = null, Expression<Func<includeSpellcheckInput>> includeSpellcheck = null, Expression<Func<string[]>> domain = null)
+        public IBodyWorkflowAction<SuggestionsGetResponse, ApiConnectionActionConfiguration> SuggestionsGet(Expression<Func<string>> keyword = null, Expression<Func<string>> latlong = null, Expression<Func<string>> radius = null, Expression<Func<UnitInput>> unit = null, Expression<Func<SourceInput>> source = null, Expression<Func<string>> locale = null, Expression<Func<IncludeTBAInput>> includeTBA = null, Expression<Func<IncludeTBDInput>> includeTBD = null, Expression<Func<IncludeTestInput>> includeTest = null, Expression<Func<string>> size = null, Expression<Func<CountryCodeInput>> countryCode = null, Expression<Func<string[]>> segmentId = null, Expression<Func<string>> geoPoint = null, Expression<Func<string[]>> resource = null, Expression<Func<PreferredCountryInput>> preferredCountry = null, Expression<Func<string[]>> startEndDateTime = null, Expression<Func<string[]>> localStartEndDateTime = null, Expression<Func<IncludeSpellcheckInput>> includeSpellcheck = null, Expression<Func<string[]>> domain = null)
         {
             var __workflow_keyword = WorkflowExpression.Compile(keyword, nameof(keyword), required: false);
             var __workflow_latlong = WorkflowExpression.Compile(latlong, nameof(latlong), required: false);
@@ -1083,7 +1083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum unitInput
+    public enum UnitInput
     {
         [EnumMember(Value = "miles")]
         Miles,
@@ -1092,7 +1092,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sourceInput
+    public enum SourceInput
     {
         [EnumMember(Value = "ticketmaster")]
         Ticketmaster,
@@ -1105,7 +1105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum marketIdInput
+    public enum MarketIdInput
     {
         [EnumMember(Value = "1")]
         BirminghamMore,
@@ -1294,7 +1294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum includeTBAInput
+    public enum IncludeTBAInput
     {
         [EnumMember(Value = "yes")]
         Yes,
@@ -1305,7 +1305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum includeTBDInput
+    public enum IncludeTBDInput
     {
         [EnumMember(Value = "yes")]
         Yes,
@@ -1316,7 +1316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum includeTestInput
+    public enum IncludeTestInput
     {
         [EnumMember(Value = "yes")]
         Yes,
@@ -1327,7 +1327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum countryCodeInput
+    public enum CountryCodeInput
     {
         [EnumMember(Value = "US")]
         UnitedStatesOfAmerica,
@@ -1498,7 +1498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum includeFamilyInput
+    public enum IncludeFamilyInput
     {
         [EnumMember(Value = "yes")]
         Yes,
@@ -1509,7 +1509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum preferredCountryInput
+    public enum PreferredCountryInput
     {
         [EnumMember(Value = "us")]
         Us,
@@ -1518,7 +1518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum includeSpellcheckInput
+    public enum IncludeSpellcheckInput
     {
         [EnumMember(Value = "yes")]
         Yes,
@@ -2859,7 +2859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ticketmaster
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortInput
+    public enum SortInput
     {
         [EnumMember(Value = "name,asc")]
         NameAsc,

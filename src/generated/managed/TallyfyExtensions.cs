@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
     public class TallyfyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<GetUserTasksResponse, ApiConnectionActionConfiguration> GetUserTasks(Expression<Func<string>> org, Expression<Func<int>> userId, Expression<Func<string>> q = null, Expression<Func<statusInput>> status = null, Expression<Func<sortInput>> sort = null, Expression<Func<string>> tag = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<GetUserTasksResponse, ApiConnectionActionConfiguration> GetUserTasks(Expression<Func<string>> org, Expression<Func<int>> userId, Expression<Func<string>> q = null, Expression<Func<StatusInput>> status = null, Expression<Func<SortInput>> sort = null, Expression<Func<string>> tag = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
@@ -45,99 +45,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<InviteUserToOrganizationResponse, ApiConnectionActionConfiguration> InviteUserToOrganization(Expression<Func<string>> org, Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodylastName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodymessage, Expression<Func<bodyroleInput>> bodyrole)
+        public IBodyWorkflowAction<InviteUserToOrganizationResponse, ApiConnectionActionConfiguration> InviteUserToOrganization(Expression<Func<string>> org, Expression<Func<InviteUserToOrganizationBodyInput>> body)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: true);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
-            var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<InviteUserToOrganizationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organizations/{0}/users/invite", __workflow_org.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                bodypropCount++;
-                body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                bodypropCount++;
-                body["role"] = ExpressionConverter.ConvertO(__workflow_bodyrole);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InviteUserToOrganizationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<CreateRunResponse, ApiConnectionActionConfiguration> CreateRun(Expression<Func<string>> org, Expression<Func<string>> bodyname, Expression<Func<string>> bodychecklistId, Expression<Func<string>> bodysummary = null)
+        public IBodyWorkflowAction<CreateRunResponse, ApiConnectionActionConfiguration> CreateRun(Expression<Func<string>> org, Expression<Func<CreateRunBodyInput>> body)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodychecklistId = WorkflowExpression.Compile(bodychecklistId, nameof(bodychecklistId), required: true);
-            var __workflow_bodysummary = WorkflowExpression.Compile(bodysummary, nameof(bodysummary), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateRunResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organizations/{0}/runs", __workflow_org.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["checklist_id"] = ExpressionConverter.ConvertO(__workflow_bodychecklistId);
-                if (__workflow_bodysummary != null)
-                {
-                    body["summary"] = ExpressionConverter.ConvertO(__workflow_bodysummary);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateRunResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CompletedOneOffTask(Expression<Func<string>> org, Expression<Func<string>> bodytaskId, Expression<Func<bool>> bodyisApproved = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CompletedOneOffTask(Expression<Func<string>> org, Expression<Func<CompletedOneOffTaskBodyInput>> body)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
-            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: true);
-            var __workflow_bodyisApproved = WorkflowExpression.Compile(bodyisApproved, nameof(bodyisApproved), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organizations/{0}/completed-tasks", __workflow_org.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["task_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskId);
-                if (__workflow_bodyisApproved != null)
-                {
-                    body["is_approved"] = ExpressionConverter.ConvertO(__workflow_bodyisApproved);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -157,32 +104,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CompletedProcessTask(Expression<Func<string>> org, Expression<Func<string>> run, Expression<Func<string>> bodytaskId, Expression<Func<bool>> bodyisApproved = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CompletedProcessTask(Expression<Func<string>> org, Expression<Func<string>> run, Expression<Func<CompletedOneOffTaskBodyInput>> body)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
             var __workflow_run = WorkflowExpression.Compile(run, nameof(run), required: true);
-            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: true);
-            var __workflow_bodyisApproved = WorkflowExpression.Compile(bodyisApproved, nameof(bodyisApproved), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organizations/{0}/runs/{1}/completed-tasks", __workflow_org.WithUrlEncoding(1), __workflow_run.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["task_id"] = ExpressionConverter.ConvertO(__workflow_bodytaskId);
-                if (__workflow_bodyisApproved != null)
-                {
-                    body["is_approved"] = ExpressionConverter.ConvertO(__workflow_bodyisApproved);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -203,114 +135,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CommentTask(Expression<Func<string>> org, Expression<Func<string>> task, Expression<Func<string>> bodycontent, Expression<Func<bodylabelInput>> bodylabel)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CommentTask(Expression<Func<string>> org, Expression<Func<string>> task, Expression<Func<CommentTaskBodyInput>> body)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
             var __workflow_task = WorkflowExpression.Compile(task, nameof(task), required: true);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
-            var __workflow_bodylabel = WorkflowExpression.Compile(bodylabel, nameof(bodylabel), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/organizations/{0}/tasks/{1}/comment", __workflow_org.WithUrlEncoding(1), __workflow_task.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                bodypropCount++;
-                body["label"] = ExpressionConverter.ConvertO(__workflow_bodylabel);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> org, Expression<Func<bodytaskTypeInput>> bodytaskType, Expression<Func<string>> bodydeadline, Expression<Func<string>> bodyname, Expression<Func<int[]>> bodyownersusers = null, Expression<Func<string[]>> bodyownersguests = null, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<CreateTaskResponse, ApiConnectionActionConfiguration> CreateTask(Expression<Func<string>> org, Expression<Func<CreateTaskBodyInput>> body)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
-            var __workflow_bodytaskType = WorkflowExpression.Compile(bodytaskType, nameof(bodytaskType), required: true);
-            var __workflow_bodydeadline = WorkflowExpression.Compile(bodydeadline, nameof(bodydeadline), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyownersusers = WorkflowExpression.Compile(bodyownersusers, nameof(bodyownersusers), required: false);
-            var __workflow_bodyownersguests = WorkflowExpression.Compile(bodyownersguests, nameof(bodyownersguests), required: false);
-            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateTaskResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/processes/micro-functions/organizations/{0}/tasks", __workflow_org.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var ownersObject = new JObject();
-                var ownersObjectpropCount = 0;
-                if (__workflow_bodyownersusers != null)
-                {
-                    ownersObject["users"] = ExpressionConverter.ConvertO(__workflow_bodyownersusers);
-                    ownersObjectpropCount++;
-                }
-
-                if (__workflow_bodyownersguests != null)
-                {
-                    ownersObject["guests"] = ExpressionConverter.ConvertO(__workflow_bodyownersguests);
-                    ownersObjectpropCount++;
-                }
-
-                if (ownersObjectpropCount > 0)
-                {
-                    body["owners"] = ownersObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["task_type"] = ExpressionConverter.ConvertO(__workflow_bodytaskType);
-                bodypropCount++;
-                body["deadline"] = ExpressionConverter.ConvertO(__workflow_bodydeadline);
-                if (__workflow_bodydescription != null)
-                {
-                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateTaskResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EditTaskDeadline(Expression<Func<string>> org, Expression<Func<string>> task, Expression<Func<string>> bodydeadline = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EditTaskDeadline(Expression<Func<string>> org, Expression<Func<string>> task, Expression<Func<EditTaskDeadlineBodyInput>> body)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
             var __workflow_task = WorkflowExpression.Compile(task, nameof(task), required: true);
-            var __workflow_bodydeadline = WorkflowExpression.Compile(bodydeadline, nameof(bodydeadline), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/processes/micro-functions/organizations/{0}/tasks/{1}/edit-deadline", __workflow_org.WithUrlEncoding(1), __workflow_task.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydeadline != null)
-                {
-                    body["Deadline"] = ExpressionConverter.ConvertO(__workflow_bodydeadline);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -346,30 +212,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tallyfy")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EditStepType(Expression<Func<string>> org, Expression<Func<string>> blueprint, Expression<Func<string>> step, Expression<Func<bodystepTypeInput>> bodystepType = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EditStepType(Expression<Func<string>> org, Expression<Func<string>> blueprint, Expression<Func<string>> step, Expression<Func<EditStepTypeBodyInput>> body)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
             var __workflow_blueprint = WorkflowExpression.Compile(blueprint, nameof(blueprint), required: true);
             var __workflow_step = WorkflowExpression.Compile(step, nameof(step), required: true);
-            var __workflow_bodystepType = WorkflowExpression.Compile(bodystepType, nameof(bodystepType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/processes/micro-functions/organizations/{0}/blueprints/{1}/steps/{2}/edit-step-type", __workflow_org.WithUrlEncoding(1), __workflow_blueprint.WithUrlEncoding(1), __workflow_step.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodystepType != null)
-                {
-                    body["stepType"] = ExpressionConverter.ConvertO(__workflow_bodystepType);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -476,7 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         [EnumMember(Value = "hasproblem")]
         Hasproblem,
@@ -493,7 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortInput
+    public enum SortInput
     {
         [EnumMember(Value = "deadline")]
         Deadline,
@@ -602,8 +456,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         public string Iso2 { get; set; }
     }
 
+    public class InviteUserToOrganizationBodyInput
+    {
+        public InviteUserToOrganizationBodyInput(string firstName, string lastName, string email, string message, BodyInputRoleType role)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Email = email;
+            this.Message = message;
+            this.Role = role;
+        }
+
+        [JsonProperty("first_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FirstName { get; set; }
+
+        [JsonProperty("last_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LastName { get; set; }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; }
+
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputRoleType Role { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyroleInput
+    public enum BodyInputRoleType
     {
         [EnumMember(Value = "standard")]
         Standard,
@@ -722,8 +603,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         public string Value { get; set; }
     }
 
+    public class CreateRunBodyInput
+    {
+        public CreateRunBodyInput(string name, string checklistId)
+        {
+            this.Name = name;
+            this.ChecklistId = checklistId;
+        }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("checklist_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ChecklistId { get; set; }
+
+        [JsonProperty("summary")]
+        public string Summary { get; set; }
+    }
+
+    public class CompletedOneOffTaskBodyInput
+    {
+        public CompletedOneOffTaskBodyInput(string taskId)
+        {
+            this.TaskId = taskId;
+        }
+
+        [JsonProperty("task_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TaskId { get; set; }
+
+        [JsonProperty("is_approved")]
+        public bool? IsApproved { get; set; }
+    }
+
+    public class CommentTaskBodyInput
+    {
+        public CommentTaskBodyInput(string content)
+        {
+            this.Content = content;
+        }
+
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Content { get; set; }
+
+        [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputLabelType Label { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy.BodyInputLabelType.Comment;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodylabelInput
+    public enum BodyInputLabelType
     {
         [EnumMember(Value = "comment")]
         Comment,
@@ -760,8 +687,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         public int OwnerId { get; set; }
     }
 
+    public class CreateTaskBodyInput
+    {
+        public CreateTaskBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
+        [JsonProperty("owners")]
+        public BodyInputOwnersType Owners { get; set; }
+
+        [JsonProperty("task_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputTaskTypeType TaskType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy.BodyInputTaskTypeType.TaskObject;
+
+        [JsonProperty("deadline", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Deadline { get; set; } = "addDays(utcNow(), 1, 'yyyy-MM-dd HH:mm:ss')";
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+    }
+
+    public class BodyInputOwnersType
+    {
+        [JsonProperty("users")]
+        public int[] Users { get; set; }
+
+        [JsonProperty("guests")]
+        public string[] Guests { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytaskTypeInput
+    public enum BodyInputTaskTypeType
     {
         [EnumMember(Value = "task")]
         TaskObject,
@@ -773,8 +732,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tallyfy
         Expiring
     }
 
+    public class EditTaskDeadlineBodyInput
+    {
+        public string Deadline { get; set; }
+    }
+
+    public class EditStepTypeBodyInput
+    {
+        [JsonProperty("stepType")]
+        public BodyInputStepTypeType? StepType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystepTypeInput
+    public enum BodyInputStepTypeType
     {
         [EnumMember(Value = "all")]
         All,

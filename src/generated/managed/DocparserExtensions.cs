@@ -33,24 +33,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
 
     public class DocparserTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreateReponse, ApiConnectionTriggerConfiguration> WebhookCreate(Expression<Func<string>> parserId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreateReponse, ApiConnectionPollingTriggerConfiguration> WebhookCreate(Expression<Func<string>> parserId)
         {
             var __workflow_parserId = WorkflowExpression.Compile(parserId, nameof(parserId), required: true);
-            return new DeferredBodyTrigger<WebhookCreateReponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookCreateReponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/webhook/subscribe/{0}/flow", __workflow_parserId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var targetUrl = new JObject();
-                var targetUrlpropCount = 0;
-                targetUrl["target_url"] = "#{listCallbackUrl()}";
-                targetUrlpropCount++;
-                if (targetUrlpropCount > 0)
-                {
-                    callPayload.Body = targetUrl;
-                }
-
-                return new ApiConnectionTrigger<WebhookCreateReponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new TargetUrlInput().ToJToken();
+                return new ApiConnectionPollingTrigger<WebhookCreateReponse>(callPayload);
             });
         }
     }
@@ -80,6 +72,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
 
         [JsonProperty("parser_id")]
         public string ParserId { get; set; }
+    }
+
+    public class TargetUrlInput
+    {
+        [JsonProperty("target_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

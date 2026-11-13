@@ -13,9 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seektable
     public class SeektableActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CubeImportCsv(Expression<Func<string>> cubeId, Expression<Func<string>> filename = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CubeImportCsv(Expression<Func<string>> cubeId, Expression<Func<object>> cSVContent, Expression<Func<string>> filename = null)
         {
             var __workflow_cubeId = WorkflowExpression.Compile(cubeId, nameof(cubeId), required: true);
+            var __workflow_cSVContent = WorkflowExpression.Compile(cSVContent, nameof(cSVContent), required: true);
             var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
@@ -25,19 +26,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seektable
                 callPayload.Queries["cubeId"] = ExpressionConverter.Convert(__workflow_cubeId);
                 if (__workflow_filename != null)
                     callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
-                var cSVContent = new JObject();
-                var cSVContentpropCount = 0;
-                if (cSVContentpropCount > 0)
-                {
-                    callPayload.Body = cSVContent;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_cSVContent);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReportExport(Expression<Func<string>> reportId, Expression<Func<formatInput>> format, Expression<Func<bool>> htmlInlineStyle = null, Expression<Func<bool>> chartOnly = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ReportExport(Expression<Func<string>> reportId, Expression<Func<FormatInput>> format, Expression<Func<bool>> htmlInlineStyle = null, Expression<Func<bool>> chartOnly = null)
         {
             var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
@@ -83,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seektable
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         [EnumMember(Value = "pdf")]
         Pdf,

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pexelsip
     public class PexelsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pexelsip")]
-        public IBodyWorkflowAction<SearchPhotosResponse, ApiConnectionActionConfiguration> SearchPhotos(Expression<Func<string>> query, Expression<Func<orientationInput>> orientation = null, Expression<Func<sizeInput>> size = null, Expression<Func<string>> color = null, Expression<Func<localeInput>> locale = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<SearchPhotosResponse, ApiConnectionActionConfiguration> SearchPhotos(Expression<Func<string>> query, Expression<Func<OrientationInput>> orientation = null, Expression<Func<SizeInput>> size = null, Expression<Func<string>> color = null, Expression<Func<LocaleInput>> locale = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_orientation = WorkflowExpression.Compile(orientation, nameof(orientation), required: false);
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pexelsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pexelsip")]
-        public IBodyWorkflowAction<SearchVideosResponse, ApiConnectionActionConfiguration> SearchVideos(Expression<Func<string>> query, Expression<Func<orientationInput>> orientation = null, Expression<Func<sizeInput>> size = null, Expression<Func<localeInput>> locale = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<SearchVideosResponse, ApiConnectionActionConfiguration> SearchVideos(Expression<Func<string>> query, Expression<Func<OrientationInput>> orientation = null, Expression<Func<SizeInput>> size = null, Expression<Func<LocaleInput>> locale = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_orientation = WorkflowExpression.Compile(orientation, nameof(orientation), required: false);
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pexelsip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orientationInput
+    public enum OrientationInput
     {
         [EnumMember(Value = "landscape")]
         Landscape,
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pexelsip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sizeInput
+    public enum SizeInput
     {
         [EnumMember(Value = "large")]
         Large,
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pexelsip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum localeInput
+    public enum LocaleInput
     {
         [EnumMember(Value = "en-US")]
         EnUS,

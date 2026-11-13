@@ -277,6 +277,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
                 return new ApiConnectionAction<ListResults>(callPayload);
             });
         }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
+        public IBodyWorkflowAction<GetItemResponse, ApiConnectionActionConfiguration> GetItem(Expression<Func<string>> idOrName)
+        {
+            var __workflow_idOrName = WorkflowExpression.Compile(idOrName, nameof(idOrName), required: true);
+            return new DeferredBodyAction<GetItemResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2/item/{0}/", __workflow_idOrName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetItemResponse>(callPayload);
+            });
+        }
     }
 
     public class PokeapiworldTriggers([ConnectionName] string connectionId)
@@ -768,6 +781,150 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
+    public class GetItemResponse
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("cost")]
+        public int Cost { get; set; }
+
+        [JsonProperty("fling_power")]
+        public int FlingPower { get; set; }
+
+        [JsonProperty("fling_effect")]
+        public GetItemResponseFlingEffectType FlingEffect { get; set; }
+
+        [JsonProperty("attributes")]
+        public GetItemResponseAttributesTypeItem[] Attributes { get; set; }
+
+        [JsonProperty("category")]
+        public GetItemResponseCategoryType Category { get; set; }
+
+        [JsonProperty("effect_entries")]
+        public GetItemResponseEffectEntriesTypeItem[] EffectEntries { get; set; }
+
+        [JsonProperty("flavor_text_entries")]
+        public GetItemResponseFlavorTextEntriesTypeItem[] FlavorTextEntries { get; set; }
+
+        [JsonProperty("game_indices")]
+        public GameIndexTypeItem[] GameIndices { get; set; }
+
+        [JsonProperty("names")]
+        public NamesTypeItem[] Names { get; set; }
+
+        [JsonProperty("sprites")]
+        public GetItemResponseSpritesType Sprites { get; set; }
+
+        [JsonProperty("held_by_pokemon")]
+        public GetItemResponseHeldByPokemonTypeItem[] HeldByPokemon { get; set; }
+
+        [JsonProperty("baby_trigger_for")]
+        public GetItemResponseBabyTriggerForType BabyTriggerFor { get; set; }
+    }
+
+    public class GetItemResponseFlingEffectType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
+    public class GetItemResponseAttributesTypeItem
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
+    public class GetItemResponseCategoryType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
+    public class GetItemResponseEffectEntriesTypeItem
+    {
+        [JsonProperty("effect")]
+        public string Effect { get; set; }
+
+        [JsonProperty("short_effect")]
+        public string ShortEffect { get; set; }
+
+        [JsonProperty("language")]
+        public LanguageType Language { get; set; }
+    }
+
+    public class GetItemResponseFlavorTextEntriesTypeItem
+    {
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("version_group")]
+        public VersionGroupType VersionGroup { get; set; }
+
+        [JsonProperty("language")]
+        public LanguageType Language { get; set; }
+    }
+
+    public class GetItemResponseSpritesType
+    {
+        [JsonProperty("default")]
+        public string Default { get; set; }
+    }
+
+    public class GetItemResponseHeldByPokemonTypeItem
+    {
+        [JsonProperty("pokemon")]
+        public GetItemResponseHeldByPokemonTypeItemPokemonType Pokemon { get; set; }
+
+        [JsonProperty("version_details")]
+        public GetItemResponseHeldByPokemonTypeItemVersionDetailsTypeItem[] VersionDetails { get; set; }
+    }
+
+    public class GetItemResponseHeldByPokemonTypeItemPokemonType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
+    public class GetItemResponseHeldByPokemonTypeItemVersionDetailsTypeItem
+    {
+        [JsonProperty("rarity")]
+        public int Rarity { get; set; }
+
+        [JsonProperty("version")]
+        public GetItemResponseHeldByPokemonTypeItemVersionDetailsTypeItemVersionType Version { get; set; }
+    }
+
+    public class GetItemResponseHeldByPokemonTypeItemVersionDetailsTypeItemVersionType
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
+    public class GetItemResponseBabyTriggerForType
+    {
         [JsonProperty("url")]
         public string Url { get; set; }
     }

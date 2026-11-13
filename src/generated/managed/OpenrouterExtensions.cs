@@ -65,51 +65,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
-        public IBodyWorkflowAction<ChatCompletionResponse, ApiConnectionActionConfiguration> ChatCompletion(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages)
+        public IBodyWorkflowAction<ChatCompletionResponse, ApiConnectionActionConfiguration> ChatCompletion(Expression<Func<ChatCompletionBodyInput>> body)
         {
-            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ChatCompletionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/chat/completions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
-                bodypropCount++;
-                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
-        public IBodyWorkflowAction<CompletionResponse, ApiConnectionActionConfiguration> Completion(Expression<Func<string>> bodymodel, Expression<Func<string>> bodyprompt)
+        public IBodyWorkflowAction<CompletionResponse, ApiConnectionActionConfiguration> Completion(Expression<Func<CompletionBodyInput>> body)
         {
-            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CompletionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/completions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
-                bodypropCount++;
-                body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CompletionResponse>(callPayload);
             });
         }
@@ -347,17 +325,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         public string Content { get; set; }
     }
 
-    public class bodymessagesInputItem
+    public class ChatCompletionBodyInput
     {
-        [JsonProperty("role")]
-        public bodymessagesInputItemRoleType Role { get; set; }
+        public ChatCompletionBodyInput(string model, BodyInputMessagesTypeItem[] messages)
+        {
+            this.Model = model;
+            this.Messages = messages;
+        }
 
-        [JsonProperty("content")]
+        [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Model { get; set; }
+
+        [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputMessagesTypeItem[] Messages { get; set; }
+    }
+
+    public class BodyInputMessagesTypeItem
+    {
+        public BodyInputMessagesTypeItem(BodyInputMessagesTypeItemRoleType role, string content)
+        {
+            this.Role = role;
+            this.Content = content;
+        }
+
+        [JsonProperty("role", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputMessagesTypeItemRoleType Role { get; set; }
+
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymessagesInputItemRoleType
+    public enum BodyInputMessagesTypeItemRoleType
     {
         [EnumMember(Value = "system")]
         System,
@@ -386,6 +385,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
 
         [JsonProperty("finish_reason")]
         public string FinishReason { get; set; }
+    }
+
+    public class CompletionBodyInput
+    {
+        public CompletionBodyInput(string model, string prompt)
+        {
+            this.Model = model;
+            this.Prompt = prompt;
+        }
+
+        [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Model { get; set; }
+
+        [JsonProperty("prompt", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Prompt { get; set; }
     }
 }
 

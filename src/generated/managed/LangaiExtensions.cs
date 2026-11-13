@@ -13,75 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
     public class LangaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]
-        public IBodyWorkflowAction<AnalyzeResponse, ApiConnectionActionConfiguration> Analyze(Expression<Func<string>> bodytext, Expression<Func<string>> bodyprojectId)
+        public IBodyWorkflowAction<AnalyzeResponse, ApiConnectionActionConfiguration> Analyze(Expression<Func<AnalyzeBodyInput>> body)
         {
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<AnalyzeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/analyze";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                bodypropCount++;
-                body["projectId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<AnalyzeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]
-        public IBodyWorkflowAction<DocumentsResponse, ApiConnectionActionConfiguration> Documents(Expression<Func<string>> bodytext, Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodydate = null)
+        public IBodyWorkflowAction<DocumentsResponse, ApiConnectionActionConfiguration> Documents(Expression<Func<DocumentsBodyInput>> body)
         {
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<DocumentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/documents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                bodypropCount++;
-                body["projectId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                if (__workflow_bodyid != null)
-                {
-                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodydate != null)
-                {
-                    body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                    bodypropCount++;
-                }
-
-                var metadataObject = new JObject();
-                var metadataObjectpropCount = 0;
-                if (metadataObjectpropCount > 0)
-                {
-                    body["metadata"] = metadataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DocumentsResponse>(callPayload);
             });
         }
@@ -145,6 +101,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
         public string[] Features { get; set; }
     }
 
+    public class AnalyzeBodyInput
+    {
+        public AnalyzeBodyInput(string text, string projectId)
+        {
+            this.Text = text;
+            this.ProjectId = projectId;
+        }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+
+        [JsonProperty("projectId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProjectId { get; set; }
+    }
+
     public class DocumentsResponse
     {
         [JsonProperty("tags")]
@@ -170,6 +141,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
 
         [JsonProperty("features")]
         public string[] Features { get; set; }
+    }
+
+    public class DocumentsBodyInput
+    {
+        public DocumentsBodyInput(string text, string projectId)
+        {
+            this.Text = text;
+            this.ProjectId = projectId;
+        }
+
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Text { get; set; }
+
+        [JsonProperty("projectId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProjectId { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("date")]
+        public string Date { get; set; }
+
+        [JsonProperty("metadata")]
+        public JToken Metadata { get; set; }
     }
 
     public class ProjectsResponseItem

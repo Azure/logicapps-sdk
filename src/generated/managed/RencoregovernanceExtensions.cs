@@ -30,26 +30,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
 
     public class RencoregovernanceTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CheckNotificationTrigger(Expression<Func<string>> workspaceId, Expression<Func<string>> environmentId, Expression<Func<string>> checkId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CheckNotificationTrigger(Expression<Func<string>> workspaceId, Expression<Func<string>> environmentId, Expression<Func<string>> checkId)
         {
             var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
             var __workflow_checkId = WorkflowExpression.Compile(checkId, nameof(checkId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/hooks", __workflow_workspaceId.WithUrlEncoding(1), __workflow_environmentId.WithUrlEncoding(1), __workflow_checkId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = new BodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }
@@ -181,6 +173,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
 
         [JsonProperty("type")]
         public string Type { get; set; }
+    }
+
+    public class BodyInput
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

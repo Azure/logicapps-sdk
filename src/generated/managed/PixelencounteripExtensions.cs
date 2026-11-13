@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
-        public IBodyWorkflowAction<MonsterResponse, ApiConnectionActionConfiguration> GetRandomSvgMonster(Expression<Func<string>> primaryColor = null, Expression<Func<fillTypeInput>> fillType = null, Expression<Func<string>> backgroundColor = null, Expression<Func<string>> secondaryColor = null)
+        public IBodyWorkflowAction<MonsterResponse, ApiConnectionActionConfiguration> GetRandomSvgMonster(Expression<Func<string>> primaryColor = null, Expression<Func<FillTypeInput>> fillType = null, Expression<Func<string>> backgroundColor = null, Expression<Func<string>> secondaryColor = null)
         {
             var __workflow_primaryColor = WorkflowExpression.Compile(primaryColor, nameof(primaryColor), required: false);
             var __workflow_fillType = WorkflowExpression.Compile(fillType, nameof(fillType), required: false);
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
         public string SvgContent { get; set; }
     }
 
-    public enum fillTypeInput
+    public enum FillTypeInput
     {
         _0 = 0,
         _1 = 1,

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clearbitip
     public class ClearbitipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clearbitip")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> LogoGet(Expression<Func<string>> domain, Expression<Func<int>> size = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> greyscale = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> LogoGet(Expression<Func<string>> domain, Expression<Func<int>> size = null, Expression<Func<FormatInput>> format = null, Expression<Func<bool>> greyscale = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clearbitip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         [EnumMember(Value = "png")]
         Png,

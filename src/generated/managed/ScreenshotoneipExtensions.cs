@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
     public class ScreenshotoneipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "screenshotoneip")]
-        public IBodyWorkflowAction<TakeGetResponse, ApiConnectionActionConfiguration> TakeGet(Expression<Func<string>> url = null, Expression<Func<string>> html = null, Expression<Func<formatInput>> format = null, Expression<Func<responseTypeInput>> responseType = null, Expression<Func<string>> selector = null, Expression<Func<bool>> captureBeyondViewport = null, Expression<Func<string>> scrollIntoView = null, Expression<Func<int>> scrollIntoViewAdjustTop = null, Expression<Func<bool>> fullPage = null, Expression<Func<bool>> fullPageScroll = null, Expression<Func<int>> fullPageScrollDelay = null, Expression<Func<int>> fullPageScrollBy = null, Expression<Func<int>> fullPageMaxHeight = null, Expression<Func<string>> viewportDevice = null, Expression<Func<int>> viewportWidth = null, Expression<Func<int>> viewportHeight = null, Expression<Func<int>> deviceScaleFactor = null, Expression<Func<bool>> viewportMobile = null, Expression<Func<bool>> viewportHasTouch = null, Expression<Func<bool>> viewportLandscape = null, Expression<Func<int>> imageQuality = null, Expression<Func<int>> imageWidth = null, Expression<Func<int>> imageHeight = null, Expression<Func<bool>> omitBackground = null, Expression<Func<bool>> darkMode = null, Expression<Func<bool>> reducedMotion = null, Expression<Func<string>> mediaType = null, Expression<Func<string>> hideSelectors = null, Expression<Func<string>> scripts = null, Expression<Func<string>> scriptsWaitUntil = null, Expression<Func<string>> styles = null, Expression<Func<string>> click = null, Expression<Func<bool>> blockCookieBanners = null, Expression<Func<bool>> blockBannersByHeuristics = null, Expression<Func<bool>> blockChats = null, Expression<Func<bool>> blockAds = null, Expression<Func<bool>> blockTrackers = null, Expression<Func<string>> blockRequests = null, Expression<Func<string>> blockResources = null, Expression<Func<double>> geolocationLatitude = null, Expression<Func<double>> geolocationLongitude = null, Expression<Func<int>> geolocationAccuracy = null, Expression<Func<ipCountryCodeInput>> ipCountryCode = null, Expression<Func<string>> proxy = null, Expression<Func<string>> userAgent = null, Expression<Func<string>> authorization = null, Expression<Func<string>> cookies = null, Expression<Func<string>> headers = null, Expression<Func<timeZoneInput>> timeZone = null, Expression<Func<string>> waitUntil = null, Expression<Func<int>> delay = null, Expression<Func<int>> timeout = null, Expression<Func<int>> navigationTimeout = null, Expression<Func<string>> waitForSelector = null, Expression<Func<bool>> cache = null, Expression<Func<int>> cacheTtl = null, Expression<Func<int>> cacheKey = null, Expression<Func<bool>> store = null, Expression<Func<string>> storagePath = null, Expression<Func<string>> storageBucket = null, Expression<Func<storageClassInput>> storageClass = null, Expression<Func<string>> storageAcl = null, Expression<Func<bool>> metadataImageSize = null, Expression<Func<bool>> ignoreHostErrors = null, Expression<Func<bool>> errorOnSelectorNotFound = null)
+        public IBodyWorkflowAction<TakeGetResponse, ApiConnectionActionConfiguration> TakeGet(Expression<Func<string>> url = null, Expression<Func<string>> html = null, Expression<Func<TakeGetFormatInput>> format = null, Expression<Func<ResponseTypeInput>> responseType = null, Expression<Func<string>> selector = null, Expression<Func<bool>> captureBeyondViewport = null, Expression<Func<string>> scrollIntoView = null, Expression<Func<int>> scrollIntoViewAdjustTop = null, Expression<Func<bool>> fullPage = null, Expression<Func<bool>> fullPageScroll = null, Expression<Func<int>> fullPageScrollDelay = null, Expression<Func<int>> fullPageScrollBy = null, Expression<Func<int>> fullPageMaxHeight = null, Expression<Func<string>> viewportDevice = null, Expression<Func<int>> viewportWidth = null, Expression<Func<int>> viewportHeight = null, Expression<Func<int>> deviceScaleFactor = null, Expression<Func<bool>> viewportMobile = null, Expression<Func<bool>> viewportHasTouch = null, Expression<Func<bool>> viewportLandscape = null, Expression<Func<int>> imageQuality = null, Expression<Func<int>> imageWidth = null, Expression<Func<int>> imageHeight = null, Expression<Func<bool>> omitBackground = null, Expression<Func<bool>> darkMode = null, Expression<Func<bool>> reducedMotion = null, Expression<Func<string>> mediaType = null, Expression<Func<string>> hideSelectors = null, Expression<Func<string>> scripts = null, Expression<Func<string>> scriptsWaitUntil = null, Expression<Func<string>> styles = null, Expression<Func<string>> click = null, Expression<Func<bool>> blockCookieBanners = null, Expression<Func<bool>> blockBannersByHeuristics = null, Expression<Func<bool>> blockChats = null, Expression<Func<bool>> blockAds = null, Expression<Func<bool>> blockTrackers = null, Expression<Func<string>> blockRequests = null, Expression<Func<string>> blockResources = null, Expression<Func<double>> geolocationLatitude = null, Expression<Func<double>> geolocationLongitude = null, Expression<Func<int>> geolocationAccuracy = null, Expression<Func<IpCountryCodeInput>> ipCountryCode = null, Expression<Func<string>> proxy = null, Expression<Func<string>> userAgent = null, Expression<Func<string>> authorization = null, Expression<Func<string>> cookies = null, Expression<Func<string>> headers = null, Expression<Func<TimeZoneInput>> timeZone = null, Expression<Func<string>> waitUntil = null, Expression<Func<int>> delay = null, Expression<Func<int>> timeout = null, Expression<Func<int>> navigationTimeout = null, Expression<Func<string>> waitForSelector = null, Expression<Func<bool>> cache = null, Expression<Func<int>> cacheTtl = null, Expression<Func<int>> cacheKey = null, Expression<Func<bool>> store = null, Expression<Func<string>> storagePath = null, Expression<Func<string>> storageBucket = null, Expression<Func<StorageClassInput>> storageClass = null, Expression<Func<string>> storageAcl = null, Expression<Func<bool>> metadataImageSize = null, Expression<Func<bool>> ignoreHostErrors = null, Expression<Func<bool>> errorOnSelectorNotFound = null)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: false);
             var __workflow_html = WorkflowExpression.Compile(html, nameof(html), required: false);
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "screenshotoneip")]
-        public IBodyWorkflowAction<TakeAnimatedGetResponse, ApiConnectionActionConfiguration> TakeAnimatedGet(Expression<Func<string>> url = null, Expression<Func<string>> scenario = null, Expression<Func<int>> scrollDelay = null, Expression<Func<int>> scrollDuration = null, Expression<Func<int>> scrollBy = null, Expression<Func<bool>> scrollStartImmediately = null, Expression<Func<bool>> scrollBack = null, Expression<Func<int>> scrollBackAfterDuration = null, Expression<Func<bool>> scrollComplete = null, Expression<Func<int>> scrollStopAfterDuration = null, Expression<Func<scrollEasingInput>> scrollEasing = null, Expression<Func<formatInput>> format = null, Expression<Func<int>> duration = null, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<string>> aspectRatio = null, Expression<Func<string>> viewportDevice = null, Expression<Func<int>> viewportWidth = null, Expression<Func<int>> viewportHeight = null, Expression<Func<int>> deviceScaleFactor = null, Expression<Func<bool>> viewportMobile = null, Expression<Func<bool>> viewportHasTouch = null, Expression<Func<bool>> viewportLandscape = null, Expression<Func<bool>> blockCookieBanners = null, Expression<Func<bool>> blockBannersByHeuristics = null, Expression<Func<bool>> blockChats = null, Expression<Func<bool>> blockAds = null, Expression<Func<bool>> blockTrackers = null, Expression<Func<string>> blockRequests = null, Expression<Func<string>> blockResources = null, Expression<Func<double>> geolocationLatitude = null, Expression<Func<double>> geolocationLongitude = null, Expression<Func<int>> geolocationAccuracy = null, Expression<Func<ipCountryCodeInput>> ipCountryCode = null, Expression<Func<string>> proxy = null, Expression<Func<string>> userAgent = null, Expression<Func<string>> authorization = null, Expression<Func<string>> cookies = null, Expression<Func<string>> headers = null, Expression<Func<timeZoneInput>> timeZone = null, Expression<Func<string>> waitUntil = null, Expression<Func<int>> delay = null, Expression<Func<int>> timeout = null, Expression<Func<int>> navigationTimeout = null, Expression<Func<string>> waitForSelector = null, Expression<Func<bool>> cache = null, Expression<Func<int>> cacheTtl = null, Expression<Func<int>> cacheKey = null, Expression<Func<bool>> store = null, Expression<Func<string>> storagePath = null, Expression<Func<string>> storageBucket = null, Expression<Func<storageClassInput>> storageClass = null, Expression<Func<string>> storageAcl = null, Expression<Func<bool>> metadataImageSize = null, Expression<Func<bool>> ignoreHostErrors = null, Expression<Func<bool>> errorOnSelectorNotFound = null)
+        public IBodyWorkflowAction<TakeAnimatedGetResponse, ApiConnectionActionConfiguration> TakeAnimatedGet(Expression<Func<string>> url = null, Expression<Func<string>> scenario = null, Expression<Func<int>> scrollDelay = null, Expression<Func<int>> scrollDuration = null, Expression<Func<int>> scrollBy = null, Expression<Func<bool>> scrollStartImmediately = null, Expression<Func<bool>> scrollBack = null, Expression<Func<int>> scrollBackAfterDuration = null, Expression<Func<bool>> scrollComplete = null, Expression<Func<int>> scrollStopAfterDuration = null, Expression<Func<ScrollEasingInput>> scrollEasing = null, Expression<Func<TakeAnimatedGetFormatInput>> format = null, Expression<Func<int>> duration = null, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<string>> aspectRatio = null, Expression<Func<string>> viewportDevice = null, Expression<Func<int>> viewportWidth = null, Expression<Func<int>> viewportHeight = null, Expression<Func<int>> deviceScaleFactor = null, Expression<Func<bool>> viewportMobile = null, Expression<Func<bool>> viewportHasTouch = null, Expression<Func<bool>> viewportLandscape = null, Expression<Func<bool>> blockCookieBanners = null, Expression<Func<bool>> blockBannersByHeuristics = null, Expression<Func<bool>> blockChats = null, Expression<Func<bool>> blockAds = null, Expression<Func<bool>> blockTrackers = null, Expression<Func<string>> blockRequests = null, Expression<Func<string>> blockResources = null, Expression<Func<double>> geolocationLatitude = null, Expression<Func<double>> geolocationLongitude = null, Expression<Func<int>> geolocationAccuracy = null, Expression<Func<IpCountryCodeInput>> ipCountryCode = null, Expression<Func<string>> proxy = null, Expression<Func<string>> userAgent = null, Expression<Func<string>> authorization = null, Expression<Func<string>> cookies = null, Expression<Func<string>> headers = null, Expression<Func<TimeZoneInput>> timeZone = null, Expression<Func<string>> waitUntil = null, Expression<Func<int>> delay = null, Expression<Func<int>> timeout = null, Expression<Func<int>> navigationTimeout = null, Expression<Func<string>> waitForSelector = null, Expression<Func<bool>> cache = null, Expression<Func<int>> cacheTtl = null, Expression<Func<int>> cacheKey = null, Expression<Func<bool>> store = null, Expression<Func<string>> storagePath = null, Expression<Func<string>> storageBucket = null, Expression<Func<StorageClassInput>> storageClass = null, Expression<Func<string>> storageAcl = null, Expression<Func<bool>> metadataImageSize = null, Expression<Func<bool>> ignoreHostErrors = null, Expression<Func<bool>> errorOnSelectorNotFound = null)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: false);
             var __workflow_scenario = WorkflowExpression.Compile(scenario, nameof(scenario), required: false);
@@ -442,22 +442,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum TakeGetFormatInput
     {
-        [EnumMember(Value = "mp4")]
-        Mp4,
-        [EnumMember(Value = "mov")]
-        Mov,
-        [EnumMember(Value = "avi")]
-        Avi,
-        [EnumMember(Value = "webm")]
-        Webm,
+        [EnumMember(Value = "jpg")]
+        Jpg,
+        [EnumMember(Value = "png")]
+        Png,
+        [EnumMember(Value = "webp")]
+        Webp,
         [EnumMember(Value = "gif")]
-        Gif
+        Gif,
+        [EnumMember(Value = "jp2")]
+        Jp2,
+        [EnumMember(Value = "tiff")]
+        Tiff,
+        [EnumMember(Value = "avif")]
+        Avif,
+        [EnumMember(Value = "heif")]
+        Heif,
+        [EnumMember(Value = "html")]
+        Html
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum responseTypeInput
+    public enum ResponseTypeInput
     {
         [EnumMember(Value = "by_format")]
         ByFormat,
@@ -468,7 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ipCountryCodeInput
+    public enum IpCountryCodeInput
     {
         [EnumMember(Value = "us")]
         Us,
@@ -501,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum timeZoneInput
+    public enum TimeZoneInput
     {
         [EnumMember(Value = "America/Belize")]
         AmericaBelize,
@@ -572,7 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum storageClassInput
+    public enum StorageClassInput
     {
         [EnumMember(Value = "standard")]
         Standard,
@@ -604,7 +612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum scrollEasingInput
+    public enum ScrollEasingInput
     {
         [EnumMember(Value = "linear")]
         Linear,
@@ -632,6 +640,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
         EaseOutQuint,
         [EnumMember(Value = "ease_in_out_quint")]
         EaseInOutQuint
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum TakeAnimatedGetFormatInput
+    {
+        [EnumMember(Value = "mp4")]
+        Mp4,
+        [EnumMember(Value = "mov")]
+        Mov,
+        [EnumMember(Value = "avi")]
+        Avi,
+        [EnumMember(Value = "webm")]
+        Webm,
+        [EnumMember(Value = "gif")]
+        Gif
     }
 
     public class DeviceGetResponseItem

@@ -13,46 +13,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
     public class ClicksendsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<SmsSendResponse, ApiConnectionActionConfiguration> SmsSend(Expression<Func<bodymessagesInputItem[]>> bodymessages)
+        public IBodyWorkflowAction<SmsSendResponse, ApiConnectionActionConfiguration> SmsSend(Expression<Func<SmsSendBodyInput>> body)
         {
-            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SmsSendResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms/send";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SmsSendResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<CreateListResponse, ApiConnectionActionConfiguration> CreateList(Expression<Func<string>> bodylistName)
+        public IBodyWorkflowAction<SmsCampaignSendResponse, ApiConnectionActionConfiguration> SmsCampaignSend(Expression<Func<SmsCampaignSendBodyInput>> body)
         {
-            var __workflow_bodylistName = WorkflowExpression.Compile(bodylistName, nameof(bodylistName), required: true);
-            return new DeferredBodyAction<CreateListResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<SmsCampaignSendResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = "/lists";
+                var apiCallPath = "/sms-campaigns/send";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["list_name"] = ExpressionConverter.ConvertO(__workflow_bodylistName);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<CreateListResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<SmsCampaignSendResponse>(callPayload);
             });
         }
 
@@ -75,24 +59,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<SendVoiceResponse, ApiConnectionActionConfiguration> SendVoice(Expression<Func<bodymessagesInputItem2[]>> bodymessages)
+        public IBodyWorkflowAction<CreateListResponse, ApiConnectionActionConfiguration> CreateList(Expression<Func<CreateListBodyInput>> body)
         {
-            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
-            return new DeferredBodyAction<SendVoiceResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<CreateListResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = "/voice/send";
+                var apiCallPath = "/lists";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<SendVoiceResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<CreateListResponse>(callPayload);
             });
         }
 
@@ -110,126 +86,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<CreateListContactResponse, ApiConnectionActionConfiguration> CreateListContact(Expression<Func<int>> listId, Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodylastName, Expression<Func<string>> bodyphoneNumber, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfaxNumber = null, Expression<Func<string>> bodyorganizationName = null, Expression<Func<string>> bodyaddressCountry = null, Expression<Func<string>> bodyaddressState = null, Expression<Func<string>> bodyaddressCity = null, Expression<Func<string>> bodycustom1 = null, Expression<Func<string>> bodycustom3 = null, Expression<Func<string>> bodyaddressPostalCode = null, Expression<Func<string>> bodycustom2 = null, Expression<Func<string>> bodycustom4 = null, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null)
-        {
-            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
-            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: true);
-            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: true);
-            var __workflow_bodyphoneNumber = WorkflowExpression.Compile(bodyphoneNumber, nameof(bodyphoneNumber), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyfaxNumber = WorkflowExpression.Compile(bodyfaxNumber, nameof(bodyfaxNumber), required: false);
-            var __workflow_bodyorganizationName = WorkflowExpression.Compile(bodyorganizationName, nameof(bodyorganizationName), required: false);
-            var __workflow_bodyaddressCountry = WorkflowExpression.Compile(bodyaddressCountry, nameof(bodyaddressCountry), required: false);
-            var __workflow_bodyaddressState = WorkflowExpression.Compile(bodyaddressState, nameof(bodyaddressState), required: false);
-            var __workflow_bodyaddressCity = WorkflowExpression.Compile(bodyaddressCity, nameof(bodyaddressCity), required: false);
-            var __workflow_bodycustom1 = WorkflowExpression.Compile(bodycustom1, nameof(bodycustom1), required: false);
-            var __workflow_bodycustom3 = WorkflowExpression.Compile(bodycustom3, nameof(bodycustom3), required: false);
-            var __workflow_bodyaddressPostalCode = WorkflowExpression.Compile(bodyaddressPostalCode, nameof(bodyaddressPostalCode), required: false);
-            var __workflow_bodycustom2 = WorkflowExpression.Compile(bodycustom2, nameof(bodycustom2), required: false);
-            var __workflow_bodycustom4 = WorkflowExpression.Compile(bodycustom4, nameof(bodycustom4), required: false);
-            var __workflow_bodyaddressLine1 = WorkflowExpression.Compile(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
-            var __workflow_bodyaddressLine2 = WorkflowExpression.Compile(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
-            return new DeferredBodyAction<CreateListContactResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/contacts", __workflow_listId.WithUrlEncoding(1)));
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["first_name"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
-                bodypropCount++;
-                body["last_name"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
-                bodypropCount++;
-                body["phone_number"] = ExpressionConverter.ConvertO(__workflow_bodyphoneNumber);
-                if (__workflow_bodyemail != null)
-                {
-                    body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyfaxNumber != null)
-                {
-                    body["fax_number"] = ExpressionConverter.ConvertO(__workflow_bodyfaxNumber);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyorganizationName != null)
-                {
-                    body["organization_name"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressCountry != null)
-                {
-                    body["address_country"] = ExpressionConverter.ConvertO(__workflow_bodyaddressCountry);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressState != null)
-                {
-                    body["address_state"] = ExpressionConverter.ConvertO(__workflow_bodyaddressState);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressCity != null)
-                {
-                    body["address_city"] = ExpressionConverter.ConvertO(__workflow_bodyaddressCity);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustom1 != null)
-                {
-                    body["custom_1"] = ExpressionConverter.ConvertO(__workflow_bodycustom1);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustom3 != null)
-                {
-                    body["custom_3"] = ExpressionConverter.ConvertO(__workflow_bodycustom3);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressPostalCode != null)
-                {
-                    body["address_postal_code"] = ExpressionConverter.ConvertO(__workflow_bodyaddressPostalCode);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustom2 != null)
-                {
-                    body["custom_2"] = ExpressionConverter.ConvertO(__workflow_bodycustom2);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycustom4 != null)
-                {
-                    body["custom_4"] = ExpressionConverter.ConvertO(__workflow_bodycustom4);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressLine1 != null)
-                {
-                    body["address_line_1"] = ExpressionConverter.ConvertO(__workflow_bodyaddressLine1);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaddressLine2 != null)
-                {
-                    body["address_line_2"] = ExpressionConverter.ConvertO(__workflow_bodyaddressLine2);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<CreateListContactResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
         public IBodyWorkflowAction<ViewListContactsResponse, ApiConnectionActionConfiguration> ViewListContacts(Expression<Func<int>> listId)
         {
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
@@ -239,6 +95,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<ViewListContactsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
+        public IBodyWorkflowAction<CreateListContactResponse, ApiConnectionActionConfiguration> CreateListContact(Expression<Func<int>> listId, Expression<Func<CreateListContactBodyInput>> body)
+        {
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<CreateListContactResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/contacts", __workflow_listId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<CreateListContactResponse>(callPayload);
             });
         }
 
@@ -257,75 +128,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<SendMmsResponse, ApiConnectionActionConfiguration> SendMms(Expression<Func<bodymessagesInputItem22[]>> bodymessages, Expression<Func<string>> bodymediaFile)
+        public IBodyWorkflowAction<SendMmsResponse, ApiConnectionActionConfiguration> SendMms(Expression<Func<SendMmsBodyInput>> body)
         {
-            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
-            var __workflow_bodymediaFile = WorkflowExpression.Compile(bodymediaFile, nameof(bodymediaFile), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<SendMmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mms/send";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
-                bodypropCount++;
-                body["media_file"] = ExpressionConverter.ConvertO(__workflow_bodymediaFile);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SendMmsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<SendFaxResponse, ApiConnectionActionConfiguration> SendFax(Expression<Func<bodymessagesInputItem222[]>> bodymessages, Expression<Func<string>> bodyfileUrl)
-        {
-            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: true);
-            return new DeferredBodyAction<SendFaxResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/fax/send";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
-                bodypropCount++;
-                body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<SendFaxResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMedia(Expression<Func<convertInput>> convert, Expression<Func<WorkflowBinaryContent>> bodycontent)
+        public IBodyWorkflowAction<UploadMediaResponse, ApiConnectionActionConfiguration> UploadMedia(Expression<Func<ConvertInput>> convert, Expression<Func<UploadMediaBodyInput>> body)
         {
             var __workflow_convert = WorkflowExpression.Compile(convert, nameof(convert), required: true);
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UploadMediaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/uploads";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["convert"] = ExpressionConverter.Convert(__workflow_convert);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UploadMediaResponse>(callPayload);
             });
         }
@@ -343,113 +170,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
                 return new ApiConnectionAction<SearchContactListResponse>(callPayload);
             });
         }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<SendLetterResponse, ApiConnectionActionConfiguration> SendLetter(Expression<Func<string>> bodyfileUrl, Expression<Func<bodycolourInput>> bodycolour, Expression<Func<bodyduplexInput>> bodyduplex, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients, Expression<Func<bodytemplateUsedInput>> bodytemplateUsed = null, Expression<Func<bodypriorityPostInput>> bodypriorityPost = null)
-        {
-            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: true);
-            var __workflow_bodycolour = WorkflowExpression.Compile(bodycolour, nameof(bodycolour), required: true);
-            var __workflow_bodyduplex = WorkflowExpression.Compile(bodyduplex, nameof(bodyduplex), required: true);
-            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: true);
-            var __workflow_bodytemplateUsed = WorkflowExpression.Compile(bodytemplateUsed, nameof(bodytemplateUsed), required: false);
-            var __workflow_bodypriorityPost = WorkflowExpression.Compile(bodypriorityPost, nameof(bodypriorityPost), required: false);
-            return new DeferredBodyAction<SendLetterResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/post/letters/send";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_url"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrl);
-                if (__workflow_bodytemplateUsed != null)
-                {
-                    body["template_used"] = ExpressionConverter.ConvertO(__workflow_bodytemplateUsed);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["colour"] = ExpressionConverter.ConvertO(__workflow_bodycolour);
-                bodypropCount++;
-                body["duplex"] = ExpressionConverter.ConvertO(__workflow_bodyduplex);
-                if (__workflow_bodypriorityPost != null)
-                {
-                    body["priority_post"] = ExpressionConverter.ConvertO(__workflow_bodypriorityPost);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["recipients"] = ExpressionConverter.ConvertO(__workflow_bodyrecipients);
-                body["source"] = "MSPowerAutomate";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<SendLetterResponse>(callPayload);
-            });
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendsms")]
-        public IBodyWorkflowAction<SendPostcardResponse, ApiConnectionActionConfiguration> SendPostcard(Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients, Expression<Func<string[]>> bodyfileUrls)
-        {
-            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: true);
-            var __workflow_bodyfileUrls = WorkflowExpression.Compile(bodyfileUrls, nameof(bodyfileUrls), required: true);
-            return new DeferredBodyAction<SendPostcardResponse, ApiConnectionActionConfiguration>(() =>
-            {
-                var apiCallPath = "/post/postcards/send";
-                var apiCallHttpMethod = "post";
-                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["recipients"] = ExpressionConverter.ConvertO(__workflow_bodyrecipients);
-                bodypropCount++;
-                body["file_urls"] = ExpressionConverter.ConvertO(__workflow_bodyfileUrls);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<SendPostcardResponse>(callPayload);
-            });
-        }
     }
 
     public class ClicksendsmsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> SmsInboundAutomation(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> SmsInboundAutomation()
         {
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/ms-flow/automations/sms/inbound";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["message_search_type"] = 0;
-                bodypropCount++;
-                body["message_search_term"] = "*";
-                bodypropCount++;
-                body["action_address"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                body["dedicated_number"] = "*";
-                bodypropCount++;
-                body["rule_name"] = "Power-Automate";
-                bodypropCount++;
-                body["webhook_type"] = "json";
-                bodypropCount++;
-                body["action"] = "URL";
-                bodypropCount++;
-                body["enabled"] = 1;
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = new SmsInboundAutomationBodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }
@@ -556,25 +289,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         public string CurrencyNameLong { get; set; }
     }
 
-    public class bodymessagesInputItem
+    public class SmsSendBodyInput
     {
-        [JsonProperty("to")]
+        public SmsSendBodyInput(SmsSendBodyInputMessagesTypeItem[] messages)
+        {
+            this.Messages = messages;
+        }
+
+        [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SmsSendBodyInputMessagesTypeItem[] Messages { get; set; }
+    }
+
+    public class SmsSendBodyInputMessagesTypeItem
+    {
+        public SmsSendBodyInputMessagesTypeItem(string to, string body)
+        {
+            this.To = to;
+            this.Body = body;
+        }
+
+        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
-        [JsonProperty("body")]
+        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Body { get; set; }
 
         [JsonProperty("custom_string")]
         public string CustomString { get; set; }
 
-        [JsonProperty("list_id")]
-        public int ListId { get; set; }
-
-        [JsonProperty("source")]
-        public string Source { get; set; }
+        [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Source { get; set; } = "MSPowerAutomate";
     }
 
-    public class CreateListResponse
+    public class SmsCampaignSendResponse
     {
         [JsonProperty("http_code")]
         public int HttpCode { get; set; }
@@ -586,22 +333,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         public string ResponseMsg { get; set; }
 
         [JsonProperty("data")]
-        public CreateListResponseDataType Data { get; set; }
+        public JToken Data { get; set; }
     }
 
-    public class CreateListResponseDataType
+    public class SmsCampaignSendBodyInput
     {
-        [JsonProperty("list_id")]
+        public SmsCampaignSendBodyInput(int listId, string name, string body, BodyInputSendersTypeItem[] senders)
+        {
+            this.ListId = listId;
+            this.Name = name;
+            this.Body = body;
+            this.Senders = senders;
+        }
+
+        [JsonProperty("list_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ListId { get; set; }
 
-        [JsonProperty("list_name")]
-        public string ListName { get; set; }
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
 
-        [JsonProperty("list_email_id")]
-        public string ListEmailId { get; set; }
+        [JsonProperty("from")]
+        public string From { get; set; }
 
-        [JsonProperty("_contacts_count")]
-        public int ContactsCount { get; set; }
+        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Body { get; set; }
+
+        [JsonProperty("schedule")]
+        public int? Schedule { get; set; }
+
+        [JsonProperty("url_to_shorten")]
+        public string UrlToShorten { get; set; }
+
+        [JsonProperty("senders", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputSendersTypeItem[] Senders { get; set; }
+
+        [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Source { get; set; } = "MSPowerAutomate";
+    }
+
+    public class BodyInputSendersTypeItem
+    {
+        [JsonProperty("country")]
+        public string Country { get; set; }
+
+        [JsonProperty("sender_id")]
+        public string SenderId { get; set; }
+
+        [JsonProperty("sender_type")]
+        public string SenderType { get; set; }
+
+        [JsonProperty("sender_country_code")]
+        public string SenderCountryCode { get; set; }
     }
 
     public class GetContactListsResponse
@@ -670,7 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         public int OptoutInProgress { get; set; }
     }
 
-    public class SendVoiceResponse
+    public class CreateListResponse
     {
         [JsonProperty("http_code")]
         public int HttpCode { get; set; }
@@ -682,151 +464,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         public string ResponseMsg { get; set; }
 
         [JsonProperty("data")]
-        public SendVoiceResponseDataType Data { get; set; }
+        public CreateListResponseDataType Data { get; set; }
     }
 
-    public class SendVoiceResponseDataType
+    public class CreateListResponseDataType
     {
-        [JsonProperty("total_price")]
-        public double TotalPrice { get; set; }
-
-        [JsonProperty("total_count")]
-        public int TotalCount { get; set; }
-
-        [JsonProperty("queued_count")]
-        public int QueuedCount { get; set; }
-
-        [JsonProperty("messages")]
-        public SendVoiceResponseDataTypeMessagesTypeItem[] Messages { get; set; }
-
-        [JsonProperty("_currency")]
-        public SendVoiceResponseDataTypeCurrencyType Currency { get; set; }
-    }
-
-    public class SendVoiceResponseDataTypeMessagesTypeItem
-    {
-        [JsonProperty("user_id")]
-        public int UserId { get; set; }
-
-        [JsonProperty("subaccount_id")]
-        public int SubaccountId { get; set; }
-
-        [JsonProperty("message_id")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("to")]
-        public string To { get; set; }
-
-        [JsonProperty("to_type")]
-        public string ToType { get; set; }
-
-        [JsonProperty("from")]
-        public string From { get; set; }
-
-        [JsonProperty("voice")]
-        public string Voice { get; set; }
-
-        [JsonProperty("lang")]
-        public string Lang { get; set; }
-
-        [JsonProperty("body")]
-        public string Body { get; set; }
-
-        [JsonProperty("carrier")]
-        public string Carrier { get; set; }
-
-        [JsonProperty("country")]
-        public string Country { get; set; }
-
-        [JsonProperty("custom_string")]
-        public string CustomString { get; set; }
-
-        [JsonProperty("schedule")]
-        public int Schedule { get; set; }
-
-        [JsonProperty("message_parts")]
-        public int MessageParts { get; set; }
-
-        [JsonProperty("message_price")]
-        public string MessagePrice { get; set; }
-
-        [JsonProperty("date_added")]
-        public int DateAdded { get; set; }
-
-        [JsonProperty("require_input")]
-        public int RequireInput { get; set; }
-
-        [JsonProperty("machine_detection")]
-        public int MachineDetection { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class SendVoiceResponseDataTypeCurrencyType
-    {
-        [JsonProperty("currency_name_short")]
-        public string CurrencyNameShort { get; set; }
-
-        [JsonProperty("currency_prefix_d")]
-        public string CurrencyPrefixD { get; set; }
-
-        [JsonProperty("currency_prefix_c")]
-        public string CurrencyPrefixC { get; set; }
-
-        [JsonProperty("currency_name_long")]
-        public string CurrencyNameLong { get; set; }
-    }
-
-    public class bodymessagesInputItem2
-    {
-        [JsonProperty("to")]
-        public string To { get; set; }
-
-        [JsonProperty("body")]
-        public string Body { get; set; }
-
-        [JsonProperty("lang")]
-        public string Lang { get; set; }
-
-        [JsonProperty("voice")]
-        public bodymessagesInputItemVoiceType Voice { get; set; }
-
-        [JsonProperty("custom_string")]
-        public string CustomString { get; set; }
-
         [JsonProperty("list_id")]
         public int ListId { get; set; }
 
-        [JsonProperty("require_input")]
-        public bodymessagesInputItemRequireInputType RequireInput { get; set; }
+        [JsonProperty("list_name")]
+        public string ListName { get; set; }
 
-        [JsonProperty("source")]
-        public string Source { get; set; }
+        [JsonProperty("list_email_id")]
+        public string ListEmailId { get; set; }
 
-        [JsonProperty("machine_detection")]
-        public bodymessagesInputItemMachineDetectionType MachineDetection { get; set; }
+        [JsonProperty("_contacts_count")]
+        public int ContactsCount { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodymessagesInputItemVoiceType
+    public class CreateListBodyInput
     {
-        [EnumMember(Value = "male")]
-        Male,
-        [EnumMember(Value = "female")]
-        Female
-    }
+        public CreateListBodyInput(string listName)
+        {
+            this.ListName = listName;
+        }
 
-    public enum bodymessagesInputItemRequireInputType
-    {
-        _1 = 1,
-        _0 = 0
-    }
-
-    public enum bodymessagesInputItemMachineDetectionType
-    {
-        _1 = 1,
-        _0 = 0
+        [JsonProperty("list_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ListName { get; set; }
     }
 
     public class DeleteListResponse
@@ -839,84 +503,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
 
         [JsonProperty("response_msg")]
         public string ResponseMsg { get; set; }
-    }
-
-    public class CreateListContactResponse
-    {
-        [JsonProperty("http_code")]
-        public int HttpCode { get; set; }
-
-        [JsonProperty("response_code")]
-        public string ResponseCode { get; set; }
-
-        [JsonProperty("response_msg")]
-        public string ResponseMsg { get; set; }
-
-        [JsonProperty("data")]
-        public CreateListContactResponseDataType Data { get; set; }
-    }
-
-    public class CreateListContactResponseDataType
-    {
-        [JsonProperty("contact_id")]
-        public int ContactId { get; set; }
-
-        [JsonProperty("list_id")]
-        public int ListId { get; set; }
-
-        [JsonProperty("phone_number")]
-        public string PhoneNumber { get; set; }
-
-        [JsonProperty("first_name")]
-        public string FirstName { get; set; }
-
-        [JsonProperty("last_name")]
-        public string LastName { get; set; }
-
-        [JsonProperty("custom_1")]
-        public string Custom1 { get; set; }
-
-        [JsonProperty("custom_2")]
-        public string Custom2 { get; set; }
-
-        [JsonProperty("custom_3")]
-        public string Custom3 { get; set; }
-
-        [JsonProperty("custom_4")]
-        public string Custom4 { get; set; }
-
-        [JsonProperty("date_added")]
-        public int DateAdded { get; set; }
-
-        [JsonProperty("fax_number")]
-        public string FaxNumber { get; set; }
-
-        [JsonProperty("organization_name")]
-        public string OrganizationName { get; set; }
-
-        [JsonProperty("email")]
-        public string Email { get; set; }
-
-        [JsonProperty("address_line_1")]
-        public string AddressLine1 { get; set; }
-
-        [JsonProperty("address_line_2")]
-        public string AddressLine2 { get; set; }
-
-        [JsonProperty("address_city")]
-        public string AddressCity { get; set; }
-
-        [JsonProperty("address_state")]
-        public string AddressState { get; set; }
-
-        [JsonProperty("address_postal_code")]
-        public string AddressPostalCode { get; set; }
-
-        [JsonProperty("address_country")]
-        public string AddressCountry { get; set; }
-
-        [JsonProperty("_list_name")]
-        public string ListName { get; set; }
     }
 
     public class ViewListContactsResponse
@@ -1030,6 +616,142 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         public string ListName { get; set; }
     }
 
+    public class CreateListContactResponse
+    {
+        [JsonProperty("http_code")]
+        public int HttpCode { get; set; }
+
+        [JsonProperty("response_code")]
+        public string ResponseCode { get; set; }
+
+        [JsonProperty("response_msg")]
+        public string ResponseMsg { get; set; }
+
+        [JsonProperty("data")]
+        public CreateListContactResponseDataType Data { get; set; }
+    }
+
+    public class CreateListContactResponseDataType
+    {
+        [JsonProperty("contact_id")]
+        public int ContactId { get; set; }
+
+        [JsonProperty("list_id")]
+        public int ListId { get; set; }
+
+        [JsonProperty("phone_number")]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("first_name")]
+        public string FirstName { get; set; }
+
+        [JsonProperty("last_name")]
+        public string LastName { get; set; }
+
+        [JsonProperty("custom_1")]
+        public string Custom1 { get; set; }
+
+        [JsonProperty("custom_2")]
+        public string Custom2 { get; set; }
+
+        [JsonProperty("custom_3")]
+        public string Custom3 { get; set; }
+
+        [JsonProperty("custom_4")]
+        public string Custom4 { get; set; }
+
+        [JsonProperty("date_added")]
+        public int DateAdded { get; set; }
+
+        [JsonProperty("fax_number")]
+        public string FaxNumber { get; set; }
+
+        [JsonProperty("organization_name")]
+        public string OrganizationName { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("address_line_1")]
+        public string AddressLine1 { get; set; }
+
+        [JsonProperty("address_line_2")]
+        public string AddressLine2 { get; set; }
+
+        [JsonProperty("address_city")]
+        public string AddressCity { get; set; }
+
+        [JsonProperty("address_state")]
+        public string AddressState { get; set; }
+
+        [JsonProperty("address_postal_code")]
+        public string AddressPostalCode { get; set; }
+
+        [JsonProperty("address_country")]
+        public string AddressCountry { get; set; }
+
+        [JsonProperty("_list_name")]
+        public string ListName { get; set; }
+    }
+
+    public class CreateListContactBodyInput
+    {
+        public CreateListContactBodyInput(string firstName, string lastName, string phoneNumber)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.PhoneNumber = phoneNumber;
+        }
+
+        [JsonProperty("first_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FirstName { get; set; }
+
+        [JsonProperty("last_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LastName { get; set; }
+
+        [JsonProperty("phone_number", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("fax_number")]
+        public string FaxNumber { get; set; }
+
+        [JsonProperty("organization_name")]
+        public string OrganizationName { get; set; }
+
+        [JsonProperty("address_country")]
+        public string AddressCountry { get; set; }
+
+        [JsonProperty("address_state")]
+        public string AddressState { get; set; }
+
+        [JsonProperty("address_city")]
+        public string AddressCity { get; set; }
+
+        [JsonProperty("custom_1")]
+        public string Custom1 { get; set; }
+
+        [JsonProperty("custom_3")]
+        public string Custom3 { get; set; }
+
+        [JsonProperty("address_postal_code")]
+        public string AddressPostalCode { get; set; }
+
+        [JsonProperty("custom_2")]
+        public string Custom2 { get; set; }
+
+        [JsonProperty("custom_4")]
+        public string Custom4 { get; set; }
+
+        [JsonProperty("address_line_1")]
+        public string AddressLine1 { get; set; }
+
+        [JsonProperty("address_line_2")]
+        public string AddressLine2 { get; set; }
+    }
+
     public class DeleteListContactResponse
     {
         [JsonProperty("http_code")]
@@ -1114,148 +836,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         public string Status { get; set; }
     }
 
-    public class bodymessagesInputItem22
+    public class SendMmsBodyInput
     {
-        [JsonProperty("to")]
+        public SendMmsBodyInput(SendMmsBodyInputMessagesTypeItem[] messages, string mediaFile)
+        {
+            this.Messages = messages;
+            this.MediaFile = mediaFile;
+        }
+
+        [JsonProperty("messages", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SendMmsBodyInputMessagesTypeItem[] Messages { get; set; }
+
+        [JsonProperty("media_file", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MediaFile { get; set; }
+    }
+
+    public class SendMmsBodyInputMessagesTypeItem
+    {
+        public SendMmsBodyInputMessagesTypeItem(string to, string subject, string body)
+        {
+            this.To = to;
+            this.Subject = subject;
+            this.Body = body;
+        }
+
+        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
         public string To { get; set; }
 
-        [JsonProperty("subject")]
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Subject { get; set; }
 
-        [JsonProperty("body")]
+        [JsonProperty("body", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Body { get; set; }
 
         [JsonProperty("custom_string")]
         public string CustomString { get; set; }
 
-        [JsonProperty("list_id")]
-        public int ListId { get; set; }
-
-        [JsonProperty("from")]
-        public string From { get; set; }
-
-        [JsonProperty("source")]
-        public string Source { get; set; }
-    }
-
-    public class SendFaxResponse
-    {
-        [JsonProperty("http_code")]
-        public int HttpCode { get; set; }
-
-        [JsonProperty("response_code")]
-        public string ResponseCode { get; set; }
-
-        [JsonProperty("response_msg")]
-        public string ResponseMsg { get; set; }
-
-        [JsonProperty("data")]
-        public SendFaxResponseDataType Data { get; set; }
-    }
-
-    public class SendFaxResponseDataType
-    {
-        [JsonProperty("total_price")]
-        public double TotalPrice { get; set; }
-
-        [JsonProperty("total_count")]
-        public int TotalCount { get; set; }
-
-        [JsonProperty("queued_count")]
-        public int QueuedCount { get; set; }
-
-        [JsonProperty("messages")]
-        public SendFaxResponseDataTypeMessagesTypeItem[] Messages { get; set; }
-
-        [JsonProperty("_currency")]
-        public SendFaxResponseDataTypeCurrencyType Currency { get; set; }
-    }
-
-    public class SendFaxResponseDataTypeMessagesTypeItem
-    {
-        [JsonProperty("user_id")]
-        public int UserId { get; set; }
-
-        [JsonProperty("subaccount_id")]
-        public int SubaccountId { get; set; }
-
-        [JsonProperty("list_id")]
-        public string ListId { get; set; }
-
-        [JsonProperty("message_id")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("to")]
-        public string To { get; set; }
-
-        [JsonProperty("from")]
-        public string From { get; set; }
-
-        [JsonProperty("carrier")]
-        public string Carrier { get; set; }
-
-        [JsonProperty("country")]
-        public string Country { get; set; }
-
-        [JsonProperty("custom_string")]
-        public string CustomString { get; set; }
-
-        [JsonProperty("message_pages")]
-        public int MessagePages { get; set; }
-
-        [JsonProperty("message_price")]
-        public string MessagePrice { get; set; }
-
-        [JsonProperty("status_code")]
-        public string StatusCode { get; set; }
-
-        [JsonProperty("status_text")]
-        public string StatusText { get; set; }
-
-        [JsonProperty("date_added")]
-        public int DateAdded { get; set; }
-
-        [JsonProperty("from_email")]
-        public string FromEmail { get; set; }
-
-        [JsonProperty("_file_url")]
-        public string FileUrl { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-    }
-
-    public class SendFaxResponseDataTypeCurrencyType
-    {
-        [JsonProperty("currency_name_short")]
-        public string CurrencyNameShort { get; set; }
-
-        [JsonProperty("currency_prefix_d")]
-        public string CurrencyPrefixD { get; set; }
-
-        [JsonProperty("currency_prefix_c")]
-        public string CurrencyPrefixC { get; set; }
-
-        [JsonProperty("currency_name_long")]
-        public string CurrencyNameLong { get; set; }
-    }
-
-    public class bodymessagesInputItem222
-    {
-        [JsonProperty("to")]
-        public string To { get; set; }
-
-        [JsonProperty("from")]
-        public string From { get; set; }
-
-        [JsonProperty("source")]
-        public string Source { get; set; }
-
-        [JsonProperty("custom_string")]
-        public string CustomString { get; set; }
-
-        [JsonProperty("list_id")]
-        public int ListId { get; set; }
+        [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Source { get; set; } = "MSPowerAutomate";
     }
 
     public class UploadMediaResponse
@@ -1295,7 +913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum convertInput
+    public enum ConvertInput
     {
         [EnumMember(Value = "fax")]
         Fax,
@@ -1307,6 +925,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         Post,
         [EnumMember(Value = "postcard")]
         Postcard
+    }
+
+    public class UploadMediaBodyInput
+    {
+        public UploadMediaBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent content)
+        {
+            this.Content = content;
+        }
+
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
     }
 
     public class SearchContactListResponse
@@ -1372,340 +1001,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendsms
         public int ContactsCount { get; set; }
     }
 
-    public class SendLetterResponse
+    public class SmsInboundAutomationBodyInput
     {
-        [JsonProperty("http_code")]
-        public int HttpCode { get; set; }
+        [JsonProperty("message_search_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal int MessageSearchType { get; set; } = 0;
 
-        [JsonProperty("response_code")]
-        public string ResponseCode { get; set; }
+        [JsonProperty("message_search_term", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string MessageSearchTerm { get; set; } = "*";
 
-        [JsonProperty("response_msg")]
-        public string ResponseMsg { get; set; }
+        [JsonProperty("action_address", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ActionAddress { get; set; } = "#{listCallbackUrl()}";
 
-        [JsonProperty("data")]
-        public SendLetterResponseDataType Data { get; set; }
-    }
+        [JsonProperty("dedicated_number", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string DedicatedNumber { get; set; } = "*";
 
-    public class SendLetterResponseDataType
-    {
-        [JsonProperty("total_price")]
-        public double TotalPrice { get; set; }
+        [JsonProperty("rule_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string RuleName { get; set; } = "Power-Automate";
 
-        [JsonProperty("total_count")]
-        public int TotalCount { get; set; }
+        [JsonProperty("webhook_type", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string WebhookType { get; set; } = "json";
 
-        [JsonProperty("queued_count")]
-        public int QueuedCount { get; set; }
+        [JsonProperty("action", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Action { get; set; } = "URL";
 
-        [JsonProperty("recipients")]
-        public SendLetterResponseDataTypeRecipientsTypeItem[] Recipients { get; set; }
-
-        [JsonProperty("_currency")]
-        public SendLetterResponseDataTypeCurrencyType Currency { get; set; }
-    }
-
-    public class SendLetterResponseDataTypeRecipientsTypeItem
-    {
-        [JsonProperty("user_id")]
-        public int UserId { get; set; }
-
-        [JsonProperty("subaccount_id")]
-        public int SubaccountId { get; set; }
-
-        [JsonProperty("message_id")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("address_name")]
-        public string AddressName { get; set; }
-
-        [JsonProperty("address_line_1")]
-        public string AddressLine1 { get; set; }
-
-        [JsonProperty("address_line_2")]
-        public string AddressLine2 { get; set; }
-
-        [JsonProperty("address_city")]
-        public string AddressCity { get; set; }
-
-        [JsonProperty("address_state")]
-        public string AddressState { get; set; }
-
-        [JsonProperty("address_postal_code")]
-        public string AddressPostalCode { get; set; }
-
-        [JsonProperty("address_country")]
-        public string AddressCountry { get; set; }
-
-        [JsonProperty("return_address_id")]
-        public int ReturnAddressId { get; set; }
-
-        [JsonProperty("custom_string")]
-        public string CustomString { get; set; }
-
-        [JsonProperty("source")]
-        public string Source { get; set; }
-
-        [JsonProperty("colour")]
-        public int Colour { get; set; }
-
-        [JsonProperty("duplex")]
-        public int Duplex { get; set; }
-
-        [JsonProperty("post_pages")]
-        public int PostPages { get; set; }
-
-        [JsonProperty("post_price")]
-        public string PostPrice { get; set; }
-
-        [JsonProperty("priority_post")]
-        public int PriorityPost { get; set; }
-
-        [JsonProperty("date_added")]
-        public int DateAdded { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("_file_url")]
-        public string FileUrl { get; set; }
-
-        [JsonProperty("_return_address")]
-        public SendLetterResponseDataTypeRecipientsTypeItemReturnAddressType ReturnAddress { get; set; }
-
-        [JsonProperty("_api_username")]
-        public string ApiUsername { get; set; }
-    }
-
-    public class SendLetterResponseDataTypeRecipientsTypeItemReturnAddressType
-    {
-        [JsonProperty("return_address_id")]
-        public int ReturnAddressId { get; set; }
-
-        [JsonProperty("user_id")]
-        public int UserId { get; set; }
-
-        [JsonProperty("address_name")]
-        public string AddressName { get; set; }
-
-        [JsonProperty("address_line_1")]
-        public string AddressLine1 { get; set; }
-
-        [JsonProperty("address_line_2")]
-        public string AddressLine2 { get; set; }
-
-        [JsonProperty("address_city")]
-        public string AddressCity { get; set; }
-
-        [JsonProperty("address_state")]
-        public string AddressState { get; set; }
-
-        [JsonProperty("address_postal_code")]
-        public string AddressPostalCode { get; set; }
-
-        [JsonProperty("address_country")]
-        public string AddressCountry { get; set; }
-    }
-
-    public class SendLetterResponseDataTypeCurrencyType
-    {
-        [JsonProperty("currency_name_short")]
-        public string CurrencyNameShort { get; set; }
-
-        [JsonProperty("currency_prefix_d")]
-        public string CurrencyPrefixD { get; set; }
-
-        [JsonProperty("currency_prefix_c")]
-        public string CurrencyPrefixC { get; set; }
-
-        [JsonProperty("currency_name_long")]
-        public string CurrencyNameLong { get; set; }
-    }
-
-    public enum bodycolourInput
-    {
-        _0 = 0,
-        _1 = 1
-    }
-
-    public enum bodyduplexInput
-    {
-        _0 = 0,
-        _1 = 1
-    }
-
-    public class bodyrecipientsInputItem
-    {
-        [JsonProperty("address_name")]
-        public string AddressName { get; set; }
-
-        [JsonProperty("address_city")]
-        public string AddressCity { get; set; }
-
-        [JsonProperty("address_state")]
-        public string AddressState { get; set; }
-
-        [JsonProperty("address_postal_code")]
-        public string AddressPostalCode { get; set; }
-
-        [JsonProperty("address_country")]
-        public string AddressCountry { get; set; }
-
-        [JsonProperty("return_address_id")]
-        public int ReturnAddressId { get; set; }
-
-        [JsonProperty("address_line_1")]
-        public string AddressLine1 { get; set; }
-
-        [JsonProperty("address_line_2")]
-        public string AddressLine2 { get; set; }
-    }
-
-    public enum bodytemplateUsedInput
-    {
-        _1 = 1,
-        _0 = 0
-    }
-
-    public enum bodypriorityPostInput
-    {
-        _1 = 1,
-        _0 = 0
-    }
-
-    public class SendPostcardResponse
-    {
-        [JsonProperty("http_code")]
-        public int HttpCode { get; set; }
-
-        [JsonProperty("response_code")]
-        public string ResponseCode { get; set; }
-
-        [JsonProperty("response_msg")]
-        public string ResponseMsg { get; set; }
-
-        [JsonProperty("data")]
-        public SendPostcardResponseDataType Data { get; set; }
-    }
-
-    public class SendPostcardResponseDataType
-    {
-        [JsonProperty("total_price")]
-        public double TotalPrice { get; set; }
-
-        [JsonProperty("total_count")]
-        public int TotalCount { get; set; }
-
-        [JsonProperty("queued_count")]
-        public int QueuedCount { get; set; }
-
-        [JsonProperty("recipients")]
-        public SendPostcardResponseDataTypeRecipientsTypeItem[] Recipients { get; set; }
-
-        [JsonProperty("_currency")]
-        public SendPostcardResponseDataTypeCurrencyType Currency { get; set; }
-    }
-
-    public class SendPostcardResponseDataTypeRecipientsTypeItem
-    {
-        [JsonProperty("user_id")]
-        public int UserId { get; set; }
-
-        [JsonProperty("subaccount_id")]
-        public int SubaccountId { get; set; }
-
-        [JsonProperty("message_id")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("address_name")]
-        public string AddressName { get; set; }
-
-        [JsonProperty("address_line_1")]
-        public string AddressLine1 { get; set; }
-
-        [JsonProperty("address_line_2")]
-        public string AddressLine2 { get; set; }
-
-        [JsonProperty("address_city")]
-        public string AddressCity { get; set; }
-
-        [JsonProperty("address_state")]
-        public string AddressState { get; set; }
-
-        [JsonProperty("address_postal_code")]
-        public string AddressPostalCode { get; set; }
-
-        [JsonProperty("address_country")]
-        public string AddressCountry { get; set; }
-
-        [JsonProperty("return_address_id")]
-        public int ReturnAddressId { get; set; }
-
-        [JsonProperty("schedule")]
-        public int Schedule { get; set; }
-
-        [JsonProperty("post_price")]
-        public string PostPrice { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("date_added")]
-        public int DateAdded { get; set; }
-
-        [JsonProperty("_file_url")]
-        public string FileUrl { get; set; }
-
-        [JsonProperty("_return_address")]
-        public SendPostcardResponseDataTypeRecipientsTypeItemReturnAddressType ReturnAddress { get; set; }
-
-        [JsonProperty("_api_username")]
-        public string ApiUsername { get; set; }
-    }
-
-    public class SendPostcardResponseDataTypeRecipientsTypeItemReturnAddressType
-    {
-        [JsonProperty("return_address_id")]
-        public int ReturnAddressId { get; set; }
-
-        [JsonProperty("user_id")]
-        public int UserId { get; set; }
-
-        [JsonProperty("address_name")]
-        public string AddressName { get; set; }
-
-        [JsonProperty("address_line_1")]
-        public string AddressLine1 { get; set; }
-
-        [JsonProperty("address_line_2")]
-        public string AddressLine2 { get; set; }
-
-        [JsonProperty("address_city")]
-        public string AddressCity { get; set; }
-
-        [JsonProperty("address_state")]
-        public string AddressState { get; set; }
-
-        [JsonProperty("address_postal_code")]
-        public string AddressPostalCode { get; set; }
-
-        [JsonProperty("address_country")]
-        public string AddressCountry { get; set; }
-    }
-
-    public class SendPostcardResponseDataTypeCurrencyType
-    {
-        [JsonProperty("currency_name_short")]
-        public string CurrencyNameShort { get; set; }
-
-        [JsonProperty("currency_prefix_d")]
-        public string CurrencyPrefixD { get; set; }
-
-        [JsonProperty("currency_prefix_c")]
-        public string CurrencyPrefixC { get; set; }
-
-        [JsonProperty("currency_name_long")]
-        public string CurrencyNameLong { get; set; }
+        [JsonProperty("enabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal int Enabled { get; set; } = 1;
     }
 }
 

@@ -179,6 +179,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
 
     public class FileUploadInputFilesTypeItem
     {
+        public FileUploadInputFilesTypeItem(string fileName, JToken fileContent)
+        {
+            this.FileName = fileName;
+            this.FileContent = fileContent;
+        }
+
         [JsonProperty("fileName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 

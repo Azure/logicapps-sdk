@@ -40,7 +40,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ventipixassetandinventory
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/app/flow/fetchsert/{0}", __workflow_listIdDynamic.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);
+                if (__workflow_dynamicListSchema != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);
                 return new ApiConnectionAction(callPayload);
             });
         }

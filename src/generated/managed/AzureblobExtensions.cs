@@ -36,12 +36,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CreateBlockBlob(Expression<Func<string>> storageAccountName, Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CreateBlockBlob(Expression<Func<string>> storageAccountName, Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -58,12 +58,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> CreateFile(Expression<Func<string>> dataset, Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> CreateFile(Expression<Func<string>> dataset, Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
@@ -82,75 +82,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<SharedAccessSignature, ApiConnectionActionConfiguration> CreateShareLinkByPath(Expression<Func<string>> storageAccountName, Expression<Func<string>> path, Expression<Func<string>> policygroupPolicyIdentifier = null, Expression<Func<policypermissionsInput>> policypermissions = null, Expression<Func<string>> policystartTime = null, Expression<Func<string>> policyexpiryTime = null, Expression<Func<policysharedAccessProtocolInput>> policysharedAccessProtocol = null, Expression<Func<string>> policyiPAddressOrIPAddressRange = null)
+        public IBodyWorkflowAction<SharedAccessSignature, ApiConnectionActionConfiguration> CreateShareLinkByPath(Expression<Func<string>> storageAccountName, Expression<Func<string>> path, Expression<Func<PolicyInput>> policy)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
-            var __workflow_policygroupPolicyIdentifier = WorkflowExpression.Compile(policygroupPolicyIdentifier, nameof(policygroupPolicyIdentifier), required: false);
-            var __workflow_policypermissions = WorkflowExpression.Compile(policypermissions, nameof(policypermissions), required: false);
-            var __workflow_policystartTime = WorkflowExpression.Compile(policystartTime, nameof(policystartTime), required: false);
-            var __workflow_policyexpiryTime = WorkflowExpression.Compile(policyexpiryTime, nameof(policyexpiryTime), required: false);
-            var __workflow_policysharedAccessProtocol = WorkflowExpression.Compile(policysharedAccessProtocol, nameof(policysharedAccessProtocol), required: false);
-            var __workflow_policyiPAddressOrIPAddressRange = WorkflowExpression.Compile(policyiPAddressOrIPAddressRange, nameof(policyiPAddressOrIPAddressRange), required: false);
+            var __workflow_policy = WorkflowExpression.Compile(policy, nameof(policy), required: true);
             return new DeferredBodyAction<SharedAccessSignature, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/CreateSharedLinkByPath", __workflow_storageAccountName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
-                var policy = new JObject();
-                var policypropCount = 0;
-                if (__workflow_policygroupPolicyIdentifier != null)
-                {
-                    policy["GroupPolicyIdentifier"] = ExpressionConverter.ConvertO(__workflow_policygroupPolicyIdentifier);
-                    policypropCount++;
-                }
-
-                if (__workflow_policypermissions != null)
-                {
-                    if (__workflow_policypermissions != null)
-                    {
-                        policy["Permissions"] = ExpressionConverter.ConvertO(__workflow_policypermissions);
-                        policypropCount++;
-                    }
-
-                    policypropCount++;
-                }
-                else
-                {
-                    policy["Permissions"] = "Read";
-                    policypropCount++;
-                }
-
-                if (__workflow_policystartTime != null)
-                {
-                    policy["StartTime"] = ExpressionConverter.ConvertO(__workflow_policystartTime);
-                    policypropCount++;
-                }
-
-                if (__workflow_policyexpiryTime != null)
-                {
-                    policy["ExpiryTime"] = ExpressionConverter.ConvertO(__workflow_policyexpiryTime);
-                    policypropCount++;
-                }
-
-                if (__workflow_policysharedAccessProtocol != null)
-                {
-                    policy["AccessProtocol"] = ExpressionConverter.ConvertO(__workflow_policysharedAccessProtocol);
-                    policypropCount++;
-                }
-
-                if (__workflow_policyiPAddressOrIPAddressRange != null)
-                {
-                    policy["IpAddressOrRange"] = ExpressionConverter.ConvertO(__workflow_policyiPAddressOrIPAddressRange);
-                    policypropCount++;
-                }
-
-                if (policypropCount > 0)
-                {
-                    callPayload.Body = policy;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_policy);
                 return new ApiConnectionAction<SharedAccessSignature>(callPayload);
             });
         }
@@ -346,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SetBlobTierByPath(Expression<Func<string>> storageAccountName, Expression<Func<string>> path, Expression<Func<newTierInput>> newTier)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SetBlobTierByPath(Expression<Func<string>> storageAccountName, Expression<Func<string>> path, Expression<Func<NewTierInput>> newTier)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
@@ -363,11 +306,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> UpdateFile(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<BlobMetadata, ApiConnectionActionConfiguration> UpdateFile(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<string>> body, Expression<Func<string>> contentType = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredBodyAction<BlobMetadata, ApiConnectionActionConfiguration>(() =>
             {
@@ -385,12 +328,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
 
     public class AzureblobTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration> OnUpdatedFiles(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[], ApiConnectionPollingTriggerConfiguration> OnUpdatedFiles(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null)
         {
             var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
-            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<BlobMetadata[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/datasets/{0}/triggers/batch/onupdatedfile", __workflow_dataset.WithUrlEncoding(2)));
                 var apiCallHttpMethod = "get";
@@ -400,7 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
                 if (__workflow_maxFileCount != null)
                     callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(__workflow_maxFileCount);
                 callPayload.Queries["checkBothCreatedAndModifiedDateTime"] = Convert.ToString(false);
-                return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<BlobMetadata[]>(callPayload);
             });
         }
     }
@@ -424,8 +367,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         public string WebUrl { get; set; }
     }
 
+    public class PolicyInput
+    {
+        public string GroupPolicyIdentifier { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public PolicyInputPermissionsType? Permissions { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob.PolicyInputPermissionsType.Read;
+        public string StartTime { get; set; }
+        public string ExpiryTime { get; set; }
+
+        [JsonProperty("AccessProtocol")]
+        public PolicyInputSharedAccessProtocolType? SharedAccessProtocol { get; set; }
+
+        [JsonProperty("IpAddressOrRange")]
+        public string IPAddressOrIPAddressRange { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum policypermissionsInput
+    public enum PolicyInputPermissionsType
     {
         Read,
         Write,
@@ -442,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum policysharedAccessProtocolInput
+    public enum PolicyInputSharedAccessProtocolType
     {
         HttpsOnly,
         HttpsOrHttp
@@ -553,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum newTierInput
+    public enum NewTierInput
     {
         Hot,
         Cool,

@@ -13,28 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
     public class WhatismybrowseripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whatismybrowserip")]
-        public IBodyWorkflowAction<DetectPostResponse, ApiConnectionActionConfiguration> Detect(Expression<Func<bodyheadersInputItem[]>> bodyheaders = null)
+        public IBodyWorkflowAction<DetectResponse, ApiConnectionActionConfiguration> Detect(Expression<Func<BodyInput>> body = null)
         {
-            var __workflow_bodyheaders = WorkflowExpression.Compile(bodyheaders, nameof(bodyheaders), required: false);
-            return new DeferredBodyAction<DetectPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<DetectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/detect";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyheaders != null)
-                {
-                    body["headers"] = ExpressionConverter.ConvertO(__workflow_bodyheaders);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<DetectPostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<DetectResponse>(callPayload);
             });
         }
 
@@ -55,22 +44,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
     {
     }
 
-    public class DetectPostResponse
+    public class DetectResponse
     {
         [JsonProperty("detection")]
-        public DetectPostResponseDetectionType Detection { get; set; }
+        public DetectResponseDetectionType Detection { get; set; }
 
         [JsonProperty("version_check")]
-        public DetectPostResponseVersionCheckType VersionCheck { get; set; }
+        public DetectResponseVersionCheckType VersionCheck { get; set; }
 
         [JsonProperty("risks")]
-        public DetectPostResponseRisksType Risks { get; set; }
+        public DetectResponseRisksType Risks { get; set; }
 
         [JsonProperty("result")]
-        public DetectPostResponseResultType Result { get; set; }
+        public DetectResponseResultType Result { get; set; }
     }
 
-    public class DetectPostResponseDetectionType
+    public class DetectResponseDetectionType
     {
         [JsonProperty("simple_software_string")]
         public string SimpleSoftwareString { get; set; }
@@ -154,13 +143,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
         public string HardwareSubSubType { get; set; }
     }
 
-    public class DetectPostResponseVersionCheckType
+    public class DetectResponseVersionCheckType
     {
         [JsonProperty("software_version_check")]
-        public DetectPostResponseVersionCheckTypeSoftwareVersionCheckType SoftwareVersionCheck { get; set; }
+        public DetectResponseVersionCheckTypeSoftwareVersionCheckType SoftwareVersionCheck { get; set; }
     }
 
-    public class DetectPostResponseVersionCheckTypeSoftwareVersionCheckType
+    public class DetectResponseVersionCheckTypeSoftwareVersionCheckType
     {
         [JsonProperty("is_checkable")]
         public bool IsCheckable { get; set; }
@@ -184,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
         public int HoursReleasedAgo { get; set; }
     }
 
-    public class DetectPostResponseRisksType
+    public class DetectResponseRisksType
     {
         [JsonProperty("user_agent_risks")]
         public string[] UserAgentRisks { get; set; }
@@ -193,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
         public string[] ClientHintsRisks { get; set; }
     }
 
-    public class DetectPostResponseResultType
+    public class DetectResponseResultType
     {
         [JsonProperty("code")]
         public string Code { get; set; }
@@ -205,7 +194,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
         public string Message { get; set; }
     }
 
-    public class bodyheadersInputItem
+    public class BodyInput
+    {
+        [JsonProperty("headers")]
+        public BodyInputHeadersTypeItem[] Headers { get; set; }
+    }
+
+    public class BodyInputHeadersTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }

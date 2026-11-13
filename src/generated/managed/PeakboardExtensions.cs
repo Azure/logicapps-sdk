@@ -16,25 +16,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Peakboard
 
     public class PeakboardTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> WhenAlertIsSent(FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> WhenAlertIsSent()
         {
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/PowerAutomate/Subscribe";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["CallbackUrl"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = new BodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
+    }
+
+    public class BodyInput
+    {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

@@ -13,17 +13,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Databoxip
     public class DataboxipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "databoxip")]
-        public IBodyWorkflowAction<DataPostResponse, ApiConnectionActionConfiguration> Data(Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<DataResponse, ApiConnectionActionConfiguration> Data(Expression<Func<BodyInputItem[]>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<DataPostResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Accept"] = Convert.ToString("application/vnd.databox.v2+json");
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<DataPostResponse>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<DataResponse>(callPayload);
             });
         }
     }
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Databoxip
     {
     }
 
-    public class DataPostResponse
+    public class DataResponse
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -44,12 +45,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Databoxip
         public string Id { get; set; }
     }
 
-    public class bodyInputItem
+    public class BodyInputItem
     {
-        [JsonProperty("metric_key_id")]
+        public BodyInputItem(string metricKeyId, double value)
+        {
+            this.MetricKeyId = metricKeyId;
+            this.Value = value;
+        }
+
+        [JsonProperty("metric_key_id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MetricKeyId { get; set; }
 
-        [JsonProperty("value")]
+        [JsonProperty("value", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Value { get; set; }
 
         [JsonProperty("dimension")]

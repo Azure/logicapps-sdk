@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Omdbip
     public class OmdbipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "omdbip")]
-        public IBodyWorkflowAction<GetSearchResultsResponse, ApiConnectionActionConfiguration> GetSearchResults(Expression<Func<string>> apikey, Expression<Func<string>> s = null, Expression<Func<string>> i = null, Expression<Func<int>> y = null, Expression<Func<typeInput>> type = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<GetSearchResultsResponse, ApiConnectionActionConfiguration> GetSearchResults(Expression<Func<string>> apikey, Expression<Func<string>> s = null, Expression<Func<string>> i = null, Expression<Func<int>> y = null, Expression<Func<TypeInput>> type = null, Expression<Func<int>> page = null)
         {
             var __workflow_apikey = WorkflowExpression.Compile(apikey, nameof(apikey), required: true);
             var __workflow_s = WorkflowExpression.Compile(s, nameof(s), required: false);
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Omdbip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         [EnumMember(Value = "movie")]
         Movie,

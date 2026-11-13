@@ -13,72 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
     public class ResendipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<EmailPostResponse, ApiConnectionActionConfiguration> Email(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodysubject, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodybcc = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyhtml = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null, Expression<Func<string>> bodyreplyTo = null)
+        public IBodyWorkflowAction<EmailResponse, ApiConnectionActionConfiguration> Email(Expression<Func<EmailBodyInput>> body)
         {
-            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: true);
-            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
-            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
-            var __workflow_bodycc = WorkflowExpression.Compile(bodycc, nameof(bodycc), required: false);
-            var __workflow_bodybcc = WorkflowExpression.Compile(bodybcc, nameof(bodybcc), required: false);
-            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
-            var __workflow_bodyhtml = WorkflowExpression.Compile(bodyhtml, nameof(bodyhtml), required: false);
-            var __workflow_bodyattachments = WorkflowExpression.Compile(bodyattachments, nameof(bodyattachments), required: false);
-            var __workflow_bodyreplyTo = WorkflowExpression.Compile(bodyreplyTo, nameof(bodyreplyTo), required: false);
-            return new DeferredBodyAction<EmailPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<EmailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/emails";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
-                bodypropCount++;
-                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
-                if (__workflow_bodycc != null)
-                {
-                    body["cc"] = ExpressionConverter.ConvertO(__workflow_bodycc);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodybcc != null)
-                {
-                    body["bcc"] = ExpressionConverter.ConvertO(__workflow_bodybcc);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
-                if (__workflow_bodytext != null)
-                {
-                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyhtml != null)
-                {
-                    body["html"] = ExpressionConverter.ConvertO(__workflow_bodyhtml);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyattachments != null)
-                {
-                    body["attachments"] = ExpressionConverter.ConvertO(__workflow_bodyattachments);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyreplyTo != null)
-                {
-                    body["reply_to"] = ExpressionConverter.ConvertO(__workflow_bodyreplyTo);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<EmailPostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<EmailResponse>(callPayload);
             });
         }
 
@@ -108,41 +52,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<DomainPostResponse, ApiConnectionActionConfiguration> Domain(Expression<Func<string>> bodyname, Expression<Func<bodyregionInput>> bodyregion = null)
+        public IBodyWorkflowAction<DomainResponse, ApiConnectionActionConfiguration> Domain(Expression<Func<DomainBodyInput>> body)
         {
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
-            return new DeferredBodyAction<DomainPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<DomainResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/domains";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodyregion != null)
-                {
-                    if (__workflow_bodyregion != null)
-                    {
-                        body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["region"] = "us-east-1";
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<DomainPostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<DomainResponse>(callPayload);
             });
         }
 
@@ -177,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
     {
     }
 
-    public class EmailPostResponse
+    public class EmailResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -192,7 +111,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         public string CreatedAt { get; set; }
     }
 
-    public class bodyattachmentsInputItem
+    public class EmailBodyInput
+    {
+        public EmailBodyInput(string from, string to, string subject)
+        {
+            this.From = from;
+            this.To = to;
+            this.Subject = subject;
+        }
+
+        [JsonProperty("from", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string From { get; set; }
+
+        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string To { get; set; }
+
+        [JsonProperty("cc")]
+        public string Cc { get; set; }
+
+        [JsonProperty("bcc")]
+        public string Bcc { get; set; }
+
+        [JsonProperty("subject", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Subject { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("html")]
+        public string Html { get; set; }
+
+        [JsonProperty("attachments")]
+        public BodyInputAttachmentsTypeItem[] Attachments { get; set; }
+
+        [JsonProperty("reply_to")]
+        public string ReplyTo { get; set; }
+    }
+
+    public class BodyInputAttachmentsTypeItem
     {
         [JsonProperty("filename")]
         public string Filename { get; set; }
@@ -264,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         public string Region { get; set; }
     }
 
-    public class DomainPostResponse
+    public class DomainResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -279,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         public string Status { get; set; }
 
         [JsonProperty("records")]
-        public DomainPostResponseRecordsTypeItem[] Records { get; set; }
+        public DomainResponseRecordsTypeItem[] Records { get; set; }
 
         [JsonProperty("region")]
         public string Region { get; set; }
@@ -288,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         public string DnsProvider { get; set; }
     }
 
-    public class DomainPostResponseRecordsTypeItem
+    public class DomainResponseRecordsTypeItem
     {
         [JsonProperty("record")]
         public string Record { get; set; }
@@ -312,8 +268,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         public int Priority { get; set; }
     }
 
+    public class DomainBodyInput
+    {
+        public DomainBodyInput(string name)
+        {
+            this.Name = name;
+        }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("region", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputRegionType? Region { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Resendip.BodyInputRegionType.UsEast1;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyregionInput
+    public enum BodyInputRegionType
     {
         [EnumMember(Value = "us-east-1")]
         UsEast1,

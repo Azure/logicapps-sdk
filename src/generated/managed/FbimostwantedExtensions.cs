@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
     public class FbimostwantedActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
-        public IBodyWorkflowAction<ListWantedResponse, ApiConnectionActionConfiguration> ListWanted(Expression<Func<posterClassificationInput>> posterClassification = null, Expression<Func<string>> title = null, Expression<Func<fieldOfficesInput>> fieldOffices = null, Expression<Func<personClassificationInput>> personClassification = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<sortOnInput>> sortOn = null, Expression<Func<sortOrderInput>> sortOrder = null)
+        public IBodyWorkflowAction<ListWantedResponse, ApiConnectionActionConfiguration> ListWanted(Expression<Func<PosterClassificationInput>> posterClassification = null, Expression<Func<string>> title = null, Expression<Func<FieldOfficesInput>> fieldOffices = null, Expression<Func<PersonClassificationInput>> personClassification = null, Expression<Func<StatusInput>> status = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<SortOnInput>> sortOn = null, Expression<Func<SortOrderInput>> sortOrder = null)
         {
             var __workflow_posterClassification = WorkflowExpression.Compile(posterClassification, nameof(posterClassification), required: false);
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
-        public IBodyWorkflowAction<ListArtCrimesResponse, ApiConnectionActionConfiguration> ListArtCrimes(Expression<Func<string>> title = null, Expression<Func<string>> crimeCategory = null, Expression<Func<string>> maker = null, Expression<Func<string>> referenceNumber = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<sortOnInput>> sortOn = null, Expression<Func<sortOrderInput>> sortOrder = null)
+        public IBodyWorkflowAction<ListArtCrimesResponse, ApiConnectionActionConfiguration> ListArtCrimes(Expression<Func<string>> title = null, Expression<Func<string>> crimeCategory = null, Expression<Func<string>> maker = null, Expression<Func<string>> referenceNumber = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<SortOnInput>> sortOn = null, Expression<Func<SortOrderInput>> sortOrder = null)
         {
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
             var __workflow_crimeCategory = WorkflowExpression.Compile(crimeCategory, nameof(crimeCategory), required: false);
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum posterClassificationInput
+    public enum PosterClassificationInput
     {
         [EnumMember(Value = "default")]
         Default,
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum fieldOfficesInput
+    public enum FieldOfficesInput
     {
         [EnumMember(Value = "albany")]
         Albany,
@@ -429,7 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum personClassificationInput
+    public enum PersonClassificationInput
     {
         Main,
         Victim,
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         [EnumMember(Value = "na")]
         Na,
@@ -454,7 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortOnInput
+    public enum SortOnInput
     {
         [EnumMember(Value = "publication")]
         Publication,
@@ -463,7 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortOrderInput
+    public enum SortOrderInput
     {
         [EnumMember(Value = "desc")]
         Desc,

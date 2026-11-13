@@ -13,680 +13,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public class WorkdayhcmActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo, ApiConnectionActionConfiguration> AddOrUpdateAddressInformation(Expression<Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIdTypeInput>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIdType, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerId, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate, Expression<Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryIdInput>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryId = null, Expression<Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineDataInputItem[]>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData = null, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality = null, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionId = null, Expression<Func<string>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode = null, Expression<Func<bool>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIdInput>> addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId = null)
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo, ApiConnectionActionConfiguration> AddOrUpdateAddressInformation(Expression<Func<AddOrUpdateAddressInformationForPersonEventRequestInput>> addOrUpdateAddressInformationForPersonEventRequest = null)
         {
-            var __workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIdType = WorkflowExpression.Compile(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIdType, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIdType), required: true);
-            var __workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerId = WorkflowExpression.Compile(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerId, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerId), required: true);
-            var __workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate = WorkflowExpression.Compile(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate), required: true);
-            var __workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryId = WorkflowExpression.Compile(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryId, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryId), required: false);
-            var __workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData = WorkflowExpression.Compile(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData), required: false);
-            var __workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality = WorkflowExpression.Compile(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality), required: false);
-            var __workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionId = WorkflowExpression.Compile(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionId, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionId), required: false);
-            var __workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode = WorkflowExpression.Compile(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode), required: false);
-            var __workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic = WorkflowExpression.Compile(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic), required: false);
-            var __workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary = WorkflowExpression.Compile(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary), required: false);
-            var __workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId = WorkflowExpression.Compile(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId, nameof(addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId), required: false);
+            var __workflow_addOrUpdateAddressInformationForPersonEventRequest = WorkflowExpression.Compile(addOrUpdateAddressInformationForPersonEventRequest, nameof(addOrUpdateAddressInformationForPersonEventRequest), required: false);
             return new DeferredBodyAction<AddOrUpdateContactInformationForPersonEventResponseInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Add_or_Update_Address_Information";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var addOrUpdateAddressInformationForPersonEventRequest = new JObject();
-                var addOrUpdateAddressInformationForPersonEventRequestpropCount = 0;
-                var addOrUpdateAddressInformationForPersonEventRequestObject = new JObject();
-                var addOrUpdateAddressInformationForPersonEventRequestObjectpropCount = 0;
-                var addOrUpdateAddressInformationDataObject = new JObject();
-                var addOrUpdateAddressInformationDataObjectpropCount = 0;
-                var workerReferenceObject = new JObject();
-                var workerReferenceObjectpropCount = 0;
-                workerReferenceObjectpropCount++;
-                workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIdType);
-                workerReferenceObjectpropCount++;
-                workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerId);
-                if (workerReferenceObjectpropCount > 0)
-                {
-                    addOrUpdateAddressInformationDataObject["worker_Reference"] = workerReferenceObject;
-                    addOrUpdateAddressInformationDataObjectpropCount++;
-                }
-
-                addOrUpdateAddressInformationDataObjectpropCount++;
-                addOrUpdateAddressInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataeffectiveDate);
-                var addressInformationDataObject = new JObject();
-                var addressInformationDataObjectpropCount = 0;
-                var countryReferenceObject = new JObject();
-                var countryReferenceObjectpropCount = 0;
-                countryReferenceObject["CountryIDType"] = "ISO 3166-1 Alpha-3 Code";
-                countryReferenceObjectpropCount++;
-                if (__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryId != null)
-                {
-                    countryReferenceObject["CountryID"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryId);
-                    countryReferenceObjectpropCount++;
-                }
-
-                if (countryReferenceObjectpropCount > 0)
-                {
-                    addressInformationDataObject["country_Reference"] = countryReferenceObject;
-                    addressInformationDataObjectpropCount++;
-                }
-
-                if (__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData != null)
-                {
-                    addressInformationDataObject["address_Line_Data"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineData);
-                    addressInformationDataObjectpropCount++;
-                }
-
-                if (__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality != null)
-                {
-                    addressInformationDataObject["municipality"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatamunicipality);
-                    addressInformationDataObjectpropCount++;
-                }
-
-                var countryRegionReferenceObject = new JObject();
-                var countryRegionReferenceObjectpropCount = 0;
-                countryRegionReferenceObject["CountryRegionIDType"] = "ISO 3166-2 Code";
-                countryRegionReferenceObjectpropCount++;
-                if (__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionId != null)
-                {
-                    countryRegionReferenceObject["CountryRegionID"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryRegionReferencecountryRegionId);
-                    countryRegionReferenceObjectpropCount++;
-                }
-
-                if (countryRegionReferenceObjectpropCount > 0)
-                {
-                    addressInformationDataObject["country_Region_Reference"] = countryRegionReferenceObject;
-                    addressInformationDataObjectpropCount++;
-                }
-
-                if (__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode != null)
-                {
-                    addressInformationDataObject["postal_Code"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatapostalCode);
-                    addressInformationDataObjectpropCount++;
-                }
-
-                var usageDataObject = new JObject();
-                var usageDataObjectpropCount = 0;
-                if (__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic != null)
-                {
-                    usageDataObject["isPublic"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDataisPublic);
-                    usageDataObjectpropCount++;
-                }
-
-                var typeDataObject = new JObject();
-                var typeDataObjectpropCount = 0;
-                if (__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary != null)
-                {
-                    typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDataisPrimary);
-                    typeDataObjectpropCount++;
-                }
-
-                var typeReferenceObject = new JObject();
-                var typeReferenceObjectpropCount = 0;
-                typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
-                typeReferenceObjectpropCount++;
-                if (__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId != null)
-                {
-                    typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId);
-                    typeReferenceObjectpropCount++;
-                }
-
-                if (typeReferenceObjectpropCount > 0)
-                {
-                    typeDataObject["type_Reference"] = typeReferenceObject;
-                    typeDataObjectpropCount++;
-                }
-
-                if (typeDataObjectpropCount > 0)
-                {
-                    usageDataObject["type_Data"] = typeDataObject;
-                    usageDataObjectpropCount++;
-                }
-
-                if (usageDataObjectpropCount > 0)
-                {
-                    addressInformationDataObject["usage_Data"] = usageDataObject;
-                    addressInformationDataObjectpropCount++;
-                }
-
-                if (addressInformationDataObjectpropCount > 0)
-                {
-                    addOrUpdateAddressInformationDataObject["address_Information_Data"] = addressInformationDataObject;
-                    addOrUpdateAddressInformationDataObjectpropCount++;
-                }
-
-                if (addOrUpdateAddressInformationDataObjectpropCount > 0)
-                {
-                    addOrUpdateAddressInformationForPersonEventRequestObject["add_or_Update_Address_Information_Data"] = addOrUpdateAddressInformationDataObject;
-                    addOrUpdateAddressInformationForPersonEventRequestObjectpropCount++;
-                }
-
-                if (addOrUpdateAddressInformationForPersonEventRequestObjectpropCount > 0)
-                {
-                    addOrUpdateAddressInformationForPersonEventRequest["add_or_Update_Address_Information_for_Person_Event_Request"] = addOrUpdateAddressInformationForPersonEventRequestObject;
-                    addOrUpdateAddressInformationForPersonEventRequestpropCount++;
-                }
-
-                if (addOrUpdateAddressInformationForPersonEventRequestpropCount > 0)
-                {
-                    callPayload.Body = addOrUpdateAddressInformationForPersonEventRequest;
-                }
-
+                if (__workflow_addOrUpdateAddressInformationForPersonEventRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_addOrUpdateAddressInformationForPersonEventRequest);
                 return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo, ApiConnectionActionConfiguration> AddOrUpdatePhoneInformation(Expression<Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIdTypeInput>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIdType, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerId, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate, Expression<Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCodeInput>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode = null, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode = null, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber = null, Expression<Func<string>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension = null, Expression<Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeIdInput>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeId = null, Expression<Func<bool>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIdInput>> addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId = null)
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo, ApiConnectionActionConfiguration> AddOrUpdatePhoneInformation(Expression<Func<AddOrUpdatePhoneInformationForPersonEventRequestInput>> addOrUpdatePhoneInformationForPersonEventRequest = null)
         {
-            var __workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIdType = WorkflowExpression.Compile(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIdType, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIdType), required: true);
-            var __workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerId = WorkflowExpression.Compile(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerId, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerId), required: true);
-            var __workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate = WorkflowExpression.Compile(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate), required: true);
-            var __workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode = WorkflowExpression.Compile(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode), required: false);
-            var __workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode = WorkflowExpression.Compile(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode), required: false);
-            var __workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber = WorkflowExpression.Compile(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber), required: false);
-            var __workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension = WorkflowExpression.Compile(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension), required: false);
-            var __workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeId = WorkflowExpression.Compile(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeId, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeId), required: false);
-            var __workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic = WorkflowExpression.Compile(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic), required: false);
-            var __workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary = WorkflowExpression.Compile(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary), required: false);
-            var __workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId = WorkflowExpression.Compile(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId, nameof(addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId), required: false);
+            var __workflow_addOrUpdatePhoneInformationForPersonEventRequest = WorkflowExpression.Compile(addOrUpdatePhoneInformationForPersonEventRequest, nameof(addOrUpdatePhoneInformationForPersonEventRequest), required: false);
             return new DeferredBodyAction<AddOrUpdateContactInformationForPersonEventResponseInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Add_or_Update_Phone_Information";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var addOrUpdatePhoneInformationForPersonEventRequest = new JObject();
-                var addOrUpdatePhoneInformationForPersonEventRequestpropCount = 0;
-                var addOrUpdatePhoneInformationForPersonEventRequestObject = new JObject();
-                var addOrUpdatePhoneInformationForPersonEventRequestObjectpropCount = 0;
-                var addOrUpdatePhoneInformationDataObject = new JObject();
-                var addOrUpdatePhoneInformationDataObjectpropCount = 0;
-                var workerReferenceObject = new JObject();
-                var workerReferenceObjectpropCount = 0;
-                workerReferenceObjectpropCount++;
-                workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIdType);
-                workerReferenceObjectpropCount++;
-                workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerId);
-                if (workerReferenceObjectpropCount > 0)
-                {
-                    addOrUpdatePhoneInformationDataObject["worker_Reference"] = workerReferenceObject;
-                    addOrUpdatePhoneInformationDataObjectpropCount++;
-                }
-
-                addOrUpdatePhoneInformationDataObjectpropCount++;
-                addOrUpdatePhoneInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataeffectiveDate);
-                var phoneInformationDataObject = new JObject();
-                var phoneInformationDataObjectpropCount = 0;
-                if (__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode != null)
-                {
-                    phoneInformationDataObject["country_ISO_Code"] = ExpressionConverter.ConvertO(__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCode);
-                    phoneInformationDataObjectpropCount++;
-                }
-
-                if (__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode != null)
-                {
-                    phoneInformationDataObject["area_Code"] = ExpressionConverter.ConvertO(__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataareaCode);
-                    phoneInformationDataObjectpropCount++;
-                }
-
-                if (__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber != null)
-                {
-                    phoneInformationDataObject["phone_Number"] = ExpressionConverter.ConvertO(__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneNumber);
-                    phoneInformationDataObjectpropCount++;
-                }
-
-                if (__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension != null)
-                {
-                    phoneInformationDataObject["phone_Extension"] = ExpressionConverter.ConvertO(__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneExtension);
-                    phoneInformationDataObjectpropCount++;
-                }
-
-                var phoneDeviceTypeReferenceObject = new JObject();
-                var phoneDeviceTypeReferenceObjectpropCount = 0;
-                phoneDeviceTypeReferenceObject["PhoneDeviceTypeIDType"] = "Phone_Device_Type_ID";
-                phoneDeviceTypeReferenceObjectpropCount++;
-                if (__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeId != null)
-                {
-                    phoneDeviceTypeReferenceObject["PhoneDeviceTypeID"] = ExpressionConverter.ConvertO(__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeId);
-                    phoneDeviceTypeReferenceObjectpropCount++;
-                }
-
-                if (phoneDeviceTypeReferenceObjectpropCount > 0)
-                {
-                    phoneInformationDataObject["phone_Device_Type_Reference"] = phoneDeviceTypeReferenceObject;
-                    phoneInformationDataObjectpropCount++;
-                }
-
-                var usageDataObject = new JObject();
-                var usageDataObjectpropCount = 0;
-                if (__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic != null)
-                {
-                    usageDataObject["isPublic"] = ExpressionConverter.ConvertO(__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDataisPublic);
-                    usageDataObjectpropCount++;
-                }
-
-                var typeDataObject = new JObject();
-                var typeDataObjectpropCount = 0;
-                if (__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary != null)
-                {
-                    typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDataisPrimary);
-                    typeDataObjectpropCount++;
-                }
-
-                var typeReferenceObject = new JObject();
-                var typeReferenceObjectpropCount = 0;
-                typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
-                typeReferenceObjectpropCount++;
-                if (__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId != null)
-                {
-                    typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(__workflow_addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId);
-                    typeReferenceObjectpropCount++;
-                }
-
-                if (typeReferenceObjectpropCount > 0)
-                {
-                    typeDataObject["type_Reference"] = typeReferenceObject;
-                    typeDataObjectpropCount++;
-                }
-
-                if (typeDataObjectpropCount > 0)
-                {
-                    usageDataObject["type_Data"] = typeDataObject;
-                    usageDataObjectpropCount++;
-                }
-
-                if (usageDataObjectpropCount > 0)
-                {
-                    phoneInformationDataObject["usage_Data"] = usageDataObject;
-                    phoneInformationDataObjectpropCount++;
-                }
-
-                if (phoneInformationDataObjectpropCount > 0)
-                {
-                    addOrUpdatePhoneInformationDataObject["phone_Information_Data"] = phoneInformationDataObject;
-                    addOrUpdatePhoneInformationDataObjectpropCount++;
-                }
-
-                if (addOrUpdatePhoneInformationDataObjectpropCount > 0)
-                {
-                    addOrUpdatePhoneInformationForPersonEventRequestObject["add_or_Update_Phone_Information_Data"] = addOrUpdatePhoneInformationDataObject;
-                    addOrUpdatePhoneInformationForPersonEventRequestObjectpropCount++;
-                }
-
-                if (addOrUpdatePhoneInformationForPersonEventRequestObjectpropCount > 0)
-                {
-                    addOrUpdatePhoneInformationForPersonEventRequest["add_or_Update_Phone_Information_for_Person_Event_Request"] = addOrUpdatePhoneInformationForPersonEventRequestObject;
-                    addOrUpdatePhoneInformationForPersonEventRequestpropCount++;
-                }
-
-                if (addOrUpdatePhoneInformationForPersonEventRequestpropCount > 0)
-                {
-                    callPayload.Body = addOrUpdatePhoneInformationForPersonEventRequest;
-                }
-
+                if (__workflow_addOrUpdatePhoneInformationForPersonEventRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_addOrUpdatePhoneInformationForPersonEventRequest);
                 return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo, ApiConnectionActionConfiguration> AddOrUpdateEmailAddressInformation(Expression<Func<addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIdTypeInput>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIdType, Expression<Func<string>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerId, Expression<Func<string>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate, Expression<Func<string>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress = null, Expression<Func<bool>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIdInput>> addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId = null)
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo, ApiConnectionActionConfiguration> AddOrUpdateEmailAddressInformation(Expression<Func<AddOrUpdateEmailAddressInformationForPersonEventRequestInput>> addOrUpdateEmailAddressInformationForPersonEventRequest = null)
         {
-            var __workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIdType = WorkflowExpression.Compile(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIdType, nameof(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIdType), required: true);
-            var __workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerId = WorkflowExpression.Compile(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerId, nameof(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerId), required: true);
-            var __workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate = WorkflowExpression.Compile(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate, nameof(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate), required: true);
-            var __workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress = WorkflowExpression.Compile(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress, nameof(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress), required: false);
-            var __workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic = WorkflowExpression.Compile(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic, nameof(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic), required: false);
-            var __workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary = WorkflowExpression.Compile(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary, nameof(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary), required: false);
-            var __workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId = WorkflowExpression.Compile(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId, nameof(addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId), required: false);
+            var __workflow_addOrUpdateEmailAddressInformationForPersonEventRequest = WorkflowExpression.Compile(addOrUpdateEmailAddressInformationForPersonEventRequest, nameof(addOrUpdateEmailAddressInformationForPersonEventRequest), required: false);
             return new DeferredBodyAction<AddOrUpdateContactInformationForPersonEventResponseInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Add_or_Update_Email_Address_Information";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var addOrUpdateEmailAddressInformationForPersonEventRequest = new JObject();
-                var addOrUpdateEmailAddressInformationForPersonEventRequestpropCount = 0;
-                var addOrUpdateEmailAddressInformationForPersonEventRequestObject = new JObject();
-                var addOrUpdateEmailAddressInformationForPersonEventRequestObjectpropCount = 0;
-                var addOrUpdateEmailAddressInformationDataObject = new JObject();
-                var addOrUpdateEmailAddressInformationDataObjectpropCount = 0;
-                var workerReferenceObject = new JObject();
-                var workerReferenceObjectpropCount = 0;
-                workerReferenceObjectpropCount++;
-                workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIdType);
-                workerReferenceObjectpropCount++;
-                workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerId);
-                if (workerReferenceObjectpropCount > 0)
-                {
-                    addOrUpdateEmailAddressInformationDataObject["worker_Reference"] = workerReferenceObject;
-                    addOrUpdateEmailAddressInformationDataObjectpropCount++;
-                }
-
-                addOrUpdateEmailAddressInformationDataObjectpropCount++;
-                addOrUpdateEmailAddressInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataeffectiveDate);
-                var emailAddressInformationDataObject = new JObject();
-                var emailAddressInformationDataObjectpropCount = 0;
-                if (__workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress != null)
-                {
-                    emailAddressInformationDataObject["email_Address"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDataemailAddress);
-                    emailAddressInformationDataObjectpropCount++;
-                }
-
-                var usageDataObject = new JObject();
-                var usageDataObjectpropCount = 0;
-                if (__workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic != null)
-                {
-                    usageDataObject["isPublic"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDataisPublic);
-                    usageDataObjectpropCount++;
-                }
-
-                var typeDataObject = new JObject();
-                var typeDataObjectpropCount = 0;
-                if (__workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary != null)
-                {
-                    typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDataisPrimary);
-                    typeDataObjectpropCount++;
-                }
-
-                var typeReferenceObject = new JObject();
-                var typeReferenceObjectpropCount = 0;
-                typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
-                typeReferenceObjectpropCount++;
-                if (__workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId != null)
-                {
-                    typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId);
-                    typeReferenceObjectpropCount++;
-                }
-
-                if (typeReferenceObjectpropCount > 0)
-                {
-                    typeDataObject["type_Reference"] = typeReferenceObject;
-                    typeDataObjectpropCount++;
-                }
-
-                if (typeDataObjectpropCount > 0)
-                {
-                    usageDataObject["type_Data"] = typeDataObject;
-                    usageDataObjectpropCount++;
-                }
-
-                if (usageDataObjectpropCount > 0)
-                {
-                    emailAddressInformationDataObject["usage_Data"] = usageDataObject;
-                    emailAddressInformationDataObjectpropCount++;
-                }
-
-                if (emailAddressInformationDataObjectpropCount > 0)
-                {
-                    addOrUpdateEmailAddressInformationDataObject["email_Address_Information_Data"] = emailAddressInformationDataObject;
-                    addOrUpdateEmailAddressInformationDataObjectpropCount++;
-                }
-
-                if (addOrUpdateEmailAddressInformationDataObjectpropCount > 0)
-                {
-                    addOrUpdateEmailAddressInformationForPersonEventRequestObject["add_or_Update_Email_Address_Information_Data"] = addOrUpdateEmailAddressInformationDataObject;
-                    addOrUpdateEmailAddressInformationForPersonEventRequestObjectpropCount++;
-                }
-
-                if (addOrUpdateEmailAddressInformationForPersonEventRequestObjectpropCount > 0)
-                {
-                    addOrUpdateEmailAddressInformationForPersonEventRequest["add_or_Update_Email_Address_Information_for_Person_Event_Request"] = addOrUpdateEmailAddressInformationForPersonEventRequestObject;
-                    addOrUpdateEmailAddressInformationForPersonEventRequestpropCount++;
-                }
-
-                if (addOrUpdateEmailAddressInformationForPersonEventRequestpropCount > 0)
-                {
-                    callPayload.Body = addOrUpdateEmailAddressInformationForPersonEventRequest;
-                }
-
+                if (__workflow_addOrUpdateEmailAddressInformationForPersonEventRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_addOrUpdateEmailAddressInformationForPersonEventRequest);
                 return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo, ApiConnectionActionConfiguration> AddOrUpdateInstantMessengerInformation(Expression<Func<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIdTypeInput>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIdType, Expression<Func<string>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerId, Expression<Func<string>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate, Expression<Func<string>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress = null, Expression<Func<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeIdInput>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeId = null, Expression<Func<bool>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIdInput>> addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId = null)
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo, ApiConnectionActionConfiguration> AddOrUpdateInstantMessengerInformation(Expression<Func<AddOrUpdateInstantMessengerInformationForPersonEventRequestInput>> addOrUpdateInstantMessengerInformationForPersonEventRequest = null)
         {
-            var __workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIdType = WorkflowExpression.Compile(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIdType, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIdType), required: true);
-            var __workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerId = WorkflowExpression.Compile(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerId, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerId), required: true);
-            var __workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate = WorkflowExpression.Compile(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate), required: true);
-            var __workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress = WorkflowExpression.Compile(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress), required: false);
-            var __workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeId = WorkflowExpression.Compile(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeId, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeId), required: false);
-            var __workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic = WorkflowExpression.Compile(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic), required: false);
-            var __workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary = WorkflowExpression.Compile(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary), required: false);
-            var __workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId = WorkflowExpression.Compile(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId), required: false);
+            var __workflow_addOrUpdateInstantMessengerInformationForPersonEventRequest = WorkflowExpression.Compile(addOrUpdateInstantMessengerInformationForPersonEventRequest, nameof(addOrUpdateInstantMessengerInformationForPersonEventRequest), required: false);
             return new DeferredBodyAction<AddOrUpdateContactInformationForPersonEventResponseInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Add_or_Update_Instant_Messenger_Information";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var addOrUpdateInstantMessengerInformationForPersonEventRequest = new JObject();
-                var addOrUpdateInstantMessengerInformationForPersonEventRequestpropCount = 0;
-                var addOrUpdateInstantMessengerInformationForPersonEventRequestObject = new JObject();
-                var addOrUpdateInstantMessengerInformationForPersonEventRequestObjectpropCount = 0;
-                var addOrUpdateInstantMessengerInformationDataObject = new JObject();
-                var addOrUpdateInstantMessengerInformationDataObjectpropCount = 0;
-                var workerReferenceObject = new JObject();
-                var workerReferenceObjectpropCount = 0;
-                workerReferenceObjectpropCount++;
-                workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIdType);
-                workerReferenceObjectpropCount++;
-                workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerId);
-                if (workerReferenceObjectpropCount > 0)
-                {
-                    addOrUpdateInstantMessengerInformationDataObject["worker_Reference"] = workerReferenceObject;
-                    addOrUpdateInstantMessengerInformationDataObjectpropCount++;
-                }
-
-                addOrUpdateInstantMessengerInformationDataObjectpropCount++;
-                addOrUpdateInstantMessengerInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataeffectiveDate);
-                var instantMessengerInformationDataObject = new JObject();
-                var instantMessengerInformationDataObjectpropCount = 0;
-                if (__workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress != null)
-                {
-                    instantMessengerInformationDataObject["instant_Messenger_Address"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerAddress);
-                    instantMessengerInformationDataObjectpropCount++;
-                }
-
-                var instantMessengerTypeReferenceObject = new JObject();
-                var instantMessengerTypeReferenceObjectpropCount = 0;
-                instantMessengerTypeReferenceObject["InstantMessengerTypeIDType"] = "Instant_Messenger_Type_ID";
-                instantMessengerTypeReferenceObjectpropCount++;
-                if (__workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeId != null)
-                {
-                    instantMessengerTypeReferenceObject["InstantMessengerTypeID"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeId);
-                    instantMessengerTypeReferenceObjectpropCount++;
-                }
-
-                if (instantMessengerTypeReferenceObjectpropCount > 0)
-                {
-                    instantMessengerInformationDataObject["instant_Messenger_Type_Reference"] = instantMessengerTypeReferenceObject;
-                    instantMessengerInformationDataObjectpropCount++;
-                }
-
-                var usageDataObject = new JObject();
-                var usageDataObjectpropCount = 0;
-                if (__workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic != null)
-                {
-                    usageDataObject["isPublic"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDataisPublic);
-                    usageDataObjectpropCount++;
-                }
-
-                var typeDataObject = new JObject();
-                var typeDataObjectpropCount = 0;
-                if (__workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary != null)
-                {
-                    typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDataisPrimary);
-                    typeDataObjectpropCount++;
-                }
-
-                var typeReferenceObject = new JObject();
-                var typeReferenceObjectpropCount = 0;
-                typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
-                typeReferenceObjectpropCount++;
-                if (__workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId != null)
-                {
-                    typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId);
-                    typeReferenceObjectpropCount++;
-                }
-
-                if (typeReferenceObjectpropCount > 0)
-                {
-                    typeDataObject["type_Reference"] = typeReferenceObject;
-                    typeDataObjectpropCount++;
-                }
-
-                if (typeDataObjectpropCount > 0)
-                {
-                    usageDataObject["type_Data"] = typeDataObject;
-                    usageDataObjectpropCount++;
-                }
-
-                if (usageDataObjectpropCount > 0)
-                {
-                    instantMessengerInformationDataObject["usage_Data"] = usageDataObject;
-                    instantMessengerInformationDataObjectpropCount++;
-                }
-
-                if (instantMessengerInformationDataObjectpropCount > 0)
-                {
-                    addOrUpdateInstantMessengerInformationDataObject["instant_Messenger_Information_Data"] = instantMessengerInformationDataObject;
-                    addOrUpdateInstantMessengerInformationDataObjectpropCount++;
-                }
-
-                if (addOrUpdateInstantMessengerInformationDataObjectpropCount > 0)
-                {
-                    addOrUpdateInstantMessengerInformationForPersonEventRequestObject["add_or_Update_Instant_Messenger_Information_Data"] = addOrUpdateInstantMessengerInformationDataObject;
-                    addOrUpdateInstantMessengerInformationForPersonEventRequestObjectpropCount++;
-                }
-
-                if (addOrUpdateInstantMessengerInformationForPersonEventRequestObjectpropCount > 0)
-                {
-                    addOrUpdateInstantMessengerInformationForPersonEventRequest["add_or_Update_Instant_Messenger_Information_for_Person_Event_Request"] = addOrUpdateInstantMessengerInformationForPersonEventRequestObject;
-                    addOrUpdateInstantMessengerInformationForPersonEventRequestpropCount++;
-                }
-
-                if (addOrUpdateInstantMessengerInformationForPersonEventRequestpropCount > 0)
-                {
-                    callPayload.Body = addOrUpdateInstantMessengerInformationForPersonEventRequest;
-                }
-
+                if (__workflow_addOrUpdateInstantMessengerInformationForPersonEventRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_addOrUpdateInstantMessengerInformationForPersonEventRequest);
                 return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo, ApiConnectionActionConfiguration> AddOrUpdateWebAddressInformation(Expression<Func<addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIdTypeInput>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIdType, Expression<Func<string>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerId, Expression<Func<string>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate, Expression<Func<string>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress = null, Expression<Func<bool>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic = null, Expression<Func<bool>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary = null, Expression<Func<addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIdInput>> addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId = null)
+        public IBodyWorkflowAction<AddOrUpdateContactInformationForPersonEventResponseInfo, ApiConnectionActionConfiguration> AddOrUpdateWebAddressInformation(Expression<Func<AddOrUpdateWebAddressInformationForPersonEventRequestInput>> addOrUpdateWebAddressInformationForPersonEventRequest = null)
         {
-            var __workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIdType = WorkflowExpression.Compile(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIdType, nameof(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIdType), required: true);
-            var __workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerId = WorkflowExpression.Compile(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerId, nameof(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerId), required: true);
-            var __workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate = WorkflowExpression.Compile(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate, nameof(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate), required: true);
-            var __workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress = WorkflowExpression.Compile(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress, nameof(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress), required: false);
-            var __workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic = WorkflowExpression.Compile(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic, nameof(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic), required: false);
-            var __workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary = WorkflowExpression.Compile(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary, nameof(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary), required: false);
-            var __workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId = WorkflowExpression.Compile(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId, nameof(addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId), required: false);
+            var __workflow_addOrUpdateWebAddressInformationForPersonEventRequest = WorkflowExpression.Compile(addOrUpdateWebAddressInformationForPersonEventRequest, nameof(addOrUpdateWebAddressInformationForPersonEventRequest), required: false);
             return new DeferredBodyAction<AddOrUpdateContactInformationForPersonEventResponseInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Add_or_Update_Web_Address_Information";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var addOrUpdateWebAddressInformationForPersonEventRequest = new JObject();
-                var addOrUpdateWebAddressInformationForPersonEventRequestpropCount = 0;
-                var addOrUpdateWebAddressInformationForPersonEventRequestObject = new JObject();
-                var addOrUpdateWebAddressInformationForPersonEventRequestObjectpropCount = 0;
-                var addOrUpdateWebAddressInformationDataObject = new JObject();
-                var addOrUpdateWebAddressInformationDataObjectpropCount = 0;
-                var workerReferenceObject = new JObject();
-                var workerReferenceObjectpropCount = 0;
-                workerReferenceObjectpropCount++;
-                workerReferenceObject["WorkerIDType"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIdType);
-                workerReferenceObjectpropCount++;
-                workerReferenceObject["WorkerID"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerId);
-                if (workerReferenceObjectpropCount > 0)
-                {
-                    addOrUpdateWebAddressInformationDataObject["worker_Reference"] = workerReferenceObject;
-                    addOrUpdateWebAddressInformationDataObjectpropCount++;
-                }
-
-                addOrUpdateWebAddressInformationDataObjectpropCount++;
-                addOrUpdateWebAddressInformationDataObject["effective_Date"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataeffectiveDate);
-                var webAddressInformationDataObject = new JObject();
-                var webAddressInformationDataObjectpropCount = 0;
-                if (__workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress != null)
-                {
-                    webAddressInformationDataObject["web_Address"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatawebAddress);
-                    webAddressInformationDataObjectpropCount++;
-                }
-
-                var usageDataObject = new JObject();
-                var usageDataObjectpropCount = 0;
-                if (__workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic != null)
-                {
-                    usageDataObject["isPublic"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDataisPublic);
-                    usageDataObjectpropCount++;
-                }
-
-                var typeDataObject = new JObject();
-                var typeDataObjectpropCount = 0;
-                if (__workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary != null)
-                {
-                    typeDataObject["isPrimary"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDataisPrimary);
-                    typeDataObjectpropCount++;
-                }
-
-                var typeReferenceObject = new JObject();
-                var typeReferenceObjectpropCount = 0;
-                typeReferenceObject["communicationUsageTypeIDType"] = "Communication_Usage_Type_ID";
-                typeReferenceObjectpropCount++;
-                if (__workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId != null)
-                {
-                    typeReferenceObject["communicationUsageTypeID"] = ExpressionConverter.ConvertO(__workflow_addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeId);
-                    typeReferenceObjectpropCount++;
-                }
-
-                if (typeReferenceObjectpropCount > 0)
-                {
-                    typeDataObject["type_Reference"] = typeReferenceObject;
-                    typeDataObjectpropCount++;
-                }
-
-                if (typeDataObjectpropCount > 0)
-                {
-                    usageDataObject["type_Data"] = typeDataObject;
-                    usageDataObjectpropCount++;
-                }
-
-                if (usageDataObjectpropCount > 0)
-                {
-                    webAddressInformationDataObject["usage_Data"] = usageDataObject;
-                    webAddressInformationDataObjectpropCount++;
-                }
-
-                if (webAddressInformationDataObjectpropCount > 0)
-                {
-                    addOrUpdateWebAddressInformationDataObject["web_Address_Information_Data"] = webAddressInformationDataObject;
-                    addOrUpdateWebAddressInformationDataObjectpropCount++;
-                }
-
-                if (addOrUpdateWebAddressInformationDataObjectpropCount > 0)
-                {
-                    addOrUpdateWebAddressInformationForPersonEventRequestObject["add_or_Update_Web_Address_Information_Data"] = addOrUpdateWebAddressInformationDataObject;
-                    addOrUpdateWebAddressInformationForPersonEventRequestObjectpropCount++;
-                }
-
-                if (addOrUpdateWebAddressInformationForPersonEventRequestObjectpropCount > 0)
-                {
-                    addOrUpdateWebAddressInformationForPersonEventRequest["add_or_Update_Web_Address_Information_for_Person_Event_Request"] = addOrUpdateWebAddressInformationForPersonEventRequestObject;
-                    addOrUpdateWebAddressInformationForPersonEventRequestpropCount++;
-                }
-
-                if (addOrUpdateWebAddressInformationForPersonEventRequestpropCount > 0)
-                {
-                    callPayload.Body = addOrUpdateWebAddressInformationForPersonEventRequest;
-                }
-
+                if (__workflow_addOrUpdateWebAddressInformationForPersonEventRequest != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_addOrUpdateWebAddressInformationForPersonEventRequest);
                 return new ApiConnectionAction<AddOrUpdateContactInformationForPersonEventResponseInfo>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<EmployeePersonalInfoInfo, ApiConnectionActionConfiguration> GetEmployeePersonalInfo(Expression<Func<systemIdTypeInput>> systemIdType, Expression<Func<string>> systemId)
+        public IBodyWorkflowAction<EmployeePersonalInfoInfo, ApiConnectionActionConfiguration> GetEmployeePersonalInfo(Expression<Func<SystemIdTypeInput>> systemIdType, Expression<Func<string>> systemId)
         {
             var __workflow_systemIdType = WorkflowExpression.Compile(systemIdType, nameof(systemIdType), required: true);
             var __workflow_systemId = WorkflowExpression.Compile(systemId, nameof(systemId), required: true);
@@ -702,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<EmployeeIdentityInfo, ApiConnectionActionConfiguration> GetEmployeeIdentityInfo(Expression<Func<systemIdTypeInput>> systemIdType, Expression<Func<string>> systemId)
+        public IBodyWorkflowAction<EmployeeIdentityInfo, ApiConnectionActionConfiguration> GetEmployeeIdentityInfo(Expression<Func<SystemIdTypeInput>> systemIdType, Expression<Func<string>> systemId)
         {
             var __workflow_systemIdType = WorkflowExpression.Compile(systemIdType, nameof(systemIdType), required: true);
             var __workflow_systemId = WorkflowExpression.Compile(systemId, nameof(systemId), required: true);
@@ -718,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<EmployeeQualificationInfo, ApiConnectionActionConfiguration> GetEmployeeQualificationInfo(Expression<Func<systemIdTypeInput>> systemIdType, Expression<Func<string>> systemId)
+        public IBodyWorkflowAction<EmployeeQualificationInfo, ApiConnectionActionConfiguration> GetEmployeeQualificationInfo(Expression<Func<SystemIdTypeInput>> systemIdType, Expression<Func<string>> systemId)
         {
             var __workflow_systemIdType = WorkflowExpression.Compile(systemIdType, nameof(systemIdType), required: true);
             var __workflow_systemId = WorkflowExpression.Compile(systemId, nameof(systemId), required: true);
@@ -734,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<EmployeeEmploymentInfoInfo, ApiConnectionActionConfiguration> GetEmployeeEmploymentInfo(Expression<Func<systemIdTypeInput>> systemIdType, Expression<Func<string>> systemId)
+        public IBodyWorkflowAction<EmployeeEmploymentInfoInfo, ApiConnectionActionConfiguration> GetEmployeeEmploymentInfo(Expression<Func<SystemIdTypeInput>> systemIdType, Expression<Func<string>> systemId)
         {
             var __workflow_systemIdType = WorkflowExpression.Compile(systemIdType, nameof(systemIdType), required: true);
             var __workflow_systemId = WorkflowExpression.Compile(systemId, nameof(systemId), required: true);
@@ -750,9 +152,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SOAPOperation(Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SOAPOperation(Expression<Func<string>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SOAP_Operation";
@@ -766,11 +168,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
 
     public class WorkdayhcmTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<EmployeeInfo, ApiConnectionTriggerConfiguration> WhenAnEmployeeIsAddedOrUpdated(Expression<Func<dateCriteriaInput>> dateCriteria, Expression<Func<businessProcessTypeInput>> businessProcessType = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EmployeeInfo, ApiConnectionPollingTriggerConfiguration> WhenAnEmployeeIsAddedOrUpdated(Expression<Func<DateCriteriaInput>> dateCriteria, Expression<Func<BusinessProcessTypeInput>> businessProcessType = null)
         {
             var __workflow_dateCriteria = WorkflowExpression.Compile(dateCriteria, nameof(dateCriteria), required: true);
             var __workflow_businessProcessType = WorkflowExpression.Compile(businessProcessType, nameof(businessProcessType), required: false);
-            return new DeferredBodyTrigger<EmployeeInfo, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<EmployeeInfo, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/When_an_Employee_is_Added_or_Updated";
                 var apiCallHttpMethod = "get";
@@ -778,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
                 callPayload.Queries["dateCriteria"] = ExpressionConverter.Convert(__workflow_dateCriteria);
                 if (__workflow_businessProcessType != null)
                     callPayload.Queries["businessProcessType"] = ExpressionConverter.Convert(__workflow_businessProcessType);
-                return new ApiConnectionTrigger<EmployeeInfo>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<EmployeeInfo>(callPayload);
             });
         }
     }
@@ -786,16 +188,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public class AddOrUpdateContactInformationForPersonEventResponseInfo
     {
         [JsonProperty("add_or_Update_Contact_Information_for_Person_Event_Response")]
-        public AddOrUpdateContactInformationForPersonEventResponseAddOrUpdateContactInformationForPersonEventResponseType AddOrUpdateContactInformationForPersonEventResponse { get; set; }
+        public AddOrUpdateContactInformationForPersonEventResponseInfoAddOrUpdateContactInformationForPersonEventResponseType AddOrUpdateContactInformationForPersonEventResponse { get; set; }
     }
 
-    public class AddOrUpdateContactInformationForPersonEventResponseAddOrUpdateContactInformationForPersonEventResponseType
+    public class AddOrUpdateContactInformationForPersonEventResponseInfoAddOrUpdateContactInformationForPersonEventResponseType
     {
         [JsonProperty("Contact_Information_for_Person_Event_Reference")]
-        public AddOrUpdateContactInformationForPersonEventResponseAddOrUpdateContactInformationForPersonEventResponseTypeContactInformationForPersonEventReferenceType ContactInformationForPersonEventReference { get; set; }
+        public AddOrUpdateContactInformationForPersonEventResponseInfoAddOrUpdateContactInformationForPersonEventResponseTypeContactInformationForPersonEventReferenceType ContactInformationForPersonEventReference { get; set; }
     }
 
-    public class AddOrUpdateContactInformationForPersonEventResponseAddOrUpdateContactInformationForPersonEventResponseTypeContactInformationForPersonEventReferenceType
+    public class AddOrUpdateContactInformationForPersonEventResponseInfoAddOrUpdateContactInformationForPersonEventResponseTypeContactInformationForPersonEventReferenceType
     {
         [JsonProperty("PersonIDType")]
         public string PersonIdType { get; set; }
@@ -804,8 +206,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string PersonId { get; set; }
     }
 
+    public class AddOrUpdateAddressInformationForPersonEventRequestInput
+    {
+        [JsonProperty("add_or_Update_Address_Information_for_Person_Event_Request")]
+        public AddOrUpdateAddressInformationForPersonEventRequestInputAddOrUpdateAddressInformationForPersonEventRequestType AddOrUpdateAddressInformationForPersonEventRequest { get; set; }
+    }
+
+    public class AddOrUpdateAddressInformationForPersonEventRequestInputAddOrUpdateAddressInformationForPersonEventRequestType
+    {
+        [JsonProperty("add_or_Update_Address_Information_Data")]
+        public AddOrUpdateAddressInformationForPersonEventRequestInputAddOrUpdateAddressInformationForPersonEventRequestTypeAddOrUpdateAddressInformationDataType AddOrUpdateAddressInformationData { get; set; }
+    }
+
+    public class AddOrUpdateAddressInformationForPersonEventRequestInputAddOrUpdateAddressInformationForPersonEventRequestTypeAddOrUpdateAddressInformationDataType
+    {
+        public AddOrUpdateAddressInformationForPersonEventRequestInputAddOrUpdateAddressInformationForPersonEventRequestTypeAddOrUpdateAddressInformationDataType(string effectiveDate)
+        {
+            this.EffectiveDate = effectiveDate;
+        }
+
+        [JsonProperty("worker_Reference")]
+        public WorkerReference WorkerReference { get; set; }
+
+        [JsonProperty("effective_Date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EffectiveDate { get; set; }
+
+        [JsonProperty("address_Information_Data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateAddressInformationAddressInformationData AddressInformationData { get; set; } = new AddOrUpdateAddressInformationAddressInformationData();
+    }
+
+    public class WorkerReference
+    {
+        public WorkerReference(string workerId)
+        {
+            this.WorkerId = workerId;
+        }
+
+        [JsonProperty("WorkerIDType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WorkerReferenceWorkerIdTypeType WorkerIdType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm.WorkerReferenceWorkerIdTypeType.EmployeeId;
+
+        [JsonProperty("WorkerID", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WorkerId { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIdTypeInput
+    public enum WorkerReferenceWorkerIdTypeType
     {
         [EnumMember(Value = "Employee ID")]
         EmployeeId,
@@ -815,8 +260,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WorkdayId
     }
 
+    public class AddOrUpdateAddressInformationAddressInformationData
+    {
+        [JsonProperty("country_Reference", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateAddressInformationAddressInformationDataCountryReferenceType CountryReference { get; set; } = new AddOrUpdateAddressInformationAddressInformationDataCountryReferenceType();
+
+        [JsonProperty("address_Line_Data")]
+        public AddOrUpdateAddressInformationAddressInformationDataAddressLineDataTypeItem[] AddressLineData { get; set; }
+
+        [JsonProperty("municipality")]
+        public string Municipality { get; set; }
+
+        [JsonProperty("country_Region_Reference", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateAddressInformationAddressInformationDataCountryRegionReferenceType CountryRegionReference { get; set; } = new AddOrUpdateAddressInformationAddressInformationDataCountryRegionReferenceType();
+
+        [JsonProperty("postal_Code")]
+        public string PostalCode { get; set; }
+
+        [JsonProperty("usage_Data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateAddressInformationAddressInformationDataUsageDataType UsageData { get; set; } = new AddOrUpdateAddressInformationAddressInformationDataUsageDataType();
+    }
+
+    public class AddOrUpdateAddressInformationAddressInformationDataCountryReferenceType
+    {
+        [JsonProperty("CountryIDType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal AddOrUpdateAddressInformationAddressInformationDataCountryReferenceTypeCountryIdTypeType CountryIdType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm.AddOrUpdateAddressInformationAddressInformationDataCountryReferenceTypeCountryIdTypeType.ISO31661Alpha3Code;
+
+        [JsonProperty("CountryID")]
+        public AddOrUpdateAddressInformationAddressInformationDataCountryReferenceTypeCountryIdType? CountryId { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryIdInput
+    public enum AddOrUpdateAddressInformationAddressInformationDataCountryReferenceTypeCountryIdTypeType
+    {
+        [EnumMember(Value = "ISO 3166-1 Alpha-2 Code")]
+        ISO31661Alpha2Code,
+        [EnumMember(Value = "ISO 3166-1 Alpha-3 Code")]
+        ISO31661Alpha3Code,
+        [EnumMember(Value = "ISO 3166-1 Numeric-3 Code")]
+        ISO31661Numeric3Code
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddOrUpdateAddressInformationAddressInformationDataCountryReferenceTypeCountryIdType
     {
         USA,
         GBR,
@@ -827,14 +313,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         JPN
     }
 
-    public class addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineDataInputItem
+    public class AddOrUpdateAddressInformationAddressInformationDataAddressLineDataTypeItem
     {
-        public addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineDataInputItemAddessLineTypeType AddessLineType { get; set; }
+        public AddOrUpdateAddressInformationAddressInformationDataAddressLineDataTypeItemAddessLineTypeType? AddessLineType { get; set; }
         public string AddressLine { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineDataInputItemAddessLineTypeType
+    public enum AddOrUpdateAddressInformationAddressInformationDataAddressLineDataTypeItemAddessLineTypeType
     {
         [EnumMember(Value = "ADDRESS LINE 1")]
         ADDRESSLINE1,
@@ -844,26 +330,119 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         ADDRESSLINE3
     }
 
+    public class AddOrUpdateAddressInformationAddressInformationDataCountryRegionReferenceType
+    {
+        [JsonProperty("CountryRegionIDType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal AddOrUpdateAddressInformationAddressInformationDataCountryRegionReferenceTypeCountryRegionIdTypeType CountryRegionIdType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm.AddOrUpdateAddressInformationAddressInformationDataCountryRegionReferenceTypeCountryRegionIdTypeType.ISO31662Code;
+
+        [JsonProperty("CountryRegionID")]
+        public string CountryRegionId { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIdInput
+    public enum AddOrUpdateAddressInformationAddressInformationDataCountryRegionReferenceTypeCountryRegionIdTypeType
+    {
+        [EnumMember(Value = "Country Region ID")]
+        CountryRegionId,
+        [EnumMember(Value = "ISO 3166-2 Code")]
+        ISO31662Code
+    }
+
+    public class AddOrUpdateAddressInformationAddressInformationDataUsageDataType
+    {
+        [JsonProperty("isPublic")]
+        public bool? IsPublic { get; set; }
+
+        [JsonProperty("type_Data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateAddressInformationAddressInformationDataUsageDataTypeTypeDataType TypeData { get; set; } = new AddOrUpdateAddressInformationAddressInformationDataUsageDataTypeTypeDataType();
+    }
+
+    public class AddOrUpdateAddressInformationAddressInformationDataUsageDataTypeTypeDataType
+    {
+        [JsonProperty("isPrimary")]
+        public bool? IsPrimary { get; set; }
+
+        [JsonProperty("type_Reference", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateAddressInformationAddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceType TypeReference { get; set; } = new AddOrUpdateAddressInformationAddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceType();
+    }
+
+    public class AddOrUpdateAddressInformationAddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceType
+    {
+        [JsonProperty("communicationUsageTypeIDType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal AddOrUpdateAddressInformationAddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeType CommunicationUsageTypeIdType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm.AddOrUpdateAddressInformationAddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeType.CommunicationUsageTypeId;
+
+        [JsonProperty("communicationUsageTypeID")]
+        public AddOrUpdateAddressInformationAddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdType? CommunicationUsageTypeId { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddOrUpdateAddressInformationAddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeType
+    {
+        [EnumMember(Value = "Communication_Usage_Type_ID")]
+        CommunicationUsageTypeId,
+        [EnumMember(Value = "WID")]
+        WId
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddOrUpdateAddressInformationAddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdType
     {
         Home,
         Business
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIdTypeInput
+    public class AddOrUpdatePhoneInformationForPersonEventRequestInput
     {
-        [EnumMember(Value = "Employee ID")]
-        EmployeeId,
-        [EnumMember(Value = "Contingent Worker ID")]
-        ContingentWorkerId,
-        [EnumMember(Value = "Workday ID")]
-        WorkdayId
+        [JsonProperty("add_or_Update_Phone_Information_for_Person_Event_Request")]
+        public AddOrUpdatePhoneInformationForPersonEventRequestInputAddOrUpdatePhoneInformationForPersonEventRequestType AddOrUpdatePhoneInformationForPersonEventRequest { get; set; }
+    }
+
+    public class AddOrUpdatePhoneInformationForPersonEventRequestInputAddOrUpdatePhoneInformationForPersonEventRequestType
+    {
+        [JsonProperty("add_or_Update_Phone_Information_Data")]
+        public AddOrUpdatePhoneInformationForPersonEventRequestInputAddOrUpdatePhoneInformationForPersonEventRequestTypeAddOrUpdatePhoneInformationDataType AddOrUpdatePhoneInformationData { get; set; }
+    }
+
+    public class AddOrUpdatePhoneInformationForPersonEventRequestInputAddOrUpdatePhoneInformationForPersonEventRequestTypeAddOrUpdatePhoneInformationDataType
+    {
+        public AddOrUpdatePhoneInformationForPersonEventRequestInputAddOrUpdatePhoneInformationForPersonEventRequestTypeAddOrUpdatePhoneInformationDataType(string effectiveDate)
+        {
+            this.EffectiveDate = effectiveDate;
+        }
+
+        [JsonProperty("worker_Reference")]
+        public WorkerReference WorkerReference { get; set; }
+
+        [JsonProperty("effective_Date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EffectiveDate { get; set; }
+
+        [JsonProperty("phone_Information_Data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdatePhoneInformationPhoneInformationData PhoneInformationData { get; set; } = new AddOrUpdatePhoneInformationPhoneInformationData();
+    }
+
+    public class AddOrUpdatePhoneInformationPhoneInformationData
+    {
+        [JsonProperty("country_ISO_Code")]
+        public AddOrUpdatePhoneInformationPhoneInformationDataCountryISOCodeType? CountryISOCode { get; set; }
+
+        [JsonProperty("area_Code")]
+        public string AreaCode { get; set; }
+
+        [JsonProperty("phone_Number")]
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("phone_Extension")]
+        public string PhoneExtension { get; set; }
+
+        [JsonProperty("phone_Device_Type_Reference", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdatePhoneInformationPhoneInformationDataPhoneDeviceTypeReferenceType PhoneDeviceTypeReference { get; set; } = new AddOrUpdatePhoneInformationPhoneInformationDataPhoneDeviceTypeReferenceType();
+
+        [JsonProperty("usage_Data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdatePhoneInformationPhoneInformationDataUsageDataType UsageData { get; set; } = new AddOrUpdatePhoneInformationPhoneInformationDataUsageDataType();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCodeInput
+    public enum AddOrUpdatePhoneInformationPhoneInformationDataCountryISOCodeType
     {
         USA,
         GBR,
@@ -874,8 +453,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         JPN
     }
 
+    public class AddOrUpdatePhoneInformationPhoneInformationDataPhoneDeviceTypeReferenceType
+    {
+        [JsonProperty("PhoneDeviceTypeIDType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal AddOrUpdatePhoneInformationPhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIdTypeType PhoneDeviceTypeIdType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm.AddOrUpdatePhoneInformationPhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIdTypeType.PhoneDeviceTypeId;
+
+        [JsonProperty("PhoneDeviceTypeID")]
+        public AddOrUpdatePhoneInformationPhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIdType? PhoneDeviceTypeId { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeIdInput
+    public enum AddOrUpdatePhoneInformationPhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIdTypeType
+    {
+        [EnumMember(Value = "Phone_Device_Type_ID")]
+        PhoneDeviceTypeId,
+        [EnumMember(Value = "WID")]
+        WId
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddOrUpdatePhoneInformationPhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIdType
     {
         Mobile,
         Telephone,
@@ -883,44 +480,191 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         Pager
     }
 
+    public class AddOrUpdatePhoneInformationPhoneInformationDataUsageDataType
+    {
+        [JsonProperty("isPublic")]
+        public bool? IsPublic { get; set; }
+
+        [JsonProperty("type_Data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdatePhoneInformationPhoneInformationDataUsageDataTypeTypeDataType TypeData { get; set; } = new AddOrUpdatePhoneInformationPhoneInformationDataUsageDataTypeTypeDataType();
+    }
+
+    public class AddOrUpdatePhoneInformationPhoneInformationDataUsageDataTypeTypeDataType
+    {
+        [JsonProperty("isPrimary")]
+        public bool? IsPrimary { get; set; }
+
+        [JsonProperty("type_Reference", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdatePhoneInformationPhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceType TypeReference { get; set; } = new AddOrUpdatePhoneInformationPhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceType();
+    }
+
+    public class AddOrUpdatePhoneInformationPhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceType
+    {
+        [JsonProperty("communicationUsageTypeIDType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal AddOrUpdatePhoneInformationPhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeType CommunicationUsageTypeIdType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm.AddOrUpdatePhoneInformationPhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeType.CommunicationUsageTypeId;
+
+        [JsonProperty("communicationUsageTypeID")]
+        public AddOrUpdatePhoneInformationPhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdType? CommunicationUsageTypeId { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIdInput
+    public enum AddOrUpdatePhoneInformationPhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeType
+    {
+        [EnumMember(Value = "Communication_Usage_Type_ID")]
+        CommunicationUsageTypeId,
+        [EnumMember(Value = "WID")]
+        WId
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddOrUpdatePhoneInformationPhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdType
     {
         Home,
         Business
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIdTypeInput
+    public class AddOrUpdateEmailAddressInformationForPersonEventRequestInput
     {
-        [EnumMember(Value = "Employee ID")]
-        EmployeeId,
-        [EnumMember(Value = "Contingent Worker ID")]
-        ContingentWorkerId,
-        [EnumMember(Value = "Workday ID")]
-        WorkdayId
+        [JsonProperty("add_or_Update_Email_Address_Information_for_Person_Event_Request")]
+        public AddOrUpdateEmailAddressInformationForPersonEventRequestInputAddOrUpdateEmailAddressInformationForPersonEventRequestType AddOrUpdateEmailAddressInformationForPersonEventRequest { get; set; }
+    }
+
+    public class AddOrUpdateEmailAddressInformationForPersonEventRequestInputAddOrUpdateEmailAddressInformationForPersonEventRequestType
+    {
+        [JsonProperty("add_or_Update_Email_Address_Information_Data")]
+        public AddOrUpdateEmailAddressInformationForPersonEventRequestInputAddOrUpdateEmailAddressInformationForPersonEventRequestTypeAddOrUpdateEmailAddressInformationDataType AddOrUpdateEmailAddressInformationData { get; set; }
+    }
+
+    public class AddOrUpdateEmailAddressInformationForPersonEventRequestInputAddOrUpdateEmailAddressInformationForPersonEventRequestTypeAddOrUpdateEmailAddressInformationDataType
+    {
+        public AddOrUpdateEmailAddressInformationForPersonEventRequestInputAddOrUpdateEmailAddressInformationForPersonEventRequestTypeAddOrUpdateEmailAddressInformationDataType(string effectiveDate)
+        {
+            this.EffectiveDate = effectiveDate;
+        }
+
+        [JsonProperty("worker_Reference")]
+        public WorkerReference WorkerReference { get; set; }
+
+        [JsonProperty("effective_Date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EffectiveDate { get; set; }
+
+        [JsonProperty("email_Address_Information_Data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public EmailAddressInformationData EmailAddressInformationData { get; set; } = new EmailAddressInformationData();
+    }
+
+    public class EmailAddressInformationData
+    {
+        [JsonProperty("email_Address")]
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("usage_Data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationData UsageData { get; set; } = new AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationData();
+    }
+
+    public class AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationData
+    {
+        [JsonProperty("isPublic")]
+        public bool? IsPublic { get; set; }
+
+        [JsonProperty("type_Data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationDataTypeDataType TypeData { get; set; } = new AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationDataTypeDataType();
+    }
+
+    public class AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationDataTypeDataType
+    {
+        [JsonProperty("isPrimary")]
+        public bool? IsPrimary { get; set; }
+
+        [JsonProperty("type_Reference", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceType TypeReference { get; set; } = new AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceType();
+    }
+
+    public class AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceType
+    {
+        [JsonProperty("communicationUsageTypeIDType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeType CommunicationUsageTypeIdType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm.AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeType.CommunicationUsageTypeId;
+
+        [JsonProperty("communicationUsageTypeID")]
+        public AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdType? CommunicationUsageTypeId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIdInput
+    public enum AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeType
+    {
+        [EnumMember(Value = "Communication_Usage_Type_ID")]
+        CommunicationUsageTypeId,
+        [EnumMember(Value = "WID")]
+        WId
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdType
     {
         Home,
         Business
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIdTypeInput
+    public class AddOrUpdateInstantMessengerInformationForPersonEventRequestInput
     {
-        [EnumMember(Value = "Employee ID")]
-        EmployeeId,
-        [EnumMember(Value = "Contingent Worker ID")]
-        ContingentWorkerId,
-        [EnumMember(Value = "Workday ID")]
-        WorkdayId
+        [JsonProperty("add_or_Update_Instant_Messenger_Information_for_Person_Event_Request")]
+        public AddOrUpdateInstantMessengerInformationForPersonEventRequestInputAddOrUpdateInstantMessengerInformationForPersonEventRequestType AddOrUpdateInstantMessengerInformationForPersonEventRequest { get; set; }
+    }
+
+    public class AddOrUpdateInstantMessengerInformationForPersonEventRequestInputAddOrUpdateInstantMessengerInformationForPersonEventRequestType
+    {
+        [JsonProperty("add_or_Update_Instant_Messenger_Information_Data")]
+        public AddOrUpdateInstantMessengerInformationForPersonEventRequestInputAddOrUpdateInstantMessengerInformationForPersonEventRequestTypeAddOrUpdateInstantMessengerInformationDataType AddOrUpdateInstantMessengerInformationData { get; set; }
+    }
+
+    public class AddOrUpdateInstantMessengerInformationForPersonEventRequestInputAddOrUpdateInstantMessengerInformationForPersonEventRequestTypeAddOrUpdateInstantMessengerInformationDataType
+    {
+        public AddOrUpdateInstantMessengerInformationForPersonEventRequestInputAddOrUpdateInstantMessengerInformationForPersonEventRequestTypeAddOrUpdateInstantMessengerInformationDataType(string effectiveDate)
+        {
+            this.EffectiveDate = effectiveDate;
+        }
+
+        [JsonProperty("worker_Reference")]
+        public WorkerReference WorkerReference { get; set; }
+
+        [JsonProperty("effective_Date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EffectiveDate { get; set; }
+
+        [JsonProperty("instant_Messenger_Information_Data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateInstantMessengerInformationInstantMessengerInformationData InstantMessengerInformationData { get; set; } = new AddOrUpdateInstantMessengerInformationInstantMessengerInformationData();
+    }
+
+    public class AddOrUpdateInstantMessengerInformationInstantMessengerInformationData
+    {
+        [JsonProperty("instant_Messenger_Address")]
+        public string InstantMessengerAddress { get; set; }
+
+        [JsonProperty("instant_Messenger_Type_Reference", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateInstantMessengerInformationInstantMessengerInformationDataInstantMessengerTypeReferenceType InstantMessengerTypeReference { get; set; } = new AddOrUpdateInstantMessengerInformationInstantMessengerInformationDataInstantMessengerTypeReferenceType();
+
+        [JsonProperty("usage_Data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationData UsageData { get; set; } = new AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationData();
+    }
+
+    public class AddOrUpdateInstantMessengerInformationInstantMessengerInformationDataInstantMessengerTypeReferenceType
+    {
+        [JsonProperty("InstantMessengerTypeIDType", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal AddOrUpdateInstantMessengerInformationInstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIdTypeType InstantMessengerTypeIdType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm.AddOrUpdateInstantMessengerInformationInstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIdTypeType.InstantMessengerTypeId;
+
+        [JsonProperty("InstantMessengerTypeID")]
+        public AddOrUpdateInstantMessengerInformationInstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIdType? InstantMessengerTypeId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeIdInput
+    public enum AddOrUpdateInstantMessengerInformationInstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIdTypeType
+    {
+        [EnumMember(Value = "Instant_Messenger_Type_ID")]
+        InstantMessengerTypeId,
+        [EnumMember(Value = "WID")]
+        WId
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AddOrUpdateInstantMessengerInformationInstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIdType
     {
         AIM,
         [EnumMember(Value = "Google Talk")]
@@ -932,80 +676,93 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         Yahoo
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIdInput
+    public class AddOrUpdateWebAddressInformationForPersonEventRequestInput
     {
-        Home,
-        Business
+        [JsonProperty("add_or_Update_Web_Address_Information_for_Person_Event_Request")]
+        public AddOrUpdateWebAddressInformationForPersonEventRequestInputAddOrUpdateWebAddressInformationForPersonEventRequestType AddOrUpdateWebAddressInformationForPersonEventRequest { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIdTypeInput
+    public class AddOrUpdateWebAddressInformationForPersonEventRequestInputAddOrUpdateWebAddressInformationForPersonEventRequestType
     {
-        [EnumMember(Value = "Employee ID")]
-        EmployeeId,
-        [EnumMember(Value = "Contingent Worker ID")]
-        ContingentWorkerId,
-        [EnumMember(Value = "Workday ID")]
-        WorkdayId
+        [JsonProperty("add_or_Update_Web_Address_Information_Data")]
+        public AddOrUpdateWebAddressInformationForPersonEventRequestInputAddOrUpdateWebAddressInformationForPersonEventRequestTypeAddOrUpdateWebAddressInformationDataType AddOrUpdateWebAddressInformationData { get; set; }
     }
 
-    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIdInput
+    public class AddOrUpdateWebAddressInformationForPersonEventRequestInputAddOrUpdateWebAddressInformationForPersonEventRequestTypeAddOrUpdateWebAddressInformationDataType
     {
-        Home,
-        Business
+        public AddOrUpdateWebAddressInformationForPersonEventRequestInputAddOrUpdateWebAddressInformationForPersonEventRequestTypeAddOrUpdateWebAddressInformationDataType(string effectiveDate)
+        {
+            this.EffectiveDate = effectiveDate;
+        }
+
+        [JsonProperty("worker_Reference")]
+        public WorkerReference WorkerReference { get; set; }
+
+        [JsonProperty("effective_Date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string EffectiveDate { get; set; }
+
+        [JsonProperty("web_Address_Information_Data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateWebAddressInformationWebAddressInformationData WebAddressInformationData { get; set; } = new AddOrUpdateWebAddressInformationWebAddressInformationData();
+    }
+
+    public class AddOrUpdateWebAddressInformationWebAddressInformationData
+    {
+        [JsonProperty("web_Address")]
+        public string WebAddress { get; set; }
+
+        [JsonProperty("usage_Data", DefaultValueHandling = DefaultValueHandling.Include)]
+        public AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationData UsageData { get; set; } = new AddOrUpdateEmailAddressInformationCommunicationMethodUsageInformationData();
     }
 
     public class EmployeePersonalInfoInfo
     {
         [JsonProperty("employee_Personal_Info")]
-        public EmployeePersonalInfoEmployeePersonalInfoType EmployeePersonalInfo { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoType EmployeePersonalInfo { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoType
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoType
     {
         [JsonProperty("employee_Personal_Info_Data")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataType EmployeePersonalInfoData { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataType EmployeePersonalInfoData { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataType
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataType
     {
         [JsonProperty("personal_Info_Data")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataType PersonalInfoData { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataType PersonalInfoData { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataType
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataType
     {
         [JsonProperty("business_Title")]
         public string BusinessTitle { get; set; }
 
         [JsonProperty("person_Data")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataType PersonData { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataType PersonData { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataType
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataType
     {
         [JsonProperty("name_Data")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeNameDataTypeItem[] NameData { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeNameDataTypeItem[] NameData { get; set; }
 
         [JsonProperty("contact_Data")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataType ContactData { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataType ContactData { get; set; }
 
         [JsonProperty("demographic_Data")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataType DemographicData { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataType DemographicData { get; set; }
 
         [JsonProperty("biographic_Data")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataType BiographicData { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataType BiographicData { get; set; }
 
         [JsonProperty("personal_Preferences_Data")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypePersonalPreferencesDataType PersonalPreferencesData { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypePersonalPreferencesDataType PersonalPreferencesData { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeNameDataTypeItem
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeNameDataTypeItem
     {
         [JsonProperty("country_Reference")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeNameDataTypeItemCountryReferenceType CountryReference { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeNameDataTypeItemCountryReferenceType CountryReference { get; set; }
 
         [JsonProperty("first_Name")]
         public string FirstName { get; set; }
@@ -1017,68 +774,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string LastName { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeNameDataTypeItemCountryReferenceType
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeNameDataTypeItemCountryReferenceType
     {
         [JsonProperty("country_ISO_Code")]
         public string CountryISOCode { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataType
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataType
     {
         [JsonProperty("internet_Email_Address_Data")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypeInternetEmailAddressDataTypeItem[] InternetEmailAddressData { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypeInternetEmailAddressDataTypeItem[] InternetEmailAddressData { get; set; }
 
         [JsonProperty("phone_Data")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypePhoneDataTypeItem[] PhoneData { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypePhoneDataTypeItem[] PhoneData { get; set; }
 
         [JsonProperty("address_Data")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypeAddressDataTypeItem[] AddressData { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypeAddressDataTypeItem[] AddressData { get; set; }
 
         [JsonProperty("instant_Messenger_Data")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypeInstantMessengerDataTypeItem[] InstantMessengerData { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypeInstantMessengerDataTypeItem[] InstantMessengerData { get; set; }
 
         [JsonProperty("web_Address_Data")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypeWebAddressDataTypeItem[] WebAddressData { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypeWebAddressDataTypeItem[] WebAddressData { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypeInternetEmailAddressDataTypeItem
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypeInternetEmailAddressDataTypeItem
     {
         [JsonProperty("email_Address")]
         public string EmailAddress { get; set; }
 
         [JsonProperty("usage_Data")]
-        public CommunicationMethodUsageInformationData UsageData { get; set; }
+        public GetEmployeePersonalInfoCommunicationMethodUsageInformationDataResponse UsageData { get; set; }
     }
 
-    public class CommunicationMethodUsageInformationData
+    public class GetEmployeePersonalInfoCommunicationMethodUsageInformationDataResponse
     {
         [JsonProperty("isPublic")]
         public bool IsPublic { get; set; }
 
         [JsonProperty("type_Data")]
-        public CommunicationMethodUsageInformationDataTypeDataType TypeData { get; set; }
+        public GetEmployeePersonalInfoCommunicationMethodUsageInformationDataTypeDataTypeResponse TypeData { get; set; }
     }
 
-    public class CommunicationMethodUsageInformationDataTypeDataType
+    public class GetEmployeePersonalInfoCommunicationMethodUsageInformationDataTypeDataTypeResponse
     {
         [JsonProperty("isPrimary")]
         public bool IsPrimary { get; set; }
 
         [JsonProperty("type_Reference")]
-        public CommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceType TypeReference { get; set; }
+        public GetEmployeePersonalInfoCommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeResponse TypeReference { get; set; }
     }
 
-    public class CommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceType
+    public class GetEmployeePersonalInfoCommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeResponse
     {
         [JsonProperty("communicationUsageTypeIDType")]
-        public CommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeType CommunicationUsageTypeIdType { get; set; }
+        public GetEmployeePersonalInfoCommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeTypeResponse CommunicationUsageTypeIdType { get; set; }
 
         [JsonProperty("communicationUsageTypeID")]
-        public CommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdType CommunicationUsageTypeId { get; set; }
+        public GetEmployeePersonalInfoCommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeResponse CommunicationUsageTypeId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeType
+    public enum GetEmployeePersonalInfoCommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeTypeResponse
     {
         [EnumMember(Value = "Communication_Usage_Type_ID")]
         CommunicationUsageTypeId,
@@ -1087,22 +844,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdType
+    public enum GetEmployeePersonalInfoCommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeResponse
     {
         Home,
         Business
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypePhoneDataTypeItem
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypePhoneDataTypeItem
     {
         [JsonProperty("phone_Information_Data")]
-        public PhoneInformationData PhoneInformationData { get; set; }
+        public GetEmployeePersonalInfoPhoneInformationDataResponse PhoneInformationData { get; set; }
     }
 
-    public class PhoneInformationData
+    public class GetEmployeePersonalInfoPhoneInformationDataResponse
     {
         [JsonProperty("country_ISO_Code")]
-        public PhoneInformationDataCountryISOCodeType CountryISOCode { get; set; }
+        public GetEmployeePersonalInfoPhoneInformationDataCountryISOCodeTypeResponse CountryISOCode { get; set; }
 
         [JsonProperty("area_Code")]
         public string AreaCode { get; set; }
@@ -1114,14 +871,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string PhoneExtension { get; set; }
 
         [JsonProperty("phone_Device_Type_Reference")]
-        public PhoneInformationDataPhoneDeviceTypeReferenceType PhoneDeviceTypeReference { get; set; }
+        public GetEmployeePersonalInfoPhoneInformationDataPhoneDeviceTypeReferenceTypeResponse PhoneDeviceTypeReference { get; set; }
 
         [JsonProperty("usage_Data")]
-        public PhoneInformationDataUsageDataType UsageData { get; set; }
+        public GetEmployeePersonalInfoPhoneInformationDataUsageDataTypeResponse UsageData { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PhoneInformationDataCountryISOCodeType
+    public enum GetEmployeePersonalInfoPhoneInformationDataCountryISOCodeTypeResponse
     {
         USA,
         GBR,
@@ -1132,17 +889,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         JPN
     }
 
-    public class PhoneInformationDataPhoneDeviceTypeReferenceType
+    public class GetEmployeePersonalInfoPhoneInformationDataPhoneDeviceTypeReferenceTypeResponse
     {
         [JsonProperty("PhoneDeviceTypeIDType")]
-        public PhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIdTypeType PhoneDeviceTypeIdType { get; set; }
+        public GetEmployeePersonalInfoPhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIdTypeTypeResponse PhoneDeviceTypeIdType { get; set; }
 
         [JsonProperty("PhoneDeviceTypeID")]
-        public PhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIdType PhoneDeviceTypeId { get; set; }
+        public GetEmployeePersonalInfoPhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIdTypeResponse PhoneDeviceTypeId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIdTypeType
+    public enum GetEmployeePersonalInfoPhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIdTypeTypeResponse
     {
         [EnumMember(Value = "Phone_Device_Type_ID")]
         PhoneDeviceTypeId,
@@ -1151,7 +908,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIdType
+    public enum GetEmployeePersonalInfoPhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIdTypeResponse
     {
         Mobile,
         Telephone,
@@ -1159,35 +916,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         Pager
     }
 
-    public class PhoneInformationDataUsageDataType
+    public class GetEmployeePersonalInfoPhoneInformationDataUsageDataTypeResponse
     {
         [JsonProperty("isPublic")]
         public bool IsPublic { get; set; }
 
         [JsonProperty("type_Data")]
-        public PhoneInformationDataUsageDataTypeTypeDataType TypeData { get; set; }
+        public GetEmployeePersonalInfoPhoneInformationDataUsageDataTypeTypeDataTypeResponse TypeData { get; set; }
     }
 
-    public class PhoneInformationDataUsageDataTypeTypeDataType
+    public class GetEmployeePersonalInfoPhoneInformationDataUsageDataTypeTypeDataTypeResponse
     {
         [JsonProperty("isPrimary")]
         public bool IsPrimary { get; set; }
 
         [JsonProperty("type_Reference")]
-        public PhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceType TypeReference { get; set; }
+        public GetEmployeePersonalInfoPhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeResponse TypeReference { get; set; }
     }
 
-    public class PhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceType
+    public class GetEmployeePersonalInfoPhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeResponse
     {
         [JsonProperty("communicationUsageTypeIDType")]
-        public PhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeType CommunicationUsageTypeIdType { get; set; }
+        public GetEmployeePersonalInfoPhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeTypeResponse CommunicationUsageTypeIdType { get; set; }
 
         [JsonProperty("communicationUsageTypeID")]
-        public PhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdType CommunicationUsageTypeId { get; set; }
+        public GetEmployeePersonalInfoPhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeResponse CommunicationUsageTypeId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeType
+    public enum GetEmployeePersonalInfoPhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeTypeResponse
     {
         [EnumMember(Value = "Communication_Usage_Type_ID")]
         CommunicationUsageTypeId,
@@ -1196,50 +953,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdType
+    public enum GetEmployeePersonalInfoPhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeResponse
     {
         Home,
         Business
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypeAddressDataTypeItem
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypeAddressDataTypeItem
     {
         [JsonProperty("address_Information_Data")]
-        public AddressInformationData AddressInformationData { get; set; }
+        public GetEmployeePersonalInfoAddressInformationDataResponse AddressInformationData { get; set; }
     }
 
-    public class AddressInformationData
+    public class GetEmployeePersonalInfoAddressInformationDataResponse
     {
         [JsonProperty("country_Reference")]
-        public AddressInformationDataCountryReferenceType CountryReference { get; set; }
+        public GetEmployeePersonalInfoAddressInformationDataCountryReferenceTypeResponse CountryReference { get; set; }
 
         [JsonProperty("address_Line_Data")]
-        public AddressInformationDataAddressLineDataTypeItem[] AddressLineData { get; set; }
+        public GetEmployeePersonalInfoAddressInformationDataAddressLineDataTypeItemResponse[] AddressLineData { get; set; }
 
         [JsonProperty("municipality")]
         public string Municipality { get; set; }
 
         [JsonProperty("country_Region_Reference")]
-        public AddressInformationDataCountryRegionReferenceType CountryRegionReference { get; set; }
+        public GetEmployeePersonalInfoAddressInformationDataCountryRegionReferenceTypeResponse CountryRegionReference { get; set; }
 
         [JsonProperty("postal_Code")]
         public string PostalCode { get; set; }
 
         [JsonProperty("usage_Data")]
-        public AddressInformationDataUsageDataType UsageData { get; set; }
+        public GetEmployeePersonalInfoAddressInformationDataUsageDataTypeResponse UsageData { get; set; }
     }
 
-    public class AddressInformationDataCountryReferenceType
+    public class GetEmployeePersonalInfoAddressInformationDataCountryReferenceTypeResponse
     {
         [JsonProperty("CountryIDType")]
-        public AddressInformationDataCountryReferenceTypeCountryIdTypeType CountryIdType { get; set; }
+        public GetEmployeePersonalInfoAddressInformationDataCountryReferenceTypeCountryIdTypeTypeResponse CountryIdType { get; set; }
 
         [JsonProperty("CountryID")]
-        public AddressInformationDataCountryReferenceTypeCountryIdType CountryId { get; set; }
+        public GetEmployeePersonalInfoAddressInformationDataCountryReferenceTypeCountryIdTypeResponse CountryId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddressInformationDataCountryReferenceTypeCountryIdTypeType
+    public enum GetEmployeePersonalInfoAddressInformationDataCountryReferenceTypeCountryIdTypeTypeResponse
     {
         [EnumMember(Value = "ISO 3166-1 Alpha-2 Code")]
         ISO31661Alpha2Code,
@@ -1250,7 +1007,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddressInformationDataCountryReferenceTypeCountryIdType
+    public enum GetEmployeePersonalInfoAddressInformationDataCountryReferenceTypeCountryIdTypeResponse
     {
         USA,
         GBR,
@@ -1261,14 +1018,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         JPN
     }
 
-    public class AddressInformationDataAddressLineDataTypeItem
+    public class GetEmployeePersonalInfoAddressInformationDataAddressLineDataTypeItemResponse
     {
-        public AddressInformationDataAddressLineDataTypeItemAddessLineTypeType AddessLineType { get; set; }
+        public GetEmployeePersonalInfoAddressInformationDataAddressLineDataTypeItemAddessLineTypeTypeResponse AddessLineType { get; set; }
         public string AddressLine { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddressInformationDataAddressLineDataTypeItemAddessLineTypeType
+    public enum GetEmployeePersonalInfoAddressInformationDataAddressLineDataTypeItemAddessLineTypeTypeResponse
     {
         [EnumMember(Value = "ADDRESS LINE 1")]
         ADDRESSLINE1,
@@ -1278,17 +1035,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         ADDRESSLINE3
     }
 
-    public class AddressInformationDataCountryRegionReferenceType
+    public class GetEmployeePersonalInfoAddressInformationDataCountryRegionReferenceTypeResponse
     {
         [JsonProperty("CountryRegionIDType")]
-        public AddressInformationDataCountryRegionReferenceTypeCountryRegionIdTypeType CountryRegionIdType { get; set; }
+        public GetEmployeePersonalInfoAddressInformationDataCountryRegionReferenceTypeCountryRegionIdTypeTypeResponse CountryRegionIdType { get; set; }
 
         [JsonProperty("CountryRegionID")]
         public string CountryRegionId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddressInformationDataCountryRegionReferenceTypeCountryRegionIdTypeType
+    public enum GetEmployeePersonalInfoAddressInformationDataCountryRegionReferenceTypeCountryRegionIdTypeTypeResponse
     {
         [EnumMember(Value = "Country Region ID")]
         CountryRegionId,
@@ -1296,35 +1053,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         ISO31662Code
     }
 
-    public class AddressInformationDataUsageDataType
+    public class GetEmployeePersonalInfoAddressInformationDataUsageDataTypeResponse
     {
         [JsonProperty("isPublic")]
         public bool IsPublic { get; set; }
 
         [JsonProperty("type_Data")]
-        public AddressInformationDataUsageDataTypeTypeDataType TypeData { get; set; }
+        public GetEmployeePersonalInfoAddressInformationDataUsageDataTypeTypeDataTypeResponse TypeData { get; set; }
     }
 
-    public class AddressInformationDataUsageDataTypeTypeDataType
+    public class GetEmployeePersonalInfoAddressInformationDataUsageDataTypeTypeDataTypeResponse
     {
         [JsonProperty("isPrimary")]
         public bool IsPrimary { get; set; }
 
         [JsonProperty("type_Reference")]
-        public AddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceType TypeReference { get; set; }
+        public GetEmployeePersonalInfoAddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeResponse TypeReference { get; set; }
     }
 
-    public class AddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceType
+    public class GetEmployeePersonalInfoAddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeResponse
     {
         [JsonProperty("communicationUsageTypeIDType")]
-        public AddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeType CommunicationUsageTypeIdType { get; set; }
+        public GetEmployeePersonalInfoAddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeTypeResponse CommunicationUsageTypeIdType { get; set; }
 
         [JsonProperty("communicationUsageTypeID")]
-        public AddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdType CommunicationUsageTypeId { get; set; }
+        public GetEmployeePersonalInfoAddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeResponse CommunicationUsageTypeId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeType
+    public enum GetEmployeePersonalInfoAddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeTypeResponse
     {
         [EnumMember(Value = "Communication_Usage_Type_ID")]
         CommunicationUsageTypeId,
@@ -1333,41 +1090,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdType
+    public enum GetEmployeePersonalInfoAddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIdTypeResponse
     {
         Home,
         Business
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypeInstantMessengerDataTypeItem
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypeInstantMessengerDataTypeItem
     {
         [JsonProperty("instant_Messenger_Information_Data")]
-        public InstantMessengerInformationData InstantMessengerInformationData { get; set; }
+        public GetEmployeePersonalInfoInstantMessengerInformationDataResponse InstantMessengerInformationData { get; set; }
     }
 
-    public class InstantMessengerInformationData
+    public class GetEmployeePersonalInfoInstantMessengerInformationDataResponse
     {
         [JsonProperty("instant_Messenger_Address")]
         public string InstantMessengerAddress { get; set; }
 
         [JsonProperty("instant_Messenger_Type_Reference")]
-        public InstantMessengerInformationDataInstantMessengerTypeReferenceType InstantMessengerTypeReference { get; set; }
+        public GetEmployeePersonalInfoInstantMessengerInformationDataInstantMessengerTypeReferenceTypeResponse InstantMessengerTypeReference { get; set; }
 
         [JsonProperty("usage_Data")]
-        public CommunicationMethodUsageInformationData UsageData { get; set; }
+        public GetEmployeePersonalInfoCommunicationMethodUsageInformationDataResponse UsageData { get; set; }
     }
 
-    public class InstantMessengerInformationDataInstantMessengerTypeReferenceType
+    public class GetEmployeePersonalInfoInstantMessengerInformationDataInstantMessengerTypeReferenceTypeResponse
     {
         [JsonProperty("InstantMessengerTypeIDType")]
-        public InstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIdTypeType InstantMessengerTypeIdType { get; set; }
+        public GetEmployeePersonalInfoInstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIdTypeTypeResponse InstantMessengerTypeIdType { get; set; }
 
         [JsonProperty("InstantMessengerTypeID")]
-        public InstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIdType InstantMessengerTypeId { get; set; }
+        public GetEmployeePersonalInfoInstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIdTypeResponse InstantMessengerTypeId { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIdTypeType
+    public enum GetEmployeePersonalInfoInstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIdTypeTypeResponse
     {
         [EnumMember(Value = "Instant_Messenger_Type_ID")]
         InstantMessengerTypeId,
@@ -1376,7 +1133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIdType
+    public enum GetEmployeePersonalInfoInstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIdTypeResponse
     {
         AIM,
         [EnumMember(Value = "Google Talk")]
@@ -1388,73 +1145,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         Yahoo
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypeWebAddressDataTypeItem
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataTypeWebAddressDataTypeItem
     {
         [JsonProperty("web_Address_Information_Data")]
-        public WebAddressInformationData WebAddressInformationData { get; set; }
+        public GetEmployeePersonalInfoWebAddressInformationDataResponse WebAddressInformationData { get; set; }
     }
 
-    public class WebAddressInformationData
+    public class GetEmployeePersonalInfoWebAddressInformationDataResponse
     {
         [JsonProperty("web_Address")]
         public string WebAddress { get; set; }
 
         [JsonProperty("usage_Data")]
-        public CommunicationMethodUsageInformationData UsageData { get; set; }
+        public GetEmployeePersonalInfoCommunicationMethodUsageInformationDataResponse UsageData { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataType
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataType
     {
         [JsonProperty("marital_Status_Reference")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMaritalStatusReferenceType MaritalStatusReference { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMaritalStatusReferenceType MaritalStatusReference { get; set; }
 
         [JsonProperty("hispanic_or_Latino")]
         public bool HispanicOrLatino { get; set; }
 
         [JsonProperty("ethnicity_Reference")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeEthnicityReferenceTypeItem[] EthnicityReference { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeEthnicityReferenceTypeItem[] EthnicityReference { get; set; }
 
         [JsonProperty("citizenship_Status_Reference")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeCitizenshipStatusReferenceTypeItem[] CitizenshipStatusReference { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeCitizenshipStatusReferenceTypeItem[] CitizenshipStatusReference { get; set; }
 
         [JsonProperty("nationality_Reference")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeNationalityReferenceTypeItem[] NationalityReference { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeNationalityReferenceTypeItem[] NationalityReference { get; set; }
 
         [JsonProperty("personnel_File_Agency")]
         public string PersonnelFileAgency { get; set; }
 
         [JsonProperty("military_Service_Data")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMilitaryServiceDataTypeItem[] MilitaryServiceData { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMilitaryServiceDataTypeItem[] MilitaryServiceData { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMaritalStatusReferenceType
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMaritalStatusReferenceType
     {
         [JsonProperty("marital_Status_Description")]
         public string MaritalStatusDescription { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeEthnicityReferenceTypeItem
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeEthnicityReferenceTypeItem
     {
         [JsonProperty("ethnicity_Name")]
         public string EthnicityName { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeCitizenshipStatusReferenceTypeItem
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeCitizenshipStatusReferenceTypeItem
     {
         [JsonProperty("citizenship_Status_Description")]
         public string CitizenshipStatusDescription { get; set; }
 
         [JsonProperty("country_Reference")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeCitizenshipStatusReferenceTypeItemCountryReferenceType CountryReference { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeCitizenshipStatusReferenceTypeItemCountryReferenceType CountryReference { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeCitizenshipStatusReferenceTypeItemCountryReferenceType
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeCitizenshipStatusReferenceTypeItemCountryReferenceType
     {
         [JsonProperty("country_ISO_Code")]
         public string CountryISOCode { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeNationalityReferenceTypeItem
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeNationalityReferenceTypeItem
     {
         [JsonProperty("CountryIDType")]
         public string CountryIdType { get; set; }
@@ -1463,34 +1220,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string CountryId { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMilitaryServiceDataTypeItem
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMilitaryServiceDataTypeItem
     {
         [JsonProperty("military_Status_Reference")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMilitaryServiceDataTypeItemMilitaryStatusReferenceType MilitaryStatusReference { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMilitaryServiceDataTypeItemMilitaryStatusReferenceType MilitaryStatusReference { get; set; }
 
         [JsonProperty("military_Discharge_Date")]
         public string MilitaryDischargeDate { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMilitaryServiceDataTypeItemMilitaryStatusReferenceType
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMilitaryServiceDataTypeItemMilitaryStatusReferenceType
     {
         [JsonProperty("military_Status_Name")]
         public string MilitaryStatusName { get; set; }
 
         [JsonProperty("country_Reference")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMilitaryServiceDataTypeItemMilitaryStatusReferenceTypeCountryReferenceType CountryReference { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMilitaryServiceDataTypeItemMilitaryStatusReferenceTypeCountryReferenceType CountryReference { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMilitaryServiceDataTypeItemMilitaryStatusReferenceTypeCountryReferenceType
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMilitaryServiceDataTypeItemMilitaryStatusReferenceTypeCountryReferenceType
     {
         [JsonProperty("country_ISO_Code")]
         public string CountryISOCode { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataType
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataType
     {
         [JsonProperty("country_Of_Birth_Reference")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeCountryOfBirthReferenceType CountryOfBirthReference { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeCountryOfBirthReferenceType CountryOfBirthReference { get; set; }
 
         [JsonProperty("place_Of_Birth")]
         public string PlaceOfBirth { get; set; }
@@ -1499,47 +1256,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string DateOfBirth { get; set; }
 
         [JsonProperty("gender_Reference")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeGenderReferenceType GenderReference { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeGenderReferenceType GenderReference { get; set; }
 
         [JsonProperty("disability_Reference")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeDisabilityReferenceTypeItem[] DisabilityReference { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeDisabilityReferenceTypeItem[] DisabilityReference { get; set; }
 
         [JsonProperty("uses_Tobacco")]
         public bool UsesTobacco { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeCountryOfBirthReferenceType
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeCountryOfBirthReferenceType
     {
         [JsonProperty("country_Reference")]
-        public EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeCountryOfBirthReferenceTypeCountryReferenceType CountryReference { get; set; }
+        public EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeCountryOfBirthReferenceTypeCountryReferenceType CountryReference { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeCountryOfBirthReferenceTypeCountryReferenceType
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeCountryOfBirthReferenceTypeCountryReferenceType
     {
         [JsonProperty("country_ISO_Code")]
         public string CountryISOCode { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeGenderReferenceType
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeGenderReferenceType
     {
         [JsonProperty("gender_Description")]
         public string GenderDescription { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeDisabilityReferenceTypeItem
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeDisabilityReferenceTypeItem
     {
         [JsonProperty("disability_Name")]
         public string DisabilityName { get; set; }
     }
 
-    public class EmployeePersonalInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypePersonalPreferencesDataType
+    public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypePersonalPreferencesDataType
     {
         [JsonProperty("receive_Email_Notifications")]
         public bool ReceiveEmailNotifications { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum systemIdTypeInput
+    public enum SystemIdTypeInput
     {
         [EnumMember(Value = "Employee ID")]
         EmployeeId,
@@ -1832,25 +1589,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public class EmployeeEmploymentInfoInfo
     {
         [JsonProperty("employee_Employment_Info")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoType EmployeeEmploymentInfo { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoType EmployeeEmploymentInfo { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoType
     {
         [JsonProperty("employee_Employment_Info_Data")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataType EmployeeEmploymentInfoData { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataType EmployeeEmploymentInfoData { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataType
     {
         [JsonProperty("worker_Status_Data")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataType WorkerStatusData { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataType WorkerStatusData { get; set; }
 
         [JsonProperty("worker_Position_Data")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataType WorkerPositionData { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataType WorkerPositionData { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataType
     {
         [JsonProperty("active")]
         public bool Active { get; set; }
@@ -1913,16 +1670,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public double MonthsContinuousPriorEmployment { get; set; }
 
         [JsonProperty("leave_Status_Data")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataTypeLeaveStatusDataTypeItem[] LeaveStatusData { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataTypeLeaveStatusDataTypeItem[] LeaveStatusData { get; set; }
 
         [JsonProperty("termination_Status_Data")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataTypeTerminationStatusDataTypeItem[] TerminationStatusData { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataTypeTerminationStatusDataTypeItem[] TerminationStatusData { get; set; }
 
         [JsonProperty("probation_Status_Data")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataTypeProbationStatusDataTypeItem[] ProbationStatusData { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataTypeProbationStatusDataTypeItem[] ProbationStatusData { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataTypeLeaveStatusDataTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataTypeLeaveStatusDataTypeItem
     {
         [JsonProperty("on_Leave")]
         public bool OnLeave { get; set; }
@@ -1940,7 +1697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string FirstDayOfWork { get; set; }
 
         [JsonProperty("leave_of_Absence_Type_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataTypeLeaveStatusDataTypeItemLeaveOfAbsenceTypeReferenceType LeaveOfAbsenceTypeReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataTypeLeaveStatusDataTypeItemLeaveOfAbsenceTypeReferenceType LeaveOfAbsenceTypeReference { get; set; }
 
         [JsonProperty("benefits_Effect")]
         public bool BenefitsEffect { get; set; }
@@ -1958,13 +1715,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public bool StockVestingEffect { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataTypeLeaveStatusDataTypeItemLeaveOfAbsenceTypeReferenceType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataTypeLeaveStatusDataTypeItemLeaveOfAbsenceTypeReferenceType
     {
         [JsonProperty("leave_Type_Name")]
         public string LeaveTypeName { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataTypeTerminationStatusDataTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataTypeTerminationStatusDataTypeItem
     {
         [JsonProperty("terminated")]
         public bool Terminated { get; set; }
@@ -1985,7 +1742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public bool NotEligibleForHire { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataTypeProbationStatusDataTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerStatusDataTypeProbationStatusDataTypeItem
     {
         [JsonProperty("probation_Start_Date")]
         public string ProbationStartDate { get; set; }
@@ -1994,7 +1751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string ProbationEndDate { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataType
     {
         [JsonProperty("position_ID")]
         public string PositionId { get; set; }
@@ -2006,10 +1763,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string BusinessTitle { get; set; }
 
         [JsonProperty("employee_Type_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeEmployeeTypeReferenceTypeItem[] EmployeeTypeReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeEmployeeTypeReferenceTypeItem[] EmployeeTypeReference { get; set; }
 
         [JsonProperty("position_Time_Type_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePositionTimeTypeReferenceTypeItem[] PositionTimeTypeReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePositionTimeTypeReferenceTypeItem[] PositionTimeTypeReference { get; set; }
 
         [JsonProperty("job_Exempt")]
         public bool JobExempt { get; set; }
@@ -2024,49 +1781,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public double FullTimeEquivalentPercentage { get; set; }
 
         [JsonProperty("pay_Rate_Type_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayRateTypeReferenceTypeItem[] PayRateTypeReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayRateTypeReferenceTypeItem[] PayRateTypeReference { get; set; }
 
         [JsonProperty("job_Classification_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobClassificationReferenceTypeItem[] JobClassificationReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobClassificationReferenceTypeItem[] JobClassificationReference { get; set; }
 
         [JsonProperty("company_Insider_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeCompanyInsiderReferenceTypeItem[] CompanyInsiderReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeCompanyInsiderReferenceTypeItem[] CompanyInsiderReference { get; set; }
 
         [JsonProperty("job_Profile_Summary_Data")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItem[] JobProfileSummaryData { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItem[] JobProfileSummaryData { get; set; }
 
         [JsonProperty("organization_Content_Data")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeOrganizationContentDataTypeItem[] OrganizationContentData { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeOrganizationContentDataTypeItem[] OrganizationContentData { get; set; }
 
         [JsonProperty("business_Site_Content_Data")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeBusinessSiteContentDataTypeItem[] BusinessSiteContentData { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeBusinessSiteContentDataTypeItem[] BusinessSiteContentData { get; set; }
 
         [JsonProperty("payroll_Processing_Data")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItem[] PayrollProcessingData { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItem[] PayrollProcessingData { get; set; }
 
         [JsonProperty("supervisor_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceType SupervisorReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceType SupervisorReference { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeEmployeeTypeReferenceTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeEmployeeTypeReferenceTypeItem
     {
         [JsonProperty("employee_Type_Description")]
         public string EmployeeTypeDescription { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePositionTimeTypeReferenceTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePositionTimeTypeReferenceTypeItem
     {
         [JsonProperty("time_Type_Description")]
         public string TimeTypeDescription { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayRateTypeReferenceTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayRateTypeReferenceTypeItem
     {
         [JsonProperty("pay_Type_Name")]
         public string PayTypeName { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobClassificationReferenceTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobClassificationReferenceTypeItem
     {
         [JsonProperty("job_Classification_Group_Name")]
         public string JobClassificationGroupName { get; set; }
@@ -2075,25 +1832,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string JobClassificationName { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeCompanyInsiderReferenceTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeCompanyInsiderReferenceTypeItem
     {
         [JsonProperty("company_Insider_Type_Name")]
         public string CompanyInsiderTypeName { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItem
     {
         [JsonProperty("job_Profile_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItemJobProfileReferenceType JobProfileReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItemJobProfileReferenceType JobProfileReference { get; set; }
 
         [JsonProperty("job_Exempt")]
         public bool JobExempt { get; set; }
 
         [JsonProperty("management_Level_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItemManagementLevelReferenceType ManagementLevelReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItemManagementLevelReferenceType ManagementLevelReference { get; set; }
 
         [JsonProperty("job_Category_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItemJobCategoryReferenceType JobCategoryReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItemJobCategoryReferenceType JobCategoryReference { get; set; }
 
         [JsonProperty("job_Profile_Name")]
         public string JobProfileName { get; set; }
@@ -2105,10 +1862,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public bool CriticalJob { get; set; }
 
         [JsonProperty("difficulty_to_Fill_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItemDifficultyToFillReferenceType DifficultyToFillReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItemDifficultyToFillReferenceType DifficultyToFillReference { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItemJobProfileReferenceType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItemJobProfileReferenceType
     {
         [JsonProperty("JobProfileIDType")]
         public string JobProfileIdType { get; set; }
@@ -2117,7 +1874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string JobProfileId { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItemManagementLevelReferenceType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItemManagementLevelReferenceType
     {
         [JsonProperty("ManagementLevelIDType")]
         public string ManagementLevelIdType { get; set; }
@@ -2126,7 +1883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string ManagementLevelId { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItemJobCategoryReferenceType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItemJobCategoryReferenceType
     {
         [JsonProperty("JobCategoryIDType")]
         public string JobCategoryIdType { get; set; }
@@ -2135,7 +1892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string JobCategoryId { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItemDifficultyToFillReferenceType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeJobProfileSummaryDataTypeItemDifficultyToFillReferenceType
     {
         [JsonProperty("DifficultyToFillIDType")]
         public string DifficultyToFillIdType { get; set; }
@@ -2144,7 +1901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string DifficultyToFillId { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeOrganizationContentDataTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeOrganizationContentDataTypeItem
     {
         [JsonProperty("organization_ID")]
         public string OrganizationId { get; set; }
@@ -2153,115 +1910,115 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string OrganizationName { get; set; }
 
         [JsonProperty("organization_Type_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeOrganizationContentDataTypeItemOrganizationTypeReferenceTypeItem[] OrganizationTypeReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeOrganizationContentDataTypeItemOrganizationTypeReferenceTypeItem[] OrganizationTypeReference { get; set; }
 
         [JsonProperty("organization_Subtype_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeOrganizationContentDataTypeItemOrganizationSubtypeReferenceTypeItem[] OrganizationSubtypeReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeOrganizationContentDataTypeItemOrganizationSubtypeReferenceTypeItem[] OrganizationSubtypeReference { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeOrganizationContentDataTypeItemOrganizationTypeReferenceTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeOrganizationContentDataTypeItemOrganizationTypeReferenceTypeItem
     {
         [JsonProperty("organization_Type_Name")]
         public string OrganizationTypeName { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeOrganizationContentDataTypeItemOrganizationSubtypeReferenceTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeOrganizationContentDataTypeItemOrganizationSubtypeReferenceTypeItem
     {
         [JsonProperty("organization_Subtype_Name")]
         public string OrganizationSubtypeName { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeBusinessSiteContentDataTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeBusinessSiteContentDataTypeItem
     {
         [JsonProperty("location_Name")]
         public string LocationName { get; set; }
 
         [JsonProperty("location_Type_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeBusinessSiteContentDataTypeItemLocationTypeReferenceTypeItem[] LocationTypeReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeBusinessSiteContentDataTypeItemLocationTypeReferenceTypeItem[] LocationTypeReference { get; set; }
 
         [JsonProperty("time_Profile_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeBusinessSiteContentDataTypeItemTimeProfileReferenceTypeItem[] TimeProfileReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeBusinessSiteContentDataTypeItemTimeProfileReferenceTypeItem[] TimeProfileReference { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeBusinessSiteContentDataTypeItemLocationTypeReferenceTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeBusinessSiteContentDataTypeItemLocationTypeReferenceTypeItem
     {
         [JsonProperty("location_Type_Description")]
         public string LocationTypeDescription { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeBusinessSiteContentDataTypeItemTimeProfileReferenceTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeBusinessSiteContentDataTypeItemTimeProfileReferenceTypeItem
     {
         [JsonProperty("time_Profile_Description")]
         public string TimeProfileDescription { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItem
     {
         [JsonProperty("pay_Rate_Type_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItemPayRateTypeReferenceType PayRateTypeReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItemPayRateTypeReferenceType PayRateTypeReference { get; set; }
 
         [JsonProperty("frequency_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItemFrequencyReferenceType FrequencyReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItemFrequencyReferenceType FrequencyReference { get; set; }
 
         [JsonProperty("pay_Group_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItemPayGroupReferenceType PayGroupReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItemPayGroupReferenceType PayGroupReference { get; set; }
 
         [JsonProperty("payroll_Entity_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItemPayrollEntityReferenceTypeItem[] PayrollEntityReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItemPayrollEntityReferenceTypeItem[] PayrollEntityReference { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItemPayRateTypeReferenceType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItemPayRateTypeReferenceType
     {
         [JsonProperty("pay_Type_Name")]
         public string PayTypeName { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItemFrequencyReferenceType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItemFrequencyReferenceType
     {
         [JsonProperty("frequency_Name")]
         public string FrequencyName { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItemPayGroupReferenceType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItemPayGroupReferenceType
     {
         [JsonProperty("pay_Group_ID")]
         public string PayGroupId { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItemPayrollEntityReferenceTypeItem
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypePayrollProcessingDataTypeItemPayrollEntityReferenceTypeItem
     {
         [JsonProperty("payroll_Entity_ID")]
         public string PayrollEntityId { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceType
     {
         [JsonProperty("employee_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceTypeEmployeeReferenceType EmployeeReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceTypeEmployeeReferenceType EmployeeReference { get; set; }
 
         [JsonProperty("contingent_Worker_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceTypeContingentWorkerReferenceType ContingentWorkerReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceTypeContingentWorkerReferenceType ContingentWorkerReference { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceTypeEmployeeReferenceType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceTypeEmployeeReferenceType
     {
         [JsonProperty("integration_ID_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceTypeEmployeeReferenceTypeIntegrationIdReferenceType IntegrationIdReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceTypeEmployeeReferenceTypeIntegrationIdReferenceType IntegrationIdReference { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceTypeEmployeeReferenceTypeIntegrationIdReferenceType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceTypeEmployeeReferenceTypeIntegrationIdReferenceType
     {
         [JsonProperty("IntegrationID")]
         public string IntegrationId { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceTypeContingentWorkerReferenceType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceTypeContingentWorkerReferenceType
     {
         [JsonProperty("integration_ID_Reference")]
-        public EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceTypeContingentWorkerReferenceTypeIntegrationIdReferenceType IntegrationIdReference { get; set; }
+        public EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceTypeContingentWorkerReferenceTypeIntegrationIdReferenceType IntegrationIdReference { get; set; }
     }
 
-    public class EmployeeEmploymentInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceTypeContingentWorkerReferenceTypeIntegrationIdReferenceType
+    public class EmployeeEmploymentInfoInfoEmployeeEmploymentInfoTypeEmployeeEmploymentInfoDataTypeWorkerPositionDataTypeSupervisorReferenceTypeContingentWorkerReferenceTypeIntegrationIdReferenceType
     {
         [JsonProperty("IntegrationID")]
         public string IntegrationId { get; set; }
@@ -2285,7 +2042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum dateCriteriaInput
+    public enum DateCriteriaInput
     {
         [EnumMember(Value = "Effective Date")]
         EffectiveDate,
@@ -2294,7 +2051,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum businessProcessTypeInput
+    public enum BusinessProcessTypeInput
     {
         [EnumMember(Value = "Hire Employee")]
         HireEmployee,

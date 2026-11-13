@@ -20,19 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
                 var apiCallPath = "/eth_gasPrice";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["jsonrpc"] = "2.0";
-                bodypropCount++;
-                body["method"] = "eth_gasPrice";
-                bodypropCount++;
-                body["id"] = 1;
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = new EthGasPriceBodyInput().ToJToken();
                 return new ApiConnectionAction<EthGasPriceResponse>(callPayload);
             });
         }
@@ -45,76 +33,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
                 var apiCallPath = "/eth_blockNumber";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["jsonrpc"] = "2.0";
-                bodypropCount++;
-                body["method"] = "eth_blockNumber";
-                bodypropCount++;
-                body["id"] = 1;
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = new EthBlockNumberBodyInput().ToJToken();
                 return new ApiConnectionAction<EthBlockNumberResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infuraethereumip")]
-        public IBodyWorkflowAction<EthGetBalanceResponse, ApiConnectionActionConfiguration> EthGetBalance(Expression<Func<string>> bodyParamsaddress = null, Expression<Func<bodyParamsblockInput>> bodyParamsblock = null)
+        public IBodyWorkflowAction<EthGetBalanceResponse, ApiConnectionActionConfiguration> EthGetBalance(Expression<Func<EthGetBalanceBodyInput>> body)
         {
-            var __workflow_bodyParamsaddress = WorkflowExpression.Compile(bodyParamsaddress, nameof(bodyParamsaddress), required: false);
-            var __workflow_bodyParamsblock = WorkflowExpression.Compile(bodyParamsblock, nameof(bodyParamsblock), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<EthGetBalanceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/eth_getBalance";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["jsonrpc"] = "2.0";
-                bodypropCount++;
-                body["method"] = "eth_getBalance";
-                bodypropCount++;
-                body["id"] = 1;
-                bodypropCount++;
-                var @paramsObject = new JObject();
-                var @paramsObjectpropCount = 0;
-                if (__workflow_bodyParamsaddress != null)
-                {
-                    @paramsObject["Address"] = ExpressionConverter.ConvertO(__workflow_bodyParamsaddress);
-                    @paramsObjectpropCount++;
-                }
-
-                if (__workflow_bodyParamsblock != null)
-                {
-                    if (__workflow_bodyParamsblock != null)
-                    {
-                        @paramsObject["Block"] = ExpressionConverter.ConvertO(__workflow_bodyParamsblock);
-                        @paramsObjectpropCount++;
-                    }
-
-                    @paramsObjectpropCount++;
-                }
-                else
-                {
-                    @paramsObject["Block"] = "latest";
-                    @paramsObjectpropCount++;
-                }
-
-                if (@paramsObjectpropCount > 0)
-                {
-                    body["params"] = @paramsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<EthGetBalanceResponse>(callPayload);
             });
         }
@@ -130,10 +63,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
         public int Result { get; set; }
     }
 
+    public class EthGasPriceBodyInput
+    {
+        [JsonProperty("jsonrpc", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Jsonrpc { get; set; } = "2.0";
+
+        [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Method { get; set; } = "eth_gasPrice";
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal int Id { get; set; } = 1;
+    }
+
     public class EthBlockNumberResponse
     {
         [JsonProperty("result")]
         public int Result { get; set; }
+    }
+
+    public class EthBlockNumberBodyInput
+    {
+        [JsonProperty("jsonrpc", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Jsonrpc { get; set; } = "2.0";
+
+        [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Method { get; set; } = "eth_blockNumber";
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal int Id { get; set; } = 1;
     }
 
     public class EthGetBalanceResponse
@@ -142,8 +99,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
         public int Result { get; set; }
     }
 
+    public class EthGetBalanceBodyInput
+    {
+        [JsonProperty("jsonrpc", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Jsonrpc { get; set; } = "2.0";
+
+        [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Method { get; set; } = "eth_getBalance";
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal int Id { get; set; } = 1;
+
+        [JsonProperty("params", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputParamsType Params { get; set; } = new BodyInputParamsType();
+    }
+
+    public class BodyInputParamsType
+    {
+        public string Address { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputParamsTypeBlockType? Block { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip.BodyInputParamsTypeBlockType.Latest;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyParamsblockInput
+    public enum BodyInputParamsTypeBlockType
     {
         [EnumMember(Value = "latest")]
         Latest,

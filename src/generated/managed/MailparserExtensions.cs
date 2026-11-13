@@ -27,33 +27,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
 
     public class MailparserTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration> WebhookCreate(Expression<Func<string>> inboxId, Expression<Func<string>> requestBodyOfWebhooklabel = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration> WebhookCreate(Expression<Func<string>> inboxId, Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook)
         {
             var __workflow_inboxId = WorkflowExpression.Compile(inboxId, nameof(inboxId), required: true);
-            var __workflow_requestBodyOfWebhooklabel = WorkflowExpression.Compile(requestBodyOfWebhooklabel, nameof(requestBodyOfWebhooklabel), required: false);
-            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
+            return new DeferredBodyTrigger<WebhookCreationResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/inboxes/{0}/dispatcher", __workflow_inboxId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var requestBodyOfWebhook = new JObject();
-                var requestBodyOfWebhookpropCount = 0;
-                requestBodyOfWebhook["target_url"] = "#{listCallbackUrl()}";
-                requestBodyOfWebhookpropCount++;
-                requestBodyOfWebhook["provider"] = "flow";
-                requestBodyOfWebhookpropCount++;
-                if (__workflow_requestBodyOfWebhooklabel != null)
-                {
-                    requestBodyOfWebhook["label"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhooklabel);
-                    requestBodyOfWebhookpropCount++;
-                }
-
-                if (requestBodyOfWebhookpropCount > 0)
-                {
-                    callPayload.Body = requestBodyOfWebhook;
-                }
-
-                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhook);
+                return new ApiConnectionPollingTrigger<WebhookCreationResponse>(callPayload);
             });
         }
     }
@@ -83,6 +67,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
     {
         [JsonProperty("dispatcher_id")]
         public string DispatcherId { get; set; }
+    }
+
+    public class RequestBodyOfWebhookInput
+    {
+        [JsonProperty("target_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string TargetUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("provider", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Provider { get; set; } = "flow";
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
     }
 }
 

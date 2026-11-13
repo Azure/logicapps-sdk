@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
     public class CognitiveservicestextanalyticsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<EntityLinkingResult, ApiConnectionActionConfiguration> EntitiesLinking(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<EntityLinkingResult, ApiConnectionActionConfiguration> EntitiesLinking(Expression<Func<EntitiesLinkingInputInput>> input, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
-            var __workflow_inputdocuments = WorkflowExpression.Compile(inputdocuments, nameof(inputdocuments), required: true);
+            var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_modelVersion = WorkflowExpression.Compile(modelVersion, nameof(modelVersion), required: false);
             var __workflow_showStats = WorkflowExpression.Compile(showStats, nameof(showStats), required: false);
             return new DeferredBodyAction<EntityLinkingResult, ApiConnectionActionConfiguration>(() =>
@@ -27,23 +27,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
                     callPayload.Queries["model-version"] = ExpressionConverter.Convert(__workflow_modelVersion);
                 if (__workflow_showStats != null)
                     callPayload.Queries["showStats"] = ExpressionConverter.Convert(__workflow_showStats);
-                var input = new JObject();
-                var inputpropCount = 0;
-                inputpropCount++;
-                input["documents"] = ExpressionConverter.ConvertO(__workflow_inputdocuments);
-                if (inputpropCount > 0)
-                {
-                    callPayload.Body = input;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<EntityLinkingResult>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<EntitiesResultV3, ApiConnectionActionConfiguration> EntitiesRecognitionGeneral(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<EntitiesResultV3, ApiConnectionActionConfiguration> EntitiesRecognitionGeneral(Expression<Func<EntitiesLinkingInputInput>> input, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
-            var __workflow_inputdocuments = WorkflowExpression.Compile(inputdocuments, nameof(inputdocuments), required: true);
+            var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_modelVersion = WorkflowExpression.Compile(modelVersion, nameof(modelVersion), required: false);
             var __workflow_showStats = WorkflowExpression.Compile(showStats, nameof(showStats), required: false);
             return new DeferredBodyAction<EntitiesResultV3, ApiConnectionActionConfiguration>(() =>
@@ -55,23 +47,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
                     callPayload.Queries["model-version"] = ExpressionConverter.Convert(__workflow_modelVersion);
                 if (__workflow_showStats != null)
                     callPayload.Queries["showStats"] = ExpressionConverter.Convert(__workflow_showStats);
-                var input = new JObject();
-                var inputpropCount = 0;
-                inputpropCount++;
-                input["documents"] = ExpressionConverter.ConvertO(__workflow_inputdocuments);
-                if (inputpropCount > 0)
-                {
-                    callPayload.Body = input;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<EntitiesResultV3>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<KeyPhraseResultV3, ApiConnectionActionConfiguration> KeyPhrase(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<KeyPhraseResultV3, ApiConnectionActionConfiguration> KeyPhrase(Expression<Func<EntitiesLinkingInputInput>> input, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
-            var __workflow_inputdocuments = WorkflowExpression.Compile(inputdocuments, nameof(inputdocuments), required: true);
+            var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_modelVersion = WorkflowExpression.Compile(modelVersion, nameof(modelVersion), required: false);
             var __workflow_showStats = WorkflowExpression.Compile(showStats, nameof(showStats), required: false);
             return new DeferredBodyAction<KeyPhraseResultV3, ApiConnectionActionConfiguration>(() =>
@@ -83,23 +67,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
                     callPayload.Queries["model-version"] = ExpressionConverter.Convert(__workflow_modelVersion);
                 if (__workflow_showStats != null)
                     callPayload.Queries["showStats"] = ExpressionConverter.Convert(__workflow_showStats);
-                var input = new JObject();
-                var inputpropCount = 0;
-                inputpropCount++;
-                input["documents"] = ExpressionConverter.ConvertO(__workflow_inputdocuments);
-                if (inputpropCount > 0)
-                {
-                    callPayload.Body = input;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<KeyPhraseResultV3>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<LanguageResultV3, ApiConnectionActionConfiguration> Languages(Expression<Func<LanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<LanguageResultV3, ApiConnectionActionConfiguration> Languages(Expression<Func<LanguagesInputInput>> input, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
-            var __workflow_inputdocuments = WorkflowExpression.Compile(inputdocuments, nameof(inputdocuments), required: true);
+            var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_modelVersion = WorkflowExpression.Compile(modelVersion, nameof(modelVersion), required: false);
             var __workflow_showStats = WorkflowExpression.Compile(showStats, nameof(showStats), required: false);
             return new DeferredBodyAction<LanguageResultV3, ApiConnectionActionConfiguration>(() =>
@@ -111,23 +87,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
                     callPayload.Queries["model-version"] = ExpressionConverter.Convert(__workflow_modelVersion);
                 if (__workflow_showStats != null)
                     callPayload.Queries["showStats"] = ExpressionConverter.Convert(__workflow_showStats);
-                var input = new JObject();
-                var inputpropCount = 0;
-                inputpropCount++;
-                input["documents"] = ExpressionConverter.ConvertO(__workflow_inputdocuments);
-                if (inputpropCount > 0)
-                {
-                    callPayload.Body = input;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<LanguageResultV3>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<SentimentResponse, ApiConnectionActionConfiguration> Sentiment(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<SentimentResponse, ApiConnectionActionConfiguration> Sentiment(Expression<Func<EntitiesLinkingInputInput>> input, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
-            var __workflow_inputdocuments = WorkflowExpression.Compile(inputdocuments, nameof(inputdocuments), required: true);
+            var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_modelVersion = WorkflowExpression.Compile(modelVersion, nameof(modelVersion), required: false);
             var __workflow_showStats = WorkflowExpression.Compile(showStats, nameof(showStats), required: false);
             return new DeferredBodyAction<SentimentResponse, ApiConnectionActionConfiguration>(() =>
@@ -139,15 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
                     callPayload.Queries["model-version"] = ExpressionConverter.Convert(__workflow_modelVersion);
                 if (__workflow_showStats != null)
                     callPayload.Queries["showStats"] = ExpressionConverter.Convert(__workflow_showStats);
-                var input = new JObject();
-                var inputpropCount = 0;
-                inputpropCount++;
-                input["documents"] = ExpressionConverter.ConvertO(__workflow_inputdocuments);
-                if (inputpropCount > 0)
-                {
-                    callPayload.Body = input;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<SentimentResponse>(callPayload);
             });
         }
@@ -275,12 +235,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         public int TransactionsCount { get; set; }
     }
 
+    public class EntitiesLinkingInputInput
+    {
+        public EntitiesLinkingInputInput(MultiLanguageInputV3[] documents)
+        {
+            this.Documents = documents;
+        }
+
+        [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
+        public MultiLanguageInputV3[] Documents { get; set; }
+    }
+
     public class MultiLanguageInputV3
     {
-        [JsonProperty("id")]
+        public MultiLanguageInputV3(string id, string text)
+        {
+            this.Id = id;
+            this.Text = text;
+        }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
-        [JsonProperty("text")]
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
         [JsonProperty("language")]
@@ -410,12 +387,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         public double ConfidenceScore { get; set; }
     }
 
+    public class LanguagesInputInput
+    {
+        public LanguagesInputInput(LanguageInputV3[] documents)
+        {
+            this.Documents = documents;
+        }
+
+        [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
+        public LanguageInputV3[] Documents { get; set; }
+    }
+
     public class LanguageInputV3
     {
-        [JsonProperty("id")]
+        public LanguageInputV3(string id, string text)
+        {
+            this.Id = id;
+            this.Text = text;
+        }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Id { get; set; }
 
-        [JsonProperty("text")]
+        [JsonProperty("text", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
 
         [JsonProperty("countryHint")]

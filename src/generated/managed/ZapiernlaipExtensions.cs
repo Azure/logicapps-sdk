@@ -25,42 +25,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zapiernlaip")]
-        public IBodyWorkflowAction<ActionPostResponse, ApiConnectionActionConfiguration> Action(Expression<Func<string>> actionId, Expression<Func<string>> bodyinstructions, Expression<Func<bool>> bodypreviewOnly = null)
+        public IBodyWorkflowAction<ActionResponse, ApiConnectionActionConfiguration> Action(Expression<Func<string>> actionId, Expression<Func<BodyInput>> body)
         {
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
-            var __workflow_bodyinstructions = WorkflowExpression.Compile(bodyinstructions, nameof(bodyinstructions), required: true);
-            var __workflow_bodypreviewOnly = WorkflowExpression.Compile(bodypreviewOnly, nameof(bodypreviewOnly), required: false);
-            return new DeferredBodyAction<ActionPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<ActionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/dynamic/exposed/{0}/execute/", __workflow_actionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["instructions"] = ExpressionConverter.ConvertO(__workflow_bodyinstructions);
-                if (__workflow_bodypreviewOnly != null)
-                {
-                    if (__workflow_bodypreviewOnly != null)
-                    {
-                        body["preview_only"] = ExpressionConverter.ConvertO(__workflow_bodypreviewOnly);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["preview_only"] = false;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<ActionPostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<ActionResponse>(callPayload);
             });
         }
     }
@@ -93,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
         public JToken Params { get; set; }
     }
 
-    public class ActionPostResponse
+    public class ActionResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -115,6 +90,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
 
         [JsonProperty("error")]
         public string Error { get; set; }
+    }
+
+    public class BodyInput
+    {
+        public BodyInput(string instructions)
+        {
+            this.Instructions = instructions;
+        }
+
+        [JsonProperty("instructions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Instructions { get; set; }
+
+        [JsonProperty("preview_only", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? PreviewOnly { get; set; } = false;
     }
 }
 

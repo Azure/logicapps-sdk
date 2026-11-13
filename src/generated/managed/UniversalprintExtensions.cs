@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Universalprint
     public class UniversalprintActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "universalprint")]
-        public IBodyWorkflowAction<PrintFileResponse, ApiConnectionActionConfiguration> PrintFile(Expression<Func<string>> printer, Expression<Func<string>> fileName, Expression<Func<string>> body = null, Expression<Func<int>> configurationCopies = null, Expression<Func<configurationOrientationInput>> configurationOrientation = null, Expression<Func<configurationColorModeInput>> configurationColorMode = null, Expression<Func<string>> configurationMediaSize = null, Expression<Func<configurationDuplexModeInput>> configurationDuplexMode = null, Expression<Func<int>> configurationPagesPerSheet = null, Expression<Func<int>> configurationDpi = null, Expression<Func<configurationQualityInput>> configurationQuality = null, Expression<Func<string>> configurationMediaType = null, Expression<Func<configurationFinishingsInputItem[]>> configurationFinishings = null)
+        public IBodyWorkflowAction<PrintFileResponse, ApiConnectionActionConfiguration> PrintFile(Expression<Func<string>> printer, Expression<Func<string>> body, Expression<Func<string>> fileName, Expression<Func<int>> configurationCopies = null, Expression<Func<ConfigurationOrientationInput>> configurationOrientation = null, Expression<Func<ConfigurationColorModeInput>> configurationColorMode = null, Expression<Func<string>> configurationMediaSize = null, Expression<Func<ConfigurationDuplexModeInput>> configurationDuplexMode = null, Expression<Func<int>> configurationPagesPerSheet = null, Expression<Func<int>> configurationDpi = null, Expression<Func<ConfigurationQualityInput>> configurationQuality = null, Expression<Func<string>> configurationMediaType = null, Expression<Func<ConfigurationFinishingsInputItem[]>> configurationFinishings = null)
         {
             var __workflow_printer = WorkflowExpression.Compile(printer, nameof(printer), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_configurationCopies = WorkflowExpression.Compile(configurationCopies, nameof(configurationCopies), required: false);
             var __workflow_configurationOrientation = WorkflowExpression.Compile(configurationOrientation, nameof(configurationOrientation), required: false);
             var __workflow_configurationColorMode = WorkflowExpression.Compile(configurationColorMode, nameof(configurationColorMode), required: false);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Universalprint
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum configurationOrientationInput
+    public enum ConfigurationOrientationInput
     {
         Landscape,
         Portrait,
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Universalprint
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum configurationColorModeInput
+    public enum ConfigurationColorModeInput
     {
         Color,
         [EnumMember(Value = "Black and white")]
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Universalprint
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum configurationDuplexModeInput
+    public enum ConfigurationDuplexModeInput
     {
         [EnumMember(Value = "One sided")]
         OneSided,
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Universalprint
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum configurationQualityInput
+    public enum ConfigurationQualityInput
     {
         Low,
         Medium,
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Universalprint
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum configurationFinishingsInputItem
+    public enum ConfigurationFinishingsInputItem
     {
         None,
         Punch,

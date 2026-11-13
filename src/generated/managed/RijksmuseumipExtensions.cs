@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksmuseumip
     public class RijksmuseumipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksmuseumip")]
-        public IBodyWorkflowAction<GetCollectionResponse, ApiConnectionActionConfiguration> GetCollection(Expression<Func<cultureInput>> culture, Expression<Func<string>> objectnumber = null, Expression<Func<string>> involvedMaker = null, Expression<Func<int>> p = null, Expression<Func<int>> ps = null, Expression<Func<sInput>> s = null, Expression<Func<bool>> toppieces = null, Expression<Func<bool>> imgoly = null, Expression<Func<int>> fDatingPeriod = null, Expression<Func<string>> title = null, Expression<Func<string>> technique = null, Expression<Func<string>> material = null, Expression<Func<string>> type = null, Expression<Func<string>> place = null)
+        public IBodyWorkflowAction<GetCollectionResponse, ApiConnectionActionConfiguration> GetCollection(Expression<Func<CultureInput>> culture, Expression<Func<string>> objectnumber = null, Expression<Func<string>> involvedMaker = null, Expression<Func<int>> p = null, Expression<Func<int>> ps = null, Expression<Func<SInput>> s = null, Expression<Func<bool>> toppieces = null, Expression<Func<bool>> imgoly = null, Expression<Func<int>> fDatingPeriod = null, Expression<Func<string>> title = null, Expression<Func<string>> technique = null, Expression<Func<string>> material = null, Expression<Func<string>> type = null, Expression<Func<string>> place = null)
         {
             var __workflow_culture = WorkflowExpression.Compile(culture, nameof(culture), required: true);
             var __workflow_objectnumber = WorkflowExpression.Compile(objectnumber, nameof(objectnumber), required: false);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksmuseumip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksmuseumip")]
-        public IBodyWorkflowAction<GetUsersetsResponse, ApiConnectionActionConfiguration> GetUsersets(Expression<Func<cultureInput>> culture, Expression<Func<int>> userId, Expression<Func<string>> collectionName, Expression<Func<formatInput>> format = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<GetUsersetsResponse, ApiConnectionActionConfiguration> GetUsersets(Expression<Func<CultureInput>> culture, Expression<Func<int>> userId, Expression<Func<string>> collectionName, Expression<Func<FormatInput>> format = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
             var __workflow_culture = WorkflowExpression.Compile(culture, nameof(culture), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksmuseumip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum cultureInput
+    public enum CultureInput
     {
         [EnumMember(Value = "nl")]
         Nl,
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksmuseumip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sInput
+    public enum SInput
     {
         [EnumMember(Value = "relevance")]
         Relevance,
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksmuseumip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         [EnumMember(Value = "json")]
         Json,

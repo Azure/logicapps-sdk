@@ -13,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
     public class EventhubsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventhubs")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendEvent(Expression<Func<string>> eventHubName, Expression<Func<WorkflowBinaryContent>> eventDatacontent = null, Expression<Func<string>> partitionKey = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendEvent(Expression<Func<string>> eventHubName, Expression<Func<EventDataInput>> eventData, Expression<Func<string>> partitionKey = null)
         {
             var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
-            var __workflow_eventDatacontent = WorkflowExpression.Compile(eventDatacontent, nameof(eventDatacontent), required: false);
+            var __workflow_eventData = WorkflowExpression.Compile(eventData, nameof(eventData), required: true);
             var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -25,37 +25,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_partitionKey != null)
                     callPayload.Queries["partitionKey"] = ExpressionConverter.Convert(__workflow_partitionKey);
-                var eventData = new JObject();
-                var eventDatapropCount = 0;
-                if (__workflow_eventDatacontent != null)
-                {
-                    eventData["ContentData"] = ExpressionConverter.ConvertO(__workflow_eventDatacontent);
-                    eventDatapropCount++;
-                }
-
-                var propertiesObject = new JObject();
-                var propertiesObjectpropCount = 0;
-                if (propertiesObjectpropCount > 0)
-                {
-                    eventData["Properties"] = propertiesObject;
-                    eventDatapropCount++;
-                }
-
-                if (eventDatapropCount > 0)
-                {
-                    callPayload.Body = eventData;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_eventData);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventhubs")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendEvents(Expression<Func<string>> eventHubName, Expression<Func<string>> partitionKey, Expression<Func<SendEventInput[]>> events = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendEvents(Expression<Func<string>> eventHubName, Expression<Func<SendEvent[]>> events, Expression<Func<string>> partitionKey)
         {
             var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
+            var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: true);
             var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
-            var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/events/batch", __workflow_eventHubName.WithUrlEncoding(1)));
@@ -70,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
 
     public class EventhubsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Event[], ApiConnectionTriggerConfiguration> OnNewEvents(Expression<Func<string>> eventHubName, Expression<Func<string>> contentType = null, Expression<Func<string>> contentSchema = null, Expression<Func<string>> consumerGroupName = null, Expression<Func<string>> minimumPartitionKey = null, Expression<Func<string>> maximumPartitionKey = null, Expression<Func<int>> maximumEventsCount = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Event[], ApiConnectionPollingTriggerConfiguration> OnNewEvents(Expression<Func<string>> eventHubName, Expression<Func<string>> contentType = null, Expression<Func<string>> contentSchema = null, Expression<Func<string>> consumerGroupName = null, Expression<Func<string>> minimumPartitionKey = null, Expression<Func<string>> maximumPartitionKey = null, Expression<Func<int>> maximumEventsCount = null)
         {
             var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
@@ -79,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
             var __workflow_minimumPartitionKey = WorkflowExpression.Compile(minimumPartitionKey, nameof(minimumPartitionKey), required: false);
             var __workflow_maximumPartitionKey = WorkflowExpression.Compile(maximumPartitionKey, nameof(maximumPartitionKey), required: false);
             var __workflow_maximumEventsCount = WorkflowExpression.Compile(maximumEventsCount, nameof(maximumEventsCount), required: false);
-            return new DeferredBodyTrigger<Event[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Event[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/{0}/events/batch/head", __workflow_eventHubName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -99,15 +79,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
                 callPayload.Queries["maximumEventsCount"] = Convert.ToString(50);
                 if (__workflow_maximumEventsCount != null)
                     callPayload.Queries["maximumEventsCount"] = ExpressionConverter.Convert(__workflow_maximumEventsCount);
-                return new ApiConnectionTrigger<Event[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Event[]>(callPayload);
             });
         }
     }
 
-    public class SendEventInput
+    public class EventDataInput
     {
         [JsonProperty("ContentData")]
-        public WorkflowBinaryContent Content { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
+        public JToken Properties { get; set; }
+    }
+
+    public class SendEvent
+    {
+        [JsonProperty("ContentData")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent Content { get; set; }
         public JToken Properties { get; set; }
     }
 

@@ -47,7 +47,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/All/items", __workflow_listNameDynamic.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);
+                if (__workflow_dynamicListSchema != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);
                 return new ApiConnectionAction<JToken[]>(callPayload);
             });
         }
@@ -77,7 +78,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/items/{1}", __workflow_listNameDynamic.WithUrlEncoding(1), __workflow_itemId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);
+                if (__workflow_dynamicListSchema != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_dynamicListSchema);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -99,11 +101,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rapidplatform")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SetAttachments(Expression<Func<string>> listNameDynamic, Expression<Func<int>> itemId, Expression<Func<attachmentsInputItem[]>> attachments = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> SetAttachments(Expression<Func<string>> listNameDynamic, Expression<Func<int>> itemId, Expression<Func<AttachmentsInputItem[]>> attachments)
         {
             var __workflow_listNameDynamic = WorkflowExpression.Compile(listNameDynamic, nameof(listNameDynamic), required: true);
             var __workflow_itemId = WorkflowExpression.Compile(itemId, nameof(itemId), required: true);
-            var __workflow_attachments = WorkflowExpression.Compile(attachments, nameof(attachments), required: false);
+            var __workflow_attachments = WorkflowExpression.Compile(attachments, nameof(attachments), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lists/{0}/items/{1}/attachments", __workflow_listNameDynamic.WithUrlEncoding(1), __workflow_itemId.WithUrlEncoding(1)));
@@ -117,50 +119,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
 
     public class RapidplatformTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ListHookTrigger(Expression<Func<string>> requestBodyOfWebhookconfigtable = null, Expression<Func<requestBodyOfWebhookconfigtriggerTypeInput>> requestBodyOfWebhookconfigtriggerType = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ListHookTrigger(Expression<Func<RequestBodyOfWebhookInput>> requestBodyOfWebhook)
         {
-            var __workflow_requestBodyOfWebhookconfigtable = WorkflowExpression.Compile(requestBodyOfWebhookconfigtable, nameof(requestBodyOfWebhookconfigtable), required: false);
-            var __workflow_requestBodyOfWebhookconfigtriggerType = WorkflowExpression.Compile(requestBodyOfWebhookconfigtriggerType, nameof(requestBodyOfWebhookconfigtriggerType), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_requestBodyOfWebhook = WorkflowExpression.Compile(requestBodyOfWebhook, nameof(requestBodyOfWebhook), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/hooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var requestBodyOfWebhook = new JObject();
-                var requestBodyOfWebhookpropCount = 0;
-                var configObject = new JObject();
-                var configObjectpropCount = 0;
-                configObject["url"] = "#{listCallbackUrl()}";
-                configObjectpropCount++;
-                if (__workflow_requestBodyOfWebhookconfigtable != null)
-                {
-                    configObject["list"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookconfigtable);
-                    configObjectpropCount++;
-                }
-
-                if (__workflow_requestBodyOfWebhookconfigtriggerType != null)
-                {
-                    configObject["trigger"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookconfigtriggerType);
-                    configObjectpropCount++;
-                }
-
-                if (configObjectpropCount > 0)
-                {
-                    requestBodyOfWebhook["config"] = configObject;
-                    requestBodyOfWebhookpropCount++;
-                }
-
-                if (requestBodyOfWebhookpropCount > 0)
-                {
-                    callPayload.Body = requestBodyOfWebhook;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhook);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }
 
-    public class attachmentsInputItem
+    public class AttachmentsInputItem
     {
         [JsonProperty("drive_id")]
         public string DriveId { get; set; }
@@ -169,8 +142,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rapidplatform
         public string DriveItemId { get; set; }
     }
 
+    public class RequestBodyOfWebhookInput
+    {
+        public RequestBodyOfWebhookInput(RequestBodyOfWebhookInputConfigType config)
+        {
+            this.Config = config;
+        }
+
+        [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RequestBodyOfWebhookInputConfigType Config { get; set; }
+    }
+
+    public class RequestBodyOfWebhookInputConfigType
+    {
+        public RequestBodyOfWebhookInputConfigType(string table, RequestBodyOfWebhookInputConfigTypeTriggerTypeType triggerType)
+        {
+            this.Table = table;
+            this.TriggerType = triggerType;
+        }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("list", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Table { get; set; }
+
+        [JsonProperty("trigger", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RequestBodyOfWebhookInputConfigTypeTriggerTypeType TriggerType { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum requestBodyOfWebhookconfigtriggerTypeInput
+    public enum RequestBodyOfWebhookInputConfigTypeTriggerTypeType
     {
         [EnumMember(Value = "Item Created")]
         ItemCreated,

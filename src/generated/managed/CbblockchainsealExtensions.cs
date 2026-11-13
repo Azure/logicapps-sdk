@@ -13,74 +13,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
     public class CbblockchainsealActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IBodyWorkflowAction<CreateSealResponse, ApiConnectionActionConfiguration> CreateSeal(Expression<Func<WorkflowBinaryContent>> bodyFile)
+        public IBodyWorkflowAction<CreateSealResponse, ApiConnectionActionConfiguration> CreateSeal(Expression<Func<CreateSealBodyInput>> body)
         {
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateSealResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/CreateSeal";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateSealResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IBodyWorkflowAction<ListSealsResponse, ApiConnectionActionConfiguration> ListSeals(Expression<Func<WorkflowBinaryContent>> bodyFile = null)
+        public IBodyWorkflowAction<ListSealsResponse, ApiConnectionActionConfiguration> ListSeals(Expression<Func<ListSealsBodyInput>> body = null)
         {
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ListSealsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/ListSeals";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyFile != null)
-                {
-                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ListSealsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> VerifySeal(Expression<Func<WorkflowBinaryContent>> bodyFile, Expression<Func<string>> bodysealId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> VerifySeal(Expression<Func<VerifySealBodyInput>> body)
         {
-            var __workflow_bodyFile = WorkflowExpression.Compile(bodyFile, nameof(bodyFile), required: true);
-            var __workflow_bodysealId = WorkflowExpression.Compile(bodysealId, nameof(bodysealId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/VerfiySeal";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file"] = ExpressionConverter.ConvertO(__workflow_bodyFile);
-                bodypropCount++;
-                body["sealId"] = ExpressionConverter.ConvertO(__workflow_bodysealId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -100,6 +70,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
 
         [JsonProperty("error")]
         public int Error { get; set; }
+    }
+
+    public class CreateSealBodyInput
+    {
+        public CreateSealBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent @file)
+        {
+            this.File = @file;
+        }
+
+        [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
     }
 
     public class ListSealsResponse
@@ -133,6 +114,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
 
         [JsonProperty("origin")]
         public int Origin { get; set; }
+    }
+
+    public class ListSealsBodyInput
+    {
+        [JsonProperty("file")]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+    }
+
+    public class VerifySealBodyInput
+    {
+        public VerifySealBodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent @file, string sealId)
+        {
+            this.File = @file;
+            this.SealId = sealId;
+        }
+
+        [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
+
+        [JsonProperty("sealId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SealId { get; set; }
     }
 }
 

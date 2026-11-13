@@ -13,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
     public class CognitiveservicescontentmoderatorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<EvaluateImageResponse, ApiConnectionActionConfiguration> EvaluateImage(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<EvaluateImageResponse, ApiConnectionActionConfiguration> EvaluateImage(Expression<Func<FormatInput>> format, Expression<Func<object>> image)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
-            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: true);
             return new DeferredBodyAction<EvaluateImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/Evaluate";
@@ -29,13 +29,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<string>> teamName, Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> contentId, Expression<Func<string>> workflowName, Expression<Func<string>> contentcontentValue, Expression<Func<string>> callBackEndpoint = null)
+        public IBodyWorkflowAction<CreateJobResponse, ApiConnectionActionConfiguration> CreateJob(Expression<Func<string>> teamName, Expression<Func<CreateJobContentTypeInput>> contentType, Expression<Func<string>> contentId, Expression<Func<string>> workflowName, Expression<Func<ContentInput>> content, Expression<Func<string>> callBackEndpoint = null)
         {
             var __workflow_teamName = WorkflowExpression.Compile(teamName, nameof(teamName), required: true);
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_contentId = WorkflowExpression.Compile(contentId, nameof(contentId), required: true);
             var __workflow_workflowName = WorkflowExpression.Compile(workflowName, nameof(workflowName), required: true);
-            var __workflow_contentcontentValue = WorkflowExpression.Compile(contentcontentValue, nameof(contentcontentValue), required: true);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
             var __workflow_callBackEndpoint = WorkflowExpression.Compile(callBackEndpoint, nameof(callBackEndpoint), required: false);
             return new DeferredBodyAction<CreateJobResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -47,25 +47,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
                 callPayload.Queries["WorkflowName"] = ExpressionConverter.Convert(__workflow_workflowName);
                 if (__workflow_callBackEndpoint != null)
                     callPayload.Queries["CallBackEndpoint"] = ExpressionConverter.Convert(__workflow_callBackEndpoint);
-                var content = new JObject();
-                var contentpropCount = 0;
-                contentpropCount++;
-                content["ContentValue"] = ExpressionConverter.ConvertO(__workflow_contentcontentValue);
-                if (contentpropCount > 0)
-                {
-                    callPayload.Body = content;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
                 return new ApiConnectionAction<CreateJobResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<OCRResponse, ApiConnectionActionConfiguration> OCR(Expression<Func<string>> language, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<OCRResponse, ApiConnectionActionConfiguration> OCR(Expression<Func<string>> language, Expression<Func<FormatInput>> format, Expression<Func<object>> image)
         {
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
-            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: true);
             return new DeferredBodyAction<OCRResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/OCR";
@@ -79,15 +71,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<ScreenTextResponse, ApiConnectionActionConfiguration> ScreenText(Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> language = null, Expression<Func<bool>> autocorrect = null, Expression<Func<bool>> pII = null, Expression<Func<string>> listId = null, Expression<Func<bool>> classify = null, Expression<Func<string>> textContent = null)
+        public IBodyWorkflowAction<ScreenTextResponse, ApiConnectionActionConfiguration> ScreenText(Expression<Func<DetectLanguageContentTypeInput>> contentType, Expression<Func<string>> textContent, Expression<Func<string>> language = null, Expression<Func<bool>> autocorrect = null, Expression<Func<bool>> pII = null, Expression<Func<string>> listId = null, Expression<Func<bool>> classify = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_textContent = WorkflowExpression.Compile(textContent, nameof(textContent), required: true);
             var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
             var __workflow_autocorrect = WorkflowExpression.Compile(autocorrect, nameof(autocorrect), required: false);
             var __workflow_pII = WorkflowExpression.Compile(pII, nameof(pII), required: false);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: false);
             var __workflow_classify = WorkflowExpression.Compile(classify, nameof(classify), required: false);
-            var __workflow_textContent = WorkflowExpression.Compile(textContent, nameof(textContent), required: false);
             return new DeferredBodyAction<ScreenTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessText/Screen/";
@@ -110,10 +102,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<FindFacesResponse, ApiConnectionActionConfiguration> FindFaces(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<FindFacesResponse, ApiConnectionActionConfiguration> FindFaces(Expression<Func<FormatInput>> format, Expression<Func<object>> image)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
-            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: true);
             return new DeferredBodyAction<FindFacesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/FindFaces";
@@ -126,10 +118,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<DetectLanguageResponse, ApiConnectionActionConfiguration> DetectLanguage(Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> textContent = null)
+        public IBodyWorkflowAction<DetectLanguageResponse, ApiConnectionActionConfiguration> DetectLanguage(Expression<Func<DetectLanguageContentTypeInput>> contentType, Expression<Func<string>> textContent)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
-            var __workflow_textContent = WorkflowExpression.Compile(textContent, nameof(textContent), required: false);
+            var __workflow_textContent = WorkflowExpression.Compile(textContent, nameof(textContent), required: true);
             return new DeferredBodyAction<DetectLanguageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessText/DetectLanguage";
@@ -142,11 +134,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<MatchImageResponse, ApiConnectionActionConfiguration> MatchImage(Expression<Func<formatInput>> format, Expression<Func<string>> listId = null, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<MatchImageResponse, ApiConnectionActionConfiguration> MatchImage(Expression<Func<FormatInput>> format, Expression<Func<object>> image, Expression<Func<string>> listId = null)
         {
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: true);
             var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: false);
-            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<MatchImageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/Match";
@@ -161,11 +153,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> CreateReviews(Expression<Func<string>> teamName, Expression<Func<string>> subTeam = null, Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> CreateReviews(Expression<Func<string>> teamName, Expression<Func<BodyInputItem[]>> body, Expression<Func<string>> subTeam = null)
         {
             var __workflow_teamName = WorkflowExpression.Compile(teamName, nameof(teamName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_subTeam = WorkflowExpression.Compile(subTeam, nameof(subTeam), required: false);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contentmoderator/review/v1.0/teams/{0}/reviews", __workflow_teamName.WithUrlEncoding(1)));
@@ -193,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         [EnumMember(Value = "Image Content")]
         ImageContent,
@@ -207,16 +199,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum contentTypeInput
+    public enum CreateJobContentTypeInput
     {
-        [EnumMember(Value = "text/plain")]
-        TextPlain,
-        [EnumMember(Value = "text/html")]
-        TextHtml,
-        [EnumMember(Value = "text/xml")]
-        TextXml,
-        [EnumMember(Value = "text/markdown")]
-        TextMarkdown
+        Image,
+        Text
+    }
+
+    public class ContentInput
+    {
+        public ContentInput(string contentValue)
+        {
+            this.ContentValue = contentValue;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContentValue { get; set; }
     }
 
     public class OCRResponse
@@ -380,6 +377,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         public string DetectedTerm { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum DetectLanguageContentTypeInput
+    {
+        [EnumMember(Value = "text/plain")]
+        TextPlain,
+        [EnumMember(Value = "text/html")]
+        TextHtml,
+        [EnumMember(Value = "text/xml")]
+        TextXml,
+        [EnumMember(Value = "text/markdown")]
+        TextMarkdown
+    }
+
     public class FindFacesResponse
     {
         public string TrackingId { get; set; }
@@ -438,33 +448,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
         public string MatchDetailsLabel { get; set; }
     }
 
-    public class bodyInputItem
+    public class BodyInputItem
     {
-        [JsonProperty("Type")]
-        public bodyInputItemContentTypeType ContentType { get; set; }
+        public BodyInputItem(BodyInputItemContentTypeType contentType, string reviewContent, string contentId)
+        {
+            this.ContentType = contentType;
+            this.ReviewContent = reviewContent;
+            this.ContentId = contentId;
+        }
 
-        [JsonProperty("Content")]
+        [JsonProperty("Type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputItemContentTypeType ContentType { get; set; }
+
+        [JsonProperty("Content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReviewContent { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContentId { get; set; }
         public string CallbackEndpoint { get; set; }
 
         [JsonProperty("Metadata")]
-        public bodyInputItemOptionalMetadataTypeItem[] OptionalMetadata { get; set; }
+        public BodyInputItemOptionalMetadataTypeItem[] OptionalMetadata { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyInputItemContentTypeType
+    public enum BodyInputItemContentTypeType
     {
         Image,
         Text
     }
 
-    public class bodyInputItemOptionalMetadataTypeItem
+    public class BodyInputItemOptionalMetadataTypeItem
     {
-        [JsonProperty("Key")]
+        public BodyInputItemOptionalMetadataTypeItem(string keyParameter, string valueParameter)
+        {
+            this.KeyParameter = keyParameter;
+            this.ValueParameter = valueParameter;
+        }
+
+        [JsonProperty("Key", DefaultValueHandling = DefaultValueHandling.Include)]
         public string KeyParameter { get; set; }
 
-        [JsonProperty("Value")]
+        [JsonProperty("Value", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ValueParameter { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "litipsumip")]
-        public IBodyWorkflowAction<TextTitleResponse, ApiConnectionActionConfiguration> TextTitle(Expression<Func<titleInput>> title)
+        public IBodyWorkflowAction<TextTitleResponse, ApiConnectionActionConfiguration> TextTitle(Expression<Func<TitleInput>> title)
         {
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: true);
             return new DeferredBodyAction<TextTitleResponse, ApiConnectionActionConfiguration>(() =>
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum titleInput
+    public enum TitleInput
     {
         [EnumMember(Value = "adventures-sherlock-holmes")]
         AdventuresSherlockHolmes,

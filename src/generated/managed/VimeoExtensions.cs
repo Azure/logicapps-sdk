@@ -16,23 +16,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
 
     public class VimeoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Video[], ApiConnectionTriggerConfiguration> OnVideoUpload(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Video[], ApiConnectionPollingTriggerConfiguration> OnVideoUpload()
         {
-            return new DeferredBodyTrigger<Video[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Video[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/me/videos";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fields"] = Convert.ToString("user,uri,name,description,link,created_time,modified_time");
                 callPayload.Queries["sort"] = Convert.ToString("date");
-                return new ApiConnectionTrigger<Video[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Video[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<VideoWithChannelId[], ApiConnectionTriggerConfiguration> OnNewVideoInChannel(Expression<Func<string>> channelId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VideoWithChannelId[], ApiConnectionPollingTriggerConfiguration> OnNewVideoInChannel(Expression<Func<string>> channelId)
         {
             var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
-            return new DeferredBodyTrigger<VideoWithChannelId[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<VideoWithChannelId[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/channels/videos";
                 var apiCallHttpMethod = "get";
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
                 callPayload.Queries["fields"] = Convert.ToString("user,uri,name,description,link,created_time,modified_time");
                 callPayload.Queries["sort"] = Convert.ToString("added");
                 callPayload.Queries["per_page"] = Convert.ToString(50);
-                return new ApiConnectionTrigger<VideoWithChannelId[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<VideoWithChannelId[]>(callPayload);
             });
         }
     }

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> CaseSingular(Expression<Func<string>> input, Expression<Func<caseTypeInput>> caseType, Expression<Func<languageInput>> language)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> CaseSingular(Expression<Func<string>> input, Expression<Func<CaseTypeInput>> caseType, Expression<Func<LanguageInput>> language)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_caseType = WorkflowExpression.Compile(caseType, nameof(caseType), required: true);
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ClassifyGetResponse, ApiConnectionActionConfiguration> ClassifyGet(Expression<Func<string>> input, Expression<Func<categoriesInput>> categories, Expression<Func<languageInput>> language = null)
+        public IBodyWorkflowAction<ClassifyGetResponse, ApiConnectionActionConfiguration> ClassifyGet(Expression<Func<string>> input, Expression<Func<CategoriesInput>> categories, Expression<Func<LanguageInput>> language = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: true);
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalFloat, ApiConnectionActionConfiguration> CompareGet(Expression<Func<string>> input1, Expression<Func<string>> input2, Expression<Func<comparisonAlgorithmInput>> comparisonAlgorithm)
+        public IBodyWorkflowAction<DQGlobalFloat, ApiConnectionActionConfiguration> CompareGet(Expression<Func<string>> input1, Expression<Func<string>> input2, Expression<Func<ComparisonAlgorithmInput>> comparisonAlgorithm)
         {
             var __workflow_input1 = WorkflowExpression.Compile(input1, nameof(input1), required: true);
             var __workflow_input2 = WorkflowExpression.Compile(input2, nameof(input2), required: true);
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<CongruenceResultSingle, ApiConnectionActionConfiguration> CountryCongruenceGet(Expression<Func<string>> input, Expression<Func<string>> country, Expression<Func<actionTypeInput>> actionType)
+        public IBodyWorkflowAction<CongruenceResultSingle, ApiConnectionActionConfiguration> CountryCongruenceGet(Expression<Func<string>> input, Expression<Func<string>> country, Expression<Func<ActionTypeInput>> actionType)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<CongruenceResultSingle, ApiConnectionActionConfiguration> SalutationCongruenceGet(Expression<Func<string>> salutation, Expression<Func<string>> firstName, Expression<Func<languageInput>> language)
+        public IBodyWorkflowAction<CongruenceResultSingle, ApiConnectionActionConfiguration> SalutationCongruenceGet(Expression<Func<string>> salutation, Expression<Func<string>> firstName, Expression<Func<LanguageInput>> language)
         {
             var __workflow_salutation = WorkflowExpression.Compile(salutation, nameof(salutation), required: true);
             var __workflow_firstName = WorkflowExpression.Compile(firstName, nameof(firstName), required: true);
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<GeneratePatternResponse, ApiConnectionActionConfiguration> GeneratePattern(Expression<Func<inputInputItem[]>> input = null)
+        public IBodyWorkflowAction<GeneratePatternResponse, ApiConnectionActionConfiguration> GeneratePattern(Expression<Func<GeneratePatternInputInputItem[]>> input = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: false);
             return new DeferredBodyAction<GeneratePatternResponse, ApiConnectionActionConfiguration>(() =>
@@ -362,13 +362,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var apiCallPath = "/Generate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
+                if (__workflow_input != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<GeneratePatternResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> GenerateTokenGet(Expression<Func<string>> input, Expression<Func<generateAlgorithmTypeInput>> generateAlgorithmType, Expression<Func<languageInput>> language = null)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> GenerateTokenGet(Expression<Func<string>> input, Expression<Func<GenerateAlgorithmTypeInput>> generateAlgorithmType, Expression<Func<LanguageInput>> language = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_generateAlgorithmType = WorkflowExpression.Compile(generateAlgorithmType, nameof(generateAlgorithmType), required: true);
@@ -432,7 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ScoringResponse, ApiConnectionActionConfiguration> Scoring(Expression<Func<inputInputItem2[]>> input = null)
+        public IBodyWorkflowAction<ScoringResponse, ApiConnectionActionConfiguration> Scoring(Expression<Func<ScoringInputInputItem[]>> input = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: false);
             return new DeferredBodyAction<ScoringResponse, ApiConnectionActionConfiguration>(() =>
@@ -440,13 +441,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var apiCallPath = "/Scoring";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
+                if (__workflow_input != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<ScoringResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> TransformGet(Expression<Func<string>> input, Expression<Func<entityTypeInput>> entityType, Expression<Func<operationTypeInput>> operationType, Expression<Func<languageInput>> language = null)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> TransformGet(Expression<Func<string>> input, Expression<Func<EntityTypeInput>> entityType, Expression<Func<OperationTypeInput>> operationType, Expression<Func<LanguageInput>> language = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_entityType = WorkflowExpression.Compile(entityType, nameof(entityType), required: true);
@@ -468,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SequenceTransformResponse, ApiConnectionActionConfiguration> SequenceTransform(Expression<Func<inputInputItem22[]>> input = null)
+        public IBodyWorkflowAction<SequenceTransformResponse, ApiConnectionActionConfiguration> SequenceTransform(Expression<Func<SequenceTransformInputInputItem[]>> input = null)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: false);
             return new DeferredBodyAction<SequenceTransformResponse, ApiConnectionActionConfiguration>(() =>
@@ -476,7 +478,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
                 var apiCallPath = "/SequenceTransform";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
+                if (__workflow_input != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_input);
                 return new ApiConnectionAction<SequenceTransformResponse>(callPayload);
             });
         }
@@ -602,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<VerifyAddressGetResponse, ApiConnectionActionConfiguration> VerifyAddressGet(Expression<Func<providerInput>> provider, Expression<Func<string>> countryIdentifier, Expression<Func<bool>> geocode, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null)
+        public IBodyWorkflowAction<VerifyAddressGetResponse, ApiConnectionActionConfiguration> VerifyAddressGet(Expression<Func<VerifyAddressGetProviderInput>> provider, Expression<Func<string>> countryIdentifier, Expression<Func<bool>> geocode, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_countryIdentifier = WorkflowExpression.Compile(countryIdentifier, nameof(countryIdentifier), required: true);
@@ -637,7 +640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SearchAddressFindResponse, ApiConnectionActionConfiguration> SearchAddressFind(Expression<Func<providerInput>> provider, Expression<Func<string>> query, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<SearchAddressFindResponse, ApiConnectionActionConfiguration> SearchAddressFind(Expression<Func<SearchAddressFindProviderInput>> provider, Expression<Func<string>> query, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
@@ -654,7 +657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SearchAddressRetrieveResponse, ApiConnectionActionConfiguration> SearchAddressRetrieve(Expression<Func<providerInput>> provider, Expression<Func<string>> id, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<SearchAddressRetrieveResponse, ApiConnectionActionConfiguration> SearchAddressRetrieve(Expression<Func<SearchAddressFindProviderInput>> provider, Expression<Func<string>> id, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -671,7 +674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressDeceasedResponse, ApiConnectionActionConfiguration> SuppressDeceased(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> countryIdentifier, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
+        public IBodyWorkflowAction<SuppressDeceasedResponse, ApiConnectionActionConfiguration> SuppressDeceased(Expression<Func<SuppressDeceasedProviderInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> countryIdentifier, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: true);
@@ -711,7 +714,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressGoneAwayResponse, ApiConnectionActionConfiguration> SuppressGoneAway(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
+        public IBodyWorkflowAction<SuppressGoneAwayResponse, ApiConnectionActionConfiguration> SuppressGoneAway(Expression<Func<SuppressDeceasedProviderInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: true);
@@ -751,7 +754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressRelocatedResponse, ApiConnectionActionConfiguration> SuppressRelocated(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
+        public IBodyWorkflowAction<SuppressRelocatedResponse, ApiConnectionActionConfiguration> SuppressRelocated(Expression<Func<SuppressDeceasedProviderInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: true);
@@ -791,7 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressPhonePersonalResponse, ApiConnectionActionConfiguration> SuppressPhonePersonal(Expression<Func<providerInput>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<SuppressPhonePersonalResponse, ApiConnectionActionConfiguration> SuppressPhonePersonal(Expression<Func<SuppressPhoneCorporateProviderInput>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
@@ -808,7 +811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressPhoneCorporateResponse, ApiConnectionActionConfiguration> SuppressPhoneCorporate(Expression<Func<providerInput>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<SuppressPhoneCorporateResponse, ApiConnectionActionConfiguration> SuppressPhoneCorporate(Expression<Func<SuppressPhoneCorporateProviderInput>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
@@ -825,7 +828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<AuthenticateEmailGetResponse, ApiConnectionActionConfiguration> AuthenticateEmailGet(Expression<Func<providerInput>> provider, Expression<Func<string>> email)
+        public IBodyWorkflowAction<AuthenticateEmailGetResponse, ApiConnectionActionConfiguration> AuthenticateEmailGet(Expression<Func<AuthenticateEmailGetProviderInput>> provider, Expression<Func<string>> email)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
@@ -840,7 +843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<AuthenticatePhoneGetResponse, ApiConnectionActionConfiguration> AuthenticatePhoneGet(Expression<Func<providerInput>> provider, Expression<Func<string>> phone, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<AuthenticatePhoneGetResponse, ApiConnectionActionConfiguration> AuthenticatePhoneGet(Expression<Func<AuthenticatePhoneGetProviderInput>> provider, Expression<Func<string>> phone, Expression<Func<string>> countryIdentifier)
         {
             var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
             var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: true);
@@ -987,7 +990,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtRemoveChars(Expression<Func<string>> input, Expression<Func<characterTypeInput>> characterType)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtRemoveChars(Expression<Func<string>> input, Expression<Func<CharacterTypeInput>> characterType)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_characterType = WorkflowExpression.Compile(characterType, nameof(characterType), required: true);
@@ -1188,7 +1191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtCollapseRepeatedType(Expression<Func<string>> input, Expression<Func<int>> maximumRepeat, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtCollapseRepeatedType(Expression<Func<string>> input, Expression<Func<int>> maximumRepeat, Expression<Func<TypeInput>> type)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_maximumRepeat = WorkflowExpression.Compile(maximumRepeat, nameof(maximumRepeat), required: true);
@@ -1238,7 +1241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtExtractChars(Expression<Func<string>> input, Expression<Func<int>> extractLength, Expression<Func<extractFromInput>> extractFrom)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtExtractChars(Expression<Func<string>> input, Expression<Func<int>> extractLength, Expression<Func<ExtractFromInput>> extractFrom)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_extractLength = WorkflowExpression.Compile(extractLength, nameof(extractLength), required: true);
@@ -1256,7 +1259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtExtractWords(Expression<Func<string>> input, Expression<Func<int>> extractLength, Expression<Func<extractFromInput>> extractFrom)
+        public IBodyWorkflowAction<DQGlobal, ApiConnectionActionConfiguration> StringExtExtractWords(Expression<Func<string>> input, Expression<Func<int>> extractLength, Expression<Func<ExtractFromInput>> extractFrom)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_extractLength = WorkflowExpression.Compile(extractLength, nameof(extractLength), required: true);
@@ -1368,7 +1371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> StringExtStartWithType(Expression<Func<string>> input, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> StringExtStartWithType(Expression<Func<string>> input, Expression<Func<TypeInput>> type)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -1384,7 +1387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> StringExtEndsWithType(Expression<Func<string>> input, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<DQGlobalBool, ApiConnectionActionConfiguration> StringExtEndsWithType(Expression<Func<string>> input, Expression<Func<TypeInput>> type)
         {
             var __workflow_input = WorkflowExpression.Compile(input, nameof(input), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -1400,7 +1403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<GetUsageV2, ApiConnectionActionConfiguration> UsageGet(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<summariseByInput>> summariseBy = null)
+        public IBodyWorkflowAction<GetUsageV2, ApiConnectionActionConfiguration> UsageGet(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<SummariseByInput>> summariseBy = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
@@ -1481,7 +1484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum caseTypeInput
+    public enum CaseTypeInput
     {
         [EnumMember(Value = "ProperCase_FamilyName")]
         ProperCaseFamilyName,
@@ -1493,7 +1496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum languageInput
+    public enum LanguageInput
     {
         English,
         Spanish,
@@ -1557,7 +1560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum categoriesInput
+    public enum CategoriesInput
     {
         All,
         Addresses,
@@ -1588,7 +1591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum comparisonAlgorithmInput
+    public enum ComparisonAlgorithmInput
     {
         JaroWinkler,
         Jaro,
@@ -1624,7 +1627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum actionTypeInput
+    public enum ActionTypeInput
     {
         CountryToEmail,
         CountryToPhone,
@@ -1787,10 +1790,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public string Message { get; set; }
     }
 
-    public class inputInputItem
+    public class GeneratePatternInputInputItem
     {
+        public GeneratePatternInputInputItem(string input, GenerateSettings patternSettings)
+        {
+            this.Input = input;
+            this.PatternSettings = patternSettings;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Input { get; set; }
-        public GenerateSettings PatternSetting { get; set; }
+
+        [JsonProperty("PatternSetting", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateSettings PatternSettings { get; set; }
 
         [JsonProperty("UID")]
         public string UId { get; set; }
@@ -1798,13 +1810,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
     public class GenerateSettings
     {
-        [JsonProperty("DoNotTokenize")]
+        public GenerateSettings(GenerateSettingsExcludeFromTokenTypeItem[] excludeFromToken, GenerateLetterSettings letterSettings, GenerateNumberSettings numberSettings)
+        {
+            this.ExcludeFromToken = excludeFromToken;
+            this.LetterSettings = letterSettings;
+            this.NumberSettings = numberSettings;
+        }
+
+        [JsonProperty("DoNotTokenize", DefaultValueHandling = DefaultValueHandling.Include)]
         public GenerateSettingsExcludeFromTokenTypeItem[] ExcludeFromToken { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public GenerateLetterSettings LetterSettings { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public GenerateNumberSettings NumberSettings { get; set; }
-        public GenerateSymbolSettings SymbolSettings { get; set; }
-        public GenerateWhiteSpaceSettings WhiteSpaceSettings { get; set; }
-        public GenerateNonPrintingSettings NonPrintingSettings { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateSymbolSettings SymbolSettings { get; set; } = new GenerateSymbolSettings();
+
+        [JsonProperty("WhiteSpaceSettings", DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateWhiteSpaceSettings WhitespaceSettings { get; set; } = new GenerateWhiteSpaceSettings();
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public GenerateNonPrintingSettings NonPrintingSettings { get; set; } = new GenerateNonPrintingSettings();
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1820,9 +1849,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
     public class GenerateLetterSettings
     {
-        public bool CaseSensitive { get; set; }
-        public bool LetterCategories { get; set; }
+        public GenerateLetterSettings(GenerateLetterSettingsExcludeTypeItem[] exclude, GenerateLetterSettingsCollapseTypeItem[] collapse)
+        {
+            this.Exclude = exclude;
+            this.Collapse = collapse;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool CaseSensitive { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool LetterCategories { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public GenerateLetterSettingsExcludeTypeItem[] Exclude { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public GenerateLetterSettingsCollapseTypeItem[] Collapse { get; set; }
     }
 
@@ -1842,8 +1884,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
     public class GenerateNumberSettings
     {
-        public bool NumberCategories { get; set; }
+        public GenerateNumberSettings(GenerateNumberSettingsExcludeTypeItem[] exclude, GenerateNumberSettingsCollapseTypeItem[] collapse)
+        {
+            this.Exclude = exclude;
+            this.Collapse = collapse;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool NumberCategories { get; set; } = true;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public GenerateNumberSettingsExcludeTypeItem[] Exclude { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public GenerateNumberSettingsCollapseTypeItem[] Collapse { get; set; }
     }
 
@@ -1863,24 +1916,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
     public class GenerateSymbolSettings
     {
-        public bool Exclude { get; set; }
-        public bool Collapse { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool Exclude { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool Collapse { get; set; } = false;
     }
 
     public class GenerateWhiteSpaceSettings
     {
-        public bool Exclude { get; set; }
-        public bool Collapse { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool Exclude { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool Collapse { get; set; } = false;
     }
 
     public class GenerateNonPrintingSettings
     {
-        public bool Exclude { get; set; }
-        public bool Collapse { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool Exclude { get; set; } = false;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool Collapse { get; set; } = false;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum generateAlgorithmTypeInput
+    public enum GenerateAlgorithmTypeInput
     {
         DQFonetix,
         DQMetaphone,
@@ -2055,102 +2117,156 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public string[] Warnings { get; set; }
     }
 
-    public class inputInputItem2
+    public class ScoringInputInputItem
     {
+        public ScoringInputInputItem(bool isDatum, string recordId, string recordSource, InputInputItemGroupFieldsTypeItem[] groupFields)
+        {
+            this.IsDatum = isDatum;
+            this.RecordId = recordId;
+            this.RecordSource = recordSource;
+            this.GroupFields = groupFields;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsDatum { get; set; }
 
-        [JsonProperty("UniqueId")]
+        [JsonProperty("UniqueId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RecordId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string RecordSource { get; set; }
-        public inputInputItemGroupFieldsTypeItem[] GroupFields { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public InputInputItemGroupFieldsTypeItem[] GroupFields { get; set; }
     }
 
-    public class inputInputItemGroupFieldsTypeItem
+    public class InputInputItemGroupFieldsTypeItem
     {
-        [JsonProperty("GroupFieldId")]
+        public InputInputItemGroupFieldsTypeItem(string groupName, InputInputItemGroupFieldsTypeItemSettingsType settings, InputInputItemGroupFieldsTypeItemValuesTypeItem[] values)
+        {
+            this.GroupName = groupName;
+            this.Settings = settings;
+            this.Values = values;
+        }
+
+        [JsonProperty("GroupFieldId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupName { get; set; }
-        public inputInputItemGroupFieldsTypeItemSettingsType Settings { get; set; }
-        public inputInputItemGroupFieldsTypeItemValuesTypeItem[] Values { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public InputInputItemGroupFieldsTypeItemSettingsType Settings { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public InputInputItemGroupFieldsTypeItemValuesTypeItem[] Values { get; set; }
     }
 
-    public class inputInputItemGroupFieldsTypeItemSettingsType
+    public class InputInputItemGroupFieldsTypeItemSettingsType
     {
-        public inputInputItemGroupFieldsTypeItemSettingsTypeScoringTypeType ScoringType { get; set; }
+        public InputInputItemGroupFieldsTypeItemSettingsType(InputInputItemGroupFieldsTypeItemSettingsTypeScoringTypeType scoringType, InputInputItemGroupFieldsTypeItemSettingsTypeScoringMethodType scoringMethod, InputInputItemGroupFieldsTypeItemSettingsTypeComparisonAlgorithmType comparisonAlgorithm, bool caseSensitive, InputInputItemGroupFieldsTypeItemSettingsTypeAlphaSequenceType alphaSequence, bool replaceDoubleSpaceWithSingleSpace, bool removeAllWhitespace, bool trimString, bool includePunctuation, bool includeSymbols, bool includeNonPrinting, bool includeNumbers, bool includeLetters, bool applyWeighting, bool includePreTransformedDataForScoring, bool includeTokenForScoring, bool includeTransformsDataForScoring, bool autoPopulateTransformedValueWhenEmpty, bool autoPopulateTokenWhenEmpty)
+        {
+            this.ScoringType = scoringType;
+            this.ScoringMethod = scoringMethod;
+            this.ComparisonAlgorithm = comparisonAlgorithm;
+            this.CaseSensitive = caseSensitive;
+            this.AlphaSequence = alphaSequence;
+            this.ReplaceDoubleSpaceWithSingleSpace = replaceDoubleSpaceWithSingleSpace;
+            this.RemoveAllWhitespace = removeAllWhitespace;
+            this.TrimString = trimString;
+            this.IncludePunctuation = includePunctuation;
+            this.IncludeSymbols = includeSymbols;
+            this.IncludeNonPrinting = includeNonPrinting;
+            this.IncludeNumbers = includeNumbers;
+            this.IncludeLetters = includeLetters;
+            this.ApplyWeighting = applyWeighting;
+            this.IncludePreTransformedDataForScoring = includePreTransformedDataForScoring;
+            this.IncludeTokenForScoring = includeTokenForScoring;
+            this.IncludeTransformsDataForScoring = includeTransformsDataForScoring;
+            this.AutoPopulateTransformedValueWhenEmpty = autoPopulateTransformedValueWhenEmpty;
+            this.AutoPopulateTokenWhenEmpty = autoPopulateTokenWhenEmpty;
+        }
 
-        [JsonProperty("ScoreMethod")]
-        public inputInputItemGroupFieldsTypeItemSettingsTypeScoringMethodType ScoringMethod { get; set; }
-        public inputInputItemGroupFieldsTypeItemSettingsTypeComparisonAlgorithmType ComparisonAlgorithm { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public InputInputItemGroupFieldsTypeItemSettingsTypeScoringTypeType ScoringType { get; set; }
 
-        [JsonProperty("IsNullToNullScored")]
-        public bool NullVsNullMatch { get; set; }
+        [JsonProperty("ScoreMethod", DefaultValueHandling = DefaultValueHandling.Include)]
+        public InputInputItemGroupFieldsTypeItemSettingsTypeScoringMethodType ScoringMethod { get; set; }
 
-        [JsonProperty("IsNullToValueScored")]
-        public bool NullVsValueMatch { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public InputInputItemGroupFieldsTypeItemSettingsTypeComparisonAlgorithmType ComparisonAlgorithm { get; set; }
 
-        [JsonProperty("IsCaseSensitiveScore")]
+        [JsonProperty("IsNullToNullScored", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NullVsNullMatch { get; set; } = false;
+
+        [JsonProperty("IsNullToValueScored", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? NullVsValueMatch { get; set; } = false;
+
+        [JsonProperty("IsCaseSensitiveScore", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool CaseSensitive { get; set; }
 
-        [JsonProperty("AlphaSequenceParameter")]
-        public inputInputItemGroupFieldsTypeItemSettingsTypeAlphaSequenceType AlphaSequence { get; set; }
+        [JsonProperty("AlphaSequenceParameter", DefaultValueHandling = DefaultValueHandling.Include)]
+        public InputInputItemGroupFieldsTypeItemSettingsTypeAlphaSequenceType AlphaSequence { get; set; }
 
-        [JsonProperty("IsReplaceDoubleSpaceWithSingle")]
+        [JsonProperty("IsReplaceDoubleSpaceWithSingle", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool ReplaceDoubleSpaceWithSingleSpace { get; set; }
 
-        [JsonProperty("IsRemoveAllWhiteSpaces")]
+        [JsonProperty("IsRemoveAllWhiteSpaces", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool RemoveAllWhitespace { get; set; }
 
-        [JsonProperty("IsTrimString")]
+        [JsonProperty("IsTrimString", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool TrimString { get; set; }
 
-        [JsonProperty("IsIncludePunctuation")]
+        [JsonProperty("IsIncludePunctuation", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IncludePunctuation { get; set; }
 
-        [JsonProperty("IsIncludeSymbols")]
+        [JsonProperty("IsIncludeSymbols", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IncludeSymbols { get; set; }
 
-        [JsonProperty("IsIncludeNonPrinting")]
+        [JsonProperty("IsIncludeNonPrinting", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IncludeNonPrinting { get; set; }
 
-        [JsonProperty("IsIncludeNumbers")]
+        [JsonProperty("IsIncludeNumbers", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IncludeNumbers { get; set; }
 
-        [JsonProperty("IsIncludeAlphaChars")]
+        [JsonProperty("IsIncludeAlphaChars", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IncludeLetters { get; set; }
 
-        [JsonProperty("IsWeightingFactorUsed")]
+        [JsonProperty("IsWeightingFactorUsed", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool ApplyWeighting { get; set; }
 
-        [JsonProperty("IsIncludeOriginalDataForScoring")]
+        [JsonProperty("IsIncludeOriginalDataForScoring", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IncludePreTransformedDataForScoring { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IncludeTokenForScoring { get; set; }
 
-        [JsonProperty("IncludeTransformedDataForScoring")]
+        [JsonProperty("IncludeTransformedDataForScoring", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IncludeTransformsDataForScoring { get; set; }
 
-        [JsonProperty("AutoPopulateEmptyTransformed")]
+        [JsonProperty("AutoPopulateEmptyTransformed", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool AutoPopulateTransformedValueWhenEmpty { get; set; }
 
-        [JsonProperty("AutoPopulateEmptyToken")]
+        [JsonProperty("AutoPopulateEmptyToken", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool AutoPopulateTokenWhenEmpty { get; set; }
 
-        [JsonProperty("Weighting")]
-        public int GroupWeighting { get; set; }
-        public int PostalCodeNChars { get; set; }
-        public int PositiveValidRange { get; set; }
-        public int NegativeValidRange { get; set; }
-        public inputInputItemGroupFieldsTypeItemSettingsTypeDateFormatType DateFormat { get; set; }
-        public inputInputItemGroupFieldsTypeItemSettingsTypeInterScoreSettingsType InterScoreSettings { get; set; }
+        [JsonProperty("Weighting", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? GroupWeighting { get; set; } = 100;
+        public int? PostalCodeNChars { get; set; }
+        public int? PositiveValidRange { get; set; }
+        public int? NegativeValidRange { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public InputInputItemGroupFieldsTypeItemSettingsTypeDateFormatType? DateFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand.InputInputItemGroupFieldsTypeItemSettingsTypeDateFormatType.DDMMYYYY;
+        public InputInputItemGroupFieldsTypeItemSettingsTypeInterScoreSettingsType InterScoreSettings { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inputInputItemGroupFieldsTypeItemSettingsTypeScoringTypeType
+    public enum InputInputItemGroupFieldsTypeItemSettingsTypeScoringTypeType
     {
         InterScore,
         IntraScore
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inputInputItemGroupFieldsTypeItemSettingsTypeScoringMethodType
+    public enum InputInputItemGroupFieldsTypeItemSettingsTypeScoringMethodType
     {
         EditDistanceScore,
         ExactMatch,
@@ -2171,7 +2287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inputInputItemGroupFieldsTypeItemSettingsTypeComparisonAlgorithmType
+    public enum InputInputItemGroupFieldsTypeItemSettingsTypeComparisonAlgorithmType
     {
         JaroWinkler,
         Jaro,
@@ -2186,7 +2302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inputInputItemGroupFieldsTypeItemSettingsTypeAlphaSequenceType
+    public enum InputInputItemGroupFieldsTypeItemSettingsTypeAlphaSequenceType
     {
         AscCharacters,
         DescCharacters,
@@ -2196,30 +2312,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inputInputItemGroupFieldsTypeItemSettingsTypeDateFormatType
+    public enum InputInputItemGroupFieldsTypeItemSettingsTypeDateFormatType
     {
         DDMMYYYY,
         MMDDYYYY
     }
 
-    public class inputInputItemGroupFieldsTypeItemSettingsTypeInterScoreSettingsType
+    public class InputInputItemGroupFieldsTypeItemSettingsTypeInterScoreSettingsType
     {
         [JsonProperty("InterScoreMethodType")]
-        public inputInputItemGroupFieldsTypeItemSettingsTypeInterScoreSettingsTypeScoringMethodType ScoringMethod { get; set; }
+        public InputInputItemGroupFieldsTypeItemSettingsTypeInterScoreSettingsTypeScoringMethodType? ScoringMethod { get; set; }
 
         [JsonProperty("ThresholdValue")]
-        public int Threshold { get; set; }
+        public int? Threshold { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inputInputItemGroupFieldsTypeItemSettingsTypeInterScoreSettingsTypeScoringMethodType
+    public enum InputInputItemGroupFieldsTypeItemSettingsTypeInterScoreSettingsTypeScoringMethodType
     {
         AnyMatch,
         AllMatch
     }
 
-    public class inputInputItemGroupFieldsTypeItemValuesTypeItem
+    public class InputInputItemGroupFieldsTypeItemValuesTypeItem
     {
+        public InputInputItemGroupFieldsTypeItemValuesTypeItem(string value)
+        {
+            this.Value = value;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Value { get; set; }
         public string TransformedValue { get; set; }
 
@@ -2228,7 +2350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum entityTypeInput
+    public enum EntityTypeInput
     {
         Addresses,
         Numbers,
@@ -2246,7 +2368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum operationTypeInput
+    public enum OperationTypeInput
     {
         Elaborate,
         Abbreviate,
@@ -2285,27 +2407,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public string Message { get; set; }
     }
 
-    public class inputInputItem22
+    public class SequenceTransformInputInputItem
     {
+        public SequenceTransformInputInputItem(string input, InputInputItemSettingsTypeItem[] settings)
+        {
+            this.Input = input;
+            this.Settings = settings;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Input { get; set; }
-        public inputInputItemSettingsTypeItem[] Settings { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public InputInputItemSettingsTypeItem[] Settings { get; set; }
 
         [JsonProperty("UID")]
         public string RecordId { get; set; }
     }
 
-    public class inputInputItemSettingsTypeItem
+    public class InputInputItemSettingsTypeItem
     {
-        [JsonProperty("EntityType")]
-        public inputInputItemSettingsTypeItemCategoryType Category { get; set; }
+        public InputInputItemSettingsTypeItem(InputInputItemSettingsTypeItemCategoryType category)
+        {
+            this.Category = category;
+        }
 
-        [JsonProperty("OperationType")]
-        public inputInputItemSettingsTypeItemActionType Action { get; set; }
-        public inputInputItemSettingsTypeItemLanguageType Language { get; set; }
+        [JsonProperty("EntityType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public InputInputItemSettingsTypeItemCategoryType Category { get; set; }
+
+        [JsonProperty("OperationType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public InputInputItemSettingsTypeItemActionType Action { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand.InputInputItemSettingsTypeItemActionType.Abbreviate;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public InputInputItemSettingsTypeItemLanguageType Language { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand.InputInputItemSettingsTypeItemLanguageType.English;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inputInputItemSettingsTypeItemCategoryType
+    public enum InputInputItemSettingsTypeItemCategoryType
     {
         Addresses,
         Numbers,
@@ -2323,7 +2461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inputInputItemSettingsTypeItemActionType
+    public enum InputInputItemSettingsTypeItemActionType
     {
         Elaborate,
         Abbreviate,
@@ -2333,7 +2471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum inputInputItemSettingsTypeItemLanguageType
+    public enum InputInputItemSettingsTypeItemLanguageType
     {
         English,
         Spanish,
@@ -2486,13 +2624,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum providerInput
+    public enum VerifyAddressGetProviderInput
     {
         Default,
-        TextMagic,
         Loqate,
-        Fetchify,
-        AFD
+        Sagacity
     }
 
     public class SearchAddressFindResponse
@@ -2520,6 +2656,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
 
         [JsonProperty("additionalInfo")]
         public JToken AdditionalInfo { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum SearchAddressFindProviderInput
+    {
+        Default,
+        Loqate,
+        Fetchify,
+        GetAddressIO,
+        AFD
     }
 
     public class SearchAddressRetrieveResponse
@@ -2603,6 +2749,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         Suppressed,
         Suspect,
         NotFound
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum SuppressDeceasedProviderInput
+    {
+        Default,
+        Sagacity
     }
 
     public class SuppressGoneAwayResponse
@@ -2726,6 +2879,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public JToken AdditionalInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum SuppressPhoneCorporateProviderInput
+    {
+        Default,
+        TPSChecker,
+        Sagacity
+    }
+
     public class SuppressPhoneCorporateResponse
     {
         [JsonProperty("status")]
@@ -2786,6 +2947,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public JToken AdditionalInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum AuthenticateEmailGetProviderInput
+    {
+        Default,
+        TextMagic,
+        Loqate,
+        Fetchify,
+        Gamalogic,
+        AFD,
+        Webbula
+    }
+
     public class AuthenticatePhoneGetResponse
     {
         [JsonProperty("status")]
@@ -2832,7 +3005,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum characterTypeInput
+    public enum AuthenticatePhoneGetProviderInput
+    {
+        Default,
+        TextMagic,
+        Loqate,
+        Fetchify,
+        AFD
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CharacterTypeInput
     {
         Digit,
         Letter,
@@ -2852,7 +3035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum TypeInput
     {
         Letter,
         LowerCaseLetter,
@@ -2870,7 +3053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum extractFromInput
+    public enum ExtractFromInput
     {
         Start,
         End
@@ -2962,7 +3145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum summariseByInput
+    public enum SummariseByInput
     {
         Day,
         Month,

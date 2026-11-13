@@ -16,25 +16,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascregulatorycomplianceassess
 
     public class AscregulatorycomplianceassessmentTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> ASCRegulatoryComplianceAssessmentTriggerSubscribe(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> ASCRegulatoryComplianceAssessmentTriggerSubscribe()
         {
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/Microsoft.Security/RegulatoryComplianceAssessment/subscribe";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["callback_url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                callPayload.Body = new BodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
+    }
+
+    public class BodyInput
+    {
+        [JsonProperty("callback_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

@@ -13,79 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
     public class WaywedoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
-        public IBodyWorkflowAction<ChecklistComment, ApiConnectionActionConfiguration> CommentAdd(Expression<Func<string>> createCommentCommandchecklistInstanceId, Expression<Func<string>> createCommentCommandstepId, Expression<Func<string>> createCommentCommandcommentText, Expression<Func<int>> createCommentCommanduserId = null)
+        public IBodyWorkflowAction<ChecklistComment, ApiConnectionActionConfiguration> CommentAdd(Expression<Func<CreateCommentCommandInput>> createCommentCommand)
         {
-            var __workflow_createCommentCommandchecklistInstanceId = WorkflowExpression.Compile(createCommentCommandchecklistInstanceId, nameof(createCommentCommandchecklistInstanceId), required: true);
-            var __workflow_createCommentCommandstepId = WorkflowExpression.Compile(createCommentCommandstepId, nameof(createCommentCommandstepId), required: true);
-            var __workflow_createCommentCommandcommentText = WorkflowExpression.Compile(createCommentCommandcommentText, nameof(createCommentCommandcommentText), required: true);
-            var __workflow_createCommentCommanduserId = WorkflowExpression.Compile(createCommentCommanduserId, nameof(createCommentCommanduserId), required: false);
+            var __workflow_createCommentCommand = WorkflowExpression.Compile(createCommentCommand, nameof(createCommentCommand), required: true);
             return new DeferredBodyAction<ChecklistComment, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/ChecklistInstanceComments";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var createCommentCommand = new JObject();
-                var createCommentCommandpropCount = 0;
-                createCommentCommandpropCount++;
-                createCommentCommand["instanceId"] = ExpressionConverter.ConvertO(__workflow_createCommentCommandchecklistInstanceId);
-                createCommentCommandpropCount++;
-                createCommentCommand["stepId"] = ExpressionConverter.ConvertO(__workflow_createCommentCommandstepId);
-                if (__workflow_createCommentCommanduserId != null)
-                {
-                    createCommentCommand["userId"] = ExpressionConverter.ConvertO(__workflow_createCommentCommanduserId);
-                    createCommentCommandpropCount++;
-                }
-
-                createCommentCommandpropCount++;
-                createCommentCommand["message"] = ExpressionConverter.ConvertO(__workflow_createCommentCommandcommentText);
-                createCommentCommand["bot"] = "Microsoft Power Automate";
-                createCommentCommandpropCount++;
-                if (createCommentCommandpropCount > 0)
-                {
-                    callPayload.Body = createCommentCommand;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_createCommentCommand);
                 return new ApiConnectionAction<ChecklistComment>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
-        public IBodyWorkflowAction<ChecklistInstance, ApiConnectionActionConfiguration> ChecklistInstances(Expression<Func<int>> createInstanceCommandprocedureId, Expression<Func<string>> createInstanceCommandtitle, Expression<Func<int>> createInstanceCommanduserId = null, Expression<Func<int>> createInstanceCommandcompanyRoleId = null)
+        public IBodyWorkflowAction<ChecklistInstance, ApiConnectionActionConfiguration> ChecklistInstances(Expression<Func<CreateInstanceCommandInput>> createInstanceCommand)
         {
-            var __workflow_createInstanceCommandprocedureId = WorkflowExpression.Compile(createInstanceCommandprocedureId, nameof(createInstanceCommandprocedureId), required: true);
-            var __workflow_createInstanceCommandtitle = WorkflowExpression.Compile(createInstanceCommandtitle, nameof(createInstanceCommandtitle), required: true);
-            var __workflow_createInstanceCommanduserId = WorkflowExpression.Compile(createInstanceCommanduserId, nameof(createInstanceCommanduserId), required: false);
-            var __workflow_createInstanceCommandcompanyRoleId = WorkflowExpression.Compile(createInstanceCommandcompanyRoleId, nameof(createInstanceCommandcompanyRoleId), required: false);
+            var __workflow_createInstanceCommand = WorkflowExpression.Compile(createInstanceCommand, nameof(createInstanceCommand), required: true);
             return new DeferredBodyAction<ChecklistInstance, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/ChecklistInstances";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var createInstanceCommand = new JObject();
-                var createInstanceCommandpropCount = 0;
-                createInstanceCommandpropCount++;
-                createInstanceCommand["procedureId"] = ExpressionConverter.ConvertO(__workflow_createInstanceCommandprocedureId);
-                createInstanceCommandpropCount++;
-                createInstanceCommand["title"] = ExpressionConverter.ConvertO(__workflow_createInstanceCommandtitle);
-                if (__workflow_createInstanceCommanduserId != null)
-                {
-                    createInstanceCommand["userId"] = ExpressionConverter.ConvertO(__workflow_createInstanceCommanduserId);
-                    createInstanceCommandpropCount++;
-                }
-
-                if (__workflow_createInstanceCommandcompanyRoleId != null)
-                {
-                    createInstanceCommand["companyRoleId"] = ExpressionConverter.ConvertO(__workflow_createInstanceCommandcompanyRoleId);
-                    createInstanceCommandpropCount++;
-                }
-
-                createInstanceCommand["bot"] = "Microsoft Power Automate";
-                createInstanceCommandpropCount++;
-                if (createInstanceCommandpropCount > 0)
-                {
-                    callPayload.Body = createInstanceCommand;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_createInstanceCommand);
                 return new ApiConnectionAction<ChecklistInstance>(callPayload);
             });
         }
@@ -147,63 +97,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ChecklistStepsComplete(Expression<Func<string>> instanceId, Expression<Func<string>> stepId, Expression<Func<int>> completeStepCommanduserId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ChecklistStepsComplete(Expression<Func<string>> instanceId, Expression<Func<string>> stepId, Expression<Func<CompleteStepCommandInput>> completeStepCommand)
         {
             var __workflow_instanceId = WorkflowExpression.Compile(instanceId, nameof(instanceId), required: true);
             var __workflow_stepId = WorkflowExpression.Compile(stepId, nameof(stepId), required: true);
-            var __workflow_completeStepCommanduserId = WorkflowExpression.Compile(completeStepCommanduserId, nameof(completeStepCommanduserId), required: true);
+            var __workflow_completeStepCommand = WorkflowExpression.Compile(completeStepCommand, nameof(completeStepCommand), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/ChecklistInstances/{0}/Steps/{1}/Complete", __workflow_instanceId.WithUrlEncoding(1), __workflow_stepId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var completeStepCommand = new JObject();
-                var completeStepCommandpropCount = 0;
-                completeStepCommandpropCount++;
-                completeStepCommand["userId"] = ExpressionConverter.ConvertO(__workflow_completeStepCommanduserId);
-                completeStepCommand["bot"] = "Microsoft Power Automate";
-                completeStepCommandpropCount++;
-                if (completeStepCommandpropCount > 0)
-                {
-                    callPayload.Body = completeStepCommand;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_completeStepCommand);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CollaboratorsAdd(Expression<Func<string>> addCollaboratorsRequestchecklistInstanceId, Expression<Func<int[]>> addCollaboratorsRequestuserIds = null, Expression<Func<int[]>> addCollaboratorsRequestcompanyRoleIds = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CollaboratorsAdd(Expression<Func<AddCollaboratorsRequestInput>> addCollaboratorsRequest)
         {
-            var __workflow_addCollaboratorsRequestchecklistInstanceId = WorkflowExpression.Compile(addCollaboratorsRequestchecklistInstanceId, nameof(addCollaboratorsRequestchecklistInstanceId), required: true);
-            var __workflow_addCollaboratorsRequestuserIds = WorkflowExpression.Compile(addCollaboratorsRequestuserIds, nameof(addCollaboratorsRequestuserIds), required: false);
-            var __workflow_addCollaboratorsRequestcompanyRoleIds = WorkflowExpression.Compile(addCollaboratorsRequestcompanyRoleIds, nameof(addCollaboratorsRequestcompanyRoleIds), required: false);
+            var __workflow_addCollaboratorsRequest = WorkflowExpression.Compile(addCollaboratorsRequest, nameof(addCollaboratorsRequest), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/Collaborators";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var addCollaboratorsRequest = new JObject();
-                var addCollaboratorsRequestpropCount = 0;
-                addCollaboratorsRequestpropCount++;
-                addCollaboratorsRequest["checklistInstanceId"] = ExpressionConverter.ConvertO(__workflow_addCollaboratorsRequestchecklistInstanceId);
-                if (__workflow_addCollaboratorsRequestuserIds != null)
-                {
-                    addCollaboratorsRequest["userIds"] = ExpressionConverter.ConvertO(__workflow_addCollaboratorsRequestuserIds);
-                    addCollaboratorsRequestpropCount++;
-                }
-
-                if (__workflow_addCollaboratorsRequestcompanyRoleIds != null)
-                {
-                    addCollaboratorsRequest["companyRoleIds"] = ExpressionConverter.ConvertO(__workflow_addCollaboratorsRequestcompanyRoleIds);
-                    addCollaboratorsRequestpropCount++;
-                }
-
-                if (addCollaboratorsRequestpropCount > 0)
-                {
-                    callPayload.Body = addCollaboratorsRequest;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_addCollaboratorsRequest);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -269,42 +187,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waywedo")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Users(Expression<Func<string>> createUserCommandfirstName, Expression<Func<string>> createUserCommandlastName, Expression<Func<string>> createUserCommandemail, Expression<Func<int>> createUserCommandsecurityRole, Expression<Func<string>> createUserCommandtimeZone, Expression<Func<int[]>> createUserCommandcompanyRoles = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> Users(Expression<Func<CreateUserCommandInput>> createUserCommand)
         {
-            var __workflow_createUserCommandfirstName = WorkflowExpression.Compile(createUserCommandfirstName, nameof(createUserCommandfirstName), required: true);
-            var __workflow_createUserCommandlastName = WorkflowExpression.Compile(createUserCommandlastName, nameof(createUserCommandlastName), required: true);
-            var __workflow_createUserCommandemail = WorkflowExpression.Compile(createUserCommandemail, nameof(createUserCommandemail), required: true);
-            var __workflow_createUserCommandsecurityRole = WorkflowExpression.Compile(createUserCommandsecurityRole, nameof(createUserCommandsecurityRole), required: true);
-            var __workflow_createUserCommandtimeZone = WorkflowExpression.Compile(createUserCommandtimeZone, nameof(createUserCommandtimeZone), required: true);
-            var __workflow_createUserCommandcompanyRoles = WorkflowExpression.Compile(createUserCommandcompanyRoles, nameof(createUserCommandcompanyRoles), required: false);
+            var __workflow_createUserCommand = WorkflowExpression.Compile(createUserCommand, nameof(createUserCommand), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/Users";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var createUserCommand = new JObject();
-                var createUserCommandpropCount = 0;
-                createUserCommandpropCount++;
-                createUserCommand["firstName"] = ExpressionConverter.ConvertO(__workflow_createUserCommandfirstName);
-                createUserCommandpropCount++;
-                createUserCommand["lastName"] = ExpressionConverter.ConvertO(__workflow_createUserCommandlastName);
-                createUserCommandpropCount++;
-                createUserCommand["email"] = ExpressionConverter.ConvertO(__workflow_createUserCommandemail);
-                createUserCommandpropCount++;
-                createUserCommand["securityRole"] = ExpressionConverter.ConvertO(__workflow_createUserCommandsecurityRole);
-                if (__workflow_createUserCommandcompanyRoles != null)
-                {
-                    createUserCommand["companyRoles"] = ExpressionConverter.ConvertO(__workflow_createUserCommandcompanyRoles);
-                    createUserCommandpropCount++;
-                }
-
-                createUserCommandpropCount++;
-                createUserCommand["timeZoneId"] = ExpressionConverter.ConvertO(__workflow_createUserCommandtimeZone);
-                if (createUserCommandpropCount > 0)
-                {
-                    callPayload.Body = createUserCommand;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_createUserCommand);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
@@ -312,123 +203,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
 
     public class WaywedoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration> ChecklistCreateWebHook(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration> ChecklistCreateWebHook()
         {
-            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/Webhook/events/checklist_start";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webhookRegistration = new JObject();
-                var webhookRegistrationpropCount = 0;
-                webhookRegistration["callbackUrl"] = "#{listCallbackUrl()}";
-                webhookRegistrationpropCount++;
-                if (webhookRegistrationpropCount > 0)
-                {
-                    callPayload.Body = webhookRegistration;
-                }
-
-                return new ApiConnectionTrigger<WebhookRegistered>(callPayload, recurrence: recurrence);
+                callPayload.Body = new WebhookRegistrationInput().ToJToken();
+                return new ApiConnectionPollingTrigger<WebhookRegistered>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration> NewCommentWebHook(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration> NewCommentWebHook()
         {
-            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/Webhook/events/new_comment";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webhookRegistration = new JObject();
-                var webhookRegistrationpropCount = 0;
-                webhookRegistration["callbackUrl"] = "#{listCallbackUrl()}";
-                webhookRegistrationpropCount++;
-                if (webhookRegistrationpropCount > 0)
-                {
-                    callPayload.Body = webhookRegistration;
-                }
-
-                return new ApiConnectionTrigger<WebhookRegistered>(callPayload, recurrence: recurrence);
+                callPayload.Body = new WebhookRegistrationInput().ToJToken();
+                return new ApiConnectionPollingTrigger<WebhookRegistered>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration> FinishChecklistWebHook(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration> FinishChecklistWebHook()
         {
-            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/Webhook/events/checklist_finish";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webhookRegistration = new JObject();
-                var webhookRegistrationpropCount = 0;
-                webhookRegistration["callbackUrl"] = "#{listCallbackUrl()}";
-                webhookRegistrationpropCount++;
-                if (webhookRegistrationpropCount > 0)
-                {
-                    callPayload.Body = webhookRegistration;
-                }
-
-                return new ApiConnectionTrigger<WebhookRegistered>(callPayload, recurrence: recurrence);
+                callPayload.Body = new WebhookRegistrationInput().ToJToken();
+                return new ApiConnectionPollingTrigger<WebhookRegistered>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration> InviteSupervisorWebHook(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration> InviteSupervisorWebHook()
         {
-            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/Webhook/events/supervisor_invite";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webhookRegistration = new JObject();
-                var webhookRegistrationpropCount = 0;
-                webhookRegistration["callbackUrl"] = "#{listCallbackUrl()}";
-                webhookRegistrationpropCount++;
-                if (webhookRegistrationpropCount > 0)
-                {
-                    callPayload.Body = webhookRegistration;
-                }
-
-                return new ApiConnectionTrigger<WebhookRegistered>(callPayload, recurrence: recurrence);
+                callPayload.Body = new WebhookRegistrationInput().ToJToken();
+                return new ApiConnectionPollingTrigger<WebhookRegistered>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration> GenerateAcceptancePDFWebHook(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration> GenerateAcceptancePDFWebHook()
         {
-            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/Webhook/events/generate_acceptance_pdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webhookRegistration = new JObject();
-                var webhookRegistrationpropCount = 0;
-                webhookRegistration["callbackUrl"] = "#{listCallbackUrl()}";
-                webhookRegistrationpropCount++;
-                if (webhookRegistrationpropCount > 0)
-                {
-                    callPayload.Body = webhookRegistration;
-                }
-
-                return new ApiConnectionTrigger<WebhookRegistered>(callPayload, recurrence: recurrence);
+                callPayload.Body = new WebhookRegistrationInput().ToJToken();
+                return new ApiConnectionPollingTrigger<WebhookRegistered>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration> ChecklistStepCompletedWebHook(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration> ChecklistStepCompletedWebHook()
         {
-            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebhookRegistered, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/v1/Webhook/events/checklist_step_completed";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webhookRegistration = new JObject();
-                var webhookRegistrationpropCount = 0;
-                webhookRegistration["callbackUrl"] = "#{listCallbackUrl()}";
-                webhookRegistrationpropCount++;
-                if (webhookRegistrationpropCount > 0)
-                {
-                    callPayload.Body = webhookRegistration;
-                }
-
-                return new ApiConnectionTrigger<WebhookRegistered>(callPayload, recurrence: recurrence);
+                callPayload.Body = new WebhookRegistrationInput().ToJToken();
+                return new ApiConnectionPollingTrigger<WebhookRegistered>(callPayload);
             });
         }
     }
@@ -475,6 +318,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         _2 = 2
     }
 
+    public class CreateCommentCommandInput
+    {
+        public CreateCommentCommandInput(string checklistInstanceId, string stepId, string commentText)
+        {
+            this.ChecklistInstanceId = checklistInstanceId;
+            this.StepId = stepId;
+            this.CommentText = commentText;
+        }
+
+        [JsonProperty("instanceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ChecklistInstanceId { get; set; }
+
+        [JsonProperty("stepId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string StepId { get; set; }
+
+        [JsonProperty("userId")]
+        public int? UserId { get; set; }
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CommentText { get; set; }
+
+        [JsonProperty("bot", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string BotName { get; set; } = "Microsoft Power Automate";
+    }
+
     public class ChecklistInstance
     {
         [JsonProperty("id")]
@@ -505,6 +373,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         public string InstanceLatestDueDate { get; set; }
     }
 
+    public class CreateInstanceCommandInput
+    {
+        public CreateInstanceCommandInput(int procedureId, string title)
+        {
+            this.ProcedureId = procedureId;
+            this.Title = title;
+        }
+
+        [JsonProperty("procedureId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ProcedureId { get; set; }
+
+        [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Title { get; set; }
+
+        [JsonProperty("userId")]
+        public int? UserId { get; set; }
+
+        [JsonProperty("companyRoleId")]
+        public int? CompanyRoleId { get; set; }
+
+        [JsonProperty("bot", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string BotName { get; set; } = "Microsoft Power Automate";
+    }
+
     public class ChecklistInstancesActivityResponseItem
     {
         [JsonProperty("occurred")]
@@ -524,6 +416,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
 
         [JsonProperty("ordinal")]
         public int StepNumber { get; set; }
+
+        [JsonProperty("status")]
+        public string StepStatus { get; set; }
+
+        [JsonProperty("checked")]
+        public string StepCompletedDate { get; set; }
+
+        [JsonProperty("checkedBy")]
+        public string CompletedBy { get; set; }
+
+        [JsonProperty("due")]
+        public string StepDueDate { get; set; }
+    }
+
+    public class CompleteStepCommandInput
+    {
+        public CompleteStepCommandInput(int userId)
+        {
+            this.UserId = userId;
+        }
+
+        [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UserId { get; set; }
+
+        [JsonProperty("bot", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string BotName { get; set; } = "Microsoft Power Automate";
+    }
+
+    public class AddCollaboratorsRequestInput
+    {
+        public AddCollaboratorsRequestInput(string checklistInstanceId)
+        {
+            this.ChecklistInstanceId = checklistInstanceId;
+        }
+
+        [JsonProperty("checklistInstanceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ChecklistInstanceId { get; set; }
+
+        [JsonProperty("userIds")]
+        public int[] UserIds { get; set; }
+
+        [JsonProperty("companyRoleIds")]
+        public int[] CompanyRoleIds { get; set; }
     }
 
     public class Procedure
@@ -551,12 +486,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
 
         [JsonProperty("type")]
         public ProcedureProcedureTypeType ProcedureType { get; set; }
+
+        [JsonProperty("version")]
+        public string ProcedureVersion { get; set; }
+
+        [JsonProperty("lastEdited")]
+        public string LastEdited { get; set; }
     }
 
     public enum ProcedureProcedureTypeType
     {
         _1 = 1,
-        _2 = 2
+        _2 = 2,
+        _3 = 3,
+        _4 = 4
     }
 
     public class User
@@ -574,6 +517,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
         public string Email { get; set; }
     }
 
+    public class CreateUserCommandInput
+    {
+        public CreateUserCommandInput(string firstName, string lastName, string email, int securityRole, string timeZone)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Email = email;
+            this.SecurityRole = securityRole;
+            this.TimeZone = timeZone;
+        }
+
+        [JsonProperty("firstName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FirstName { get; set; }
+
+        [JsonProperty("lastName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LastName { get; set; }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("securityRole", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SecurityRole { get; set; }
+
+        [JsonProperty("companyRoles")]
+        public int[] CompanyRoles { get; set; }
+
+        [JsonProperty("timeZoneId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TimeZone { get; set; }
+    }
+
     public class WebhookRegistered
     {
         [JsonProperty("id")]
@@ -587,6 +560,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
 
         [JsonProperty("webHookEvent")]
         public string WebhookEvent { get; set; }
+    }
+
+    public class WebhookRegistrationInput
+    {
+        [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

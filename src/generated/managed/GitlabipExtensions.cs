@@ -102,11 +102,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gitlabip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gitlabip")]
-        public IBodyWorkflowAction<CommitResponse, ApiConnectionActionConfiguration> CreateCommit(Expression<Func<int>> id, Expression<Func<string>> branch, Expression<Func<string>> commitMessage)
+        public IBodyWorkflowAction<CommitResponse, ApiConnectionActionConfiguration> CreateCommit(Expression<Func<int>> id, Expression<Func<string>> branch, Expression<Func<string>> commitMessage, Expression<Func<object>> actions)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_branch = WorkflowExpression.Compile(branch, nameof(branch), required: true);
             var __workflow_commitMessage = WorkflowExpression.Compile(commitMessage, nameof(commitMessage), required: true);
+            var __workflow_actions = WorkflowExpression.Compile(actions, nameof(actions), required: true);
             return new DeferredBodyAction<CommitResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/repository/commits", __workflow_id.WithUrlEncoding(1)));
@@ -114,13 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gitlabip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["branch"] = ExpressionConverter.Convert(__workflow_branch);
                 callPayload.Queries["commit_message"] = ExpressionConverter.Convert(__workflow_commitMessage);
-                var actions = new JObject();
-                var actionspropCount = 0;
-                if (actionspropCount > 0)
-                {
-                    callPayload.Body = actions;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_actions);
                 return new ApiConnectionAction<CommitResponse>(callPayload);
             });
         }

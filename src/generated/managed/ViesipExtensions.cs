@@ -13,26 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
     public class ViesipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viesip")]
-        public IBodyWorkflowAction<CheckVATValidityResponse, ApiConnectionActionConfiguration> CheckVATValidity(Expression<Func<bodycountryCodeInput>> bodycountryCode, Expression<Func<string>> bodyvatNumber)
+        public IBodyWorkflowAction<CheckVATValidityResponse, ApiConnectionActionConfiguration> CheckVATValidity(Expression<Func<BodyInput>> body)
         {
-            var __workflow_bodycountryCode = WorkflowExpression.Compile(bodycountryCode, nameof(bodycountryCode), required: true);
-            var __workflow_bodyvatNumber = WorkflowExpression.Compile(bodyvatNumber, nameof(bodyvatNumber), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CheckVATValidityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/taxation_customs/vies/services/checkVatService";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["countryCode"] = ExpressionConverter.ConvertO(__workflow_bodycountryCode);
-                bodypropCount++;
-                body["vatNumber"] = ExpressionConverter.ConvertO(__workflow_bodyvatNumber);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CheckVATValidityResponse>(callPayload);
             });
         }
@@ -63,8 +52,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
         public string Address { get; set; }
     }
 
+    public class BodyInput
+    {
+        public BodyInput(BodyInputCountryCodeType countryCode, string vatNumber)
+        {
+            this.CountryCode = countryCode;
+            this.VatNumber = vatNumber;
+        }
+
+        [JsonProperty("countryCode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputCountryCodeType CountryCode { get; set; }
+
+        [JsonProperty("vatNumber", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string VatNumber { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycountryCodeInput
+    public enum BodyInputCountryCodeType
     {
         AT,
         BE,

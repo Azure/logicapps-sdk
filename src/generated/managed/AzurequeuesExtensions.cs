@@ -63,11 +63,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutMessage(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> message = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutMessage(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> message)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
-            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: false);
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_queueName.WithUrlEncoding(1)));
@@ -81,34 +81,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
 
     public class AzurequeuesTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Messages, ApiConnectionTriggerConfiguration> OnMessagesV2(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> visibilitytimeout = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Messages, ApiConnectionPollingTriggerConfiguration> OnMessagesV2(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> visibilitytimeout = null)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_visibilitytimeout = WorkflowExpression.Compile(visibilitytimeout, nameof(visibilitytimeout), required: false);
-            return new DeferredBodyTrigger<Messages, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Messages, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/queues/{1}/message_trigger", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_queueName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_visibilitytimeout != null)
                     callPayload.Queries["visibilitytimeout"] = ExpressionConverter.Convert(__workflow_visibilitytimeout);
-                return new ApiConnectionTrigger<Messages>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Messages>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<string, ApiConnectionTriggerConfiguration> OnMessageThresholdReachedV2(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<int>> threshold, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> OnMessageThresholdReachedV2(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<int>> threshold)
         {
             var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_threshold = WorkflowExpression.Compile(threshold, nameof(threshold), required: true);
-            return new DeferredBodyTrigger<string, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/storageAccounts/{0}/queues/{1}/count_trigger", __workflow_storageAccountName.WithUrlEncoding(2), __workflow_queueName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["threshold"] = ExpressionConverter.Convert(__workflow_threshold);
-                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<string>(callPayload);
             });
         }
     }

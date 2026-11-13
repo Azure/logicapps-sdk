@@ -161,38 +161,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
 
     public class PinterestTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PinResponse, ApiConnectionTriggerConfiguration> OnPinAddedToFollowedBoard(Expression<Func<string>> board, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PinResponse, ApiConnectionPollingTriggerConfiguration> OnPinAddedToFollowedBoard(Expression<Func<string>> board)
         {
             var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
-            return new DeferredBodyTrigger<PinResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PinResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger1/boards/{0}/pins", __workflow_board.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<PinResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PinResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<PinResponse, ApiConnectionTriggerConfiguration> OnPinAddedToMyBoard(Expression<Func<string>> board, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PinResponse, ApiConnectionPollingTriggerConfiguration> OnPinAddedToMyBoard(Expression<Func<string>> board)
         {
             var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
-            return new DeferredBodyTrigger<PinResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<PinResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/trigger2/boards/{0}/pins", __workflow_board.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<PinResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<PinResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<UserResponse, ApiConnectionTriggerConfiguration> OnSomeoneFollowsMe(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UserResponse, ApiConnectionPollingTriggerConfiguration> OnSomeoneFollowsMe()
         {
-            return new DeferredBodyTrigger<UserResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<UserResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger4/users/me/followers";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<UserResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<UserResponse>(callPayload);
             });
         }
     }

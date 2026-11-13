@@ -13,54 +13,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
     public class LettriaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
-        public IBodyWorkflowAction<ComprehendPostResponseItem[], ApiConnectionActionConfiguration> Comprehend(Expression<Func<string[]>> bodydocuments = null)
+        public IBodyWorkflowAction<ComprehendResponseItem[], ApiConnectionActionConfiguration> Comprehend(Expression<Func<BodyInput>> body = null)
         {
-            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
-            return new DeferredBodyAction<ComprehendPostResponseItem[], ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<ComprehendResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydocuments != null)
-                {
-                    body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<ComprehendPostResponseItem[]>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<ComprehendResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
-        public IBodyWorkflowAction<ClassifyPostResponseItem[], ApiConnectionActionConfiguration> Classify(Expression<Func<string[]>> bodydocuments = null)
+        public IBodyWorkflowAction<ClassifyResponseItem[], ApiConnectionActionConfiguration> Classify(Expression<Func<BodyInput>> body = null)
         {
-            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
-            return new DeferredBodyAction<ClassifyPostResponseItem[], ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<ClassifyResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/nls/classification";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydocuments != null)
-                {
-                    body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<ClassifyPostResponseItem[]>(callPayload);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<ClassifyResponseItem[]>(callPayload);
             });
         }
     }
@@ -69,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
     {
     }
 
-    public class ComprehendPostResponseItem
+    public class ComprehendResponseItem
     {
         [JsonProperty("language")]
         public string Language { get; set; }
@@ -90,25 +68,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string ProjectId { get; set; }
 
         [JsonProperty("sentences")]
-        public ComprehendPostResponseItemSentencesTypeItem[] Sentences { get; set; }
+        public ComprehendResponseItemSentencesTypeItem[] Sentences { get; set; }
 
         [JsonProperty("emoticon")]
-        public ComprehendPostResponseItemEmoticonType Emoticon { get; set; }
+        public ComprehendResponseItemEmoticonType Emoticon { get; set; }
 
         [JsonProperty("emoticon_data")]
         public string[] EmoticonData { get; set; }
 
         [JsonProperty("coreference")]
-        public ComprehendPostResponseItemCoreferenceType Coreference { get; set; }
+        public ComprehendResponseItemCoreferenceType Coreference { get; set; }
 
         [JsonProperty("sentiment")]
         public double Sentiment { get; set; }
 
         [JsonProperty("emotion")]
-        public ComprehendPostResponseItemEmotionTypeItem[] Emotion { get; set; }
+        public ComprehendResponseItemEmotionTypeItem[] Emotion { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItem
+    public class ComprehendResponseItemSentencesTypeItem
     {
         [JsonProperty("source")]
         public string Source { get; set; }
@@ -120,34 +98,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int[] SentenceIndexes { get; set; }
 
         [JsonProperty("detail")]
-        public ComprehendPostResponseItemSentencesTypeItemDetailTypeItem[] Detail { get; set; }
+        public ComprehendResponseItemSentencesTypeItemDetailTypeItem[] Detail { get; set; }
 
         [JsonProperty("subsentences")]
-        public ComprehendPostResponseItemSentencesTypeItemSubsentencesTypeItem[] Subsentences { get; set; }
+        public ComprehendResponseItemSentencesTypeItemSubsentencesTypeItem[] Subsentences { get; set; }
 
         [JsonProperty("ml_ner")]
-        public ComprehendPostResponseItemSentencesTypeItemMlNerTypeItem[] MlNer { get; set; }
+        public ComprehendResponseItemSentencesTypeItemMlNerTypeItem[] MlNer { get; set; }
 
         [JsonProperty("ml_sentiment")]
-        public ComprehendPostResponseItemSentencesTypeItemMlSentimentType MlSentiment { get; set; }
+        public ComprehendResponseItemSentencesTypeItemMlSentimentType MlSentiment { get; set; }
 
         [JsonProperty("ml_emotion")]
-        public ComprehendPostResponseItemSentencesTypeItemMlEmotionType MlEmotion { get; set; }
+        public ComprehendResponseItemSentencesTypeItemMlEmotionType MlEmotion { get; set; }
 
         [JsonProperty("coreference")]
         public int[] Coreference { get; set; }
 
         [JsonProperty("sentiment")]
-        public ComprehendPostResponseItemSentencesTypeItemSentimentType Sentiment { get; set; }
+        public ComprehendResponseItemSentencesTypeItemSentimentType Sentiment { get; set; }
 
         [JsonProperty("emotion")]
-        public ComprehendPostResponseItemSentencesTypeItemEmotionType Emotion { get; set; }
+        public ComprehendResponseItemSentencesTypeItemEmotionType Emotion { get; set; }
 
         [JsonProperty("sentence_type")]
         public string SentenceType { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemDetailTypeItem
+    public class ComprehendResponseItemSentencesTypeItemDetailTypeItem
     {
         [JsonProperty("source")]
         public string Source { get; set; }
@@ -165,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Len { get; set; }
 
         [JsonProperty("lemmatizer")]
-        public ComprehendPostResponseItemSentencesTypeItemDetailTypeItemLemmatizerType Lemmatizer { get; set; }
+        public ComprehendResponseItemSentencesTypeItemDetailTypeItemLemmatizerType Lemmatizer { get; set; }
 
         [JsonProperty("lemma")]
         public string Lemma { get; set; }
@@ -174,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Index { get; set; }
 
         [JsonProperty("meaning")]
-        public ComprehendPostResponseItemSentencesTypeItemDetailTypeItemMeaningTypeItem[] Meaning { get; set; }
+        public ComprehendResponseItemSentencesTypeItemDetailTypeItemMeaningTypeItem[] Meaning { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -186,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Ref { get; set; }
 
         [JsonProperty("transform")]
-        public ComprehendPostResponseItemSentencesTypeItemDetailTypeItemTransformType Transform { get; set; }
+        public ComprehendResponseItemSentencesTypeItemDetailTypeItemTransformType Transform { get; set; }
 
         [JsonProperty("coreference")]
         public int[] Coreference { get; set; }
@@ -195,13 +173,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string[] Infinit { get; set; }
 
         [JsonProperty("verb_meaning")]
-        public ComprehendPostResponseItemSentencesTypeItemDetailTypeItemVerbMeaningType VerbMeaning { get; set; }
+        public ComprehendResponseItemSentencesTypeItemDetailTypeItemVerbMeaningType VerbMeaning { get; set; }
 
         [JsonProperty("auxiliary")]
-        public ComprehendPostResponseItemSentencesTypeItemDetailTypeItemAuxiliaryType Auxiliary { get; set; }
+        public ComprehendResponseItemSentencesTypeItemDetailTypeItemAuxiliaryType Auxiliary { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemDetailTypeItemLemmatizerType
+    public class ComprehendResponseItemSentencesTypeItemDetailTypeItemLemmatizerType
     {
         [JsonProperty("sens")]
         public int[] Sens { get; set; }
@@ -219,13 +197,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Mode { get; set; }
 
         [JsonProperty("gender")]
-        public ComprehendPostResponseItemSentencesTypeItemDetailTypeItemLemmatizerTypeGenderType Gender { get; set; }
+        public ComprehendResponseItemSentencesTypeItemDetailTypeItemLemmatizerTypeGenderType Gender { get; set; }
 
         [JsonProperty("infinit")]
         public string Infinit { get; set; }
 
         [JsonProperty("conjugate")]
-        public ComprehendPostResponseItemSentencesTypeItemDetailTypeItemLemmatizerTypeConjugateTypeItem[] Conjugate { get; set; }
+        public ComprehendResponseItemSentencesTypeItemDetailTypeItemLemmatizerTypeConjugateTypeItem[] Conjugate { get; set; }
 
         [JsonProperty("transitif")]
         public bool Transitif { get; set; }
@@ -234,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int[] Category { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemDetailTypeItemLemmatizerTypeGenderType
+    public class ComprehendResponseItemSentencesTypeItemDetailTypeItemLemmatizerTypeGenderType
     {
         [JsonProperty("male")]
         public bool Male { get; set; }
@@ -246,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public bool Plural { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemDetailTypeItemLemmatizerTypeConjugateTypeItem
+    public class ComprehendResponseItemSentencesTypeItemDetailTypeItemLemmatizerTypeConjugateTypeItem
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
@@ -261,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Modality { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemDetailTypeItemMeaningTypeItem
+    public class ComprehendResponseItemSentencesTypeItemDetailTypeItemMeaningTypeItem
     {
         [JsonProperty("sub")]
         public string Sub { get; set; }
@@ -282,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int InclusionExclusionAddition { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemDetailTypeItemTransformType
+    public class ComprehendResponseItemSentencesTypeItemDetailTypeItemTransformType
     {
         [JsonProperty("lemma")]
         public string Lemma { get; set; }
@@ -291,13 +269,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Tag { get; set; }
 
         [JsonProperty("meaning")]
-        public ComprehendPostResponseItemSentencesTypeItemDetailTypeItemTransformTypeMeaningTypeItem[] Meaning { get; set; }
+        public ComprehendResponseItemSentencesTypeItemDetailTypeItemTransformTypeMeaningTypeItem[] Meaning { get; set; }
 
         [JsonProperty("extra")]
-        public ComprehendPostResponseItemSentencesTypeItemDetailTypeItemTransformTypeExtraType Extra { get; set; }
+        public ComprehendResponseItemSentencesTypeItemDetailTypeItemTransformTypeExtraType Extra { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemDetailTypeItemTransformTypeMeaningTypeItem
+    public class ComprehendResponseItemSentencesTypeItemDetailTypeItemTransformTypeMeaningTypeItem
     {
         [JsonProperty("sub")]
         public string Sub { get; set; }
@@ -315,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string[] Origin { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemDetailTypeItemTransformTypeExtraType
+    public class ComprehendResponseItemSentencesTypeItemDetailTypeItemTransformTypeExtraType
     {
         [JsonProperty("transitif")]
         public bool Transitif { get; set; }
@@ -330,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Obl { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemDetailTypeItemVerbMeaningType
+    public class ComprehendResponseItemSentencesTypeItemDetailTypeItemVerbMeaningType
     {
         [JsonProperty("know")]
         public int[] Know { get; set; }
@@ -420,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int[] Invert { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemDetailTypeItemAuxiliaryType
+    public class ComprehendResponseItemSentencesTypeItemDetailTypeItemAuxiliaryType
     {
         [JsonProperty("source")]
         public string Source { get; set; }
@@ -429,22 +407,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Lemma { get; set; }
 
         [JsonProperty("lemmatizer")]
-        public ComprehendPostResponseItemSentencesTypeItemDetailTypeItemAuxiliaryTypeLemmatizerTypeItemItem[][] Lemmatizer { get; set; }
+        public ComprehendResponseItemSentencesTypeItemDetailTypeItemAuxiliaryTypeLemmatizerTypeItemItem[][] Lemmatizer { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemDetailTypeItemAuxiliaryTypeLemmatizerTypeItemItem
+    public class ComprehendResponseItemSentencesTypeItemDetailTypeItemAuxiliaryTypeLemmatizerTypeItemItem
     {
         [JsonProperty("infinit")]
         public string Infinit { get; set; }
 
         [JsonProperty("conjugate")]
-        public ComprehendPostResponseItemSentencesTypeItemDetailTypeItemAuxiliaryTypeLemmatizerTypeItemItemConjugateTypeItem[] Conjugate { get; set; }
+        public ComprehendResponseItemSentencesTypeItemDetailTypeItemAuxiliaryTypeLemmatizerTypeItemItemConjugateTypeItem[] Conjugate { get; set; }
 
         [JsonProperty("transitif")]
         public bool Transitif { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemDetailTypeItemAuxiliaryTypeLemmatizerTypeItemItemConjugateTypeItem
+    public class ComprehendResponseItemSentencesTypeItemDetailTypeItemAuxiliaryTypeLemmatizerTypeItemItemConjugateTypeItem
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
@@ -459,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Modality { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemSubsentencesTypeItem
+    public class ComprehendResponseItemSentencesTypeItemSubsentencesTypeItem
     {
         [JsonProperty("start_id")]
         public int StartId { get; set; }
@@ -474,7 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int EndIndexes { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemMlNerTypeItem
+    public class ComprehendResponseItemSentencesTypeItemMlNerTypeItem
     {
         [JsonProperty("entity")]
         public string Entity { get; set; }
@@ -489,31 +467,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Index { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemMlSentimentType
+    public class ComprehendResponseItemSentencesTypeItemMlSentimentType
     {
         [JsonProperty("sentence")]
-        public ComprehendPostResponseItemSentencesTypeItemMlSentimentTypeSentenceType Sentence { get; set; }
+        public ComprehendResponseItemSentencesTypeItemMlSentimentTypeSentenceType Sentence { get; set; }
 
         [JsonProperty("subsentence")]
         public double[] Subsentence { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemMlSentimentTypeSentenceType
+    public class ComprehendResponseItemSentencesTypeItemMlSentimentTypeSentenceType
     {
         [JsonProperty("value")]
         public double Value { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemMlEmotionType
+    public class ComprehendResponseItemSentencesTypeItemMlEmotionType
     {
         [JsonProperty("sentence")]
-        public ComprehendPostResponseItemSentencesTypeItemMlEmotionTypeSentenceTypeItem[] Sentence { get; set; }
+        public ComprehendResponseItemSentencesTypeItemMlEmotionTypeSentenceTypeItem[] Sentence { get; set; }
 
         [JsonProperty("subsentence")]
-        public ComprehendPostResponseItemSentencesTypeItemMlEmotionTypeSubsentenceTypeItemItem[][] Subsentence { get; set; }
+        public ComprehendResponseItemSentencesTypeItemMlEmotionTypeSubsentenceTypeItemItem[][] Subsentence { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemMlEmotionTypeSentenceTypeItem
+    public class ComprehendResponseItemSentencesTypeItemMlEmotionTypeSentenceTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -522,7 +500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Value { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemMlEmotionTypeSubsentenceTypeItemItem
+    public class ComprehendResponseItemSentencesTypeItemMlEmotionTypeSubsentenceTypeItemItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -531,19 +509,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Value { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemSentimentType
+    public class ComprehendResponseItemSentencesTypeItemSentimentType
     {
         [JsonProperty("subsentences")]
-        public ComprehendPostResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItem[] Subsentences { get; set; }
+        public ComprehendResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItem[] Subsentences { get; set; }
 
         [JsonProperty("values")]
-        public ComprehendPostResponseItemSentencesTypeItemSentimentTypeValuesType Values { get; set; }
+        public ComprehendResponseItemSentencesTypeItemSentimentTypeValuesType Values { get; set; }
 
         [JsonProperty("elements")]
-        public ComprehendPostResponseItemSentencesTypeItemSentimentTypeElementsTypeItem[] Elements { get; set; }
+        public ComprehendResponseItemSentencesTypeItemSentimentTypeElementsTypeItem[] Elements { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItem
+    public class ComprehendResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItem
     {
         [JsonProperty("start_id")]
         public int StartId { get; set; }
@@ -558,31 +536,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int EndIndexes { get; set; }
 
         [JsonProperty("elements")]
-        public ComprehendPostResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItem[] Elements { get; set; }
+        public ComprehendResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItem[] Elements { get; set; }
 
         [JsonProperty("sentence")]
         public string Sentence { get; set; }
 
         [JsonProperty("values")]
-        public ComprehendPostResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItemValuesType Values { get; set; }
+        public ComprehendResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItemValuesType Values { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItem
+    public class ComprehendResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItem
     {
         [JsonProperty("target")]
-        public ComprehendPostResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItemTargetType Target { get; set; }
+        public ComprehendResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItemTargetType Target { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
 
         [JsonProperty("source")]
-        public ComprehendPostResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItemSourceType Source { get; set; }
+        public ComprehendResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItemSourceType Source { get; set; }
 
         [JsonProperty("value")]
         public double Value { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItemTargetType
+    public class ComprehendResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItemTargetType
     {
         [JsonProperty("lemma")]
         public string Lemma { get; set; }
@@ -594,7 +572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Index { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItemSourceType
+    public class ComprehendResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItemSourceType
     {
         [JsonProperty("index")]
         public int Index { get; set; }
@@ -606,7 +584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Source { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItemValuesType
+    public class ComprehendResponseItemSentencesTypeItemSentimentTypeSubsentencesTypeItemValuesType
     {
         [JsonProperty("positive")]
         public double Positive { get; set; }
@@ -618,7 +596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public double Total { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemSentimentTypeValuesType
+    public class ComprehendResponseItemSentencesTypeItemSentimentTypeValuesType
     {
         [JsonProperty("positive")]
         public int Positive { get; set; }
@@ -630,22 +608,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public double Total { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemSentimentTypeElementsTypeItem
+    public class ComprehendResponseItemSentencesTypeItemSentimentTypeElementsTypeItem
     {
         [JsonProperty("target")]
-        public ComprehendPostResponseItemSentencesTypeItemSentimentTypeElementsTypeItemTargetType Target { get; set; }
+        public ComprehendResponseItemSentencesTypeItemSentimentTypeElementsTypeItemTargetType Target { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
 
         [JsonProperty("source")]
-        public ComprehendPostResponseItemSentencesTypeItemSentimentTypeElementsTypeItemSourceType Source { get; set; }
+        public ComprehendResponseItemSentencesTypeItemSentimentTypeElementsTypeItemSourceType Source { get; set; }
 
         [JsonProperty("value")]
         public double Value { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemSentimentTypeElementsTypeItemTargetType
+    public class ComprehendResponseItemSentencesTypeItemSentimentTypeElementsTypeItemTargetType
     {
         [JsonProperty("lemma")]
         public string Lemma { get; set; }
@@ -657,7 +635,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Index { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemSentimentTypeElementsTypeItemSourceType
+    public class ComprehendResponseItemSentencesTypeItemSentimentTypeElementsTypeItemSourceType
     {
         [JsonProperty("index")]
         public int Index { get; set; }
@@ -669,19 +647,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Source { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemEmotionType
+    public class ComprehendResponseItemSentencesTypeItemEmotionType
     {
         [JsonProperty("subsentences")]
-        public ComprehendPostResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItem[] Subsentences { get; set; }
+        public ComprehendResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItem[] Subsentences { get; set; }
 
         [JsonProperty("values")]
-        public ComprehendPostResponseItemSentencesTypeItemEmotionTypeValuesTypeItem[] Values { get; set; }
+        public ComprehendResponseItemSentencesTypeItemEmotionTypeValuesTypeItem[] Values { get; set; }
 
         [JsonProperty("elements")]
-        public ComprehendPostResponseItemSentencesTypeItemEmotionTypeElementsTypeItem[] Elements { get; set; }
+        public ComprehendResponseItemSentencesTypeItemEmotionTypeElementsTypeItem[] Elements { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItem
+    public class ComprehendResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItem
     {
         [JsonProperty("start_id")]
         public int StartId { get; set; }
@@ -696,31 +674,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int EndIndexes { get; set; }
 
         [JsonProperty("elements")]
-        public ComprehendPostResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItem[] Elements { get; set; }
+        public ComprehendResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItem[] Elements { get; set; }
 
         [JsonProperty("sentence")]
         public string Sentence { get; set; }
 
         [JsonProperty("values")]
-        public ComprehendPostResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemValuesType Values { get; set; }
+        public ComprehendResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemValuesType Values { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItem
+    public class ComprehendResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItem
     {
         [JsonProperty("target")]
-        public ComprehendPostResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemTargetType Target { get; set; }
+        public ComprehendResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemTargetType Target { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
 
         [JsonProperty("source")]
-        public ComprehendPostResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemSourceType Source { get; set; }
+        public ComprehendResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemSourceType Source { get; set; }
 
         [JsonProperty("value")]
-        public ComprehendPostResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemValueType Value { get; set; }
+        public ComprehendResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemValueType Value { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemTargetType
+    public class ComprehendResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemTargetType
     {
         [JsonProperty("lemma")]
         public string Lemma { get; set; }
@@ -732,7 +710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Index { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemSourceType
+    public class ComprehendResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemSourceType
     {
         [JsonProperty("index")]
         public int Index { get; set; }
@@ -744,7 +722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Source { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemValueType
+    public class ComprehendResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemValueType
     {
         [JsonProperty("nervousness")]
         public int Nervousness { get; set; }
@@ -777,7 +755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Curiosity { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemValuesType
+    public class ComprehendResponseItemSentencesTypeItemEmotionTypeSubsentencesTypeItemValuesType
     {
         [JsonProperty("nervousness")]
         public int Nervousness { get; set; }
@@ -822,7 +800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Approval { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemEmotionTypeValuesTypeItem
+    public class ComprehendResponseItemSentencesTypeItemEmotionTypeValuesTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -831,22 +809,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Value { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemEmotionTypeElementsTypeItem
+    public class ComprehendResponseItemSentencesTypeItemEmotionTypeElementsTypeItem
     {
         [JsonProperty("target")]
-        public ComprehendPostResponseItemSentencesTypeItemEmotionTypeElementsTypeItemTargetType Target { get; set; }
+        public ComprehendResponseItemSentencesTypeItemEmotionTypeElementsTypeItemTargetType Target { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
 
         [JsonProperty("source")]
-        public ComprehendPostResponseItemSentencesTypeItemEmotionTypeElementsTypeItemSourceType Source { get; set; }
+        public ComprehendResponseItemSentencesTypeItemEmotionTypeElementsTypeItemSourceType Source { get; set; }
 
         [JsonProperty("value")]
-        public ComprehendPostResponseItemSentencesTypeItemEmotionTypeElementsTypeItemValueType Value { get; set; }
+        public ComprehendResponseItemSentencesTypeItemEmotionTypeElementsTypeItemValueType Value { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemEmotionTypeElementsTypeItemTargetType
+    public class ComprehendResponseItemSentencesTypeItemEmotionTypeElementsTypeItemTargetType
     {
         [JsonProperty("lemma")]
         public string Lemma { get; set; }
@@ -858,7 +836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Index { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemEmotionTypeElementsTypeItemSourceType
+    public class ComprehendResponseItemSentencesTypeItemEmotionTypeElementsTypeItemSourceType
     {
         [JsonProperty("index")]
         public int Index { get; set; }
@@ -870,7 +848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Source { get; set; }
     }
 
-    public class ComprehendPostResponseItemSentencesTypeItemEmotionTypeElementsTypeItemValueType
+    public class ComprehendResponseItemSentencesTypeItemEmotionTypeElementsTypeItemValueType
     {
         [JsonProperty("nervousness")]
         public int Nervousness { get; set; }
@@ -903,7 +881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Optimism { get; set; }
     }
 
-    public class ComprehendPostResponseItemEmoticonType
+    public class ComprehendResponseItemEmoticonType
     {
         [JsonProperty("happy")]
         public int Happy { get; set; }
@@ -966,16 +944,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Notlove { get; set; }
     }
 
-    public class ComprehendPostResponseItemCoreferenceType
+    public class ComprehendResponseItemCoreferenceType
     {
         [JsonProperty("spans")]
-        public ComprehendPostResponseItemCoreferenceTypeSpansTypeItem[] Spans { get; set; }
+        public ComprehendResponseItemCoreferenceTypeSpansTypeItem[] Spans { get; set; }
 
         [JsonProperty("clusters")]
         public int[][] Clusters { get; set; }
     }
 
-    public class ComprehendPostResponseItemCoreferenceTypeSpansTypeItem
+    public class ComprehendResponseItemCoreferenceTypeSpansTypeItem
     {
         [JsonProperty("sentence_index")]
         public int SentenceIndex { get; set; }
@@ -987,7 +965,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int ClusterIndex { get; set; }
     }
 
-    public class ComprehendPostResponseItemEmotionTypeItem
+    public class ComprehendResponseItemEmotionTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -996,19 +974,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Value { get; set; }
     }
 
-    public class ClassifyPostResponseItem
+    public class BodyInput
+    {
+        [JsonProperty("documents")]
+        public string[] Documents { get; set; }
+    }
+
+    public class ClassifyResponseItem
     {
         [JsonProperty("metadata")]
-        public ClassifyPostResponseItemMetadataType Metadata { get; set; }
+        public ClassifyResponseItemMetadataType Metadata { get; set; }
 
         [JsonProperty("data")]
         public string[] Data { get; set; }
 
         [JsonProperty("nlc")]
-        public ClassifyPostResponseItemNlcType Nlc { get; set; }
+        public ClassifyResponseItemNlcType Nlc { get; set; }
     }
 
-    public class ClassifyPostResponseItemMetadataType
+    public class ClassifyResponseItemMetadataType
     {
         [JsonProperty("train_name")]
         public string TrainName { get; set; }
@@ -1020,7 +1004,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string ProjectId { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcType
+    public class ClassifyResponseItemNlcType
     {
         [JsonProperty("language")]
         public string Language { get; set; }
@@ -1047,29 +1031,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Type { get; set; }
 
         [JsonProperty("sentences")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItem[] Sentences { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItem[] Sentences { get; set; }
 
         [JsonProperty("emoticon")]
-        public ClassifyPostResponseItemNlcTypeEmoticonType Emoticon { get; set; }
+        public ClassifyResponseItemNlcTypeEmoticonType Emoticon { get; set; }
 
         [JsonProperty("emoticon_data")]
         public string[] EmoticonData { get; set; }
 
         [JsonProperty("coreference")]
-        public ClassifyPostResponseItemNlcTypeCoreferenceType Coreference { get; set; }
+        public ClassifyResponseItemNlcTypeCoreferenceType Coreference { get; set; }
 
         [JsonProperty("sentiment")]
         public double Sentiment { get; set; }
 
         [JsonProperty("emotion")]
-        public ClassifyPostResponseItemNlcTypeEmotionTypeItem[] Emotion { get; set; }
-        public ClassifyPostResponseItemNlcTypePerfsType Perfs { get; set; }
+        public ClassifyResponseItemNlcTypeEmotionTypeItem[] Emotion { get; set; }
+        public ClassifyResponseItemNlcTypePerfsType Perfs { get; set; }
 
         [JsonProperty("patterns")]
         public string Patterns { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItem
     {
         [JsonProperty("source")]
         public string Source { get; set; }
@@ -1081,34 +1065,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int[] SentenceIndexes { get; set; }
 
         [JsonProperty("detail")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItem[] Detail { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItem[] Detail { get; set; }
 
         [JsonProperty("subsentences")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemSubsentencesTypeItem[] Subsentences { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemSubsentencesTypeItem[] Subsentences { get; set; }
 
         [JsonProperty("ml_ner")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemMlNerTypeItem[] MlNer { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemMlNerTypeItem[] MlNer { get; set; }
 
         [JsonProperty("ml_sentiment")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemMlSentimentType MlSentiment { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemMlSentimentType MlSentiment { get; set; }
 
         [JsonProperty("ml_emotion")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemMlEmotionType MlEmotion { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemMlEmotionType MlEmotion { get; set; }
 
         [JsonProperty("coreference")]
         public int[] Coreference { get; set; }
 
         [JsonProperty("sentiment")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentType Sentiment { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemSentimentType Sentiment { get; set; }
 
         [JsonProperty("emotion")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionType Emotion { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemEmotionType Emotion { get; set; }
 
         [JsonProperty("sentence_type")]
         public string SentenceType { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItem
     {
         [JsonProperty("source")]
         public string Source { get; set; }
@@ -1126,7 +1110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Len { get; set; }
 
         [JsonProperty("lemmatizer")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemLemmatizerType Lemmatizer { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemLemmatizerType Lemmatizer { get; set; }
 
         [JsonProperty("lemma")]
         public string Lemma { get; set; }
@@ -1135,7 +1119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Index { get; set; }
 
         [JsonProperty("meaning")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemMeaningTypeItem[] Meaning { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemMeaningTypeItem[] Meaning { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1147,7 +1131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Ref { get; set; }
 
         [JsonProperty("transform")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemTransformType Transform { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemTransformType Transform { get; set; }
 
         [JsonProperty("coreference")]
         public int[] Coreference { get; set; }
@@ -1156,13 +1140,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int[] Infinit { get; set; }
 
         [JsonProperty("verb_meaning")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemVerbMeaningType VerbMeaning { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemVerbMeaningType VerbMeaning { get; set; }
 
         [JsonProperty("auxiliary")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemAuxiliaryType Auxiliary { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemAuxiliaryType Auxiliary { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemLemmatizerType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemLemmatizerType
     {
         [JsonProperty("sens")]
         public string[] Sens { get; set; }
@@ -1180,13 +1164,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Mode { get; set; }
 
         [JsonProperty("gender")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemLemmatizerTypeGenderType Gender { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemLemmatizerTypeGenderType Gender { get; set; }
 
         [JsonProperty("infinit")]
         public string Infinit { get; set; }
 
         [JsonProperty("conjugate")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemLemmatizerTypeConjugateTypeItem[] Conjugate { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemLemmatizerTypeConjugateTypeItem[] Conjugate { get; set; }
 
         [JsonProperty("transitif")]
         public bool Transitif { get; set; }
@@ -1195,7 +1179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string[] Category { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemLemmatizerTypeGenderType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemLemmatizerTypeGenderType
     {
         [JsonProperty("male")]
         public bool Male { get; set; }
@@ -1207,7 +1191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public bool Plural { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemLemmatizerTypeConjugateTypeItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemLemmatizerTypeConjugateTypeItem
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
@@ -1222,7 +1206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Modality { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemMeaningTypeItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemMeaningTypeItem
     {
         [JsonProperty("sub")]
         public string Sub { get; set; }
@@ -1243,7 +1227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int InclusionExclusionAddition { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemTransformType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemTransformType
     {
         [JsonProperty("lemma")]
         public string Lemma { get; set; }
@@ -1252,13 +1236,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Tag { get; set; }
 
         [JsonProperty("meaning")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemTransformTypeMeaningTypeItem[] Meaning { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemTransformTypeMeaningTypeItem[] Meaning { get; set; }
 
         [JsonProperty("extra")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemTransformTypeExtraType Extra { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemTransformTypeExtraType Extra { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemTransformTypeMeaningTypeItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemTransformTypeMeaningTypeItem
     {
         [JsonProperty("sub")]
         public string Sub { get; set; }
@@ -1276,7 +1260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string[] Origin { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemTransformTypeExtraType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemTransformTypeExtraType
     {
         [JsonProperty("transitif")]
         public bool Transitif { get; set; }
@@ -1291,7 +1275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Obl { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemVerbMeaningType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemVerbMeaningType
     {
         [JsonProperty("know")]
         public string[] Know { get; set; }
@@ -1384,7 +1368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string[] Invert { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemAuxiliaryType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemAuxiliaryType
     {
         [JsonProperty("source")]
         public string Source { get; set; }
@@ -1393,22 +1377,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Lemma { get; set; }
 
         [JsonProperty("lemmatizer")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemAuxiliaryTypeLemmatizerTypeItemItem[][] Lemmatizer { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemAuxiliaryTypeLemmatizerTypeItemItem[][] Lemmatizer { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemAuxiliaryTypeLemmatizerTypeItemItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemAuxiliaryTypeLemmatizerTypeItemItem
     {
         [JsonProperty("infinit")]
         public string Infinit { get; set; }
 
         [JsonProperty("conjugate")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemAuxiliaryTypeLemmatizerTypeItemItemConjugateTypeItem[] Conjugate { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemAuxiliaryTypeLemmatizerTypeItemItemConjugateTypeItem[] Conjugate { get; set; }
 
         [JsonProperty("transitif")]
         public bool Transitif { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemDetailTypeItemAuxiliaryTypeLemmatizerTypeItemItemConjugateTypeItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemDetailTypeItemAuxiliaryTypeLemmatizerTypeItemItemConjugateTypeItem
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
@@ -1423,7 +1407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Modality { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemSubsentencesTypeItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemSubsentencesTypeItem
     {
         [JsonProperty("start_id")]
         public int StartId { get; set; }
@@ -1438,7 +1422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int EndIndexes { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemMlNerTypeItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemMlNerTypeItem
     {
         [JsonProperty("entity")]
         public string Entity { get; set; }
@@ -1453,31 +1437,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Index { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemMlSentimentType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemMlSentimentType
     {
         [JsonProperty("sentence")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemMlSentimentTypeSentenceType Sentence { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemMlSentimentTypeSentenceType Sentence { get; set; }
 
         [JsonProperty("subsentence")]
         public double[] Subsentence { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemMlSentimentTypeSentenceType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemMlSentimentTypeSentenceType
     {
         [JsonProperty("value")]
         public double Value { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemMlEmotionType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemMlEmotionType
     {
         [JsonProperty("sentence")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemMlEmotionTypeSentenceTypeItem[] Sentence { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemMlEmotionTypeSentenceTypeItem[] Sentence { get; set; }
 
         [JsonProperty("subsentence")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemMlEmotionTypeSubsentenceTypeItemItem[][] Subsentence { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemMlEmotionTypeSubsentenceTypeItemItem[][] Subsentence { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemMlEmotionTypeSentenceTypeItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemMlEmotionTypeSentenceTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1486,7 +1470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Value { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemMlEmotionTypeSubsentenceTypeItemItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemMlEmotionTypeSubsentenceTypeItemItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1495,19 +1479,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Value { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemSentimentType
     {
         [JsonProperty("subsentences")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItem[] Subsentences { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItem[] Subsentences { get; set; }
 
         [JsonProperty("values")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeValuesType Values { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeValuesType Values { get; set; }
 
         [JsonProperty("elements")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeElementsTypeItem[] Elements { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeElementsTypeItem[] Elements { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItem
     {
         [JsonProperty("start_id")]
         public int StartId { get; set; }
@@ -1522,31 +1506,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int EndIndexes { get; set; }
 
         [JsonProperty("elements")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItem[] Elements { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItem[] Elements { get; set; }
 
         [JsonProperty("sentence")]
         public string Sentence { get; set; }
 
         [JsonProperty("values")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItemValuesType Values { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItemValuesType Values { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItem
     {
         [JsonProperty("target")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItemTargetType Target { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItemTargetType Target { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
 
         [JsonProperty("source")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItemSourceType Source { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItemSourceType Source { get; set; }
 
         [JsonProperty("value")]
         public double Value { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItemTargetType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItemTargetType
     {
         [JsonProperty("lemma")]
         public string Lemma { get; set; }
@@ -1558,7 +1542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Index { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItemSourceType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItemElementsTypeItemSourceType
     {
         [JsonProperty("index")]
         public int Index { get; set; }
@@ -1570,7 +1554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Source { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItemValuesType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeSubsentencesTypeItemValuesType
     {
         [JsonProperty("positive")]
         public double Positive { get; set; }
@@ -1582,7 +1566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public double Total { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeValuesType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeValuesType
     {
         [JsonProperty("positive")]
         public int Positive { get; set; }
@@ -1594,22 +1578,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public double Total { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeElementsTypeItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeElementsTypeItem
     {
         [JsonProperty("target")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeElementsTypeItemTargetType Target { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeElementsTypeItemTargetType Target { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
 
         [JsonProperty("source")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeElementsTypeItemSourceType Source { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeElementsTypeItemSourceType Source { get; set; }
 
         [JsonProperty("value")]
         public double Value { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeElementsTypeItemTargetType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeElementsTypeItemTargetType
     {
         [JsonProperty("lemma")]
         public string Lemma { get; set; }
@@ -1621,7 +1605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Index { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemSentimentTypeElementsTypeItemSourceType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemSentimentTypeElementsTypeItemSourceType
     {
         [JsonProperty("index")]
         public int Index { get; set; }
@@ -1633,19 +1617,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Source { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemEmotionType
     {
         [JsonProperty("subsentences")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItem[] Subsentences { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItem[] Subsentences { get; set; }
 
         [JsonProperty("values")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeValuesTypeItem[] Values { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeValuesTypeItem[] Values { get; set; }
 
         [JsonProperty("elements")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeElementsTypeItem[] Elements { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeElementsTypeItem[] Elements { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItem
     {
         [JsonProperty("start_id")]
         public int StartId { get; set; }
@@ -1660,31 +1644,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int EndIndexes { get; set; }
 
         [JsonProperty("elements")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItem[] Elements { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItem[] Elements { get; set; }
 
         [JsonProperty("sentence")]
         public string Sentence { get; set; }
 
         [JsonProperty("values")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemValuesType Values { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemValuesType Values { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItem
     {
         [JsonProperty("target")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemTargetType Target { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemTargetType Target { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
 
         [JsonProperty("source")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemSourceType Source { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemSourceType Source { get; set; }
 
         [JsonProperty("value")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemValueType Value { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemValueType Value { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemTargetType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemTargetType
     {
         [JsonProperty("lemma")]
         public string Lemma { get; set; }
@@ -1696,7 +1680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Index { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemSourceType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemSourceType
     {
         [JsonProperty("index")]
         public int Index { get; set; }
@@ -1708,7 +1692,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Source { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemValueType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemElementsTypeItemValueType
     {
         [JsonProperty("nervousness")]
         public int Nervousness { get; set; }
@@ -1741,7 +1725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Curiosity { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemValuesType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeSubsentencesTypeItemValuesType
     {
         [JsonProperty("nervousness")]
         public int Nervousness { get; set; }
@@ -1786,7 +1770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Approval { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeValuesTypeItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeValuesTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1795,22 +1779,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Value { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeElementsTypeItem
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeElementsTypeItem
     {
         [JsonProperty("target")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeElementsTypeItemTargetType Target { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeElementsTypeItemTargetType Target { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
 
         [JsonProperty("source")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeElementsTypeItemSourceType Source { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeElementsTypeItemSourceType Source { get; set; }
 
         [JsonProperty("value")]
-        public ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeElementsTypeItemValueType Value { get; set; }
+        public ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeElementsTypeItemValueType Value { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeElementsTypeItemTargetType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeElementsTypeItemTargetType
     {
         [JsonProperty("lemma")]
         public string Lemma { get; set; }
@@ -1822,7 +1806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Index { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeElementsTypeItemSourceType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeElementsTypeItemSourceType
     {
         [JsonProperty("index")]
         public int Index { get; set; }
@@ -1834,7 +1818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public string Source { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeSentencesTypeItemEmotionTypeElementsTypeItemValueType
+    public class ClassifyResponseItemNlcTypeSentencesTypeItemEmotionTypeElementsTypeItemValueType
     {
         [JsonProperty("nervousness")]
         public int Nervousness { get; set; }
@@ -1867,7 +1851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Optimism { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeEmoticonType
+    public class ClassifyResponseItemNlcTypeEmoticonType
     {
         [JsonProperty("happy")]
         public int Happy { get; set; }
@@ -1930,16 +1914,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Notlove { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeCoreferenceType
+    public class ClassifyResponseItemNlcTypeCoreferenceType
     {
         [JsonProperty("spans")]
-        public ClassifyPostResponseItemNlcTypeCoreferenceTypeSpansTypeItem[] Spans { get; set; }
+        public ClassifyResponseItemNlcTypeCoreferenceTypeSpansTypeItem[] Spans { get; set; }
 
         [JsonProperty("clusters")]
         public int[][] Clusters { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeCoreferenceTypeSpansTypeItem
+    public class ClassifyResponseItemNlcTypeCoreferenceTypeSpansTypeItem
     {
         [JsonProperty("sentence_index")]
         public int SentenceIndex { get; set; }
@@ -1954,7 +1938,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public bool Processed { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypeEmotionTypeItem
+    public class ClassifyResponseItemNlcTypeEmotionTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1963,7 +1947,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         public int Value { get; set; }
     }
 
-    public class ClassifyPostResponseItemNlcTypePerfsType
+    public class ClassifyResponseItemNlcTypePerfsType
     {
         [JsonProperty("api_call")]
         public int ApiCall { get; set; }

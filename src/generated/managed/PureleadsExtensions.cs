@@ -13,57 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
     public class PureleadsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pureleads")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> NewLeadSubmission(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname, Expression<Func<string>> bodymobileNo = null, Expression<Func<string>> bodysecondaryEmail = null, Expression<Func<int>> bodylifecycleStageName = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> NewLeadSubmission(Expression<Func<BodyInput>> body)
         {
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodymobileNo = WorkflowExpression.Compile(bodymobileNo, nameof(bodymobileNo), required: false);
-            var __workflow_bodysecondaryEmail = WorkflowExpression.Compile(bodysecondaryEmail, nameof(bodysecondaryEmail), required: false);
-            var __workflow_bodylifecycleStageName = WorkflowExpression.Compile(bodylifecycleStageName, nameof(bodylifecycleStageName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/contacts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                if (__workflow_bodymobileNo != null)
-                {
-                    body["mobile_no"] = ExpressionConverter.ConvertO(__workflow_bodymobileNo);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysecondaryEmail != null)
-                {
-                    body["secondary_email"] = ExpressionConverter.ConvertO(__workflow_bodysecondaryEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodylifecycleStageName != null)
-                {
-                    if (__workflow_bodylifecycleStageName != null)
-                    {
-                        body["lifecycle_stage_name"] = ExpressionConverter.ConvertO(__workflow_bodylifecycleStageName);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["lifecycle_stage_name"] = 1;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -71,16 +29,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
 
     public class PureleadsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreatedLeadSubmissionResponse, ApiConnectionTriggerConfiguration> CreatedLeadSubmission(FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreatedLeadSubmissionResponse, ApiConnectionPollingTriggerConfiguration> CreatedLeadSubmission()
         {
-            return new DeferredBodyTrigger<CreatedLeadSubmissionResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<CreatedLeadSubmissionResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/contacts";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<CreatedLeadSubmissionResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<CreatedLeadSubmissionResponse>(callPayload);
             });
         }
+    }
+
+    public class BodyInput
+    {
+        public BodyInput(string email, string name)
+        {
+            this.Email = email;
+            this.Name = name;
+        }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("mobile_no")]
+        public string MobileNo { get; set; }
+
+        [JsonProperty("secondary_email")]
+        public string SecondaryEmail { get; set; }
+
+        [JsonProperty("lifecycle_stage_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int? LifecycleStageName { get; set; } = 1;
     }
 
     public class CreatedLeadSubmissionResponse

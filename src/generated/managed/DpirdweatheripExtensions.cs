@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     public class DpirdweatheripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsResponse, ApiConnectionActionConfiguration> GetStations(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        public IBodyWorkflowAction<GetStationsResponse, ApiConnectionActionConfiguration> GetStations(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<GroupInput>> group = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetNearbyWeatherStations(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<int>> radius = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetNearbyWeatherStations(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<int>> radius = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<GroupInput>> group = null)
         {
             var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
             var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsBulletinsResponse, ApiConnectionActionConfiguration> GetStationsBulletins(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        public IBodyWorkflowAction<GetStationsBulletinsResponse, ApiConnectionActionConfiguration> GetStationsBulletins(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<GroupInput>> group = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetWeatherStationsRainfallResponse, ApiConnectionActionConfiguration> GetWeatherStationsRainfall(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        public IBodyWorkflowAction<GetWeatherStationsRainfallResponse, ApiConnectionActionConfiguration> GetWeatherStationsRainfall(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<GroupInput>> group = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetWeatherStationRainfallResponse, ApiConnectionActionConfiguration> GetWeatherStationRainfall(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        public IBodyWorkflowAction<GetWeatherStationRainfallResponse, ApiConnectionActionConfiguration> GetWeatherStationRainfall(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<GroupInput>> group = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsExtremeConditionsResponse, ApiConnectionActionConfiguration> GetStationsExtremeConditions(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null)
+        public IBodyWorkflowAction<GetStationsExtremeConditionsResponse, ApiConnectionActionConfiguration> GetStationsExtremeConditions(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<GroupInput>> group = null, Expression<Func<bool>> includeClosed = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsExtremeEventsResponse, ApiConnectionActionConfiguration> GetStationsExtremeEvents(Expression<Func<@operatorInput>> @operator, Expression<Func<int>> threshold, Expression<Func<propertyInput>> property, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<intervalInput>> interval = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetStationsExtremeEventsResponse, ApiConnectionActionConfiguration> GetStationsExtremeEvents(Expression<Func<OperatorInput>> @operator, Expression<Func<int>> threshold, Expression<Func<PropertyInput>> property, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<IntervalInput>> interval = null, Expression<Func<string>> select = null)
         {
             var __workflow_operator = WorkflowExpression.Compile(@operator, nameof(@operator), required: true);
             var __workflow_threshold = WorkflowExpression.Compile(threshold, nameof(threshold), required: true);
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsLatestDataResponse, ApiConnectionActionConfiguration> GetStationsLatestData(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        public IBodyWorkflowAction<GetStationsLatestDataResponse, ApiConnectionActionConfiguration> GetStationsLatestData(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> select = null, Expression<Func<GroupInput>> group = null)
         {
             var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStations15minSummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStations15minSummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<GroupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
             var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStations30minSummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStations30minSummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<GroupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
             var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
@@ -495,7 +495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStationsHourlySummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStationsHourlySummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<GroupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
             var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
@@ -532,7 +532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStationsDailySummary(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStationsDailySummary(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<GroupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
@@ -569,7 +569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStationsMonthlySummary(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStationsMonthlySummary(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<GroupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startMonth = WorkflowExpression.Compile(startMonth, nameof(startMonth), required: true);
             var __workflow_endMonth = WorkflowExpression.Compile(endMonth, nameof(endMonth), required: true);
@@ -606,7 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStationsYearlySummary(Expression<Func<string>> startYear, Expression<Func<string>> endYear, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel, ApiConnectionActionConfiguration> GetStationsYearlySummary(Expression<Func<string>> startYear, Expression<Func<string>> endYear, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<GroupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startYear = WorkflowExpression.Compile(startYear, nameof(startYear), required: true);
             var __workflow_endYear = WorkflowExpression.Compile(endYear, nameof(endYear), required: true);
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStations15minSummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStations15minSummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<GroupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
             var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
@@ -680,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStations30minSummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStations30minSummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<GroupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
             var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
@@ -717,7 +717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStationsHourlySummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStationsHourlySummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<GroupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
             var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
@@ -754,7 +754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStationsDailySummaryTimeSeries(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStationsDailySummaryTimeSeries(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<GroupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
@@ -791,7 +791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStationsMonthlySummaryTimeSeries(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStationsMonthlySummaryTimeSeries(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<GroupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startMonth = WorkflowExpression.Compile(startMonth, nameof(startMonth), required: true);
             var __workflow_endMonth = WorkflowExpression.Compile(endMonth, nameof(endMonth), required: true);
@@ -828,7 +828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStationsYearlySummaryTimeSeries(Expression<Func<string>> startYear, Expression<Func<string>> endYear, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel, ApiConnectionActionConfiguration> GetStationsYearlySummaryTimeSeries(Expression<Func<string>> startYear, Expression<Func<string>> endYear, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<GroupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
             var __workflow_startYear = WorkflowExpression.Compile(startYear, nameof(startYear), required: true);
             var __workflow_endYear = WorkflowExpression.Compile(endYear, nameof(endYear), required: true);
@@ -1218,7 +1218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum groupInput
+    public enum GroupInput
     {
         [EnumMember(Value = "all")]
         All,
@@ -1906,7 +1906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum @operatorInput
+    public enum OperatorInput
     {
         [EnumMember(Value = "gt")]
         Gt,
@@ -1915,7 +1915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum propertyInput
+    public enum PropertyInput
     {
         [EnumMember(Value = "airTemperature")]
         AirTemperature,
@@ -1936,7 +1936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum intervalInput
+    public enum IntervalInput
     {
         [EnumMember(Value = "minute")]
         Minute,

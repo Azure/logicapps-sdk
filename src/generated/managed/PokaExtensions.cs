@@ -16,28 +16,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
 
     public class PokaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHookDetail, ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<string>> bodyselectALanguage, Expression<Func<string>> item, Expression<Func<string>> operationName, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookDetail, ApiConnectionPollingTriggerConfiguration> CreateWebhook(Expression<Func<BodyInput>> body, Expression<Func<string>> item, Expression<Func<string>> operationName)
         {
-            var __workflow_bodyselectALanguage = WorkflowExpression.Compile(bodyselectALanguage, nameof(bodyselectALanguage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
             var __workflow_operationName = WorkflowExpression.Compile(operationName, nameof(operationName), required: true);
-            return new DeferredBodyTrigger<WebHookDetail, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<WebHookDetail, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v2.2/web-hooks/register/{0}/{1}/", __workflow_item.WithUrlEncoding(1), __workflow_operationName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodyselectALanguage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<WebHookDetail>(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger<WebHookDetail>(callPayload);
             });
         }
     }
@@ -52,6 +42,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
 
         [JsonProperty("url")]
         public string Url { get; set; }
+    }
+
+    public class BodyInput
+    {
+        public BodyInput(string selectALanguage)
+        {
+            this.SelectALanguage = selectALanguage;
+        }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SelectALanguage { get; set; }
     }
 }
 

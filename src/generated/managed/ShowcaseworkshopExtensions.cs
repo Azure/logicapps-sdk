@@ -16,74 +16,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
 
     public class ShowcaseworkshopTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ShowcaseShareSendEmail(Expression<Func<string>> workshopUid, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ShowcaseShareSendEmail(Expression<Func<string>> workshopUid)
         {
             var __workflow_workshopUid = WorkflowExpression.Compile(workshopUid, nameof(workshopUid), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/main/integrations/ms_create_webhook/share_send_email";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(__workflow_workshopUid);
                 callPayload.Queries["event_name"] = Convert.ToString("share_send_email");
-                var requestBodyOfWebhook = new JObject();
-                var requestBodyOfWebhookpropCount = 0;
-                requestBodyOfWebhook["callback_url"] = "#{listCallbackUrl()}";
-                requestBodyOfWebhookpropCount++;
-                if (requestBodyOfWebhookpropCount > 0)
-                {
-                    callPayload.Body = requestBodyOfWebhook;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = new RequestBodyOfWebhookInput().ToJToken();
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ShowcaseSharedPageView(Expression<Func<string>> workshopUid, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ShowcaseSharedPageView(Expression<Func<string>> workshopUid)
         {
             var __workflow_workshopUid = WorkflowExpression.Compile(workshopUid, nameof(workshopUid), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/main/integrations/ms_create_webhook/shared_page_view";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(__workflow_workshopUid);
                 callPayload.Queries["event_name"] = Convert.ToString("shared_page_view");
-                var requestBodyOfWebhook = new JObject();
-                var requestBodyOfWebhookpropCount = 0;
-                requestBodyOfWebhook["callback_url"] = "#{listCallbackUrl()}";
-                requestBodyOfWebhookpropCount++;
-                if (requestBodyOfWebhookpropCount > 0)
-                {
-                    callPayload.Body = requestBodyOfWebhook;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = new RequestBodyOfWebhookInput().ToJToken();
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ShowcaseSharedPageDownload(Expression<Func<string>> workshopUid, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ShowcaseSharedPageDownload(Expression<Func<string>> workshopUid)
         {
             var __workflow_workshopUid = WorkflowExpression.Compile(workshopUid, nameof(workshopUid), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/main/integrations/ms_create_webhook/shared_page_download";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(__workflow_workshopUid);
                 callPayload.Queries["event_name"] = Convert.ToString("shared_page_download");
-                var requestBodyOfWebhook = new JObject();
-                var requestBodyOfWebhookpropCount = 0;
-                requestBodyOfWebhook["callback_url"] = "#{listCallbackUrl()}";
-                requestBodyOfWebhookpropCount++;
-                if (requestBodyOfWebhookpropCount > 0)
-                {
-                    callPayload.Body = requestBodyOfWebhook;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = new RequestBodyOfWebhookInput().ToJToken();
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
+    }
+
+    public class RequestBodyOfWebhookInput
+    {
+        [JsonProperty("callback_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

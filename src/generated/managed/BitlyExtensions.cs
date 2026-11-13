@@ -13,23 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
     public class BitlyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitly")]
-        public IBodyWorkflowAction<BitlinkV2, ApiConnectionActionConfiguration> CreateBitlink(Expression<Func<string>> bodyuRL)
+        public IBodyWorkflowAction<BitlinkV2, ApiConnectionActionConfiguration> CreateBitlink(Expression<Func<BodyInput>> body)
         {
-            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<BitlinkV2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/shorten";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["long_url"] = ExpressionConverter.ConvertO(__workflow_bodyuRL);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<BitlinkV2>(callPayload);
             });
         }
@@ -37,15 +29,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
 
     public class BitlyTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse, ApiConnectionTriggerConfiguration> OnBitlinkCreated(Expression<Func<string>> id, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse, ApiConnectionPollingTriggerConfiguration> OnBitlinkCreated(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyTrigger<OnBitlinkCreatedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<OnBitlinkCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/groups/{0}/bitlinks", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OnBitlinkCreatedResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<OnBitlinkCreatedResponse>(callPayload);
             });
         }
     }
@@ -57,6 +49,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
 
         [JsonProperty("long_url")]
         public string LongURL { get; set; }
+    }
+
+    public class BodyInput
+    {
+        public BodyInput(string uRL)
+        {
+            this.URL = uRL;
+        }
+
+        [JsonProperty("long_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string URL { get; set; }
     }
 
     public class OnBitlinkCreatedResponse

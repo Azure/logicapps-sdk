@@ -274,17 +274,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<IPAVGetLocationByIPV4Response, ApiConnectionActionConfiguration> IPAVGetLocationByIP(Expression<Func<string>> iPAddress = null)
+        public IBodyWorkflowAction<IPAVGetLocationByIPResponse, ApiConnectionActionConfiguration> IPAVGetLocationByIP(Expression<Func<string>> iPAddress = null)
         {
             var __workflow_iPAddress = WorkflowExpression.Compile(iPAddress, nameof(iPAddress), required: false);
-            return new DeferredBodyAction<IPAVGetLocationByIPV4Response, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<IPAVGetLocationByIPResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GPP/web.svc/json/GetLocationByIP_V4";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_iPAddress != null)
                     callPayload.Queries["IPAddress"] = ExpressionConverter.Convert(__workflow_iPAddress);
-                return new ApiConnectionAction<IPAVGetLocationByIPV4Response>(callPayload);
+                return new ApiConnectionAction<IPAVGetLocationByIPResponse>(callPayload);
             });
         }
     }
@@ -664,9 +664,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string DescCode { get; set; }
     }
 
-    public class IPAVGetLocationByIPV4Response
+    public class IPAVGetLocationByIPResponse
     {
-        public IPAVGetLocationByIPV4ResponseErrorType Error { get; set; }
+        public IPAVGetLocationByIPResponseErrorType Error { get; set; }
         public int Certainty { get; set; }
         public string City { get; set; }
         public string Region { get; set; }
@@ -691,7 +691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string Debug { get; set; }
     }
 
-    public class IPAVGetLocationByIPV4ResponseErrorType
+    public class IPAVGetLocationByIPResponseErrorType
     {
         public string Desc { get; set; }
         public string Location { get; set; }

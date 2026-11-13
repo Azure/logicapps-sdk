@@ -65,6 +65,15 @@ namespace Microsoft.Azure.Workflows.Sdk
             return trigger;
         }
 
+        public static TOperation WithRecurrence<TOperation>(
+            this TOperation trigger, FlowRecurrence recurrence)
+            where TOperation : IWorkflowTrigger<IRecurrenceConfiguration>
+        {
+            trigger.Configuration.Recurrence =
+                recurrence ?? throw new ArgumentNullException(nameof(recurrence));
+            return trigger;
+        }
+
         public static TOperation WithClientTrackingId<TOperation>(
             this TOperation trigger, Expression<Func<string>> clientTrackingId)
             where TOperation : IWorkflowTrigger<IClientTrackingIdConfiguration>

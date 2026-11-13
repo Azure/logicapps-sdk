@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<TreeEquivalentResponse, ApiConnectionActionConfiguration> TreeEquivalent(Expression<Func<string>> weight, Expression<Func<unitInput>> unit)
+        public IBodyWorkflowAction<TreeEquivalentResponse, ApiConnectionActionConfiguration> TreeEquivalent(Expression<Func<string>> weight, Expression<Func<UnitInput>> unit)
         {
             var __workflow_weight = WorkflowExpression.Compile(weight, nameof(weight), required: true);
             var __workflow_unit = WorkflowExpression.Compile(unit, nameof(unit), required: true);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<TraditionalHydroToCarbonFootprintResponse, ApiConnectionActionConfiguration> TraditionalHydroToCarbonFootprint(Expression<Func<string>> consumption, Expression<Func<locationInput>> location)
+        public IBodyWorkflowAction<TraditionalHydroToCarbonFootprintResponse, ApiConnectionActionConfiguration> TraditionalHydroToCarbonFootprint(Expression<Func<string>> consumption, Expression<Func<LocationInput>> location)
         {
             var __workflow_consumption = WorkflowExpression.Compile(consumption, nameof(consumption), required: true);
             var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<CleanHydroToCarbonFootprintResponse, ApiConnectionActionConfiguration> CleanHydroToCarbonFootprint(Expression<Func<energyInput>> energy, Expression<Func<string>> consumption)
+        public IBodyWorkflowAction<CleanHydroToCarbonFootprintResponse, ApiConnectionActionConfiguration> CleanHydroToCarbonFootprint(Expression<Func<EnergyInput>> energy, Expression<Func<string>> consumption)
         {
             var __workflow_energy = WorkflowExpression.Compile(energy, nameof(energy), required: true);
             var __workflow_consumption = WorkflowExpression.Compile(consumption, nameof(consumption), required: true);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<FuelToCO2eResponse, ApiConnectionActionConfiguration> FuelToCO2e(Expression<Func<typeInput>> type, Expression<Func<string>> litres)
+        public IBodyWorkflowAction<FuelToCO2eResponse, ApiConnectionActionConfiguration> FuelToCO2e(Expression<Func<FuelToCO2eTypeInput>> type, Expression<Func<string>> litres)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_litres = WorkflowExpression.Compile(litres, nameof(litres), required: true);
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<CarbonFootprintFromCarTravelResponse, ApiConnectionActionConfiguration> CarbonFootprintFromCarTravel(Expression<Func<string>> distance, Expression<Func<vehicleInput>> vehicle)
+        public IBodyWorkflowAction<CarbonFootprintFromCarTravelResponse, ApiConnectionActionConfiguration> CarbonFootprintFromCarTravel(Expression<Func<string>> distance, Expression<Func<VehicleInput>> vehicle)
         {
             var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: true);
             var __workflow_vehicle = WorkflowExpression.Compile(vehicle, nameof(vehicle), required: true);
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<CarbonFootprintFromFlightResponse, ApiConnectionActionConfiguration> CarbonFootprintFromFlight(Expression<Func<string>> distance, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<CarbonFootprintFromFlightResponse, ApiConnectionActionConfiguration> CarbonFootprintFromFlight(Expression<Func<string>> distance, Expression<Func<CarbonFootprintFromFlightTypeInput>> type)
         {
             var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<CarbonFootprintFromMotorBikeResponse, ApiConnectionActionConfiguration> CarbonFootprintFromMotorBike(Expression<Func<typeInput>> type, Expression<Func<string>> distance)
+        public IBodyWorkflowAction<CarbonFootprintFromMotorBikeResponse, ApiConnectionActionConfiguration> CarbonFootprintFromMotorBike(Expression<Func<CarbonFootprintFromMotorBikeTypeInput>> type, Expression<Func<string>> distance)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: true);
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<CarbonFootprintFromPublicTransitResponse, ApiConnectionActionConfiguration> CarbonFootprintFromPublicTransit(Expression<Func<string>> distance, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<CarbonFootprintFromPublicTransitResponse, ApiConnectionActionConfiguration> CarbonFootprintFromPublicTransit(Expression<Func<string>> distance, Expression<Func<CarbonFootprintFromPublicTransitTypeInput>> type)
         {
             var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum unitInput
+    public enum UnitInput
     {
         [EnumMember(Value = "kg")]
         Kg,
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum locationInput
+    public enum LocationInput
     {
         USA,
         Canada,
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum energyInput
+    public enum EnergyInput
     {
         Solar,
         Wind,
@@ -228,17 +228,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum typeInput
+    public enum FuelToCO2eTypeInput
     {
-        Taxi,
-        ClassicBus,
-        EcoBus,
-        Coach,
-        NationalTrain,
-        LightRail,
-        Subway,
-        FerryOnFoot,
-        FerryInCar
+        Petrol,
+        Diesel,
+        LPG
     }
 
     public class CarbonFootprintFromCarTravelResponse
@@ -248,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum vehicleInput
+    public enum VehicleInput
     {
         SmallDieselCar,
         MediumDieselCar,
@@ -280,16 +274,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         public double CarbonEquivalent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CarbonFootprintFromFlightTypeInput
+    {
+        DomesticFlight,
+        ShortEconomyClassFlight,
+        ShortBusinessClassFlight,
+        LongEconomyClassFlight,
+        LongPremiumClassFlight,
+        LongBusinessClassFlight,
+        LongFirstClassFlight
+    }
+
     public class CarbonFootprintFromMotorBikeResponse
     {
         [JsonProperty("carbonEquivalent")]
         public double CarbonEquivalent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CarbonFootprintFromMotorBikeTypeInput
+    {
+        SmallMotorBike,
+        MediumMotorBike,
+        LargeMotorBike
+    }
+
     public class CarbonFootprintFromPublicTransitResponse
     {
         [JsonProperty("carbonEquivalent")]
         public double CarbonEquivalent { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum CarbonFootprintFromPublicTransitTypeInput
+    {
+        Taxi,
+        ClassicBus,
+        EcoBus,
+        Coach,
+        NationalTrain,
+        LightRail,
+        Subway,
+        FerryOnFoot,
+        FerryInCar
     }
 }
 

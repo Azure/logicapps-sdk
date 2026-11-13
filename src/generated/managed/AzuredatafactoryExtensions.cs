@@ -13,13 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
     public class AzuredatafactoryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatafactory")]
-        public IBodyWorkflowAction<CreatePipelineRunResponse, ApiConnectionActionConfiguration> CreatePipelineRun(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> dataFactoryName, Expression<Func<string>> pipelineName, Expression<Func<string>> referencePipelineRunId = null)
+        public IBodyWorkflowAction<CreatePipelineRunResponse, ApiConnectionActionConfiguration> CreatePipelineRun(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> dataFactoryName, Expression<Func<string>> pipelineName, Expression<Func<string>> referencePipelineRunId = null, Expression<Func<object>> parameters = null)
         {
             var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
             var __workflow_dataFactoryName = WorkflowExpression.Compile(dataFactoryName, nameof(dataFactoryName), required: true);
             var __workflow_pipelineName = WorkflowExpression.Compile(pipelineName, nameof(pipelineName), required: true);
             var __workflow_referencePipelineRunId = WorkflowExpression.Compile(referencePipelineRunId, nameof(referencePipelineRunId), required: false);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: false);
             return new DeferredBodyAction<CreatePipelineRunResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/pipelines/{3}/CreateRun", __workflow_subscriptionId.WithUrlEncoding(1), __workflow_resourceGroupName.WithUrlEncoding(1), __workflow_dataFactoryName.WithUrlEncoding(1), __workflow_pipelineName.WithUrlEncoding(1)));
@@ -28,13 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
                 if (__workflow_referencePipelineRunId != null)
                     callPayload.Queries["referencePipelineRunId"] = ExpressionConverter.Convert(__workflow_referencePipelineRunId);
                 callPayload.Queries["x-ms-api-version"] = Convert.ToString("2017-09-01-preview");
-                var parameters = new JObject();
-                var parameterspropCount = 0;
-                if (parameterspropCount > 0)
-                {
-                    callPayload.Body = parameters;
-                }
-
+                if (__workflow_parameters != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameters);
                 return new ApiConnectionAction<CreatePipelineRunResponse>(callPayload);
             });
         }

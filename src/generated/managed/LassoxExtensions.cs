@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
     public class LassoxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lassox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ActivateUser(Expression<Func<productInput>> product, Expression<Func<string>> productUserId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ActivateUser(Expression<Func<ProductInput>> product, Expression<Func<string>> productUserId)
         {
             var __workflow_product = WorkflowExpression.Compile(product, nameof(product), required: true);
             var __workflow_productUserId = WorkflowExpression.Compile(productUserId, nameof(productUserId), required: true);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lassox")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeactivateUser(Expression<Func<productInput>> product, Expression<Func<string>> productUserId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeactivateUser(Expression<Func<ProductInput>> product, Expression<Func<string>> productUserId)
         {
             var __workflow_product = WorkflowExpression.Compile(product, nameof(product), required: true);
             var __workflow_productUserId = WorkflowExpression.Compile(productUserId, nameof(productUserId), required: true);
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum productInput
+    public enum ProductInput
     {
         [EnumMember(Value = "dynamicscrm")]
         Dynamicscrm

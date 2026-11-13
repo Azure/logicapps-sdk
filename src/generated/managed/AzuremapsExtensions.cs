@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremaps
     public class AzuremapsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremaps")]
-        public IBodyWorkflowAction<GetRouteResponse, ApiConnectionActionConfiguration> GetRoute(Expression<Func<string>> wp0, Expression<Func<string>> wp1, Expression<Func<travelModeInput>> travelMode = null, Expression<Func<bool>> avoidHighways = null, Expression<Func<bool>> avoidTolls = null, Expression<Func<bool>> avoidFerry = null, Expression<Func<bool>> avoidBorderCrossing = null, Expression<Func<optimizeInput>> optimize = null)
+        public IBodyWorkflowAction<GetRouteResponse, ApiConnectionActionConfiguration> GetRoute(Expression<Func<string>> wp0, Expression<Func<string>> wp1, Expression<Func<TravelModeInput>> travelMode = null, Expression<Func<bool>> avoidHighways = null, Expression<Func<bool>> avoidTolls = null, Expression<Func<bool>> avoidFerry = null, Expression<Func<bool>> avoidBorderCrossing = null, Expression<Func<OptimizeInput>> optimize = null)
         {
             var __workflow_wp0 = WorkflowExpression.Compile(wp0, nameof(wp0), required: true);
             var __workflow_wp1 = WorkflowExpression.Compile(wp1, nameof(wp1), required: true);
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremaps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremaps")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetMap(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<imagerySetInput>> imagerySet, Expression<Func<string>> zoomLevel, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<formatInput>> format = null, Expression<Func<double>> pushpinLatitude = null, Expression<Func<double>> pushpinLongitude = null, Expression<Func<string>> pushpinLabel = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetMap(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<ImagerySetInput>> imagerySet, Expression<Func<string>> zoomLevel, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<FormatInput>> format = null, Expression<Func<double>> pushpinLatitude = null, Expression<Func<double>> pushpinLongitude = null, Expression<Func<string>> pushpinLabel = null)
         {
             var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
             var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremaps
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum travelModeInput
+    public enum TravelModeInput
     {
         [EnumMember(Value = "driving")]
         Driving,
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremaps
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum optimizeInput
+    public enum OptimizeInput
     {
         [EnumMember(Value = "fastestWithoutTraffic")]
         FastestWithoutTraffic,
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremaps
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum imagerySetInput
+    public enum ImagerySetInput
     {
         Aerial,
         AerialWithLabels,
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremaps
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum formatInput
+    public enum FormatInput
     {
         [EnumMember(Value = "jpeg")]
         Jpeg,

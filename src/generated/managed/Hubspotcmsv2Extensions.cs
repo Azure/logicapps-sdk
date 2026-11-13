@@ -13,56 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
     public class Hubspotcmsv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ScheduleaBlogPosttobePublished(Expression<Func<string>> bodyid, Expression<Func<string>> bodypublishDate)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ScheduleaBlogPosttobePublished(Expression<Func<ScheduleaBlogPosttobePublishedBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodypublishDate = WorkflowExpression.Compile(bodypublishDate, nameof(bodypublishDate), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/posts/schedule";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["publishDate"] = ExpressionConverter.ConvertO(__workflow_bodypublishDate);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UpdatelanguagesofmultiLanguagegroup(Expression<Func<string>> bodyprimaryId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UpdatelanguagesofmultiLanguagegroup(Expression<Func<PostUpdatelanguagesofmultiLanguagegroup1BodyInput>> body)
         {
-            var __workflow_bodyprimaryId = WorkflowExpression.Compile(bodyprimaryId, nameof(bodyprimaryId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/posts/multi-language/update-languages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var languagesObject = new JObject();
-                var languagesObjectpropCount = 0;
-                if (languagesObjectpropCount > 0)
-                {
-                    body["languages"] = languagesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["primaryId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -95,229 +68,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> UpdateaBlogPostdraft(Expression<Func<string>> objectId, Expression<Func<string>> bodyabStatus, Expression<Func<string>> bodyabTestId, Expression<Func<string>> bodyarchivedAt, Expression<Func<bool>> bodyarchivedInDashboard, Expression<Func<JToken[]>> bodyattachedStylesheets, Expression<Func<string>> bodyauthorName, Expression<Func<string>> bodyblogAuthorId, Expression<Func<string>> bodycampaign, Expression<Func<string>> bodycategoryId, Expression<Func<string>> bodycontentGroupId, Expression<Func<string>> bodycontentTypeCategory, Expression<Func<string>> bodycreated, Expression<Func<string>> bodycreatedById, Expression<Func<string>> bodycurrentState, Expression<Func<bool>> bodycurrentlyPublished, Expression<Func<string>> bodydomain, Expression<Func<string>> bodydynamicPageDataSourceId, Expression<Func<string>> bodydynamicPageDataSourceType, Expression<Func<string>> bodydynamicPageHubDbTableId, Expression<Func<bool>> bodyenableDomainStylesheets, Expression<Func<bool>> bodyenableGoogleAmpOutputOverride, Expression<Func<bool>> bodyenableLayoutStylesheets, Expression<Func<string>> bodyfeaturedImage, Expression<Func<string>> bodyfeaturedImageAltText, Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyfooterHtml, Expression<Func<string>> bodyheadHtml, Expression<Func<string>> bodyhtmlTitle, Expression<Func<string>> bodyid, Expression<Func<bool>> bodyincludeDefaultCustomCss, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodylinkRelCanonicalUrl, Expression<Func<string>> bodymabExperimentId, Expression<Func<string>> bodymetaDescription, Expression<Func<string>> bodyname, Expression<Func<string>> bodypageExpiryDate, Expression<Func<bool>> bodypageExpiryEnabled, Expression<Func<string>> bodypageExpiryRedirectId, Expression<Func<string>> bodypageExpiryRedirectUrl, Expression<Func<string>> bodypassword, Expression<Func<string>> bodypostBody, Expression<Func<string>> bodypostSummary, Expression<Func<string[]>> bodypublicAccessRules, Expression<Func<bool>> bodypublicAccessRulesEnabled, Expression<Func<string>> bodypublishDate, Expression<Func<string>> bodypublishImmediately, Expression<Func<string>> bodyrssBody, Expression<Func<string>> bodyrssSummary, Expression<Func<string>> bodyslug, Expression<Func<string>> bodystate, Expression<Func<string[]>> bodytagIds, Expression<Func<string>> bodytranslatedFromId, Expression<Func<string>> bodyupdated, Expression<Func<string>> bodyupdatedById, Expression<Func<string>> bodyurl, Expression<Func<bool>> bodyuseFeaturedImage)
+        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> UpdateaBlogPostdraft(Expression<Func<string>> objectId, Expression<Func<CreateanewBlogBodyInput>> body)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            var __workflow_bodyabStatus = WorkflowExpression.Compile(bodyabStatus, nameof(bodyabStatus), required: true);
-            var __workflow_bodyabTestId = WorkflowExpression.Compile(bodyabTestId, nameof(bodyabTestId), required: true);
-            var __workflow_bodyarchivedAt = WorkflowExpression.Compile(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            var __workflow_bodyarchivedInDashboard = WorkflowExpression.Compile(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            var __workflow_bodyattachedStylesheets = WorkflowExpression.Compile(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            var __workflow_bodyauthorName = WorkflowExpression.Compile(bodyauthorName, nameof(bodyauthorName), required: true);
-            var __workflow_bodyblogAuthorId = WorkflowExpression.Compile(bodyblogAuthorId, nameof(bodyblogAuthorId), required: true);
-            var __workflow_bodycampaign = WorkflowExpression.Compile(bodycampaign, nameof(bodycampaign), required: true);
-            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: true);
-            var __workflow_bodycontentGroupId = WorkflowExpression.Compile(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            var __workflow_bodycontentTypeCategory = WorkflowExpression.Compile(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: true);
-            var __workflow_bodycreatedById = WorkflowExpression.Compile(bodycreatedById, nameof(bodycreatedById), required: true);
-            var __workflow_bodycurrentState = WorkflowExpression.Compile(bodycurrentState, nameof(bodycurrentState), required: true);
-            var __workflow_bodycurrentlyPublished = WorkflowExpression.Compile(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: true);
-            var __workflow_bodydynamicPageDataSourceId = WorkflowExpression.Compile(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            var __workflow_bodydynamicPageDataSourceType = WorkflowExpression.Compile(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            var __workflow_bodydynamicPageHubDbTableId = WorkflowExpression.Compile(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            var __workflow_bodyenableDomainStylesheets = WorkflowExpression.Compile(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            var __workflow_bodyenableGoogleAmpOutputOverride = WorkflowExpression.Compile(bodyenableGoogleAmpOutputOverride, nameof(bodyenableGoogleAmpOutputOverride), required: true);
-            var __workflow_bodyenableLayoutStylesheets = WorkflowExpression.Compile(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            var __workflow_bodyfeaturedImage = WorkflowExpression.Compile(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            var __workflow_bodyfeaturedImageAltText = WorkflowExpression.Compile(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
-            var __workflow_bodyfooterHtml = WorkflowExpression.Compile(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            var __workflow_bodyheadHtml = WorkflowExpression.Compile(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            var __workflow_bodyhtmlTitle = WorkflowExpression.Compile(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyincludeDefaultCustomCss = WorkflowExpression.Compile(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodylinkRelCanonicalUrl = WorkflowExpression.Compile(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            var __workflow_bodymabExperimentId = WorkflowExpression.Compile(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            var __workflow_bodymetaDescription = WorkflowExpression.Compile(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodypageExpiryDate = WorkflowExpression.Compile(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            var __workflow_bodypageExpiryEnabled = WorkflowExpression.Compile(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            var __workflow_bodypageExpiryRedirectId = WorkflowExpression.Compile(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            var __workflow_bodypageExpiryRedirectUrl = WorkflowExpression.Compile(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodypostBody = WorkflowExpression.Compile(bodypostBody, nameof(bodypostBody), required: true);
-            var __workflow_bodypostSummary = WorkflowExpression.Compile(bodypostSummary, nameof(bodypostSummary), required: true);
-            var __workflow_bodypublicAccessRules = WorkflowExpression.Compile(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            var __workflow_bodypublicAccessRulesEnabled = WorkflowExpression.Compile(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            var __workflow_bodypublishDate = WorkflowExpression.Compile(bodypublishDate, nameof(bodypublishDate), required: true);
-            var __workflow_bodypublishImmediately = WorkflowExpression.Compile(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            var __workflow_bodyrssBody = WorkflowExpression.Compile(bodyrssBody, nameof(bodyrssBody), required: true);
-            var __workflow_bodyrssSummary = WorkflowExpression.Compile(bodyrssSummary, nameof(bodyrssSummary), required: true);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: true);
-            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: true);
-            var __workflow_bodytagIds = WorkflowExpression.Compile(bodytagIds, nameof(bodytagIds), required: true);
-            var __workflow_bodytranslatedFromId = WorkflowExpression.Compile(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            var __workflow_bodyupdated = WorkflowExpression.Compile(bodyupdated, nameof(bodyupdated), required: true);
-            var __workflow_bodyupdatedById = WorkflowExpression.Compile(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyuseFeaturedImage = WorkflowExpression.Compile(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation3, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/blogs/posts/{0}/draft", __workflow_objectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["abStatus"] = ExpressionConverter.ConvertO(__workflow_bodyabStatus);
-                bodypropCount++;
-                body["abTestId"] = ExpressionConverter.ConvertO(__workflow_bodyabTestId);
-                bodypropCount++;
-                body["archivedAt"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedAt);
-                bodypropCount++;
-                body["archivedInDashboard"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedInDashboard);
-                bodypropCount++;
-                body["attachedStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyattachedStylesheets);
-                bodypropCount++;
-                body["authorName"] = ExpressionConverter.ConvertO(__workflow_bodyauthorName);
-                bodypropCount++;
-                body["blogAuthorId"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthorId);
-                bodypropCount++;
-                body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
-                bodypropCount++;
-                body["categoryId"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
-                bodypropCount++;
-                body["contentGroupId"] = ExpressionConverter.ConvertO(__workflow_bodycontentGroupId);
-                bodypropCount++;
-                body["contentTypeCategory"] = ExpressionConverter.ConvertO(__workflow_bodycontentTypeCategory);
-                bodypropCount++;
-                body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                bodypropCount++;
-                body["createdById"] = ExpressionConverter.ConvertO(__workflow_bodycreatedById);
-                bodypropCount++;
-                body["currentState"] = ExpressionConverter.ConvertO(__workflow_bodycurrentState);
-                bodypropCount++;
-                body["currentlyPublished"] = ExpressionConverter.ConvertO(__workflow_bodycurrentlyPublished);
-                bodypropCount++;
-                body["domain"] = ExpressionConverter.ConvertO(__workflow_bodydomain);
-                bodypropCount++;
-                body["dynamicPageDataSourceId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceId);
-                bodypropCount++;
-                body["dynamicPageDataSourceType"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceType);
-                bodypropCount++;
-                body["dynamicPageHubDbTableId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageHubDbTableId);
-                bodypropCount++;
-                body["enableDomainStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableDomainStylesheets);
-                bodypropCount++;
-                body["enableGoogleAmpOutputOverride"] = ExpressionConverter.ConvertO(__workflow_bodyenableGoogleAmpOutputOverride);
-                bodypropCount++;
-                body["enableLayoutStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableLayoutStylesheets);
-                bodypropCount++;
-                body["featuredImage"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImage);
-                bodypropCount++;
-                body["featuredImageAltText"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImageAltText);
-                bodypropCount++;
-                body["folderId"] = ExpressionConverter.ConvertO(__workflow_bodyfolderId);
-                bodypropCount++;
-                body["footerHtml"] = ExpressionConverter.ConvertO(__workflow_bodyfooterHtml);
-                bodypropCount++;
-                body["headHtml"] = ExpressionConverter.ConvertO(__workflow_bodyheadHtml);
-                bodypropCount++;
-                body["htmlTitle"] = ExpressionConverter.ConvertO(__workflow_bodyhtmlTitle);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["includeDefaultCustomCss"] = ExpressionConverter.ConvertO(__workflow_bodyincludeDefaultCustomCss);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                var layoutSectionsObject = new JObject();
-                var layoutSectionsObjectpropCount = 0;
-                if (layoutSectionsObjectpropCount > 0)
-                {
-                    body["layoutSections"] = layoutSectionsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["linkRelCanonicalUrl"] = ExpressionConverter.ConvertO(__workflow_bodylinkRelCanonicalUrl);
-                bodypropCount++;
-                body["mabExperimentId"] = ExpressionConverter.ConvertO(__workflow_bodymabExperimentId);
-                bodypropCount++;
-                body["metaDescription"] = ExpressionConverter.ConvertO(__workflow_bodymetaDescription);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["pageExpiryDate"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryDate);
-                bodypropCount++;
-                body["pageExpiryEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryEnabled);
-                bodypropCount++;
-                body["pageExpiryRedirectId"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectId);
-                bodypropCount++;
-                body["pageExpiryRedirectUrl"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectUrl);
-                bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                bodypropCount++;
-                body["postBody"] = ExpressionConverter.ConvertO(__workflow_bodypostBody);
-                bodypropCount++;
-                body["postSummary"] = ExpressionConverter.ConvertO(__workflow_bodypostSummary);
-                bodypropCount++;
-                body["publicAccessRules"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRules);
-                bodypropCount++;
-                body["publicAccessRulesEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRulesEnabled);
-                bodypropCount++;
-                body["publishDate"] = ExpressionConverter.ConvertO(__workflow_bodypublishDate);
-                bodypropCount++;
-                body["publishImmediately"] = ExpressionConverter.ConvertO(__workflow_bodypublishImmediately);
-                bodypropCount++;
-                body["rssBody"] = ExpressionConverter.ConvertO(__workflow_bodyrssBody);
-                bodypropCount++;
-                body["rssSummary"] = ExpressionConverter.ConvertO(__workflow_bodyrssSummary);
-                bodypropCount++;
-                body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                bodypropCount++;
-                body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
-                bodypropCount++;
-                body["tagIds"] = ExpressionConverter.ConvertO(__workflow_bodytagIds);
-                var themeSettingsValuesObject = new JObject();
-                var themeSettingsValuesObjectpropCount = 0;
-                if (themeSettingsValuesObjectpropCount > 0)
-                {
-                    body["themeSettingsValues"] = themeSettingsValuesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["translatedFromId"] = ExpressionConverter.ConvertO(__workflow_bodytranslatedFromId);
-                var translationsObject = new JObject();
-                var translationsObjectpropCount = 0;
-                if (translationsObjectpropCount > 0)
-                {
-                    body["translations"] = translationsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdated);
-                bodypropCount++;
-                body["updatedById"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedById);
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                bodypropCount++;
-                body["useFeaturedImage"] = ExpressionConverter.ConvertO(__workflow_bodyuseFeaturedImage);
-                var widgetContainersObject = new JObject();
-                var widgetContainersObjectpropCount = 0;
-                if (widgetContainersObjectpropCount > 0)
-                {
-                    body["widgetContainers"] = widgetContainersObject;
-                    bodypropCount++;
-                }
-
-                var widgetsObject = new JObject();
-                var widgetsObjectpropCount = 0;
-                if (widgetsObjectpropCount > 0)
-                {
-                    body["widgets"] = widgetsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation3>(callPayload);
             });
         }
@@ -337,51 +97,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> Createanewlanguagevariation(Expression<Func<string>> bodyid, Expression<Func<string>> bodylanguage)
+        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> Createanewlanguagevariation(Expression<Func<CreateanewlanguagevariationBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation3, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/posts/multi-language/create-language-variation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation3>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> CloneaBlog(Expression<Func<string>> bodyid, Expression<Func<string>> bodycloneName)
+        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> CloneaBlog(Expression<Func<CloneaBlogBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodycloneName = WorkflowExpression.Compile(bodycloneName, nameof(bodycloneName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation3, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/posts/clone";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["cloneName"] = ExpressionConverter.ConvertO(__workflow_bodycloneName);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation3>(callPayload);
             });
         }
@@ -432,228 +170,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> CreateanewBlog(Expression<Func<string>> bodyabStatus, Expression<Func<string>> bodyabTestId, Expression<Func<string>> bodyarchivedAt, Expression<Func<bool>> bodyarchivedInDashboard, Expression<Func<JToken[]>> bodyattachedStylesheets, Expression<Func<string>> bodyauthorName, Expression<Func<string>> bodyblogAuthorId, Expression<Func<string>> bodycampaign, Expression<Func<string>> bodycategoryId, Expression<Func<string>> bodycontentGroupId, Expression<Func<string>> bodycontentTypeCategory, Expression<Func<string>> bodycreated, Expression<Func<string>> bodycreatedById, Expression<Func<string>> bodycurrentState, Expression<Func<bool>> bodycurrentlyPublished, Expression<Func<string>> bodydomain, Expression<Func<string>> bodydynamicPageDataSourceId, Expression<Func<string>> bodydynamicPageDataSourceType, Expression<Func<string>> bodydynamicPageHubDbTableId, Expression<Func<bool>> bodyenableDomainStylesheets, Expression<Func<bool>> bodyenableGoogleAmpOutputOverride, Expression<Func<bool>> bodyenableLayoutStylesheets, Expression<Func<string>> bodyfeaturedImage, Expression<Func<string>> bodyfeaturedImageAltText, Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyfooterHtml, Expression<Func<string>> bodyheadHtml, Expression<Func<string>> bodyhtmlTitle, Expression<Func<string>> bodyid, Expression<Func<bool>> bodyincludeDefaultCustomCss, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodylinkRelCanonicalUrl, Expression<Func<string>> bodymabExperimentId, Expression<Func<string>> bodymetaDescription, Expression<Func<string>> bodyname, Expression<Func<string>> bodypageExpiryDate, Expression<Func<bool>> bodypageExpiryEnabled, Expression<Func<string>> bodypageExpiryRedirectId, Expression<Func<string>> bodypageExpiryRedirectUrl, Expression<Func<string>> bodypassword, Expression<Func<string>> bodypostBody, Expression<Func<string>> bodypostSummary, Expression<Func<string[]>> bodypublicAccessRules, Expression<Func<bool>> bodypublicAccessRulesEnabled, Expression<Func<string>> bodypublishDate, Expression<Func<string>> bodypublishImmediately, Expression<Func<string>> bodyrssBody, Expression<Func<string>> bodyrssSummary, Expression<Func<string>> bodyslug, Expression<Func<string>> bodystate, Expression<Func<string[]>> bodytagIds, Expression<Func<string>> bodytranslatedFromId, Expression<Func<string>> bodyupdated, Expression<Func<string>> bodyupdatedById, Expression<Func<string>> bodyurl, Expression<Func<bool>> bodyuseFeaturedImage)
+        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> CreateanewBlog(Expression<Func<CreateanewBlogBodyInput>> body)
         {
-            var __workflow_bodyabStatus = WorkflowExpression.Compile(bodyabStatus, nameof(bodyabStatus), required: true);
-            var __workflow_bodyabTestId = WorkflowExpression.Compile(bodyabTestId, nameof(bodyabTestId), required: true);
-            var __workflow_bodyarchivedAt = WorkflowExpression.Compile(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            var __workflow_bodyarchivedInDashboard = WorkflowExpression.Compile(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            var __workflow_bodyattachedStylesheets = WorkflowExpression.Compile(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            var __workflow_bodyauthorName = WorkflowExpression.Compile(bodyauthorName, nameof(bodyauthorName), required: true);
-            var __workflow_bodyblogAuthorId = WorkflowExpression.Compile(bodyblogAuthorId, nameof(bodyblogAuthorId), required: true);
-            var __workflow_bodycampaign = WorkflowExpression.Compile(bodycampaign, nameof(bodycampaign), required: true);
-            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: true);
-            var __workflow_bodycontentGroupId = WorkflowExpression.Compile(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            var __workflow_bodycontentTypeCategory = WorkflowExpression.Compile(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: true);
-            var __workflow_bodycreatedById = WorkflowExpression.Compile(bodycreatedById, nameof(bodycreatedById), required: true);
-            var __workflow_bodycurrentState = WorkflowExpression.Compile(bodycurrentState, nameof(bodycurrentState), required: true);
-            var __workflow_bodycurrentlyPublished = WorkflowExpression.Compile(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: true);
-            var __workflow_bodydynamicPageDataSourceId = WorkflowExpression.Compile(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            var __workflow_bodydynamicPageDataSourceType = WorkflowExpression.Compile(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            var __workflow_bodydynamicPageHubDbTableId = WorkflowExpression.Compile(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            var __workflow_bodyenableDomainStylesheets = WorkflowExpression.Compile(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            var __workflow_bodyenableGoogleAmpOutputOverride = WorkflowExpression.Compile(bodyenableGoogleAmpOutputOverride, nameof(bodyenableGoogleAmpOutputOverride), required: true);
-            var __workflow_bodyenableLayoutStylesheets = WorkflowExpression.Compile(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            var __workflow_bodyfeaturedImage = WorkflowExpression.Compile(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            var __workflow_bodyfeaturedImageAltText = WorkflowExpression.Compile(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
-            var __workflow_bodyfooterHtml = WorkflowExpression.Compile(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            var __workflow_bodyheadHtml = WorkflowExpression.Compile(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            var __workflow_bodyhtmlTitle = WorkflowExpression.Compile(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyincludeDefaultCustomCss = WorkflowExpression.Compile(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodylinkRelCanonicalUrl = WorkflowExpression.Compile(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            var __workflow_bodymabExperimentId = WorkflowExpression.Compile(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            var __workflow_bodymetaDescription = WorkflowExpression.Compile(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodypageExpiryDate = WorkflowExpression.Compile(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            var __workflow_bodypageExpiryEnabled = WorkflowExpression.Compile(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            var __workflow_bodypageExpiryRedirectId = WorkflowExpression.Compile(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            var __workflow_bodypageExpiryRedirectUrl = WorkflowExpression.Compile(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodypostBody = WorkflowExpression.Compile(bodypostBody, nameof(bodypostBody), required: true);
-            var __workflow_bodypostSummary = WorkflowExpression.Compile(bodypostSummary, nameof(bodypostSummary), required: true);
-            var __workflow_bodypublicAccessRules = WorkflowExpression.Compile(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            var __workflow_bodypublicAccessRulesEnabled = WorkflowExpression.Compile(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            var __workflow_bodypublishDate = WorkflowExpression.Compile(bodypublishDate, nameof(bodypublishDate), required: true);
-            var __workflow_bodypublishImmediately = WorkflowExpression.Compile(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            var __workflow_bodyrssBody = WorkflowExpression.Compile(bodyrssBody, nameof(bodyrssBody), required: true);
-            var __workflow_bodyrssSummary = WorkflowExpression.Compile(bodyrssSummary, nameof(bodyrssSummary), required: true);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: true);
-            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: true);
-            var __workflow_bodytagIds = WorkflowExpression.Compile(bodytagIds, nameof(bodytagIds), required: true);
-            var __workflow_bodytranslatedFromId = WorkflowExpression.Compile(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            var __workflow_bodyupdated = WorkflowExpression.Compile(bodyupdated, nameof(bodyupdated), required: true);
-            var __workflow_bodyupdatedById = WorkflowExpression.Compile(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyuseFeaturedImage = WorkflowExpression.Compile(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation3, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/posts";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["abStatus"] = ExpressionConverter.ConvertO(__workflow_bodyabStatus);
-                bodypropCount++;
-                body["abTestId"] = ExpressionConverter.ConvertO(__workflow_bodyabTestId);
-                bodypropCount++;
-                body["archivedAt"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedAt);
-                bodypropCount++;
-                body["archivedInDashboard"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedInDashboard);
-                bodypropCount++;
-                body["attachedStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyattachedStylesheets);
-                bodypropCount++;
-                body["authorName"] = ExpressionConverter.ConvertO(__workflow_bodyauthorName);
-                bodypropCount++;
-                body["blogAuthorId"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthorId);
-                bodypropCount++;
-                body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
-                bodypropCount++;
-                body["categoryId"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
-                bodypropCount++;
-                body["contentGroupId"] = ExpressionConverter.ConvertO(__workflow_bodycontentGroupId);
-                bodypropCount++;
-                body["contentTypeCategory"] = ExpressionConverter.ConvertO(__workflow_bodycontentTypeCategory);
-                bodypropCount++;
-                body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                bodypropCount++;
-                body["createdById"] = ExpressionConverter.ConvertO(__workflow_bodycreatedById);
-                bodypropCount++;
-                body["currentState"] = ExpressionConverter.ConvertO(__workflow_bodycurrentState);
-                bodypropCount++;
-                body["currentlyPublished"] = ExpressionConverter.ConvertO(__workflow_bodycurrentlyPublished);
-                bodypropCount++;
-                body["domain"] = ExpressionConverter.ConvertO(__workflow_bodydomain);
-                bodypropCount++;
-                body["dynamicPageDataSourceId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceId);
-                bodypropCount++;
-                body["dynamicPageDataSourceType"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceType);
-                bodypropCount++;
-                body["dynamicPageHubDbTableId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageHubDbTableId);
-                bodypropCount++;
-                body["enableDomainStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableDomainStylesheets);
-                bodypropCount++;
-                body["enableGoogleAmpOutputOverride"] = ExpressionConverter.ConvertO(__workflow_bodyenableGoogleAmpOutputOverride);
-                bodypropCount++;
-                body["enableLayoutStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableLayoutStylesheets);
-                bodypropCount++;
-                body["featuredImage"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImage);
-                bodypropCount++;
-                body["featuredImageAltText"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImageAltText);
-                bodypropCount++;
-                body["folderId"] = ExpressionConverter.ConvertO(__workflow_bodyfolderId);
-                bodypropCount++;
-                body["footerHtml"] = ExpressionConverter.ConvertO(__workflow_bodyfooterHtml);
-                bodypropCount++;
-                body["headHtml"] = ExpressionConverter.ConvertO(__workflow_bodyheadHtml);
-                bodypropCount++;
-                body["htmlTitle"] = ExpressionConverter.ConvertO(__workflow_bodyhtmlTitle);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["includeDefaultCustomCss"] = ExpressionConverter.ConvertO(__workflow_bodyincludeDefaultCustomCss);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                var layoutSectionsObject = new JObject();
-                var layoutSectionsObjectpropCount = 0;
-                if (layoutSectionsObjectpropCount > 0)
-                {
-                    body["layoutSections"] = layoutSectionsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["linkRelCanonicalUrl"] = ExpressionConverter.ConvertO(__workflow_bodylinkRelCanonicalUrl);
-                bodypropCount++;
-                body["mabExperimentId"] = ExpressionConverter.ConvertO(__workflow_bodymabExperimentId);
-                bodypropCount++;
-                body["metaDescription"] = ExpressionConverter.ConvertO(__workflow_bodymetaDescription);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["pageExpiryDate"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryDate);
-                bodypropCount++;
-                body["pageExpiryEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryEnabled);
-                bodypropCount++;
-                body["pageExpiryRedirectId"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectId);
-                bodypropCount++;
-                body["pageExpiryRedirectUrl"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectUrl);
-                bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                bodypropCount++;
-                body["postBody"] = ExpressionConverter.ConvertO(__workflow_bodypostBody);
-                bodypropCount++;
-                body["postSummary"] = ExpressionConverter.ConvertO(__workflow_bodypostSummary);
-                bodypropCount++;
-                body["publicAccessRules"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRules);
-                bodypropCount++;
-                body["publicAccessRulesEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRulesEnabled);
-                bodypropCount++;
-                body["publishDate"] = ExpressionConverter.ConvertO(__workflow_bodypublishDate);
-                bodypropCount++;
-                body["publishImmediately"] = ExpressionConverter.ConvertO(__workflow_bodypublishImmediately);
-                bodypropCount++;
-                body["rssBody"] = ExpressionConverter.ConvertO(__workflow_bodyrssBody);
-                bodypropCount++;
-                body["rssSummary"] = ExpressionConverter.ConvertO(__workflow_bodyrssSummary);
-                bodypropCount++;
-                body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                bodypropCount++;
-                body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
-                bodypropCount++;
-                body["tagIds"] = ExpressionConverter.ConvertO(__workflow_bodytagIds);
-                var themeSettingsValuesObject = new JObject();
-                var themeSettingsValuesObjectpropCount = 0;
-                if (themeSettingsValuesObjectpropCount > 0)
-                {
-                    body["themeSettingsValues"] = themeSettingsValuesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["translatedFromId"] = ExpressionConverter.ConvertO(__workflow_bodytranslatedFromId);
-                var translationsObject = new JObject();
-                var translationsObjectpropCount = 0;
-                if (translationsObjectpropCount > 0)
-                {
-                    body["translations"] = translationsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdated);
-                bodypropCount++;
-                body["updatedById"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedById);
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                bodypropCount++;
-                body["useFeaturedImage"] = ExpressionConverter.ConvertO(__workflow_bodyuseFeaturedImage);
-                var widgetContainersObject = new JObject();
-                var widgetContainersObjectpropCount = 0;
-                if (widgetContainersObjectpropCount > 0)
-                {
-                    body["widgetContainers"] = widgetContainersObject;
-                    bodypropCount++;
-                }
-
-                var widgetsObject = new JObject();
-                var widgetsObjectpropCount = 0;
-                if (widgetsObjectpropCount > 0)
-                {
-                    body["widgets"] = widgetsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation3>(callPayload);
             });
         }
@@ -673,23 +198,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DetachaBlogPostfromamultiLanguagegroup(Expression<Func<string>> bodyid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DetachaBlogPostfromamultiLanguagegroup(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/posts/multi-language/detach-from-lang-group";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -708,23 +225,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofBlogPosts(Expression<Func<string[]>> bodyinputs)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofBlogPosts(Expression<Func<ClonerowsinbatchBodyInput>> body)
         {
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/posts/batch/archive";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -743,32 +252,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AttachaBlogPosttoamultiLanguagegroup(Expression<Func<string>> bodyid, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyprimaryId, Expression<Func<string>> bodyprimaryLanguage)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AttachaBlogPosttoamultiLanguagegroup(Expression<Func<AttachaBlogAuthortoamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodyprimaryId = WorkflowExpression.Compile(bodyprimaryId, nameof(bodyprimaryId), required: true);
-            var __workflow_bodyprimaryLanguage = WorkflowExpression.Compile(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/posts/multi-language/attach-to-lang-group";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["primaryId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryId);
-                bodypropCount++;
-                body["primaryLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryLanguage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -796,23 +288,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Setanewprimarylanguage(Expression<Func<string>> bodyid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Setanewprimarylanguage(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/posts/multi-language/set-new-lang-primary";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -834,65 +318,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> UpdateaBlog(Expression<Func<string>> objectId, Expression<Func<string>> bodyabStatus, Expression<Func<string>> bodyabTestId, Expression<Func<string>> bodyarchivedAt, Expression<Func<bool>> bodyarchivedInDashboard, Expression<Func<JToken[]>> bodyattachedStylesheets, Expression<Func<string>> bodyauthorName, Expression<Func<string>> bodyblogAuthorId, Expression<Func<string>> bodycampaign, Expression<Func<string>> bodycategoryId, Expression<Func<string>> bodycontentGroupId, Expression<Func<string>> bodycontentTypeCategory, Expression<Func<string>> bodycreated, Expression<Func<string>> bodycreatedById, Expression<Func<string>> bodycurrentState, Expression<Func<bool>> bodycurrentlyPublished, Expression<Func<string>> bodydomain, Expression<Func<string>> bodydynamicPageDataSourceId, Expression<Func<string>> bodydynamicPageDataSourceType, Expression<Func<string>> bodydynamicPageHubDbTableId, Expression<Func<bool>> bodyenableDomainStylesheets, Expression<Func<bool>> bodyenableGoogleAmpOutputOverride, Expression<Func<bool>> bodyenableLayoutStylesheets, Expression<Func<string>> bodyfeaturedImage, Expression<Func<string>> bodyfeaturedImageAltText, Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyfooterHtml, Expression<Func<string>> bodyheadHtml, Expression<Func<string>> bodyhtmlTitle, Expression<Func<string>> bodyid, Expression<Func<bool>> bodyincludeDefaultCustomCss, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodylinkRelCanonicalUrl, Expression<Func<string>> bodymabExperimentId, Expression<Func<string>> bodymetaDescription, Expression<Func<string>> bodyname, Expression<Func<string>> bodypageExpiryDate, Expression<Func<bool>> bodypageExpiryEnabled, Expression<Func<string>> bodypageExpiryRedirectId, Expression<Func<string>> bodypageExpiryRedirectUrl, Expression<Func<string>> bodypassword, Expression<Func<string>> bodypostBody, Expression<Func<string>> bodypostSummary, Expression<Func<string[]>> bodypublicAccessRules, Expression<Func<bool>> bodypublicAccessRulesEnabled, Expression<Func<string>> bodypublishDate, Expression<Func<string>> bodypublishImmediately, Expression<Func<string>> bodyrssBody, Expression<Func<string>> bodyrssSummary, Expression<Func<string>> bodyslug, Expression<Func<string>> bodystate, Expression<Func<string[]>> bodytagIds, Expression<Func<string>> bodytranslatedFromId, Expression<Func<string>> bodyupdated, Expression<Func<string>> bodyupdatedById, Expression<Func<string>> bodyurl, Expression<Func<bool>> bodyuseFeaturedImage, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<Successfuloperation3, ApiConnectionActionConfiguration> UpdateaBlog(Expression<Func<string>> objectId, Expression<Func<CreateanewBlogBodyInput>> body, Expression<Func<bool>> archived = null)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            var __workflow_bodyabStatus = WorkflowExpression.Compile(bodyabStatus, nameof(bodyabStatus), required: true);
-            var __workflow_bodyabTestId = WorkflowExpression.Compile(bodyabTestId, nameof(bodyabTestId), required: true);
-            var __workflow_bodyarchivedAt = WorkflowExpression.Compile(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            var __workflow_bodyarchivedInDashboard = WorkflowExpression.Compile(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            var __workflow_bodyattachedStylesheets = WorkflowExpression.Compile(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            var __workflow_bodyauthorName = WorkflowExpression.Compile(bodyauthorName, nameof(bodyauthorName), required: true);
-            var __workflow_bodyblogAuthorId = WorkflowExpression.Compile(bodyblogAuthorId, nameof(bodyblogAuthorId), required: true);
-            var __workflow_bodycampaign = WorkflowExpression.Compile(bodycampaign, nameof(bodycampaign), required: true);
-            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: true);
-            var __workflow_bodycontentGroupId = WorkflowExpression.Compile(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            var __workflow_bodycontentTypeCategory = WorkflowExpression.Compile(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: true);
-            var __workflow_bodycreatedById = WorkflowExpression.Compile(bodycreatedById, nameof(bodycreatedById), required: true);
-            var __workflow_bodycurrentState = WorkflowExpression.Compile(bodycurrentState, nameof(bodycurrentState), required: true);
-            var __workflow_bodycurrentlyPublished = WorkflowExpression.Compile(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: true);
-            var __workflow_bodydynamicPageDataSourceId = WorkflowExpression.Compile(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            var __workflow_bodydynamicPageDataSourceType = WorkflowExpression.Compile(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            var __workflow_bodydynamicPageHubDbTableId = WorkflowExpression.Compile(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            var __workflow_bodyenableDomainStylesheets = WorkflowExpression.Compile(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            var __workflow_bodyenableGoogleAmpOutputOverride = WorkflowExpression.Compile(bodyenableGoogleAmpOutputOverride, nameof(bodyenableGoogleAmpOutputOverride), required: true);
-            var __workflow_bodyenableLayoutStylesheets = WorkflowExpression.Compile(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            var __workflow_bodyfeaturedImage = WorkflowExpression.Compile(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            var __workflow_bodyfeaturedImageAltText = WorkflowExpression.Compile(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
-            var __workflow_bodyfooterHtml = WorkflowExpression.Compile(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            var __workflow_bodyheadHtml = WorkflowExpression.Compile(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            var __workflow_bodyhtmlTitle = WorkflowExpression.Compile(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyincludeDefaultCustomCss = WorkflowExpression.Compile(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodylinkRelCanonicalUrl = WorkflowExpression.Compile(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            var __workflow_bodymabExperimentId = WorkflowExpression.Compile(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            var __workflow_bodymetaDescription = WorkflowExpression.Compile(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodypageExpiryDate = WorkflowExpression.Compile(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            var __workflow_bodypageExpiryEnabled = WorkflowExpression.Compile(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            var __workflow_bodypageExpiryRedirectId = WorkflowExpression.Compile(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            var __workflow_bodypageExpiryRedirectUrl = WorkflowExpression.Compile(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodypostBody = WorkflowExpression.Compile(bodypostBody, nameof(bodypostBody), required: true);
-            var __workflow_bodypostSummary = WorkflowExpression.Compile(bodypostSummary, nameof(bodypostSummary), required: true);
-            var __workflow_bodypublicAccessRules = WorkflowExpression.Compile(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            var __workflow_bodypublicAccessRulesEnabled = WorkflowExpression.Compile(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            var __workflow_bodypublishDate = WorkflowExpression.Compile(bodypublishDate, nameof(bodypublishDate), required: true);
-            var __workflow_bodypublishImmediately = WorkflowExpression.Compile(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            var __workflow_bodyrssBody = WorkflowExpression.Compile(bodyrssBody, nameof(bodyrssBody), required: true);
-            var __workflow_bodyrssSummary = WorkflowExpression.Compile(bodyrssSummary, nameof(bodyrssSummary), required: true);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: true);
-            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: true);
-            var __workflow_bodytagIds = WorkflowExpression.Compile(bodytagIds, nameof(bodytagIds), required: true);
-            var __workflow_bodytranslatedFromId = WorkflowExpression.Compile(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            var __workflow_bodyupdated = WorkflowExpression.Compile(bodyupdated, nameof(bodyupdated), required: true);
-            var __workflow_bodyupdatedById = WorkflowExpression.Compile(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyuseFeaturedImage = WorkflowExpression.Compile(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<Successfuloperation3, ApiConnectionActionConfiguration>(() =>
             {
@@ -901,165 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["abStatus"] = ExpressionConverter.ConvertO(__workflow_bodyabStatus);
-                bodypropCount++;
-                body["abTestId"] = ExpressionConverter.ConvertO(__workflow_bodyabTestId);
-                bodypropCount++;
-                body["archivedAt"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedAt);
-                bodypropCount++;
-                body["archivedInDashboard"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedInDashboard);
-                bodypropCount++;
-                body["attachedStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyattachedStylesheets);
-                bodypropCount++;
-                body["authorName"] = ExpressionConverter.ConvertO(__workflow_bodyauthorName);
-                bodypropCount++;
-                body["blogAuthorId"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthorId);
-                bodypropCount++;
-                body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
-                bodypropCount++;
-                body["categoryId"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
-                bodypropCount++;
-                body["contentGroupId"] = ExpressionConverter.ConvertO(__workflow_bodycontentGroupId);
-                bodypropCount++;
-                body["contentTypeCategory"] = ExpressionConverter.ConvertO(__workflow_bodycontentTypeCategory);
-                bodypropCount++;
-                body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                bodypropCount++;
-                body["createdById"] = ExpressionConverter.ConvertO(__workflow_bodycreatedById);
-                bodypropCount++;
-                body["currentState"] = ExpressionConverter.ConvertO(__workflow_bodycurrentState);
-                bodypropCount++;
-                body["currentlyPublished"] = ExpressionConverter.ConvertO(__workflow_bodycurrentlyPublished);
-                bodypropCount++;
-                body["domain"] = ExpressionConverter.ConvertO(__workflow_bodydomain);
-                bodypropCount++;
-                body["dynamicPageDataSourceId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceId);
-                bodypropCount++;
-                body["dynamicPageDataSourceType"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceType);
-                bodypropCount++;
-                body["dynamicPageHubDbTableId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageHubDbTableId);
-                bodypropCount++;
-                body["enableDomainStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableDomainStylesheets);
-                bodypropCount++;
-                body["enableGoogleAmpOutputOverride"] = ExpressionConverter.ConvertO(__workflow_bodyenableGoogleAmpOutputOverride);
-                bodypropCount++;
-                body["enableLayoutStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableLayoutStylesheets);
-                bodypropCount++;
-                body["featuredImage"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImage);
-                bodypropCount++;
-                body["featuredImageAltText"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImageAltText);
-                bodypropCount++;
-                body["folderId"] = ExpressionConverter.ConvertO(__workflow_bodyfolderId);
-                bodypropCount++;
-                body["footerHtml"] = ExpressionConverter.ConvertO(__workflow_bodyfooterHtml);
-                bodypropCount++;
-                body["headHtml"] = ExpressionConverter.ConvertO(__workflow_bodyheadHtml);
-                bodypropCount++;
-                body["htmlTitle"] = ExpressionConverter.ConvertO(__workflow_bodyhtmlTitle);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["includeDefaultCustomCss"] = ExpressionConverter.ConvertO(__workflow_bodyincludeDefaultCustomCss);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                var layoutSectionsObject = new JObject();
-                var layoutSectionsObjectpropCount = 0;
-                if (layoutSectionsObjectpropCount > 0)
-                {
-                    body["layoutSections"] = layoutSectionsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["linkRelCanonicalUrl"] = ExpressionConverter.ConvertO(__workflow_bodylinkRelCanonicalUrl);
-                bodypropCount++;
-                body["mabExperimentId"] = ExpressionConverter.ConvertO(__workflow_bodymabExperimentId);
-                bodypropCount++;
-                body["metaDescription"] = ExpressionConverter.ConvertO(__workflow_bodymetaDescription);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["pageExpiryDate"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryDate);
-                bodypropCount++;
-                body["pageExpiryEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryEnabled);
-                bodypropCount++;
-                body["pageExpiryRedirectId"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectId);
-                bodypropCount++;
-                body["pageExpiryRedirectUrl"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectUrl);
-                bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                bodypropCount++;
-                body["postBody"] = ExpressionConverter.ConvertO(__workflow_bodypostBody);
-                bodypropCount++;
-                body["postSummary"] = ExpressionConverter.ConvertO(__workflow_bodypostSummary);
-                bodypropCount++;
-                body["publicAccessRules"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRules);
-                bodypropCount++;
-                body["publicAccessRulesEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRulesEnabled);
-                bodypropCount++;
-                body["publishDate"] = ExpressionConverter.ConvertO(__workflow_bodypublishDate);
-                bodypropCount++;
-                body["publishImmediately"] = ExpressionConverter.ConvertO(__workflow_bodypublishImmediately);
-                bodypropCount++;
-                body["rssBody"] = ExpressionConverter.ConvertO(__workflow_bodyrssBody);
-                bodypropCount++;
-                body["rssSummary"] = ExpressionConverter.ConvertO(__workflow_bodyrssSummary);
-                bodypropCount++;
-                body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                bodypropCount++;
-                body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
-                bodypropCount++;
-                body["tagIds"] = ExpressionConverter.ConvertO(__workflow_bodytagIds);
-                var themeSettingsValuesObject = new JObject();
-                var themeSettingsValuesObjectpropCount = 0;
-                if (themeSettingsValuesObjectpropCount > 0)
-                {
-                    body["themeSettingsValues"] = themeSettingsValuesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["translatedFromId"] = ExpressionConverter.ConvertO(__workflow_bodytranslatedFromId);
-                var translationsObject = new JObject();
-                var translationsObjectpropCount = 0;
-                if (translationsObjectpropCount > 0)
-                {
-                    body["translations"] = translationsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdated);
-                bodypropCount++;
-                body["updatedById"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedById);
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                bodypropCount++;
-                body["useFeaturedImage"] = ExpressionConverter.ConvertO(__workflow_bodyuseFeaturedImage);
-                var widgetContainersObject = new JObject();
-                var widgetContainersObjectpropCount = 0;
-                if (widgetContainersObjectpropCount > 0)
-                {
-                    body["widgetContainers"] = widgetContainersObject;
-                    bodypropCount++;
-                }
-
-                var widgetsObject = new JObject();
-                var widgetsObjectpropCount = 0;
-                if (widgetsObjectpropCount > 0)
-                {
-                    body["widgets"] = widgetsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation3>(callPayload);
             });
         }
@@ -1100,26 +371,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation15, ApiConnectionActionConfiguration> UpdateaBlogAuthor(Expression<Func<string>> objectId, Expression<Func<string>> bodyavatar, Expression<Func<string>> bodybio, Expression<Func<string>> bodycreated, Expression<Func<string>> bodydeletedAt, Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfacebook, Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyid, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodylinkedin, Expression<Func<string>> bodyname, Expression<Func<string>> bodyslug, Expression<Func<string>> bodytranslatedFromId, Expression<Func<string>> bodytwitter, Expression<Func<string>> bodyupdated, Expression<Func<string>> bodywebsite, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<Successfuloperation15, ApiConnectionActionConfiguration> UpdateaBlogAuthor(Expression<Func<string>> objectId, Expression<Func<CreateanewBlogAuthorBodyInput>> body, Expression<Func<bool>> archived = null)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            var __workflow_bodyavatar = WorkflowExpression.Compile(bodyavatar, nameof(bodyavatar), required: true);
-            var __workflow_bodybio = WorkflowExpression.Compile(bodybio, nameof(bodybio), required: true);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: true);
-            var __workflow_bodydeletedAt = WorkflowExpression.Compile(bodydeletedAt, nameof(bodydeletedAt), required: true);
-            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyfacebook = WorkflowExpression.Compile(bodyfacebook, nameof(bodyfacebook), required: true);
-            var __workflow_bodyfullName = WorkflowExpression.Compile(bodyfullName, nameof(bodyfullName), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodylinkedin = WorkflowExpression.Compile(bodylinkedin, nameof(bodylinkedin), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: true);
-            var __workflow_bodytranslatedFromId = WorkflowExpression.Compile(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            var __workflow_bodytwitter = WorkflowExpression.Compile(bodytwitter, nameof(bodytwitter), required: true);
-            var __workflow_bodyupdated = WorkflowExpression.Compile(bodyupdated, nameof(bodyupdated), required: true);
-            var __workflow_bodywebsite = WorkflowExpression.Compile(bodywebsite, nameof(bodywebsite), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<Successfuloperation15, ApiConnectionActionConfiguration>(() =>
             {
@@ -1128,113 +383,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["avatar"] = ExpressionConverter.ConvertO(__workflow_bodyavatar);
-                bodypropCount++;
-                body["bio"] = ExpressionConverter.ConvertO(__workflow_bodybio);
-                bodypropCount++;
-                body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                bodypropCount++;
-                body["deletedAt"] = ExpressionConverter.ConvertO(__workflow_bodydeletedAt);
-                bodypropCount++;
-                body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                bodypropCount++;
-                body["facebook"] = ExpressionConverter.ConvertO(__workflow_bodyfacebook);
-                bodypropCount++;
-                body["fullName"] = ExpressionConverter.ConvertO(__workflow_bodyfullName);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["linkedin"] = ExpressionConverter.ConvertO(__workflow_bodylinkedin);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                bodypropCount++;
-                body["translatedFromId"] = ExpressionConverter.ConvertO(__workflow_bodytranslatedFromId);
-                bodypropCount++;
-                body["twitter"] = ExpressionConverter.ConvertO(__workflow_bodytwitter);
-                bodypropCount++;
-                body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdated);
-                bodypropCount++;
-                body["website"] = ExpressionConverter.ConvertO(__workflow_bodywebsite);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation15>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DetachaBlogAuthorfromamultiLanguagegroup(Expression<Func<string>> bodyid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DetachaBlogAuthorfromamultiLanguagegroup(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/authors/multi-language/detach-from-lang-group";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage(Expression<Func<string>> bodyid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/authors/multi-language/set-new-lang-primary";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofBlogAuthors(Expression<Func<string[]>> bodyinputs)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofBlogAuthors(Expression<Func<ClonerowsinbatchBodyInput>> body)
         {
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/authors/batch/archive";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1285,249 +476,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation15, ApiConnectionActionConfiguration> CreateanewBlogAuthor(Expression<Func<string>> bodyavatar, Expression<Func<string>> bodybio, Expression<Func<string>> bodycreated, Expression<Func<string>> bodydeletedAt, Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfacebook, Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyid, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodylinkedin, Expression<Func<string>> bodyname, Expression<Func<string>> bodyslug, Expression<Func<string>> bodytranslatedFromId, Expression<Func<string>> bodytwitter, Expression<Func<string>> bodyupdated, Expression<Func<string>> bodywebsite)
+        public IBodyWorkflowAction<Successfuloperation15, ApiConnectionActionConfiguration> CreateanewBlogAuthor(Expression<Func<CreateanewBlogAuthorBodyInput>> body)
         {
-            var __workflow_bodyavatar = WorkflowExpression.Compile(bodyavatar, nameof(bodyavatar), required: true);
-            var __workflow_bodybio = WorkflowExpression.Compile(bodybio, nameof(bodybio), required: true);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: true);
-            var __workflow_bodydeletedAt = WorkflowExpression.Compile(bodydeletedAt, nameof(bodydeletedAt), required: true);
-            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
-            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyfacebook = WorkflowExpression.Compile(bodyfacebook, nameof(bodyfacebook), required: true);
-            var __workflow_bodyfullName = WorkflowExpression.Compile(bodyfullName, nameof(bodyfullName), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodylinkedin = WorkflowExpression.Compile(bodylinkedin, nameof(bodylinkedin), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: true);
-            var __workflow_bodytranslatedFromId = WorkflowExpression.Compile(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            var __workflow_bodytwitter = WorkflowExpression.Compile(bodytwitter, nameof(bodytwitter), required: true);
-            var __workflow_bodyupdated = WorkflowExpression.Compile(bodyupdated, nameof(bodyupdated), required: true);
-            var __workflow_bodywebsite = WorkflowExpression.Compile(bodywebsite, nameof(bodywebsite), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation15, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/authors";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["avatar"] = ExpressionConverter.ConvertO(__workflow_bodyavatar);
-                bodypropCount++;
-                body["bio"] = ExpressionConverter.ConvertO(__workflow_bodybio);
-                bodypropCount++;
-                body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                bodypropCount++;
-                body["deletedAt"] = ExpressionConverter.ConvertO(__workflow_bodydeletedAt);
-                bodypropCount++;
-                body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
-                bodypropCount++;
-                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
-                bodypropCount++;
-                body["facebook"] = ExpressionConverter.ConvertO(__workflow_bodyfacebook);
-                bodypropCount++;
-                body["fullName"] = ExpressionConverter.ConvertO(__workflow_bodyfullName);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["linkedin"] = ExpressionConverter.ConvertO(__workflow_bodylinkedin);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                bodypropCount++;
-                body["translatedFromId"] = ExpressionConverter.ConvertO(__workflow_bodytranslatedFromId);
-                bodypropCount++;
-                body["twitter"] = ExpressionConverter.ConvertO(__workflow_bodytwitter);
-                bodypropCount++;
-                body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdated);
-                bodypropCount++;
-                body["website"] = ExpressionConverter.ConvertO(__workflow_bodywebsite);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation15>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation15, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation(Expression<Func<string>> bodyblogAuthoravatar, Expression<Func<string>> bodyblogAuthorbio, Expression<Func<string>> bodyblogAuthorcreated, Expression<Func<string>> bodyblogAuthordeletedAt, Expression<Func<string>> bodyblogAuthordisplayName, Expression<Func<string>> bodyblogAuthoremail, Expression<Func<string>> bodyblogAuthorfacebook, Expression<Func<string>> bodyblogAuthorfullName, Expression<Func<string>> bodyblogAuthorid, Expression<Func<string>> bodyblogAuthorlanguage, Expression<Func<string>> bodyblogAuthorlinkedin, Expression<Func<string>> bodyblogAuthorname, Expression<Func<string>> bodyblogAuthorslug, Expression<Func<string>> bodyblogAuthortranslatedFromId, Expression<Func<string>> bodyblogAuthortwitter, Expression<Func<string>> bodyblogAuthorupdated, Expression<Func<string>> bodyblogAuthorwebsite, Expression<Func<string>> bodyid, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyprimaryLanguage)
+        public IBodyWorkflowAction<Successfuloperation15, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation(Expression<Func<PostCreateanewlanguagevariationBodyInput>> body)
         {
-            var __workflow_bodyblogAuthoravatar = WorkflowExpression.Compile(bodyblogAuthoravatar, nameof(bodyblogAuthoravatar), required: true);
-            var __workflow_bodyblogAuthorbio = WorkflowExpression.Compile(bodyblogAuthorbio, nameof(bodyblogAuthorbio), required: true);
-            var __workflow_bodyblogAuthorcreated = WorkflowExpression.Compile(bodyblogAuthorcreated, nameof(bodyblogAuthorcreated), required: true);
-            var __workflow_bodyblogAuthordeletedAt = WorkflowExpression.Compile(bodyblogAuthordeletedAt, nameof(bodyblogAuthordeletedAt), required: true);
-            var __workflow_bodyblogAuthordisplayName = WorkflowExpression.Compile(bodyblogAuthordisplayName, nameof(bodyblogAuthordisplayName), required: true);
-            var __workflow_bodyblogAuthoremail = WorkflowExpression.Compile(bodyblogAuthoremail, nameof(bodyblogAuthoremail), required: true);
-            var __workflow_bodyblogAuthorfacebook = WorkflowExpression.Compile(bodyblogAuthorfacebook, nameof(bodyblogAuthorfacebook), required: true);
-            var __workflow_bodyblogAuthorfullName = WorkflowExpression.Compile(bodyblogAuthorfullName, nameof(bodyblogAuthorfullName), required: true);
-            var __workflow_bodyblogAuthorid = WorkflowExpression.Compile(bodyblogAuthorid, nameof(bodyblogAuthorid), required: true);
-            var __workflow_bodyblogAuthorlanguage = WorkflowExpression.Compile(bodyblogAuthorlanguage, nameof(bodyblogAuthorlanguage), required: true);
-            var __workflow_bodyblogAuthorlinkedin = WorkflowExpression.Compile(bodyblogAuthorlinkedin, nameof(bodyblogAuthorlinkedin), required: true);
-            var __workflow_bodyblogAuthorname = WorkflowExpression.Compile(bodyblogAuthorname, nameof(bodyblogAuthorname), required: true);
-            var __workflow_bodyblogAuthorslug = WorkflowExpression.Compile(bodyblogAuthorslug, nameof(bodyblogAuthorslug), required: true);
-            var __workflow_bodyblogAuthortranslatedFromId = WorkflowExpression.Compile(bodyblogAuthortranslatedFromId, nameof(bodyblogAuthortranslatedFromId), required: true);
-            var __workflow_bodyblogAuthortwitter = WorkflowExpression.Compile(bodyblogAuthortwitter, nameof(bodyblogAuthortwitter), required: true);
-            var __workflow_bodyblogAuthorupdated = WorkflowExpression.Compile(bodyblogAuthorupdated, nameof(bodyblogAuthorupdated), required: true);
-            var __workflow_bodyblogAuthorwebsite = WorkflowExpression.Compile(bodyblogAuthorwebsite, nameof(bodyblogAuthorwebsite), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodyprimaryLanguage = WorkflowExpression.Compile(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation15, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/authors/multi-language/create-language-variation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var blogAuthorObject = new JObject();
-                var blogAuthorObjectpropCount = 0;
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["avatar"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthoravatar);
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["bio"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthorbio);
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["created"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthorcreated);
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["deletedAt"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthordeletedAt);
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["displayName"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthordisplayName);
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["email"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthoremail);
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["facebook"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthorfacebook);
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["fullName"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthorfullName);
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["id"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthorid);
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["language"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthorlanguage);
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["linkedin"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthorlinkedin);
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthorname);
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["slug"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthorslug);
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["translatedFromId"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthortranslatedFromId);
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["twitter"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthortwitter);
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["updated"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthorupdated);
-                blogAuthorObjectpropCount++;
-                blogAuthorObject["website"] = ExpressionConverter.ConvertO(__workflow_bodyblogAuthorwebsite);
-                if (blogAuthorObjectpropCount > 0)
-                {
-                    body["blogAuthor"] = blogAuthorObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["primaryLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryLanguage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation15>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AttachaBlogAuthortoamultiLanguagegroup(Expression<Func<string>> bodyid, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyprimaryId, Expression<Func<string>> bodyprimaryLanguage)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AttachaBlogAuthortoamultiLanguagegroup(Expression<Func<AttachaBlogAuthortoamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodyprimaryId = WorkflowExpression.Compile(bodyprimaryId, nameof(bodyprimaryId), required: true);
-            var __workflow_bodyprimaryLanguage = WorkflowExpression.Compile(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/authors/multi-language/attach-to-lang-group";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["primaryId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryId);
-                bodypropCount++;
-                body["primaryLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryLanguage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup(Expression<Func<string>> bodyprimaryId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup(Expression<Func<PostUpdatelanguagesofmultiLanguagegroup1BodyInput>> body)
         {
-            var __workflow_bodyprimaryId = WorkflowExpression.Compile(bodyprimaryId, nameof(bodyprimaryId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/authors/multi-language/update-languages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var languagesObject = new JObject();
-                var languagesObjectpropCount = 0;
-                if (languagesObjectpropCount > 0)
-                {
-                    body["languages"] = languagesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["primaryId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup1(Expression<Func<string>> bodyprimaryId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup1(Expression<Func<PostUpdatelanguagesofmultiLanguagegroup1BodyInput>> body)
         {
-            var __workflow_bodyprimaryId = WorkflowExpression.Compile(bodyprimaryId, nameof(bodyprimaryId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blog-settings/settings/multi-language/update-languages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var languagesObject = new JObject();
-                var languagesObjectpropCount = 0;
-                if (languagesObjectpropCount > 0)
-                {
-                    body["languages"] = languagesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["primaryId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1582,32 +595,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation25, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation1(Expression<Func<string>> bodyid, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyprimaryLanguage, Expression<Func<string>> bodyslug)
+        public IBodyWorkflowAction<Successfuloperation25, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation1(Expression<Func<PostCreateanewlanguagevariation1BodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodyprimaryLanguage = WorkflowExpression.Compile(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation25, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blog-settings/settings/multi-language/create-language-variation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["primaryLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryLanguage);
-                bodypropCount++;
-                body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation25>(callPayload);
             });
         }
@@ -1655,172 +651,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage1(Expression<Func<string>> bodyid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage1(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blog-settings/settings/multi-language/set-new-lang-primary";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DetachablogfromamultiLanguagegroup(Expression<Func<string>> bodyid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DetachablogfromamultiLanguagegroup(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blog-settings/settings/multi-language/detach-from-lang-group";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AttachablogtoamultiLanguagegroup(Expression<Func<string>> bodyid, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyprimaryId, Expression<Func<string>> bodyprimaryLanguage)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AttachablogtoamultiLanguagegroup(Expression<Func<AttachaBlogAuthortoamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodyprimaryId = WorkflowExpression.Compile(bodyprimaryId, nameof(bodyprimaryId), required: true);
-            var __workflow_bodyprimaryLanguage = WorkflowExpression.Compile(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blog-settings/settings/multi-language/attach-to-lang-group";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["primaryId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryId);
-                bodypropCount++;
-                body["primaryLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryLanguage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup2(Expression<Func<string>> bodyprimaryId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup2(Expression<Func<PostUpdatelanguagesofmultiLanguagegroup1BodyInput>> body)
         {
-            var __workflow_bodyprimaryId = WorkflowExpression.Compile(bodyprimaryId, nameof(bodyprimaryId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/tags/multi-language/update-languages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var languagesObject = new JObject();
-                var languagesObjectpropCount = 0;
-                if (languagesObjectpropCount > 0)
-                {
-                    body["languages"] = languagesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["primaryId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DetachaBlogTagfromamultiLanguagegroup(Expression<Func<string>> bodyid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DetachaBlogTagfromamultiLanguagegroup(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/tags/multi-language/detach-from-lang-group";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofBlogTags(Expression<Func<string[]>> bodyinputs)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofBlogTags(Expression<Func<ClonerowsinbatchBodyInput>> body)
         {
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/tags/batch/archive";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage2(Expression<Func<string>> bodyid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage2(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/tags/multi-language/set-new-lang-primary";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1871,72 +794,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation32, ApiConnectionActionConfiguration> CreateanewBlogTag(Expression<Func<string>> bodycreated, Expression<Func<string>> bodydeletedAt, Expression<Func<string>> bodyid, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyname, Expression<Func<string>> bodytranslatedFromId, Expression<Func<string>> bodyupdated)
+        public IBodyWorkflowAction<Successfuloperation32, ApiConnectionActionConfiguration> CreateanewBlogTag(Expression<Func<CreateanewBlogTagBodyInput>> body)
         {
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: true);
-            var __workflow_bodydeletedAt = WorkflowExpression.Compile(bodydeletedAt, nameof(bodydeletedAt), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodytranslatedFromId = WorkflowExpression.Compile(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            var __workflow_bodyupdated = WorkflowExpression.Compile(bodyupdated, nameof(bodyupdated), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation32, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/tags";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                bodypropCount++;
-                body["deletedAt"] = ExpressionConverter.ConvertO(__workflow_bodydeletedAt);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["translatedFromId"] = ExpressionConverter.ConvertO(__workflow_bodytranslatedFromId);
-                bodypropCount++;
-                body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdated);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation32>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AttachaBlogTagtoamultiLanguagegroup(Expression<Func<string>> bodyid, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyprimaryId, Expression<Func<string>> bodyprimaryLanguage)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AttachaBlogTagtoamultiLanguagegroup(Expression<Func<AttachaBlogAuthortoamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodyprimaryId = WorkflowExpression.Compile(bodyprimaryId, nameof(bodyprimaryId), required: true);
-            var __workflow_bodyprimaryLanguage = WorkflowExpression.Compile(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/tags/multi-language/attach-to-lang-group";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["primaryId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryId);
-                bodypropCount++;
-                body["primaryLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryLanguage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -1977,16 +857,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation32, ApiConnectionActionConfiguration> UpdateaBlogTag(Expression<Func<string>> objectId, Expression<Func<string>> bodycreated, Expression<Func<string>> bodydeletedAt, Expression<Func<string>> bodyid, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyname, Expression<Func<string>> bodytranslatedFromId, Expression<Func<string>> bodyupdated, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<Successfuloperation32, ApiConnectionActionConfiguration> UpdateaBlogTag(Expression<Func<string>> objectId, Expression<Func<CreateanewBlogTagBodyInput>> body, Expression<Func<bool>> archived = null)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: true);
-            var __workflow_bodydeletedAt = WorkflowExpression.Compile(bodydeletedAt, nameof(bodydeletedAt), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodytranslatedFromId = WorkflowExpression.Compile(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            var __workflow_bodyupdated = WorkflowExpression.Compile(bodyupdated, nameof(bodyupdated), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<Successfuloperation32, ApiConnectionActionConfiguration>(() =>
             {
@@ -1995,58 +869,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                bodypropCount++;
-                body["deletedAt"] = ExpressionConverter.ConvertO(__workflow_bodydeletedAt);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["translatedFromId"] = ExpressionConverter.ConvertO(__workflow_bodytranslatedFromId);
-                bodypropCount++;
-                body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdated);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation32>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation32, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation2(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyprimaryLanguage)
+        public IBodyWorkflowAction<Successfuloperation32, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation2(Expression<Func<PostCreateanewlanguagevariation2BodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodyprimaryLanguage = WorkflowExpression.Compile(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation32, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/blogs/tags/multi-language/create-language-variation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["primaryLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryLanguage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation32>(callPayload);
             });
         }
@@ -2138,30 +975,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation37, ApiConnectionActionConfiguration> Cloneatable(Expression<Func<string>> tableIdOrName, Expression<Func<string>> bodycopyRows, Expression<Func<string>> bodynewName, Expression<Func<string>> bodynewLabel)
+        public IBodyWorkflowAction<Successfuloperation37, ApiConnectionActionConfiguration> Cloneatable(Expression<Func<string>> tableIdOrName, Expression<Func<CloneatableBodyInput>> body)
         {
             var __workflow_tableIdOrName = WorkflowExpression.Compile(tableIdOrName, nameof(tableIdOrName), required: true);
-            var __workflow_bodycopyRows = WorkflowExpression.Compile(bodycopyRows, nameof(bodycopyRows), required: true);
-            var __workflow_bodynewName = WorkflowExpression.Compile(bodynewName, nameof(bodynewName), required: true);
-            var __workflow_bodynewLabel = WorkflowExpression.Compile(bodynewLabel, nameof(bodynewLabel), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation37, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hubdb/tables/{0}/draft/clone", __workflow_tableIdOrName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["copyRows"] = ExpressionConverter.ConvertO(__workflow_bodycopyRows);
-                bodypropCount++;
-                body["newName"] = ExpressionConverter.ConvertO(__workflow_bodynewName);
-                bodypropCount++;
-                body["newLabel"] = ExpressionConverter.ConvertO(__workflow_bodynewLabel);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation37>(callPayload);
             });
         }
@@ -2241,49 +1064,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation37, ApiConnectionActionConfiguration> Createanewtable(Expression<Func<string>> bodylabel, Expression<Func<string>> bodyname, Expression<Func<bool>> bodyuseForPages, Expression<Func<bool>> bodyallowPublicApiAccess, Expression<Func<bool>> bodyallowChildTables, Expression<Func<bool>> bodyenableChildTablePages, Expression<Func<Column5[]>> bodycolumns)
+        public IBodyWorkflowAction<Successfuloperation37, ApiConnectionActionConfiguration> Createanewtable(Expression<Func<CreateanewtableBodyInput>> body)
         {
-            var __workflow_bodylabel = WorkflowExpression.Compile(bodylabel, nameof(bodylabel), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyuseForPages = WorkflowExpression.Compile(bodyuseForPages, nameof(bodyuseForPages), required: true);
-            var __workflow_bodyallowPublicApiAccess = WorkflowExpression.Compile(bodyallowPublicApiAccess, nameof(bodyallowPublicApiAccess), required: true);
-            var __workflow_bodyallowChildTables = WorkflowExpression.Compile(bodyallowChildTables, nameof(bodyallowChildTables), required: true);
-            var __workflow_bodyenableChildTablePages = WorkflowExpression.Compile(bodyenableChildTablePages, nameof(bodyenableChildTablePages), required: true);
-            var __workflow_bodycolumns = WorkflowExpression.Compile(bodycolumns, nameof(bodycolumns), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation37, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/hubdb/tables";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["label"] = ExpressionConverter.ConvertO(__workflow_bodylabel);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["useForPages"] = ExpressionConverter.ConvertO(__workflow_bodyuseForPages);
-                bodypropCount++;
-                body["allowPublicApiAccess"] = ExpressionConverter.ConvertO(__workflow_bodyallowPublicApiAccess);
-                bodypropCount++;
-                body["allowChildTables"] = ExpressionConverter.ConvertO(__workflow_bodyallowChildTables);
-                bodypropCount++;
-                body["enableChildTablePages"] = ExpressionConverter.ConvertO(__workflow_bodyenableChildTablePages);
-                bodypropCount++;
-                body["columns"] = ExpressionConverter.ConvertO(__workflow_bodycolumns);
-                var dynamicMetaTagsObject = new JObject();
-                var dynamicMetaTagsObjectpropCount = 0;
-                if (dynamicMetaTagsObjectpropCount > 0)
-                {
-                    body["dynamicMetaTags"] = dynamicMetaTagsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation37>(callPayload);
             });
         }
@@ -2324,16 +1113,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation37, ApiConnectionActionConfiguration> Updateanexistingtable(Expression<Func<string>> tableIdOrName, Expression<Func<string>> bodylabel, Expression<Func<string>> bodyname, Expression<Func<bool>> bodyuseForPages, Expression<Func<bool>> bodyallowPublicApiAccess, Expression<Func<bool>> bodyallowChildTables, Expression<Func<bool>> bodyenableChildTablePages, Expression<Func<Column5[]>> bodycolumns, Expression<Func<bool>> includeForeignIds = null, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<Successfuloperation37, ApiConnectionActionConfiguration> Updateanexistingtable(Expression<Func<string>> tableIdOrName, Expression<Func<CreateanewtableBodyInput>> body, Expression<Func<bool>> includeForeignIds = null, Expression<Func<bool>> archived = null)
         {
             var __workflow_tableIdOrName = WorkflowExpression.Compile(tableIdOrName, nameof(tableIdOrName), required: true);
-            var __workflow_bodylabel = WorkflowExpression.Compile(bodylabel, nameof(bodylabel), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyuseForPages = WorkflowExpression.Compile(bodyuseForPages, nameof(bodyuseForPages), required: true);
-            var __workflow_bodyallowPublicApiAccess = WorkflowExpression.Compile(bodyallowPublicApiAccess, nameof(bodyallowPublicApiAccess), required: true);
-            var __workflow_bodyallowChildTables = WorkflowExpression.Compile(bodyallowChildTables, nameof(bodyallowChildTables), required: true);
-            var __workflow_bodyenableChildTablePages = WorkflowExpression.Compile(bodyenableChildTablePages, nameof(bodyenableChildTablePages), required: true);
-            var __workflow_bodycolumns = WorkflowExpression.Compile(bodycolumns, nameof(bodycolumns), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_includeForeignIds = WorkflowExpression.Compile(includeForeignIds, nameof(includeForeignIds), required: false);
             var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<Successfuloperation37, ApiConnectionActionConfiguration>(() =>
@@ -2345,35 +1128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
                     callPayload.Queries["includeForeignIds"] = ExpressionConverter.Convert(__workflow_includeForeignIds);
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["label"] = ExpressionConverter.ConvertO(__workflow_bodylabel);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["useForPages"] = ExpressionConverter.ConvertO(__workflow_bodyuseForPages);
-                bodypropCount++;
-                body["allowPublicApiAccess"] = ExpressionConverter.ConvertO(__workflow_bodyallowPublicApiAccess);
-                bodypropCount++;
-                body["allowChildTables"] = ExpressionConverter.ConvertO(__workflow_bodyallowChildTables);
-                bodypropCount++;
-                body["enableChildTablePages"] = ExpressionConverter.ConvertO(__workflow_bodyenableChildTablePages);
-                bodypropCount++;
-                body["columns"] = ExpressionConverter.ConvertO(__workflow_bodycolumns);
-                var dynamicMetaTagsObject = new JObject();
-                var dynamicMetaTagsObjectpropCount = 0;
-                if (dynamicMetaTagsObjectpropCount > 0)
-                {
-                    body["dynamicMetaTags"] = dynamicMetaTagsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation37>(callPayload);
             });
         }
@@ -2476,83 +1231,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation48, ApiConnectionActionConfiguration> Replacesanexistingrow(Expression<Func<string>> tableIdOrName, Expression<Func<int>> rowId, Expression<Func<string>> bodypath, Expression<Func<string>> bodyname, Expression<Func<string>> bodychildTableId, Expression<Func<string>> bodydisplayIndex)
+        public IBodyWorkflowAction<Successfuloperation48, ApiConnectionActionConfiguration> Replacesanexistingrow(Expression<Func<string>> tableIdOrName, Expression<Func<int>> rowId, Expression<Func<ReplacesanexistingrowBodyInput>> body)
         {
             var __workflow_tableIdOrName = WorkflowExpression.Compile(tableIdOrName, nameof(tableIdOrName), required: true);
             var __workflow_rowId = WorkflowExpression.Compile(rowId, nameof(rowId), required: true);
-            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodychildTableId = WorkflowExpression.Compile(bodychildTableId, nameof(bodychildTableId), required: true);
-            var __workflow_bodydisplayIndex = WorkflowExpression.Compile(bodydisplayIndex, nameof(bodydisplayIndex), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation48, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hubdb/tables/{0}/rows/{1}/draft", __workflow_tableIdOrName.WithUrlEncoding(1), __workflow_rowId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var valuesObject = new JObject();
-                var valuesObjectpropCount = 0;
-                if (valuesObjectpropCount > 0)
-                {
-                    body["values"] = valuesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["path"] = ExpressionConverter.ConvertO(__workflow_bodypath);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["childTableId"] = ExpressionConverter.ConvertO(__workflow_bodychildTableId);
-                bodypropCount++;
-                body["displayIndex"] = ExpressionConverter.ConvertO(__workflow_bodydisplayIndex);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation48>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation48, ApiConnectionActionConfiguration> Updatesanexistingrow(Expression<Func<string>> tableIdOrName, Expression<Func<int>> rowId, Expression<Func<string>> bodypath, Expression<Func<string>> bodyname, Expression<Func<string>> bodychildTableId, Expression<Func<int>> bodydisplayIndex)
+        public IBodyWorkflowAction<Successfuloperation48, ApiConnectionActionConfiguration> Updatesanexistingrow(Expression<Func<string>> tableIdOrName, Expression<Func<int>> rowId, Expression<Func<AddanewrowtoatableBodyInput>> body)
         {
             var __workflow_tableIdOrName = WorkflowExpression.Compile(tableIdOrName, nameof(tableIdOrName), required: true);
             var __workflow_rowId = WorkflowExpression.Compile(rowId, nameof(rowId), required: true);
-            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodychildTableId = WorkflowExpression.Compile(bodychildTableId, nameof(bodychildTableId), required: true);
-            var __workflow_bodydisplayIndex = WorkflowExpression.Compile(bodydisplayIndex, nameof(bodydisplayIndex), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation48, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hubdb/tables/{0}/rows/{1}/draft", __workflow_tableIdOrName.WithUrlEncoding(1), __workflow_rowId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var valuesObject = new JObject();
-                var valuesObjectpropCount = 0;
-                if (valuesObjectpropCount > 0)
-                {
-                    body["values"] = valuesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["path"] = ExpressionConverter.ConvertO(__workflow_bodypath);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["childTableId"] = ExpressionConverter.ConvertO(__workflow_bodychildTableId);
-                bodypropCount++;
-                body["displayIndex"] = ExpressionConverter.ConvertO(__workflow_bodydisplayIndex);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation48>(callPayload);
             });
         }
@@ -2583,87 +1288,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation48, ApiConnectionActionConfiguration> Addanewrowtoatable(Expression<Func<string>> tableIdOrName, Expression<Func<string>> bodypath, Expression<Func<string>> bodyname, Expression<Func<string>> bodychildTableId, Expression<Func<int>> bodydisplayIndex)
+        public IBodyWorkflowAction<Successfuloperation48, ApiConnectionActionConfiguration> Addanewrowtoatable(Expression<Func<string>> tableIdOrName, Expression<Func<AddanewrowtoatableBodyInput>> body)
         {
             var __workflow_tableIdOrName = WorkflowExpression.Compile(tableIdOrName, nameof(tableIdOrName), required: true);
-            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodychildTableId = WorkflowExpression.Compile(bodychildTableId, nameof(bodychildTableId), required: true);
-            var __workflow_bodydisplayIndex = WorkflowExpression.Compile(bodydisplayIndex, nameof(bodydisplayIndex), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation48, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hubdb/tables/{0}/rows", __workflow_tableIdOrName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var valuesObject = new JObject();
-                var valuesObjectpropCount = 0;
-                if (valuesObjectpropCount > 0)
-                {
-                    body["values"] = valuesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["path"] = ExpressionConverter.ConvertO(__workflow_bodypath);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["childTableId"] = ExpressionConverter.ConvertO(__workflow_bodychildTableId);
-                bodypropCount++;
-                body["displayIndex"] = ExpressionConverter.ConvertO(__workflow_bodydisplayIndex);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation48>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Permanentlydeletesrows(Expression<Func<string>> tableIdOrName, Expression<Func<string[]>> bodyinputs)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Permanentlydeletesrows(Expression<Func<string>> tableIdOrName, Expression<Func<ClonerowsinbatchBodyInput>> body)
         {
             var __workflow_tableIdOrName = WorkflowExpression.Compile(tableIdOrName, nameof(tableIdOrName), required: true);
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hubdb/tables/{0}/rows/draft/batch/purge", __workflow_tableIdOrName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation55, ApiConnectionActionConfiguration> Clonerowsinbatch(Expression<Func<string>> tableIdOrName, Expression<Func<string[]>> bodyinputs)
+        public IBodyWorkflowAction<Successfuloperation55, ApiConnectionActionConfiguration> Clonerowsinbatch(Expression<Func<string>> tableIdOrName, Expression<Func<ClonerowsinbatchBodyInput>> body)
         {
             var __workflow_tableIdOrName = WorkflowExpression.Compile(tableIdOrName, nameof(tableIdOrName), required: true);
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation55, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/hubdb/tables/{0}/rows/draft/batch/clone", __workflow_tableIdOrName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation55>(callPayload);
             });
         }
@@ -2697,79 +1361,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ScheduleaSitePagetobePublished(Expression<Func<string>> bodyid, Expression<Func<string>> bodypublishDate)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ScheduleaSitePagetobePublished(Expression<Func<ScheduleaBlogPosttobePublishedBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodypublishDate = WorkflowExpression.Compile(bodypublishDate, nameof(bodypublishDate), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/site-pages/schedule";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["publishDate"] = ExpressionConverter.ConvertO(__workflow_bodypublishDate);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AttachasitepagetoamultiLanguagegroup(Expression<Func<string>> bodyid, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyprimaryId, Expression<Func<string>> bodyprimaryLanguage)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AttachasitepagetoamultiLanguagegroup(Expression<Func<AttachaBlogAuthortoamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodyprimaryId = WorkflowExpression.Compile(bodyprimaryId, nameof(bodyprimaryId), required: true);
-            var __workflow_bodyprimaryLanguage = WorkflowExpression.Compile(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/site-pages/multi-language/attach-to-lang-group";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["primaryId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryId);
-                bodypropCount++;
-                body["primaryLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryLanguage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DetachasitepagefromamultiLanguagegroup(Expression<Func<string>> bodyid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DetachasitepagefromamultiLanguagegroup(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/site-pages/multi-language/detach-from-lang-group";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -2811,26 +1439,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EndanactiveABtest(Expression<Func<string>> bodyabTestId, Expression<Func<string>> bodywinnerId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EndanactiveABtest(Expression<Func<EndanactiveABtestBodyInput>> body)
         {
-            var __workflow_bodyabTestId = WorkflowExpression.Compile(bodyabTestId, nameof(bodyabTestId), required: true);
-            var __workflow_bodywinnerId = WorkflowExpression.Compile(bodywinnerId, nameof(bodywinnerId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/site-pages/ab-test/end";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["abTestId"] = ExpressionConverter.ConvertO(__workflow_bodyabTestId);
-                bodypropCount++;
-                body["winnerId"] = ExpressionConverter.ConvertO(__workflow_bodywinnerId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -2849,217 +1466,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> UpdateaSitePagedraft(Expression<Func<string>> objectId, Expression<Func<string>> bodyabStatus, Expression<Func<string>> bodyabTestId, Expression<Func<string>> bodyarchivedAt, Expression<Func<bool>> bodyarchivedInDashboard, Expression<Func<JToken[]>> bodyattachedStylesheets, Expression<Func<string>> bodyauthorName, Expression<Func<string>> bodycampaign, Expression<Func<string>> bodycategoryId, Expression<Func<string>> bodycontentGroupId, Expression<Func<string>> bodycontentTypeCategory, Expression<Func<string>> bodycreated, Expression<Func<string>> bodycreatedById, Expression<Func<string>> bodycurrentState, Expression<Func<bool>> bodycurrentlyPublished, Expression<Func<string>> bodydomain, Expression<Func<string>> bodydynamicPageDataSourceId, Expression<Func<string>> bodydynamicPageDataSourceType, Expression<Func<string>> bodydynamicPageHubDbTableId, Expression<Func<bool>> bodyenableDomainStylesheets, Expression<Func<bool>> bodyenableLayoutStylesheets, Expression<Func<string>> bodyfeaturedImage, Expression<Func<string>> bodyfeaturedImageAltText, Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyfooterHtml, Expression<Func<string>> bodyheadHtml, Expression<Func<string>> bodyhtmlTitle, Expression<Func<string>> bodyid, Expression<Func<bool>> bodyincludeDefaultCustomCss, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodylinkRelCanonicalUrl, Expression<Func<string>> bodymabExperimentId, Expression<Func<string>> bodymetaDescription, Expression<Func<string>> bodyname, Expression<Func<string>> bodypageExpiryDate, Expression<Func<bool>> bodypageExpiryEnabled, Expression<Func<string>> bodypageExpiryRedirectId, Expression<Func<string>> bodypageExpiryRedirectUrl, Expression<Func<bool>> bodypageRedirected, Expression<Func<string>> bodypassword, Expression<Func<string[]>> bodypublicAccessRules, Expression<Func<bool>> bodypublicAccessRulesEnabled, Expression<Func<string>> bodypublishDate, Expression<Func<string>> bodypublishImmediately, Expression<Func<string>> bodyslug, Expression<Func<string>> bodystate, Expression<Func<string>> bodysubCategory, Expression<Func<string>> bodytemplatePath, Expression<Func<string>> bodytranslatedFromId, Expression<Func<string>> bodyupdated, Expression<Func<string>> bodyupdatedById, Expression<Func<string>> bodyurl, Expression<Func<bool>> bodyuseFeaturedImage)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> UpdateaSitePagedraft(Expression<Func<string>> objectId, Expression<Func<CreateanewLandingPageBodyInput>> body)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            var __workflow_bodyabStatus = WorkflowExpression.Compile(bodyabStatus, nameof(bodyabStatus), required: true);
-            var __workflow_bodyabTestId = WorkflowExpression.Compile(bodyabTestId, nameof(bodyabTestId), required: true);
-            var __workflow_bodyarchivedAt = WorkflowExpression.Compile(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            var __workflow_bodyarchivedInDashboard = WorkflowExpression.Compile(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            var __workflow_bodyattachedStylesheets = WorkflowExpression.Compile(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            var __workflow_bodyauthorName = WorkflowExpression.Compile(bodyauthorName, nameof(bodyauthorName), required: true);
-            var __workflow_bodycampaign = WorkflowExpression.Compile(bodycampaign, nameof(bodycampaign), required: true);
-            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: true);
-            var __workflow_bodycontentGroupId = WorkflowExpression.Compile(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            var __workflow_bodycontentTypeCategory = WorkflowExpression.Compile(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: true);
-            var __workflow_bodycreatedById = WorkflowExpression.Compile(bodycreatedById, nameof(bodycreatedById), required: true);
-            var __workflow_bodycurrentState = WorkflowExpression.Compile(bodycurrentState, nameof(bodycurrentState), required: true);
-            var __workflow_bodycurrentlyPublished = WorkflowExpression.Compile(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: true);
-            var __workflow_bodydynamicPageDataSourceId = WorkflowExpression.Compile(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            var __workflow_bodydynamicPageDataSourceType = WorkflowExpression.Compile(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            var __workflow_bodydynamicPageHubDbTableId = WorkflowExpression.Compile(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            var __workflow_bodyenableDomainStylesheets = WorkflowExpression.Compile(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            var __workflow_bodyenableLayoutStylesheets = WorkflowExpression.Compile(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            var __workflow_bodyfeaturedImage = WorkflowExpression.Compile(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            var __workflow_bodyfeaturedImageAltText = WorkflowExpression.Compile(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
-            var __workflow_bodyfooterHtml = WorkflowExpression.Compile(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            var __workflow_bodyheadHtml = WorkflowExpression.Compile(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            var __workflow_bodyhtmlTitle = WorkflowExpression.Compile(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyincludeDefaultCustomCss = WorkflowExpression.Compile(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodylinkRelCanonicalUrl = WorkflowExpression.Compile(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            var __workflow_bodymabExperimentId = WorkflowExpression.Compile(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            var __workflow_bodymetaDescription = WorkflowExpression.Compile(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodypageExpiryDate = WorkflowExpression.Compile(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            var __workflow_bodypageExpiryEnabled = WorkflowExpression.Compile(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            var __workflow_bodypageExpiryRedirectId = WorkflowExpression.Compile(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            var __workflow_bodypageExpiryRedirectUrl = WorkflowExpression.Compile(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            var __workflow_bodypageRedirected = WorkflowExpression.Compile(bodypageRedirected, nameof(bodypageRedirected), required: true);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodypublicAccessRules = WorkflowExpression.Compile(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            var __workflow_bodypublicAccessRulesEnabled = WorkflowExpression.Compile(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            var __workflow_bodypublishDate = WorkflowExpression.Compile(bodypublishDate, nameof(bodypublishDate), required: true);
-            var __workflow_bodypublishImmediately = WorkflowExpression.Compile(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: true);
-            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: true);
-            var __workflow_bodysubCategory = WorkflowExpression.Compile(bodysubCategory, nameof(bodysubCategory), required: true);
-            var __workflow_bodytemplatePath = WorkflowExpression.Compile(bodytemplatePath, nameof(bodytemplatePath), required: true);
-            var __workflow_bodytranslatedFromId = WorkflowExpression.Compile(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            var __workflow_bodyupdated = WorkflowExpression.Compile(bodyupdated, nameof(bodyupdated), required: true);
-            var __workflow_bodyupdatedById = WorkflowExpression.Compile(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyuseFeaturedImage = WorkflowExpression.Compile(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pages/site-pages/{0}/draft", __workflow_objectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["abStatus"] = ExpressionConverter.ConvertO(__workflow_bodyabStatus);
-                bodypropCount++;
-                body["abTestId"] = ExpressionConverter.ConvertO(__workflow_bodyabTestId);
-                bodypropCount++;
-                body["archivedAt"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedAt);
-                bodypropCount++;
-                body["archivedInDashboard"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedInDashboard);
-                bodypropCount++;
-                body["attachedStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyattachedStylesheets);
-                bodypropCount++;
-                body["authorName"] = ExpressionConverter.ConvertO(__workflow_bodyauthorName);
-                bodypropCount++;
-                body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
-                bodypropCount++;
-                body["categoryId"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
-                bodypropCount++;
-                body["contentGroupId"] = ExpressionConverter.ConvertO(__workflow_bodycontentGroupId);
-                bodypropCount++;
-                body["contentTypeCategory"] = ExpressionConverter.ConvertO(__workflow_bodycontentTypeCategory);
-                bodypropCount++;
-                body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                bodypropCount++;
-                body["createdById"] = ExpressionConverter.ConvertO(__workflow_bodycreatedById);
-                bodypropCount++;
-                body["currentState"] = ExpressionConverter.ConvertO(__workflow_bodycurrentState);
-                bodypropCount++;
-                body["currentlyPublished"] = ExpressionConverter.ConvertO(__workflow_bodycurrentlyPublished);
-                bodypropCount++;
-                body["domain"] = ExpressionConverter.ConvertO(__workflow_bodydomain);
-                bodypropCount++;
-                body["dynamicPageDataSourceId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceId);
-                bodypropCount++;
-                body["dynamicPageDataSourceType"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceType);
-                bodypropCount++;
-                body["dynamicPageHubDbTableId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageHubDbTableId);
-                bodypropCount++;
-                body["enableDomainStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableDomainStylesheets);
-                bodypropCount++;
-                body["enableLayoutStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableLayoutStylesheets);
-                bodypropCount++;
-                body["featuredImage"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImage);
-                bodypropCount++;
-                body["featuredImageAltText"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImageAltText);
-                bodypropCount++;
-                body["folderId"] = ExpressionConverter.ConvertO(__workflow_bodyfolderId);
-                bodypropCount++;
-                body["footerHtml"] = ExpressionConverter.ConvertO(__workflow_bodyfooterHtml);
-                bodypropCount++;
-                body["headHtml"] = ExpressionConverter.ConvertO(__workflow_bodyheadHtml);
-                bodypropCount++;
-                body["htmlTitle"] = ExpressionConverter.ConvertO(__workflow_bodyhtmlTitle);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["includeDefaultCustomCss"] = ExpressionConverter.ConvertO(__workflow_bodyincludeDefaultCustomCss);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                var layoutSectionsObject = new JObject();
-                var layoutSectionsObjectpropCount = 0;
-                if (layoutSectionsObjectpropCount > 0)
-                {
-                    body["layoutSections"] = layoutSectionsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["linkRelCanonicalUrl"] = ExpressionConverter.ConvertO(__workflow_bodylinkRelCanonicalUrl);
-                bodypropCount++;
-                body["mabExperimentId"] = ExpressionConverter.ConvertO(__workflow_bodymabExperimentId);
-                bodypropCount++;
-                body["metaDescription"] = ExpressionConverter.ConvertO(__workflow_bodymetaDescription);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["pageExpiryDate"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryDate);
-                bodypropCount++;
-                body["pageExpiryEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryEnabled);
-                bodypropCount++;
-                body["pageExpiryRedirectId"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectId);
-                bodypropCount++;
-                body["pageExpiryRedirectUrl"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectUrl);
-                bodypropCount++;
-                body["pageRedirected"] = ExpressionConverter.ConvertO(__workflow_bodypageRedirected);
-                bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                bodypropCount++;
-                body["publicAccessRules"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRules);
-                bodypropCount++;
-                body["publicAccessRulesEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRulesEnabled);
-                bodypropCount++;
-                body["publishDate"] = ExpressionConverter.ConvertO(__workflow_bodypublishDate);
-                bodypropCount++;
-                body["publishImmediately"] = ExpressionConverter.ConvertO(__workflow_bodypublishImmediately);
-                bodypropCount++;
-                body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                bodypropCount++;
-                body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
-                bodypropCount++;
-                body["subCategory"] = ExpressionConverter.ConvertO(__workflow_bodysubCategory);
-                bodypropCount++;
-                body["templatePath"] = ExpressionConverter.ConvertO(__workflow_bodytemplatePath);
-                var themeSettingsValuesObject = new JObject();
-                var themeSettingsValuesObjectpropCount = 0;
-                if (themeSettingsValuesObjectpropCount > 0)
-                {
-                    body["themeSettingsValues"] = themeSettingsValuesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["translatedFromId"] = ExpressionConverter.ConvertO(__workflow_bodytranslatedFromId);
-                var translationsObject = new JObject();
-                var translationsObjectpropCount = 0;
-                if (translationsObjectpropCount > 0)
-                {
-                    body["translations"] = translationsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdated);
-                bodypropCount++;
-                body["updatedById"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedById);
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                bodypropCount++;
-                body["useFeaturedImage"] = ExpressionConverter.ConvertO(__workflow_bodyuseFeaturedImage);
-                var widgetContainersObject = new JObject();
-                var widgetContainersObjectpropCount = 0;
-                if (widgetContainersObjectpropCount > 0)
-                {
-                    body["widgetContainers"] = widgetContainersObject;
-                    bodypropCount++;
-                }
-
-                var widgetsObject = new JObject();
-                var widgetsObjectpropCount = 0;
-                if (widgetsObjectpropCount > 0)
-                {
-                    body["widgets"] = widgetsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation63>(callPayload);
             });
         }
@@ -3110,368 +1526,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CreateanewSitePage(Expression<Func<string>> bodyabStatus, Expression<Func<string>> bodyabTestId, Expression<Func<string>> bodyarchivedAt, Expression<Func<bool>> bodyarchivedInDashboard, Expression<Func<JToken[]>> bodyattachedStylesheets, Expression<Func<string>> bodyauthorName, Expression<Func<string>> bodycampaign, Expression<Func<string>> bodycategoryId, Expression<Func<string>> bodycontentGroupId, Expression<Func<string>> bodycontentTypeCategory, Expression<Func<string>> bodycreated, Expression<Func<string>> bodycreatedById, Expression<Func<string>> bodycurrentState, Expression<Func<bool>> bodycurrentlyPublished, Expression<Func<string>> bodydomain, Expression<Func<string>> bodydynamicPageDataSourceId, Expression<Func<string>> bodydynamicPageDataSourceType, Expression<Func<string>> bodydynamicPageHubDbTableId, Expression<Func<bool>> bodyenableDomainStylesheets, Expression<Func<bool>> bodyenableLayoutStylesheets, Expression<Func<string>> bodyfeaturedImage, Expression<Func<string>> bodyfeaturedImageAltText, Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyfooterHtml, Expression<Func<string>> bodyheadHtml, Expression<Func<string>> bodyhtmlTitle, Expression<Func<string>> bodyid, Expression<Func<bool>> bodyincludeDefaultCustomCss, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodylinkRelCanonicalUrl, Expression<Func<string>> bodymabExperimentId, Expression<Func<string>> bodymetaDescription, Expression<Func<string>> bodyname, Expression<Func<string>> bodypageExpiryDate, Expression<Func<bool>> bodypageExpiryEnabled, Expression<Func<string>> bodypageExpiryRedirectId, Expression<Func<string>> bodypageExpiryRedirectUrl, Expression<Func<bool>> bodypageRedirected, Expression<Func<string>> bodypassword, Expression<Func<string[]>> bodypublicAccessRules, Expression<Func<bool>> bodypublicAccessRulesEnabled, Expression<Func<string>> bodypublishDate, Expression<Func<string>> bodypublishImmediately, Expression<Func<string>> bodyslug, Expression<Func<string>> bodystate, Expression<Func<string>> bodysubCategory, Expression<Func<string>> bodytemplatePath, Expression<Func<string>> bodytranslatedFromId, Expression<Func<string>> bodyupdated, Expression<Func<string>> bodyupdatedById, Expression<Func<string>> bodyurl, Expression<Func<bool>> bodyuseFeaturedImage)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CreateanewSitePage(Expression<Func<CreateanewLandingPageBodyInput>> body)
         {
-            var __workflow_bodyabStatus = WorkflowExpression.Compile(bodyabStatus, nameof(bodyabStatus), required: true);
-            var __workflow_bodyabTestId = WorkflowExpression.Compile(bodyabTestId, nameof(bodyabTestId), required: true);
-            var __workflow_bodyarchivedAt = WorkflowExpression.Compile(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            var __workflow_bodyarchivedInDashboard = WorkflowExpression.Compile(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            var __workflow_bodyattachedStylesheets = WorkflowExpression.Compile(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            var __workflow_bodyauthorName = WorkflowExpression.Compile(bodyauthorName, nameof(bodyauthorName), required: true);
-            var __workflow_bodycampaign = WorkflowExpression.Compile(bodycampaign, nameof(bodycampaign), required: true);
-            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: true);
-            var __workflow_bodycontentGroupId = WorkflowExpression.Compile(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            var __workflow_bodycontentTypeCategory = WorkflowExpression.Compile(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: true);
-            var __workflow_bodycreatedById = WorkflowExpression.Compile(bodycreatedById, nameof(bodycreatedById), required: true);
-            var __workflow_bodycurrentState = WorkflowExpression.Compile(bodycurrentState, nameof(bodycurrentState), required: true);
-            var __workflow_bodycurrentlyPublished = WorkflowExpression.Compile(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: true);
-            var __workflow_bodydynamicPageDataSourceId = WorkflowExpression.Compile(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            var __workflow_bodydynamicPageDataSourceType = WorkflowExpression.Compile(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            var __workflow_bodydynamicPageHubDbTableId = WorkflowExpression.Compile(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            var __workflow_bodyenableDomainStylesheets = WorkflowExpression.Compile(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            var __workflow_bodyenableLayoutStylesheets = WorkflowExpression.Compile(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            var __workflow_bodyfeaturedImage = WorkflowExpression.Compile(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            var __workflow_bodyfeaturedImageAltText = WorkflowExpression.Compile(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
-            var __workflow_bodyfooterHtml = WorkflowExpression.Compile(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            var __workflow_bodyheadHtml = WorkflowExpression.Compile(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            var __workflow_bodyhtmlTitle = WorkflowExpression.Compile(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyincludeDefaultCustomCss = WorkflowExpression.Compile(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodylinkRelCanonicalUrl = WorkflowExpression.Compile(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            var __workflow_bodymabExperimentId = WorkflowExpression.Compile(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            var __workflow_bodymetaDescription = WorkflowExpression.Compile(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodypageExpiryDate = WorkflowExpression.Compile(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            var __workflow_bodypageExpiryEnabled = WorkflowExpression.Compile(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            var __workflow_bodypageExpiryRedirectId = WorkflowExpression.Compile(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            var __workflow_bodypageExpiryRedirectUrl = WorkflowExpression.Compile(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            var __workflow_bodypageRedirected = WorkflowExpression.Compile(bodypageRedirected, nameof(bodypageRedirected), required: true);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodypublicAccessRules = WorkflowExpression.Compile(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            var __workflow_bodypublicAccessRulesEnabled = WorkflowExpression.Compile(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            var __workflow_bodypublishDate = WorkflowExpression.Compile(bodypublishDate, nameof(bodypublishDate), required: true);
-            var __workflow_bodypublishImmediately = WorkflowExpression.Compile(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: true);
-            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: true);
-            var __workflow_bodysubCategory = WorkflowExpression.Compile(bodysubCategory, nameof(bodysubCategory), required: true);
-            var __workflow_bodytemplatePath = WorkflowExpression.Compile(bodytemplatePath, nameof(bodytemplatePath), required: true);
-            var __workflow_bodytranslatedFromId = WorkflowExpression.Compile(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            var __workflow_bodyupdated = WorkflowExpression.Compile(bodyupdated, nameof(bodyupdated), required: true);
-            var __workflow_bodyupdatedById = WorkflowExpression.Compile(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyuseFeaturedImage = WorkflowExpression.Compile(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/site-pages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["abStatus"] = ExpressionConverter.ConvertO(__workflow_bodyabStatus);
-                bodypropCount++;
-                body["abTestId"] = ExpressionConverter.ConvertO(__workflow_bodyabTestId);
-                bodypropCount++;
-                body["archivedAt"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedAt);
-                bodypropCount++;
-                body["archivedInDashboard"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedInDashboard);
-                bodypropCount++;
-                body["attachedStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyattachedStylesheets);
-                bodypropCount++;
-                body["authorName"] = ExpressionConverter.ConvertO(__workflow_bodyauthorName);
-                bodypropCount++;
-                body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
-                bodypropCount++;
-                body["categoryId"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
-                bodypropCount++;
-                body["contentGroupId"] = ExpressionConverter.ConvertO(__workflow_bodycontentGroupId);
-                bodypropCount++;
-                body["contentTypeCategory"] = ExpressionConverter.ConvertO(__workflow_bodycontentTypeCategory);
-                bodypropCount++;
-                body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                bodypropCount++;
-                body["createdById"] = ExpressionConverter.ConvertO(__workflow_bodycreatedById);
-                bodypropCount++;
-                body["currentState"] = ExpressionConverter.ConvertO(__workflow_bodycurrentState);
-                bodypropCount++;
-                body["currentlyPublished"] = ExpressionConverter.ConvertO(__workflow_bodycurrentlyPublished);
-                bodypropCount++;
-                body["domain"] = ExpressionConverter.ConvertO(__workflow_bodydomain);
-                bodypropCount++;
-                body["dynamicPageDataSourceId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceId);
-                bodypropCount++;
-                body["dynamicPageDataSourceType"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceType);
-                bodypropCount++;
-                body["dynamicPageHubDbTableId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageHubDbTableId);
-                bodypropCount++;
-                body["enableDomainStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableDomainStylesheets);
-                bodypropCount++;
-                body["enableLayoutStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableLayoutStylesheets);
-                bodypropCount++;
-                body["featuredImage"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImage);
-                bodypropCount++;
-                body["featuredImageAltText"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImageAltText);
-                bodypropCount++;
-                body["folderId"] = ExpressionConverter.ConvertO(__workflow_bodyfolderId);
-                bodypropCount++;
-                body["footerHtml"] = ExpressionConverter.ConvertO(__workflow_bodyfooterHtml);
-                bodypropCount++;
-                body["headHtml"] = ExpressionConverter.ConvertO(__workflow_bodyheadHtml);
-                bodypropCount++;
-                body["htmlTitle"] = ExpressionConverter.ConvertO(__workflow_bodyhtmlTitle);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["includeDefaultCustomCss"] = ExpressionConverter.ConvertO(__workflow_bodyincludeDefaultCustomCss);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                var layoutSectionsObject = new JObject();
-                var layoutSectionsObjectpropCount = 0;
-                if (layoutSectionsObjectpropCount > 0)
-                {
-                    body["layoutSections"] = layoutSectionsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["linkRelCanonicalUrl"] = ExpressionConverter.ConvertO(__workflow_bodylinkRelCanonicalUrl);
-                bodypropCount++;
-                body["mabExperimentId"] = ExpressionConverter.ConvertO(__workflow_bodymabExperimentId);
-                bodypropCount++;
-                body["metaDescription"] = ExpressionConverter.ConvertO(__workflow_bodymetaDescription);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["pageExpiryDate"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryDate);
-                bodypropCount++;
-                body["pageExpiryEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryEnabled);
-                bodypropCount++;
-                body["pageExpiryRedirectId"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectId);
-                bodypropCount++;
-                body["pageExpiryRedirectUrl"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectUrl);
-                bodypropCount++;
-                body["pageRedirected"] = ExpressionConverter.ConvertO(__workflow_bodypageRedirected);
-                bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                bodypropCount++;
-                body["publicAccessRules"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRules);
-                bodypropCount++;
-                body["publicAccessRulesEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRulesEnabled);
-                bodypropCount++;
-                body["publishDate"] = ExpressionConverter.ConvertO(__workflow_bodypublishDate);
-                bodypropCount++;
-                body["publishImmediately"] = ExpressionConverter.ConvertO(__workflow_bodypublishImmediately);
-                bodypropCount++;
-                body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                bodypropCount++;
-                body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
-                bodypropCount++;
-                body["subCategory"] = ExpressionConverter.ConvertO(__workflow_bodysubCategory);
-                bodypropCount++;
-                body["templatePath"] = ExpressionConverter.ConvertO(__workflow_bodytemplatePath);
-                var themeSettingsValuesObject = new JObject();
-                var themeSettingsValuesObjectpropCount = 0;
-                if (themeSettingsValuesObjectpropCount > 0)
-                {
-                    body["themeSettingsValues"] = themeSettingsValuesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["translatedFromId"] = ExpressionConverter.ConvertO(__workflow_bodytranslatedFromId);
-                var translationsObject = new JObject();
-                var translationsObjectpropCount = 0;
-                if (translationsObjectpropCount > 0)
-                {
-                    body["translations"] = translationsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdated);
-                bodypropCount++;
-                body["updatedById"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedById);
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                bodypropCount++;
-                body["useFeaturedImage"] = ExpressionConverter.ConvertO(__workflow_bodyuseFeaturedImage);
-                var widgetContainersObject = new JObject();
-                var widgetContainersObjectpropCount = 0;
-                if (widgetContainersObjectpropCount > 0)
-                {
-                    body["widgetContainers"] = widgetContainersObject;
-                    bodypropCount++;
-                }
-
-                var widgetsObject = new JObject();
-                var widgetsObjectpropCount = 0;
-                if (widgetsObjectpropCount > 0)
-                {
-                    body["widgets"] = widgetsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation63>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation3(Expression<Func<string>> bodyid, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyprimaryLanguage)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation3(Expression<Func<PostCreateanewlanguagevariation3BodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodyprimaryLanguage = WorkflowExpression.Compile(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/site-pages/multi-language/create-language-variation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["primaryLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryLanguage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation63>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CreateanewABtestvariation(Expression<Func<string>> bodycontentId, Expression<Func<string>> bodyvariationName)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CreateanewABtestvariation(Expression<Func<CreateanewABtestvariationBodyInput>> body)
         {
-            var __workflow_bodycontentId = WorkflowExpression.Compile(bodycontentId, nameof(bodycontentId), required: true);
-            var __workflow_bodyvariationName = WorkflowExpression.Compile(bodyvariationName, nameof(bodyvariationName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/site-pages/ab-test/create-variation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["contentId"] = ExpressionConverter.ConvertO(__workflow_bodycontentId);
-                bodypropCount++;
-                body["variationName"] = ExpressionConverter.ConvertO(__workflow_bodyvariationName);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation63>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup3(Expression<Func<string>> bodyprimaryId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup3(Expression<Func<PostUpdatelanguagesofmultiLanguagegroup1BodyInput>> body)
         {
-            var __workflow_bodyprimaryId = WorkflowExpression.Compile(bodyprimaryId, nameof(bodyprimaryId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/site-pages/multi-language/update-languages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var languagesObject = new JObject();
-                var languagesObjectpropCount = 0;
-                if (languagesObjectpropCount > 0)
-                {
-                    body["languages"] = languagesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["primaryId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofSitePages(Expression<Func<string[]>> bodyinputs)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofSitePages(Expression<Func<ClonerowsinbatchBodyInput>> body)
         {
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/site-pages/batch/archive";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CloneaSitePage(Expression<Func<string>> bodyid, Expression<Func<string>> bodycloneName)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CloneaSitePage(Expression<Func<CloneaBlogBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodycloneName = WorkflowExpression.Compile(bodycloneName, nameof(bodycloneName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/site-pages/clone";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["cloneName"] = ExpressionConverter.ConvertO(__workflow_bodycloneName);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation63>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage3(Expression<Func<string>> bodyid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage3(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/site-pages/multi-language/set-new-lang-primary";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -3490,26 +1637,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RerunapreviousABtest(Expression<Func<string>> bodyabTestId, Expression<Func<string>> bodyvariationId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RerunapreviousABtest(Expression<Func<PostRerunapreviousABtestBodyInput>> body)
         {
-            var __workflow_bodyabTestId = WorkflowExpression.Compile(bodyabTestId, nameof(bodyabTestId), required: true);
-            var __workflow_bodyvariationId = WorkflowExpression.Compile(bodyvariationId, nameof(bodyvariationId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/site-pages/ab-test/rerun";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["abTestId"] = ExpressionConverter.ConvertO(__workflow_bodyabTestId);
-                bodypropCount++;
-                body["variationId"] = ExpressionConverter.ConvertO(__workflow_bodyvariationId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -3563,61 +1699,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> UpdateaSitePage(Expression<Func<string>> objectId, Expression<Func<string>> bodyabStatus, Expression<Func<string>> bodyabTestId, Expression<Func<string>> bodyarchivedAt, Expression<Func<bool>> bodyarchivedInDashboard, Expression<Func<JToken[]>> bodyattachedStylesheets, Expression<Func<string>> bodyauthorName, Expression<Func<string>> bodycampaign, Expression<Func<string>> bodycategoryId, Expression<Func<string>> bodycontentGroupId, Expression<Func<string>> bodycontentTypeCategory, Expression<Func<string>> bodycreated, Expression<Func<string>> bodycreatedById, Expression<Func<string>> bodycurrentState, Expression<Func<bool>> bodycurrentlyPublished, Expression<Func<string>> bodydomain, Expression<Func<string>> bodydynamicPageDataSourceId, Expression<Func<string>> bodydynamicPageDataSourceType, Expression<Func<string>> bodydynamicPageHubDbTableId, Expression<Func<bool>> bodyenableDomainStylesheets, Expression<Func<bool>> bodyenableLayoutStylesheets, Expression<Func<string>> bodyfeaturedImage, Expression<Func<string>> bodyfeaturedImageAltText, Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyfooterHtml, Expression<Func<string>> bodyheadHtml, Expression<Func<string>> bodyhtmlTitle, Expression<Func<string>> bodyid, Expression<Func<bool>> bodyincludeDefaultCustomCss, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodylinkRelCanonicalUrl, Expression<Func<string>> bodymabExperimentId, Expression<Func<string>> bodymetaDescription, Expression<Func<string>> bodyname, Expression<Func<string>> bodypageExpiryDate, Expression<Func<bool>> bodypageExpiryEnabled, Expression<Func<string>> bodypageExpiryRedirectId, Expression<Func<string>> bodypageExpiryRedirectUrl, Expression<Func<bool>> bodypageRedirected, Expression<Func<string>> bodypassword, Expression<Func<string[]>> bodypublicAccessRules, Expression<Func<bool>> bodypublicAccessRulesEnabled, Expression<Func<string>> bodypublishDate, Expression<Func<string>> bodypublishImmediately, Expression<Func<string>> bodyslug, Expression<Func<string>> bodystate, Expression<Func<string>> bodysubCategory, Expression<Func<string>> bodytemplatePath, Expression<Func<string>> bodytranslatedFromId, Expression<Func<string>> bodyupdated, Expression<Func<string>> bodyupdatedById, Expression<Func<string>> bodyurl, Expression<Func<bool>> bodyuseFeaturedImage, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> UpdateaSitePage(Expression<Func<string>> objectId, Expression<Func<CreateanewLandingPageBodyInput>> body, Expression<Func<bool>> archived = null)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            var __workflow_bodyabStatus = WorkflowExpression.Compile(bodyabStatus, nameof(bodyabStatus), required: true);
-            var __workflow_bodyabTestId = WorkflowExpression.Compile(bodyabTestId, nameof(bodyabTestId), required: true);
-            var __workflow_bodyarchivedAt = WorkflowExpression.Compile(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            var __workflow_bodyarchivedInDashboard = WorkflowExpression.Compile(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            var __workflow_bodyattachedStylesheets = WorkflowExpression.Compile(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            var __workflow_bodyauthorName = WorkflowExpression.Compile(bodyauthorName, nameof(bodyauthorName), required: true);
-            var __workflow_bodycampaign = WorkflowExpression.Compile(bodycampaign, nameof(bodycampaign), required: true);
-            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: true);
-            var __workflow_bodycontentGroupId = WorkflowExpression.Compile(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            var __workflow_bodycontentTypeCategory = WorkflowExpression.Compile(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: true);
-            var __workflow_bodycreatedById = WorkflowExpression.Compile(bodycreatedById, nameof(bodycreatedById), required: true);
-            var __workflow_bodycurrentState = WorkflowExpression.Compile(bodycurrentState, nameof(bodycurrentState), required: true);
-            var __workflow_bodycurrentlyPublished = WorkflowExpression.Compile(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: true);
-            var __workflow_bodydynamicPageDataSourceId = WorkflowExpression.Compile(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            var __workflow_bodydynamicPageDataSourceType = WorkflowExpression.Compile(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            var __workflow_bodydynamicPageHubDbTableId = WorkflowExpression.Compile(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            var __workflow_bodyenableDomainStylesheets = WorkflowExpression.Compile(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            var __workflow_bodyenableLayoutStylesheets = WorkflowExpression.Compile(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            var __workflow_bodyfeaturedImage = WorkflowExpression.Compile(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            var __workflow_bodyfeaturedImageAltText = WorkflowExpression.Compile(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
-            var __workflow_bodyfooterHtml = WorkflowExpression.Compile(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            var __workflow_bodyheadHtml = WorkflowExpression.Compile(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            var __workflow_bodyhtmlTitle = WorkflowExpression.Compile(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyincludeDefaultCustomCss = WorkflowExpression.Compile(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodylinkRelCanonicalUrl = WorkflowExpression.Compile(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            var __workflow_bodymabExperimentId = WorkflowExpression.Compile(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            var __workflow_bodymetaDescription = WorkflowExpression.Compile(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodypageExpiryDate = WorkflowExpression.Compile(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            var __workflow_bodypageExpiryEnabled = WorkflowExpression.Compile(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            var __workflow_bodypageExpiryRedirectId = WorkflowExpression.Compile(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            var __workflow_bodypageExpiryRedirectUrl = WorkflowExpression.Compile(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            var __workflow_bodypageRedirected = WorkflowExpression.Compile(bodypageRedirected, nameof(bodypageRedirected), required: true);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodypublicAccessRules = WorkflowExpression.Compile(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            var __workflow_bodypublicAccessRulesEnabled = WorkflowExpression.Compile(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            var __workflow_bodypublishDate = WorkflowExpression.Compile(bodypublishDate, nameof(bodypublishDate), required: true);
-            var __workflow_bodypublishImmediately = WorkflowExpression.Compile(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: true);
-            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: true);
-            var __workflow_bodysubCategory = WorkflowExpression.Compile(bodysubCategory, nameof(bodysubCategory), required: true);
-            var __workflow_bodytemplatePath = WorkflowExpression.Compile(bodytemplatePath, nameof(bodytemplatePath), required: true);
-            var __workflow_bodytranslatedFromId = WorkflowExpression.Compile(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            var __workflow_bodyupdated = WorkflowExpression.Compile(bodyupdated, nameof(bodyupdated), required: true);
-            var __workflow_bodyupdatedById = WorkflowExpression.Compile(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyuseFeaturedImage = WorkflowExpression.Compile(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
             {
@@ -3626,157 +1711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["abStatus"] = ExpressionConverter.ConvertO(__workflow_bodyabStatus);
-                bodypropCount++;
-                body["abTestId"] = ExpressionConverter.ConvertO(__workflow_bodyabTestId);
-                bodypropCount++;
-                body["archivedAt"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedAt);
-                bodypropCount++;
-                body["archivedInDashboard"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedInDashboard);
-                bodypropCount++;
-                body["attachedStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyattachedStylesheets);
-                bodypropCount++;
-                body["authorName"] = ExpressionConverter.ConvertO(__workflow_bodyauthorName);
-                bodypropCount++;
-                body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
-                bodypropCount++;
-                body["categoryId"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
-                bodypropCount++;
-                body["contentGroupId"] = ExpressionConverter.ConvertO(__workflow_bodycontentGroupId);
-                bodypropCount++;
-                body["contentTypeCategory"] = ExpressionConverter.ConvertO(__workflow_bodycontentTypeCategory);
-                bodypropCount++;
-                body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                bodypropCount++;
-                body["createdById"] = ExpressionConverter.ConvertO(__workflow_bodycreatedById);
-                bodypropCount++;
-                body["currentState"] = ExpressionConverter.ConvertO(__workflow_bodycurrentState);
-                bodypropCount++;
-                body["currentlyPublished"] = ExpressionConverter.ConvertO(__workflow_bodycurrentlyPublished);
-                bodypropCount++;
-                body["domain"] = ExpressionConverter.ConvertO(__workflow_bodydomain);
-                bodypropCount++;
-                body["dynamicPageDataSourceId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceId);
-                bodypropCount++;
-                body["dynamicPageDataSourceType"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceType);
-                bodypropCount++;
-                body["dynamicPageHubDbTableId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageHubDbTableId);
-                bodypropCount++;
-                body["enableDomainStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableDomainStylesheets);
-                bodypropCount++;
-                body["enableLayoutStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableLayoutStylesheets);
-                bodypropCount++;
-                body["featuredImage"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImage);
-                bodypropCount++;
-                body["featuredImageAltText"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImageAltText);
-                bodypropCount++;
-                body["folderId"] = ExpressionConverter.ConvertO(__workflow_bodyfolderId);
-                bodypropCount++;
-                body["footerHtml"] = ExpressionConverter.ConvertO(__workflow_bodyfooterHtml);
-                bodypropCount++;
-                body["headHtml"] = ExpressionConverter.ConvertO(__workflow_bodyheadHtml);
-                bodypropCount++;
-                body["htmlTitle"] = ExpressionConverter.ConvertO(__workflow_bodyhtmlTitle);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["includeDefaultCustomCss"] = ExpressionConverter.ConvertO(__workflow_bodyincludeDefaultCustomCss);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                var layoutSectionsObject = new JObject();
-                var layoutSectionsObjectpropCount = 0;
-                if (layoutSectionsObjectpropCount > 0)
-                {
-                    body["layoutSections"] = layoutSectionsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["linkRelCanonicalUrl"] = ExpressionConverter.ConvertO(__workflow_bodylinkRelCanonicalUrl);
-                bodypropCount++;
-                body["mabExperimentId"] = ExpressionConverter.ConvertO(__workflow_bodymabExperimentId);
-                bodypropCount++;
-                body["metaDescription"] = ExpressionConverter.ConvertO(__workflow_bodymetaDescription);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["pageExpiryDate"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryDate);
-                bodypropCount++;
-                body["pageExpiryEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryEnabled);
-                bodypropCount++;
-                body["pageExpiryRedirectId"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectId);
-                bodypropCount++;
-                body["pageExpiryRedirectUrl"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectUrl);
-                bodypropCount++;
-                body["pageRedirected"] = ExpressionConverter.ConvertO(__workflow_bodypageRedirected);
-                bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                bodypropCount++;
-                body["publicAccessRules"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRules);
-                bodypropCount++;
-                body["publicAccessRulesEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRulesEnabled);
-                bodypropCount++;
-                body["publishDate"] = ExpressionConverter.ConvertO(__workflow_bodypublishDate);
-                bodypropCount++;
-                body["publishImmediately"] = ExpressionConverter.ConvertO(__workflow_bodypublishImmediately);
-                bodypropCount++;
-                body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                bodypropCount++;
-                body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
-                bodypropCount++;
-                body["subCategory"] = ExpressionConverter.ConvertO(__workflow_bodysubCategory);
-                bodypropCount++;
-                body["templatePath"] = ExpressionConverter.ConvertO(__workflow_bodytemplatePath);
-                var themeSettingsValuesObject = new JObject();
-                var themeSettingsValuesObjectpropCount = 0;
-                if (themeSettingsValuesObjectpropCount > 0)
-                {
-                    body["themeSettingsValues"] = themeSettingsValuesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["translatedFromId"] = ExpressionConverter.ConvertO(__workflow_bodytranslatedFromId);
-                var translationsObject = new JObject();
-                var translationsObjectpropCount = 0;
-                if (translationsObjectpropCount > 0)
-                {
-                    body["translations"] = translationsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdated);
-                bodypropCount++;
-                body["updatedById"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedById);
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                bodypropCount++;
-                body["useFeaturedImage"] = ExpressionConverter.ConvertO(__workflow_bodyuseFeaturedImage);
-                var widgetContainersObject = new JObject();
-                var widgetContainersObjectpropCount = 0;
-                if (widgetContainersObjectpropCount > 0)
-                {
-                    body["widgetContainers"] = widgetContainersObject;
-                    bodypropCount++;
-                }
-
-                var widgetsObject = new JObject();
-                var widgetsObjectpropCount = 0;
-                if (widgetsObjectpropCount > 0)
-                {
-                    body["widgets"] = widgetsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation63>(callPayload);
             });
         }
@@ -3871,41 +1806,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation80, ApiConnectionActionConfiguration> CreateanewFolder(Expression<Func<string>> bodycategory, Expression<Func<string>> bodycreated, Expression<Func<string>> bodydeletedAt, Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentFolderId, Expression<Func<string>> bodyupdated)
+        public IBodyWorkflowAction<Successfuloperation80, ApiConnectionActionConfiguration> CreateanewFolder(Expression<Func<CreateanewFolderBodyInput>> body)
         {
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: true);
-            var __workflow_bodydeletedAt = WorkflowExpression.Compile(bodydeletedAt, nameof(bodydeletedAt), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyparentFolderId = WorkflowExpression.Compile(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
-            var __workflow_bodyupdated = WorkflowExpression.Compile(bodyupdated, nameof(bodyupdated), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation80, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/landing-pages/folders";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                bodypropCount++;
-                body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                bodypropCount++;
-                body["deletedAt"] = ExpressionConverter.ConvertO(__workflow_bodydeletedAt);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
-                bodypropCount++;
-                body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdated);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation80>(callPayload);
             });
         }
@@ -3924,217 +1833,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> UpdateaLandingPagedraft(Expression<Func<string>> objectId, Expression<Func<string>> bodyabStatus, Expression<Func<string>> bodyabTestId, Expression<Func<string>> bodyarchivedAt, Expression<Func<bool>> bodyarchivedInDashboard, Expression<Func<JToken[]>> bodyattachedStylesheets, Expression<Func<string>> bodyauthorName, Expression<Func<string>> bodycampaign, Expression<Func<string>> bodycategoryId, Expression<Func<string>> bodycontentGroupId, Expression<Func<string>> bodycontentTypeCategory, Expression<Func<string>> bodycreated, Expression<Func<string>> bodycreatedById, Expression<Func<string>> bodycurrentState, Expression<Func<bool>> bodycurrentlyPublished, Expression<Func<string>> bodydomain, Expression<Func<string>> bodydynamicPageDataSourceId, Expression<Func<string>> bodydynamicPageDataSourceType, Expression<Func<string>> bodydynamicPageHubDbTableId, Expression<Func<bool>> bodyenableDomainStylesheets, Expression<Func<bool>> bodyenableLayoutStylesheets, Expression<Func<string>> bodyfeaturedImage, Expression<Func<string>> bodyfeaturedImageAltText, Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyfooterHtml, Expression<Func<string>> bodyheadHtml, Expression<Func<string>> bodyhtmlTitle, Expression<Func<string>> bodyid, Expression<Func<bool>> bodyincludeDefaultCustomCss, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodylinkRelCanonicalUrl, Expression<Func<string>> bodymabExperimentId, Expression<Func<string>> bodymetaDescription, Expression<Func<string>> bodyname, Expression<Func<string>> bodypageExpiryDate, Expression<Func<bool>> bodypageExpiryEnabled, Expression<Func<string>> bodypageExpiryRedirectId, Expression<Func<string>> bodypageExpiryRedirectUrl, Expression<Func<bool>> bodypageRedirected, Expression<Func<string>> bodypassword, Expression<Func<string[]>> bodypublicAccessRules, Expression<Func<bool>> bodypublicAccessRulesEnabled, Expression<Func<string>> bodypublishDate, Expression<Func<string>> bodypublishImmediately, Expression<Func<string>> bodyslug, Expression<Func<string>> bodystate, Expression<Func<string>> bodysubCategory, Expression<Func<string>> bodytemplatePath, Expression<Func<string>> bodytranslatedFromId, Expression<Func<string>> bodyupdated, Expression<Func<string>> bodyupdatedById, Expression<Func<string>> bodyurl, Expression<Func<bool>> bodyuseFeaturedImage)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> UpdateaLandingPagedraft(Expression<Func<string>> objectId, Expression<Func<CreateanewLandingPageBodyInput>> body)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            var __workflow_bodyabStatus = WorkflowExpression.Compile(bodyabStatus, nameof(bodyabStatus), required: true);
-            var __workflow_bodyabTestId = WorkflowExpression.Compile(bodyabTestId, nameof(bodyabTestId), required: true);
-            var __workflow_bodyarchivedAt = WorkflowExpression.Compile(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            var __workflow_bodyarchivedInDashboard = WorkflowExpression.Compile(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            var __workflow_bodyattachedStylesheets = WorkflowExpression.Compile(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            var __workflow_bodyauthorName = WorkflowExpression.Compile(bodyauthorName, nameof(bodyauthorName), required: true);
-            var __workflow_bodycampaign = WorkflowExpression.Compile(bodycampaign, nameof(bodycampaign), required: true);
-            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: true);
-            var __workflow_bodycontentGroupId = WorkflowExpression.Compile(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            var __workflow_bodycontentTypeCategory = WorkflowExpression.Compile(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: true);
-            var __workflow_bodycreatedById = WorkflowExpression.Compile(bodycreatedById, nameof(bodycreatedById), required: true);
-            var __workflow_bodycurrentState = WorkflowExpression.Compile(bodycurrentState, nameof(bodycurrentState), required: true);
-            var __workflow_bodycurrentlyPublished = WorkflowExpression.Compile(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: true);
-            var __workflow_bodydynamicPageDataSourceId = WorkflowExpression.Compile(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            var __workflow_bodydynamicPageDataSourceType = WorkflowExpression.Compile(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            var __workflow_bodydynamicPageHubDbTableId = WorkflowExpression.Compile(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            var __workflow_bodyenableDomainStylesheets = WorkflowExpression.Compile(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            var __workflow_bodyenableLayoutStylesheets = WorkflowExpression.Compile(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            var __workflow_bodyfeaturedImage = WorkflowExpression.Compile(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            var __workflow_bodyfeaturedImageAltText = WorkflowExpression.Compile(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
-            var __workflow_bodyfooterHtml = WorkflowExpression.Compile(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            var __workflow_bodyheadHtml = WorkflowExpression.Compile(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            var __workflow_bodyhtmlTitle = WorkflowExpression.Compile(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyincludeDefaultCustomCss = WorkflowExpression.Compile(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodylinkRelCanonicalUrl = WorkflowExpression.Compile(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            var __workflow_bodymabExperimentId = WorkflowExpression.Compile(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            var __workflow_bodymetaDescription = WorkflowExpression.Compile(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodypageExpiryDate = WorkflowExpression.Compile(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            var __workflow_bodypageExpiryEnabled = WorkflowExpression.Compile(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            var __workflow_bodypageExpiryRedirectId = WorkflowExpression.Compile(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            var __workflow_bodypageExpiryRedirectUrl = WorkflowExpression.Compile(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            var __workflow_bodypageRedirected = WorkflowExpression.Compile(bodypageRedirected, nameof(bodypageRedirected), required: true);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodypublicAccessRules = WorkflowExpression.Compile(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            var __workflow_bodypublicAccessRulesEnabled = WorkflowExpression.Compile(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            var __workflow_bodypublishDate = WorkflowExpression.Compile(bodypublishDate, nameof(bodypublishDate), required: true);
-            var __workflow_bodypublishImmediately = WorkflowExpression.Compile(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: true);
-            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: true);
-            var __workflow_bodysubCategory = WorkflowExpression.Compile(bodysubCategory, nameof(bodysubCategory), required: true);
-            var __workflow_bodytemplatePath = WorkflowExpression.Compile(bodytemplatePath, nameof(bodytemplatePath), required: true);
-            var __workflow_bodytranslatedFromId = WorkflowExpression.Compile(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            var __workflow_bodyupdated = WorkflowExpression.Compile(bodyupdated, nameof(bodyupdated), required: true);
-            var __workflow_bodyupdatedById = WorkflowExpression.Compile(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyuseFeaturedImage = WorkflowExpression.Compile(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/pages/landing-pages/{0}/draft", __workflow_objectId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["abStatus"] = ExpressionConverter.ConvertO(__workflow_bodyabStatus);
-                bodypropCount++;
-                body["abTestId"] = ExpressionConverter.ConvertO(__workflow_bodyabTestId);
-                bodypropCount++;
-                body["archivedAt"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedAt);
-                bodypropCount++;
-                body["archivedInDashboard"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedInDashboard);
-                bodypropCount++;
-                body["attachedStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyattachedStylesheets);
-                bodypropCount++;
-                body["authorName"] = ExpressionConverter.ConvertO(__workflow_bodyauthorName);
-                bodypropCount++;
-                body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
-                bodypropCount++;
-                body["categoryId"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
-                bodypropCount++;
-                body["contentGroupId"] = ExpressionConverter.ConvertO(__workflow_bodycontentGroupId);
-                bodypropCount++;
-                body["contentTypeCategory"] = ExpressionConverter.ConvertO(__workflow_bodycontentTypeCategory);
-                bodypropCount++;
-                body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                bodypropCount++;
-                body["createdById"] = ExpressionConverter.ConvertO(__workflow_bodycreatedById);
-                bodypropCount++;
-                body["currentState"] = ExpressionConverter.ConvertO(__workflow_bodycurrentState);
-                bodypropCount++;
-                body["currentlyPublished"] = ExpressionConverter.ConvertO(__workflow_bodycurrentlyPublished);
-                bodypropCount++;
-                body["domain"] = ExpressionConverter.ConvertO(__workflow_bodydomain);
-                bodypropCount++;
-                body["dynamicPageDataSourceId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceId);
-                bodypropCount++;
-                body["dynamicPageDataSourceType"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceType);
-                bodypropCount++;
-                body["dynamicPageHubDbTableId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageHubDbTableId);
-                bodypropCount++;
-                body["enableDomainStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableDomainStylesheets);
-                bodypropCount++;
-                body["enableLayoutStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableLayoutStylesheets);
-                bodypropCount++;
-                body["featuredImage"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImage);
-                bodypropCount++;
-                body["featuredImageAltText"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImageAltText);
-                bodypropCount++;
-                body["folderId"] = ExpressionConverter.ConvertO(__workflow_bodyfolderId);
-                bodypropCount++;
-                body["footerHtml"] = ExpressionConverter.ConvertO(__workflow_bodyfooterHtml);
-                bodypropCount++;
-                body["headHtml"] = ExpressionConverter.ConvertO(__workflow_bodyheadHtml);
-                bodypropCount++;
-                body["htmlTitle"] = ExpressionConverter.ConvertO(__workflow_bodyhtmlTitle);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["includeDefaultCustomCss"] = ExpressionConverter.ConvertO(__workflow_bodyincludeDefaultCustomCss);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                var layoutSectionsObject = new JObject();
-                var layoutSectionsObjectpropCount = 0;
-                if (layoutSectionsObjectpropCount > 0)
-                {
-                    body["layoutSections"] = layoutSectionsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["linkRelCanonicalUrl"] = ExpressionConverter.ConvertO(__workflow_bodylinkRelCanonicalUrl);
-                bodypropCount++;
-                body["mabExperimentId"] = ExpressionConverter.ConvertO(__workflow_bodymabExperimentId);
-                bodypropCount++;
-                body["metaDescription"] = ExpressionConverter.ConvertO(__workflow_bodymetaDescription);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["pageExpiryDate"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryDate);
-                bodypropCount++;
-                body["pageExpiryEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryEnabled);
-                bodypropCount++;
-                body["pageExpiryRedirectId"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectId);
-                bodypropCount++;
-                body["pageExpiryRedirectUrl"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectUrl);
-                bodypropCount++;
-                body["pageRedirected"] = ExpressionConverter.ConvertO(__workflow_bodypageRedirected);
-                bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                bodypropCount++;
-                body["publicAccessRules"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRules);
-                bodypropCount++;
-                body["publicAccessRulesEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRulesEnabled);
-                bodypropCount++;
-                body["publishDate"] = ExpressionConverter.ConvertO(__workflow_bodypublishDate);
-                bodypropCount++;
-                body["publishImmediately"] = ExpressionConverter.ConvertO(__workflow_bodypublishImmediately);
-                bodypropCount++;
-                body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                bodypropCount++;
-                body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
-                bodypropCount++;
-                body["subCategory"] = ExpressionConverter.ConvertO(__workflow_bodysubCategory);
-                bodypropCount++;
-                body["templatePath"] = ExpressionConverter.ConvertO(__workflow_bodytemplatePath);
-                var themeSettingsValuesObject = new JObject();
-                var themeSettingsValuesObjectpropCount = 0;
-                if (themeSettingsValuesObjectpropCount > 0)
-                {
-                    body["themeSettingsValues"] = themeSettingsValuesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["translatedFromId"] = ExpressionConverter.ConvertO(__workflow_bodytranslatedFromId);
-                var translationsObject = new JObject();
-                var translationsObjectpropCount = 0;
-                if (translationsObjectpropCount > 0)
-                {
-                    body["translations"] = translationsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdated);
-                bodypropCount++;
-                body["updatedById"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedById);
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                bodypropCount++;
-                body["useFeaturedImage"] = ExpressionConverter.ConvertO(__workflow_bodyuseFeaturedImage);
-                var widgetContainersObject = new JObject();
-                var widgetContainersObjectpropCount = 0;
-                if (widgetContainersObjectpropCount > 0)
-                {
-                    body["widgetContainers"] = widgetContainersObject;
-                    bodypropCount++;
-                }
-
-                var widgetsObject = new JObject();
-                var widgetsObjectpropCount = 0;
-                if (widgetsObjectpropCount > 0)
-                {
-                    body["widgets"] = widgetsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation63>(callPayload);
             });
         }
@@ -4185,241 +1893,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CreateanewLandingPage(Expression<Func<string>> bodyabStatus, Expression<Func<string>> bodyabTestId, Expression<Func<string>> bodyarchivedAt, Expression<Func<bool>> bodyarchivedInDashboard, Expression<Func<JToken[]>> bodyattachedStylesheets, Expression<Func<string>> bodyauthorName, Expression<Func<string>> bodycampaign, Expression<Func<string>> bodycategoryId, Expression<Func<string>> bodycontentGroupId, Expression<Func<string>> bodycontentTypeCategory, Expression<Func<string>> bodycreated, Expression<Func<string>> bodycreatedById, Expression<Func<string>> bodycurrentState, Expression<Func<bool>> bodycurrentlyPublished, Expression<Func<string>> bodydomain, Expression<Func<string>> bodydynamicPageDataSourceId, Expression<Func<string>> bodydynamicPageDataSourceType, Expression<Func<string>> bodydynamicPageHubDbTableId, Expression<Func<bool>> bodyenableDomainStylesheets, Expression<Func<bool>> bodyenableLayoutStylesheets, Expression<Func<string>> bodyfeaturedImage, Expression<Func<string>> bodyfeaturedImageAltText, Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyfooterHtml, Expression<Func<string>> bodyheadHtml, Expression<Func<string>> bodyhtmlTitle, Expression<Func<string>> bodyid, Expression<Func<bool>> bodyincludeDefaultCustomCss, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodylinkRelCanonicalUrl, Expression<Func<string>> bodymabExperimentId, Expression<Func<string>> bodymetaDescription, Expression<Func<string>> bodyname, Expression<Func<string>> bodypageExpiryDate, Expression<Func<bool>> bodypageExpiryEnabled, Expression<Func<string>> bodypageExpiryRedirectId, Expression<Func<string>> bodypageExpiryRedirectUrl, Expression<Func<bool>> bodypageRedirected, Expression<Func<string>> bodypassword, Expression<Func<string[]>> bodypublicAccessRules, Expression<Func<bool>> bodypublicAccessRulesEnabled, Expression<Func<string>> bodypublishDate, Expression<Func<string>> bodypublishImmediately, Expression<Func<string>> bodyslug, Expression<Func<string>> bodystate, Expression<Func<string>> bodysubCategory, Expression<Func<string>> bodytemplatePath, Expression<Func<string>> bodytranslatedFromId, Expression<Func<string>> bodyupdated, Expression<Func<string>> bodyupdatedById, Expression<Func<string>> bodyurl, Expression<Func<bool>> bodyuseFeaturedImage)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CreateanewLandingPage(Expression<Func<CreateanewLandingPageBodyInput>> body)
         {
-            var __workflow_bodyabStatus = WorkflowExpression.Compile(bodyabStatus, nameof(bodyabStatus), required: true);
-            var __workflow_bodyabTestId = WorkflowExpression.Compile(bodyabTestId, nameof(bodyabTestId), required: true);
-            var __workflow_bodyarchivedAt = WorkflowExpression.Compile(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            var __workflow_bodyarchivedInDashboard = WorkflowExpression.Compile(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            var __workflow_bodyattachedStylesheets = WorkflowExpression.Compile(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            var __workflow_bodyauthorName = WorkflowExpression.Compile(bodyauthorName, nameof(bodyauthorName), required: true);
-            var __workflow_bodycampaign = WorkflowExpression.Compile(bodycampaign, nameof(bodycampaign), required: true);
-            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: true);
-            var __workflow_bodycontentGroupId = WorkflowExpression.Compile(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            var __workflow_bodycontentTypeCategory = WorkflowExpression.Compile(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: true);
-            var __workflow_bodycreatedById = WorkflowExpression.Compile(bodycreatedById, nameof(bodycreatedById), required: true);
-            var __workflow_bodycurrentState = WorkflowExpression.Compile(bodycurrentState, nameof(bodycurrentState), required: true);
-            var __workflow_bodycurrentlyPublished = WorkflowExpression.Compile(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: true);
-            var __workflow_bodydynamicPageDataSourceId = WorkflowExpression.Compile(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            var __workflow_bodydynamicPageDataSourceType = WorkflowExpression.Compile(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            var __workflow_bodydynamicPageHubDbTableId = WorkflowExpression.Compile(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            var __workflow_bodyenableDomainStylesheets = WorkflowExpression.Compile(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            var __workflow_bodyenableLayoutStylesheets = WorkflowExpression.Compile(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            var __workflow_bodyfeaturedImage = WorkflowExpression.Compile(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            var __workflow_bodyfeaturedImageAltText = WorkflowExpression.Compile(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
-            var __workflow_bodyfooterHtml = WorkflowExpression.Compile(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            var __workflow_bodyheadHtml = WorkflowExpression.Compile(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            var __workflow_bodyhtmlTitle = WorkflowExpression.Compile(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyincludeDefaultCustomCss = WorkflowExpression.Compile(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodylinkRelCanonicalUrl = WorkflowExpression.Compile(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            var __workflow_bodymabExperimentId = WorkflowExpression.Compile(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            var __workflow_bodymetaDescription = WorkflowExpression.Compile(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodypageExpiryDate = WorkflowExpression.Compile(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            var __workflow_bodypageExpiryEnabled = WorkflowExpression.Compile(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            var __workflow_bodypageExpiryRedirectId = WorkflowExpression.Compile(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            var __workflow_bodypageExpiryRedirectUrl = WorkflowExpression.Compile(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            var __workflow_bodypageRedirected = WorkflowExpression.Compile(bodypageRedirected, nameof(bodypageRedirected), required: true);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodypublicAccessRules = WorkflowExpression.Compile(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            var __workflow_bodypublicAccessRulesEnabled = WorkflowExpression.Compile(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            var __workflow_bodypublishDate = WorkflowExpression.Compile(bodypublishDate, nameof(bodypublishDate), required: true);
-            var __workflow_bodypublishImmediately = WorkflowExpression.Compile(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: true);
-            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: true);
-            var __workflow_bodysubCategory = WorkflowExpression.Compile(bodysubCategory, nameof(bodysubCategory), required: true);
-            var __workflow_bodytemplatePath = WorkflowExpression.Compile(bodytemplatePath, nameof(bodytemplatePath), required: true);
-            var __workflow_bodytranslatedFromId = WorkflowExpression.Compile(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            var __workflow_bodyupdated = WorkflowExpression.Compile(bodyupdated, nameof(bodyupdated), required: true);
-            var __workflow_bodyupdatedById = WorkflowExpression.Compile(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyuseFeaturedImage = WorkflowExpression.Compile(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/landing-pages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["abStatus"] = ExpressionConverter.ConvertO(__workflow_bodyabStatus);
-                bodypropCount++;
-                body["abTestId"] = ExpressionConverter.ConvertO(__workflow_bodyabTestId);
-                bodypropCount++;
-                body["archivedAt"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedAt);
-                bodypropCount++;
-                body["archivedInDashboard"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedInDashboard);
-                bodypropCount++;
-                body["attachedStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyattachedStylesheets);
-                bodypropCount++;
-                body["authorName"] = ExpressionConverter.ConvertO(__workflow_bodyauthorName);
-                bodypropCount++;
-                body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
-                bodypropCount++;
-                body["categoryId"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
-                bodypropCount++;
-                body["contentGroupId"] = ExpressionConverter.ConvertO(__workflow_bodycontentGroupId);
-                bodypropCount++;
-                body["contentTypeCategory"] = ExpressionConverter.ConvertO(__workflow_bodycontentTypeCategory);
-                bodypropCount++;
-                body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                bodypropCount++;
-                body["createdById"] = ExpressionConverter.ConvertO(__workflow_bodycreatedById);
-                bodypropCount++;
-                body["currentState"] = ExpressionConverter.ConvertO(__workflow_bodycurrentState);
-                bodypropCount++;
-                body["currentlyPublished"] = ExpressionConverter.ConvertO(__workflow_bodycurrentlyPublished);
-                bodypropCount++;
-                body["domain"] = ExpressionConverter.ConvertO(__workflow_bodydomain);
-                bodypropCount++;
-                body["dynamicPageDataSourceId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceId);
-                bodypropCount++;
-                body["dynamicPageDataSourceType"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceType);
-                bodypropCount++;
-                body["dynamicPageHubDbTableId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageHubDbTableId);
-                bodypropCount++;
-                body["enableDomainStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableDomainStylesheets);
-                bodypropCount++;
-                body["enableLayoutStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableLayoutStylesheets);
-                bodypropCount++;
-                body["featuredImage"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImage);
-                bodypropCount++;
-                body["featuredImageAltText"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImageAltText);
-                bodypropCount++;
-                body["folderId"] = ExpressionConverter.ConvertO(__workflow_bodyfolderId);
-                bodypropCount++;
-                body["footerHtml"] = ExpressionConverter.ConvertO(__workflow_bodyfooterHtml);
-                bodypropCount++;
-                body["headHtml"] = ExpressionConverter.ConvertO(__workflow_bodyheadHtml);
-                bodypropCount++;
-                body["htmlTitle"] = ExpressionConverter.ConvertO(__workflow_bodyhtmlTitle);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["includeDefaultCustomCss"] = ExpressionConverter.ConvertO(__workflow_bodyincludeDefaultCustomCss);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                var layoutSectionsObject = new JObject();
-                var layoutSectionsObjectpropCount = 0;
-                if (layoutSectionsObjectpropCount > 0)
-                {
-                    body["layoutSections"] = layoutSectionsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["linkRelCanonicalUrl"] = ExpressionConverter.ConvertO(__workflow_bodylinkRelCanonicalUrl);
-                bodypropCount++;
-                body["mabExperimentId"] = ExpressionConverter.ConvertO(__workflow_bodymabExperimentId);
-                bodypropCount++;
-                body["metaDescription"] = ExpressionConverter.ConvertO(__workflow_bodymetaDescription);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["pageExpiryDate"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryDate);
-                bodypropCount++;
-                body["pageExpiryEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryEnabled);
-                bodypropCount++;
-                body["pageExpiryRedirectId"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectId);
-                bodypropCount++;
-                body["pageExpiryRedirectUrl"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectUrl);
-                bodypropCount++;
-                body["pageRedirected"] = ExpressionConverter.ConvertO(__workflow_bodypageRedirected);
-                bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                bodypropCount++;
-                body["publicAccessRules"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRules);
-                bodypropCount++;
-                body["publicAccessRulesEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRulesEnabled);
-                bodypropCount++;
-                body["publishDate"] = ExpressionConverter.ConvertO(__workflow_bodypublishDate);
-                bodypropCount++;
-                body["publishImmediately"] = ExpressionConverter.ConvertO(__workflow_bodypublishImmediately);
-                bodypropCount++;
-                body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                bodypropCount++;
-                body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
-                bodypropCount++;
-                body["subCategory"] = ExpressionConverter.ConvertO(__workflow_bodysubCategory);
-                bodypropCount++;
-                body["templatePath"] = ExpressionConverter.ConvertO(__workflow_bodytemplatePath);
-                var themeSettingsValuesObject = new JObject();
-                var themeSettingsValuesObjectpropCount = 0;
-                if (themeSettingsValuesObjectpropCount > 0)
-                {
-                    body["themeSettingsValues"] = themeSettingsValuesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["translatedFromId"] = ExpressionConverter.ConvertO(__workflow_bodytranslatedFromId);
-                var translationsObject = new JObject();
-                var translationsObjectpropCount = 0;
-                if (translationsObjectpropCount > 0)
-                {
-                    body["translations"] = translationsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdated);
-                bodypropCount++;
-                body["updatedById"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedById);
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                bodypropCount++;
-                body["useFeaturedImage"] = ExpressionConverter.ConvertO(__workflow_bodyuseFeaturedImage);
-                var widgetContainersObject = new JObject();
-                var widgetContainersObjectpropCount = 0;
-                if (widgetContainersObjectpropCount > 0)
-                {
-                    body["widgetContainers"] = widgetContainersObject;
-                    bodypropCount++;
-                }
-
-                var widgetsObject = new JObject();
-                var widgetsObjectpropCount = 0;
-                if (widgetsObjectpropCount > 0)
-                {
-                    body["widgets"] = widgetsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation63>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CloneaLandingPage(Expression<Func<string>> bodyid, Expression<Func<string>> bodycloneName)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> CloneaLandingPage(Expression<Func<CloneaBlogBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodycloneName = WorkflowExpression.Compile(bodycloneName, nameof(bodycloneName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/landing-pages/clone";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["cloneName"] = ExpressionConverter.ConvertO(__workflow_bodycloneName);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation63>(callPayload);
             });
         }
@@ -4439,23 +1935,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage4(Expression<Func<string>> bodyid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PutSetanewprimarylanguage4(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/landing-pages/multi-language/set-new-lang-primary";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -4510,16 +1998,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation80, ApiConnectionActionConfiguration> UpdateaFolder(Expression<Func<string>> objectId, Expression<Func<string>> bodycategory, Expression<Func<string>> bodycreated, Expression<Func<string>> bodydeletedAt, Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentFolderId, Expression<Func<string>> bodyupdated, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<Successfuloperation80, ApiConnectionActionConfiguration> UpdateaFolder(Expression<Func<string>> objectId, Expression<Func<CreateanewFolderBodyInput>> body, Expression<Func<bool>> archived = null)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: true);
-            var __workflow_bodydeletedAt = WorkflowExpression.Compile(bodydeletedAt, nameof(bodydeletedAt), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyparentFolderId = WorkflowExpression.Compile(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
-            var __workflow_bodyupdated = WorkflowExpression.Compile(bodyupdated, nameof(bodyupdated), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<Successfuloperation80, ApiConnectionActionConfiguration>(() =>
             {
@@ -4528,83 +2010,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["category"] = ExpressionConverter.ConvertO(__workflow_bodycategory);
-                bodypropCount++;
-                body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                bodypropCount++;
-                body["deletedAt"] = ExpressionConverter.ConvertO(__workflow_bodydeletedAt);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_bodyparentFolderId);
-                bodypropCount++;
-                body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdated);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation80>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> PostCreateanewABtestvariation(Expression<Func<string>> bodycontentId, Expression<Func<string>> bodyvariationName)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> PostCreateanewABtestvariation(Expression<Func<CreateanewABtestvariationBodyInput>> body)
         {
-            var __workflow_bodycontentId = WorkflowExpression.Compile(bodycontentId, nameof(bodycontentId), required: true);
-            var __workflow_bodyvariationName = WorkflowExpression.Compile(bodyvariationName, nameof(bodyvariationName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/landing-pages/ab-test/create-variation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["contentId"] = ExpressionConverter.ConvertO(__workflow_bodycontentId);
-                bodypropCount++;
-                body["variationName"] = ExpressionConverter.ConvertO(__workflow_bodyvariationName);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation63>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AttachalandingpagetoamultiLanguagegroup(Expression<Func<string>> bodyid, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyprimaryId, Expression<Func<string>> bodyprimaryLanguage)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AttachalandingpagetoamultiLanguagegroup(Expression<Func<AttachaBlogAuthortoamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodyprimaryId = WorkflowExpression.Compile(bodyprimaryId, nameof(bodyprimaryId), required: true);
-            var __workflow_bodyprimaryLanguage = WorkflowExpression.Compile(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/landing-pages/multi-language/attach-to-lang-group";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["primaryId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryId);
-                bodypropCount++;
-                body["primaryLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryLanguage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -4624,26 +2058,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostEndanactiveABtest(Expression<Func<string>> bodyabTestId, Expression<Func<string>> bodywinnerId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostEndanactiveABtest(Expression<Func<EndanactiveABtestBodyInput>> body)
         {
-            var __workflow_bodyabTestId = WorkflowExpression.Compile(bodyabTestId, nameof(bodyabTestId), required: true);
-            var __workflow_bodywinnerId = WorkflowExpression.Compile(bodywinnerId, nameof(bodywinnerId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/landing-pages/ab-test/end";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["abTestId"] = ExpressionConverter.ConvertO(__workflow_bodyabTestId);
-                bodypropCount++;
-                body["winnerId"] = ExpressionConverter.ConvertO(__workflow_bodywinnerId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -4662,125 +2085,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DetachalandingpagefromamultiLanguagegroup(Expression<Func<string>> bodyid)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DetachalandingpagefromamultiLanguagegroup(Expression<Func<DetachaBlogAuthorfromamultiLanguagegroupBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/landing-pages/multi-language/detach-from-lang-group";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ScheduleaLandingPagetobePublished(Expression<Func<string>> bodyid, Expression<Func<string>> bodypublishDate)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ScheduleaLandingPagetobePublished(Expression<Func<ScheduleaBlogPosttobePublishedBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodypublishDate = WorkflowExpression.Compile(bodypublishDate, nameof(bodypublishDate), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/landing-pages/schedule";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["publishDate"] = ExpressionConverter.ConvertO(__workflow_bodypublishDate);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup4(Expression<Func<string>> bodyprimaryId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostUpdatelanguagesofmultiLanguagegroup4(Expression<Func<PostUpdatelanguagesofmultiLanguagegroup1BodyInput>> body)
         {
-            var __workflow_bodyprimaryId = WorkflowExpression.Compile(bodyprimaryId, nameof(bodyprimaryId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/landing-pages/multi-language/update-languages";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var languagesObject = new JObject();
-                var languagesObjectpropCount = 0;
-                if (languagesObjectpropCount > 0)
-                {
-                    body["languages"] = languagesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["primaryId"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostRerunapreviousABtest(Expression<Func<string>> bodyabTestId, Expression<Func<string>> bodyvariationId)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostRerunapreviousABtest(Expression<Func<PostRerunapreviousABtestBodyInput>> body)
         {
-            var __workflow_bodyabTestId = WorkflowExpression.Compile(bodyabTestId, nameof(bodyabTestId), required: true);
-            var __workflow_bodyvariationId = WorkflowExpression.Compile(bodyvariationId, nameof(bodyvariationId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/landing-pages/ab-test/rerun";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["abTestId"] = ExpressionConverter.ConvertO(__workflow_bodyabTestId);
-                bodypropCount++;
-                body["variationId"] = ExpressionConverter.ConvertO(__workflow_bodyvariationId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofFolders(Expression<Func<string[]>> bodyinputs)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofFolders(Expression<Func<ClonerowsinbatchBodyInput>> body)
         {
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/landing-pages/folders/batch/archive";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -4848,61 +2217,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> UpdateaLandingPage(Expression<Func<string>> objectId, Expression<Func<string>> bodyabStatus, Expression<Func<string>> bodyabTestId, Expression<Func<string>> bodyarchivedAt, Expression<Func<bool>> bodyarchivedInDashboard, Expression<Func<JToken[]>> bodyattachedStylesheets, Expression<Func<string>> bodyauthorName, Expression<Func<string>> bodycampaign, Expression<Func<string>> bodycategoryId, Expression<Func<string>> bodycontentGroupId, Expression<Func<string>> bodycontentTypeCategory, Expression<Func<string>> bodycreated, Expression<Func<string>> bodycreatedById, Expression<Func<string>> bodycurrentState, Expression<Func<bool>> bodycurrentlyPublished, Expression<Func<string>> bodydomain, Expression<Func<string>> bodydynamicPageDataSourceId, Expression<Func<string>> bodydynamicPageDataSourceType, Expression<Func<string>> bodydynamicPageHubDbTableId, Expression<Func<bool>> bodyenableDomainStylesheets, Expression<Func<bool>> bodyenableLayoutStylesheets, Expression<Func<string>> bodyfeaturedImage, Expression<Func<string>> bodyfeaturedImageAltText, Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyfooterHtml, Expression<Func<string>> bodyheadHtml, Expression<Func<string>> bodyhtmlTitle, Expression<Func<string>> bodyid, Expression<Func<bool>> bodyincludeDefaultCustomCss, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodylinkRelCanonicalUrl, Expression<Func<string>> bodymabExperimentId, Expression<Func<string>> bodymetaDescription, Expression<Func<string>> bodyname, Expression<Func<string>> bodypageExpiryDate, Expression<Func<bool>> bodypageExpiryEnabled, Expression<Func<string>> bodypageExpiryRedirectId, Expression<Func<string>> bodypageExpiryRedirectUrl, Expression<Func<bool>> bodypageRedirected, Expression<Func<string>> bodypassword, Expression<Func<string[]>> bodypublicAccessRules, Expression<Func<bool>> bodypublicAccessRulesEnabled, Expression<Func<string>> bodypublishDate, Expression<Func<string>> bodypublishImmediately, Expression<Func<string>> bodyslug, Expression<Func<string>> bodystate, Expression<Func<string>> bodysubCategory, Expression<Func<string>> bodytemplatePath, Expression<Func<string>> bodytranslatedFromId, Expression<Func<string>> bodyupdated, Expression<Func<string>> bodyupdatedById, Expression<Func<string>> bodyurl, Expression<Func<bool>> bodyuseFeaturedImage, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> UpdateaLandingPage(Expression<Func<string>> objectId, Expression<Func<CreateanewLandingPageBodyInput>> body, Expression<Func<bool>> archived = null)
         {
             var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
-            var __workflow_bodyabStatus = WorkflowExpression.Compile(bodyabStatus, nameof(bodyabStatus), required: true);
-            var __workflow_bodyabTestId = WorkflowExpression.Compile(bodyabTestId, nameof(bodyabTestId), required: true);
-            var __workflow_bodyarchivedAt = WorkflowExpression.Compile(bodyarchivedAt, nameof(bodyarchivedAt), required: true);
-            var __workflow_bodyarchivedInDashboard = WorkflowExpression.Compile(bodyarchivedInDashboard, nameof(bodyarchivedInDashboard), required: true);
-            var __workflow_bodyattachedStylesheets = WorkflowExpression.Compile(bodyattachedStylesheets, nameof(bodyattachedStylesheets), required: true);
-            var __workflow_bodyauthorName = WorkflowExpression.Compile(bodyauthorName, nameof(bodyauthorName), required: true);
-            var __workflow_bodycampaign = WorkflowExpression.Compile(bodycampaign, nameof(bodycampaign), required: true);
-            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: true);
-            var __workflow_bodycontentGroupId = WorkflowExpression.Compile(bodycontentGroupId, nameof(bodycontentGroupId), required: true);
-            var __workflow_bodycontentTypeCategory = WorkflowExpression.Compile(bodycontentTypeCategory, nameof(bodycontentTypeCategory), required: true);
-            var __workflow_bodycreated = WorkflowExpression.Compile(bodycreated, nameof(bodycreated), required: true);
-            var __workflow_bodycreatedById = WorkflowExpression.Compile(bodycreatedById, nameof(bodycreatedById), required: true);
-            var __workflow_bodycurrentState = WorkflowExpression.Compile(bodycurrentState, nameof(bodycurrentState), required: true);
-            var __workflow_bodycurrentlyPublished = WorkflowExpression.Compile(bodycurrentlyPublished, nameof(bodycurrentlyPublished), required: true);
-            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: true);
-            var __workflow_bodydynamicPageDataSourceId = WorkflowExpression.Compile(bodydynamicPageDataSourceId, nameof(bodydynamicPageDataSourceId), required: true);
-            var __workflow_bodydynamicPageDataSourceType = WorkflowExpression.Compile(bodydynamicPageDataSourceType, nameof(bodydynamicPageDataSourceType), required: true);
-            var __workflow_bodydynamicPageHubDbTableId = WorkflowExpression.Compile(bodydynamicPageHubDbTableId, nameof(bodydynamicPageHubDbTableId), required: true);
-            var __workflow_bodyenableDomainStylesheets = WorkflowExpression.Compile(bodyenableDomainStylesheets, nameof(bodyenableDomainStylesheets), required: true);
-            var __workflow_bodyenableLayoutStylesheets = WorkflowExpression.Compile(bodyenableLayoutStylesheets, nameof(bodyenableLayoutStylesheets), required: true);
-            var __workflow_bodyfeaturedImage = WorkflowExpression.Compile(bodyfeaturedImage, nameof(bodyfeaturedImage), required: true);
-            var __workflow_bodyfeaturedImageAltText = WorkflowExpression.Compile(bodyfeaturedImageAltText, nameof(bodyfeaturedImageAltText), required: true);
-            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
-            var __workflow_bodyfooterHtml = WorkflowExpression.Compile(bodyfooterHtml, nameof(bodyfooterHtml), required: true);
-            var __workflow_bodyheadHtml = WorkflowExpression.Compile(bodyheadHtml, nameof(bodyheadHtml), required: true);
-            var __workflow_bodyhtmlTitle = WorkflowExpression.Compile(bodyhtmlTitle, nameof(bodyhtmlTitle), required: true);
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyincludeDefaultCustomCss = WorkflowExpression.Compile(bodyincludeDefaultCustomCss, nameof(bodyincludeDefaultCustomCss), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodylinkRelCanonicalUrl = WorkflowExpression.Compile(bodylinkRelCanonicalUrl, nameof(bodylinkRelCanonicalUrl), required: true);
-            var __workflow_bodymabExperimentId = WorkflowExpression.Compile(bodymabExperimentId, nameof(bodymabExperimentId), required: true);
-            var __workflow_bodymetaDescription = WorkflowExpression.Compile(bodymetaDescription, nameof(bodymetaDescription), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodypageExpiryDate = WorkflowExpression.Compile(bodypageExpiryDate, nameof(bodypageExpiryDate), required: true);
-            var __workflow_bodypageExpiryEnabled = WorkflowExpression.Compile(bodypageExpiryEnabled, nameof(bodypageExpiryEnabled), required: true);
-            var __workflow_bodypageExpiryRedirectId = WorkflowExpression.Compile(bodypageExpiryRedirectId, nameof(bodypageExpiryRedirectId), required: true);
-            var __workflow_bodypageExpiryRedirectUrl = WorkflowExpression.Compile(bodypageExpiryRedirectUrl, nameof(bodypageExpiryRedirectUrl), required: true);
-            var __workflow_bodypageRedirected = WorkflowExpression.Compile(bodypageRedirected, nameof(bodypageRedirected), required: true);
-            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodypublicAccessRules = WorkflowExpression.Compile(bodypublicAccessRules, nameof(bodypublicAccessRules), required: true);
-            var __workflow_bodypublicAccessRulesEnabled = WorkflowExpression.Compile(bodypublicAccessRulesEnabled, nameof(bodypublicAccessRulesEnabled), required: true);
-            var __workflow_bodypublishDate = WorkflowExpression.Compile(bodypublishDate, nameof(bodypublishDate), required: true);
-            var __workflow_bodypublishImmediately = WorkflowExpression.Compile(bodypublishImmediately, nameof(bodypublishImmediately), required: true);
-            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: true);
-            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: true);
-            var __workflow_bodysubCategory = WorkflowExpression.Compile(bodysubCategory, nameof(bodysubCategory), required: true);
-            var __workflow_bodytemplatePath = WorkflowExpression.Compile(bodytemplatePath, nameof(bodytemplatePath), required: true);
-            var __workflow_bodytranslatedFromId = WorkflowExpression.Compile(bodytranslatedFromId, nameof(bodytranslatedFromId), required: true);
-            var __workflow_bodyupdated = WorkflowExpression.Compile(bodyupdated, nameof(bodyupdated), required: true);
-            var __workflow_bodyupdatedById = WorkflowExpression.Compile(bodyupdatedById, nameof(bodyupdatedById), required: true);
-            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyuseFeaturedImage = WorkflowExpression.Compile(bodyuseFeaturedImage, nameof(bodyuseFeaturedImage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
             {
@@ -4911,207 +2229,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_archived != null)
                     callPayload.Queries["archived"] = ExpressionConverter.Convert(__workflow_archived);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["abStatus"] = ExpressionConverter.ConvertO(__workflow_bodyabStatus);
-                bodypropCount++;
-                body["abTestId"] = ExpressionConverter.ConvertO(__workflow_bodyabTestId);
-                bodypropCount++;
-                body["archivedAt"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedAt);
-                bodypropCount++;
-                body["archivedInDashboard"] = ExpressionConverter.ConvertO(__workflow_bodyarchivedInDashboard);
-                bodypropCount++;
-                body["attachedStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyattachedStylesheets);
-                bodypropCount++;
-                body["authorName"] = ExpressionConverter.ConvertO(__workflow_bodyauthorName);
-                bodypropCount++;
-                body["campaign"] = ExpressionConverter.ConvertO(__workflow_bodycampaign);
-                bodypropCount++;
-                body["categoryId"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
-                bodypropCount++;
-                body["contentGroupId"] = ExpressionConverter.ConvertO(__workflow_bodycontentGroupId);
-                bodypropCount++;
-                body["contentTypeCategory"] = ExpressionConverter.ConvertO(__workflow_bodycontentTypeCategory);
-                bodypropCount++;
-                body["created"] = ExpressionConverter.ConvertO(__workflow_bodycreated);
-                bodypropCount++;
-                body["createdById"] = ExpressionConverter.ConvertO(__workflow_bodycreatedById);
-                bodypropCount++;
-                body["currentState"] = ExpressionConverter.ConvertO(__workflow_bodycurrentState);
-                bodypropCount++;
-                body["currentlyPublished"] = ExpressionConverter.ConvertO(__workflow_bodycurrentlyPublished);
-                bodypropCount++;
-                body["domain"] = ExpressionConverter.ConvertO(__workflow_bodydomain);
-                bodypropCount++;
-                body["dynamicPageDataSourceId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceId);
-                bodypropCount++;
-                body["dynamicPageDataSourceType"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageDataSourceType);
-                bodypropCount++;
-                body["dynamicPageHubDbTableId"] = ExpressionConverter.ConvertO(__workflow_bodydynamicPageHubDbTableId);
-                bodypropCount++;
-                body["enableDomainStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableDomainStylesheets);
-                bodypropCount++;
-                body["enableLayoutStylesheets"] = ExpressionConverter.ConvertO(__workflow_bodyenableLayoutStylesheets);
-                bodypropCount++;
-                body["featuredImage"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImage);
-                bodypropCount++;
-                body["featuredImageAltText"] = ExpressionConverter.ConvertO(__workflow_bodyfeaturedImageAltText);
-                bodypropCount++;
-                body["folderId"] = ExpressionConverter.ConvertO(__workflow_bodyfolderId);
-                bodypropCount++;
-                body["footerHtml"] = ExpressionConverter.ConvertO(__workflow_bodyfooterHtml);
-                bodypropCount++;
-                body["headHtml"] = ExpressionConverter.ConvertO(__workflow_bodyheadHtml);
-                bodypropCount++;
-                body["htmlTitle"] = ExpressionConverter.ConvertO(__workflow_bodyhtmlTitle);
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["includeDefaultCustomCss"] = ExpressionConverter.ConvertO(__workflow_bodyincludeDefaultCustomCss);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                var layoutSectionsObject = new JObject();
-                var layoutSectionsObjectpropCount = 0;
-                if (layoutSectionsObjectpropCount > 0)
-                {
-                    body["layoutSections"] = layoutSectionsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["linkRelCanonicalUrl"] = ExpressionConverter.ConvertO(__workflow_bodylinkRelCanonicalUrl);
-                bodypropCount++;
-                body["mabExperimentId"] = ExpressionConverter.ConvertO(__workflow_bodymabExperimentId);
-                bodypropCount++;
-                body["metaDescription"] = ExpressionConverter.ConvertO(__workflow_bodymetaDescription);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["pageExpiryDate"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryDate);
-                bodypropCount++;
-                body["pageExpiryEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryEnabled);
-                bodypropCount++;
-                body["pageExpiryRedirectId"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectId);
-                bodypropCount++;
-                body["pageExpiryRedirectUrl"] = ExpressionConverter.ConvertO(__workflow_bodypageExpiryRedirectUrl);
-                bodypropCount++;
-                body["pageRedirected"] = ExpressionConverter.ConvertO(__workflow_bodypageRedirected);
-                bodypropCount++;
-                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
-                bodypropCount++;
-                body["publicAccessRules"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRules);
-                bodypropCount++;
-                body["publicAccessRulesEnabled"] = ExpressionConverter.ConvertO(__workflow_bodypublicAccessRulesEnabled);
-                bodypropCount++;
-                body["publishDate"] = ExpressionConverter.ConvertO(__workflow_bodypublishDate);
-                bodypropCount++;
-                body["publishImmediately"] = ExpressionConverter.ConvertO(__workflow_bodypublishImmediately);
-                bodypropCount++;
-                body["slug"] = ExpressionConverter.ConvertO(__workflow_bodyslug);
-                bodypropCount++;
-                body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
-                bodypropCount++;
-                body["subCategory"] = ExpressionConverter.ConvertO(__workflow_bodysubCategory);
-                bodypropCount++;
-                body["templatePath"] = ExpressionConverter.ConvertO(__workflow_bodytemplatePath);
-                var themeSettingsValuesObject = new JObject();
-                var themeSettingsValuesObjectpropCount = 0;
-                if (themeSettingsValuesObjectpropCount > 0)
-                {
-                    body["themeSettingsValues"] = themeSettingsValuesObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["translatedFromId"] = ExpressionConverter.ConvertO(__workflow_bodytranslatedFromId);
-                var translationsObject = new JObject();
-                var translationsObjectpropCount = 0;
-                if (translationsObjectpropCount > 0)
-                {
-                    body["translations"] = translationsObject;
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["updated"] = ExpressionConverter.ConvertO(__workflow_bodyupdated);
-                bodypropCount++;
-                body["updatedById"] = ExpressionConverter.ConvertO(__workflow_bodyupdatedById);
-                bodypropCount++;
-                body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
-                bodypropCount++;
-                body["useFeaturedImage"] = ExpressionConverter.ConvertO(__workflow_bodyuseFeaturedImage);
-                var widgetContainersObject = new JObject();
-                var widgetContainersObjectpropCount = 0;
-                if (widgetContainersObjectpropCount > 0)
-                {
-                    body["widgetContainers"] = widgetContainersObject;
-                    bodypropCount++;
-                }
-
-                var widgetsObject = new JObject();
-                var widgetsObjectpropCount = 0;
-                if (widgetsObjectpropCount > 0)
-                {
-                    body["widgets"] = widgetsObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation63>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation4(Expression<Func<string>> bodyid, Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyprimaryLanguage)
+        public IBodyWorkflowAction<Successfuloperation63, ApiConnectionActionConfiguration> PostCreateanewlanguagevariation4(Expression<Func<PostCreateanewlanguagevariation3BodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodyprimaryLanguage = WorkflowExpression.Compile(bodyprimaryLanguage, nameof(bodyprimaryLanguage), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Successfuloperation63, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/landing-pages/multi-language/create-language-variation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                bodypropCount++;
-                body["primaryLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyprimaryLanguage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Successfuloperation63>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcmsv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofLandingPages(Expression<Func<string[]>> bodyinputs)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteabatchofLandingPages(Expression<Func<ClonerowsinbatchBodyInput>> body)
         {
-            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pages/landing-pages/batch/archive";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["inputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputs);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -5133,6 +2279,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
     public class Hubspotcmsv2Triggers([ConnectionName] string connectionId)
     {
+    }
+
+    public class ScheduleaBlogPosttobePublishedBodyInput
+    {
+        public ScheduleaBlogPosttobePublishedBodyInput(string id, string publishDate)
+        {
+            this.Id = id;
+            this.PublishDate = publishDate;
+        }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("publishDate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PublishDate { get; set; }
+    }
+
+    public class PostUpdatelanguagesofmultiLanguagegroup1BodyInput
+    {
+        public PostUpdatelanguagesofmultiLanguagegroup1BodyInput(JToken languages, string primaryId)
+        {
+            this.Languages = languages;
+            this.PrimaryId = primaryId;
+        }
+
+        [JsonProperty("languages", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Languages { get; set; }
+
+        [JsonProperty("primaryId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PrimaryId { get; set; }
     }
 
     public class Successfuloperation1
@@ -5531,6 +2707,287 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public JToken Widgets { get; set; }
     }
 
+    public class CreateanewBlogBodyInput
+    {
+        public CreateanewBlogBodyInput(string abStatus, string abTestId, string archivedAt, bool archivedInDashboard, JToken[] attachedStylesheets, string authorName, string blogAuthorId, string campaign, string categoryId, string contentGroupId, string contentTypeCategory, string created, string createdById, string currentState, bool currentlyPublished, string domain, string dynamicPageDataSourceId, string dynamicPageDataSourceType, string dynamicPageHubDbTableId, bool enableDomainStylesheets, bool enableGoogleAmpOutputOverride, bool enableLayoutStylesheets, string featuredImage, string featuredImageAltText, string folderId, string footerHtml, string headHtml, string htmlTitle, string id, bool includeDefaultCustomCss, string language, JToken layoutSections, string linkRelCanonicalUrl, string mabExperimentId, string metaDescription, string name, string pageExpiryDate, bool pageExpiryEnabled, string pageExpiryRedirectId, string pageExpiryRedirectUrl, string password, string postBody, string postSummary, string[] publicAccessRules, bool publicAccessRulesEnabled, string publishDate, string publishImmediately, string rssBody, string rssSummary, string slug, string state, string[] tagIds, JToken themeSettingsValues, string translatedFromId, JToken translations, string updated, string updatedById, string url, bool useFeaturedImage, JToken widgetContainers, JToken widgets)
+        {
+            this.AbStatus = abStatus;
+            this.AbTestId = abTestId;
+            this.ArchivedAt = archivedAt;
+            this.ArchivedInDashboard = archivedInDashboard;
+            this.AttachedStylesheets = attachedStylesheets;
+            this.AuthorName = authorName;
+            this.BlogAuthorId = blogAuthorId;
+            this.Campaign = campaign;
+            this.CategoryId = categoryId;
+            this.ContentGroupId = contentGroupId;
+            this.ContentTypeCategory = contentTypeCategory;
+            this.Created = created;
+            this.CreatedById = createdById;
+            this.CurrentState = currentState;
+            this.CurrentlyPublished = currentlyPublished;
+            this.Domain = domain;
+            this.DynamicPageDataSourceId = dynamicPageDataSourceId;
+            this.DynamicPageDataSourceType = dynamicPageDataSourceType;
+            this.DynamicPageHubDbTableId = dynamicPageHubDbTableId;
+            this.EnableDomainStylesheets = enableDomainStylesheets;
+            this.EnableGoogleAmpOutputOverride = enableGoogleAmpOutputOverride;
+            this.EnableLayoutStylesheets = enableLayoutStylesheets;
+            this.FeaturedImage = featuredImage;
+            this.FeaturedImageAltText = featuredImageAltText;
+            this.FolderId = folderId;
+            this.FooterHtml = footerHtml;
+            this.HeadHtml = headHtml;
+            this.HtmlTitle = htmlTitle;
+            this.Id = id;
+            this.IncludeDefaultCustomCss = includeDefaultCustomCss;
+            this.Language = language;
+            this.LayoutSections = layoutSections;
+            this.LinkRelCanonicalUrl = linkRelCanonicalUrl;
+            this.MabExperimentId = mabExperimentId;
+            this.MetaDescription = metaDescription;
+            this.Name = name;
+            this.PageExpiryDate = pageExpiryDate;
+            this.PageExpiryEnabled = pageExpiryEnabled;
+            this.PageExpiryRedirectId = pageExpiryRedirectId;
+            this.PageExpiryRedirectUrl = pageExpiryRedirectUrl;
+            this.Password = password;
+            this.PostBody = postBody;
+            this.PostSummary = postSummary;
+            this.PublicAccessRules = publicAccessRules;
+            this.PublicAccessRulesEnabled = publicAccessRulesEnabled;
+            this.PublishDate = publishDate;
+            this.PublishImmediately = publishImmediately;
+            this.RssBody = rssBody;
+            this.RssSummary = rssSummary;
+            this.Slug = slug;
+            this.State = state;
+            this.TagIds = tagIds;
+            this.ThemeSettingsValues = themeSettingsValues;
+            this.TranslatedFromId = translatedFromId;
+            this.Translations = translations;
+            this.Updated = updated;
+            this.UpdatedById = updatedById;
+            this.Url = url;
+            this.UseFeaturedImage = useFeaturedImage;
+            this.WidgetContainers = widgetContainers;
+            this.Widgets = widgets;
+        }
+
+        [JsonProperty("abStatus", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AbStatus { get; set; }
+
+        [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AbTestId { get; set; }
+
+        [JsonProperty("archivedAt", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ArchivedAt { get; set; }
+
+        [JsonProperty("archivedInDashboard", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool ArchivedInDashboard { get; set; }
+
+        [JsonProperty("attachedStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] AttachedStylesheets { get; set; }
+
+        [JsonProperty("authorName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AuthorName { get; set; }
+
+        [JsonProperty("blogAuthorId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string BlogAuthorId { get; set; }
+
+        [JsonProperty("campaign", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Campaign { get; set; }
+
+        [JsonProperty("categoryId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CategoryId { get; set; }
+
+        [JsonProperty("contentGroupId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContentGroupId { get; set; }
+
+        [JsonProperty("contentTypeCategory", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContentTypeCategory { get; set; }
+
+        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Created { get; set; }
+
+        [JsonProperty("createdById", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CreatedById { get; set; }
+
+        [JsonProperty("currentState", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CurrentState { get; set; }
+
+        [JsonProperty("currentlyPublished", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool CurrentlyPublished { get; set; }
+
+        [JsonProperty("domain", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Domain { get; set; }
+
+        [JsonProperty("dynamicPageDataSourceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DynamicPageDataSourceId { get; set; }
+
+        [JsonProperty("dynamicPageDataSourceType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DynamicPageDataSourceType { get; set; }
+
+        [JsonProperty("dynamicPageHubDbTableId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DynamicPageHubDbTableId { get; set; }
+
+        [JsonProperty("enableDomainStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool EnableDomainStylesheets { get; set; }
+
+        [JsonProperty("enableGoogleAmpOutputOverride", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool EnableGoogleAmpOutputOverride { get; set; }
+
+        [JsonProperty("enableLayoutStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool EnableLayoutStylesheets { get; set; }
+
+        [JsonProperty("featuredImage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FeaturedImage { get; set; }
+
+        [JsonProperty("featuredImageAltText", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FeaturedImageAltText { get; set; }
+
+        [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FolderId { get; set; }
+
+        [JsonProperty("footerHtml", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FooterHtml { get; set; }
+
+        [JsonProperty("headHtml", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string HeadHtml { get; set; }
+
+        [JsonProperty("htmlTitle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string HtmlTitle { get; set; }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("includeDefaultCustomCss", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool IncludeDefaultCustomCss { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; }
+
+        [JsonProperty("layoutSections", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken LayoutSections { get; set; }
+
+        [JsonProperty("linkRelCanonicalUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LinkRelCanonicalUrl { get; set; }
+
+        [JsonProperty("mabExperimentId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MabExperimentId { get; set; }
+
+        [JsonProperty("metaDescription", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MetaDescription { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("pageExpiryDate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PageExpiryDate { get; set; }
+
+        [JsonProperty("pageExpiryEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool PageExpiryEnabled { get; set; }
+
+        [JsonProperty("pageExpiryRedirectId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PageExpiryRedirectId { get; set; }
+
+        [JsonProperty("pageExpiryRedirectUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PageExpiryRedirectUrl { get; set; }
+
+        [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Password { get; set; }
+
+        [JsonProperty("postBody", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PostBody { get; set; }
+
+        [JsonProperty("postSummary", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PostSummary { get; set; }
+
+        [JsonProperty("publicAccessRules", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] PublicAccessRules { get; set; }
+
+        [JsonProperty("publicAccessRulesEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool PublicAccessRulesEnabled { get; set; }
+
+        [JsonProperty("publishDate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PublishDate { get; set; }
+
+        [JsonProperty("publishImmediately", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PublishImmediately { get; set; }
+
+        [JsonProperty("rssBody", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RssBody { get; set; }
+
+        [JsonProperty("rssSummary", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RssSummary { get; set; }
+
+        [JsonProperty("slug", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Slug { get; set; }
+
+        [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string State { get; set; }
+
+        [JsonProperty("tagIds", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] TagIds { get; set; }
+
+        [JsonProperty("themeSettingsValues", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken ThemeSettingsValues { get; set; }
+
+        [JsonProperty("translatedFromId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TranslatedFromId { get; set; }
+
+        [JsonProperty("translations", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Translations { get; set; }
+
+        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Updated { get; set; }
+
+        [JsonProperty("updatedById", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UpdatedById { get; set; }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Url { get; set; }
+
+        [JsonProperty("useFeaturedImage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool UseFeaturedImage { get; set; }
+
+        [JsonProperty("widgetContainers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken WidgetContainers { get; set; }
+
+        [JsonProperty("widgets", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Widgets { get; set; }
+    }
+
+    public class CreateanewlanguagevariationBodyInput
+    {
+        public CreateanewlanguagevariationBodyInput(string id, string language)
+        {
+            this.Id = id;
+            this.Language = language;
+        }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; }
+    }
+
+    public class CloneaBlogBodyInput
+    {
+        public CloneaBlogBodyInput(string id, string cloneName)
+        {
+            this.Id = id;
+            this.CloneName = cloneName;
+        }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("cloneName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CloneName { get; set; }
+    }
+
     public class Successfuloperation9
     {
         [JsonProperty("results")]
@@ -5739,6 +3196,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
         [JsonProperty("link")]
         public string Link { get; set; }
+    }
+
+    public class DetachaBlogAuthorfromamultiLanguagegroupBodyInput
+    {
+        public DetachaBlogAuthorfromamultiLanguagegroupBodyInput(string id)
+        {
+            this.Id = id;
+        }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+    }
+
+    public class ClonerowsinbatchBodyInput
+    {
+        public ClonerowsinbatchBodyInput(string[] inputs)
+        {
+            this.Inputs = inputs;
+        }
+
+        [JsonProperty("inputs", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] Inputs { get; set; }
+    }
+
+    public class AttachaBlogAuthortoamultiLanguagegroupBodyInput
+    {
+        public AttachaBlogAuthortoamultiLanguagegroupBodyInput(string id, string language, string primaryId, string primaryLanguage)
+        {
+            this.Id = id;
+            this.Language = language;
+            this.PrimaryId = primaryId;
+            this.PrimaryLanguage = primaryLanguage;
+        }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; }
+
+        [JsonProperty("primaryId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PrimaryId { get; set; }
+
+        [JsonProperty("primaryLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PrimaryLanguage { get; set; }
     }
 
     public class Successfuloperation12
@@ -6023,6 +3525,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Website { get; set; }
     }
 
+    public class CreateanewBlogAuthorBodyInput
+    {
+        public CreateanewBlogAuthorBodyInput(string avatar, string bio, string created, string deletedAt, string displayName, string email, string facebook, string fullName, string id, string language, string linkedin, string name, string slug, string translatedFromId, string twitter, string updated, string website)
+        {
+            this.Avatar = avatar;
+            this.Bio = bio;
+            this.Created = created;
+            this.DeletedAt = deletedAt;
+            this.DisplayName = displayName;
+            this.Email = email;
+            this.Facebook = facebook;
+            this.FullName = fullName;
+            this.Id = id;
+            this.Language = language;
+            this.Linkedin = linkedin;
+            this.Name = name;
+            this.Slug = slug;
+            this.TranslatedFromId = translatedFromId;
+            this.Twitter = twitter;
+            this.Updated = updated;
+            this.Website = website;
+        }
+
+        [JsonProperty("avatar", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Avatar { get; set; }
+
+        [JsonProperty("bio", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Bio { get; set; }
+
+        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Created { get; set; }
+
+        [JsonProperty("deletedAt", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DeletedAt { get; set; }
+
+        [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("facebook", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Facebook { get; set; }
+
+        [JsonProperty("fullName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FullName { get; set; }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; }
+
+        [JsonProperty("linkedin", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Linkedin { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("slug", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Slug { get; set; }
+
+        [JsonProperty("translatedFromId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TranslatedFromId { get; set; }
+
+        [JsonProperty("twitter", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Twitter { get; set; }
+
+        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Updated { get; set; }
+
+        [JsonProperty("website", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Website { get; set; }
+    }
+
     public class Successfuloperation20
     {
         [JsonProperty("results")]
@@ -6086,6 +3663,104 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Updated { get; set; }
 
         [JsonProperty("website")]
+        public string Website { get; set; }
+    }
+
+    public class PostCreateanewlanguagevariationBodyInput
+    {
+        public PostCreateanewlanguagevariationBodyInput(BlogAuthor blogAuthor, string id, string language, string primaryLanguage)
+        {
+            this.BlogAuthor = blogAuthor;
+            this.Id = id;
+            this.Language = language;
+            this.PrimaryLanguage = primaryLanguage;
+        }
+
+        [JsonProperty("blogAuthor", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BlogAuthor BlogAuthor { get; set; }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; }
+
+        [JsonProperty("primaryLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PrimaryLanguage { get; set; }
+    }
+
+    public class BlogAuthor
+    {
+        public BlogAuthor(string avatar, string bio, string created, string deletedAt, string displayName, string email, string facebook, string fullName, string id, string language, string linkedin, string name, string slug, string translatedFromId, string twitter, string updated, string website)
+        {
+            this.Avatar = avatar;
+            this.Bio = bio;
+            this.Created = created;
+            this.DeletedAt = deletedAt;
+            this.DisplayName = displayName;
+            this.Email = email;
+            this.Facebook = facebook;
+            this.FullName = fullName;
+            this.Id = id;
+            this.Language = language;
+            this.Linkedin = linkedin;
+            this.Name = name;
+            this.Slug = slug;
+            this.TranslatedFromId = translatedFromId;
+            this.Twitter = twitter;
+            this.Updated = updated;
+            this.Website = website;
+        }
+
+        [JsonProperty("avatar", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Avatar { get; set; }
+
+        [JsonProperty("bio", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Bio { get; set; }
+
+        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Created { get; set; }
+
+        [JsonProperty("deletedAt", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DeletedAt { get; set; }
+
+        [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Email { get; set; }
+
+        [JsonProperty("facebook", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Facebook { get; set; }
+
+        [JsonProperty("fullName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FullName { get; set; }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; }
+
+        [JsonProperty("linkedin", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Linkedin { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("slug", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Slug { get; set; }
+
+        [JsonProperty("translatedFromId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TranslatedFromId { get; set; }
+
+        [JsonProperty("twitter", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Twitter { get; set; }
+
+        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Updated { get; set; }
+
+        [JsonProperty("website", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Website { get; set; }
     }
 
@@ -6224,6 +3899,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Updated { get; set; }
     }
 
+    public class PostCreateanewlanguagevariation1BodyInput
+    {
+        public PostCreateanewlanguagevariation1BodyInput(string id, string language, string primaryLanguage, string slug)
+        {
+            this.Id = id;
+            this.Language = language;
+            this.PrimaryLanguage = primaryLanguage;
+            this.Slug = slug;
+        }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; }
+
+        [JsonProperty("primaryLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PrimaryLanguage { get; set; }
+
+        [JsonProperty("slug", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Slug { get; set; }
+    }
+
     public class Successfuloperation27
     {
         [JsonProperty("results")]
@@ -6341,6 +4039,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Updated { get; set; }
     }
 
+    public class CreateanewBlogTagBodyInput
+    {
+        public CreateanewBlogTagBodyInput(string created, string deletedAt, string id, string language, string name, string translatedFromId, string updated)
+        {
+            this.Created = created;
+            this.DeletedAt = deletedAt;
+            this.Id = id;
+            this.Language = language;
+            this.Name = name;
+            this.TranslatedFromId = translatedFromId;
+            this.Updated = updated;
+        }
+
+        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Created { get; set; }
+
+        [JsonProperty("deletedAt", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DeletedAt { get; set; }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("translatedFromId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TranslatedFromId { get; set; }
+
+        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Updated { get; set; }
+    }
+
+    public class PostCreateanewlanguagevariation2BodyInput
+    {
+        public PostCreateanewlanguagevariation2BodyInput(string id, string name, string language, string primaryLanguage)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Language = language;
+            this.PrimaryLanguage = primaryLanguage;
+        }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; }
+
+        [JsonProperty("primaryLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PrimaryLanguage { get; set; }
+    }
+
     public class Successfuloperation36
     {
         [JsonProperty("results")]
@@ -6431,7 +4187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Deleted { get; set; }
 
         [JsonProperty("options")]
-        public Option[] Options { get; set; }
+        public CloneatableOptionResponse[] Options { get; set; }
 
         [JsonProperty("width")]
         public string Width { get; set; }
@@ -6458,7 +4214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string OptionCount { get; set; }
     }
 
-    public class Option
+    public class CloneatableOptionResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -6596,7 +4352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string Deleted { get; set; }
 
         [JsonProperty("options")]
-        public Option[] Options { get; set; }
+        public CloneatableOptionResponse[] Options { get; set; }
 
         [JsonProperty("width")]
         public string Width { get; set; }
@@ -6623,28 +4379,124 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string OptionCount { get; set; }
     }
 
-    public class Column5
+    public class CloneatableBodyInput
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
+        public CloneatableBodyInput(string copyRows, string newName, string newLabel)
+        {
+            this.CopyRows = copyRows;
+            this.NewName = newName;
+            this.NewLabel = newLabel;
+        }
 
-        [JsonProperty("label")]
+        [JsonProperty("copyRows", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CopyRows { get; set; }
+
+        [JsonProperty("newName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string NewName { get; set; }
+
+        [JsonProperty("newLabel", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string NewLabel { get; set; }
+    }
+
+    public class CreateanewtableBodyInput
+    {
+        public CreateanewtableBodyInput(string label, string name, bool useForPages, bool allowPublicApiAccess, bool allowChildTables, bool enableChildTablePages, Column5[] columns, JToken dynamicMetaTags)
+        {
+            this.Label = label;
+            this.Name = name;
+            this.UseForPages = useForPages;
+            this.AllowPublicApiAccess = allowPublicApiAccess;
+            this.AllowChildTables = allowChildTables;
+            this.EnableChildTablePages = enableChildTablePages;
+            this.Columns = columns;
+            this.DynamicMetaTags = dynamicMetaTags;
+        }
+
+        [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Label { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Name { get; set; }
 
-        [JsonProperty("options")]
-        public Option[] Options { get; set; }
+        [JsonProperty("useForPages", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool UseForPages { get; set; }
 
-        [JsonProperty("type")]
+        [JsonProperty("allowPublicApiAccess", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool AllowPublicApiAccess { get; set; }
+
+        [JsonProperty("allowChildTables", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool AllowChildTables { get; set; }
+
+        [JsonProperty("enableChildTablePages", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool EnableChildTablePages { get; set; }
+
+        [JsonProperty("columns", DefaultValueHandling = DefaultValueHandling.Include)]
+        public Column5[] Columns { get; set; }
+
+        [JsonProperty("dynamicMetaTags", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken DynamicMetaTags { get; set; }
+    }
+
+    public class Column5
+    {
+        public Column5(string id, string label, string name, CreateanewtableOption[] options, string type, string foreignTableId, string foreignColumnId)
+        {
+            this.Id = id;
+            this.Label = label;
+            this.Name = name;
+            this.Options = options;
+            this.Type = type;
+            this.ForeignTableId = foreignTableId;
+            this.ForeignColumnId = foreignColumnId;
+        }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Label { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("options", DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateanewtableOption[] Options { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Type { get; set; }
 
-        [JsonProperty("foreignTableId")]
+        [JsonProperty("foreignTableId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ForeignTableId { get; set; }
 
-        [JsonProperty("foreignColumnId")]
+        [JsonProperty("foreignColumnId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ForeignColumnId { get; set; }
+    }
+
+    public class CreateanewtableOption
+    {
+        public CreateanewtableOption(string id, string name, string order, string type, string label)
+        {
+            this.Id = id;
+            this.Name = name;
+            this.Order = order;
+            this.Type = type;
+            this.Label = label;
+        }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Order { get; set; }
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Type { get; set; }
+
+        [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Label { get; set; }
     }
 
     public class Successfuloperation47
@@ -6711,6 +4563,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
 
         [JsonProperty("publishedAt")]
         public string PublishedAt { get; set; }
+    }
+
+    public class ReplacesanexistingrowBodyInput
+    {
+        public ReplacesanexistingrowBodyInput(JToken values, string path, string name, string childTableId, string displayIndex)
+        {
+            this.Values = values;
+            this.Path = path;
+            this.Name = name;
+            this.ChildTableId = childTableId;
+            this.DisplayIndex = displayIndex;
+        }
+
+        [JsonProperty("values", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Values { get; set; }
+
+        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Path { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("childTableId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ChildTableId { get; set; }
+
+        [JsonProperty("displayIndex", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DisplayIndex { get; set; }
+    }
+
+    public class AddanewrowtoatableBodyInput
+    {
+        public AddanewrowtoatableBodyInput(JToken values, string path, string name, string childTableId, int displayIndex)
+        {
+            this.Values = values;
+            this.Path = path;
+            this.Name = name;
+            this.ChildTableId = childTableId;
+            this.DisplayIndex = displayIndex;
+        }
+
+        [JsonProperty("values", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Values { get; set; }
+
+        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Path { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("childTableId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ChildTableId { get; set; }
+
+        [JsonProperty("displayIndex", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int DisplayIndex { get; set; }
     }
 
     public class Successfuloperation55
@@ -7319,6 +5225,256 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public JToken Widgets { get; set; }
     }
 
+    public class EndanactiveABtestBodyInput
+    {
+        public EndanactiveABtestBodyInput(string abTestId, string winnerId)
+        {
+            this.AbTestId = abTestId;
+            this.WinnerId = winnerId;
+        }
+
+        [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AbTestId { get; set; }
+
+        [JsonProperty("winnerId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string WinnerId { get; set; }
+    }
+
+    public class CreateanewLandingPageBodyInput
+    {
+        public CreateanewLandingPageBodyInput(string abStatus, string abTestId, string archivedAt, bool archivedInDashboard, JToken[] attachedStylesheets, string authorName, string campaign, string categoryId, string contentGroupId, string contentTypeCategory, string created, string createdById, string currentState, bool currentlyPublished, string domain, string dynamicPageDataSourceId, string dynamicPageDataSourceType, string dynamicPageHubDbTableId, bool enableDomainStylesheets, bool enableLayoutStylesheets, string featuredImage, string featuredImageAltText, string folderId, string footerHtml, string headHtml, string htmlTitle, string id, bool includeDefaultCustomCss, string language, JToken layoutSections, string linkRelCanonicalUrl, string mabExperimentId, string metaDescription, string name, string pageExpiryDate, bool pageExpiryEnabled, string pageExpiryRedirectId, string pageExpiryRedirectUrl, bool pageRedirected, string password, string[] publicAccessRules, bool publicAccessRulesEnabled, string publishDate, string publishImmediately, string slug, string state, string subCategory, string templatePath, JToken themeSettingsValues, string translatedFromId, JToken translations, string updated, string updatedById, string url, bool useFeaturedImage, JToken widgetContainers, JToken widgets)
+        {
+            this.AbStatus = abStatus;
+            this.AbTestId = abTestId;
+            this.ArchivedAt = archivedAt;
+            this.ArchivedInDashboard = archivedInDashboard;
+            this.AttachedStylesheets = attachedStylesheets;
+            this.AuthorName = authorName;
+            this.Campaign = campaign;
+            this.CategoryId = categoryId;
+            this.ContentGroupId = contentGroupId;
+            this.ContentTypeCategory = contentTypeCategory;
+            this.Created = created;
+            this.CreatedById = createdById;
+            this.CurrentState = currentState;
+            this.CurrentlyPublished = currentlyPublished;
+            this.Domain = domain;
+            this.DynamicPageDataSourceId = dynamicPageDataSourceId;
+            this.DynamicPageDataSourceType = dynamicPageDataSourceType;
+            this.DynamicPageHubDbTableId = dynamicPageHubDbTableId;
+            this.EnableDomainStylesheets = enableDomainStylesheets;
+            this.EnableLayoutStylesheets = enableLayoutStylesheets;
+            this.FeaturedImage = featuredImage;
+            this.FeaturedImageAltText = featuredImageAltText;
+            this.FolderId = folderId;
+            this.FooterHtml = footerHtml;
+            this.HeadHtml = headHtml;
+            this.HtmlTitle = htmlTitle;
+            this.Id = id;
+            this.IncludeDefaultCustomCss = includeDefaultCustomCss;
+            this.Language = language;
+            this.LayoutSections = layoutSections;
+            this.LinkRelCanonicalUrl = linkRelCanonicalUrl;
+            this.MabExperimentId = mabExperimentId;
+            this.MetaDescription = metaDescription;
+            this.Name = name;
+            this.PageExpiryDate = pageExpiryDate;
+            this.PageExpiryEnabled = pageExpiryEnabled;
+            this.PageExpiryRedirectId = pageExpiryRedirectId;
+            this.PageExpiryRedirectUrl = pageExpiryRedirectUrl;
+            this.PageRedirected = pageRedirected;
+            this.Password = password;
+            this.PublicAccessRules = publicAccessRules;
+            this.PublicAccessRulesEnabled = publicAccessRulesEnabled;
+            this.PublishDate = publishDate;
+            this.PublishImmediately = publishImmediately;
+            this.Slug = slug;
+            this.State = state;
+            this.SubCategory = subCategory;
+            this.TemplatePath = templatePath;
+            this.ThemeSettingsValues = themeSettingsValues;
+            this.TranslatedFromId = translatedFromId;
+            this.Translations = translations;
+            this.Updated = updated;
+            this.UpdatedById = updatedById;
+            this.Url = url;
+            this.UseFeaturedImage = useFeaturedImage;
+            this.WidgetContainers = widgetContainers;
+            this.Widgets = widgets;
+        }
+
+        [JsonProperty("abStatus", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AbStatus { get; set; }
+
+        [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AbTestId { get; set; }
+
+        [JsonProperty("archivedAt", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ArchivedAt { get; set; }
+
+        [JsonProperty("archivedInDashboard", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool ArchivedInDashboard { get; set; }
+
+        [JsonProperty("attachedStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken[] AttachedStylesheets { get; set; }
+
+        [JsonProperty("authorName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AuthorName { get; set; }
+
+        [JsonProperty("campaign", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Campaign { get; set; }
+
+        [JsonProperty("categoryId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CategoryId { get; set; }
+
+        [JsonProperty("contentGroupId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContentGroupId { get; set; }
+
+        [JsonProperty("contentTypeCategory", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContentTypeCategory { get; set; }
+
+        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Created { get; set; }
+
+        [JsonProperty("createdById", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CreatedById { get; set; }
+
+        [JsonProperty("currentState", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CurrentState { get; set; }
+
+        [JsonProperty("currentlyPublished", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool CurrentlyPublished { get; set; }
+
+        [JsonProperty("domain", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Domain { get; set; }
+
+        [JsonProperty("dynamicPageDataSourceId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DynamicPageDataSourceId { get; set; }
+
+        [JsonProperty("dynamicPageDataSourceType", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DynamicPageDataSourceType { get; set; }
+
+        [JsonProperty("dynamicPageHubDbTableId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DynamicPageHubDbTableId { get; set; }
+
+        [JsonProperty("enableDomainStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool EnableDomainStylesheets { get; set; }
+
+        [JsonProperty("enableLayoutStylesheets", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool EnableLayoutStylesheets { get; set; }
+
+        [JsonProperty("featuredImage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FeaturedImage { get; set; }
+
+        [JsonProperty("featuredImageAltText", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FeaturedImageAltText { get; set; }
+
+        [JsonProperty("folderId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FolderId { get; set; }
+
+        [JsonProperty("footerHtml", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FooterHtml { get; set; }
+
+        [JsonProperty("headHtml", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string HeadHtml { get; set; }
+
+        [JsonProperty("htmlTitle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string HtmlTitle { get; set; }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("includeDefaultCustomCss", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool IncludeDefaultCustomCss { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; }
+
+        [JsonProperty("layoutSections", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken LayoutSections { get; set; }
+
+        [JsonProperty("linkRelCanonicalUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string LinkRelCanonicalUrl { get; set; }
+
+        [JsonProperty("mabExperimentId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MabExperimentId { get; set; }
+
+        [JsonProperty("metaDescription", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MetaDescription { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("pageExpiryDate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PageExpiryDate { get; set; }
+
+        [JsonProperty("pageExpiryEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool PageExpiryEnabled { get; set; }
+
+        [JsonProperty("pageExpiryRedirectId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PageExpiryRedirectId { get; set; }
+
+        [JsonProperty("pageExpiryRedirectUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PageExpiryRedirectUrl { get; set; }
+
+        [JsonProperty("pageRedirected", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool PageRedirected { get; set; }
+
+        [JsonProperty("password", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Password { get; set; }
+
+        [JsonProperty("publicAccessRules", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string[] PublicAccessRules { get; set; }
+
+        [JsonProperty("publicAccessRulesEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool PublicAccessRulesEnabled { get; set; }
+
+        [JsonProperty("publishDate", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PublishDate { get; set; }
+
+        [JsonProperty("publishImmediately", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PublishImmediately { get; set; }
+
+        [JsonProperty("slug", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Slug { get; set; }
+
+        [JsonProperty("state", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string State { get; set; }
+
+        [JsonProperty("subCategory", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SubCategory { get; set; }
+
+        [JsonProperty("templatePath", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TemplatePath { get; set; }
+
+        [JsonProperty("themeSettingsValues", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken ThemeSettingsValues { get; set; }
+
+        [JsonProperty("translatedFromId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string TranslatedFromId { get; set; }
+
+        [JsonProperty("translations", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Translations { get; set; }
+
+        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Updated { get; set; }
+
+        [JsonProperty("updatedById", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UpdatedById { get; set; }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Url { get; set; }
+
+        [JsonProperty("useFeaturedImage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool UseFeaturedImage { get; set; }
+
+        [JsonProperty("widgetContainers", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken WidgetContainers { get; set; }
+
+        [JsonProperty("widgets", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Widgets { get; set; }
+    }
+
     public class Successfuloperation69
     {
         [JsonProperty("results")]
@@ -7502,6 +5658,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public JToken Widgets { get; set; }
     }
 
+    public class PostCreateanewlanguagevariation3BodyInput
+    {
+        public PostCreateanewlanguagevariation3BodyInput(string id, string language, string primaryLanguage)
+        {
+            this.Id = id;
+            this.Language = language;
+            this.PrimaryLanguage = primaryLanguage;
+        }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; }
+
+        [JsonProperty("primaryLanguage", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PrimaryLanguage { get; set; }
+    }
+
+    public class CreateanewABtestvariationBodyInput
+    {
+        public CreateanewABtestvariationBodyInput(string contentId, string variationName)
+        {
+            this.ContentId = contentId;
+            this.VariationName = variationName;
+        }
+
+        [JsonProperty("contentId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContentId { get; set; }
+
+        [JsonProperty("variationName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string VariationName { get; set; }
+    }
+
+    public class PostRerunapreviousABtestBodyInput
+    {
+        public PostRerunapreviousABtestBodyInput(string abTestId, string variationId)
+        {
+            this.AbTestId = abTestId;
+            this.VariationId = variationId;
+        }
+
+        [JsonProperty("abTestId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AbTestId { get; set; }
+
+        [JsonProperty("variationId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string VariationId { get; set; }
+    }
+
     public class Successfuloperation78
     {
         [JsonProperty("results")]
@@ -7610,6 +5815,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcmsv2
         public string ParentFolderId { get; set; }
 
         [JsonProperty("updated")]
+        public string Updated { get; set; }
+    }
+
+    public class CreateanewFolderBodyInput
+    {
+        public CreateanewFolderBodyInput(string category, string created, string deletedAt, string id, string name, string parentFolderId, string updated)
+        {
+            this.Category = category;
+            this.Created = created;
+            this.DeletedAt = deletedAt;
+            this.Id = id;
+            this.Name = name;
+            this.ParentFolderId = parentFolderId;
+            this.Updated = updated;
+        }
+
+        [JsonProperty("category", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Category { get; set; }
+
+        [JsonProperty("created", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Created { get; set; }
+
+        [JsonProperty("deletedAt", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DeletedAt { get; set; }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("parentFolderId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ParentFolderId { get; set; }
+
+        [JsonProperty("updated", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Updated { get; set; }
     }
 

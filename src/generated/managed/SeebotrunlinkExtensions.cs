@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
     public class SeebotrunlinkActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
-        public IBodyWorkflowAction<GetLinksResponse, ApiConnectionActionConfiguration> GetLinks(Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<searchTypesInput>> searchTypes, Expression<Func<int>> domainId)
+        public IBodyWorkflowAction<GetLinksResponse, ApiConnectionActionConfiguration> GetLinks(Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<SearchTypesInput>> searchTypes, Expression<Func<int>> domainId)
         {
             var __workflow_xSBRUserId = WorkflowExpression.Compile(xSBRUserId, nameof(xSBRUserId), required: true);
             var __workflow_xSBRTokenKey = WorkflowExpression.Compile(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
@@ -36,17 +36,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
-        public IBodyWorkflowAction<CreateLinkResponse, ApiConnectionActionConfiguration> CreateLink(Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<bool>> bodycache, Expression<Func<int>> bodydomainId, Expression<Func<string>> bodyname, Expression<Func<string>> bodypath, Expression<Func<string>> bodyredirect, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<bodytypeInput>> bodytype)
+        public IBodyWorkflowAction<CreateLinkResponse, ApiConnectionActionConfiguration> CreateLink(Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<CreateLinkBodyInput>> body)
         {
             var __workflow_xSBRUserId = WorkflowExpression.Compile(xSBRUserId, nameof(xSBRUserId), required: true);
             var __workflow_xSBRTokenKey = WorkflowExpression.Compile(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
-            var __workflow_bodycache = WorkflowExpression.Compile(bodycache, nameof(bodycache), required: true);
-            var __workflow_bodydomainId = WorkflowExpression.Compile(bodydomainId, nameof(bodydomainId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
-            var __workflow_bodyredirect = WorkflowExpression.Compile(bodyredirect, nameof(bodyredirect), required: true);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/links";
@@ -55,27 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSBRUserId);
                 callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSBRTokenKey);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["cache"] = ExpressionConverter.ConvertO(__workflow_bodycache);
-                bodypropCount++;
-                body["domain_id"] = ExpressionConverter.ConvertO(__workflow_bodydomainId);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["path"] = ExpressionConverter.ConvertO(__workflow_bodypath);
-                bodypropCount++;
-                body["redirect"] = ExpressionConverter.ConvertO(__workflow_bodyredirect);
-                bodypropCount++;
-                body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateLinkResponse>(callPayload);
             });
         }
@@ -115,17 +89,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
-        public IBodyWorkflowAction<UpdateLinkResponse, ApiConnectionActionConfiguration> UpdateLink(Expression<Func<int>> id, Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<bool>> bodycache, Expression<Func<int>> bodydomainId, Expression<Func<string>> bodyname, Expression<Func<string>> bodypath, Expression<Func<string>> bodyredirect, Expression<Func<bodystatusInput>> bodystatus)
+        public IBodyWorkflowAction<UpdateLinkResponse, ApiConnectionActionConfiguration> UpdateLink(Expression<Func<int>> id, Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<UpdateLinkBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_xSBRUserId = WorkflowExpression.Compile(xSBRUserId, nameof(xSBRUserId), required: true);
             var __workflow_xSBRTokenKey = WorkflowExpression.Compile(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
-            var __workflow_bodycache = WorkflowExpression.Compile(bodycache, nameof(bodycache), required: true);
-            var __workflow_bodydomainId = WorkflowExpression.Compile(bodydomainId, nameof(bodydomainId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
-            var __workflow_bodyredirect = WorkflowExpression.Compile(bodyredirect, nameof(bodyredirect), required: true);
-            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/links/{0}", __workflow_id.WithUrlEncoding(1)));
@@ -134,25 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSBRUserId);
                 callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSBRTokenKey);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["cache"] = ExpressionConverter.ConvertO(__workflow_bodycache);
-                bodypropCount++;
-                body["domain_id"] = ExpressionConverter.ConvertO(__workflow_bodydomainId);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["path"] = ExpressionConverter.ConvertO(__workflow_bodypath);
-                bodypropCount++;
-                body["redirect"] = ExpressionConverter.ConvertO(__workflow_bodyredirect);
-                bodypropCount++;
-                body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateLinkResponse>(callPayload);
             });
         }
@@ -177,15 +128,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
-        public IBodyWorkflowAction<CreatePredefinedLinkResponse, ApiConnectionActionConfiguration> CreatePredefinedLink(Expression<Func<int>> id, Expression<Func<string>> key, Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<string>> bodypath, Expression<Func<string>> bodyredirect, Expression<Func<string>> bodynotes = null)
+        public IBodyWorkflowAction<CreatePredefinedLinkResponse, ApiConnectionActionConfiguration> CreatePredefinedLink(Expression<Func<int>> id, Expression<Func<string>> key, Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<CreatePredefinedLinkBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             var __workflow_xSBRUserId = WorkflowExpression.Compile(xSBRUserId, nameof(xSBRUserId), required: true);
             var __workflow_xSBRTokenKey = WorkflowExpression.Compile(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
-            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
-            var __workflow_bodyredirect = WorkflowExpression.Compile(bodyredirect, nameof(bodyredirect), required: true);
-            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreatePredefinedLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/links/{0}/predefined/{1}", __workflow_id.WithUrlEncoding(1), __workflow_key.WithUrlEncoding(1)));
@@ -194,23 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSBRUserId);
                 callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSBRTokenKey);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["path"] = ExpressionConverter.ConvertO(__workflow_bodypath);
-                bodypropCount++;
-                body["redirect"] = ExpressionConverter.ConvertO(__workflow_bodyredirect);
-                if (__workflow_bodynotes != null)
-                {
-                    body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatePredefinedLinkResponse>(callPayload);
             });
         }
@@ -317,7 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum searchTypesInput
+    public enum SearchTypesInput
     {
         [EnumMember(Value = "default")]
         Default,
@@ -425,8 +358,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         public string Sort { get; set; }
     }
 
+    public class CreateLinkBodyInput
+    {
+        public CreateLinkBodyInput(int domainId, string name, string path, string redirect)
+        {
+            this.DomainId = domainId;
+            this.Name = name;
+            this.Path = path;
+            this.Redirect = redirect;
+        }
+
+        [JsonProperty("cache", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool Cache { get; set; } = true;
+
+        [JsonProperty("domain_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int DomainId { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Path { get; set; }
+
+        [JsonProperty("redirect", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Redirect { get; set; }
+
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputStatusType Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink.BodyInputStatusType.Active;
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink.BodyInputTypeType.Default;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodystatusInput
+    public enum BodyInputStatusType
     {
         [EnumMember(Value = "active")]
         Active,
@@ -435,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypeInput
+    public enum BodyInputTypeType
     {
         [EnumMember(Value = "default")]
         Default,
@@ -600,6 +565,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
         public string Sort { get; set; }
     }
 
+    public class UpdateLinkBodyInput
+    {
+        public UpdateLinkBodyInput(int domainId, string name, string path, string redirect)
+        {
+            this.DomainId = domainId;
+            this.Name = name;
+            this.Path = path;
+            this.Redirect = redirect;
+        }
+
+        [JsonProperty("cache", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool Cache { get; set; } = true;
+
+        [JsonProperty("domain_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int DomainId { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Path { get; set; }
+
+        [JsonProperty("redirect", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Redirect { get; set; }
+
+        [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputStatusType Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink.BodyInputStatusType.Active;
+    }
+
     public class CreatePredefinedLinkResponse
     {
         [JsonProperty("id")]
@@ -631,6 +625,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
 
         [JsonProperty("updated_at")]
         public string UpdatedAt { get; set; }
+    }
+
+    public class CreatePredefinedLinkBodyInput
+    {
+        public CreatePredefinedLinkBodyInput(string path, string redirect)
+        {
+            this.Path = path;
+            this.Redirect = redirect;
+        }
+
+        [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Path { get; set; }
+
+        [JsonProperty("redirect", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Redirect { get; set; }
+
+        [JsonProperty("notes")]
+        public string Notes { get; set; }
     }
 }
 

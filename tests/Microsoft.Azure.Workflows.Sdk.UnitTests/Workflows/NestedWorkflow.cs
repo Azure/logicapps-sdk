@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using Microsoft.Azure.Workflows.Sdk;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Office365;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -74,9 +75,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             agent.AddTool(toolContext =>
                 {
                     var sendEmailAction = WorkflowActions.Managed.Office365("connectionId").SendEmail(
-                        emailMessageto: () => "apseth@microsoft.com",
-                        emailMessagesubject: () => "Interview Scheduled",
-                        emailMessagebody: () => "An interview has been scheduled.");
+                        emailMessage: () => new SendEmailEmailMessageInput(
+                            "apseth@microsoft.com",
+                            "Interview Scheduled",
+                            "An interview has been scheduled."));
                     return sendEmailAction;
                 },
                description: "This tool will send an email",

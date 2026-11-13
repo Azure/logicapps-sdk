@@ -39,31 +39,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
 
     public class WorkmobileTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> FormDataHook(Expression<Func<int>> bodyuserFormId, Expression<Func<bool>> bodyincludeSubFormData, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> FormDataHook(Expression<Func<BodyInput>> body)
         {
-            var __workflow_bodyuserFormId = WorkflowExpression.Compile(bodyuserFormId, nameof(bodyuserFormId), required: true);
-            var __workflow_bodyincludeSubFormData = WorkflowExpression.Compile(bodyincludeSubFormData, nameof(bodyincludeSubFormData), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/notifications/external";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["userFormId"] = ExpressionConverter.ConvertO(__workflow_bodyuserFormId);
-                body["url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                bodypropCount++;
-                body["includeSubFormData"] = ExpressionConverter.ConvertO(__workflow_bodyincludeSubFormData);
-                body["description"] = "Power Automate";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }
@@ -93,6 +78,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
         public string ModifiedBy { get; set; }
         public string Username { get; set; }
         public bool UserActive { get; set; }
+    }
+
+    public class BodyInput
+    {
+        public BodyInput(int userFormId, bool includeSubFormData)
+        {
+            this.UserFormId = userFormId;
+            this.IncludeSubFormData = includeSubFormData;
+        }
+
+        [JsonProperty("userFormId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int UserFormId { get; set; }
+
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("includeSubFormData", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool IncludeSubFormData { get; set; }
+
+        [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Description { get; set; } = "Power Automate";
     }
 }
 

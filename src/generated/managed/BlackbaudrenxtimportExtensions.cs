@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
     public class BlackbaudrenxtimportActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtimport")]
-        public IBodyWorkflowAction<ImportApiImportJobSummaryCollection, ApiConnectionActionConfiguration> ListImportJobs(Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<string>> continuationToken = null)
+        public IBodyWorkflowAction<ImportApiImportJobSummaryCollection, ApiConnectionActionConfiguration> ListImportJobs(Expression<Func<StatusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<string>> continuationToken = null)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
@@ -34,30 +34,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtimport")]
-        public IBodyWorkflowAction<ImportApiCreateImportJobResponse, ApiConnectionActionConfiguration> CreateImportJob(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyheaderRow = null)
+        public IBodyWorkflowAction<ImportApiCreateImportJobResponse, ApiConnectionActionConfiguration> CreateImportJob(Expression<Func<CreateImportJobBodyInput>> body)
         {
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyheaderRow = WorkflowExpression.Compile(bodyheaderRow, nameof(bodyheaderRow), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ImportApiCreateImportJobResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/import/jobs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                if (__workflow_bodyheaderRow != null)
-                {
-                    body["header_row"] = ExpressionConverter.ConvertO(__workflow_bodyheaderRow);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ImportApiCreateImportJobResponse>(callPayload);
             });
         }
@@ -89,28 +74,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtimport")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditImportJob(Expression<Func<string>> jobId, Expression<Func<string>> bodyfileName = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditImportJob(Expression<Func<string>> jobId, Expression<Func<EditImportJobBodyInput>> body)
         {
             var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
-            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/import/jobs/{0}", __workflow_jobId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyfileName != null)
-                {
-                    body["file_name"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -142,23 +115,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudrenxtimport")]
-        public IBodyWorkflowAction<ImportApiStartImportJobResponse, ApiConnectionActionConfiguration> StartImportJob(Expression<Func<string>> bodyjobId)
+        public IBodyWorkflowAction<ImportApiStartImportJobResponse, ApiConnectionActionConfiguration> StartImportJob(Expression<Func<StartImportJobBodyInput>> body)
         {
-            var __workflow_bodyjobId = WorkflowExpression.Compile(bodyjobId, nameof(bodyjobId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ImportApiStartImportJobResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/import/jobs/start";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["job_id"] = ExpressionConverter.ConvertO(__workflow_bodyjobId);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ImportApiStartImportJobResponse>(callPayload);
             });
         }
@@ -244,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum statusInput
+    public enum StatusInput
     {
         Pending,
         Enqueued,
@@ -302,6 +267,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
     {
         Error,
         Warning
+    }
+
+    public class CreateImportJobBodyInput
+    {
+        public CreateImportJobBodyInput(string fileName)
+        {
+            this.FileName = fileName;
+        }
+
+        [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string FileName { get; set; }
+
+        [JsonProperty("header_row")]
+        public string HeaderRow { get; set; }
     }
 
     public class ImportApiImportJob
@@ -364,6 +343,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         Failed
     }
 
+    public class EditImportJobBodyInput
+    {
+        [JsonProperty("file_name")]
+        public string FileName { get; set; }
+    }
+
     public class ImportApiImportJobExceptionFileDownloadInfo
     {
         [JsonProperty("file_download_uri")]
@@ -392,6 +377,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         Completed,
         CompletedWithExceptions,
         Failed
+    }
+
+    public class StartImportJobBodyInput
+    {
+        public StartImportJobBodyInput(string jobId)
+        {
+            this.JobId = jobId;
+        }
+
+        [JsonProperty("job_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string JobId { get; set; }
     }
 }
 

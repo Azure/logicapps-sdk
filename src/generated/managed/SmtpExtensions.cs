@@ -13,90 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
     public class SmtpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smtp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendEmail(Expression<Func<string>> emailMessagefrom = null, Expression<Func<string>> emailMessageto = null, Expression<Func<string>> emailMessagecC = null, Expression<Func<string>> emailMessagesubject = null, Expression<Func<string>> emailMessagebody = null, Expression<Func<string>> emailMessagebcc = null, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null, Expression<Func<string>> emailMessagereadReceipt = null, Expression<Func<string>> emailMessagedeliveryReceipt = null, Expression<Func<AttachmentV2Input[]>> emailMessageattachments = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendEmail(Expression<Func<EmailMessageInput>> emailMessage)
         {
-            var __workflow_emailMessagefrom = WorkflowExpression.Compile(emailMessagefrom, nameof(emailMessagefrom), required: false);
-            var __workflow_emailMessageto = WorkflowExpression.Compile(emailMessageto, nameof(emailMessageto), required: false);
-            var __workflow_emailMessagecC = WorkflowExpression.Compile(emailMessagecC, nameof(emailMessagecC), required: false);
-            var __workflow_emailMessagesubject = WorkflowExpression.Compile(emailMessagesubject, nameof(emailMessagesubject), required: false);
-            var __workflow_emailMessagebody = WorkflowExpression.Compile(emailMessagebody, nameof(emailMessagebody), required: false);
-            var __workflow_emailMessagebcc = WorkflowExpression.Compile(emailMessagebcc, nameof(emailMessagebcc), required: false);
-            var __workflow_emailMessageimportance = WorkflowExpression.Compile(emailMessageimportance, nameof(emailMessageimportance), required: false);
-            var __workflow_emailMessagereadReceipt = WorkflowExpression.Compile(emailMessagereadReceipt, nameof(emailMessagereadReceipt), required: false);
-            var __workflow_emailMessagedeliveryReceipt = WorkflowExpression.Compile(emailMessagedeliveryReceipt, nameof(emailMessagedeliveryReceipt), required: false);
-            var __workflow_emailMessageattachments = WorkflowExpression.Compile(emailMessageattachments, nameof(emailMessageattachments), required: false);
+            var __workflow_emailMessage = WorkflowExpression.Compile(emailMessage, nameof(emailMessage), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/SendEmailV3";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var emailMessage = new JObject();
-                var emailMessagepropCount = 0;
-                if (__workflow_emailMessagefrom != null)
-                {
-                    emailMessage["From"] = ExpressionConverter.ConvertO(__workflow_emailMessagefrom);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessageto != null)
-                {
-                    emailMessage["To"] = ExpressionConverter.ConvertO(__workflow_emailMessageto);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessagecC != null)
-                {
-                    emailMessage["CC"] = ExpressionConverter.ConvertO(__workflow_emailMessagecC);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessagesubject != null)
-                {
-                    emailMessage["Subject"] = ExpressionConverter.ConvertO(__workflow_emailMessagesubject);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessagebody != null)
-                {
-                    emailMessage["Body"] = ExpressionConverter.ConvertO(__workflow_emailMessagebody);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessagebcc != null)
-                {
-                    emailMessage["Bcc"] = ExpressionConverter.ConvertO(__workflow_emailMessagebcc);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessageimportance != null)
-                {
-                    emailMessage["Importance"] = ExpressionConverter.ConvertO(__workflow_emailMessageimportance);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessagereadReceipt != null)
-                {
-                    emailMessage["ReadReceipt"] = ExpressionConverter.ConvertO(__workflow_emailMessagereadReceipt);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessagedeliveryReceipt != null)
-                {
-                    emailMessage["DeliveryReceipt"] = ExpressionConverter.ConvertO(__workflow_emailMessagedeliveryReceipt);
-                    emailMessagepropCount++;
-                }
-
-                if (__workflow_emailMessageattachments != null)
-                {
-                    emailMessage["Attachments"] = ExpressionConverter.ConvertO(__workflow_emailMessageattachments);
-                    emailMessagepropCount++;
-                }
-
-                if (emailMessagepropCount > 0)
-                {
-                    callPayload.Body = emailMessage;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_emailMessage);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -106,17 +31,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
     {
     }
 
+    public class EmailMessageInput
+    {
+        public string From { get; set; }
+        public string To { get; set; }
+        public string CC { get; set; }
+        public string Subject { get; set; }
+        public string Body { get; set; }
+        public string Bcc { get; set; }
+        public EmailMessageInputImportanceType? Importance { get; set; }
+        public string ReadReceipt { get; set; }
+        public string DeliveryReceipt { get; set; }
+        public AttachmentV2[] Attachments { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum emailMessageimportanceInput
+    public enum EmailMessageInputImportanceType
     {
         Normal,
         Low,
         High
     }
 
-    public class AttachmentV2Input
+    public class AttachmentV2
     {
-        public WorkflowBinaryContent ContentData { get; set; }
+        public AttachmentV2(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent contentData, string contentType)
+        {
+            this.ContentData = contentData;
+            this.ContentType = contentType;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ContentData { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContentType { get; set; }
         public string FileName { get; set; }
         public string ContentId { get; set; }

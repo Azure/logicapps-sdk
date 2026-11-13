@@ -26,10 +26,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Penneosignsandbox
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "penneosignsandbox")]
-        public IBodyWorkflowAction<DocumentContentInfo, ApiConnectionActionConfiguration> DownloadDocument(Expression<Func<int>> documentId, Expression<Func<bool>> signed = null)
+        public IBodyWorkflowAction<DocumentContentInfo, ApiConnectionActionConfiguration> DownloadDocument(Expression<Func<int>> documentId, Expression<Func<bool>> signed = null, Expression<Func<FormatInput>> format = null)
         {
             var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             var __workflow_signed = WorkflowExpression.Compile(signed, nameof(signed), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredBodyAction<DocumentContentInfo, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/documents/{0}/content", __workflow_documentId.WithUrlEncoding(1)));
@@ -38,6 +39,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Penneosignsandbox
                 callPayload.Queries["signed"] = Convert.ToString(true);
                 if (__workflow_signed != null)
                     callPayload.Queries["signed"] = ExpressionConverter.Convert(__workflow_signed);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
                 return new ApiConnectionAction<DocumentContentInfo>(callPayload);
             });
         }
@@ -138,6 +142,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Penneosignsandbox
     {
         [JsonProperty("content")]
         public string DocumentContent { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum FormatInput
+    {
+        [EnumMember(Value = "json")]
+        Json,
+        [EnumMember(Value = "default")]
+        DefaultFileType
     }
 }
 

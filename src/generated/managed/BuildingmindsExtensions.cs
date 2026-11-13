@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<AssociatedSpacesTypeWithPagination, ApiConnectionActionConfiguration> GetAssociatedSpacesForSpace(Expression<Func<spaceTypeInput>> spaceType, Expression<Func<string>> id, Expression<Func<associatedTypeInput>> associatedType, Expression<Func<string>> skip = null, Expression<Func<string>> top = null)
+        public IBodyWorkflowAction<AssociatedSpacesTypeWithPagination, ApiConnectionActionConfiguration> GetAssociatedSpacesForSpace(Expression<Func<SpaceTypeInput>> spaceType, Expression<Func<string>> id, Expression<Func<AssociatedTypeInput>> associatedType, Expression<Func<string>> skip = null, Expression<Func<string>> top = null)
         {
             var __workflow_spaceType = WorkflowExpression.Compile(spaceType, nameof(spaceType), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetUnassociatedSpaces(Expression<Func<spaceTypeInput>> spaceType, Expression<Func<associatedTypeInput>> associatedType, Expression<Func<string>> spaceid = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetUnassociatedSpaces(Expression<Func<SpaceTypeInput>> spaceType, Expression<Func<AssociatedTypeInput>> associatedType, Expression<Func<string>> spaceid = null)
         {
             var __workflow_spaceType = WorkflowExpression.Compile(spaceType, nameof(spaceType), required: true);
             var __workflow_associatedType = WorkflowExpression.Compile(associatedType, nameof(associatedType), required: true);
@@ -1348,7 +1348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum spaceTypeInput
+    public enum SpaceTypeInput
     {
         [EnumMember(Value = "portfolios")]
         Portfolios,
@@ -1373,7 +1373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum associatedTypeInput
+    public enum AssociatedTypeInput
     {
         [EnumMember(Value = "portfolios")]
         Portfolios,

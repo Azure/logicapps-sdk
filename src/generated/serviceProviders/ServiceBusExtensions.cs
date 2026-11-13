@@ -1264,7 +1264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
             });
         }
 
-        public IBodyWorkflowTrigger<OnNewMessagesFromQueueSessionOutputItem[], OnNewMessagesFromQueueSessionTriggerConfiguration> OnNewMessagesFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId = null, Expression<Func<int>> maxMessages = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewMessagesFromQueueSessionOutputItem[], OnNewMessagesFromQueueSessionTriggerConfiguration> OnNewMessagesFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId = null, Expression<Func<int>> maxMessages = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
@@ -1288,11 +1288,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onNewMessagesFromQueueSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderBodyTrigger<OnNewMessagesFromQueueSessionOutputItem[], OnNewMessagesFromQueueSessionTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<OnNewMessagesFromQueueSessionOutputItem[], OnNewMessagesFromQueueSessionTriggerConfiguration>(serviceProviderInput, isPolling: true);
             });
         }
 
-        public IBodyWorkflowTrigger<OnNewMessagesFromTopicSessionOutputItem[], OnNewMessagesFromTopicSessionTriggerConfiguration> OnNewMessagesFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId = null, Expression<Func<int>> maxMessages = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewMessagesFromTopicSessionOutputItem[], OnNewMessagesFromTopicSessionTriggerConfiguration> OnNewMessagesFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId = null, Expression<Func<int>> maxMessages = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
@@ -1318,11 +1318,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onNewMessagesFromTopicSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderBodyTrigger<OnNewMessagesFromTopicSessionOutputItem[], OnNewMessagesFromTopicSessionTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<OnNewMessagesFromTopicSessionOutputItem[], OnNewMessagesFromTopicSessionTriggerConfiguration>(serviceProviderInput, isPolling: true);
             });
         }
 
-        public IBodyWorkflowTrigger<OnSingleNewMessageFromQueueSessionOutput, OnSingleNewMessageFromQueueSessionTriggerConfiguration> OnSingleNewMessageFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnSingleNewMessageFromQueueSessionOutput, OnSingleNewMessageFromQueueSessionTriggerConfiguration> OnSingleNewMessageFromQueueSession(Expression<Func<string>> queueName, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
@@ -1340,11 +1340,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onSingleNewMessageFromQueueSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderBodyTrigger<OnSingleNewMessageFromQueueSessionOutput, OnSingleNewMessageFromQueueSessionTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<OnSingleNewMessageFromQueueSessionOutput, OnSingleNewMessageFromQueueSessionTriggerConfiguration>(serviceProviderInput, isPolling: true);
             });
         }
 
-        public IBodyWorkflowTrigger<OnSingleNewMessageFromTopicSessionOutput, OnSingleNewMessageFromTopicSessionTriggerConfiguration> OnSingleNewMessageFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnSingleNewMessageFromTopicSessionOutput, OnSingleNewMessageFromTopicSessionTriggerConfiguration> OnSingleNewMessageFromTopicSession(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_subscriptionName = WorkflowExpression.Compile(subscriptionName, nameof(subscriptionName), required: true);
@@ -1364,7 +1364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/serviceBus", operationId: "onSingleNewMessageFromTopicSession", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderBodyTrigger<OnSingleNewMessageFromTopicSessionOutput, OnSingleNewMessageFromTopicSessionTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<OnSingleNewMessageFromTopicSessionOutput, OnSingleNewMessageFromTopicSessionTriggerConfiguration>(serviceProviderInput, isPolling: true);
             });
         }
     }
@@ -1447,7 +1447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
     }
 
-    public sealed class OnNewMessagesFromQueueSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
+    public sealed class OnNewMessagesFromQueueSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration, IRecurrenceConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
 
@@ -1460,9 +1460,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
 
         Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
+
+        FlowRecurrence IRecurrenceConfiguration.Recurrence { get; set; }
     }
 
-    public sealed class OnNewMessagesFromTopicSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
+    public sealed class OnNewMessagesFromTopicSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration, IRecurrenceConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
 
@@ -1475,9 +1477,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
 
         Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
+
+        FlowRecurrence IRecurrenceConfiguration.Recurrence { get; set; }
     }
 
-    public sealed class OnSingleNewMessageFromQueueSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
+    public sealed class OnSingleNewMessageFromQueueSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration, IRecurrenceConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
 
@@ -1490,9 +1494,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
 
         Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
+
+        FlowRecurrence IRecurrenceConfiguration.Recurrence { get; set; }
     }
 
-    public sealed class OnSingleNewMessageFromTopicSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration
+    public sealed class OnSingleNewMessageFromTopicSessionTriggerConfiguration : IRetryPolicyConfiguration, ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IClientTrackingIdConfiguration, IRecurrenceConfiguration
     {
         RetryPolicy IRetryPolicyConfiguration.RetryPolicy { get; set; }
 
@@ -1505,6 +1511,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
 
         Func<string> IClientTrackingIdConfiguration.ClientTrackingId { get; set; }
+
+        FlowRecurrence IRecurrenceConfiguration.Recurrence { get; set; }
     }
 
     public class ReceiveQueueMessagesOutputItem

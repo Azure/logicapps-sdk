@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<DrugClassResponse, ApiConnectionActionConfiguration> DrugClass(Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<classCodeTypeInput>> classCodeType = null, Expression<Func<string>> className = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<DrugClassResponse, ApiConnectionActionConfiguration> DrugClass(Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<ClassCodeTypeInput>> classCodeType = null, Expression<Func<string>> className = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
             var __workflow_drugClassCode = WorkflowExpression.Compile(drugClassCode, nameof(drugClassCode), required: false);
             var __workflow_drugClassCodingSystem = WorkflowExpression.Compile(drugClassCodingSystem, nameof(drugClassCodingSystem), required: false);
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<DrugNameResponse, ApiConnectionActionConfiguration> DrugName(Expression<Func<string>> drugName = null, Expression<Func<nameTypeInput>> nameType = null, Expression<Func<string>> manufacturer = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<DrugNameResponse, ApiConnectionActionConfiguration> DrugName(Expression<Func<string>> drugName = null, Expression<Func<NameTypeInput>> nameType = null, Expression<Func<string>> manufacturer = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
             var __workflow_drugName = WorkflowExpression.Compile(drugName, nameof(drugName), required: false);
             var __workflow_nameType = WorkflowExpression.Compile(nameType, nameof(nameType), required: false);
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<RxCUIResponse, ApiConnectionActionConfiguration> RxCUI(Expression<Func<rxttyInput>> rxtty = null, Expression<Func<string>> rxstring = null, Expression<Func<int>> rxcui = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<RxCUIResponse, ApiConnectionActionConfiguration> RxCUI(Expression<Func<RxttyInput>> rxtty = null, Expression<Func<string>> rxstring = null, Expression<Func<int>> rxcui = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
             var __workflow_rxtty = WorkflowExpression.Compile(rxtty, nameof(rxtty), required: false);
             var __workflow_rxstring = WorkflowExpression.Compile(rxstring, nameof(rxstring), required: false);
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLAllResponse, ApiConnectionActionConfiguration> SPLAll(Expression<Func<string>> applicationNumber = null, Expression<Func<bool>> boxedWarning = null, Expression<Func<deaScheduleCodeInput>> deaScheduleCode = null, Expression<Func<string>> doctype = null, Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<string>> drugName = null, Expression<Func<nameTypeInput>> nameType = null, Expression<Func<string>> labeler = null, Expression<Func<string>> manufacturer = null, Expression<Func<string>> marketingCategoryCode = null, Expression<Func<string>> ndc = null, Expression<Func<string>> publishedDate = null, Expression<Func<publishedDateComparisonInput>> publishedDateComparison = null, Expression<Func<string>> rxcui = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<SPLAllResponse, ApiConnectionActionConfiguration> SPLAll(Expression<Func<string>> applicationNumber = null, Expression<Func<bool>> boxedWarning = null, Expression<Func<DeaScheduleCodeInput>> deaScheduleCode = null, Expression<Func<string>> doctype = null, Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<string>> drugName = null, Expression<Func<NameTypeInput>> nameType = null, Expression<Func<string>> labeler = null, Expression<Func<string>> manufacturer = null, Expression<Func<string>> marketingCategoryCode = null, Expression<Func<string>> ndc = null, Expression<Func<string>> publishedDate = null, Expression<Func<PublishedDateComparisonInput>> publishedDateComparison = null, Expression<Func<string>> rxcui = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
             var __workflow_applicationNumber = WorkflowExpression.Compile(applicationNumber, nameof(applicationNumber), required: false);
             var __workflow_boxedWarning = WorkflowExpression.Compile(boxedWarning, nameof(boxedWarning), required: false);
@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum classCodeTypeInput
+    public enum ClassCodeTypeInput
     {
         [EnumMember(Value = "all")]
         All,
@@ -445,7 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum nameTypeInput
+    public enum NameTypeInput
     {
         [EnumMember(Value = "both")]
         Both,
@@ -534,7 +534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum rxttyInput
+    public enum RxttyInput
     {
         PSN,
         SBD,
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum deaScheduleCodeInput
+    public enum DeaScheduleCodeInput
     {
         [EnumMember(Value = "none")]
         None,
@@ -602,7 +602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum publishedDateComparisonInput
+    public enum PublishedDateComparisonInput
     {
         [EnumMember(Value = "lt")]
         Lt,

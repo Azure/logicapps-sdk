@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     public class WithoutwireinventoryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetWorkOrdersResponseItem[], ApiConnectionActionConfiguration> GetWorkOrders(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<orderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<GetWorkOrdersResponseItem[], ApiConnectionActionConfiguration> GetWorkOrders(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<OrderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_orderNumber = WorkflowExpression.Compile(orderNumber, nameof(orderNumber), required: false);
             var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateUpdateWorkOrderResponse, ApiConnectionActionConfiguration> CreateUpdateWorkOrder(Expression<Func<bodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<CreateUpdateWorkOrderResponse, ApiConnectionActionConfiguration> CreateUpdateWorkOrder(Expression<Func<CreateUpdateWorkOrderBodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
@@ -63,13 +63,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateWorkOrderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<DeleteOrderResponse, ApiConnectionActionConfiguration> DeleteOrder(Expression<Func<bodyInputItem2[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<DeleteOrderResponse, ApiConnectionActionConfiguration> DeleteOrder(Expression<Func<DeleteOrderBodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
@@ -85,13 +86,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeleteOrderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<SetOrderCompleteResponse, ApiConnectionActionConfiguration> SetOrderComplete(Expression<Func<bodyInputItem22[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<SetOrderCompleteResponse, ApiConnectionActionConfiguration> SetOrderComplete(Expression<Func<InboundCompleteBodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
@@ -105,13 +107,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SetOrderCompleteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<SetOrderStatusResponse, ApiConnectionActionConfiguration> SetOrderStatus(Expression<Func<bodyInputItem222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<SetOrderStatusResponse, ApiConnectionActionConfiguration> SetOrderStatus(Expression<Func<SetOrderStatusBodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
@@ -125,13 +128,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<SetOrderStatusResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AssignOrder(Expression<Func<bodyInputItem2222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> AssignOrder(Expression<Func<AssignOrderBodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
@@ -145,7 +149,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -184,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateInventoryRequestResponse, ApiConnectionActionConfiguration> CreateInventoryRequest(Expression<Func<bodyInputItem22222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<CreateInventoryRequestResponse, ApiConnectionActionConfiguration> CreateInventoryRequest(Expression<Func<CreateInventoryRequestBodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
@@ -198,13 +203,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInventoryRequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateInventoryAdjustmentResponse, ApiConnectionActionConfiguration> CreateInventoryAdjustment(Expression<Func<bodyInputItem222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<CreateInventoryAdjustmentResponse, ApiConnectionActionConfiguration> CreateInventoryAdjustment(Expression<Func<CreateInventoryAdjustmentBodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
@@ -218,13 +224,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInventoryAdjustmentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<DeleteInboundRequestResponse, ApiConnectionActionConfiguration> DeleteInboundRequest(Expression<Func<bodyInputItem2222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<DeleteInboundRequestResponse, ApiConnectionActionConfiguration> DeleteInboundRequest(Expression<Func<DeleteInboundRequestBodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
@@ -240,13 +247,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<DeleteInboundRequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateInboundRequestResponse, ApiConnectionActionConfiguration> CreateInboundRequest(Expression<Func<bodyInputItem22222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<CreateInboundRequestResponse, ApiConnectionActionConfiguration> CreateInboundRequest(Expression<Func<CreateInboundRequestBodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
@@ -260,13 +268,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateInboundRequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateSite(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<bodyInputItem222222222[]>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> CreateSite(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<CreateSiteBodyInputItem[]>> body = null)
         {
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: true);
@@ -278,13 +287,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateItemResponse, ApiConnectionActionConfiguration> CreateItem(Expression<Func<bodyInputItem2222222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<CreateItemResponse, ApiConnectionActionConfiguration> CreateItem(Expression<Func<CreateItemBodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
@@ -298,13 +308,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateItemResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetInboundRequestResponseItem[], ApiConnectionActionConfiguration> GetInboundRequest(Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<pOStatusInput>> pOStatus = null, Expression<Func<lineReceiptStatusInput>> lineReceiptStatus = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> pONumber = null, Expression<Func<string>> pOType = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<GetInboundRequestResponseItem[], ApiConnectionActionConfiguration> GetInboundRequest(Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<POStatusInput>> pOStatus = null, Expression<Func<LineReceiptStatusInput>> lineReceiptStatus = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> pONumber = null, Expression<Func<string>> pOType = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
@@ -343,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<InboundCompleteResponse, ApiConnectionActionConfiguration> InboundComplete(Expression<Func<bodyInputItem22[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<InboundCompleteResponse, ApiConnectionActionConfiguration> InboundComplete(Expression<Func<InboundCompleteBodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
@@ -357,13 +368,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InboundCompleteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateLocationResponse, ApiConnectionActionConfiguration> CreateLocation(Expression<Func<bodyInputItem22222222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<CreateLocationResponse, ApiConnectionActionConfiguration> CreateLocation(Expression<Func<CreateLocationBodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
@@ -377,13 +389,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateLocationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<ReceiptCompleteResponse, ApiConnectionActionConfiguration> ReceiptComplete(Expression<Func<bodyInputItem222222222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<ReceiptCompleteResponse, ApiConnectionActionConfiguration> ReceiptComplete(Expression<Func<ReceiptCompleteBodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
@@ -397,13 +410,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ReceiptCompleteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetSalesOrdersResponseItem[], ApiConnectionActionConfiguration> GetSalesOrders(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<orderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<GetSalesOrdersResponseItem[], ApiConnectionActionConfiguration> GetSalesOrders(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<OrderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_orderNumber = WorkflowExpression.Compile(orderNumber, nameof(orderNumber), required: false);
             var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
@@ -439,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateUpdateSalesOrderResponse, ApiConnectionActionConfiguration> CreateUpdateSalesOrder(Expression<Func<bodyInputItem2222222222222[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<CreateUpdateSalesOrderResponse, ApiConnectionActionConfiguration> CreateUpdateSalesOrder(Expression<Func<CreateUpdateSalesOrderBodyInputItem[]>> body = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
@@ -453,13 +467,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateSalesOrderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConsumeInventory(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<bodyInputItem22222222222222[]>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> ConsumeInventory(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<ConsumeInventoryBodyInputItem[]>> body = null)
         {
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: true);
@@ -471,7 +486,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -513,7 +529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetTransferOrdersResponseItem[], ApiConnectionActionConfiguration> GetTransferOrders(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<orderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<GetTransferOrdersResponseItem[], ApiConnectionActionConfiguration> GetTransferOrders(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<OrderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_orderNumber = WorkflowExpression.Compile(orderNumber, nameof(orderNumber), required: false);
             var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
@@ -549,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateUpdateTransferOrderResponse, ApiConnectionActionConfiguration> CreateUpdateTransferOrder(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<bodyInputItem222222222222222[]>> body = null)
+        public IBodyWorkflowAction<CreateUpdateTransferOrderResponse, ApiConnectionActionConfiguration> CreateUpdateTransferOrder(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<CreateUpdateTransferOrderBodyInputItem[]>> body = null)
         {
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: true);
@@ -561,13 +577,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateTransferOrderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetPurchaseOrderResponseItem[], ApiConnectionActionConfiguration> GetPurchaseOrder(Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<pOStatusInput>> pOStatus = null, Expression<Func<lineReceiptStatusInput>> lineReceiptStatus = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> pONumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<GetPurchaseOrderResponseItem[], ApiConnectionActionConfiguration> GetPurchaseOrder(Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<POStatusInput>> pOStatus = null, Expression<Func<LineReceiptStatusInput>> lineReceiptStatus = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> pONumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
@@ -603,7 +620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreatePurchaseOrderResponse, ApiConnectionActionConfiguration> CreatePurchaseOrder(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<bodyInputItem2222222222222222[]>> body = null)
+        public IBodyWorkflowAction<CreatePurchaseOrderResponse, ApiConnectionActionConfiguration> CreatePurchaseOrder(Expression<Func<string>> userName, Expression<Func<string>> warehouse, Expression<Func<CreatePurchaseOrderBodyInputItem[]>> body = null)
         {
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: true);
@@ -615,13 +632,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatePurchaseOrderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<GetManufacturingOrderResponseItem[], ApiConnectionActionConfiguration> GetManufacturingOrder(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<orderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
+        public IBodyWorkflowAction<GetManufacturingOrderResponseItem[], ApiConnectionActionConfiguration> GetManufacturingOrder(Expression<Func<string>> orderNumber = null, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null, Expression<Func<OrderStatusCodeInput>> orderStatusCode = null, Expression<Func<string>> itemNumber = null, Expression<Func<string>> parentOrderNumber = null, Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null)
         {
             var __workflow_orderNumber = WorkflowExpression.Compile(orderNumber, nameof(orderNumber), required: false);
             var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
@@ -657,7 +675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "withoutwireinventory")]
-        public IBodyWorkflowAction<CreateUpdateManufacturingOrderResponse, ApiConnectionActionConfiguration> CreateUpdateManufacturingOrder(Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null, Expression<Func<bodyInputItem22222222222222222[]>> body = null)
+        public IBodyWorkflowAction<CreateUpdateManufacturingOrderResponse, ApiConnectionActionConfiguration> CreateUpdateManufacturingOrder(Expression<Func<string>> userName = null, Expression<Func<string>> warehouse = null, Expression<Func<CreateUpdateManufacturingOrderBodyInputItem[]>> body = null)
         {
             var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_warehouse = WorkflowExpression.Compile(warehouse, nameof(warehouse), required: false);
@@ -671,7 +689,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
                     callPayload.Headers["UserName"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_warehouse != null)
                     callPayload.Headers["Warehouse"] = ExpressionConverter.Convert(__workflow_warehouse);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateUpdateManufacturingOrderResponse>(callPayload);
             });
         }
@@ -810,7 +829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum orderStatusCodeInput
+    public enum OrderStatusCodeInput
     {
         UNA,
         WTP,
@@ -854,17 +873,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string FieldName { get; set; }
     }
 
-    public class bodyInputItem
+    public class CreateUpdateWorkOrderBodyInputItem
     {
+        public CreateUpdateWorkOrderBodyInputItem(string warehouseName, string orderNumber, string customerPONumber, string vendorShipmentNumber, string deliveryDate, CreateUpdateWorkOrderBodyInputItemCustomerType customer)
+        {
+            this.WarehouseName = warehouseName;
+            this.OrderNumber = orderNumber;
+            this.CustomerPONumber = customerPONumber;
+            this.VendorShipmentNumber = vendorShipmentNumber;
+            this.DeliveryDate = deliveryDate;
+            this.Customer = customer;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string WarehouseName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string OrderNumber { get; set; }
         public string OrderComment { get; set; }
         public string AllocationSetName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CustomerPONumber { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string VendorShipmentNumber { get; set; }
-        public string RouteNumber { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RouteNumber { get; set; } = "9999";
         public string RouteDescription { get; set; }
         public string DestinationWarehouseName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DeliveryDate { get; set; }
         public string ShipDate { get; set; }
         public string DateCreated { get; set; }
@@ -872,14 +912,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string PrintDate { get; set; }
         public string ShippingMethodName { get; set; }
         public string TrackingNumber { get; set; }
-        public double ShippingWeight { get; set; }
-        public double ShippingCost { get; set; }
-        public bodyInputItemCustomerType Customer { get; set; }
-        public bodyInputItemLineItemsTypeItem[] LineItems { get; set; }
+        public double? ShippingWeight { get; set; }
+        public double? ShippingCost { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public CreateUpdateWorkOrderBodyInputItemCustomerType Customer { get; set; }
+        public CreateUpdateWorkOrderBodyInputItemLineItemsTypeItem[] LineItems { get; set; }
     }
 
-    public class bodyInputItemCustomerType
+    public class CreateUpdateWorkOrderBodyInputItemCustomerType
     {
+        public CreateUpdateWorkOrderBodyInputItemCustomerType(string customerNumber)
+        {
+            this.CustomerNumber = customerNumber;
+        }
+
         public string CustomerName { get; set; }
         public string CustomerAddress1 { get; set; }
         public string CustomerAddress2 { get; set; }
@@ -888,12 +935,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string CustomerZipCode { get; set; }
         public string CustomerCountry { get; set; }
         public string CustomerShortDesc { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string CustomerNumber { get; set; }
         public string CustomerPhone { get; set; }
-        public bodyInputItemCustomerTypeCustomerShippingAddressesTypeItem[] CustomerShippingAddresses { get; set; }
+        public CreateUpdateWorkOrderBodyInputItemCustomerTypeCustomerShippingAddressesTypeItem[] CustomerShippingAddresses { get; set; }
     }
 
-    public class bodyInputItemCustomerTypeCustomerShippingAddressesTypeItem
+    public class CreateUpdateWorkOrderBodyInputItemCustomerTypeCustomerShippingAddressesTypeItem
     {
         public string CustomerShipName { get; set; }
         public string CustomerShipAttn { get; set; }
@@ -909,20 +958,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string CustomerShipTo { get; set; }
     }
 
-    public class bodyInputItemLineItemsTypeItem
+    public class CreateUpdateWorkOrderBodyInputItemLineItemsTypeItem
     {
+        public CreateUpdateWorkOrderBodyInputItemLineItemsTypeItem(int lineNumber, string itemNumber, BodyInputItemLineItemsTypeItemCoreItemTypeType coreItemType, double quantityOrdered)
+        {
+            this.LineNumber = lineNumber;
+            this.ItemNumber = itemNumber;
+            this.CoreItemType = coreItemType;
+            this.QuantityOrdered = quantityOrdered;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int LineNumber { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ItemNumber { get; set; }
-        public bodyInputItemLineItemsTypeItemCoreItemTypeType CoreItemType { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputItemLineItemsTypeItemCoreItemTypeType CoreItemType { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double QuantityOrdered { get; set; }
         public string AllocationSetName { get; set; }
         public string LineItemComment { get; set; }
         public string ItemDescription { get; set; }
-        public bodyInputItemLineItemsTypeItemUomTypeType UomType { get; set; }
+        public CreateUpdateWorkOrderBodyInputItemLineItemsTypeItemUomTypeType UomType { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyInputItemLineItemsTypeItemCoreItemTypeType
+    public enum BodyInputItemLineItemsTypeItemCoreItemTypeType
     {
         BASIC,
         LOT,
@@ -931,11 +995,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         OrDATE
     }
 
-    public class bodyInputItemLineItemsTypeItemUomTypeType
+    public class CreateUpdateWorkOrderBodyInputItemLineItemsTypeItemUomTypeType
     {
+        public CreateUpdateWorkOrderBodyInputItemLineItemsTypeItemUomTypeType(string uomDesc)
+        {
+            this.UomDesc = uomDesc;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string UomDesc { get; set; }
-        public int SignificantDigits { get; set; }
-        public double BaseConversionFactor { get; set; }
+        public int? SignificantDigits { get; set; }
+        public double? BaseConversionFactor { get; set; }
     }
 
     public class DeleteOrderResponse
@@ -944,7 +1014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public int DeletedCount { get; set; }
     }
 
-    public class bodyInputItem2
+    public class DeleteOrderBodyInputItem
     {
         public string WarehouseName { get; set; }
         public string OrderNumber { get; set; }
@@ -980,7 +1050,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string FieldName { get; set; }
     }
 
-    public class bodyInputItem22
+    public class InboundCompleteBodyInputItem
     {
         public string IdentityCode { get; set; }
         public string WarehouseName { get; set; }
@@ -1016,16 +1086,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string FieldName { get; set; }
     }
 
-    public class bodyInputItem222
+    public class SetOrderStatusBodyInputItem
     {
         public string WarehouseName { get; set; }
         public string OrderNumber { get; set; }
-        public bodyInputItemOrderStatusCodeType OrderStatusCode { get; set; }
+        public BodyInputItemOrderStatusCodeType? OrderStatusCode { get; set; }
         public string OrderStatusDescription { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyInputItemOrderStatusCodeType
+    public enum BodyInputItemOrderStatusCodeType
     {
         UNA,
         WTP,
@@ -1039,7 +1109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         WFS
     }
 
-    public class bodyInputItem2222
+    public class AssignOrderBodyInputItem
     {
         public string WarehouseName { get; set; }
         public string OrderNumber { get; set; }
@@ -1108,15 +1178,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string FieldName { get; set; }
     }
 
-    public class bodyInputItem22222
+    public class CreateInventoryRequestBodyInputItem
     {
-        public string RequestGroup { get; set; }
-        public bodyInputItemSourceProcessType SourceProcess { get; set; }
+        public CreateInventoryRequestBodyInputItem(string itemNumber, string destinationWarehouseName)
+        {
+            this.ItemNumber = itemNumber;
+            this.DestinationWarehouseName = destinationWarehouseName;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string RequestGroup { get; set; } = "Tech Request";
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputItemSourceProcessType? SourceProcess { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory.BodyInputItemSourceProcessType.RequestInventory;
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ItemNumber { get; set; }
-        public double Quantity { get; set; }
+        public double? Quantity { get; set; }
         public string UomDesc { get; set; }
         public string CoreValue { get; set; }
         public string AllocationSetName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string DestinationWarehouseName { get; set; }
         public string DestinationBinNumber { get; set; }
         public string DestinationZone { get; set; }
@@ -1126,7 +1209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyInputItemSourceProcessType
+    public enum BodyInputItemSourceProcessType
     {
         [EnumMember(Value = "Request Inventory")]
         RequestInventory,
@@ -1163,23 +1246,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string FieldName { get; set; }
     }
 
-    public class bodyInputItem222222
+    public class CreateInventoryAdjustmentBodyInputItem
     {
+        public CreateInventoryAdjustmentBodyInputItem(string binNumber, string itemNumber, string warehouse)
+        {
+            this.BinNumber = binNumber;
+            this.ItemNumber = itemNumber;
+            this.Warehouse = warehouse;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string BinNumber { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ItemNumber { get; set; }
-        public bodyInputItemCoreValueType CoreValue { get; set; }
+        public BodyInputItemCoreValueType? CoreValue { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Warehouse { get; set; }
         public string UomDesc { get; set; }
-        public double Qty { get; set; }
-        public bodyInputItemMovementTypeType MovementType { get; set; }
+        public double? Qty { get; set; }
+        public BodyInputItemMovementTypeType? MovementType { get; set; }
         public string Note { get; set; }
         public string OrderNumber { get; set; }
         public string UnitNumber { get; set; }
-        public bool InternalOnly { get; set; }
+        public bool? InternalOnly { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyInputItemCoreValueType
+    public enum BodyInputItemCoreValueType
     {
         BASIC,
         LOT,
@@ -1188,7 +1283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyInputItemMovementTypeType
+    public enum BodyInputItemMovementTypeType
     {
         [EnumMember(Value = "Adjustment In+")]
         AdjustmentIn,
@@ -1207,7 +1302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public int DeletedCount { get; set; }
     }
 
-    public class bodyInputItem2222222
+    public class DeleteInboundRequestBodyInputItem
     {
         public string WarehouseName { get; set; }
         public string PurchaseOrderNumber { get; set; }
@@ -1243,7 +1338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string FieldName { get; set; }
     }
 
-    public class bodyInputItem22222222
+    public class CreateInboundRequestBodyInputItem
     {
         public string WarehouseName { get; set; }
         public string PurchaseOrderNumber { get; set; }
@@ -1252,32 +1347,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string VendorNumber { get; set; }
         public string VendorName { get; set; }
         public string AllocationSetName { get; set; }
-        public bodyInputItemPurchaseOrderTypeType PurchaseOrderType { get; set; }
+        public BodyInputItemPurchaseOrderTypeType? PurchaseOrderType { get; set; }
         public string[] PurchaseOrderComments { get; set; }
-        public bodyInputItemLineItemsTypeItem2[] LineItems { get; set; }
+        public CreateInboundRequestBodyInputItemLineItemsTypeItem[] LineItems { get; set; }
     }
 
-    public enum bodyInputItemPurchaseOrderTypeType
+    public enum BodyInputItemPurchaseOrderTypeType
     {
         _1 = 1,
         _2 = 2,
         _3 = 3
     }
 
-    public class bodyInputItemLineItemsTypeItem2
+    public class CreateInboundRequestBodyInputItemLineItemsTypeItem
     {
-        public int LineNumber { get; set; }
+        public int? LineNumber { get; set; }
         public string ItemNumber { get; set; }
-        public bodyInputItemLineItemsTypeItemCoreItemTypeType CoreItemType { get; set; }
-        public double QuantityOrdered { get; set; }
+        public BodyInputItemLineItemsTypeItemCoreItemTypeType? CoreItemType { get; set; }
+        public double? QuantityOrdered { get; set; }
         public string UomDesc { get; set; }
-        public double BaseConversionFactor { get; set; }
-        public int SignificantDigits { get; set; }
+        public double? BaseConversionFactor { get; set; }
+        public int? SignificantDigits { get; set; }
         public string AllocationSetName { get; set; }
         public string[] LineItemComments { get; set; }
     }
 
-    public class bodyInputItem222222222
+    public class CreateSiteBodyInputItem
     {
         public string WarehouseName { get; set; }
         public string Address1 { get; set; }
@@ -1317,31 +1412,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string FieldName { get; set; }
     }
 
-    public class bodyInputItem2222222222
+    public class CreateItemBodyInputItem
     {
+        public CreateItemBodyInputItem(string itemNumber, BodyInputItemCoreItemTypeType coreItemType, string baseUom)
+        {
+            this.ItemNumber = itemNumber;
+            this.CoreItemType = coreItemType;
+            this.BaseUom = baseUom;
+        }
+
         public string WarehouseName { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ItemNumber { get; set; }
         public string ItemDescription { get; set; }
         public string ItemGenericDescription { get; set; }
-        public bodyInputItemItemTypeType ItemType { get; set; }
+        public BodyInputItemItemTypeType? ItemType { get; set; }
         public string ManufacturerNumber { get; set; }
         public string UPCBarcodeNumber { get; set; }
-        public double GrossWeight { get; set; }
-        public int FullPalletQuantity { get; set; }
-        public double Length { get; set; }
-        public double Width { get; set; }
-        public double Height { get; set; }
-        public double NetWeight { get; set; }
-        public bodyInputItemCoreItemTypeType CoreItemType { get; set; }
-        public int CycleCountInterval { get; set; }
+        public double? GrossWeight { get; set; }
+        public int? FullPalletQuantity { get; set; }
+        public double? Length { get; set; }
+        public double? Width { get; set; }
+        public double? Height { get; set; }
+        public double? NetWeight { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputItemCoreItemTypeType CoreItemType { get; set; }
+        public int? CycleCountInterval { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string BaseUom { get; set; }
-        public int SignificantDigits { get; set; }
+        public int? SignificantDigits { get; set; }
         public string ZoneDesc { get; set; }
-        public double BaseConvFactor { get; set; }
+        public double? BaseConvFactor { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyInputItemItemTypeType
+    public enum BodyInputItemItemTypeType
     {
         Inventory,
         Kit,
@@ -1350,7 +1458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyInputItemCoreItemTypeType
+    public enum BodyInputItemCoreItemTypeType
     {
         BASIC,
         LOT,
@@ -1419,7 +1527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum pOStatusInput
+    public enum POStatusInput
     {
         Unassigned,
         WaitingForReceipt,
@@ -1429,7 +1537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum lineReceiptStatusInput
+    public enum LineReceiptStatusInput
     {
         Unassigned,
         WaitingForReceipt,
@@ -1456,17 +1564,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public JToken[] InvalidObjects { get; set; }
     }
 
-    public class bodyInputItem22222222222
+    public class CreateLocationBodyInputItem
     {
         public string WarehouseName { get; set; }
         public string BinNumber { get; set; }
-        public bodyInputItemBinTypeType BinType { get; set; }
+        public BodyInputItemBinTypeType? BinType { get; set; }
         public string ParentBin { get; set; }
-        public int PickSequence { get; set; }
+        public int? PickSequence { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyInputItemBinTypeType
+    public enum BodyInputItemBinTypeType
     {
         Inventory,
         Damage,
@@ -1490,9 +1598,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public JToken[] InvalidObjects { get; set; }
     }
 
-    public class bodyInputItem222222222222
+    public class ReceiptCompleteBodyInputItem
     {
-        public int Identity { get; set; }
+        public int? Identity { get; set; }
     }
 
     public class GetSalesOrdersResponseItem
@@ -1614,7 +1722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public JToken[] InvalidObjects { get; set; }
     }
 
-    public class bodyInputItem2222222222222
+    public class CreateUpdateSalesOrderBodyInputItem
     {
         public string WarehouseName { get; set; }
         public string OrderNumber { get; set; }
@@ -1623,11 +1731,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string VendorShipmentNumber { get; set; }
         public string DeliveryDate { get; set; }
         public string DestinationWarehouseName { get; set; }
-        public bodyInputItemCustomerType2 Customer { get; set; }
-        public bodyInputItemLineItemsTypeItem22[] LineItems { get; set; }
+        public CreateUpdateManufacturingOrderBodyInputItemCustomerType Customer { get; set; }
+        public CreateUpdateSalesOrderBodyInputItemLineItemsTypeItem[] LineItems { get; set; }
     }
 
-    public class bodyInputItemCustomerType2
+    public class CreateUpdateManufacturingOrderBodyInputItemCustomerType
     {
         public string CustomerName { get; set; }
         public string CustomerNumber { get; set; }
@@ -1636,42 +1744,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string CustomerState { get; set; }
         public string CustomerZipCode { get; set; }
         public string CustomerCountry { get; set; }
-        public bodyInputItemCustomerTypeCustomerShippingAddressesTypeItem2[] CustomerShippingAddresses { get; set; }
+        public CreateUpdateManufacturingOrderBodyInputItemCustomerTypeCustomerShippingAddressesTypeItem[] CustomerShippingAddresses { get; set; }
     }
 
-    public class bodyInputItemCustomerTypeCustomerShippingAddressesTypeItem2
+    public class CreateUpdateManufacturingOrderBodyInputItemCustomerTypeCustomerShippingAddressesTypeItem
     {
         public string CustomerShipName { get; set; }
         public string CustomerShipTo { get; set; }
     }
 
-    public class bodyInputItemLineItemsTypeItem22
+    public class CreateUpdateSalesOrderBodyInputItemLineItemsTypeItem
     {
-        public int LineNumber { get; set; }
+        public int? LineNumber { get; set; }
         public string ItemNumber { get; set; }
-        public bodyInputItemLineItemsTypeItemCoreItemTypeType CoreItemType { get; set; }
-        public double QuantityOrdered { get; set; }
+        public BodyInputItemLineItemsTypeItemCoreItemTypeType? CoreItemType { get; set; }
+        public double? QuantityOrdered { get; set; }
         public string WarehouseName { get; set; }
         public string AllocationSetName { get; set; }
         public string LineItemComment { get; set; }
-        public bodyInputItemLineItemsTypeItemUomTypeType2 UomType { get; set; }
+        public CreateUpdateSalesOrderBodyInputItemLineItemsTypeItemUomTypeType UomType { get; set; }
     }
 
-    public class bodyInputItemLineItemsTypeItemUomTypeType2
+    public class CreateUpdateSalesOrderBodyInputItemLineItemsTypeItemUomTypeType
     {
         public string UomDesc { get; set; }
     }
 
-    public class bodyInputItem22222222222222
+    public class ConsumeInventoryBodyInputItem
     {
         public string AllocationSetName { get; set; }
         public string BinPath { get; set; }
-        public bodyInputItemCoreValueType CoreValue { get; set; }
+        public BodyInputItemCoreValueType? CoreValue { get; set; }
         public string ItemNumber { get; set; }
         public string ItemUom { get; set; }
-        public int LineNumber { get; set; }
+        public int? LineNumber { get; set; }
         public string OrderNumber { get; set; }
-        public double Quantity { get; set; }
+        public double? Quantity { get; set; }
         public string WarehouseName { get; set; }
     }
 
@@ -1881,7 +1989,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public JToken[] InvalidObjects { get; set; }
     }
 
-    public class bodyInputItem222222222222222
+    public class CreateUpdateTransferOrderBodyInputItem
     {
         public string WarehouseName { get; set; }
         public string DestinationWarehouseName { get; set; }
@@ -1891,21 +1999,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string AllocationSetName { get; set; }
         public string DateCreated { get; set; }
         public string OrderComment { get; set; }
-        public bodyInputItemCustomerType2 Customer { get; set; }
+        public CreateUpdateManufacturingOrderBodyInputItemCustomerType Customer { get; set; }
         public string RouteNumber { get; set; }
         public string DeliveryDate { get; set; }
-        public bodyInputItemLineItemsTypeItem222[] LineItems { get; set; }
+        public CreateUpdateManufacturingOrderBodyInputItemLineItemsTypeItem[] LineItems { get; set; }
     }
 
-    public class bodyInputItemLineItemsTypeItem222
+    public class CreateUpdateManufacturingOrderBodyInputItemLineItemsTypeItem
     {
-        public int LineNumber { get; set; }
+        public int? LineNumber { get; set; }
         public string ItemNumber { get; set; }
         public string CoreItemType { get; set; }
-        public double QuantityOrdered { get; set; }
+        public double? QuantityOrdered { get; set; }
         public string LineItemComment { get; set; }
         public string ItemDescription { get; set; }
-        public bodyInputItemLineItemsTypeItemUomTypeType UomType { get; set; }
+        public CreateUpdateManufacturingOrderBodyInputItemLineItemsTypeItemUomTypeType UomType { get; set; }
+    }
+
+    public class CreateUpdateManufacturingOrderBodyInputItemLineItemsTypeItemUomTypeType
+    {
+        public string UomDesc { get; set; }
+        public int? SignificantDigits { get; set; }
+        public double? BaseConversionFactor { get; set; }
     }
 
     public class GetPurchaseOrderResponseItem
@@ -1966,7 +2081,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public JToken[] InvalidObjects { get; set; }
     }
 
-    public class bodyInputItem2222222222222222
+    public class CreatePurchaseOrderBodyInputItem
     {
         public string WarehouseName { get; set; }
         public string PurchaseOrderNumber { get; set; }
@@ -1975,20 +2090,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string VendorNumber { get; set; }
         public string VendorName { get; set; }
         public string AllocationSetName { get; set; }
-        public bodyInputItemPurchaseOrderTypeType PurchaseOrderType { get; set; }
+        public BodyInputItemPurchaseOrderTypeType? PurchaseOrderType { get; set; }
         public string[] PurchaseOrderComments { get; set; }
-        public bodyInputItemLineItemsTypeItem2222[] LineItems { get; set; }
+        public CreatePurchaseOrderBodyInputItemLineItemsTypeItem[] LineItems { get; set; }
     }
 
-    public class bodyInputItemLineItemsTypeItem2222
+    public class CreatePurchaseOrderBodyInputItemLineItemsTypeItem
     {
-        public int LineNumber { get; set; }
+        public int? LineNumber { get; set; }
         public string ItemNumber { get; set; }
         public string CoreItemType { get; set; }
-        public double QuantityOrdered { get; set; }
+        public double? QuantityOrdered { get; set; }
         public string UomDesc { get; set; }
-        public double BaseConversionFactor { get; set; }
-        public int SignificantDigits { get; set; }
+        public double? BaseConversionFactor { get; set; }
+        public int? SignificantDigits { get; set; }
         public string AllocationSetName { get; set; }
         public string[] LineItemComments { get; set; }
     }
@@ -2103,7 +2218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public JToken[] InvalidObjects { get; set; }
     }
 
-    public class bodyInputItem22222222222222222
+    public class CreateUpdateManufacturingOrderBodyInputItem
     {
         public string WarehouseName { get; set; }
         public string CustomerPONumber { get; set; }
@@ -2112,10 +2227,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string AllocationSetName { get; set; }
         public string DateCreated { get; set; }
         public string OrderComment { get; set; }
-        public bodyInputItemCustomerType2 Customer { get; set; }
+        public CreateUpdateManufacturingOrderBodyInputItemCustomerType Customer { get; set; }
         public string RouteNumber { get; set; }
         public string DeliveryDate { get; set; }
-        public bodyInputItemLineItemsTypeItem222[] LineItems { get; set; }
+        public CreateUpdateManufacturingOrderBodyInputItemLineItemsTypeItem[] LineItems { get; set; }
     }
 
     public class GetInventoryAggregateResponseItem

@@ -33,77 +33,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
-        public IBodyWorkflowAction<InitParametersResponse, ApiConnectionActionConfiguration> InitParameters(Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytheUserSTimeZoneInIANAFormat = null)
+        public IBodyWorkflowAction<InitParametersResponse, ApiConnectionActionConfiguration> InitParameters(Expression<Func<InitParametersBodyInput>> body = null)
         {
-            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodytheUserSTimeZoneInIANAFormat = WorkflowExpression.Compile(bodytheUserSTimeZoneInIANAFormat, nameof(bodytheUserSTimeZoneInIANAFormat), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<InitParametersResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/InitParameters";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodylanguage != null)
-                {
-                    if (__workflow_bodylanguage != null)
-                    {
-                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 else
-                {
-                    body["language"] = "fr";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytheUserSTimeZoneInIANAFormat != null)
-                {
-                    body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytheUserSTimeZoneInIANAFormat);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                    callPayload.Body = new InitParametersBodyInput().ToJToken();
                 return new ApiConnectionAction<InitParametersResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
-        public IBodyWorkflowAction<InitResponse, ApiConnectionActionConfiguration> Init(Expression<Func<string>> bodyorganizationId = null, Expression<Func<string>> bodyprojectId = null)
+        public IBodyWorkflowAction<InitResponse, ApiConnectionActionConfiguration> Init(Expression<Func<InitBodyInput>> body = null)
         {
-            var __workflow_bodyorganizationId = WorkflowExpression.Compile(bodyorganizationId, nameof(bodyorganizationId), required: false);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<InitResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/init";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyorganizationId != null)
-                {
-                    body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationId);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyprojectId != null)
-                {
-                    body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<InitResponse>(callPayload);
             });
         }
@@ -111,133 +67,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
 
     public class FinalcadoneconnectTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenObsCreated(Expression<Func<string>> bodyorganizationId, Expression<Func<string>> bodyprojectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ThenObsCreated(Expression<Func<ThenDocumentCreatedBodyInput>> body)
         {
-            var __workflow_bodyorganizationId = WorkflowExpression.Compile(bodyorganizationId, nameof(bodyorganizationId), required: true);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/ev/201";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationId);
-                bodypropCount++;
-                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                body["client_url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenObsUpdated(Expression<Func<string>> bodyorganizationId, Expression<Func<string>> bodyprojectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ThenObsUpdated(Expression<Func<ThenDocumentCreatedBodyInput>> body)
         {
-            var __workflow_bodyorganizationId = WorkflowExpression.Compile(bodyorganizationId, nameof(bodyorganizationId), required: true);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/ev/202";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationId);
-                bodypropCount++;
-                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                body["client_url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenFormCreated(Expression<Func<string>> bodyorganizationId, Expression<Func<string>> bodyprojectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ThenFormCreated(Expression<Func<ThenDocumentCreatedBodyInput>> body)
         {
-            var __workflow_bodyorganizationId = WorkflowExpression.Compile(bodyorganizationId, nameof(bodyorganizationId), required: true);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/ev/301";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationId);
-                bodypropCount++;
-                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                body["client_url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenFormUpdated(Expression<Func<string>> bodyorganizationId, Expression<Func<string>> bodyprojectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ThenFormUpdated(Expression<Func<ThenDocumentCreatedBodyInput>> body)
         {
-            var __workflow_bodyorganizationId = WorkflowExpression.Compile(bodyorganizationId, nameof(bodyorganizationId), required: true);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/ev/302";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationId);
-                bodypropCount++;
-                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                body["client_url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> ThenDocumentCreated(Expression<Func<string>> bodyorganizationId, Expression<Func<string>> bodyprojectId, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ThenDocumentCreated(Expression<Func<ThenDocumentCreatedBodyInput>> body)
         {
-            var __workflow_bodyorganizationId = WorkflowExpression.Compile(bodyorganizationId, nameof(bodyorganizationId), required: true);
-            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks/ev/401";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["business_organization_id"] = ExpressionConverter.ConvertO(__workflow_bodyorganizationId);
-                bodypropCount++;
-                body["project_id"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
-                body["client_url"] = "#{listCallbackUrl()}";
-                bodypropCount++;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
     }
@@ -260,6 +151,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
         public string Timezone { get; set; }
     }
 
+    public class InitParametersBodyInput
+    {
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Language { get; set; } = "fr";
+
+        [JsonProperty("timezone")]
+        public string TheUserSTimeZoneInIANAFormat { get; set; }
+    }
+
     public class InitResponse
     {
         [JsonProperty("business_organization_id")]
@@ -267,6 +167,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
 
         [JsonProperty("project_id")]
         public string ProjectId { get; set; }
+    }
+
+    public class InitBodyInput
+    {
+        [JsonProperty("business_organization_id")]
+        public string OrganizationId { get; set; }
+
+        [JsonProperty("project_id")]
+        public string ProjectId { get; set; }
+    }
+
+    public class ThenDocumentCreatedBodyInput
+    {
+        public ThenDocumentCreatedBodyInput(string organizationId, string projectId)
+        {
+            this.OrganizationId = organizationId;
+            this.ProjectId = projectId;
+        }
+
+        [JsonProperty("business_organization_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string OrganizationId { get; set; }
+
+        [JsonProperty("project_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ProjectId { get; set; }
+
+        [JsonProperty("client_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string ClientUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

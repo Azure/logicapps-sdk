@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        public IBodyWorkflowAction<SimilarityGetResponse, ApiConnectionActionConfiguration> SimilarityGet(Expression<Func<string>> text1 = null, Expression<Func<string>> html1 = null, Expression<Func<string>> htmlFragment1 = null, Expression<Func<string>> text2 = null, Expression<Func<string>> html2 = null, Expression<Func<string>> htmlFragment2 = null, Expression<Func<string>> lang = null, Expression<Func<bowInput>> bow = null)
+        public IBodyWorkflowAction<SimilarityGetResponse, ApiConnectionActionConfiguration> SimilarityGet(Expression<Func<string>> text1 = null, Expression<Func<string>> html1 = null, Expression<Func<string>> htmlFragment1 = null, Expression<Func<string>> text2 = null, Expression<Func<string>> html2 = null, Expression<Func<string>> htmlFragment2 = null, Expression<Func<string>> lang = null, Expression<Func<BowInput>> bow = null)
         {
             var __workflow_text1 = WorkflowExpression.Compile(text1, nameof(text1), required: false);
             var __workflow_html1 = WorkflowExpression.Compile(html1, nameof(html1), required: false);
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        public IBodyWorkflowAction<WikipediaGetResponse, ApiConnectionActionConfiguration> WikipediaGet(Expression<Func<string>> text, Expression<Func<langInput>> lang, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<queryInput>> query = null, Expression<Func<string>> include = null)
+        public IBodyWorkflowAction<WikipediaGetResponse, ApiConnectionActionConfiguration> WikipediaGet(Expression<Func<string>> text, Expression<Func<LangInput>> lang, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<QueryInput>> query = null, Expression<Func<string>> include = null)
         {
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: true);
             var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bowInput
+    public enum BowInput
     {
         [EnumMember(Value = "never")]
         Never,
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum langInput
+    public enum LangInput
     {
         [EnumMember(Value = "en")]
         En,
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum queryInput
+    public enum QueryInput
     {
         [EnumMember(Value = "full")]
         Full,

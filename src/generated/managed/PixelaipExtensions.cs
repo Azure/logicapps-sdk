@@ -25,172 +25,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<UserPostResponse, ApiConnectionActionConfiguration> User(Expression<Func<string>> bodytoken = null, Expression<Func<string>> bodyusername = null, Expression<Func<bodyagreeTermsOfServiceInput>> bodyagreeTermsOfService = null, Expression<Func<bodynotMinorInput>> bodynotMinor = null, Expression<Func<string>> bodythanksCode = null)
+        public IBodyWorkflowAction<UserResponse, ApiConnectionActionConfiguration> User(Expression<Func<UserBodyInput>> body = null)
         {
-            var __workflow_bodytoken = WorkflowExpression.Compile(bodytoken, nameof(bodytoken), required: false);
-            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
-            var __workflow_bodyagreeTermsOfService = WorkflowExpression.Compile(bodyagreeTermsOfService, nameof(bodyagreeTermsOfService), required: false);
-            var __workflow_bodynotMinor = WorkflowExpression.Compile(bodynotMinor, nameof(bodynotMinor), required: false);
-            var __workflow_bodythanksCode = WorkflowExpression.Compile(bodythanksCode, nameof(bodythanksCode), required: false);
-            return new DeferredBodyAction<UserPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<UserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodytoken != null)
-                {
-                    body["token"] = ExpressionConverter.ConvertO(__workflow_bodytoken);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyusername != null)
-                {
-                    body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyagreeTermsOfService != null)
-                {
-                    if (__workflow_bodyagreeTermsOfService != null)
-                    {
-                        body["agreeTermsOfService"] = ExpressionConverter.ConvertO(__workflow_bodyagreeTermsOfService);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 else
-                {
-                    body["agreeTermsOfService"] = "yes";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodynotMinor != null)
-                {
-                    if (__workflow_bodynotMinor != null)
-                    {
-                        body["notMinor"] = ExpressionConverter.ConvertO(__workflow_bodynotMinor);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["notMinor"] = "yes";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodythanksCode != null)
-                {
-                    body["thanksCode"] = ExpressionConverter.ConvertO(__workflow_bodythanksCode);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<UserPostResponse>(callPayload);
+                    callPayload.Body = new UserBodyInput().ToJToken();
+                return new ApiConnectionAction<UserResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<TokenPutResponse, ApiConnectionActionConfiguration> TokenPut(Expression<Func<string>> bodynewToken, Expression<Func<string>> bodythanksCode = null)
+        public IBodyWorkflowAction<TokenPutResponse, ApiConnectionActionConfiguration> TokenPut(Expression<Func<TokenPutBodyInput>> body)
         {
-            var __workflow_bodynewToken = WorkflowExpression.Compile(bodynewToken, nameof(bodynewToken), required: true);
-            var __workflow_bodythanksCode = WorkflowExpression.Compile(bodythanksCode, nameof(bodythanksCode), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<TokenPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["newToken"] = ExpressionConverter.ConvertO(__workflow_bodynewToken);
-                if (__workflow_bodythanksCode != null)
-                {
-                    body["thanksCode"] = ExpressionConverter.ConvertO(__workflow_bodythanksCode);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<TokenPutResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<ProfilePutResponse, ApiConnectionActionConfiguration> ProfilePut(Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodygravatarIconEmail = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyaboutURL = null, Expression<Func<string[]>> bodycontributeURLs = null, Expression<Func<string>> bodypinnedGraphId = null)
+        public IBodyWorkflowAction<ProfilePutResponse, ApiConnectionActionConfiguration> ProfilePut(Expression<Func<ProfilePutBodyInput>> body = null)
         {
-            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
-            var __workflow_bodygravatarIconEmail = WorkflowExpression.Compile(bodygravatarIconEmail, nameof(bodygravatarIconEmail), required: false);
-            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
-            var __workflow_bodyaboutURL = WorkflowExpression.Compile(bodyaboutURL, nameof(bodyaboutURL), required: false);
-            var __workflow_bodycontributeURLs = WorkflowExpression.Compile(bodycontributeURLs, nameof(bodycontributeURLs), required: false);
-            var __workflow_bodypinnedGraphId = WorkflowExpression.Compile(bodypinnedGraphId, nameof(bodypinnedGraphId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ProfilePutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/@";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydisplayName != null)
-                {
-                    body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodygravatarIconEmail != null)
-                {
-                    body["gravatarIconEmail"] = ExpressionConverter.ConvertO(__workflow_bodygravatarIconEmail);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytitle != null)
-                {
-                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimezone != null)
-                {
-                    body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyaboutURL != null)
-                {
-                    body["aboutURL"] = ExpressionConverter.ConvertO(__workflow_bodyaboutURL);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycontributeURLs != null)
-                {
-                    body["contributeURLs"] = ExpressionConverter.ConvertO(__workflow_bodycontributeURLs);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypinnedGraphId != null)
-                {
-                    body["pinnedGraphID"] = ExpressionConverter.ConvertO(__workflow_bodypinnedGraphId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ProfilePutResponse>(callPayload);
             });
         }
@@ -222,153 +97,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphPostResponse, ApiConnectionActionConfiguration> Graph(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodyunit, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyselfSufficient = null, Expression<Func<bool>> bodyisSecret = null, Expression<Func<bool>> bodypublishOptionalData = null)
+        public IBodyWorkflowAction<GraphResponse, ApiConnectionActionConfiguration> Graph(Expression<Func<GraphBodyInput>> body)
         {
-            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyunit = WorkflowExpression.Compile(bodyunit, nameof(bodyunit), required: true);
-            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
-            var __workflow_bodycolor = WorkflowExpression.Compile(bodycolor, nameof(bodycolor), required: true);
-            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
-            var __workflow_bodyselfSufficient = WorkflowExpression.Compile(bodyselfSufficient, nameof(bodyselfSufficient), required: false);
-            var __workflow_bodyisSecret = WorkflowExpression.Compile(bodyisSecret, nameof(bodyisSecret), required: false);
-            var __workflow_bodypublishOptionalData = WorkflowExpression.Compile(bodypublishOptionalData, nameof(bodypublishOptionalData), required: false);
-            return new DeferredBodyAction<GraphPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<GraphResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
-                bodypropCount++;
-                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                bodypropCount++;
-                body["unit"] = ExpressionConverter.ConvertO(__workflow_bodyunit);
-                bodypropCount++;
-                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
-                bodypropCount++;
-                body["color"] = ExpressionConverter.ConvertO(__workflow_bodycolor);
-                if (__workflow_bodytimezone != null)
-                {
-                    body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyselfSufficient != null)
-                {
-                    body["selfSufficient"] = ExpressionConverter.ConvertO(__workflow_bodyselfSufficient);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisSecret != null)
-                {
-                    body["isSecret"] = ExpressionConverter.ConvertO(__workflow_bodyisSecret);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypublishOptionalData != null)
-                {
-                    body["publishOptionalData"] = ExpressionConverter.ConvertO(__workflow_bodypublishOptionalData);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<GraphPostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<GraphResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphPutResponse, ApiConnectionActionConfiguration> GraphPut(Expression<Func<string>> graphId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyunit = null, Expression<Func<bodycolorInput>> bodycolor = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyselfSufficient = null, Expression<Func<bool>> bodyisSecret = null, Expression<Func<bool>> bodypublishOptionalData = null)
+        public IBodyWorkflowAction<GraphPutResponse, ApiConnectionActionConfiguration> GraphPut(Expression<Func<string>> graphId, Expression<Func<GraphPutBodyInput>> body = null)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
-            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyunit = WorkflowExpression.Compile(bodyunit, nameof(bodyunit), required: false);
-            var __workflow_bodycolor = WorkflowExpression.Compile(bodycolor, nameof(bodycolor), required: false);
-            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
-            var __workflow_bodyselfSufficient = WorkflowExpression.Compile(bodyselfSufficient, nameof(bodyselfSufficient), required: false);
-            var __workflow_bodyisSecret = WorkflowExpression.Compile(bodyisSecret, nameof(bodyisSecret), required: false);
-            var __workflow_bodypublishOptionalData = WorkflowExpression.Compile(bodypublishOptionalData, nameof(bodypublishOptionalData), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GraphPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["graphID"] = ExpressionConverter.Convert(__workflow_graphId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyname != null)
-                {
-                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyunit != null)
-                {
-                    if (__workflow_bodyunit != null)
-                    {
-                        body["unit"] = ExpressionConverter.ConvertO(__workflow_bodyunit);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 else
-                {
-                    body["unit"] = "commit";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodycolor != null)
-                {
-                    if (__workflow_bodycolor != null)
-                    {
-                        body["color"] = ExpressionConverter.ConvertO(__workflow_bodycolor);
-                        bodypropCount++;
-                    }
-
-                    bodypropCount++;
-                }
-                else
-                {
-                    body["color"] = "shibafu";
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodytimezone != null)
-                {
-                    body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyselfSufficient != null)
-                {
-                    body["selfSufficient"] = ExpressionConverter.ConvertO(__workflow_bodyselfSufficient);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodyisSecret != null)
-                {
-                    body["isSecret"] = ExpressionConverter.ConvertO(__workflow_bodyisSecret);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodypublishOptionalData != null)
-                {
-                    body["publishOptionalData"] = ExpressionConverter.ConvertO(__workflow_bodypublishOptionalData);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                    callPayload.Body = new GraphPutBodyInput().ToJToken();
                 return new ApiConnectionAction<GraphPutResponse>(callPayload);
             });
         }
@@ -388,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphSVGGetResponse, ApiConnectionActionConfiguration> GraphSVGGet(Expression<Func<string>> graphId, Expression<Func<string>> date = null, Expression<Func<modeInput>> mode = null, Expression<Func<appearanceInput>> appearance = null)
+        public IBodyWorkflowAction<GraphSVGGetResponse, ApiConnectionActionConfiguration> GraphSVGGet(Expression<Func<string>> graphId, Expression<Func<string>> date = null, Expression<Func<ModeInput>> mode = null, Expression<Func<AppearanceInput>> appearance = null)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
@@ -448,37 +204,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelPostResponse, ApiConnectionActionConfiguration> Pixel(Expression<Func<string>> graphId, Expression<Func<string>> bodydate, Expression<Func<string>> bodyquantity)
+        public IBodyWorkflowAction<PixelResponse, ApiConnectionActionConfiguration> Pixel(Expression<Func<string>> graphId, Expression<Func<PixelBodyInput>> body)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
-            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
-            var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: true);
-            return new DeferredBodyAction<PixelPostResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<PixelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["graphID"] = ExpressionConverter.Convert(__workflow_graphId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["date"] = ExpressionConverter.ConvertO(__workflow_bodydate);
-                bodypropCount++;
-                body["quantity"] = ExpressionConverter.ConvertO(__workflow_bodyquantity);
-                var optionalDataObject = new JObject();
-                var optionalDataObjectpropCount = 0;
-                if (optionalDataObjectpropCount > 0)
-                {
-                    body["optionalData"] = optionalDataObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<PixelPostResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<PixelResponse>(callPayload);
             });
         }
 
@@ -579,57 +316,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelAddPutResponse, ApiConnectionActionConfiguration> PixelAddPut(Expression<Func<string>> graphId, Expression<Func<int>> bodyquantity = null)
+        public IBodyWorkflowAction<PixelAddPutResponse, ApiConnectionActionConfiguration> PixelAddPut(Expression<Func<string>> graphId, Expression<Func<PixelAddPutBodyInput>> body = null)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
-            var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PixelAddPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/add";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["graphID"] = ExpressionConverter.Convert(__workflow_graphId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyquantity != null)
-                {
-                    body["quantity"] = ExpressionConverter.ConvertO(__workflow_bodyquantity);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PixelAddPutResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelSubtractPutResponse, ApiConnectionActionConfiguration> PixelSubtractPut(Expression<Func<string>> graphId, Expression<Func<int>> bodyquantity = null)
+        public IBodyWorkflowAction<PixelSubtractPutResponse, ApiConnectionActionConfiguration> PixelSubtractPut(Expression<Func<string>> graphId, Expression<Func<PixelAddPutBodyInput>> body = null)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
-            var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PixelSubtractPutResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/subtract";
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["graphID"] = ExpressionConverter.Convert(__workflow_graphId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodyquantity != null)
-                {
-                    body["quantity"] = ExpressionConverter.ConvertO(__workflow_bodyquantity);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<PixelSubtractPutResponse>(callPayload);
             });
         }
@@ -648,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool IsSuccess { get; set; }
     }
 
-    public class UserPostResponse
+    public class UserResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -657,8 +372,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool IsSuccess { get; set; }
     }
 
+    public class UserBodyInput
+    {
+        [JsonProperty("token")]
+        public string Token { get; set; }
+
+        [JsonProperty("username")]
+        public string Username { get; set; }
+
+        [JsonProperty("agreeTermsOfService", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputAgreeTermsOfServiceType? AgreeTermsOfService { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip.BodyInputAgreeTermsOfServiceType.Yes;
+
+        [JsonProperty("notMinor", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputNotMinorType? NotMinor { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip.BodyInputNotMinorType.Yes;
+
+        [JsonProperty("thanksCode")]
+        public string ThanksCode { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodyagreeTermsOfServiceInput
+    public enum BodyInputAgreeTermsOfServiceType
     {
         [EnumMember(Value = "yes")]
         Yes,
@@ -667,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodynotMinorInput
+    public enum BodyInputNotMinorType
     {
         [EnumMember(Value = "yes")]
         Yes,
@@ -684,6 +417,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool IsSuccess { get; set; }
     }
 
+    public class TokenPutBodyInput
+    {
+        public TokenPutBodyInput(string newToken)
+        {
+            this.NewToken = newToken;
+        }
+
+        [JsonProperty("newToken", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string NewToken { get; set; }
+
+        [JsonProperty("thanksCode")]
+        public string ThanksCode { get; set; }
+    }
+
     public class ProfilePutResponse
     {
         [JsonProperty("message")]
@@ -691,6 +438,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
 
         [JsonProperty("isSuccess")]
         public bool IsSuccess { get; set; }
+    }
+
+    public class ProfilePutBodyInput
+    {
+        [JsonProperty("displayName")]
+        public string DisplayName { get; set; }
+
+        [JsonProperty("gravatarIconEmail")]
+        public string GravatarIconEmail { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("timezone")]
+        public string Timezone { get; set; }
+
+        [JsonProperty("aboutURL")]
+        public string AboutURL { get; set; }
+
+        [JsonProperty("contributeURLs")]
+        public string[] ContributeURLs { get; set; }
+
+        [JsonProperty("pinnedGraphID")]
+        public string PinnedGraphId { get; set; }
     }
 
     public class GraphsGetResponse
@@ -741,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool IsSuccess { get; set; }
     }
 
-    public class GraphPostResponse
+    public class GraphResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -750,8 +521,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool IsSuccess { get; set; }
     }
 
+    public class GraphBodyInput
+    {
+        public GraphBodyInput(string id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
+
+        [JsonProperty("id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Id { get; set; }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Name { get; set; }
+
+        [JsonProperty("unit", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Unit { get; set; } = "commit";
+
+        [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputTypeType Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip.BodyInputTypeType.Int;
+
+        [JsonProperty("color", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputColorType Color { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip.BodyInputColorType.Shibafu;
+
+        [JsonProperty("timezone")]
+        public string Timezone { get; set; }
+
+        [JsonProperty("selfSufficient")]
+        public string SelfSufficient { get; set; }
+
+        [JsonProperty("isSecret")]
+        public bool? IsSecret { get; set; }
+
+        [JsonProperty("publishOptionalData")]
+        public bool? PublishOptionalData { get; set; }
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodytypeInput
+    public enum BodyInputTypeType
     {
         [EnumMember(Value = "int")]
         Int,
@@ -760,7 +567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum bodycolorInput
+    public enum BodyInputColorType
     {
         [EnumMember(Value = "shibafu")]
         Shibafu,
@@ -783,6 +590,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
 
         [JsonProperty("isSuccess")]
         public bool IsSuccess { get; set; }
+    }
+
+    public class GraphPutBodyInput
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("unit", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Unit { get; set; } = "commit";
+
+        [JsonProperty("color", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputColorType? Color { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip.BodyInputColorType.Shibafu;
+
+        [JsonProperty("timezone")]
+        public string Timezone { get; set; }
+
+        [JsonProperty("selfSufficient")]
+        public string SelfSufficient { get; set; }
+
+        [JsonProperty("isSecret")]
+        public bool? IsSecret { get; set; }
+
+        [JsonProperty("publishOptionalData")]
+        public bool? PublishOptionalData { get; set; }
     }
 
     public class GraphGetResponse
@@ -828,7 +659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum modeInput
+    public enum ModeInput
     {
         [EnumMember(Value = "short")]
         Short,
@@ -839,7 +670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum appearanceInput
+    public enum AppearanceInput
     {
         [EnumMember(Value = "dark")]
         Dark
@@ -884,13 +715,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public int TodaysQuantity { get; set; }
     }
 
-    public class PixelPostResponse
+    public class PixelResponse
     {
         [JsonProperty("message")]
         public string Message { get; set; }
 
         [JsonProperty("isSuccess")]
         public bool IsSuccess { get; set; }
+    }
+
+    public class PixelBodyInput
+    {
+        public PixelBodyInput(string date, string quantity)
+        {
+            this.Date = date;
+            this.Quantity = quantity;
+        }
+
+        [JsonProperty("date", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Date { get; set; }
+
+        [JsonProperty("quantity", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Quantity { get; set; }
+
+        [JsonProperty("optionalData")]
+        public JToken OptionalData { get; set; }
     }
 
     public class PixelGetResponse
@@ -951,6 +800,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
 
         [JsonProperty("isSuccess")]
         public bool IsSuccess { get; set; }
+    }
+
+    public class PixelAddPutBodyInput
+    {
+        [JsonProperty("quantity")]
+        public int? Quantity { get; set; }
     }
 
     public class PixelSubtractPutResponse

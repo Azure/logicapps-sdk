@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
-        public IBodyWorkflowAction<IdeasResponse, ApiConnectionActionConfiguration> Ideas(Expression<Func<string>> publishedAfter = null, Expression<Func<string>> lastStageChangeAfter = null, Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<string>> afterCursor = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<IdeasResponse, ApiConnectionActionConfiguration> Ideas(Expression<Func<string>> publishedAfter = null, Expression<Func<string>> lastStageChangeAfter = null, Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<SortFieldInput>> sortField = null, Expression<Func<SortOrderInput>> sortOrder = null, Expression<Func<string>> afterCursor = null, Expression<Func<int>> limit = null)
         {
             var __workflow_publishedAfter = WorkflowExpression.Compile(publishedAfter, nameof(publishedAfter), required: false);
             var __workflow_lastStageChangeAfter = WorkflowExpression.Compile(lastStageChangeAfter, nameof(lastStageChangeAfter), required: false);
@@ -79,27 +79,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
 
     public class NoscoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<IdeaReachedStageTriggerResponse, ApiConnectionTriggerConfiguration> IdeaReachedStageTrigger(Expression<Func<string>> ideaboxId, Expression<Func<string>> stageId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaReachedStageTriggerResponse, ApiConnectionPollingTriggerConfiguration> IdeaReachedStageTrigger(Expression<Func<string>> ideaboxId, Expression<Func<string>> stageId)
         {
             var __workflow_ideaboxId = WorkflowExpression.Compile(ideaboxId, nameof(ideaboxId), required: true);
             var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: true);
-            return new DeferredBodyTrigger<IdeaReachedStageTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IdeaReachedStageTriggerResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-reached-stage";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ideaboxId"] = ExpressionConverter.Convert(__workflow_ideaboxId);
                 callPayload.Queries["stageId"] = ExpressionConverter.Convert(__workflow_stageId);
-                return new ApiConnectionTrigger<IdeaReachedStageTriggerResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IdeaReachedStageTriggerResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IdeaStatusChangedTriggerResponse, ApiConnectionTriggerConfiguration> IdeaStatusChangedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<string>> statusId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaStatusChangedTriggerResponse, ApiConnectionPollingTriggerConfiguration> IdeaStatusChangedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<string>> statusId = null)
         {
             var __workflow_ideaboxId = WorkflowExpression.Compile(ideaboxId, nameof(ideaboxId), required: false);
             var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
             var __workflow_statusId = WorkflowExpression.Compile(statusId, nameof(statusId), required: false);
-            return new DeferredBodyTrigger<IdeaStatusChangedTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IdeaStatusChangedTriggerResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-status-changed";
                 var apiCallHttpMethod = "get";
@@ -110,15 +110,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
                     callPayload.Queries["stageId"] = ExpressionConverter.Convert(__workflow_stageId);
                 if (__workflow_statusId != null)
                     callPayload.Queries["statusId"] = ExpressionConverter.Convert(__workflow_statusId);
-                return new ApiConnectionTrigger<IdeaStatusChangedTriggerResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IdeaStatusChangedTriggerResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IdeaPublishedTriggerResponse, ApiConnectionTriggerConfiguration> IdeaPublishedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaPublishedTriggerResponse, ApiConnectionPollingTriggerConfiguration> IdeaPublishedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null)
         {
             var __workflow_ideaboxId = WorkflowExpression.Compile(ideaboxId, nameof(ideaboxId), required: false);
             var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
-            return new DeferredBodyTrigger<IdeaPublishedTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IdeaPublishedTriggerResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-published";
                 var apiCallHttpMethod = "get";
@@ -127,15 +127,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
                     callPayload.Queries["ideaboxId"] = ExpressionConverter.Convert(__workflow_ideaboxId);
                 if (__workflow_stageId != null)
                     callPayload.Queries["stageId"] = ExpressionConverter.Convert(__workflow_stageId);
-                return new ApiConnectionTrigger<IdeaPublishedTriggerResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IdeaPublishedTriggerResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<IdeaEditedTriggerResponse, ApiConnectionTriggerConfiguration> IdeaEditedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaEditedTriggerResponse, ApiConnectionPollingTriggerConfiguration> IdeaEditedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null)
         {
             var __workflow_ideaboxId = WorkflowExpression.Compile(ideaboxId, nameof(ideaboxId), required: false);
             var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
-            return new DeferredBodyTrigger<IdeaEditedTriggerResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<IdeaEditedTriggerResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-edited";
                 var apiCallHttpMethod = "get";
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
                     callPayload.Queries["ideaboxId"] = ExpressionConverter.Convert(__workflow_ideaboxId);
                 if (__workflow_stageId != null)
                     callPayload.Queries["stageId"] = ExpressionConverter.Convert(__workflow_stageId);
-                return new ApiConnectionTrigger<IdeaEditedTriggerResponse>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<IdeaEditedTriggerResponse>(callPayload);
             });
         }
     }
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortFieldInput
+    public enum SortFieldInput
     {
         [EnumMember(Value = "PUBLISHED_AT")]
         PUBLISHEDAT,
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum sortOrderInput
+    public enum SortOrderInput
     {
         ASC,
         DESC

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sunrisesunsetip
     public class SunrisesunsetipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sunrisesunsetip")]
-        public IBodyWorkflowAction<GetDataResponse, ApiConnectionActionConfiguration> GetData(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> date = null, Expression<Func<formattedInput>> formatted = null)
+        public IBodyWorkflowAction<GetDataResponse, ApiConnectionActionConfiguration> GetData(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> date = null, Expression<Func<FormattedInput>> formatted = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
             var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sunrisesunsetip
         public string AstronomicalTwilightEnd { get; set; }
     }
 
-    public enum formattedInput
+    public enum FormattedInput
     {
         _0 = 0,
         _1 = 1

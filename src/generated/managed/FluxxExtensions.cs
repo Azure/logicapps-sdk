@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CustomAction(Expression<Func<string>> endpoint, Expression<Func<methodInput>> method, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CustomAction(Expression<Func<string>> endpoint, Expression<Func<MethodInput>> method, Expression<Func<string>> body = null)
         {
             var __workflow_endpoint = WorkflowExpression.Compile(endpoint, nameof(endpoint), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
@@ -37,16 +37,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["method"] = ExpressionConverter.Convert(__workflow_method);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelResponse, ApiConnectionActionConfiguration> CreateRecord(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null)
+        public IBodyWorkflowAction<ModelResponse, ApiConnectionActionConfiguration> CreateRecord(Expression<Func<string>> typeId, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ModelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rest/v2/{0}", __workflow_typeId.WithUrlEncoding(1)));
@@ -54,28 +55,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["all_core"] = Convert.ToString(1);
                 callPayload.Queries["all_dynamic"] = Convert.ToString(1);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ModelResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelArrayResponse, ApiConnectionActionConfiguration> FindRecords(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<ModelArrayResponse, ApiConnectionActionConfiguration> FindRecords(Expression<Func<string>> typeId, Expression<Func<BodyInput>> body = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_currentPage = WorkflowExpression.Compile(currentPage, nameof(currentPage), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<ModelArrayResponse, ApiConnectionActionConfiguration>(() =>
@@ -91,28 +81,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
                 callPayload.Queries["per_page"] = Convert.ToString(10);
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ModelArrayResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelArrayResponse, ApiConnectionActionConfiguration> FindOrCreateRecord(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<ModelArrayResponse, ApiConnectionActionConfiguration> FindOrCreateRecord(Expression<Func<string>> typeId, Expression<Func<BodyInput>> body = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             var __workflow_currentPage = WorkflowExpression.Compile(currentPage, nameof(currentPage), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<ModelArrayResponse, ApiConnectionActionConfiguration>(() =>
@@ -128,19 +107,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
                 callPayload.Queries["per_page"] = Convert.ToString(10);
                 if (__workflow_perPage != null)
                     callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                if (__workflow_body != null)
+                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ModelArrayResponse>(callPayload);
             });
         }
@@ -162,11 +130,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelResponse, ApiConnectionActionConfiguration> UpdateRecord(Expression<Func<string>> typeId, Expression<Func<string>> id, Expression<Func<object>> bodydata = null)
+        public IBodyWorkflowAction<ModelResponse, ApiConnectionActionConfiguration> UpdateRecord(Expression<Func<string>> typeId, Expression<Func<string>> id, Expression<Func<BodyInput>> body)
         {
             var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ModelResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rest/v2/{0}/{1}", __workflow_typeId.WithUrlEncoding(1), __workflow_id.WithUrlEncoding(1)));
@@ -174,19 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["all_core"] = Convert.ToString(1);
                 callPayload.Queries["all_dynamic"] = Convert.ToString(1);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (__workflow_bodydata != null)
-                {
-                    body["data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ModelResponse>(callPayload);
             });
         }
@@ -197,7 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum methodInput
+    public enum MethodInput
     {
         GET,
         PUT,
@@ -208,6 +164,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
     {
         [JsonProperty("model")]
         public JToken Model { get; set; }
+    }
+
+    public class BodyInput
+    {
+        [JsonProperty("data")]
+        public JToken Data { get; set; }
     }
 
     public class ModelArrayResponse

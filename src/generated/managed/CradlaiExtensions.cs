@@ -13,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
     public class CradlaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<CreateDocumentDeprecatedResponse, ApiConnectionActionConfiguration> CreateDocumentDeprecated(Expression<Func<string>> name, Expression<Func<string>> fileContent = null)
+        public IBodyWorkflowAction<CreateDocumentDeprecatedResponse, ApiConnectionActionConfiguration> CreateDocumentDeprecated(Expression<Func<string>> name, Expression<Func<string>> fileContent)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: false);
+            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: true);
             return new DeferredBodyAction<CreateDocumentDeprecatedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/documents";
@@ -55,110 +55,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<ParseDocumentDeprecatedResponse, ApiConnectionActionConfiguration> ParseDocumentDeprecated(Expression<Func<string>> requestmodel, Expression<Func<string>> requestdocumentId, Expression<Func<requestpostprocessingtheOutputFormatInput>> requestpostprocessingtheOutputFormat = null, Expression<Func<requestpostprocessingtheStrategyUsedForAggregatingPredictionsInput>> requestpostprocessingtheStrategyUsedForAggregatingPredictions = null, Expression<Func<bool>> requestpreprocessingautoRotate = null, Expression<Func<int>> requestpreprocessingmaxPages = null, Expression<Func<string>> requestpreprocessingimageQuality = null)
+        public IBodyWorkflowAction<ParseDocumentDeprecatedResponse, ApiConnectionActionConfiguration> ParseDocumentDeprecated(Expression<Func<ParseDocumentDeprecatedRequestInput>> request)
         {
-            var __workflow_requestmodel = WorkflowExpression.Compile(requestmodel, nameof(requestmodel), required: true);
-            var __workflow_requestdocumentId = WorkflowExpression.Compile(requestdocumentId, nameof(requestdocumentId), required: true);
-            var __workflow_requestpostprocessingtheOutputFormat = WorkflowExpression.Compile(requestpostprocessingtheOutputFormat, nameof(requestpostprocessingtheOutputFormat), required: false);
-            var __workflow_requestpostprocessingtheStrategyUsedForAggregatingPredictions = WorkflowExpression.Compile(requestpostprocessingtheStrategyUsedForAggregatingPredictions, nameof(requestpostprocessingtheStrategyUsedForAggregatingPredictions), required: false);
-            var __workflow_requestpreprocessingautoRotate = WorkflowExpression.Compile(requestpreprocessingautoRotate, nameof(requestpreprocessingautoRotate), required: false);
-            var __workflow_requestpreprocessingmaxPages = WorkflowExpression.Compile(requestpreprocessingmaxPages, nameof(requestpreprocessingmaxPages), required: false);
-            var __workflow_requestpreprocessingimageQuality = WorkflowExpression.Compile(requestpreprocessingimageQuality, nameof(requestpreprocessingimageQuality), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<ParseDocumentDeprecatedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/predictions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                requestpropCount++;
-                request["modelId"] = ExpressionConverter.ConvertO(__workflow_requestmodel);
-                requestpropCount++;
-                request["documentId"] = ExpressionConverter.ConvertO(__workflow_requestdocumentId);
-                var postprocessConfigObject = new JObject();
-                var postprocessConfigObjectpropCount = 0;
-                if (__workflow_requestpostprocessingtheOutputFormat != null)
-                {
-                    if (__workflow_requestpostprocessingtheOutputFormat != null)
-                    {
-                        postprocessConfigObject["outputFormat"] = ExpressionConverter.ConvertO(__workflow_requestpostprocessingtheOutputFormat);
-                        postprocessConfigObjectpropCount++;
-                    }
-
-                    postprocessConfigObjectpropCount++;
-                }
-                else
-                {
-                    postprocessConfigObject["outputFormat"] = "v2";
-                    postprocessConfigObjectpropCount++;
-                }
-
-                if (__workflow_requestpostprocessingtheStrategyUsedForAggregatingPredictions != null)
-                {
-                    if (__workflow_requestpostprocessingtheStrategyUsedForAggregatingPredictions != null)
-                    {
-                        postprocessConfigObject["strategy"] = ExpressionConverter.ConvertO(__workflow_requestpostprocessingtheStrategyUsedForAggregatingPredictions);
-                        postprocessConfigObjectpropCount++;
-                    }
-
-                    postprocessConfigObjectpropCount++;
-                }
-                else
-                {
-                    postprocessConfigObject["strategy"] = "BEST_FIRST";
-                    postprocessConfigObjectpropCount++;
-                }
-
-                if (postprocessConfigObjectpropCount > 0)
-                {
-                    request["postprocessConfig"] = postprocessConfigObject;
-                    requestpropCount++;
-                }
-
-                var preprocessConfigObject = new JObject();
-                var preprocessConfigObjectpropCount = 0;
-                if (__workflow_requestpreprocessingautoRotate != null)
-                {
-                    preprocessConfigObject["autoRotate"] = ExpressionConverter.ConvertO(__workflow_requestpreprocessingautoRotate);
-                    preprocessConfigObjectpropCount++;
-                }
-
-                if (__workflow_requestpreprocessingmaxPages != null)
-                {
-                    preprocessConfigObject["maxPages"] = ExpressionConverter.ConvertO(__workflow_requestpreprocessingmaxPages);
-                    preprocessConfigObjectpropCount++;
-                }
-
-                if (__workflow_requestpreprocessingimageQuality != null)
-                {
-                    preprocessConfigObject["imageQuality"] = ExpressionConverter.ConvertO(__workflow_requestpreprocessingimageQuality);
-                    preprocessConfigObjectpropCount++;
-                }
-
-                if (preprocessConfigObjectpropCount > 0)
-                {
-                    request["preprocessConfig"] = preprocessConfigObject;
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<ParseDocumentDeprecatedResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateRun(Expression<Func<string>> agentId, Expression<Func<string>> actionId = null, Expression<Func<int>> maxWaitInterval = null, Expression<Func<string>> variables = null, Expression<Func<string>> title = null, Expression<Func<string>> document = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateRun(Expression<Func<string>> agentId, Expression<Func<string>> document, Expression<Func<string>> actionId = null, Expression<Func<int>> maxWaitInterval = null, Expression<Func<string>> variables = null, Expression<Func<string>> title = null)
         {
             var __workflow_agentId = WorkflowExpression.Compile(agentId, nameof(agentId), required: true);
+            var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: true);
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: false);
             var __workflow_maxWaitInterval = WorkflowExpression.Compile(maxWaitInterval, nameof(maxWaitInterval), required: false);
             var __workflow_variables = WorkflowExpression.Compile(variables, nameof(variables), required: false);
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
-            var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/agents";
@@ -179,67 +97,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Validate()
+        public IWorkflowAction<ApiConnectionActionConfiguration> Validate(Expression<Func<object>> request)
         {
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/validate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<CreateExecutionDeprecatedResponse, ApiConnectionActionConfiguration> CreateExecutionDeprecated(Expression<Func<string>> workflowId, Expression<Func<string>> requestinputdocumentId, Expression<Func<string>> requestinputtitle = null)
+        public IBodyWorkflowAction<CreateExecutionDeprecatedResponse, ApiConnectionActionConfiguration> CreateExecutionDeprecated(Expression<Func<string>> workflowId, Expression<Func<CreateExecutionDeprecatedRequestInput>> request)
         {
             var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
-            var __workflow_requestinputdocumentId = WorkflowExpression.Compile(requestinputdocumentId, nameof(requestinputdocumentId), required: true);
-            var __workflow_requestinputtitle = WorkflowExpression.Compile(requestinputtitle, nameof(requestinputtitle), required: false);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<CreateExecutionDeprecatedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/workflows";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["WorkflowId"] = ExpressionConverter.Convert(__workflow_workflowId);
-                var request = new JObject();
-                var requestpropCount = 0;
-                var inputObject = new JObject();
-                var inputObjectpropCount = 0;
-                inputObjectpropCount++;
-                inputObject["documentId"] = ExpressionConverter.ConvertO(__workflow_requestinputdocumentId);
-                if (__workflow_requestinputtitle != null)
-                {
-                    inputObject["title"] = ExpressionConverter.ConvertO(__workflow_requestinputtitle);
-                    inputObjectpropCount++;
-                }
-
-                var predictionsObject = new JObject();
-                var predictionsObjectpropCount = 0;
-                if (predictionsObjectpropCount > 0)
-                {
-                    inputObject["predictions"] = predictionsObject;
-                    inputObjectpropCount++;
-                }
-
-                if (inputObjectpropCount > 0)
-                {
-                    request["input"] = inputObject;
-                    requestpropCount++;
-                }
-
-                if (requestpropCount > 0)
-                {
-                    callPayload.Body = request;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
                 return new ApiConnectionAction<CreateExecutionDeprecatedResponse>(callPayload);
             });
         }
@@ -247,37 +129,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
 
     public class CradlaiTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<RunCompletedResponse, ApiConnectionTriggerConfiguration> RunCompleted(Expression<Func<string>> actionId, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RunCompletedResponse, ApiConnectionPollingTriggerConfiguration> RunCompleted(Expression<Func<string>> actionId)
         {
             var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
-            return new DeferredBodyTrigger<RunCompletedResponse, ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<RunCompletedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/actions";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["ActionId"] = ExpressionConverter.Convert(__workflow_actionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                body["enabled"] = true;
-                bodypropCount++;
-                var configObject = new JObject();
-                var configObjectpropCount = 0;
-                configObject["url"] = "#{listCallbackUrl()}";
-                configObjectpropCount++;
-                configObject["httpMethod"] = "POST";
-                configObjectpropCount++;
-                if (configObjectpropCount > 0)
-                {
-                    body["config"] = configObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionTrigger<RunCompletedResponse>(callPayload, recurrence: recurrence);
+                callPayload.Body = new BodyInput().ToJToken();
+                return new ApiConnectionPollingTrigger<RunCompletedResponse>(callPayload);
             });
         }
     }
@@ -312,10 +174,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         public string ModelId { get; set; }
 
         [JsonProperty("postprocessConfig")]
-        public PostprocessConfig PostprocessConfig { get; set; }
+        public ParseDocumentDeprecatedPostprocessConfigResponse PostprocessConfig { get; set; }
 
         [JsonProperty("preprocessConfig")]
-        public PreprocessConfig PreprocessConfig { get; set; }
+        public ParseDocumentDeprecatedPreprocessConfigResponse PreprocessConfig { get; set; }
 
         [JsonProperty("predictions")]
         public JToken Predictions { get; set; }
@@ -324,17 +186,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         public string TrainingId { get; set; }
     }
 
-    public class PostprocessConfig
+    public class ParseDocumentDeprecatedPostprocessConfigResponse
     {
         [JsonProperty("outputFormat")]
-        public PostprocessConfigTheOutputFormatType TheOutputFormat { get; set; }
+        public ParseDocumentDeprecatedPostprocessConfigTheOutputFormatTypeResponse TheOutputFormat { get; set; }
 
         [JsonProperty("strategy")]
-        public PostprocessConfigTheStrategyUsedForAggregatingPredictionsType TheStrategyUsedForAggregatingPredictions { get; set; }
+        public ParseDocumentDeprecatedPostprocessConfigTheStrategyUsedForAggregatingPredictionsTypeResponse TheStrategyUsedForAggregatingPredictions { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostprocessConfigTheOutputFormatType
+    public enum ParseDocumentDeprecatedPostprocessConfigTheOutputFormatTypeResponse
     {
         [EnumMember(Value = "v1")]
         V1,
@@ -343,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PostprocessConfigTheStrategyUsedForAggregatingPredictionsType
+    public enum ParseDocumentDeprecatedPostprocessConfigTheStrategyUsedForAggregatingPredictionsTypeResponse
     {
         [EnumMember(Value = "BEST_N_PAGES")]
         BESTNPAGES,
@@ -351,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         BESTFIRST
     }
 
-    public class PreprocessConfig
+    public class ParseDocumentDeprecatedPreprocessConfigResponse
     {
         [JsonProperty("autoRotate")]
         public bool AutoRotate { get; set; }
@@ -363,8 +225,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         public string ImageQuality { get; set; }
     }
 
+    public class ParseDocumentDeprecatedRequestInput
+    {
+        public ParseDocumentDeprecatedRequestInput(string model, string documentId)
+        {
+            this.Model = model;
+            this.DocumentId = documentId;
+        }
+
+        [JsonProperty("modelId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Model { get; set; }
+
+        [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocumentId { get; set; }
+
+        [JsonProperty("postprocessConfig", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ParseDocumentDeprecatedPostprocessConfig Postprocessing { get; set; } = new ParseDocumentDeprecatedPostprocessConfig();
+
+        [JsonProperty("preprocessConfig")]
+        public ParseDocumentDeprecatedPreprocessConfig Preprocessing { get; set; }
+    }
+
+    public class ParseDocumentDeprecatedPostprocessConfig
+    {
+        [JsonProperty("outputFormat", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ParseDocumentDeprecatedPostprocessConfigTheOutputFormatType? TheOutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai.ParseDocumentDeprecatedPostprocessConfigTheOutputFormatType.V2;
+
+        [JsonProperty("strategy", DefaultValueHandling = DefaultValueHandling.Include)]
+        public ParseDocumentDeprecatedPostprocessConfigTheStrategyUsedForAggregatingPredictionsType? TheStrategyUsedForAggregatingPredictions { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai.ParseDocumentDeprecatedPostprocessConfigTheStrategyUsedForAggregatingPredictionsType.BESTFIRST;
+    }
+
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum requestpostprocessingtheOutputFormatInput
+    public enum ParseDocumentDeprecatedPostprocessConfigTheOutputFormatType
     {
         [EnumMember(Value = "v1")]
         V1,
@@ -373,12 +265,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum requestpostprocessingtheStrategyUsedForAggregatingPredictionsInput
+    public enum ParseDocumentDeprecatedPostprocessConfigTheStrategyUsedForAggregatingPredictionsType
     {
         [EnumMember(Value = "BEST_N_PAGES")]
         BESTNPAGES,
         [EnumMember(Value = "BEST_FIRST")]
         BESTFIRST
+    }
+
+    public class ParseDocumentDeprecatedPreprocessConfig
+    {
+        [JsonProperty("autoRotate")]
+        public bool? AutoRotate { get; set; }
+
+        [JsonProperty("maxPages")]
+        public int? MaxPages { get; set; }
+
+        [JsonProperty("imageQuality")]
+        public string ImageQuality { get; set; }
     }
 
     public class CreateExecutionDeprecatedResponse
@@ -390,6 +294,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         public string Status { get; set; }
     }
 
+    public class CreateExecutionDeprecatedRequestInput
+    {
+        public CreateExecutionDeprecatedRequestInput(WorkflowInput input)
+        {
+            this.Input = input;
+        }
+
+        [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
+        public WorkflowInput Input { get; set; }
+    }
+
+    public class WorkflowInput
+    {
+        public WorkflowInput(string documentId)
+        {
+            this.DocumentId = documentId;
+        }
+
+        [JsonProperty("documentId", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DocumentId { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("predictions")]
+        public JToken Predictions { get; set; }
+    }
+
     public class RunCompletedResponse
     {
         [JsonProperty("output")]
@@ -397,6 +329,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
 
         [JsonProperty("context")]
         public JToken Context { get; set; }
+    }
+
+    public class BodyInput
+    {
+        [JsonProperty("enabled", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool Enabled { get; set; } = true;
+
+        [JsonProperty("config", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputConfigType Config { get; set; } = new BodyInputConfigType();
+    }
+
+    public class BodyInputConfigType
+    {
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("httpMethod", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal BodyInputConfigTypeHttpMethodType HttpMethod { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai.BodyInputConfigTypeHttpMethodType.POST;
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum BodyInputConfigTypeHttpMethodType
+    {
+        POST,
+        GET,
+        PUT
     }
 }
 

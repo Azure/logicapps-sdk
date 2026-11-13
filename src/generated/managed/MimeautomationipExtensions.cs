@@ -13,45 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
     public class MimeautomationipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mimeautomationip")]
-        public IBodyWorkflowAction<Attachment[], ApiConnectionActionConfiguration> ExtractFiles(Expression<Func<string>> bodycontent)
+        public IBodyWorkflowAction<Attachment[], ApiConnectionActionConfiguration> ExtractFiles(Expression<Func<BodyInput>> body)
         {
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Attachment[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/MimeAutomation/ExtractFiles";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Attachment[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mimeautomationip")]
-        public IBodyWorkflowAction<MimeAttachment[], ApiConnectionActionConfiguration> ExtractFilesFromEml(Expression<Func<string>> bodycontent)
+        public IBodyWorkflowAction<MimeAttachment[], ApiConnectionActionConfiguration> ExtractFilesFromEml(Expression<Func<BodyInput>> body)
         {
-            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<MimeAttachment[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/MimeAutomation/ExtractFilesFromEml";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<MimeAttachment[]>(callPayload);
             });
         }
@@ -67,6 +51,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
         public string FileName { get; set; }
 
         [JsonProperty("content")]
+        public string Content { get; set; }
+    }
+
+    public class BodyInput
+    {
+        public BodyInput(string content)
+        {
+            this.Content = content;
+        }
+
+        [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Content { get; set; }
     }
 

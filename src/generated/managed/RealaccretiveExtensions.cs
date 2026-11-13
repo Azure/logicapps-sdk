@@ -37,20 +37,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Realaccretive
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "realaccretive")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PushPortfolios()
+        public IWorkflowAction<ApiConnectionActionConfiguration> PushPortfolios(Expression<Func<object>> body)
         {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/push_portfolios";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }

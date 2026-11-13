@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
     public class NasafirmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetArea(Expression<Func<string>> source, Expression<Func<string>> areaCoord, Expression<Func<dayRangeInput>> dayRange)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetArea(Expression<Func<string>> source, Expression<Func<string>> areaCoord, Expression<Func<DayRangeInput>> dayRange)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_areaCoord = WorkflowExpression.Compile(areaCoord, nameof(areaCoord), required: true);
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetCountry(Expression<Func<string>> source, Expression<Func<string>> country, Expression<Func<dayRangeInput>> dayRange)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetCountry(Expression<Func<string>> source, Expression<Func<string>> country, Expression<Func<DayRangeInput>> dayRange)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
     {
     }
 
-    public enum dayRangeInput
+    public enum DayRangeInput
     {
         _1 = 1,
         _2 = 2,

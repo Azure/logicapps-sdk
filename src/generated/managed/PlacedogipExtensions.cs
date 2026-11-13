@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Placedogip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "placedogip")]
-        public IBodyWorkflowAction<GetWidthHeightFilterResponse, ApiConnectionActionConfiguration> GetWidthHeightFilter(Expression<Func<int>> width, Expression<Func<int>> height, Expression<Func<filterInput>> filter, Expression<Func<int>> id = null)
+        public IBodyWorkflowAction<GetWidthHeightFilterResponse, ApiConnectionActionConfiguration> GetWidthHeightFilter(Expression<Func<int>> width, Expression<Func<int>> height, Expression<Func<FilterInput>> filter, Expression<Func<int>> id = null)
         {
             var __workflow_width = WorkflowExpression.Compile(width, nameof(width), required: true);
             var __workflow_height = WorkflowExpression.Compile(height, nameof(height), required: true);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Placedogip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum filterInput
+    public enum FilterInput
     {
         [EnumMember(Value = "greyscale")]
         Greyscale,

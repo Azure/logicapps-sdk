@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
     public class ProgressusadvancedprActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "progressusadvancedpr")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> Get(Expression<Func<string>> aPIVersion, Expression<Func<string>> tenantId, Expression<Func<string>> environmentName, Expression<Func<aPINameInput>> aPIName, Expression<Func<string>> aPIVersion2, Expression<Func<string>> companyId, Expression<Func<pluralAPINameInput>> pluralAPIName, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> orderby = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> Get(Expression<Func<string>> aPIVersion, Expression<Func<string>> tenantId, Expression<Func<string>> environmentName, Expression<Func<APINameInput>> aPIName, Expression<Func<string>> aPIVersion2, Expression<Func<string>> companyId, Expression<Func<PluralAPINameInput>> pluralAPIName, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> orderby = null)
         {
             var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
             var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum aPINameInput
+    public enum APINameInput
     {
         [EnumMember(Value = "resource")]
         Resource,
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum pluralAPINameInput
+    public enum PluralAPINameInput
     {
         [EnumMember(Value = "resources")]
         Resources,

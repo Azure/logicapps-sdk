@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using Microsoft.Azure.Workflows.Sdk;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus;
 
     /// <summary>
     /// Sample workflow that sends an Azure Service Bus message.
@@ -22,7 +23,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             var sendMessage = WorkflowActions.Managed.Servicebus("servicebus").SendMessage(
                 entityName: () => "my-queue",
-                messagecontent: () => WorkflowBinaryContent.FromWorkflowContent(compose.Output));
+                message: () => new MessageInput
+                {
+                    Content = WorkflowBinaryContent.FromWorkflowContent(compose.Output),
+                });
 
             trigger
                 .Then(compose)

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
     public class HyasinsightActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<DeviceGeoItem[], ApiConnectionActionConfiguration> MobileGeolocation(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<DeviceGeoItem[], ApiConnectionActionConfiguration> MobileGeolocation(Expression<Func<MobileGeolocationIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
             var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
             var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<SinkholeItem[], ApiConnectionActionConfiguration> Sinkhole(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<SinkholeItem[], ApiConnectionActionConfiguration> Sinkhole(Expression<Func<SinkholeIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
             var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
             var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<PassivednsItem[], ApiConnectionActionConfiguration> PassiveDNS(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<PassivednsItem[], ApiConnectionActionConfiguration> PassiveDNS(Expression<Func<PassiveDNSIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
             var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
             var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<DynamicdnsItem[], ApiConnectionActionConfiguration> DynamicDNS(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<DynamicdnsItem[], ApiConnectionActionConfiguration> DynamicDNS(Expression<Func<DynamicDNSIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
             var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
             var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<PassivehashItem[], ApiConnectionActionConfiguration> PassiveHash(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<PassivehashItem[], ApiConnectionActionConfiguration> PassiveHash(Expression<Func<PassiveDNSIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
             var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
             var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<Sslcertificate, ApiConnectionActionConfiguration> SSLCertificate(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<Sslcertificate, ApiConnectionActionConfiguration> SSLCertificate(Expression<Func<SSLCertificateIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
             var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
             var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<WhoisItem[], ApiConnectionActionConfiguration> Whois(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<WhoisItem[], ApiConnectionActionConfiguration> Whois(Expression<Func<WhoisIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
             var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
             var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<C2attributionItem[], ApiConnectionActionConfiguration> C2Attribution(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<C2attributionItem[], ApiConnectionActionConfiguration> C2Attribution(Expression<Func<C2AttributionIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
             var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
             var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<SampleInformation, ApiConnectionActionConfiguration> SampleInformation(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<SampleInformation, ApiConnectionActionConfiguration> SampleInformation(Expression<Func<SampleInformationIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
             var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
             var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<SampleItem[], ApiConnectionActionConfiguration> Sample(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<SampleItem[], ApiConnectionActionConfiguration> Sample(Expression<Func<SampleIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
             var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
             var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<OsIndicatorsItem[], ApiConnectionActionConfiguration> OpenSourceIndicators(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<OsIndicatorsItem[], ApiConnectionActionConfiguration> OpenSourceIndicators(Expression<Func<OpenSourceIndicatorsIndicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
             var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
             var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
@@ -189,37 +189,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<WhoisCurrent, ApiConnectionActionConfiguration> CurrentWhois(Expression<Func<string>> bodyappliedFiltersdomain = null)
+        public IBodyWorkflowAction<WhoisCurrent, ApiConnectionActionConfiguration> CurrentWhois(Expression<Func<BodyInput>> body)
         {
-            var __workflow_bodyappliedFiltersdomain = WorkflowExpression.Compile(bodyappliedFiltersdomain, nameof(bodyappliedFiltersdomain), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<WhoisCurrent, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/whois/v1";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                var appliedFiltersObject = new JObject();
-                var appliedFiltersObjectpropCount = 0;
-                if (__workflow_bodyappliedFiltersdomain != null)
-                {
-                    appliedFiltersObject["domain"] = ExpressionConverter.ConvertO(__workflow_bodyappliedFiltersdomain);
-                    appliedFiltersObjectpropCount++;
-                }
-
-                appliedFiltersObject["current"] = true;
-                appliedFiltersObjectpropCount++;
-                if (appliedFiltersObjectpropCount > 0)
-                {
-                    body["applied_filters"] = appliedFiltersObject;
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<WhoisCurrent>(callPayload);
             });
         }
@@ -260,20 +238,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum indicatorTypeInput
+    public enum MobileGeolocationIndicatorTypeInput
     {
         [EnumMember(Value = "ipv4")]
         Ipv4,
         [EnumMember(Value = "ipv6")]
-        Ipv6,
-        [EnumMember(Value = "domain")]
-        Domain,
-        [EnumMember(Value = "sha1")]
-        Sha1,
-        [EnumMember(Value = "sha256")]
-        Sha256,
-        [EnumMember(Value = "md5")]
-        Md5
+        Ipv6
     }
 
     public class SinkholeItem
@@ -301,6 +271,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
 
         [JsonProperty("sink_source")]
         public string SinkSource { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum SinkholeIndicatorTypeInput
+    {
+        [EnumMember(Value = "ipv4")]
+        Ipv4
     }
 
     public class PassivednsItem
@@ -384,6 +361,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         public string Organization { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum PassiveDNSIndicatorTypeInput
+    {
+        [EnumMember(Value = "ipv4")]
+        Ipv4,
+        [EnumMember(Value = "domain")]
+        Domain
+    }
+
     public class DynamicdnsItem
     {
         [JsonProperty("a_record")]
@@ -406,6 +392,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
 
         [JsonProperty("email")]
         public string Email { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum DynamicDNSIndicatorTypeInput
+    {
+        [EnumMember(Value = "ip")]
+        Ip,
+        [EnumMember(Value = "domain")]
+        Domain,
+        [EnumMember(Value = "email")]
+        Email
     }
 
     public class PassivehashItem
@@ -507,6 +504,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         public string Timestamp { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum SSLCertificateIndicatorTypeInput
+    {
+        [EnumMember(Value = "hash")]
+        Hash,
+        [EnumMember(Value = "ip")]
+        Ip,
+        [EnumMember(Value = "domain")]
+        Domain
+    }
+
     public class WhoisItem
     {
         [JsonProperty("address")]
@@ -579,6 +587,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         public string Geo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum WhoisIndicatorTypeInput
+    {
+        [EnumMember(Value = "domain")]
+        Domain,
+        [EnumMember(Value = "email")]
+        Email,
+        [EnumMember(Value = "phone")]
+        Phone
+    }
+
     public class C2attributionItem
     {
         [JsonProperty("actor_ipv4")]
@@ -613,6 +632,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
 
         [JsonProperty("sha256")]
         public string Sha256 { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum C2AttributionIndicatorTypeInput
+    {
+        [EnumMember(Value = "domain")]
+        Domain,
+        [EnumMember(Value = "ip")]
+        Ip,
+        [EnumMember(Value = "email")]
+        Email,
+        [EnumMember(Value = "sha256")]
+        Sha256
     }
 
     public class SampleInformation
@@ -651,6 +683,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         public string ThreatFound { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum SampleInformationIndicatorTypeInput
+    {
+        [EnumMember(Value = "hash")]
+        Hash
+    }
+
     public class SampleItem
     {
         [JsonProperty("datetime")]
@@ -673,6 +712,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
 
         [JsonProperty("sha256")]
         public string Sha256 { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum SampleIndicatorTypeInput
+    {
+        [EnumMember(Value = "md5")]
+        Md5,
+        [EnumMember(Value = "domain")]
+        Domain,
+        [EnumMember(Value = "ipv4")]
+        Ipv4
     }
 
     public class OsIndicatorsItem
@@ -721,6 +771,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
 
         [JsonProperty("uri")]
         public string Uri { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum OpenSourceIndicatorsIndicatorTypeInput
+    {
+        [EnumMember(Value = "ipv4")]
+        Ipv4,
+        [EnumMember(Value = "ipv6")]
+        Ipv6,
+        [EnumMember(Value = "domain")]
+        Domain,
+        [EnumMember(Value = "sha1")]
+        Sha1,
+        [EnumMember(Value = "sha256")]
+        Sha256,
+        [EnumMember(Value = "md5")]
+        Md5
     }
 
     public class WhoisCurrent
@@ -856,6 +923,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
 
         [JsonProperty("whois_related_type")]
         public string WhoisRelatedType { get; set; }
+    }
+
+    public class BodyInput
+    {
+        public BodyInput(BodyInputAppliedFiltersType appliedFilters)
+        {
+            this.AppliedFilters = appliedFilters;
+        }
+
+        [JsonProperty("applied_filters", DefaultValueHandling = DefaultValueHandling.Include)]
+        public BodyInputAppliedFiltersType AppliedFilters { get; set; }
+    }
+
+    public class BodyInputAppliedFiltersType
+    {
+        public BodyInputAppliedFiltersType(string domain)
+        {
+            this.Domain = domain;
+        }
+
+        [JsonProperty("domain", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Domain { get; set; }
+
+        [JsonProperty("current", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool Current { get; set; } = true;
     }
 }
 

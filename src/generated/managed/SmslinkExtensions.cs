@@ -13,27 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smslink
     public class SmslinkActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smslink")]
-        public IBodyWorkflowAction<SMSLinkSendSMSResponse, ApiConnectionActionConfiguration> SMSLinkSendSMS(Expression<Func<string>> bodyto, Expression<Func<string>> bodymessage)
+        public IBodyWorkflowAction<SmsLinkSendSmsResponse, ApiConnectionActionConfiguration> SmsLinkSendSms(Expression<Func<BodyInput>> body)
         {
-            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
-            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
-            return new DeferredBodyAction<SMSLinkSendSMSResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<SmsLinkSendSmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/sms/gateway/integration/powerautomate.php";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
-                bodypropCount++;
-                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<SMSLinkSendSMSResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<SmsLinkSendSmsResponse>(callPayload);
             });
         }
     }
@@ -42,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smslink
     {
     }
 
-    public class SMSLinkSendSMSResponse
+    public class SmsLinkSendSmsResponse
     {
         [JsonProperty("response_type")]
         public string ResponseType { get; set; }
@@ -52,6 +41,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smslink
 
         [JsonProperty("response_message")]
         public string ResponseMessage { get; set; }
+    }
+
+    public class BodyInput
+    {
+        public BodyInput(string to, string message)
+        {
+            this.To = to;
+            this.Message = message;
+        }
+
+        [JsonProperty("to", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string To { get; set; }
+
+        [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Message { get; set; }
     }
 }
 

@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectwisepsa
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectwisepsa")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> PostServiceTickets(Expression<Func<string>> clientId, Expression<Func<object>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostServiceTickets(Expression<Func<string>> clientId, Expression<Func<object>> body)
         {
             var __workflow_clientId = WorkflowExpression.Compile(clientId, nameof(clientId), required: true);
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v4_6_release/apis/3.0/service/tickets";

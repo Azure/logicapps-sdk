@@ -16,28 +16,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
 
     public class GravityformsbyreenhancedTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionTriggerConfiguration> CreateWebhook(Expression<Func<string>> webhookform, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateWebhook(Expression<Func<WebhookInput>> webhook)
         {
-            var __workflow_webhookform = WorkflowExpression.Compile(webhookform, nameof(webhookform), required: true);
-            return new DeferredWorkflowTrigger<ApiConnectionTriggerConfiguration>(() =>
+            var __workflow_webhook = WorkflowExpression.Compile(webhook, nameof(webhook), required: true);
+            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/webhooks";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var webhook = new JObject();
-                var webhookpropCount = 0;
-                webhook["callback_url"] = "#{listCallbackUrl()}";
-                webhookpropCount++;
-                webhookpropCount++;
-                webhook["form_id"] = ExpressionConverter.ConvertO(__workflow_webhookform);
-                if (webhookpropCount > 0)
-                {
-                    callPayload.Body = webhook;
-                }
-
-                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_webhook);
+                return new ApiConnectionPollingTrigger(callPayload);
             });
         }
+    }
+
+    public class WebhookInput
+    {
+        public WebhookInput(string form)
+        {
+            this.Form = form;
+        }
+
+        [JsonProperty("callback_url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("form_id", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Form { get; set; }
     }
 }
 

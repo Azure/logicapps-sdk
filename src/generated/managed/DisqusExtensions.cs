@@ -162,11 +162,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
 
     public class DisqusTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Post[], ApiConnectionTriggerConfiguration> OnPostCreated(Expression<Func<string>> forum, Expression<Func<string>> thread = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Post[], ApiConnectionPollingTriggerConfiguration> OnPostCreated(Expression<Func<string>> forum, Expression<Func<string>> thread = null)
         {
             var __workflow_forum = WorkflowExpression.Compile(forum, nameof(forum), required: true);
             var __workflow_thread = WorkflowExpression.Compile(thread, nameof(thread), required: false);
-            return new DeferredBodyTrigger<Post[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Post[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/posts/list.json";
                 var apiCallHttpMethod = "get";
@@ -176,14 +176,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
                     callPayload.Queries["thread"] = ExpressionConverter.Convert(__workflow_thread);
                 callPayload.Queries["order"] = Convert.ToString("desc");
                 callPayload.Queries["limit"] = Convert.ToString(75);
-                return new ApiConnectionTrigger<Post[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Post[]>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<Thread[], ApiConnectionTriggerConfiguration> OnThreadCreated(Expression<Func<string>> forum, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Thread[], ApiConnectionPollingTriggerConfiguration> OnThreadCreated(Expression<Func<string>> forum)
         {
             var __workflow_forum = WorkflowExpression.Compile(forum, nameof(forum), required: true);
-            return new DeferredBodyTrigger<Thread[], ApiConnectionTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<Thread[], ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/threads/list.json";
                 var apiCallHttpMethod = "get";
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
                 callPayload.Queries["forum"] = ExpressionConverter.Convert(__workflow_forum);
                 callPayload.Queries["order"] = Convert.ToString("desc");
                 callPayload.Queries["limit"] = Convert.ToString(75);
-                return new ApiConnectionTrigger<Thread[]>(callPayload, recurrence: recurrence);
+                return new ApiConnectionPollingTrigger<Thread[]>(callPayload);
             });
         }
     }

@@ -13,48 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
     public class TelesignsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telesignsms")]
-        public IBodyWorkflowAction<SendSMSResponse, ApiConnectionActionConfiguration> SendSMS(Expression<Func<string>> bodyphoneNumber, Expression<Func<string>> bodymessageText, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodymessageType = null, Expression<Func<string>> bodysenderId = null)
+        public IBodyWorkflowAction<SendSmsResponse, ApiConnectionActionConfiguration> SendSms(Expression<Func<BodyInput>> body)
         {
-            var __workflow_bodyphoneNumber = WorkflowExpression.Compile(bodyphoneNumber, nameof(bodyphoneNumber), required: true);
-            var __workflow_bodymessageText = WorkflowExpression.Compile(bodymessageText, nameof(bodymessageText), required: true);
-            var __workflow_bodyexternalId = WorkflowExpression.Compile(bodyexternalId, nameof(bodyexternalId), required: false);
-            var __workflow_bodymessageType = WorkflowExpression.Compile(bodymessageType, nameof(bodymessageType), required: false);
-            var __workflow_bodysenderId = WorkflowExpression.Compile(bodysenderId, nameof(bodysenderId), required: false);
-            return new DeferredBodyAction<SendSMSResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<SendSmsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/SMS";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                var body = new JObject();
-                var bodypropCount = 0;
-                bodypropCount++;
-                body["PhoneNumber"] = ExpressionConverter.ConvertO(__workflow_bodyphoneNumber);
-                if (__workflow_bodyexternalId != null)
-                {
-                    body["ExternalId"] = ExpressionConverter.ConvertO(__workflow_bodyexternalId);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-                body["MessageText"] = ExpressionConverter.ConvertO(__workflow_bodymessageText);
-                if (__workflow_bodymessageType != null)
-                {
-                    body["MessageType"] = ExpressionConverter.ConvertO(__workflow_bodymessageType);
-                    bodypropCount++;
-                }
-
-                if (__workflow_bodysenderId != null)
-                {
-                    body["SenderId"] = ExpressionConverter.ConvertO(__workflow_bodysenderId);
-                    bodypropCount++;
-                }
-
-                if (bodypropCount > 0)
-                {
-                    callPayload.Body = body;
-                }
-
-                return new ApiConnectionAction<SendSMSResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<SendSmsResponse>(callPayload);
             });
         }
     }
@@ -63,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
     {
     }
 
-    public class SendSMSResponse
+    public class SendSmsResponse
     {
         public string ReferenceId { get; set; }
         public string Status { get; set; }
@@ -71,6 +39,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
         [JsonProperty("Status Code")]
         public string StatusCode { get; set; }
         public string Timestamp { get; set; }
+    }
+
+    public class BodyInput
+    {
+        public BodyInput(string phoneNumber, string messageText)
+        {
+            this.PhoneNumber = phoneNumber;
+            this.MessageText = messageText;
+        }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string PhoneNumber { get; set; }
+        public string ExternalId { get; set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string MessageText { get; set; }
+        public string MessageType { get; set; }
+        public string SenderId { get; set; }
     }
 }
 

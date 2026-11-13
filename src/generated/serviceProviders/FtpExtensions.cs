@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
 
     public class FtpTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[], WhenFtpFilesAreAddedOrModifiedTriggerConfiguration> WhenFtpFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null, Expression<Func<bool>> ignoreSubFolders = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[], WhenFtpFilesAreAddedOrModifiedTriggerConfiguration> WhenFtpFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFileCutOffTimestamp = null, Expression<Func<bool>> ignoreSubFolders = null)
         {
             var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
@@ -312,12 +312,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Ftp", operationId: "whenFtpFilesAreAddedOrModified", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderBodyTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[], WhenFtpFilesAreAddedOrModifiedTriggerConfiguration>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                return new ServiceProviderBodyTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[], WhenFtpFilesAreAddedOrModifiedTriggerConfiguration>(serviceProviderInput, isPolling: true);
             });
         }
     }
 
-    public sealed class WhenFtpFilesAreAddedOrModifiedTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration
+    public sealed class WhenFtpFilesAreAddedOrModifiedTriggerConfiguration : ISecureInputsConfiguration, ISecureOutputsConfiguration, ITriggerConcurrencyConfiguration, IRecurrenceConfiguration
     {
         bool ISecureInputsConfiguration.SecureInputs { get; set; }
 
@@ -326,6 +326,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         int? ITriggerConcurrencyConfiguration.ConcurrentRuns { get; set; }
 
         int? ITriggerConcurrencyConfiguration.MaximumWaitingRuns { get; set; }
+
+        FlowRecurrence IRecurrenceConfiguration.Recurrence { get; set; }
     }
 
     public class WhenFtpFilesAreAddedOrModifiedOutputItem
