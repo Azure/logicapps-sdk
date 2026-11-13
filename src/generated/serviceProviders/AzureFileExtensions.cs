@@ -103,10 +103,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
-        public IOutputWorkflowAction<bool, DeleteFileActionConfiguration> DeleteFile(Expression<Func<string>> fileId)
+        public IBodyWorkflowAction<bool, DeleteFileActionConfiguration> DeleteFile(Expression<Func<string>> fileId)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
-            return new DeferredOutputAction<bool, DeleteFileActionConfiguration>(() =>
+            return new DeferredBodyAction<bool, DeleteFileActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["fileId"] = ExpressionConverter.ConvertO(__workflow_fileId);
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/AzureFile", operationId: "deleteFile", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<bool, DeleteFileActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<bool, DeleteFileActionConfiguration>(serviceProviderInput);
             });
         }
 
