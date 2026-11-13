@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
     public class GetWishListResponseResultsTypeItem
     {
         [JsonProperty("CDPContactID")]
-        public string CDPContactId { get; set; }
+        public string CdpContactId { get; set; }
 
         [JsonProperty("UserID")]
         public int UserId { get; set; }
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         public string Timestamp { get; set; }
 
         [JsonProperty("CDPContactID")]
-        public string CDPContactId { get; set; }
+        public string CdpContactId { get; set; }
         public OnNewEventResponseResultsTypeItemBrowserType Browser { get; set; }
         public OnNewEventResponseResultsTypeItemListType List { get; set; }
         public OnNewEventResponseResultsTypeItemProductType Product { get; set; }

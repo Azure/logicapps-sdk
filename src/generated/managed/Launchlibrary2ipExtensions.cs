@@ -2348,10 +2348,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         public Pad Pad { get; set; }
 
         [JsonProperty("infoURLs")]
-        public string InfoURLs { get; set; }
+        public string InfoUrls { get; set; }
 
         [JsonProperty("vidURLs")]
-        public string VidURLs { get; set; }
+        public string VidUrls { get; set; }
 
         [JsonProperty("webcast_live")]
         public bool WebcastLive { get; set; }
@@ -3803,10 +3803,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         public Pad Pad { get; set; }
 
         [JsonProperty("infoURLs")]
-        public InfoURL[] InfoURLs { get; set; }
+        public InfoUrl[] InfoUrls { get; set; }
 
         [JsonProperty("vidURLs")]
-        public VidURL[] VidURLs { get; set; }
+        public VidUrl[] VidUrls { get; set; }
 
         [JsonProperty("webcast_live")]
         public bool WebcastLive { get; set; }
@@ -4088,7 +4088,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         public DockingLocation DockingLocation { get; set; }
     }
 
-    public class InfoURL
+    public class InfoUrl
     {
         [JsonProperty("priority")]
         public int Priority { get; set; }
@@ -4106,7 +4106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Launchlibrary2ip
         public string Url { get; set; }
     }
 
-    public class VidURL
+    public class VidUrl
     {
         [JsonProperty("priority")]
         public int Priority { get; set; }

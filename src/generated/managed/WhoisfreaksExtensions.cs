@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whoisfreaks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whoisfreaks")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SSLLookup(Expression<Func<string>> domainName, Expression<Func<FormatInput>> format, Expression<Func<bool>> chain = null, Expression<Func<bool>> sslRaw = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SslLookup(Expression<Func<string>> domainName, Expression<Func<FormatInput>> format, Expression<Func<bool>> chain = null, Expression<Func<bool>> sslRaw = null)
         {
             var __workflow_domainName = WorkflowExpression.Compile(domainName, nameof(domainName), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);

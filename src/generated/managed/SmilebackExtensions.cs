@@ -26,57 +26,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
-        public IBodyWorkflowAction<CSATCompaniesResponseItem[], ApiConnectionActionConfiguration> CSATCompanies()
+        public IBodyWorkflowAction<CsatCompaniesResponseItem[], ApiConnectionActionConfiguration> CsatCompanies()
         {
-            return new DeferredBodyAction<CSATCompaniesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CsatCompaniesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v3/csat-companies/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<CSATCompaniesResponseItem[]>(callPayload);
+                return new ApiConnectionAction<CsatCompaniesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
-        public IBodyWorkflowAction<CSATContactsResponseItem[], ApiConnectionActionConfiguration> CSATContacts()
+        public IBodyWorkflowAction<CsatContactsResponseItem[], ApiConnectionActionConfiguration> CsatContacts()
         {
-            return new DeferredBodyAction<CSATContactsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CsatContactsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v3/csat-contacts/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<CSATContactsResponseItem[]>(callPayload);
+                return new ApiConnectionAction<CsatContactsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
-        public IBodyWorkflowAction<NPSCampaignsResponseItem[], ApiConnectionActionConfiguration> NPSCampaigns()
+        public IBodyWorkflowAction<NpsCampaignsResponseItem[], ApiConnectionActionConfiguration> NpsCampaigns()
         {
-            return new DeferredBodyAction<NPSCampaignsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NpsCampaignsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v3/nps-campaigns/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<NPSCampaignsResponseItem[]>(callPayload);
+                return new ApiConnectionAction<NpsCampaignsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
-        public IBodyWorkflowAction<PRJSurveysResponseItem[], ApiConnectionActionConfiguration> PRJSurveys()
+        public IBodyWorkflowAction<PrjSurveysResponseItem[], ApiConnectionActionConfiguration> PrjSurveys()
         {
-            return new DeferredBodyAction<PRJSurveysResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PrjSurveysResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v3/prj-surveys/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<PRJSurveysResponseItem[]>(callPayload);
+                return new ApiConnectionAction<PrjSurveysResponseItem[]>(callPayload);
             });
         }
     }
 
     public class SmilebackTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CSATReceived(Expression<Func<CSATReceivedFieldInput>> field = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CsatReceived(Expression<Func<CsatReceivedFieldInput>> field = null)
         {
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> NPSReceived(Expression<Func<NPSReceivedFieldInput>> field = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> NpsReceived(Expression<Func<NpsReceivedFieldInput>> field = null)
         {
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> PRJReceived(Expression<Func<PRJReceivedFieldInput>> field = null)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> PrjReceived(Expression<Func<PrjReceivedFieldInput>> field = null)
         {
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: false);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         }
     }
 
-    public class CSATCompaniesResponseItem
+    public class CsatCompaniesResponseItem
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         public string Name { get; set; }
     }
 
-    public class CSATContactsResponseItem
+    public class CsatContactsResponseItem
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         public string Name { get; set; }
     }
 
-    public class NPSCampaignsResponseItem
+    public class NpsCampaignsResponseItem
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         public string Name { get; set; }
     }
 
-    public class PRJSurveysResponseItem
+    public class PrjSurveysResponseItem
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         public string Name { get; set; }
     }
 
-    public class CSATReceivedFieldInput
+    public class CsatReceivedFieldInput
     {
         [JsonProperty("csat_filter_raiting")]
         public FieldInputCsatFilterRaitingTypeItem[] CsatFilterRaiting { get; set; }
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         Yes
     }
 
-    public class NPSReceivedFieldInput
+    public class NpsReceivedFieldInput
     {
         [JsonProperty("nps_filter_score")]
         public FieldInputNpsFilterScoreTypeItem[] NpsFilterScore { get; set; }
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         Yes
     }
 
-    public class PRJReceivedFieldInput
+    public class PrjReceivedFieldInput
     {
         [JsonProperty("projects_filter_score")]
         public FieldInputProjectsFilterScoreTypeItem[] ProjectsFilterScore { get; set; }

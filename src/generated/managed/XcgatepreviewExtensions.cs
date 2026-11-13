@@ -169,29 +169,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
 
     public class ActionFindResponseActionListTypeItemFieldMapType
     {
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA1Type DATA1 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA2Type DATA2 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA3Type DATA3 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA4Type DATA4 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA5Type DATA5 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA6Type DATA6 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA7Type DATA7 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA8Type DATA8 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA9Type DATA9 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA10Type DATA10 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA11Type DATA11 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA12Type DATA12 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA13Type DATA13 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA14Type DATA14 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA15Type DATA15 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA16Type DATA16 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA17Type DATA17 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA18Type DATA18 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA19Type DATA19 { get; set; }
-        public ActionFindResponseActionListTypeItemFieldMapTypeDATA20Type DATA20 { get; set; }
+        [JsonProperty("DATA1")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData1Type Data1 { get; set; }
+
+        [JsonProperty("DATA2")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData2Type Data2 { get; set; }
+
+        [JsonProperty("DATA3")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData3Type Data3 { get; set; }
+
+        [JsonProperty("DATA4")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData4Type Data4 { get; set; }
+
+        [JsonProperty("DATA5")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData5Type Data5 { get; set; }
+
+        [JsonProperty("DATA6")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData6Type Data6 { get; set; }
+
+        [JsonProperty("DATA7")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData7Type Data7 { get; set; }
+
+        [JsonProperty("DATA8")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData8Type Data8 { get; set; }
+
+        [JsonProperty("DATA9")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData9Type Data9 { get; set; }
+
+        [JsonProperty("DATA10")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData10Type Data10 { get; set; }
+
+        [JsonProperty("DATA11")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData11Type Data11 { get; set; }
+
+        [JsonProperty("DATA12")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData12Type Data12 { get; set; }
+
+        [JsonProperty("DATA13")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData13Type Data13 { get; set; }
+
+        [JsonProperty("DATA14")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData14Type Data14 { get; set; }
+
+        [JsonProperty("DATA15")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData15Type Data15 { get; set; }
+
+        [JsonProperty("DATA16")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData16Type Data16 { get; set; }
+
+        [JsonProperty("DATA17")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData17Type Data17 { get; set; }
+
+        [JsonProperty("DATA18")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData18Type Data18 { get; set; }
+
+        [JsonProperty("DATA19")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData19Type Data19 { get; set; }
+
+        [JsonProperty("DATA20")]
+        public ActionFindResponseActionListTypeItemFieldMapTypeData20Type Data20 { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA1Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData1Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -209,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -221,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA2Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData2Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -239,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -251,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA3Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData3Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -269,7 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -281,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA4Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData4Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -299,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -311,7 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA5Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData5Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -329,7 +368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -341,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA6Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData6Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -359,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -371,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA7Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData7Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -389,7 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -401,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA8Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData8Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -419,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -431,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA9Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData9Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -449,7 +488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -461,7 +500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA10Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData10Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -479,7 +518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -491,7 +530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA11Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData11Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -509,7 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -521,7 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA12Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData12Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -539,7 +578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -551,7 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA13Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData13Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -569,7 +608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -581,7 +620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA14Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData14Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -599,7 +638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -611,7 +650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA15Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData15Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -629,7 +668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -641,7 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA16Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData16Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -659,7 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -671,7 +710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA17Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData17Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -689,7 +728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -701,7 +740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA18Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData18Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -719,7 +758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -731,7 +770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA19Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData19Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -749,7 +788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -761,7 +800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string UpdateUserName { get; set; }
     }
 
-    public class ActionFindResponseActionListTypeItemFieldMapTypeDATA20Type
+    public class ActionFindResponseActionListTypeItemFieldMapTypeData20Type
     {
         [JsonProperty("fieldUCd")]
         public string FieldUCd { get; set; }
@@ -779,7 +818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -962,7 +1001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         public string FieldValue { get; set; }
 
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
 
         [JsonProperty("updateTimestamp")]
         public string UpdateTimestamp { get; set; }
@@ -977,7 +1016,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
     public class ActionGetResponseActionTypeTrxDataTypeSheetListTypeItemPhotoListTypeItem
     {
         [JsonProperty("contentURL")]
-        public string ContentURL { get; set; }
+        public string ContentUrl { get; set; }
     }
 
     public class ActionGetBodyInput

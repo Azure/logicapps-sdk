@@ -41,11 +41,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
     public enum ViewInput
     {
         [EnumMember(Value = "1")]
-        CurrentWeatherAndTodaySForecast,
+        CurrentWeatherAndTodayForecast,
         [EnumMember(Value = "2")]
-        CurrentWeatherAndTodayAndTomorrowSForecast,
+        CurrentWeatherAndTodayAndTomorrowForecast,
         [EnumMember(Value = "A")]
-        IgnoreUserAgentAndForceANSIOutputFormat,
+        IgnoreUserAgentAndForceAnsiOutputFormat,
         [EnumMember(Value = "d")]
         RestrictOutputToStandardConsoleFontGlyphs,
         [EnumMember(Value = "n")]

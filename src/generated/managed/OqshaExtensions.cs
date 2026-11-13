@@ -161,8 +161,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
     {
         public int Id { get; set; }
         public string PackageName { get; set; }
-        public double PricePerMonthUSD { get; set; }
-        public double PricePerMonthINR { get; set; }
+
+        [JsonProperty("PricePerMonthUSD")]
+        public double PricePerMonthUsd { get; set; }
+
+        [JsonProperty("PricePerMonthINR")]
+        public double PricePerMonthInr { get; set; }
         public bool IsExpired { get; set; }
         public LoginResponseDataTypePackageTypeFeaturesTypeItem[] Features { get; set; }
         public int HighestPackageId { get; set; }

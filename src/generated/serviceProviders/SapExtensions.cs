@@ -869,8 +869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
 
     public class SapTriggerOutputRfcServerContextTypeTransactionIdType
     {
-        [JsonProperty("Guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
         public string Tid { get; set; }
     }
 
@@ -913,15 +912,19 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
     [JsonConverter(typeof(StringEnumConverter))]
     public enum CallRfcInputInputBodyTypeType
     {
-        XML,
-        JSON
+        [EnumMember(Value = "XML")]
+        Xml,
+        [EnumMember(Value = "JSON")]
+        Json
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
     public enum CallRfcInputOutputBodyTypeType
     {
-        XML,
-        JSON
+        [EnumMember(Value = "XML")]
+        Xml,
+        [EnumMember(Value = "JSON")]
+        Json
     }
 
     public class CreateRfcTransactionOutput
@@ -933,7 +936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public string TId { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [JsonProperty("queueName")]
         public string QueueName { get; set; }
@@ -948,7 +951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public string TId { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [JsonProperty("queueName")]
         public string QueueName { get; set; }
@@ -963,7 +966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public string TId { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [JsonProperty("queueName")]
         public string QueueName { get; set; }
@@ -978,7 +981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public string TId { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [JsonProperty("queueName")]
         public string QueueName { get; set; }
@@ -993,7 +996,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public string TId { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [JsonProperty("queueName")]
         public string QueueName { get; set; }
@@ -1195,11 +1198,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
     [JsonConverter(typeof(StringEnumConverter))]
     public enum GetSchemaV2InputOperationTypeType
     {
-        BAPI,
-        RFC,
+        [EnumMember(Value = "BAPI")]
+        Bapi,
+        [EnumMember(Value = "RFC")]
+        Rfc,
         IDoc,
         [EnumMember(Value = "tRFC")]
-        TRFC
+        Trfc
     }
 
     public class GetIDocListOutput
@@ -1225,7 +1230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
     public enum RunDiagnosticsInputOperationTypeType
     {
         [EnumMember(Value = "Fetch RFC Metadata")]
-        FetchRFCMetadata,
+        FetchRfcMetadata,
         [EnumMember(Value = "Fetch IDoc Data Record Metadata")]
         FetchIDocDataRecordMetadata,
         [EnumMember(Value = "Check connection")]
@@ -1233,9 +1238,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [EnumMember(Value = "Get system information")]
         GetSystemInformation,
         [EnumMember(Value = "Call RFC PING")]
-        CallRFCPING,
+        CallRfcPing,
         [EnumMember(Value = "Check RFC destination")]
-        CheckRFCDestination,
+        CheckRfcDestination,
         [EnumMember(Value = "Get destination type")]
         GetDestinationType
     }

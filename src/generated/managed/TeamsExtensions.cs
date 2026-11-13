@@ -1336,7 +1336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string WebLast { get; set; }
 
         [JsonProperty("onlineMeetingUrl")]
-        public string OnlineMeetingURL { get; set; }
+        public string OnlineMeetingUrl { get; set; }
 
         [JsonProperty("allowNewTimeProposals")]
         public bool AllowNewTimeProposals { get; set; }
@@ -1744,7 +1744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string AHyperlinkForTheChannelInMicrosoftTeams { get; set; }
 
         [JsonProperty("filesFolderWebUrl")]
-        public string SharePointFolderURLForChannel { get; set; }
+        public string SharePointFolderUrlForChannel { get; set; }
 
         [JsonProperty("createdDateTime")]
         public string ChannelCreationTime { get; set; }
@@ -2080,7 +2080,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string Locale { get; set; }
 
         [JsonProperty("webUrl")]
-        public string WebURL { get; set; }
+        public string WebUrl { get; set; }
 
         [JsonProperty("policyViolation")]
         public JToken PolicyViolation { get; set; }
@@ -2182,7 +2182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string UserId { get; set; }
 
         [JsonProperty("visibleHistoryStartDateTime")]
-        public string StartTimeOfConversationSVisibleHistory { get; set; }
+        public string StartTimeOfConversationVisibleHistory { get; set; }
     }
 
     public class GetTeamResponse
@@ -2200,7 +2200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string InternalId { get; set; }
 
         [JsonProperty("webUrl")]
-        public string TeamSWebUrl { get; set; }
+        public string TeamWebUrl { get; set; }
 
         [JsonProperty("isArchived")]
         public bool Archived { get; set; }
@@ -2284,7 +2284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     public class DiscoverySettings
     {
         [JsonProperty("showInTeamsSearchAndSuggestions")]
-        public bool ShowInTeamSSearchAndSuggestions { get; set; }
+        public bool ShowInTeamSearchAndSuggestions { get; set; }
     }
 
     public class AtMentionUserV1
@@ -2492,11 +2492,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MethodInput
     {
-        GET,
-        POST,
-        PUT,
-        PATCH,
-        DELETE
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "PUT")]
+        Put,
+        [EnumMember(Value = "PATCH")]
+        Patch,
+        [EnumMember(Value = "DELETE")]
+        Delete
     }
 
     public class AddMemberToChatBodyInput
@@ -2534,7 +2539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string CreationTime { get; set; }
 
         [JsonProperty("joinWebUrl")]
-        public string JoinWebURL { get; set; }
+        public string JoinWebUrl { get; set; }
 
         [JsonProperty("joinMeetingIdSettings")]
         public GetOnlineMeetingResponseJoinMeetingIdSettingsType JoinMeetingIdSettings { get; set; }
@@ -2561,7 +2566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string AllowMeetingChat { get; set; }
 
         [JsonProperty("meetingOptionsWebUrl")]
-        public string MeetingOptionsWebURL { get; set; }
+        public string MeetingOptionsWebUrl { get; set; }
     }
 
     public class GetOnlineMeetingResponseJoinMeetingIdSettingsType
@@ -2585,7 +2590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     public class GetOnlineMeetingResponseParticipantsTypeOrganizerType
     {
         [JsonProperty("upn")]
-        public string UPN { get; set; }
+        public string Upn { get; set; }
 
         [JsonProperty("identity")]
         public GetOnlineMeetingResponseParticipantsTypeOrganizerTypeIdentityType Identity { get; set; }
@@ -2618,7 +2623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string TollFreeNumber { get; set; }
 
         [JsonProperty("dialinUrl")]
-        public string DialInURL { get; set; }
+        public string DialInUrl { get; set; }
     }
 
     public class GetOnlineMeetingResponseLobbyBypassSettingsType
@@ -2636,7 +2641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         [EnumMember(Value = "meetingId")]
         MeetingId,
         [EnumMember(Value = "joinWebUrl")]
-        JoinWebURL,
+        JoinWebUrl,
         [EnumMember(Value = "joinMeetingId")]
         JoinMeetingIdMeetingCode
     }
@@ -2659,7 +2664,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string CreatedDateTime { get; set; }
 
         [JsonProperty("transcriptContentUrl")]
-        public string TranscriptContentURL { get; set; }
+        public string TranscriptContentUrl { get; set; }
 
         [JsonProperty("meetingId")]
         public string MeetingId { get; set; }
@@ -2689,7 +2694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string CreatedDateTime { get; set; }
 
         [JsonProperty("recordingContentUrl")]
-        public string RecordingContentURL { get; set; }
+        public string RecordingContentUrl { get; set; }
 
         [JsonProperty("meetingId")]
         public string MeetingId { get; set; }
@@ -2941,17 +2946,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class CreateTagBodyInput
     {
-        public CreateTagBodyInput(string displayName, string membersIDs)
+        public CreateTagBodyInput(string displayName, string membersIds)
         {
             this.DisplayName = displayName;
-            this.MembersIDs = membersIDs;
+            this.MembersIds = membersIds;
         }
 
         [JsonProperty("displayName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DisplayName { get; set; }
 
         [JsonProperty("members", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string MembersIDs { get; set; }
+        public string MembersIds { get; set; }
     }
 
     public class UpdateTagBodyInput
@@ -2973,13 +2978,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 
     public class AddMemberToTagBodyInput
     {
-        public AddMemberToTagBodyInput(string userSId)
+        public AddMemberToTagBodyInput(string userId)
         {
-            this.UserSId = userSId;
+            this.UserId = userId;
         }
 
         [JsonProperty("userId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string UserSId { get; set; }
+        public string UserId { get; set; }
     }
 
     public class GetTagMembersResponseSchema
@@ -3051,7 +3056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string EndDateTime { get; set; }
 
         [JsonProperty("recapUrl")]
-        public string RecapURL { get; set; }
+        public string RecapUrl { get; set; }
 
         [JsonProperty("meetingNotes")]
         public AiInsightMeetingNote[] MeetingNotes { get; set; }

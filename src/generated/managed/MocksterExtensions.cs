@@ -488,25 +488,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         public string AirlineName { get; set; }
 
         [JsonProperty("airlineCode")]
-        public string AirlineIATACode { get; set; }
+        public string AirlineIataCode { get; set; }
 
         [JsonProperty("airplaneName")]
         public string AirplaneName { get; set; }
 
         [JsonProperty("airplaneTypeCode")]
-        public string AirplaneIATATypeCode { get; set; }
+        public string AirplaneIataTypeCode { get; set; }
 
         [JsonProperty("departureAirportName")]
         public string DepartureAirportName { get; set; }
 
         [JsonProperty("departureAirportCode")]
-        public string DepartureAirportIATACode { get; set; }
+        public string DepartureAirportIataCode { get; set; }
 
         [JsonProperty("arrivalAirportName")]
         public string ArrivalAirportName { get; set; }
 
         [JsonProperty("arrivalAirportCode")]
-        public string ArrivalAirportIATACode { get; set; }
+        public string ArrivalAirportIataCode { get; set; }
 
         [JsonProperty("flightNumber")]
         public string FlightNumber { get; set; }
@@ -710,34 +710,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
     public class GetColorsResponseItem
     {
         [JsonProperty("cmyk")]
-        public double[] CMYK { get; set; }
+        public double[] Cmyk { get; set; }
 
         [JsonProperty("colorByCSSColorSpace")]
-        public double[] ColorByCSSColorSpace { get; set; }
+        public double[] ColorByCssColorSpace { get; set; }
 
         [JsonProperty("cssSupportedFunction")]
-        public string CSSSupportedFunction { get; set; }
+        public string CssSupportedFunction { get; set; }
 
         [JsonProperty("cssSupportedSpace")]
-        public string CSSSupportedSpace { get; set; }
+        public string CssSupportedSpace { get; set; }
 
         [JsonProperty("hsl")]
-        public double[] HSL { get; set; }
+        public double[] Hsl { get; set; }
 
         [JsonProperty("humanReadableColor")]
         public string HumanReadableColor { get; set; }
 
         [JsonProperty("hwb")]
-        public double[] HWB { get; set; }
+        public double[] Hwb { get; set; }
 
         [JsonProperty("lab")]
-        public double[] LAB { get; set; }
+        public double[] Lab { get; set; }
 
         [JsonProperty("lch")]
-        public double[] LCH { get; set; }
+        public double[] Lch { get; set; }
 
         [JsonProperty("rgb")]
-        public string RGB { get; set; }
+        public string Rgb { get; set; }
 
         [JsonProperty("colorSpace")]
         public string ColorSpace { get; set; }
@@ -866,13 +866,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         public double Amount { get; set; }
 
         [JsonProperty("bic")]
-        public string BIC { get; set; }
+        public string Bic { get; set; }
 
         [JsonProperty("bitcoinAddress")]
         public string BitcoinAddress { get; set; }
 
         [JsonProperty("creditCardCVV")]
-        public string CreditCardCVV { get; set; }
+        public string CreditCardCvv { get; set; }
 
         [JsonProperty("creditCardIssuer")]
         public string CreditCardIssuer { get; set; }
@@ -893,7 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         public string EthereumAddress { get; set; }
 
         [JsonProperty("iban")]
-        public string IBAN { get; set; }
+        public string Iban { get; set; }
 
         [JsonProperty("litecoinAddress")]
         public string LitecoinAddress { get; set; }
@@ -902,7 +902,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         public string MaskedNumber { get; set; }
 
         [JsonProperty("pin")]
-        public string PIN { get; set; }
+        public string Pin { get; set; }
 
         [JsonProperty("routingNumber")]
         public string RoutingNumber { get; set; }
@@ -929,7 +929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         public string CommitMessage { get; set; }
 
         [JsonProperty("commitSha")]
-        public string CommitSHA { get; set; }
+        public string CommitSha { get; set; }
     }
 
     public class GetHackersResponseItem
@@ -1020,10 +1020,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         public string ExampleEmail { get; set; }
 
         [JsonProperty("httpMethod")]
-        public string HTTPMethod { get; set; }
+        public string HttpMethod { get; set; }
 
         [JsonProperty("httpStatusCode")]
-        public int HTTPStatusCode { get; set; }
+        public int HttpStatusCode { get; set; }
 
         [JsonProperty("ip")]
         public string IPAddress { get; set; }
@@ -1035,7 +1035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         public string IPv6Address { get; set; }
 
         [JsonProperty("mac")]
-        public string MACAddress { get; set; }
+        public string MacAddress { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }
@@ -1047,13 +1047,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         public string Protocol { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("userAgent")]
         public string UserAgent { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
     }
 
     public class GetLocationsResponseItem
@@ -1215,7 +1215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
     public class GetPhonesResponseItem
     {
         [JsonProperty("imei")]
-        public string IMEI { get; set; }
+        public string Imei { get; set; }
 
         [JsonProperty("number")]
         public string PhoneNumber { get; set; }
@@ -1227,7 +1227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         public string Department { get; set; }
 
         [JsonProperty("isbn")]
-        public string ISBN { get; set; }
+        public string Isbn { get; set; }
 
         [JsonProperty("price")]
         public double Price { get; set; }
@@ -1296,7 +1296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         public string Symbol { get; set; }
 
         [JsonProperty("uuid")]
-        public string UUID { get; set; }
+        public string Uuid { get; set; }
     }
 
     public class GetSystemsResponseItem
@@ -1362,10 +1362,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         public string Vehicle { get; set; }
 
         [JsonProperty("vin")]
-        public string VIN { get; set; }
+        public string Vin { get; set; }
 
         [JsonProperty("vrm")]
-        public string VRM { get; set; }
+        public string Vrm { get; set; }
     }
 
     public class GetWordsResponseItem

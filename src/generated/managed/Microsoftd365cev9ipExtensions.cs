@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
     public class Microsoftd365cev9ipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
-        public IBodyWorkflowAction<UpsertContactResponse, ApiConnectionActionConfiguration> UpsertContact(Expression<Func<string>> contactGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<UpsertContactBodyInput>> body)
+        public IBodyWorkflowAction<UpsertContactResponse, ApiConnectionActionConfiguration> UpsertContact(Expression<Func<string>> contactGuid, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<UpsertContactBodyInput>> body)
         {
-            var __workflow_contactGUID = WorkflowExpression.Compile(contactGUID, nameof(contactGUID), required: true);
+            var __workflow_contactGuid = WorkflowExpression.Compile(contactGuid, nameof(contactGuid), required: true);
             var __workflow_oDataMaxVersion = WorkflowExpression.Compile(oDataMaxVersion, nameof(oDataMaxVersion), required: true);
             var __workflow_oDataVersion = WorkflowExpression.Compile(oDataVersion, nameof(oDataVersion), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpsertContactResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contacts({0})", __workflow_contactGUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/contacts({0})", __workflow_contactGuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OData-MaxVersion"] = ExpressionConverter.Convert(__workflow_oDataMaxVersion);
@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
-        public IBodyWorkflowAction<UpsertAccountResponse, ApiConnectionActionConfiguration> UpsertAccount(Expression<Func<string>> accountGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<UpsertAccountBodyInput>> body)
+        public IBodyWorkflowAction<UpsertAccountResponse, ApiConnectionActionConfiguration> UpsertAccount(Expression<Func<string>> accountGuid, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<UpsertAccountBodyInput>> body)
         {
-            var __workflow_accountGUID = WorkflowExpression.Compile(accountGUID, nameof(accountGUID), required: true);
+            var __workflow_accountGuid = WorkflowExpression.Compile(accountGuid, nameof(accountGuid), required: true);
             var __workflow_oDataMaxVersion = WorkflowExpression.Compile(oDataMaxVersion, nameof(oDataMaxVersion), required: true);
             var __workflow_oDataVersion = WorkflowExpression.Compile(oDataVersion, nameof(oDataVersion), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpsertAccountResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounts({0})", __workflow_accountGUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/accounts({0})", __workflow_accountGuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OData-MaxVersion"] = ExpressionConverter.Convert(__workflow_oDataMaxVersion);
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftd365cev9ip")]
-        public IBodyWorkflowAction<UpsertLeadResponse, ApiConnectionActionConfiguration> UpsertLead(Expression<Func<string>> leadGUID, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<UpsertLeadBodyInput>> body)
+        public IBodyWorkflowAction<UpsertLeadResponse, ApiConnectionActionConfiguration> UpsertLead(Expression<Func<string>> leadGuid, Expression<Func<string>> oDataMaxVersion, Expression<Func<string>> oDataVersion, Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<UpsertLeadBodyInput>> body)
         {
-            var __workflow_leadGUID = WorkflowExpression.Compile(leadGUID, nameof(leadGUID), required: true);
+            var __workflow_leadGuid = WorkflowExpression.Compile(leadGuid, nameof(leadGuid), required: true);
             var __workflow_oDataMaxVersion = WorkflowExpression.Compile(oDataMaxVersion, nameof(oDataMaxVersion), required: true);
             var __workflow_oDataVersion = WorkflowExpression.Compile(oDataVersion, nameof(oDataVersion), required: true);
             var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftd365cev9ip
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpsertLeadResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/leads({0})", __workflow_leadGUID.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/leads({0})", __workflow_leadGuid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "patch";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["OData-MaxVersion"] = ExpressionConverter.Convert(__workflow_oDataMaxVersion);

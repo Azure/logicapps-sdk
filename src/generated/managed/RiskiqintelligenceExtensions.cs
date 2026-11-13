@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
     public class RiskiqintelligenceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<RRSets, ApiConnectionActionConfiguration> PDNSIP(Expression<Func<string>> ip, Expression<Func<string>> max = null, Expression<Func<string>> lastSeenAfter = null, Expression<Func<string>> firstSeenBefore = null)
+        public IBodyWorkflowAction<RRSets, ApiConnectionActionConfiguration> PdnsIP(Expression<Func<string>> ip, Expression<Func<string>> max = null, Expression<Func<string>> lastSeenAfter = null, Expression<Func<string>> firstSeenBefore = null)
         {
             var __workflow_ip = WorkflowExpression.Compile(ip, nameof(ip), required: true);
             var __workflow_max = WorkflowExpression.Compile(max, nameof(max), required: false);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<RRSets, ApiConnectionActionConfiguration> PDNSRESOURCEDATA(Expression<Func<string>> name, Expression<Func<string>> type = null, Expression<Func<string>> max = null, Expression<Func<string>> lastSeenAfter = null, Expression<Func<string>> firstSeenBefore = null)
+        public IBodyWorkflowAction<RRSets, ApiConnectionActionConfiguration> PdnsResourceData(Expression<Func<string>> name, Expression<Func<string>> type = null, Expression<Func<string>> max = null, Expression<Func<string>> lastSeenAfter = null, Expression<Func<string>> firstSeenBefore = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<RRSets, ApiConnectionActionConfiguration> PDNSRESOURCEDATAHEX(Expression<Func<string>> hex, Expression<Func<string>> type = null, Expression<Func<string>> max = null, Expression<Func<string>> lastSeenAfter = null, Expression<Func<string>> firstSeenBefore = null)
+        public IBodyWorkflowAction<RRSets, ApiConnectionActionConfiguration> PdnsResourceDataHex(Expression<Func<string>> hex, Expression<Func<string>> type = null, Expression<Func<string>> max = null, Expression<Func<string>> lastSeenAfter = null, Expression<Func<string>> firstSeenBefore = null)
         {
             var __workflow_hex = WorkflowExpression.Compile(hex, nameof(hex), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<RRSets, ApiConnectionActionConfiguration> PDNSNAME(Expression<Func<string>> name, Expression<Func<string>> type = null, Expression<Func<string>> max = null, Expression<Func<string>> lastSeenAfter = null, Expression<Func<string>> firstSeenBefore = null)
+        public IBodyWorkflowAction<RRSets, ApiConnectionActionConfiguration> PdnsName(Expression<Func<string>> name, Expression<Func<string>> type = null, Expression<Func<string>> max = null, Expression<Func<string>> lastSeenAfter = null, Expression<Func<string>> firstSeenBefore = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<SslCertWithHostPage, ApiConnectionActionConfiguration> SSLBYHOST(Expression<Func<string>> host)
+        public IBodyWorkflowAction<SslCertWithHostPage, ApiConnectionActionConfiguration> SslByHost(Expression<Func<string>> host)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: true);
             return new DeferredBodyAction<SslCertWithHostPage, ApiConnectionActionConfiguration>(() =>
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<SslCertPage, ApiConnectionActionConfiguration> SSLBYSERIAL(Expression<Func<string>> serial)
+        public IBodyWorkflowAction<SslCertPage, ApiConnectionActionConfiguration> SslBySerial(Expression<Func<string>> serial)
         {
             var __workflow_serial = WorkflowExpression.Compile(serial, nameof(serial), required: true);
             return new DeferredBodyAction<SslCertPage, ApiConnectionActionConfiguration>(() =>
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<SslCert, ApiConnectionActionConfiguration> SSLBYSHA1(Expression<Func<string>> sha1)
+        public IBodyWorkflowAction<SslCert, ApiConnectionActionConfiguration> SslBySha1(Expression<Func<string>> sha1)
         {
             var __workflow_sha1 = WorkflowExpression.Compile(sha1, nameof(sha1), required: true);
             return new DeferredBodyAction<SslCert, ApiConnectionActionConfiguration>(() =>
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<SslCertHostPage, ApiConnectionActionConfiguration> HOSTSBYSSLSHA1(Expression<Func<string>> certSha1)
+        public IBodyWorkflowAction<SslCertHostPage, ApiConnectionActionConfiguration> HostsBySslSha1(Expression<Func<string>> certSha1)
         {
             var __workflow_certSha1 = WorkflowExpression.Compile(certSha1, nameof(certSha1), required: true);
             return new DeferredBodyAction<SslCertHostPage, ApiConnectionActionConfiguration>(() =>
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<SslCertPage, ApiConnectionActionConfiguration> SSLBYNAME(Expression<Func<string>> name)
+        public IBodyWorkflowAction<SslCertPage, ApiConnectionActionConfiguration> SslByName(Expression<Func<string>> name)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             return new DeferredBodyAction<SslCertPage, ApiConnectionActionConfiguration>(() =>
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<WhoisResult, ApiConnectionActionConfiguration> WHOISIP(Expression<Func<string>> address, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
+        public IBodyWorkflowAction<WhoisResult, ApiConnectionActionConfiguration> WhoisIP(Expression<Func<string>> address, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
         {
             var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: true);
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<WhoisResult, ApiConnectionActionConfiguration> WHOISDOMAIN(Expression<Func<string>> domain, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
+        public IBodyWorkflowAction<WhoisResult, ApiConnectionActionConfiguration> WhoisDomain(Expression<Func<string>> domain, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<WhoisResult, ApiConnectionActionConfiguration> WHOISBYEMAIL(Expression<Func<string>> email, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
+        public IBodyWorkflowAction<WhoisResult, ApiConnectionActionConfiguration> WhoisByEmail(Expression<Func<string>> email, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
         {
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<WhoisResult, ApiConnectionActionConfiguration> WHOISBYNAME(Expression<Func<string>> name, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
+        public IBodyWorkflowAction<WhoisResult, ApiConnectionActionConfiguration> WhoisByName(Expression<Func<string>> name, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<WhoisResult, ApiConnectionActionConfiguration> WHOISBYNAMESERVER(Expression<Func<string>> nameserver, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
+        public IBodyWorkflowAction<WhoisResult, ApiConnectionActionConfiguration> WhoisByNameserver(Expression<Func<string>> nameserver, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
         {
             var __workflow_nameserver = WorkflowExpression.Compile(nameserver, nameof(nameserver), required: true);
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<WhoisResult, ApiConnectionActionConfiguration> WHOISBYORGANIZATION(Expression<Func<string>> org, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
+        public IBodyWorkflowAction<WhoisResult, ApiConnectionActionConfiguration> WhoisByOrganization(Expression<Func<string>> org, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
         {
             var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<WhoisResult, ApiConnectionActionConfiguration> WHOISBYPHONE(Expression<Func<string>> phone, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
+        public IBodyWorkflowAction<WhoisResult, ApiConnectionActionConfiguration> WhoisByPhone(Expression<Func<string>> phone, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
         {
             var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: true);
             var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<HostAttributeResult, ApiConnectionActionConfiguration> TRACKERSHOST(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
+        public IBodyWorkflowAction<HostAttributeResult, ApiConnectionActionConfiguration> TrackersHost(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<HostAttributeResult, ApiConnectionActionConfiguration> TRACKERSDOMAIN(Expression<Func<string>> domain, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
+        public IBodyWorkflowAction<HostAttributeResult, ApiConnectionActionConfiguration> TrackersDomain(Expression<Func<string>> domain, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
@@ -392,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<HostAttributeResult, ApiConnectionActionConfiguration> TRACKERSIP(Expression<Func<string>> address, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
+        public IBodyWorkflowAction<HostAttributeResult, ApiConnectionActionConfiguration> TrackersIP(Expression<Func<string>> address, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
             var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<HostPairsResult, ApiConnectionActionConfiguration> HOSTPAIRSCHILD(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
+        public IBodyWorkflowAction<HostPairsResult, ApiConnectionActionConfiguration> HostPairsChild(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<HostPairsResult, ApiConnectionActionConfiguration> HOSTPAIRSPARENT(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
+        public IBodyWorkflowAction<HostPairsResult, ApiConnectionActionConfiguration> HostPairsParent(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
@@ -494,7 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<HostComponentsResult, ApiConnectionActionConfiguration> WEBCOMPONENTHOST(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
+        public IBodyWorkflowAction<HostComponentsResult, ApiConnectionActionConfiguration> WebComponentHost(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
@@ -528,7 +528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<HostComponentsResult, ApiConnectionActionConfiguration> WEBCOMPONENTSDOMAIN(Expression<Func<string>> domain, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
+        public IBodyWorkflowAction<HostComponentsResult, ApiConnectionActionConfiguration> WebComponentsDomain(Expression<Func<string>> domain, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
             var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
@@ -562,7 +562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<HostComponentsResult, ApiConnectionActionConfiguration> WEBCOMPONENTSIP(Expression<Func<string>> address, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
+        public IBodyWorkflowAction<HostComponentsResult, ApiConnectionActionConfiguration> WebComponentsIP(Expression<Func<string>> address, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
             var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
@@ -596,7 +596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<HostCookieResult, ApiConnectionActionConfiguration> COOKIESHOST(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
+        public IBodyWorkflowAction<HostCookieResult, ApiConnectionActionConfiguration> CookiesHost(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
@@ -630,7 +630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<HostCookieResult, ApiConnectionActionConfiguration> COOKIESIP(Expression<Func<string>> address, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
+        public IBodyWorkflowAction<HostCookieResult, ApiConnectionActionConfiguration> CookiesIP(Expression<Func<string>> address, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
             var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: true);
             var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
@@ -664,15 +664,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ENRICHMENTHOST(Expression<Func<string>> host, Expression<Func<bool>> whois = null, Expression<Func<bool>> hostDetails = null, Expression<Func<bool>> ipDetails = null, Expression<Func<bool>> linkedAssetCounts = null, Expression<Func<bool>> recentPDNS = null, Expression<Func<bool>> subDomainPDNS = null, Expression<Func<bool>> openPorts = null, Expression<Func<bool>> certificates = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EnrichmentHost(Expression<Func<string>> host, Expression<Func<bool>> whois = null, Expression<Func<bool>> hostDetails = null, Expression<Func<bool>> ipDetails = null, Expression<Func<bool>> linkedAssetCounts = null, Expression<Func<bool>> recentPdns = null, Expression<Func<bool>> subDomainPdns = null, Expression<Func<bool>> openPorts = null, Expression<Func<bool>> certificates = null)
         {
             var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: true);
             var __workflow_whois = WorkflowExpression.Compile(whois, nameof(whois), required: false);
             var __workflow_hostDetails = WorkflowExpression.Compile(hostDetails, nameof(hostDetails), required: false);
             var __workflow_ipDetails = WorkflowExpression.Compile(ipDetails, nameof(ipDetails), required: false);
             var __workflow_linkedAssetCounts = WorkflowExpression.Compile(linkedAssetCounts, nameof(linkedAssetCounts), required: false);
-            var __workflow_recentPDNS = WorkflowExpression.Compile(recentPDNS, nameof(recentPDNS), required: false);
-            var __workflow_subDomainPDNS = WorkflowExpression.Compile(subDomainPDNS, nameof(subDomainPDNS), required: false);
+            var __workflow_recentPdns = WorkflowExpression.Compile(recentPdns, nameof(recentPdns), required: false);
+            var __workflow_subDomainPdns = WorkflowExpression.Compile(subDomainPdns, nameof(subDomainPdns), required: false);
             var __workflow_openPorts = WorkflowExpression.Compile(openPorts, nameof(openPorts), required: false);
             var __workflow_certificates = WorkflowExpression.Compile(certificates, nameof(certificates), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -693,11 +693,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
                 if (__workflow_linkedAssetCounts != null)
                     callPayload.Queries["linkedAssetCounts"] = ExpressionConverter.Convert(__workflow_linkedAssetCounts);
                 callPayload.Queries["recentPDNS"] = Convert.ToString(true);
-                if (__workflow_recentPDNS != null)
-                    callPayload.Queries["recentPDNS"] = ExpressionConverter.Convert(__workflow_recentPDNS);
+                if (__workflow_recentPdns != null)
+                    callPayload.Queries["recentPDNS"] = ExpressionConverter.Convert(__workflow_recentPdns);
                 callPayload.Queries["subDomainPDNS"] = Convert.ToString(true);
-                if (__workflow_subDomainPDNS != null)
-                    callPayload.Queries["subDomainPDNS"] = ExpressionConverter.Convert(__workflow_subDomainPDNS);
+                if (__workflow_subDomainPdns != null)
+                    callPayload.Queries["subDomainPDNS"] = ExpressionConverter.Convert(__workflow_subDomainPdns);
                 callPayload.Queries["openPorts"] = Convert.ToString(true);
                 if (__workflow_openPorts != null)
                     callPayload.Queries["openPorts"] = ExpressionConverter.Convert(__workflow_openPorts);
@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ENRICHMENTIP(Expression<Func<string>> ip, Expression<Func<bool>> whois = null, Expression<Func<bool>> hostDetails = null, Expression<Func<bool>> linkedAssetCounts = null, Expression<Func<bool>> openPorts = null, Expression<Func<bool>> certificates = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> EnrichmentIP(Expression<Func<string>> ip, Expression<Func<bool>> whois = null, Expression<Func<bool>> hostDetails = null, Expression<Func<bool>> linkedAssetCounts = null, Expression<Func<bool>> openPorts = null, Expression<Func<bool>> certificates = null)
         {
             var __workflow_ip = WorkflowExpression.Compile(ip, nameof(ip), required: true);
             var __workflow_whois = WorkflowExpression.Compile(whois, nameof(whois), required: false);

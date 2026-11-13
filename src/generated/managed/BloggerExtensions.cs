@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         public string UpdatedDate { get; set; }
 
         [JsonProperty("url")]
-        public string BlogURL { get; set; }
+        public string BlogUrl { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         public string UpdatedDate { get; set; }
 
         [JsonProperty("url")]
-        public string PostURL { get; set; }
+        public string PostUrl { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -216,10 +216,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         public string AuthorName { get; set; }
 
         [JsonProperty("author.url")]
-        public string AuthorURL { get; set; }
+        public string AuthorUrl { get; set; }
 
         [JsonProperty("author.image.url")]
-        public string AuthorImageURL { get; set; }
+        public string AuthorImageUrl { get; set; }
 
         [JsonProperty("labels")]
         public string[] Labels { get; set; }

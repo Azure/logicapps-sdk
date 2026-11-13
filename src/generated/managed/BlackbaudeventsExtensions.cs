@@ -711,7 +711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string DisplayName { get; set; }
 
         [JsonProperty("iso_alpha2_code")]
-        public string ISOCode { get; set; }
+        public string IsoCode { get; set; }
     }
 
     public class EditEventBodyInput
@@ -783,7 +783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -795,7 +795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string ThumbnailId { get; set; }
 
         [JsonProperty("thumbnail_url")]
-        public string ThumbnailURL { get; set; }
+        public string ThumbnailUrl { get; set; }
 
         [JsonProperty("content_type")]
         public string ContentType { get; set; }
@@ -837,7 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -868,7 +868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
@@ -1056,7 +1056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string ContactId { get; set; }
 
         [JsonProperty("rsvp_status")]
-        public EventApiParticipantListEntryRSVPStatusType RSVPStatus { get; set; }
+        public EventApiParticipantListEntryRsvpStatusType RsvpStatus { get; set; }
 
         [JsonProperty("attended")]
         public bool Attended { get; set; }
@@ -1065,7 +1065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public EventApiParticipantListEntryInvitationStatusType InvitationStatus { get; set; }
 
         [JsonProperty("rsvp_date")]
-        public EventApiParticipantListEntryRSVPDateType RSVPDate { get; set; }
+        public EventApiParticipantListEntryRsvpDateType RsvpDate { get; set; }
 
         [JsonProperty("participation_level")]
         public EventApiParticipationLevel ParticipationLevel { get; set; }
@@ -1153,7 +1153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EventApiParticipantListEntryRSVPStatusType
+    public enum EventApiParticipantListEntryRsvpStatusType
     {
         NoResponse,
         Attending,
@@ -1172,7 +1172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         Invited
     }
 
-    public class EventApiParticipantListEntryRSVPDateType
+    public class EventApiParticipantListEntryRsvpDateType
     {
         [JsonProperty("d")]
         public int Day { get; set; }
@@ -1275,7 +1275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string HostId { get; set; }
 
         [JsonProperty("rsvp_status")]
-        public BodyInputRSVPStatusType? RSVPStatus { get; set; }
+        public BodyInputRsvpStatusType? RsvpStatus { get; set; }
 
         [JsonProperty("attended")]
         public bool? Attended { get; set; }
@@ -1284,7 +1284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public BodyInputInvitationStatusType? InvitationStatus { get; set; }
 
         [JsonProperty("rsvp_date")]
-        public BodyInputRSVPDateType RSVPDate { get; set; }
+        public BodyInputRsvpDateType RsvpDate { get; set; }
 
         [JsonProperty("invitation_date")]
         public BodyInputInvitationDateType InvitationDate { get; set; }
@@ -1297,7 +1297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BodyInputRSVPStatusType
+    public enum BodyInputRsvpStatusType
     {
         NoResponse,
         Attending,
@@ -1316,7 +1316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         Invited
     }
 
-    public class BodyInputRSVPDateType
+    public class BodyInputRsvpDateType
     {
         [JsonProperty("d")]
         public int? Day { get; set; }
@@ -1377,7 +1377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string HostId { get; set; }
 
         [JsonProperty("rsvp_status")]
-        public EventApiParticipantRSVPStatusType RSVPStatus { get; set; }
+        public EventApiParticipantRsvpStatusType RsvpStatus { get; set; }
 
         [JsonProperty("attended")]
         public bool Attended { get; set; }
@@ -1386,7 +1386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public EventApiParticipantInvitationStatusType InvitationStatus { get; set; }
 
         [JsonProperty("rsvp_date")]
-        public EventApiParticipantRSVPDateType RSVPDate { get; set; }
+        public EventApiParticipantRsvpDateType RsvpDate { get; set; }
 
         [JsonProperty("invitation_date")]
         public EventApiParticipantInvitationDateType InvitationDate { get; set; }
@@ -1405,7 +1405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EventApiParticipantRSVPStatusType
+    public enum EventApiParticipantRsvpStatusType
     {
         NoResponse,
         Attending,
@@ -1424,7 +1424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         Invited
     }
 
-    public class EventApiParticipantRSVPDateType
+    public class EventApiParticipantRsvpDateType
     {
         [JsonProperty("d")]
         public int Day { get; set; }
@@ -1457,7 +1457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string HostId { get; set; }
 
         [JsonProperty("rsvp_status")]
-        public BodyInputRSVPStatusType? RSVPStatus { get; set; }
+        public BodyInputRsvpStatusType? RsvpStatus { get; set; }
 
         [JsonProperty("attended")]
         public bool? Attended { get; set; }
@@ -1466,7 +1466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public BodyInputInvitationStatusType? InvitationStatus { get; set; }
 
         [JsonProperty("rsvp_date")]
-        public BodyInputRSVPDateType RSVPDate { get; set; }
+        public BodyInputRsvpDateType RsvpDate { get; set; }
 
         [JsonProperty("invitation_date")]
         public BodyInputInvitationDateType InvitationDate { get; set; }

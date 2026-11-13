@@ -13,64 +13,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
     public class SigmaconsocrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
-        public IBodyWorkflowAction<ProcessjobResponse, ApiConnectionActionConfiguration> Processjob(Expression<Func<string>> applicationURL, Expression<Func<ProcessjobBodyInput>> body)
+        public IBodyWorkflowAction<ProcessjobResponse, ApiConnectionActionConfiguration> Processjob(Expression<Func<string>> applicationUrl, Expression<Func<ProcessjobBodyInput>> body)
         {
-            var __workflow_applicationURL = WorkflowExpression.Compile(applicationURL, nameof(applicationURL), required: true);
+            var __workflow_applicationUrl = WorkflowExpression.Compile(applicationUrl, nameof(applicationUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ProcessjobResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/job/process";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(__workflow_applicationURL);
+                callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(__workflow_applicationUrl);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ProcessjobResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
-        public IBodyWorkflowAction<ConsolidationjobResponse, ApiConnectionActionConfiguration> Consolidationjob(Expression<Func<string>> applicationURL, Expression<Func<ConsolidationjobBodyInput>> body)
+        public IBodyWorkflowAction<ConsolidationjobResponse, ApiConnectionActionConfiguration> Consolidationjob(Expression<Func<string>> applicationUrl, Expression<Func<ConsolidationjobBodyInput>> body)
         {
-            var __workflow_applicationURL = WorkflowExpression.Compile(applicationURL, nameof(applicationURL), required: true);
+            var __workflow_applicationUrl = WorkflowExpression.Compile(applicationUrl, nameof(applicationUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ConsolidationjobResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/job/consolidation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(__workflow_applicationURL);
+                callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(__workflow_applicationUrl);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ConsolidationjobResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
-        public IBodyWorkflowAction<ScheduledjobResponse, ApiConnectionActionConfiguration> Scheduledjob(Expression<Func<string>> applicationURL, Expression<Func<ScheduledjobBodyInput>> body)
+        public IBodyWorkflowAction<ScheduledjobResponse, ApiConnectionActionConfiguration> Scheduledjob(Expression<Func<string>> applicationUrl, Expression<Func<ScheduledjobBodyInput>> body)
         {
-            var __workflow_applicationURL = WorkflowExpression.Compile(applicationURL, nameof(applicationURL), required: true);
+            var __workflow_applicationUrl = WorkflowExpression.Compile(applicationUrl, nameof(applicationUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ScheduledjobResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/job/scheduledjob";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(__workflow_applicationURL);
+                callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(__workflow_applicationUrl);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ScheduledjobResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
-        public IBodyWorkflowAction<ImportFileResponse, ApiConnectionActionConfiguration> ImportFile(Expression<Func<string>> applicationURL, Expression<Func<ImportFileBodyInput>> body)
+        public IBodyWorkflowAction<ImportFileResponse, ApiConnectionActionConfiguration> ImportFile(Expression<Func<string>> applicationUrl, Expression<Func<ImportFileBodyInput>> body)
         {
-            var __workflow_applicationURL = WorkflowExpression.Compile(applicationURL, nameof(applicationURL), required: true);
+            var __workflow_applicationUrl = WorkflowExpression.Compile(applicationUrl, nameof(applicationUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ImportFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/hub/import";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(__workflow_applicationURL);
+                callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(__workflow_applicationUrl);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<ImportFileResponse>(callPayload);
             });

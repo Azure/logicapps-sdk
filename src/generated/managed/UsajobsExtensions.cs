@@ -767,8 +767,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [JsonProperty("PositionID")]
         public string PositionId { get; set; }
         public string PositionTitle { get; set; }
-        public string PositionURI { get; set; }
-        public string[] ApplyURI { get; set; }
+
+        [JsonProperty("PositionURI")]
+        public string PositionUri { get; set; }
+
+        [JsonProperty("ApplyURI")]
+        public string[] ApplyUri { get; set; }
         public SearchJobsResponseSearchResultTypeSearchResultItemsTypeItemMatchedObjectDescriptorTypePositionLocationTypeItem[] PositionLocation { get; set; }
         public string OrganizationName { get; set; }
         public string DepartmentName { get; set; }
@@ -879,7 +883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [EnumMember(Value = "1")]
         _1NonSensitiveNSLowRisk,
         [EnumMember(Value = "2")]
-        _2NoncriticalSensitiveNCSModerateRisk,
+        _2NoncriticalSensitiveNcsModerateRisk,
         [EnumMember(Value = "3")]
         _3CriticalSensitiveCSHighRisk,
         [EnumMember(Value = "4")]
@@ -889,7 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [EnumMember(Value = "6")]
         _6HighRiskHR,
         [EnumMember(Value = "7")]
-        _7NCSHighRisk
+        _7NcsHighRisk
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

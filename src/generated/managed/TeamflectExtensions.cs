@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal[], ApiConnectionActionConfiguration> GetGoals(Expression<Func<string>> userOId = null, Expression<Func<string>> userUPN = null, Expression<Func<string>> search = null, Expression<Func<string>> selectedLabels = null, Expression<Func<string>> limit = null, Expression<Func<string>> skip = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
+        public IBodyWorkflowAction<Goal[], ApiConnectionActionConfiguration> GetGoals(Expression<Func<string>> userOid = null, Expression<Func<string>> userUpn = null, Expression<Func<string>> search = null, Expression<Func<string>> selectedLabels = null, Expression<Func<string>> limit = null, Expression<Func<string>> skip = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
         {
-            var __workflow_userOId = WorkflowExpression.Compile(userOId, nameof(userOId), required: false);
-            var __workflow_userUPN = WorkflowExpression.Compile(userUPN, nameof(userUPN), required: false);
+            var __workflow_userOid = WorkflowExpression.Compile(userOid, nameof(userOid), required: false);
+            var __workflow_userUpn = WorkflowExpression.Compile(userUpn, nameof(userUpn), required: false);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_selectedLabels = WorkflowExpression.Compile(selectedLabels, nameof(selectedLabels), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
@@ -70,10 +70,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 var apiCallPath = "/goal/getGoals";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_userOId != null)
-                    callPayload.Queries["userOID"] = ExpressionConverter.Convert(__workflow_userOId);
-                if (__workflow_userUPN != null)
-                    callPayload.Queries["userUPN"] = ExpressionConverter.Convert(__workflow_userUPN);
+                if (__workflow_userOid != null)
+                    callPayload.Queries["userOID"] = ExpressionConverter.Convert(__workflow_userOid);
+                if (__workflow_userUpn != null)
+                    callPayload.Queries["userUPN"] = ExpressionConverter.Convert(__workflow_userUpn);
                 if (__workflow_search != null)
                     callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
                 if (__workflow_selectedLabels != null)
@@ -187,10 +187,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<TaskObject[], ApiConnectionActionConfiguration> GetTasks(Expression<Func<string>> userOId = null, Expression<Func<string>> userUPN = null, Expression<Func<string>> search = null, Expression<Func<double>> limit = null, Expression<Func<double>> skip = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
+        public IBodyWorkflowAction<TaskObject[], ApiConnectionActionConfiguration> GetTasks(Expression<Func<string>> userOid = null, Expression<Func<string>> userUpn = null, Expression<Func<string>> search = null, Expression<Func<double>> limit = null, Expression<Func<double>> skip = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
         {
-            var __workflow_userOId = WorkflowExpression.Compile(userOId, nameof(userOId), required: false);
-            var __workflow_userUPN = WorkflowExpression.Compile(userUPN, nameof(userUPN), required: false);
+            var __workflow_userOid = WorkflowExpression.Compile(userOid, nameof(userOid), required: false);
+            var __workflow_userUpn = WorkflowExpression.Compile(userUpn, nameof(userUpn), required: false);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
@@ -201,10 +201,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
                 var apiCallPath = "/task";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_userOId != null)
-                    callPayload.Queries["userOID"] = ExpressionConverter.Convert(__workflow_userOId);
-                if (__workflow_userUPN != null)
-                    callPayload.Queries["userUPN"] = ExpressionConverter.Convert(__workflow_userUPN);
+                if (__workflow_userOid != null)
+                    callPayload.Queries["userOID"] = ExpressionConverter.Convert(__workflow_userOid);
+                if (__workflow_userUpn != null)
+                    callPayload.Queries["userUPN"] = ExpressionConverter.Convert(__workflow_userUpn);
                 if (__workflow_search != null)
                     callPayload.Queries["search"] = ExpressionConverter.Convert(__workflow_search);
                 if (__workflow_limit != null)

@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
         public string HostEmail { get; set; }
 
         [JsonProperty("joinURL")]
-        public string JoinURL { get; set; }
+        public string JoinUrl { get; set; }
     }
 
     public class CreateInstructorSubscribeBodyInput

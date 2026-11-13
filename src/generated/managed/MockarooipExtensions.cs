@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockarooip
         public string SchemaName { get; set; }
 
         [JsonProperty("fields")]
-        public string SchemaJSON { get; set; }
+        public string SchemaJson { get; set; }
 
         [JsonProperty("count")]
         public int? RecordCount { get; set; }

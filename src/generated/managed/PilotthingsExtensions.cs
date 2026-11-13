@@ -1292,7 +1292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public AddMessageThingTinyRoResponse Thing { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
     }
 
     public class FlowTinyRo
@@ -1310,19 +1310,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AlertRoLevelType
     {
-        INFO,
-        WARNING,
-        CRITICAL
+        [EnumMember(Value = "INFO")]
+        Info,
+        [EnumMember(Value = "WARNING")]
+        Warning,
+        [EnumMember(Value = "CRITICAL")]
+        Critical
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AlertRoStateType
     {
-        OPENED,
-        IGNORED,
+        [EnumMember(Value = "OPENED")]
+        Opened,
+        [EnumMember(Value = "IGNORED")]
+        Ignored,
         [EnumMember(Value = "IN_PROGRESS")]
-        INPROGRESS,
-        RESOLVED
+        InProgress,
+        [EnumMember(Value = "RESOLVED")]
+        Resolved
     }
 
     public class AddMessageThingTinyRoResponse
@@ -1358,8 +1364,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DirInput
     {
-        ASC,
-        DESC
+        [EnumMember(Value = "ASC")]
+        Asc,
+        [EnumMember(Value = "DESC")]
+        Desc
     }
 
     public class PageMeasureRo
@@ -1455,13 +1463,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public bool IsCustomModel { get; set; }
 
         [JsonProperty("link")]
-        public AddMessageURIResponse Link { get; set; }
+        public AddMessageUriResponse Link { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class AddMessageURIResponse
+    public class AddMessageUriResponse
     {
         [JsonProperty("absolute")]
         public bool Absolute { get; set; }
@@ -1545,28 +1553,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AssociateThingProductProductTinyRoConnectivityTypesTypeItemResponse
     {
-        LORA,
-        SIGFOX,
-        MQTT,
-        CELLULAR,
-        ETHERNET,
-        WIFI,
-        BLUETOOTH,
-        BACNET,
-        MODBUS,
+        [EnumMember(Value = "LORA")]
+        Lora,
+        [EnumMember(Value = "SIGFOX")]
+        Sigfox,
+        [EnumMember(Value = "MQTT")]
+        Mqtt,
+        [EnumMember(Value = "CELLULAR")]
+        Cellular,
+        [EnumMember(Value = "ETHERNET")]
+        Ethernet,
+        [EnumMember(Value = "WIFI")]
+        Wifi,
+        [EnumMember(Value = "BLUETOOTH")]
+        Bluetooth,
+        [EnumMember(Value = "BACNET")]
+        Bacnet,
+        [EnumMember(Value = "MODBUS")]
+        Modbus,
         [EnumMember(Value = "IO_ANALOG")]
-        IOANALOG,
+        IOAnalog,
         [EnumMember(Value = "IO_DIGITAL")]
-        IODIGITAL,
-        ENOCEAN,
-        ZIGBEE,
-        ZWAVE,
-        NFC,
-        USB,
+        IODigital,
+        [EnumMember(Value = "ENOCEAN")]
+        Enocean,
+        [EnumMember(Value = "ZIGBEE")]
+        Zigbee,
+        [EnumMember(Value = "ZWAVE")]
+        Zwave,
+        [EnumMember(Value = "NFC")]
+        Nfc,
+        [EnumMember(Value = "USB")]
+        Usb,
         [EnumMember(Value = "IEEE_LR_WPAN")]
-        IEEELRWPAN,
-        DALI,
-        UNKNOWN
+        IeeeLrWpan,
+        [EnumMember(Value = "DALI")]
+        Dali,
+        [EnumMember(Value = "UNKNOWN")]
+        Unknown
     }
 
     public class AssociateThingProductManufacturerTinyRoResponse
@@ -1629,7 +1653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public double Latitude { get; set; }
 
         [JsonProperty("link")]
-        public AddMessageURIResponse Link { get; set; }
+        public AddMessageUriResponse Link { get; set; }
 
         [JsonProperty("longitude")]
         public double Longitude { get; set; }
@@ -1728,33 +1752,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddMessageJsonNodeNodeTypeTypeResponse
     {
-        ARRAY,
-        BINARY,
-        BOOLEAN,
-        MISSING,
-        NULL,
-        NUMBER,
+        [EnumMember(Value = "ARRAY")]
+        Array,
+        [EnumMember(Value = "BINARY")]
+        Binary,
+        [EnumMember(Value = "BOOLEAN")]
+        Boolean,
+        [EnumMember(Value = "MISSING")]
+        Missing,
+        [EnumMember(Value = "NULL")]
+        Null,
+        [EnumMember(Value = "NUMBER")]
+        Number,
         [EnumMember(Value = "OBJECT")]
         ObjectEntity,
-        POJO,
-        STRING
+        [EnumMember(Value = "POJO")]
+        Pojo,
+        [EnumMember(Value = "STRING")]
+        String
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MessageRoProcessedType
     {
-        TODO,
-        DONE,
+        [EnumMember(Value = "TODO")]
+        Todo,
+        [EnumMember(Value = "DONE")]
+        Done,
         [EnumMember(Value = "IN_PROGRESS")]
-        INPROGRESS,
-        ASSOCIATED,
+        InProgress,
+        [EnumMember(Value = "ASSOCIATED")]
+        Associated,
         [EnumMember(Value = "TO_BE_FORWARDED")]
-        TOBEFORWARDED,
+        ToBeForwarded,
         [EnumMember(Value = "ERROR_CUSTOM")]
-        ERRORCUSTOM,
+        ErrorCustom,
         [EnumMember(Value = "TODO_CUSTOM")]
-        TODOCUSTOM,
-        ERROR
+        TodoCustom,
+        [EnumMember(Value = "ERROR")]
+        Error
     }
 
     public class AddMessageMessageRoInput
@@ -1790,7 +1826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public double Latitude { get; set; }
 
         [JsonProperty("link")]
-        public AddMessageURI Link { get; set; }
+        public AddMessageUri Link { get; set; }
 
         [JsonProperty("longitude", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Longitude { get; set; }
@@ -1820,7 +1856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Topic { get; set; }
     }
 
-    public class AddMessageURI
+    public class AddMessageUri
     {
         [JsonProperty("absolute")]
         public bool? Absolute { get; set; }
@@ -1877,18 +1913,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MessageRoInputProcessedType
     {
-        TODO,
-        DONE,
+        [EnumMember(Value = "TODO")]
+        Todo,
+        [EnumMember(Value = "DONE")]
+        Done,
         [EnumMember(Value = "IN_PROGRESS")]
-        INPROGRESS,
-        ASSOCIATED,
+        InProgress,
+        [EnumMember(Value = "ASSOCIATED")]
+        Associated,
         [EnumMember(Value = "TO_BE_FORWARDED")]
-        TOBEFORWARDED,
+        ToBeForwarded,
         [EnumMember(Value = "ERROR_CUSTOM")]
-        ERRORCUSTOM,
+        ErrorCustom,
         [EnumMember(Value = "TODO_CUSTOM")]
-        TODOCUSTOM,
-        ERROR
+        TodoCustom,
+        [EnumMember(Value = "ERROR")]
+        Error
     }
 
     public class AddMessageJsonNode
@@ -1960,16 +2000,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddMessageJsonNodeNodeTypeType
     {
-        ARRAY,
-        BINARY,
-        BOOLEAN,
-        MISSING,
-        NULL,
-        NUMBER,
+        [EnumMember(Value = "ARRAY")]
+        Array,
+        [EnumMember(Value = "BINARY")]
+        Binary,
+        [EnumMember(Value = "BOOLEAN")]
+        Boolean,
+        [EnumMember(Value = "MISSING")]
+        Missing,
+        [EnumMember(Value = "NULL")]
+        Null,
+        [EnumMember(Value = "NUMBER")]
+        Number,
         [EnumMember(Value = "OBJECT")]
         ObjectEntity,
-        POJO,
-        STRING
+        [EnumMember(Value = "POJO")]
+        Pojo,
+        [EnumMember(Value = "STRING")]
+        String
     }
 
     public class AddMessageThingTinyRo
@@ -2121,16 +2169,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NodeInputNodeTypeType
     {
-        ARRAY,
-        BINARY,
-        BOOLEAN,
-        MISSING,
-        NULL,
-        NUMBER,
+        [EnumMember(Value = "ARRAY")]
+        Array,
+        [EnumMember(Value = "BINARY")]
+        Binary,
+        [EnumMember(Value = "BOOLEAN")]
+        Boolean,
+        [EnumMember(Value = "MISSING")]
+        Missing,
+        [EnumMember(Value = "NULL")]
+        Null,
+        [EnumMember(Value = "NUMBER")]
+        Number,
         [EnumMember(Value = "OBJECT")]
         ObjectEntity,
-        POJO,
-        STRING
+        [EnumMember(Value = "POJO")]
+        Pojo,
+        [EnumMember(Value = "STRING")]
+        String
     }
 
     public class SiteRoInput
@@ -2339,38 +2395,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AssociateThingProductConnectivityRoStatusTypeResponse
     {
-        INACTIVE,
-        ONLINE,
-        OFFLINE,
-        ERROR,
-        UNKNOWN
+        [EnumMember(Value = "INACTIVE")]
+        Inactive,
+        [EnumMember(Value = "ONLINE")]
+        Online,
+        [EnumMember(Value = "OFFLINE")]
+        Offline,
+        [EnumMember(Value = "ERROR")]
+        Error,
+        [EnumMember(Value = "UNKNOWN")]
+        Unknown
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AssociateThingProductConnectivityRoTypeTypeResponse
     {
-        LORA,
-        SIGFOX,
-        MQTT,
-        CELLULAR,
-        ETHERNET,
-        WIFI,
-        BLUETOOTH,
-        BACNET,
-        MODBUS,
+        [EnumMember(Value = "LORA")]
+        Lora,
+        [EnumMember(Value = "SIGFOX")]
+        Sigfox,
+        [EnumMember(Value = "MQTT")]
+        Mqtt,
+        [EnumMember(Value = "CELLULAR")]
+        Cellular,
+        [EnumMember(Value = "ETHERNET")]
+        Ethernet,
+        [EnumMember(Value = "WIFI")]
+        Wifi,
+        [EnumMember(Value = "BLUETOOTH")]
+        Bluetooth,
+        [EnumMember(Value = "BACNET")]
+        Bacnet,
+        [EnumMember(Value = "MODBUS")]
+        Modbus,
         [EnumMember(Value = "IO_ANALOG")]
-        IOANALOG,
+        IOAnalog,
         [EnumMember(Value = "IO_DIGITAL")]
-        IODIGITAL,
-        ENOCEAN,
-        ZIGBEE,
-        ZWAVE,
-        NFC,
-        USB,
+        IODigital,
+        [EnumMember(Value = "ENOCEAN")]
+        Enocean,
+        [EnumMember(Value = "ZIGBEE")]
+        Zigbee,
+        [EnumMember(Value = "ZWAVE")]
+        Zwave,
+        [EnumMember(Value = "NFC")]
+        Nfc,
+        [EnumMember(Value = "USB")]
+        Usb,
         [EnumMember(Value = "IEEE_LR_WPAN")]
-        IEEELRWPAN,
-        DALI,
-        UNKNOWN
+        IeeeLrWpan,
+        [EnumMember(Value = "DALI")]
+        Dali,
+        [EnumMember(Value = "UNKNOWN")]
+        Unknown
     }
 
     public class AssociateThingProductCustomFieldRoResponse
@@ -2397,9 +2474,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AssociateThingProductCustomFieldRoTypeTypeResponse
     {
-        TEXT,
-        TEXTEREA,
-        FILE
+        [EnumMember(Value = "TEXT")]
+        Text,
+        [EnumMember(Value = "TEXTEREA")]
+        Texterea,
+        [EnumMember(Value = "FILE")]
+        File
     }
 
     public class AssociateThingProductCustomModelTinyRoResponse
@@ -2462,45 +2542,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AssociateThingProductDeviceRoBatteryStatusTypeResponse
     {
-        NORMAL,
-        CHARGING,
+        [EnumMember(Value = "NORMAL")]
+        Normal,
+        [EnumMember(Value = "CHARGING")]
+        Charging,
         [EnumMember(Value = "CHARGE_COMPLETE")]
-        CHARGECOMPLETE,
-        DAMAGED,
+        ChargeComplete,
+        [EnumMember(Value = "DAMAGED")]
+        Damaged,
         [EnumMember(Value = "LOW_BATTERY")]
-        LOWBATTERY,
+        LowBattery,
         [EnumMember(Value = "NOT_INSTALLED")]
-        NOTINSTALLED,
-        UNKNOWN
+        NotInstalled,
+        [EnumMember(Value = "UNKNOWN")]
+        Unknown
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AssociateThingProductDeviceRoStatusTypeResponse
     {
-        RUNNING,
-        HALTED,
-        ERROR,
-        UNKNOWN
+        [EnumMember(Value = "RUNNING")]
+        Running,
+        [EnumMember(Value = "HALTED")]
+        Halted,
+        [EnumMember(Value = "ERROR")]
+        Error,
+        [EnumMember(Value = "UNKNOWN")]
+        Unknown
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SingleThingRoStatusType
     {
-        PROVISIONED,
-        PENDING,
-        INACTIVE,
-        ACTIVE,
-        WARNING,
-        SUSPENDED,
-        DELETED,
+        [EnumMember(Value = "PROVISIONED")]
+        Provisioned,
+        [EnumMember(Value = "PENDING")]
+        Pending,
+        [EnumMember(Value = "INACTIVE")]
+        Inactive,
+        [EnumMember(Value = "ACTIVE")]
+        Active,
+        [EnumMember(Value = "WARNING")]
+        Warning,
+        [EnumMember(Value = "SUSPENDED")]
+        Suspended,
+        [EnumMember(Value = "DELETED")]
+        Deleted,
         [EnumMember(Value = "IN_ASSOCIATION")]
-        INASSOCIATION,
+        InAssociation,
         [EnumMember(Value = "IN_DISSOCIATION")]
-        INDISSOCIATION,
+        InDissociation,
         [EnumMember(Value = "OUT_OF_ORDER")]
-        OUTOFORDER,
-        CREATED,
-        VIRTUAL
+        OutOfOrder,
+        [EnumMember(Value = "CREATED")]
+        Created,
+        [EnumMember(Value = "VIRTUAL")]
+        Virtual
     }
 
     public class JsonInput
@@ -2572,16 +2669,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JsonInputNodeTypeType
     {
-        ARRAY,
-        BINARY,
-        BOOLEAN,
-        MISSING,
-        NULL,
-        NUMBER,
+        [EnumMember(Value = "ARRAY")]
+        Array,
+        [EnumMember(Value = "BINARY")]
+        Binary,
+        [EnumMember(Value = "BOOLEAN")]
+        Boolean,
+        [EnumMember(Value = "MISSING")]
+        Missing,
+        [EnumMember(Value = "NULL")]
+        Null,
+        [EnumMember(Value = "NUMBER")]
+        Number,
         [EnumMember(Value = "OBJECT")]
         ObjectEntity,
-        POJO,
-        STRING
+        [EnumMember(Value = "POJO")]
+        Pojo,
+        [EnumMember(Value = "STRING")]
+        String
     }
 
     public class ThingRo
@@ -2650,21 +2755,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ThingRoStatusType
     {
-        PROVISIONED,
-        PENDING,
-        INACTIVE,
-        ACTIVE,
-        WARNING,
-        SUSPENDED,
-        DELETED,
+        [EnumMember(Value = "PROVISIONED")]
+        Provisioned,
+        [EnumMember(Value = "PENDING")]
+        Pending,
+        [EnumMember(Value = "INACTIVE")]
+        Inactive,
+        [EnumMember(Value = "ACTIVE")]
+        Active,
+        [EnumMember(Value = "WARNING")]
+        Warning,
+        [EnumMember(Value = "SUSPENDED")]
+        Suspended,
+        [EnumMember(Value = "DELETED")]
+        Deleted,
         [EnumMember(Value = "IN_ASSOCIATION")]
-        INASSOCIATION,
+        InAssociation,
         [EnumMember(Value = "IN_DISSOCIATION")]
-        INDISSOCIATION,
+        InDissociation,
         [EnumMember(Value = "OUT_OF_ORDER")]
-        OUTOFORDER,
-        CREATED,
-        VIRTUAL
+        OutOfOrder,
+        [EnumMember(Value = "CREATED")]
+        Created,
+        [EnumMember(Value = "VIRTUAL")]
+        Virtual
     }
 
     public class PutThingThingRoInput
@@ -2789,38 +2903,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PutThingConnectivityRoStatusType
     {
-        INACTIVE,
-        ONLINE,
-        OFFLINE,
-        ERROR,
-        UNKNOWN
+        [EnumMember(Value = "INACTIVE")]
+        Inactive,
+        [EnumMember(Value = "ONLINE")]
+        Online,
+        [EnumMember(Value = "OFFLINE")]
+        Offline,
+        [EnumMember(Value = "ERROR")]
+        Error,
+        [EnumMember(Value = "UNKNOWN")]
+        Unknown
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PutThingConnectivityRoTypeType
     {
-        LORA,
-        SIGFOX,
-        MQTT,
-        CELLULAR,
-        ETHERNET,
-        WIFI,
-        BLUETOOTH,
-        BACNET,
-        MODBUS,
+        [EnumMember(Value = "LORA")]
+        Lora,
+        [EnumMember(Value = "SIGFOX")]
+        Sigfox,
+        [EnumMember(Value = "MQTT")]
+        Mqtt,
+        [EnumMember(Value = "CELLULAR")]
+        Cellular,
+        [EnumMember(Value = "ETHERNET")]
+        Ethernet,
+        [EnumMember(Value = "WIFI")]
+        Wifi,
+        [EnumMember(Value = "BLUETOOTH")]
+        Bluetooth,
+        [EnumMember(Value = "BACNET")]
+        Bacnet,
+        [EnumMember(Value = "MODBUS")]
+        Modbus,
         [EnumMember(Value = "IO_ANALOG")]
-        IOANALOG,
+        IOAnalog,
         [EnumMember(Value = "IO_DIGITAL")]
-        IODIGITAL,
-        ENOCEAN,
-        ZIGBEE,
-        ZWAVE,
-        NFC,
-        USB,
+        IODigital,
+        [EnumMember(Value = "ENOCEAN")]
+        Enocean,
+        [EnumMember(Value = "ZIGBEE")]
+        Zigbee,
+        [EnumMember(Value = "ZWAVE")]
+        Zwave,
+        [EnumMember(Value = "NFC")]
+        Nfc,
+        [EnumMember(Value = "USB")]
+        Usb,
         [EnumMember(Value = "IEEE_LR_WPAN")]
-        IEEELRWPAN,
-        DALI,
-        UNKNOWN
+        IeeeLrWpan,
+        [EnumMember(Value = "DALI")]
+        Dali,
+        [EnumMember(Value = "UNKNOWN")]
+        Unknown
     }
 
     public class PutThingCustomFieldRo
@@ -2847,9 +2982,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PutThingCustomFieldRoTypeType
     {
-        TEXT,
-        TEXTEREA,
-        FILE
+        [EnumMember(Value = "TEXT")]
+        Text,
+        [EnumMember(Value = "TEXTEREA")]
+        Texterea,
+        [EnumMember(Value = "FILE")]
+        File
     }
 
     public class PutThingCustomModelTinyRo
@@ -2912,25 +3050,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PutThingDeviceRoBatteryStatusType
     {
-        NORMAL,
-        CHARGING,
+        [EnumMember(Value = "NORMAL")]
+        Normal,
+        [EnumMember(Value = "CHARGING")]
+        Charging,
         [EnumMember(Value = "CHARGE_COMPLETE")]
-        CHARGECOMPLETE,
-        DAMAGED,
+        ChargeComplete,
+        [EnumMember(Value = "DAMAGED")]
+        Damaged,
         [EnumMember(Value = "LOW_BATTERY")]
-        LOWBATTERY,
+        LowBattery,
         [EnumMember(Value = "NOT_INSTALLED")]
-        NOTINSTALLED,
-        UNKNOWN
+        NotInstalled,
+        [EnumMember(Value = "UNKNOWN")]
+        Unknown
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PutThingDeviceRoStatusType
     {
-        RUNNING,
-        HALTED,
-        ERROR,
-        UNKNOWN
+        [EnumMember(Value = "RUNNING")]
+        Running,
+        [EnumMember(Value = "HALTED")]
+        Halted,
+        [EnumMember(Value = "ERROR")]
+        Error,
+        [EnumMember(Value = "UNKNOWN")]
+        Unknown
     }
 
     public class PutThingProductTinyRo
@@ -2963,28 +3109,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PutThingProductTinyRoConnectivityTypesTypeItem
     {
-        LORA,
-        SIGFOX,
-        MQTT,
-        CELLULAR,
-        ETHERNET,
-        WIFI,
-        BLUETOOTH,
-        BACNET,
-        MODBUS,
+        [EnumMember(Value = "LORA")]
+        Lora,
+        [EnumMember(Value = "SIGFOX")]
+        Sigfox,
+        [EnumMember(Value = "MQTT")]
+        Mqtt,
+        [EnumMember(Value = "CELLULAR")]
+        Cellular,
+        [EnumMember(Value = "ETHERNET")]
+        Ethernet,
+        [EnumMember(Value = "WIFI")]
+        Wifi,
+        [EnumMember(Value = "BLUETOOTH")]
+        Bluetooth,
+        [EnumMember(Value = "BACNET")]
+        Bacnet,
+        [EnumMember(Value = "MODBUS")]
+        Modbus,
         [EnumMember(Value = "IO_ANALOG")]
-        IOANALOG,
+        IOAnalog,
         [EnumMember(Value = "IO_DIGITAL")]
-        IODIGITAL,
-        ENOCEAN,
-        ZIGBEE,
-        ZWAVE,
-        NFC,
-        USB,
+        IODigital,
+        [EnumMember(Value = "ENOCEAN")]
+        Enocean,
+        [EnumMember(Value = "ZIGBEE")]
+        Zigbee,
+        [EnumMember(Value = "ZWAVE")]
+        Zwave,
+        [EnumMember(Value = "NFC")]
+        Nfc,
+        [EnumMember(Value = "USB")]
+        Usb,
         [EnumMember(Value = "IEEE_LR_WPAN")]
-        IEEELRWPAN,
-        DALI,
-        UNKNOWN
+        IeeeLrWpan,
+        [EnumMember(Value = "DALI")]
+        Dali,
+        [EnumMember(Value = "UNKNOWN")]
+        Unknown
     }
 
     public class AssociateThingProductManufacturerTinyRo
@@ -3020,7 +3182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public bool? IsCustomModel { get; set; }
 
         [JsonProperty("link")]
-        public AddMessageURI Link { get; set; }
+        public AddMessageUri Link { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3061,21 +3223,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ThingRoInputStatusType
     {
-        PROVISIONED,
-        PENDING,
-        INACTIVE,
-        ACTIVE,
-        WARNING,
-        SUSPENDED,
-        DELETED,
+        [EnumMember(Value = "PROVISIONED")]
+        Provisioned,
+        [EnumMember(Value = "PENDING")]
+        Pending,
+        [EnumMember(Value = "INACTIVE")]
+        Inactive,
+        [EnumMember(Value = "ACTIVE")]
+        Active,
+        [EnumMember(Value = "WARNING")]
+        Warning,
+        [EnumMember(Value = "SUSPENDED")]
+        Suspended,
+        [EnumMember(Value = "DELETED")]
+        Deleted,
         [EnumMember(Value = "IN_ASSOCIATION")]
-        INASSOCIATION,
+        InAssociation,
         [EnumMember(Value = "IN_DISSOCIATION")]
-        INDISSOCIATION,
+        InDissociation,
         [EnumMember(Value = "OUT_OF_ORDER")]
-        OUTOFORDER,
-        CREATED,
-        VIRTUAL
+        OutOfOrder,
+        [EnumMember(Value = "CREATED")]
+        Created,
+        [EnumMember(Value = "VIRTUAL")]
+        Virtual
     }
 
     public class ModelRo
@@ -3096,7 +3267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public bool IsCustomModel { get; set; }
 
         [JsonProperty("link")]
-        public AddMessageURIResponse Link { get; set; }
+        public AddMessageUriResponse Link { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -3183,9 +3354,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CustomFieldRoInputTypeType
     {
-        TEXT,
-        TEXTEREA,
-        FILE
+        [EnumMember(Value = "TEXT")]
+        Text,
+        [EnumMember(Value = "TEXTEREA")]
+        Texterea,
+        [EnumMember(Value = "FILE")]
+        File
     }
 
     public class ResponseEntity
@@ -3357,7 +3531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Id { get; set; }
 
         [JsonProperty("link")]
-        public AddMessageURIResponse Link { get; set; }
+        public AddMessageUriResponse Link { get; set; }
 
         [JsonProperty("number")]
         public int Number { get; set; }
@@ -3396,7 +3570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public double Latitude { get; set; }
 
         [JsonProperty("link")]
-        public AddMessageURI Link { get; set; }
+        public AddMessageUri Link { get; set; }
 
         [JsonProperty("longitude", DefaultValueHandling = DefaultValueHandling.Include)]
         public double Longitude { get; set; }
@@ -3516,16 +3690,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PlaceholdersValuesInputNodeTypeType
     {
-        ARRAY,
-        BINARY,
-        BOOLEAN,
-        MISSING,
-        NULL,
-        NUMBER,
+        [EnumMember(Value = "ARRAY")]
+        Array,
+        [EnumMember(Value = "BINARY")]
+        Binary,
+        [EnumMember(Value = "BOOLEAN")]
+        Boolean,
+        [EnumMember(Value = "MISSING")]
+        Missing,
+        [EnumMember(Value = "NULL")]
+        Null,
+        [EnumMember(Value = "NUMBER")]
+        Number,
         [EnumMember(Value = "OBJECT")]
         ObjectEntity,
-        POJO,
-        STRING
+        [EnumMember(Value = "POJO")]
+        Pojo,
+        [EnumMember(Value = "STRING")]
+        String
     }
 
     public class UpdateThingFixedPositionThingRoInput
@@ -3662,28 +3844,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ProductRoConnectivityTypesTypeItem
     {
-        LORA,
-        SIGFOX,
-        MQTT,
-        CELLULAR,
-        ETHERNET,
-        WIFI,
-        BLUETOOTH,
-        BACNET,
-        MODBUS,
+        [EnumMember(Value = "LORA")]
+        Lora,
+        [EnumMember(Value = "SIGFOX")]
+        Sigfox,
+        [EnumMember(Value = "MQTT")]
+        Mqtt,
+        [EnumMember(Value = "CELLULAR")]
+        Cellular,
+        [EnumMember(Value = "ETHERNET")]
+        Ethernet,
+        [EnumMember(Value = "WIFI")]
+        Wifi,
+        [EnumMember(Value = "BLUETOOTH")]
+        Bluetooth,
+        [EnumMember(Value = "BACNET")]
+        Bacnet,
+        [EnumMember(Value = "MODBUS")]
+        Modbus,
         [EnumMember(Value = "IO_ANALOG")]
-        IOANALOG,
+        IOAnalog,
         [EnumMember(Value = "IO_DIGITAL")]
-        IODIGITAL,
-        ENOCEAN,
-        ZIGBEE,
-        ZWAVE,
-        NFC,
-        USB,
+        IODigital,
+        [EnumMember(Value = "ENOCEAN")]
+        Enocean,
+        [EnumMember(Value = "ZIGBEE")]
+        Zigbee,
+        [EnumMember(Value = "ZWAVE")]
+        Zwave,
+        [EnumMember(Value = "NFC")]
+        Nfc,
+        [EnumMember(Value = "USB")]
+        Usb,
         [EnumMember(Value = "IEEE_LR_WPAN")]
-        IEEELRWPAN,
-        DALI,
-        UNKNOWN
+        IeeeLrWpan,
+        [EnumMember(Value = "DALI")]
+        Dali,
+        [EnumMember(Value = "UNKNOWN")]
+        Unknown
     }
 
     public class GetThingProductDecoderTinyRoResponse
@@ -3773,28 +3971,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ProductInputConnectivityTypesTypeItem
     {
-        LORA,
-        SIGFOX,
-        MQTT,
-        CELLULAR,
-        ETHERNET,
-        WIFI,
-        BLUETOOTH,
-        BACNET,
-        MODBUS,
+        [EnumMember(Value = "LORA")]
+        Lora,
+        [EnumMember(Value = "SIGFOX")]
+        Sigfox,
+        [EnumMember(Value = "MQTT")]
+        Mqtt,
+        [EnumMember(Value = "CELLULAR")]
+        Cellular,
+        [EnumMember(Value = "ETHERNET")]
+        Ethernet,
+        [EnumMember(Value = "WIFI")]
+        Wifi,
+        [EnumMember(Value = "BLUETOOTH")]
+        Bluetooth,
+        [EnumMember(Value = "BACNET")]
+        Bacnet,
+        [EnumMember(Value = "MODBUS")]
+        Modbus,
         [EnumMember(Value = "IO_ANALOG")]
-        IOANALOG,
+        IOAnalog,
         [EnumMember(Value = "IO_DIGITAL")]
-        IODIGITAL,
-        ENOCEAN,
-        ZIGBEE,
-        ZWAVE,
-        NFC,
-        USB,
+        IODigital,
+        [EnumMember(Value = "ENOCEAN")]
+        Enocean,
+        [EnumMember(Value = "ZIGBEE")]
+        Zigbee,
+        [EnumMember(Value = "ZWAVE")]
+        Zwave,
+        [EnumMember(Value = "NFC")]
+        Nfc,
+        [EnumMember(Value = "USB")]
+        Usb,
         [EnumMember(Value = "IEEE_LR_WPAN")]
-        IEEELRWPAN,
-        DALI,
-        UNKNOWN
+        IeeeLrWpan,
+        [EnumMember(Value = "DALI")]
+        Dali,
+        [EnumMember(Value = "UNKNOWN")]
+        Unknown
     }
 
     public class AssociateThingProductDecoderTinyRo

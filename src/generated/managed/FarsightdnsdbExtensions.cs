@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
     public class FarsightdnsdbActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
-        public IBodyWorkflowAction<RRSetResults[], ApiConnectionActionConfiguration> RRSET(Expression<Func<RRSETRRTYPEBAILIWICKTypeInput>> type, Expression<Func<string>> value, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
+        public IBodyWorkflowAction<RRSetResults[], ApiConnectionActionConfiguration> Rrset(Expression<Func<RrsetRrtypeBailiwickTypeInput>> type, Expression<Func<string>> value, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
-        public IBodyWorkflowAction<RRSetResults[], ApiConnectionActionConfiguration> RRSETRRTYPE(Expression<Func<RRSETRRTYPEBAILIWICKTypeInput>> type, Expression<Func<string>> value, Expression<Func<string>> rrtype, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
+        public IBodyWorkflowAction<RRSetResults[], ApiConnectionActionConfiguration> RrsetRrtype(Expression<Func<RrsetRrtypeBailiwickTypeInput>> type, Expression<Func<string>> value, Expression<Func<string>> rrtype, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
-        public IBodyWorkflowAction<RRSetResults[], ApiConnectionActionConfiguration> RRSETRRTYPEBAILIWICK(Expression<Func<RRSETRRTYPEBAILIWICKTypeInput>> type, Expression<Func<string>> value, Expression<Func<string>> rrtype, Expression<Func<string>> bailiwick, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
+        public IBodyWorkflowAction<RRSetResults[], ApiConnectionActionConfiguration> RrsetRrtypeBailiwick(Expression<Func<RrsetRrtypeBailiwickTypeInput>> type, Expression<Func<string>> value, Expression<Func<string>> rrtype, Expression<Func<string>> bailiwick, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
-        public IBodyWorkflowAction<RDataResults[], ApiConnectionActionConfiguration> RDATA(Expression<Func<RDATARRTYPETypeInput>> type, Expression<Func<string>> value, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
+        public IBodyWorkflowAction<RDataResults[], ApiConnectionActionConfiguration> Rdata(Expression<Func<RdataRrtypeTypeInput>> type, Expression<Func<string>> value, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
-        public IBodyWorkflowAction<RDataResults[], ApiConnectionActionConfiguration> RDATARRTYPE(Expression<Func<RDATARRTYPETypeInput>> type, Expression<Func<string>> value, Expression<Func<string>> rrtype, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
+        public IBodyWorkflowAction<RDataResults[], ApiConnectionActionConfiguration> RdataRrtype(Expression<Func<RdataRrtypeTypeInput>> type, Expression<Func<string>> value, Expression<Func<string>> rrtype, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<bool>> aggr = null, Expression<Func<bool>> humantime = null, Expression<Func<double>> offset = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
-        public IBodyWorkflowAction<FlexResults[], ApiConnectionActionConfiguration> FLEX(Expression<Func<MethodInput>> method, Expression<Func<KeyInput>> key, Expression<Func<string>> value, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<string>> exclude = null, Expression<Func<double>> offset = null)
+        public IBodyWorkflowAction<FlexResults[], ApiConnectionActionConfiguration> Flex(Expression<Func<MethodInput>> method, Expression<Func<KeyInput>> key, Expression<Func<string>> value, Expression<Func<double>> timeFirstBefore = null, Expression<Func<double>> timeFirstAfter = null, Expression<Func<double>> timeLastBefore = null, Expression<Func<double>> timeLastAfter = null, Expression<Func<double>> limit = null, Expression<Func<string>> exclude = null, Expression<Func<double>> offset = null)
         {
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
-        public IBodyWorkflowAction<RateLimitResults, ApiConnectionActionConfiguration> RATELIMIT()
+        public IBodyWorkflowAction<RateLimitResults, ApiConnectionActionConfiguration> RateLimit()
         {
             return new DeferredBodyAction<RateLimitResults, ApiConnectionActionConfiguration>(() =>
             {
@@ -255,14 +255,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "farsightdnsdb")]
-        public IBodyWorkflowAction<PINGResponse, ApiConnectionActionConfiguration> PING()
+        public IBodyWorkflowAction<PingResponse, ApiConnectionActionConfiguration> Ping()
         {
-            return new DeferredBodyAction<PINGResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PingResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ping";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<PINGResponse>(callPayload);
+                return new ApiConnectionAction<PingResponse>(callPayload);
             });
         }
     }
@@ -302,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RRSETRRTYPEBAILIWICKTypeInput
+    public enum RrsetRrtypeBailiwickTypeInput
     {
         [EnumMember(Value = "name")]
         Name,
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum RDATARRTYPETypeInput
+    public enum RdataRrtypeTypeInput
     {
         [EnumMember(Value = "name")]
         Name,
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         public double BurstWindow { get; set; }
     }
 
-    public class PINGResponse
+    public class PingResponse
     {
         [JsonProperty("ping")]
         public string Ping { get; set; }

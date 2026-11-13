@@ -337,13 +337,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marksign
         public BodyInputLanguageType? Language { get; set; }
 
         [JsonProperty("success_url")]
-        public string SuccessURL { get; set; }
+        public string SuccessUrl { get; set; }
 
         [JsonProperty("purpose")]
         public SignerPurpose? Purpose { get; set; }
 
         [JsonProperty("callback_url")]
-        public string CallbackURL { get; set; }
+        public string CallbackUrl { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -588,23 +588,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marksign
 
     public class CreateSignerLinksBodyInput
     {
-        public CreateSignerLinksBodyInput(string[] documentIDs, BodyInputSignersTypeItem[] signers)
+        public CreateSignerLinksBodyInput(string[] documentIds, BodyInputSignersTypeItem[] signers)
         {
-            this.DocumentIDs = documentIDs;
+            this.DocumentIds = documentIds;
             this.Signers = signers;
         }
 
         [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] DocumentIDs { get; set; }
+        public string[] DocumentIds { get; set; }
 
         [JsonProperty("signers", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputSignersTypeItem[] Signers { get; set; }
 
         [JsonProperty("callback_url")]
-        public string CallbackURL { get; set; }
+        public string CallbackUrl { get; set; }
 
         [JsonProperty("reject_callback_url")]
-        public string RejectionCallbackURL { get; set; }
+        public string RejectionCallbackUrl { get; set; }
 
         [JsonProperty("expire_after")]
         public int? ExpireAfterMinutes { get; set; }
@@ -692,7 +692,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marksign
         [EnumMember(Value = "LT")]
         LongTermLT,
         [EnumMember(Value = "LTA")]
-        LongTermWithArchiveTimestampLTA
+        LongTermWithArchiveTimestampLta
     }
 
     public class ValidateDocumentResponse
@@ -734,7 +734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marksign
         public string DocumentName { get; set; }
 
         [JsonProperty("mimetype")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
     }
 
     public class ValidateDocumentResponseValidationReportTypeSignaturesTypeItem
@@ -784,16 +784,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marksign
 
     public class CreateSharedLinkBodyInput
     {
-        public CreateSharedLinkBodyInput(string[] documentIDs)
+        public CreateSharedLinkBodyInput(string[] documentIds)
         {
-            this.DocumentIDs = documentIDs;
+            this.DocumentIds = documentIds;
         }
 
         [JsonProperty("documents", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] DocumentIDs { get; set; }
+        public string[] DocumentIds { get; set; }
 
         [JsonProperty("callback_url")]
-        public string CallbackURL { get; set; }
+        public string CallbackUrl { get; set; }
 
         [JsonProperty("expire_after")]
         public int? ExpireAfterMinutes { get; set; }
@@ -814,7 +814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marksign
     public class InviteByLinkResponseInvitationType
     {
         [JsonProperty("invitation_url")]
-        public string InvitationURL { get; set; }
+        public string InvitationUrl { get; set; }
     }
 
     public class InviteByLinkBodyInput
@@ -836,13 +836,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Marksign
         public string Email { get; set; }
 
         [JsonProperty("success_url")]
-        public string SuccessURL { get; set; }
+        public string SuccessUrl { get; set; }
 
         [JsonProperty("purpose")]
         public SignerPurpose? Purpose { get; set; }
 
         [JsonProperty("callback_url")]
-        public string CallbackURL { get; set; }
+        public string CallbackUrl { get; set; }
     }
 }
 

@@ -371,13 +371,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailhelpdesk
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailhelpdesk")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlowV4TicketsByIdAttachmentsByFilenameGet(Expression<Func<int>> id, Expression<Func<string>> filename)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlowV4TicketsByIdAttachmentsByFileNameGet(Expression<Func<int>> id, Expression<Func<string>> fileName)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_flow/v4/Tickets/{0}/Attachments/{1}", __workflow_id.WithUrlEncoding(1), __workflow_filename.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/_flow/v4/Tickets/{0}/Attachments/{1}", __workflow_id.WithUrlEncoding(1), __workflow_fileName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
     public class SchooldiggeripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APIAutocompleteSchoolResult, ApiConnectionActionConfiguration> AutocompleteGetSchools(Expression<Func<string>> q, Expression<Func<bool>> qSearchCityStateName = null, Expression<Func<string>> st = null, Expression<Func<AutocompleteGetSchoolsLevelInput>> level = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> returnCount = null)
+        public IBodyWorkflowAction<ApiAutocompleteSchoolResult, ApiConnectionActionConfiguration> AutocompleteGetSchools(Expression<Func<string>> q, Expression<Func<bool>> qSearchCityStateName = null, Expression<Func<string>> st = null, Expression<Func<AutocompleteGetSchoolsLevelInput>> level = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> returnCount = null)
         {
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_qSearchCityStateName = WorkflowExpression.Compile(qSearchCityStateName, nameof(qSearchCityStateName), required: false);
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             var __workflow_boxLatitudeSE = WorkflowExpression.Compile(boxLatitudeSE, nameof(boxLatitudeSE), required: false);
             var __workflow_boxLongitudeSE = WorkflowExpression.Compile(boxLongitudeSE, nameof(boxLongitudeSE), required: false);
             var __workflow_returnCount = WorkflowExpression.Compile(returnCount, nameof(returnCount), required: false);
-            return new DeferredBodyAction<APIAutocompleteSchoolResult, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ApiAutocompleteSchoolResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2.0/autocomplete/schools";
                 var apiCallHttpMethod = "get";
@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                     callPayload.Queries["boxLongitudeSE"] = ExpressionConverter.Convert(__workflow_boxLongitudeSE);
                 if (__workflow_returnCount != null)
                     callPayload.Queries["returnCount"] = ExpressionConverter.Convert(__workflow_returnCount);
-                return new ApiConnectionAction<APIAutocompleteSchoolResult>(callPayload);
+                return new ApiConnectionAction<ApiAutocompleteSchoolResult>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APIDistrictList2, ApiConnectionActionConfiguration> DistrictsGetAllDistricts2(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<DistrictsGetAllDistricts2SortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedDistrictsInRankSort = null)
+        public IBodyWorkflowAction<ApiDistrictList2, ApiConnectionActionConfiguration> DistrictsGetAllDistricts2(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<DistrictsGetAllDistricts2SortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedDistrictsInRankSort = null)
         {
             var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
             var __workflow_includeUnrankedDistrictsInRankSort = WorkflowExpression.Compile(includeUnrankedDistrictsInRankSort, nameof(includeUnrankedDistrictsInRankSort), required: false);
-            return new DeferredBodyAction<APIDistrictList2, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ApiDistrictList2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2.0/districts";
                 var apiCallHttpMethod = "get";
@@ -108,32 +108,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                     callPayload.Queries["sortBy"] = ExpressionConverter.Convert(__workflow_sortBy);
                 if (__workflow_includeUnrankedDistrictsInRankSort != null)
                     callPayload.Queries["includeUnrankedDistrictsInRankSort"] = ExpressionConverter.Convert(__workflow_includeUnrankedDistrictsInRankSort);
-                return new ApiConnectionAction<APIDistrictList2>(callPayload);
+                return new ApiConnectionAction<ApiDistrictList2>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APIDistrict12, ApiConnectionActionConfiguration> DistrictsGetDistrict2(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ApiDistrict12, ApiConnectionActionConfiguration> DistrictsGetDistrict2(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<APIDistrict12, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ApiDistrict12, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/districts/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<APIDistrict12>(callPayload);
+                return new ApiConnectionAction<ApiDistrict12>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APISchoolListRank2, ApiConnectionActionConfiguration> RankingGet(Expression<Func<string>> st, Expression<Func<int>> year = null, Expression<Func<RankingGetLevelInput>> level = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<ApiSchoolListRank2, ApiConnectionActionConfiguration> RankingGet(Expression<Func<string>> st, Expression<Func<int>> year = null, Expression<Func<RankingGetLevelInput>> level = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
             var __workflow_level = WorkflowExpression.Compile(level, nameof(level), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<APISchoolListRank2, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ApiSchoolListRank2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/rankings/schools/{0}", __workflow_st.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -146,18 +146,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 if (__workflow_perPage != null)
                     callPayload.Queries["perPage"] = ExpressionConverter.Convert(__workflow_perPage);
-                return new ApiConnectionAction<APISchoolListRank2>(callPayload);
+                return new ApiConnectionAction<ApiSchoolListRank2>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APIDistrictListRank2, ApiConnectionActionConfiguration> DistrictRanking(Expression<Func<string>> st, Expression<Func<int>> year = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<ApiDistrictListRank2, ApiConnectionActionConfiguration> DistrictRanking(Expression<Func<string>> st, Expression<Func<int>> year = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
             var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: true);
             var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
-            return new DeferredBodyAction<APIDistrictListRank2, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ApiDistrictListRank2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/rankings/districts/{0}", __workflow_st.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -168,12 +168,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 if (__workflow_perPage != null)
                     callPayload.Queries["perPage"] = ExpressionConverter.Convert(__workflow_perPage);
-                return new ApiConnectionAction<APIDistrictListRank2>(callPayload);
+                return new ApiConnectionAction<ApiDistrictListRank2>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APISchoolList2, ApiConnectionActionConfiguration> SchoolsGetAllSchools20(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<bool>> qSearchSchoolNameOnly = null, Expression<Func<string>> districtId = null, Expression<Func<SchoolsGetAllSchools20LevelInput>> level = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<bool>> isMagnet = null, Expression<Func<bool>> isCharter = null, Expression<Func<bool>> isVirtual = null, Expression<Func<bool>> isTitleI = null, Expression<Func<bool>> isTitleISchoolwide = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> nearAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<double>> boundaryLatitude = null, Expression<Func<double>> boundaryLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<SchoolsGetAllSchools20SortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedSchoolsInRankSort = null)
+        public IBodyWorkflowAction<ApiSchoolList2, ApiConnectionActionConfiguration> SchoolsGetAllSchools20(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<bool>> qSearchSchoolNameOnly = null, Expression<Func<string>> districtId = null, Expression<Func<SchoolsGetAllSchools20LevelInput>> level = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<bool>> isMagnet = null, Expression<Func<bool>> isCharter = null, Expression<Func<bool>> isVirtual = null, Expression<Func<bool>> isTitleI = null, Expression<Func<bool>> isTitleISchoolwide = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> nearAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<double>> boundaryLatitude = null, Expression<Func<double>> boundaryLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<SchoolsGetAllSchools20SortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedSchoolsInRankSort = null)
         {
             var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
             var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
             var __workflow_includeUnrankedSchoolsInRankSort = WorkflowExpression.Compile(includeUnrankedSchoolsInRankSort, nameof(includeUnrankedSchoolsInRankSort), required: false);
-            return new DeferredBodyAction<APISchoolList2, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ApiSchoolList2, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2.0/schools";
                 var apiCallHttpMethod = "get";
@@ -263,20 +263,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
                     callPayload.Queries["sortBy"] = ExpressionConverter.Convert(__workflow_sortBy);
                 if (__workflow_includeUnrankedSchoolsInRankSort != null)
                     callPayload.Queries["includeUnrankedSchoolsInRankSort"] = ExpressionConverter.Convert(__workflow_includeUnrankedSchoolsInRankSort);
-                return new ApiConnectionAction<APISchoolList2>(callPayload);
+                return new ApiConnectionAction<ApiSchoolList2>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
-        public IBodyWorkflowAction<APISchool20Full, ApiConnectionActionConfiguration> SchoolsGetSchool20(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ApiSchool20Full, ApiConnectionActionConfiguration> SchoolsGetSchool20(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<APISchool20Full, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ApiSchool20Full, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2.0/schools/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<APISchool20Full>(callPayload);
+                return new ApiConnectionAction<ApiSchool20Full>(callPayload);
             });
         }
     }
@@ -285,13 +285,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
     {
     }
 
-    public class APIAutocompleteSchoolResult
+    public class ApiAutocompleteSchoolResult
     {
         [JsonProperty("schoolMatches")]
-        public APISchoolAC[] SchoolMatches { get; set; }
+        public ApiSchoolAC[] SchoolMatches { get; set; }
     }
 
-    public class APISchoolAC
+    public class ApiSchoolAC
     {
         [JsonProperty("schoolid")]
         public string Schoolid { get; set; }
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         Private
     }
 
-    public class APIDistrictList2
+    public class ApiDistrictList2
     {
         [JsonProperty("numberOfDistricts")]
         public int NumberOfDistricts { get; set; }
@@ -355,10 +355,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public int NumberOfPages { get; set; }
 
         [JsonProperty("districtList")]
-        public APIDistrict2Summary[] DistrictList { get; set; }
+        public ApiDistrict2Summary[] DistrictList { get; set; }
     }
 
-    public class APIDistrict2Summary
+    public class ApiDistrict2Summary
     {
         [JsonProperty("districtID")]
         public string DistrictId { get; set; }
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public string Url { get; set; }
 
         [JsonProperty("address")]
-        public APILocation Address { get; set; }
+        public ApiLocation Address { get; set; }
 
         [JsonProperty("locationIsWithinBoundary")]
         public bool LocationIsWithinBoundary { get; set; }
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public bool IsWithinBoundary { get; set; }
 
         [JsonProperty("county")]
-        public APICounty County { get; set; }
+        public ApiCounty County { get; set; }
 
         [JsonProperty("lowGrade")]
         public string LowGrade { get; set; }
@@ -412,16 +412,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public int NumberAlternativeSchools { get; set; }
 
         [JsonProperty("rankHistory")]
-        public APILEARankHistory[] RankHistory { get; set; }
+        public ApileaRankHistory[] RankHistory { get; set; }
 
         [JsonProperty("districtYearlyDetails")]
-        public APILEAYearlyDetail[] DistrictYearlyDetails { get; set; }
+        public ApileaYearlyDetail[] DistrictYearlyDetails { get; set; }
     }
 
-    public class APILocation
+    public class ApiLocation
     {
         [JsonProperty("latLong")]
-        public APILatLong LatLong { get; set; }
+        public ApiLatLong LatLong { get; set; }
 
         [JsonProperty("street")]
         public string Street { get; set; }
@@ -442,16 +442,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public string Zip4 { get; set; }
 
         [JsonProperty("cityURL")]
-        public string CityURL { get; set; }
+        public string CityUrl { get; set; }
 
         [JsonProperty("zipURL")]
-        public string ZipURL { get; set; }
+        public string ZipUrl { get; set; }
 
         [JsonProperty("html")]
         public string Html { get; set; }
     }
 
-    public class APILatLong
+    public class ApiLatLong
     {
         [JsonProperty("latitude")]
         public double Latitude { get; set; }
@@ -460,16 +460,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public double Longitude { get; set; }
     }
 
-    public class APICounty
+    public class ApiCounty
     {
         [JsonProperty("countyName")]
         public string CountyName { get; set; }
 
         [JsonProperty("countyURL")]
-        public string CountyURL { get; set; }
+        public string CountyUrl { get; set; }
     }
 
-    public class APILEARankHistory
+    public class ApileaRankHistory
     {
         [JsonProperty("year")]
         public int Year { get; set; }
@@ -490,7 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public double RankScore { get; set; }
     }
 
-    public class APILEAYearlyDetail
+    public class ApileaYearlyDetail
     {
         [JsonProperty("year")]
         public int Year { get; set; }
@@ -541,10 +541,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public double NumberOfLibraryStaff { get; set; }
 
         [JsonProperty("numberOfLEAAdministrators")]
-        public double NumberOfLEAAdministrators { get; set; }
+        public double NumberOfLeaAdministrators { get; set; }
 
         [JsonProperty("numberOfLEASupportStaff")]
-        public double NumberOfLEASupportStaff { get; set; }
+        public double NumberOfLeaSupportStaff { get; set; }
 
         [JsonProperty("numberOfSchoolAdministrators")]
         public double NumberOfSchoolAdministrators { get; set; }
@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         Rank
     }
 
-    public class APIDistrict12
+    public class ApiDistrict12
     {
         [JsonProperty("districtID")]
         public string DistrictId { get; set; }
@@ -585,16 +585,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public string Url { get; set; }
 
         [JsonProperty("address")]
-        public APILocation Address { get; set; }
+        public ApiLocation Address { get; set; }
 
         [JsonProperty("boundary")]
-        public APIBoundary12 Boundary { get; set; }
+        public ApiBoundary12 Boundary { get; set; }
 
         [JsonProperty("isWithinBoundary")]
         public bool IsWithinBoundary { get; set; }
 
         [JsonProperty("county")]
-        public APICounty County { get; set; }
+        public ApiCounty County { get; set; }
 
         [JsonProperty("lowGrade")]
         public string LowGrade { get; set; }
@@ -618,19 +618,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public int NumberAlternativeSchools { get; set; }
 
         [JsonProperty("rankHistory")]
-        public APILEARankHistory[] RankHistory { get; set; }
+        public ApileaRankHistory[] RankHistory { get; set; }
 
         [JsonProperty("districtYearlyDetails")]
-        public APILEAYearlyDetail[] DistrictYearlyDetails { get; set; }
+        public ApileaYearlyDetail[] DistrictYearlyDetails { get; set; }
 
         [JsonProperty("testScores")]
-        public APITestScoreWrapper[] TestScores { get; set; }
+        public ApiTestScoreWrapper[] TestScores { get; set; }
     }
 
-    public class APIBoundary12
+    public class ApiBoundary12
     {
         [JsonProperty("polylineCollection")]
-        public APIPolyline[] PolylineCollection { get; set; }
+        public ApiPolyline[] PolylineCollection { get; set; }
 
         [JsonProperty("polylines")]
         public string Polylines { get; set; }
@@ -639,7 +639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public bool HasBoundary { get; set; }
     }
 
-    public class APIPolyline
+    public class ApiPolyline
     {
         [JsonProperty("polylineOverlayEncodedPoints")]
         public string PolylineOverlayEncodedPoints { get; set; }
@@ -648,7 +648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public int NumberEncodedPoints { get; set; }
     }
 
-    public class APITestScoreWrapper
+    public class ApiTestScoreWrapper
     {
         [JsonProperty("test")]
         public string Test { get; set; }
@@ -663,13 +663,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public string Grade { get; set; }
 
         [JsonProperty("schoolTestScore")]
-        public APITestScore SchoolTestScore { get; set; }
+        public ApiTestScore SchoolTestScore { get; set; }
 
         [JsonProperty("districtTestScore")]
-        public APITestScore DistrictTestScore { get; set; }
+        public ApiTestScore DistrictTestScore { get; set; }
 
         [JsonProperty("stateTestScore")]
-        public APITestScore StateTestScore { get; set; }
+        public ApiTestScore StateTestScore { get; set; }
 
         [JsonProperty("tier1")]
         public string Tier1 { get; set; }
@@ -687,7 +687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public string Tier5 { get; set; }
     }
 
-    public class APITestScore
+    public class ApiTestScore
     {
         [JsonProperty("studentsEligible")]
         public int StudentsEligible { get; set; }
@@ -735,7 +735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public double PercentTier5 { get; set; }
     }
 
-    public class APISchoolListRank2
+    public class ApiSchoolListRank2
     {
         [JsonProperty("rankYear")]
         public int RankYear { get; set; }
@@ -753,10 +753,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public int NumberOfPages { get; set; }
 
         [JsonProperty("schoolList")]
-        public APISchool2Summary[] SchoolList { get; set; }
+        public ApiSchool2Summary[] SchoolList { get; set; }
     }
 
-    public class APISchool2Summary
+    public class ApiSchool2Summary
     {
         [JsonProperty("schoolid")]
         public string Schoolid { get; set; }
@@ -774,7 +774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public string UrlCompare { get; set; }
 
         [JsonProperty("address")]
-        public APILocation Address { get; set; }
+        public ApiLocation Address { get; set; }
 
         [JsonProperty("distance")]
         public double Distance { get; set; }
@@ -813,19 +813,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public bool LocationIsWithinBoundary { get; set; }
 
         [JsonProperty("district")]
-        public APIDistrictSum District { get; set; }
+        public ApiDistrictSum District { get; set; }
 
         [JsonProperty("county")]
-        public APICounty County { get; set; }
+        public ApiCounty County { get; set; }
 
         [JsonProperty("rankHistory")]
-        public APIRankHistory[] RankHistory { get; set; }
+        public ApiRankHistory[] RankHistory { get; set; }
 
         [JsonProperty("rankMovement")]
         public int RankMovement { get; set; }
 
         [JsonProperty("schoolYearlyDetails")]
-        public APIYearlyDemographics[] SchoolYearlyDetails { get; set; }
+        public ApiYearlyDemographics[] SchoolYearlyDetails { get; set; }
 
         [JsonProperty("isPrivate")]
         public bool IsPrivate { get; set; }
@@ -846,7 +846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public string PrivateOrientation { get; set; }
     }
 
-    public class APIDistrictSum
+    public class ApiDistrictSum
     {
         [JsonProperty("districtID")]
         public string DistrictId { get; set; }
@@ -858,10 +858,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public string Url { get; set; }
 
         [JsonProperty("rankURL")]
-        public string RankURL { get; set; }
+        public string RankUrl { get; set; }
     }
 
-    public class APIRankHistory
+    public class ApiRankHistory
     {
         [JsonProperty("year")]
         public int Year { get; set; }
@@ -885,7 +885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public double AverageStandardScore { get; set; }
     }
 
-    public class APIYearlyDemographics
+    public class ApiYearlyDemographics
     {
         [JsonProperty("year")]
         public int Year { get; set; }
@@ -959,7 +959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         High
     }
 
-    public class APIDistrictListRank2
+    public class ApiDistrictListRank2
     {
         [JsonProperty("rankYear")]
         public int RankYear { get; set; }
@@ -977,13 +977,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public int NumberOfPages { get; set; }
 
         [JsonProperty("districtList")]
-        public APIDistrict2Summary[] DistrictList { get; set; }
+        public ApiDistrict2Summary[] DistrictList { get; set; }
 
         [JsonProperty("rankCompareYear")]
         public int RankCompareYear { get; set; }
     }
 
-    public class APISchoolList2
+    public class ApiSchoolList2
     {
         [JsonProperty("numberOfSchools")]
         public int NumberOfSchools { get; set; }
@@ -992,7 +992,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public int NumberOfPages { get; set; }
 
         [JsonProperty("schoolList")]
-        public APISchool2Summary[] SchoolList { get; set; }
+        public ApiSchool2Summary[] SchoolList { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1017,7 +1017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         Rank
     }
 
-    public class APISchool20Full
+    public class ApiSchool20Full
     {
         [JsonProperty("schoolid")]
         public string Schoolid { get; set; }
@@ -1038,7 +1038,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public string UrlCompareSchoolDigger { get; set; }
 
         [JsonProperty("address")]
-        public APILocation Address { get; set; }
+        public ApiLocation Address { get; set; }
 
         [JsonProperty("locale")]
         public string Locale { get; set; }
@@ -1086,31 +1086,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public string PrivateOrientation { get; set; }
 
         [JsonProperty("district")]
-        public APIDistrictSum District { get; set; }
+        public ApiDistrictSum District { get; set; }
 
         [JsonProperty("county")]
-        public APICounty County { get; set; }
+        public ApiCounty County { get; set; }
 
         [JsonProperty("reviews")]
-        public APISchoolReview[] Reviews { get; set; }
+        public ApiSchoolReview[] Reviews { get; set; }
 
         [JsonProperty("finance")]
-        public APISchoolFinance[] Finance { get; set; }
+        public ApiSchoolFinance[] Finance { get; set; }
 
         [JsonProperty("rankHistory")]
-        public APIRankHistory[] RankHistory { get; set; }
+        public ApiRankHistory[] RankHistory { get; set; }
 
         [JsonProperty("rankMovement")]
         public int RankMovement { get; set; }
 
         [JsonProperty("testScores")]
-        public APITestScoreWrapper[] TestScores { get; set; }
+        public ApiTestScoreWrapper[] TestScores { get; set; }
 
         [JsonProperty("schoolYearlyDetails")]
-        public APIYearlyDemographics[] SchoolYearlyDetails { get; set; }
+        public ApiYearlyDemographics[] SchoolYearlyDetails { get; set; }
     }
 
-    public class APISchoolReview
+    public class ApiSchoolReview
     {
         [JsonProperty("submitDate")]
         public string SubmitDate { get; set; }
@@ -1125,7 +1125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public string SubmittedBy { get; set; }
     }
 
-    public class APISchoolFinance
+    public class ApiSchoolFinance
     {
         [JsonProperty("year")]
         public int Year { get; set; }

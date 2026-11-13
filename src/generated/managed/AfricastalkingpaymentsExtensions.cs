@@ -27,15 +27,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
-        public IBodyWorkflowAction<FetchWalletBalanceResponse, ApiConnectionActionConfiguration> FetchWalletBalance(Expression<Func<string>> username)
+        public IBodyWorkflowAction<FetchWalletBalanceResponse, ApiConnectionActionConfiguration> FetchWalletBalance(Expression<Func<string>> userName)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             return new DeferredBodyAction<FetchWalletBalanceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/query/wallet/balance";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
+                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_userName);
                 return new ApiConnectionAction<FetchWalletBalanceResponse>(callPayload);
             });
         }
@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
-        public IBodyWorkflowAction<FetchWalletTransactionsResponse, ApiConnectionActionConfiguration> FetchWalletTransactions(Expression<Func<string>> username, Expression<Func<int>> pageNumber, Expression<Func<int>> count, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
+        public IBodyWorkflowAction<FetchWalletTransactionsResponse, ApiConnectionActionConfiguration> FetchWalletTransactions(Expression<Func<string>> userName, Expression<Func<int>> pageNumber, Expression<Func<int>> count, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_pageNumber = WorkflowExpression.Compile(pageNumber, nameof(pageNumber), required: true);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: true);
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
                 var apiCallPath = "/query/wallet/fetch";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
+                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Queries["pageNumber"] = ExpressionConverter.Convert(__workflow_pageNumber);
                 callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
                 if (__workflow_startDate != null)
@@ -93,9 +93,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
-        public IBodyWorkflowAction<FetchProductTransactionsResponse, ApiConnectionActionConfiguration> FetchProductTransactions(Expression<Func<string>> username, Expression<Func<string>> productName, Expression<Func<int>> pageNumber, Expression<Func<int>> count, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<CategoryInput>> category = null, Expression<Func<ProviderInput>> provider = null, Expression<Func<StatusInput>> status = null, Expression<Func<SourceInput>> source = null, Expression<Func<DestinationInput>> destination = null, Expression<Func<string>> providerChannel = null)
+        public IBodyWorkflowAction<FetchProductTransactionsResponse, ApiConnectionActionConfiguration> FetchProductTransactions(Expression<Func<string>> userName, Expression<Func<string>> productName, Expression<Func<int>> pageNumber, Expression<Func<int>> count, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<CategoryInput>> category = null, Expression<Func<ProviderInput>> provider = null, Expression<Func<StatusInput>> status = null, Expression<Func<SourceInput>> source = null, Expression<Func<DestinationInput>> destination = null, Expression<Func<string>> providerChannel = null)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_productName = WorkflowExpression.Compile(productName, nameof(productName), required: true);
             var __workflow_pageNumber = WorkflowExpression.Compile(pageNumber, nameof(pageNumber), required: true);
             var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: true);
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
                 var apiCallPath = "/query/transaction/fetch";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
+                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Queries["productName"] = ExpressionConverter.Convert(__workflow_productName);
                 callPayload.Queries["pageNumber"] = ExpressionConverter.Convert(__workflow_pageNumber);
                 callPayload.Queries["count"] = ExpressionConverter.Convert(__workflow_count);
@@ -186,9 +186,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
 
     public class MobileB2BBodyInput
     {
-        public MobileB2BBodyInput(string username, string productName, BodyInputProviderType provider, BodyInputTransferTypeType transferType, MobileB2BBodyInputCurrencyCodeType currencyCode, double amount, string destinationChannel, string destinationAccount)
+        public MobileB2BBodyInput(string userName, string productName, BodyInputProviderType provider, BodyInputTransferTypeType transferType, MobileB2BBodyInputCurrencyCodeType currencyCode, double amount, string destinationChannel, string destinationAccount)
         {
-            this.Username = username;
+            this.UserName = userName;
             this.ProductName = productName;
             this.Provider = provider;
             this.TransferType = transferType;
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         }
 
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("productName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProductName { get; set; }
@@ -246,11 +246,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MobileB2BBodyInputCurrencyCodeType
     {
-        KES,
-        UGX,
-        NGN,
-        USD,
-        TZS
+        [EnumMember(Value = "KES")]
+        Kes,
+        [EnumMember(Value = "UGX")]
+        Ugx,
+        [EnumMember(Value = "NGN")]
+        Ngn,
+        [EnumMember(Value = "USD")]
+        Usd,
+        [EnumMember(Value = "TZS")]
+        Tzs
     }
 
     public class FetchWalletBalanceResponse
@@ -276,9 +281,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
 
     public class WalletTransferBodyInput
     {
-        public WalletTransferBodyInput(string username, string productName, int targetProductCode, MobileCheckoutBodyInputCurrencyCodeType currencyCode, double amount)
+        public WalletTransferBodyInput(string userName, string productName, int targetProductCode, MobileCheckoutBodyInputCurrencyCodeType currencyCode, double amount)
         {
-            this.Username = username;
+            this.UserName = userName;
             this.ProductName = productName;
             this.TargetProductCode = targetProductCode;
             this.CurrencyCode = currencyCode;
@@ -286,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         }
 
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("productName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProductName { get; set; }
@@ -307,10 +312,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MobileCheckoutBodyInputCurrencyCodeType
     {
-        KES,
-        UGX,
-        TZS,
-        USD
+        [EnumMember(Value = "KES")]
+        Kes,
+        [EnumMember(Value = "UGX")]
+        Ugx,
+        [EnumMember(Value = "TZS")]
+        Tzs,
+        [EnumMember(Value = "USD")]
+        Usd
     }
 
     public class FetchWalletTransactionsResponse
@@ -432,16 +441,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
 
     public class TopUpStashBodyInput
     {
-        public TopUpStashBodyInput(string username, string productName, MobileCheckoutBodyInputCurrencyCodeType currencyCode, double amount)
+        public TopUpStashBodyInput(string userName, string productName, MobileCheckoutBodyInputCurrencyCodeType currencyCode, double amount)
         {
-            this.Username = username;
+            this.UserName = userName;
             this.ProductName = productName;
             this.CurrencyCode = currencyCode;
             this.Amount = amount;
         }
 
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("productName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProductName { get; set; }
@@ -608,9 +617,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
 
     public class MobileCheckoutBodyInput
     {
-        public MobileCheckoutBodyInput(string username, string productName, string phoneNumber, MobileCheckoutBodyInputCurrencyCodeType currencyCode, double amount)
+        public MobileCheckoutBodyInput(string userName, string productName, string phoneNumber, MobileCheckoutBodyInputCurrencyCodeType currencyCode, double amount)
         {
-            this.Username = username;
+            this.UserName = userName;
             this.ProductName = productName;
             this.PhoneNumber = phoneNumber;
             this.CurrencyCode = currencyCode;
@@ -618,7 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         }
 
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("productName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProductName { get; set; }
@@ -680,15 +689,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
 
     public class MobileB2CBodyInput
     {
-        public MobileB2CBodyInput(string username, string productName, BodyInputRecipientsTypeItem[] recipients)
+        public MobileB2CBodyInput(string userName, string productName, BodyInputRecipientsTypeItem[] recipients)
         {
-            this.Username = username;
+            this.UserName = userName;
             this.ProductName = productName;
             this.Recipients = recipients;
         }
 
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("productName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ProductName { get; set; }
@@ -731,10 +740,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputRecipientsTypeItemCurrencyCodeType
     {
-        KES,
-        UGX,
-        TZS,
-        USD
+        [EnumMember(Value = "KES")]
+        Kes,
+        [EnumMember(Value = "UGX")]
+        Ugx,
+        [EnumMember(Value = "TZS")]
+        Tzs,
+        [EnumMember(Value = "USD")]
+        Usd
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

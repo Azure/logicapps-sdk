@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdayhcm")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SOAPOperation(Expression<Func<string>> body)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SoapOperation(Expression<Func<string>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public class AddOrUpdateAddressInformationAddressInformationDataCountryReferenceType
     {
         [JsonProperty("CountryIDType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal AddOrUpdateAddressInformationAddressInformationDataCountryReferenceTypeCountryIdTypeType CountryIdType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm.AddOrUpdateAddressInformationAddressInformationDataCountryReferenceTypeCountryIdTypeType.ISO31661Alpha3Code;
+        internal AddOrUpdateAddressInformationAddressInformationDataCountryReferenceTypeCountryIdTypeType CountryIdType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm.AddOrUpdateAddressInformationAddressInformationDataCountryReferenceTypeCountryIdTypeType.Iso31661Alpha3Code;
 
         [JsonProperty("CountryID")]
         public AddOrUpdateAddressInformationAddressInformationDataCountryReferenceTypeCountryIdType? CountryId { get; set; }
@@ -294,23 +294,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public enum AddOrUpdateAddressInformationAddressInformationDataCountryReferenceTypeCountryIdTypeType
     {
         [EnumMember(Value = "ISO 3166-1 Alpha-2 Code")]
-        ISO31661Alpha2Code,
+        Iso31661Alpha2Code,
         [EnumMember(Value = "ISO 3166-1 Alpha-3 Code")]
-        ISO31661Alpha3Code,
+        Iso31661Alpha3Code,
         [EnumMember(Value = "ISO 3166-1 Numeric-3 Code")]
-        ISO31661Numeric3Code
+        Iso31661Numeric3Code
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddOrUpdateAddressInformationAddressInformationDataCountryReferenceTypeCountryIdType
     {
-        USA,
-        GBR,
-        CAN,
-        CHN,
-        IND,
-        MEX,
-        JPN
+        [EnumMember(Value = "USA")]
+        Usa,
+        [EnumMember(Value = "GBR")]
+        Gbr,
+        [EnumMember(Value = "CAN")]
+        Can,
+        [EnumMember(Value = "CHN")]
+        Chn,
+        [EnumMember(Value = "IND")]
+        Ind,
+        [EnumMember(Value = "MEX")]
+        Mex,
+        [EnumMember(Value = "JPN")]
+        Jpn
     }
 
     public class AddOrUpdateAddressInformationAddressInformationDataAddressLineDataTypeItem
@@ -323,17 +330,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public enum AddOrUpdateAddressInformationAddressInformationDataAddressLineDataTypeItemAddessLineTypeType
     {
         [EnumMember(Value = "ADDRESS LINE 1")]
-        ADDRESSLINE1,
+        AddressLine1,
         [EnumMember(Value = "ADDRESS LINE 2")]
-        ADDRESSLINE2,
+        AddressLine2,
         [EnumMember(Value = "ADDRESS LINE 3")]
-        ADDRESSLINE3
+        AddressLine3
     }
 
     public class AddOrUpdateAddressInformationAddressInformationDataCountryRegionReferenceType
     {
         [JsonProperty("CountryRegionIDType", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal AddOrUpdateAddressInformationAddressInformationDataCountryRegionReferenceTypeCountryRegionIdTypeType CountryRegionIdType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm.AddOrUpdateAddressInformationAddressInformationDataCountryRegionReferenceTypeCountryRegionIdTypeType.ISO31662Code;
+        internal AddOrUpdateAddressInformationAddressInformationDataCountryRegionReferenceTypeCountryRegionIdTypeType CountryRegionIdType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm.AddOrUpdateAddressInformationAddressInformationDataCountryRegionReferenceTypeCountryRegionIdTypeType.Iso31662Code;
 
         [JsonProperty("CountryRegionID")]
         public string CountryRegionId { get; set; }
@@ -345,7 +352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         [EnumMember(Value = "Country Region ID")]
         CountryRegionId,
         [EnumMember(Value = "ISO 3166-2 Code")]
-        ISO31662Code
+        Iso31662Code
     }
 
     public class AddOrUpdateAddressInformationAddressInformationDataUsageDataType
@@ -381,7 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         [EnumMember(Value = "Communication_Usage_Type_ID")]
         CommunicationUsageTypeId,
         [EnumMember(Value = "WID")]
-        WId
+        Wid
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -423,7 +430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public class AddOrUpdatePhoneInformationPhoneInformationData
     {
         [JsonProperty("country_ISO_Code")]
-        public AddOrUpdatePhoneInformationPhoneInformationDataCountryISOCodeType? CountryISOCode { get; set; }
+        public AddOrUpdatePhoneInformationPhoneInformationDataCountryIsoCodeType? CountryIsoCode { get; set; }
 
         [JsonProperty("area_Code")]
         public string AreaCode { get; set; }
@@ -442,15 +449,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AddOrUpdatePhoneInformationPhoneInformationDataCountryISOCodeType
+    public enum AddOrUpdatePhoneInformationPhoneInformationDataCountryIsoCodeType
     {
-        USA,
-        GBR,
-        CAN,
-        CHN,
-        IND,
-        MEX,
-        JPN
+        [EnumMember(Value = "USA")]
+        Usa,
+        [EnumMember(Value = "GBR")]
+        Gbr,
+        [EnumMember(Value = "CAN")]
+        Can,
+        [EnumMember(Value = "CHN")]
+        Chn,
+        [EnumMember(Value = "IND")]
+        Ind,
+        [EnumMember(Value = "MEX")]
+        Mex,
+        [EnumMember(Value = "JPN")]
+        Jpn
     }
 
     public class AddOrUpdatePhoneInformationPhoneInformationDataPhoneDeviceTypeReferenceType
@@ -468,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         [EnumMember(Value = "Phone_Device_Type_ID")]
         PhoneDeviceTypeId,
         [EnumMember(Value = "WID")]
-        WId
+        Wid
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -513,7 +527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         [EnumMember(Value = "Communication_Usage_Type_ID")]
         CommunicationUsageTypeId,
         [EnumMember(Value = "WID")]
-        WId
+        Wid
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -594,7 +608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         [EnumMember(Value = "Communication_Usage_Type_ID")]
         CommunicationUsageTypeId,
         [EnumMember(Value = "WID")]
-        WId
+        Wid
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -660,18 +674,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         [EnumMember(Value = "Instant_Messenger_Type_ID")]
         InstantMessengerTypeId,
         [EnumMember(Value = "WID")]
-        WId
+        Wid
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddOrUpdateInstantMessengerInformationInstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIdType
     {
-        AIM,
+        [EnumMember(Value = "AIM")]
+        Aim,
         [EnumMember(Value = "Google Talk")]
         GoogleTalk,
         Lync,
         Meebo,
-        MSN,
+        [EnumMember(Value = "MSN")]
+        Msn,
         Skype,
         Yahoo
     }
@@ -777,7 +793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeNameDataTypeItemCountryReferenceType
     {
         [JsonProperty("country_ISO_Code")]
-        public string CountryISOCode { get; set; }
+        public string CountryIsoCode { get; set; }
     }
 
     public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeContactDataType
@@ -840,7 +856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         [EnumMember(Value = "Communication_Usage_Type_ID")]
         CommunicationUsageTypeId,
         [EnumMember(Value = "WID")]
-        WId
+        Wid
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -859,7 +875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public class GetEmployeePersonalInfoPhoneInformationDataResponse
     {
         [JsonProperty("country_ISO_Code")]
-        public GetEmployeePersonalInfoPhoneInformationDataCountryISOCodeTypeResponse CountryISOCode { get; set; }
+        public GetEmployeePersonalInfoPhoneInformationDataCountryIsoCodeTypeResponse CountryIsoCode { get; set; }
 
         [JsonProperty("area_Code")]
         public string AreaCode { get; set; }
@@ -878,15 +894,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetEmployeePersonalInfoPhoneInformationDataCountryISOCodeTypeResponse
+    public enum GetEmployeePersonalInfoPhoneInformationDataCountryIsoCodeTypeResponse
     {
-        USA,
-        GBR,
-        CAN,
-        CHN,
-        IND,
-        MEX,
-        JPN
+        [EnumMember(Value = "USA")]
+        Usa,
+        [EnumMember(Value = "GBR")]
+        Gbr,
+        [EnumMember(Value = "CAN")]
+        Can,
+        [EnumMember(Value = "CHN")]
+        Chn,
+        [EnumMember(Value = "IND")]
+        Ind,
+        [EnumMember(Value = "MEX")]
+        Mex,
+        [EnumMember(Value = "JPN")]
+        Jpn
     }
 
     public class GetEmployeePersonalInfoPhoneInformationDataPhoneDeviceTypeReferenceTypeResponse
@@ -904,7 +927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         [EnumMember(Value = "Phone_Device_Type_ID")]
         PhoneDeviceTypeId,
         [EnumMember(Value = "WID")]
-        WId
+        Wid
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -949,7 +972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         [EnumMember(Value = "Communication_Usage_Type_ID")]
         CommunicationUsageTypeId,
         [EnumMember(Value = "WID")]
-        WId
+        Wid
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -999,23 +1022,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public enum GetEmployeePersonalInfoAddressInformationDataCountryReferenceTypeCountryIdTypeTypeResponse
     {
         [EnumMember(Value = "ISO 3166-1 Alpha-2 Code")]
-        ISO31661Alpha2Code,
+        Iso31661Alpha2Code,
         [EnumMember(Value = "ISO 3166-1 Alpha-3 Code")]
-        ISO31661Alpha3Code,
+        Iso31661Alpha3Code,
         [EnumMember(Value = "ISO 3166-1 Numeric-3 Code")]
-        ISO31661Numeric3Code
+        Iso31661Numeric3Code
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetEmployeePersonalInfoAddressInformationDataCountryReferenceTypeCountryIdTypeResponse
     {
-        USA,
-        GBR,
-        CAN,
-        CHN,
-        IND,
-        MEX,
-        JPN
+        [EnumMember(Value = "USA")]
+        Usa,
+        [EnumMember(Value = "GBR")]
+        Gbr,
+        [EnumMember(Value = "CAN")]
+        Can,
+        [EnumMember(Value = "CHN")]
+        Chn,
+        [EnumMember(Value = "IND")]
+        Ind,
+        [EnumMember(Value = "MEX")]
+        Mex,
+        [EnumMember(Value = "JPN")]
+        Jpn
     }
 
     public class GetEmployeePersonalInfoAddressInformationDataAddressLineDataTypeItemResponse
@@ -1028,11 +1058,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public enum GetEmployeePersonalInfoAddressInformationDataAddressLineDataTypeItemAddessLineTypeTypeResponse
     {
         [EnumMember(Value = "ADDRESS LINE 1")]
-        ADDRESSLINE1,
+        AddressLine1,
         [EnumMember(Value = "ADDRESS LINE 2")]
-        ADDRESSLINE2,
+        AddressLine2,
         [EnumMember(Value = "ADDRESS LINE 3")]
-        ADDRESSLINE3
+        AddressLine3
     }
 
     public class GetEmployeePersonalInfoAddressInformationDataCountryRegionReferenceTypeResponse
@@ -1050,7 +1080,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         [EnumMember(Value = "Country Region ID")]
         CountryRegionId,
         [EnumMember(Value = "ISO 3166-2 Code")]
-        ISO31662Code
+        Iso31662Code
     }
 
     public class GetEmployeePersonalInfoAddressInformationDataUsageDataTypeResponse
@@ -1086,7 +1116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         [EnumMember(Value = "Communication_Usage_Type_ID")]
         CommunicationUsageTypeId,
         [EnumMember(Value = "WID")]
-        WId
+        Wid
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1129,18 +1159,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         [EnumMember(Value = "Instant_Messenger_Type_ID")]
         InstantMessengerTypeId,
         [EnumMember(Value = "WID")]
-        WId
+        Wid
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetEmployeePersonalInfoInstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIdTypeResponse
     {
-        AIM,
+        [EnumMember(Value = "AIM")]
+        Aim,
         [EnumMember(Value = "Google Talk")]
         GoogleTalk,
         Lync,
         Meebo,
-        MSN,
+        [EnumMember(Value = "MSN")]
+        Msn,
         Skype,
         Yahoo
     }
@@ -1208,7 +1240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeCitizenshipStatusReferenceTypeItemCountryReferenceType
     {
         [JsonProperty("country_ISO_Code")]
-        public string CountryISOCode { get; set; }
+        public string CountryIsoCode { get; set; }
     }
 
     public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeNationalityReferenceTypeItem
@@ -1241,7 +1273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeDemographicDataTypeMilitaryServiceDataTypeItemMilitaryStatusReferenceTypeCountryReferenceType
     {
         [JsonProperty("country_ISO_Code")]
-        public string CountryISOCode { get; set; }
+        public string CountryIsoCode { get; set; }
     }
 
     public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataType
@@ -1274,7 +1306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeCountryOfBirthReferenceTypeCountryReferenceType
     {
         [JsonProperty("country_ISO_Code")]
-        public string CountryISOCode { get; set; }
+        public string CountryIsoCode { get; set; }
     }
 
     public class EmployeePersonalInfoInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeBiographicDataTypeGenderReferenceType
@@ -1376,7 +1408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public class EmployeeIdentityInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeVisaIdDataTypeItemCountryReferenceType
     {
         [JsonProperty("country_ISO_Code")]
-        public string CountryISOCode { get; set; }
+        public string CountryIsoCode { get; set; }
     }
 
     public class EmployeeIdentityInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeCustomIdDataTypeItem
@@ -1430,7 +1462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public class EmployeeIdentityInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeGovernmentIdDataTypeItemCountryReferenceType
     {
         [JsonProperty("country_ISO_Code")]
-        public string CountryISOCode { get; set; }
+        public string CountryIsoCode { get; set; }
     }
 
     public class EmployeeIdentityInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypeLicenseIdDataTypeItem
@@ -1490,7 +1522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     public class EmployeeIdentityInfoEmployeePersonalInfoTypeEmployeePersonalInfoDataTypePersonalInfoDataTypePersonDataTypePassportIdDataTypeItemCountryReferenceType
     {
         [JsonProperty("country_ISO_Code")]
-        public string CountryISOCode { get; set; }
+        public string CountryIsoCode { get; set; }
     }
 
     public class EmployeeQualificationInfo

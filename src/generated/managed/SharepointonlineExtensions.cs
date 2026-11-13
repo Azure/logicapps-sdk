@@ -1334,7 +1334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         }
 
         [JsonProperty("method", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ParametersInputMethodType Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline.ParametersInputMethodType.GET;
+        public ParametersInputMethodType Method { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline.ParametersInputMethodType.Get;
 
         [JsonProperty("uri", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Uri { get; set; }
@@ -1349,11 +1349,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ParametersInputMethodType
     {
-        GET,
-        PUT,
-        POST,
-        PATCH,
-        DELETE
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "PUT")]
+        Put,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "PATCH")]
+        Patch,
+        [EnumMember(Value = "DELETE")]
+        Delete
     }
 
     public class MoveFileAsyncParametersInput
@@ -1565,9 +1570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [JsonProperty("ID")]
         public int Id { get; set; }
         public string Name { get; set; }
-
-        [JsonProperty("FileNameWithExtension")]
-        public string FilenameWithExtension { get; set; }
+        public string FileNameWithExtension { get; set; }
 
         [JsonProperty("DeletedByUserName")]
         public string DeletedBy { get; set; }

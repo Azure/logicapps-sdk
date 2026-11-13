@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [JsonProperty("algorithm", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OperationInputInputAlgorithmType Algorithm { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault.OperationInputInputAlgorithmType.RSAOAEP256;
+        public OperationInputInputAlgorithmType Algorithm { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault.OperationInputInputAlgorithmType.RsaOaep256;
 
         [JsonProperty("rawData", DefaultValueHandling = DefaultValueHandling.Include)]
         public string RawData { get; set; }
@@ -273,11 +273,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
     public enum OperationInputInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP-256")]
-        RSAOAEP256,
+        RsaOaep256,
         [EnumMember(Value = "RSA-OAEP")]
-        RSAOAEP,
+        RsaOaep,
         [EnumMember(Value = "RSA1_5")]
-        RSA15
+        Rsa15
     }
 
     public class KeyDecryptOutput
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [JsonProperty("algorithm", DefaultValueHandling = DefaultValueHandling.Include)]
-        public OperationInputInputAlgorithmType Algorithm { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault.OperationInputInputAlgorithmType.RSAOAEP256;
+        public OperationInputInputAlgorithmType Algorithm { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault.OperationInputInputAlgorithmType.RsaOaep256;
 
         [JsonProperty("encryptedData", DefaultValueHandling = DefaultValueHandling.Include)]
         public string EncryptedData { get; set; }

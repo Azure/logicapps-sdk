@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
     public class ServiceobjectsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<AVIGetAddressInfoResponse, ApiConnectionActionConfiguration> AVIGetAddressInfo(Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> administrativeArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> outputLanguage = null)
+        public IBodyWorkflowAction<AviGetAddressInfoResponse, ApiConnectionActionConfiguration> AviGetAddressInfo(Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> administrativeArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> outputLanguage = null)
         {
             var __workflow_address1 = WorkflowExpression.Compile(address1, nameof(address1), required: false);
             var __workflow_address2 = WorkflowExpression.Compile(address2, nameof(address2), required: false);
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             var __workflow_outputLanguage = WorkflowExpression.Compile(outputLanguage, nameof(outputLanguage), required: false);
-            return new DeferredBodyAction<AVIGetAddressInfoResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AviGetAddressInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AVI/api.svc/json/GetAddressInfo";
                 var apiCallHttpMethod = "get";
@@ -50,12 +50,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                     callPayload.Queries["Country"] = ExpressionConverter.Convert(__workflow_country);
                 if (__workflow_outputLanguage != null)
                     callPayload.Queries["OutputLanguage"] = ExpressionConverter.Convert(__workflow_outputLanguage);
-                return new ApiConnectionAction<AVIGetAddressInfoResponse>(callPayload);
+                return new ApiConnectionAction<AviGetAddressInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<AGIPlaceSearchResponse, ApiConnectionActionConfiguration> AGIPlaceSearch(Expression<Func<string>> singleLine = null, Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> administrativeArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> boundaries = null, Expression<Func<string>> maxResults = null, Expression<Func<string>> searchType = null, Expression<Func<string>> extras = null)
+        public IBodyWorkflowAction<AgiPlaceSearchResponse, ApiConnectionActionConfiguration> AgiPlaceSearch(Expression<Func<string>> singleLine = null, Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> administrativeArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> boundaries = null, Expression<Func<string>> maxResults = null, Expression<Func<string>> searchType = null, Expression<Func<string>> extras = null)
         {
             var __workflow_singleLine = WorkflowExpression.Compile(singleLine, nameof(singleLine), required: false);
             var __workflow_address1 = WorkflowExpression.Compile(address1, nameof(address1), required: false);
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             var __workflow_searchType = WorkflowExpression.Compile(searchType, nameof(searchType), required: false);
             var __workflow_extras = WorkflowExpression.Compile(extras, nameof(extras), required: false);
-            return new DeferredBodyAction<AGIPlaceSearchResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AgiPlaceSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AGI/api.svc/json/PlaceSearch";
                 var apiCallHttpMethod = "get";
@@ -104,12 +104,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                     callPayload.Queries["SearchType"] = ExpressionConverter.Convert(__workflow_searchType);
                 if (__workflow_extras != null)
                     callPayload.Queries["Extras"] = ExpressionConverter.Convert(__workflow_extras);
-                return new ApiConnectionAction<AGIPlaceSearchResponse>(callPayload);
+                return new ApiConnectionAction<AgiPlaceSearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<AGIReverseSearchResponse, ApiConnectionActionConfiguration> AGIReverseSearch(Expression<Func<string>> latitude = null, Expression<Func<string>> longitude = null, Expression<Func<string>> searchRadius = null, Expression<Func<string>> country = null, Expression<Func<string>> maxResults = null, Expression<Func<string>> searchType = null)
+        public IBodyWorkflowAction<AgiReverseSearchResponse, ApiConnectionActionConfiguration> AgiReverseSearch(Expression<Func<string>> latitude = null, Expression<Func<string>> longitude = null, Expression<Func<string>> searchRadius = null, Expression<Func<string>> country = null, Expression<Func<string>> maxResults = null, Expression<Func<string>> searchType = null)
         {
             var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: false);
             var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: false);
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             var __workflow_searchType = WorkflowExpression.Compile(searchType, nameof(searchType), required: false);
-            return new DeferredBodyAction<AGIReverseSearchResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AgiReverseSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AGI/api.svc/json/ReverseSearch";
                 var apiCallHttpMethod = "get";
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                     callPayload.Queries["MaxResults"] = ExpressionConverter.Convert(__workflow_maxResults);
                 if (__workflow_searchType != null)
                     callPayload.Queries["SearchType"] = ExpressionConverter.Convert(__workflow_searchType);
-                return new ApiConnectionAction<AGIReverseSearchResponse>(callPayload);
+                return new ApiConnectionAction<AgiReverseSearchResponse>(callPayload);
             });
         }
 
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<LVIValidateLeadInternationalResponse, ApiConnectionActionConfiguration> LVIValidateLeadInternational(Expression<Func<string>> fullName = null, Expression<Func<string>> salutation = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> businessName = null, Expression<Func<string>> businessDomain = null, Expression<Func<string>> businessEIN = null, Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> adminArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> phone1 = null, Expression<Func<string>> phone2 = null, Expression<Func<string>> email = null, Expression<Func<string>> iPAddress = null, Expression<Func<string>> gender = null, Expression<Func<string>> dateOfBirth = null, Expression<Func<string>> uTCCaptureTime = null, Expression<Func<string>> outputLanguage = null, Expression<Func<string>> testType = null)
+        public IBodyWorkflowAction<LviValidateLeadInternationalResponse, ApiConnectionActionConfiguration> LviValidateLeadInternational(Expression<Func<string>> fullName = null, Expression<Func<string>> salutation = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> businessName = null, Expression<Func<string>> businessDomain = null, Expression<Func<string>> businessEin = null, Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> adminArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> phone1 = null, Expression<Func<string>> phone2 = null, Expression<Func<string>> email = null, Expression<Func<string>> ipAddress = null, Expression<Func<string>> gender = null, Expression<Func<string>> dateOfBirth = null, Expression<Func<string>> utcCaptureTime = null, Expression<Func<string>> outputLanguage = null, Expression<Func<string>> testType = null)
         {
             var __workflow_fullName = WorkflowExpression.Compile(fullName, nameof(fullName), required: false);
             var __workflow_salutation = WorkflowExpression.Compile(salutation, nameof(salutation), required: false);
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: false);
             var __workflow_businessName = WorkflowExpression.Compile(businessName, nameof(businessName), required: false);
             var __workflow_businessDomain = WorkflowExpression.Compile(businessDomain, nameof(businessDomain), required: false);
-            var __workflow_businessEIN = WorkflowExpression.Compile(businessEIN, nameof(businessEIN), required: false);
+            var __workflow_businessEin = WorkflowExpression.Compile(businessEin, nameof(businessEin), required: false);
             var __workflow_address1 = WorkflowExpression.Compile(address1, nameof(address1), required: false);
             var __workflow_address2 = WorkflowExpression.Compile(address2, nameof(address2), required: false);
             var __workflow_address3 = WorkflowExpression.Compile(address3, nameof(address3), required: false);
@@ -178,13 +178,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
             var __workflow_phone1 = WorkflowExpression.Compile(phone1, nameof(phone1), required: false);
             var __workflow_phone2 = WorkflowExpression.Compile(phone2, nameof(phone2), required: false);
             var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: false);
-            var __workflow_iPAddress = WorkflowExpression.Compile(iPAddress, nameof(iPAddress), required: false);
+            var __workflow_ipAddress = WorkflowExpression.Compile(ipAddress, nameof(ipAddress), required: false);
             var __workflow_gender = WorkflowExpression.Compile(gender, nameof(gender), required: false);
             var __workflow_dateOfBirth = WorkflowExpression.Compile(dateOfBirth, nameof(dateOfBirth), required: false);
-            var __workflow_uTCCaptureTime = WorkflowExpression.Compile(uTCCaptureTime, nameof(uTCCaptureTime), required: false);
+            var __workflow_utcCaptureTime = WorkflowExpression.Compile(utcCaptureTime, nameof(utcCaptureTime), required: false);
             var __workflow_outputLanguage = WorkflowExpression.Compile(outputLanguage, nameof(outputLanguage), required: false);
             var __workflow_testType = WorkflowExpression.Compile(testType, nameof(testType), required: false);
-            return new DeferredBodyAction<LVIValidateLeadInternationalResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<LviValidateLeadInternationalResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/LVI/api.svc/json/ValidateLeadInternational";
                 var apiCallHttpMethod = "get";
@@ -201,8 +201,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                     callPayload.Queries["BusinessName"] = ExpressionConverter.Convert(__workflow_businessName);
                 if (__workflow_businessDomain != null)
                     callPayload.Queries["BusinessDomain"] = ExpressionConverter.Convert(__workflow_businessDomain);
-                if (__workflow_businessEIN != null)
-                    callPayload.Queries["BusinessEIN"] = ExpressionConverter.Convert(__workflow_businessEIN);
+                if (__workflow_businessEin != null)
+                    callPayload.Queries["BusinessEIN"] = ExpressionConverter.Convert(__workflow_businessEin);
                 if (__workflow_address1 != null)
                     callPayload.Queries["Address1"] = ExpressionConverter.Convert(__workflow_address1);
                 if (__workflow_address2 != null)
@@ -227,19 +227,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
                     callPayload.Queries["Phone2"] = ExpressionConverter.Convert(__workflow_phone2);
                 if (__workflow_email != null)
                     callPayload.Queries["Email"] = ExpressionConverter.Convert(__workflow_email);
-                if (__workflow_iPAddress != null)
-                    callPayload.Queries["IPAddress"] = ExpressionConverter.Convert(__workflow_iPAddress);
+                if (__workflow_ipAddress != null)
+                    callPayload.Queries["IPAddress"] = ExpressionConverter.Convert(__workflow_ipAddress);
                 if (__workflow_gender != null)
                     callPayload.Queries["Gender"] = ExpressionConverter.Convert(__workflow_gender);
                 if (__workflow_dateOfBirth != null)
                     callPayload.Queries["DateOfBirth"] = ExpressionConverter.Convert(__workflow_dateOfBirth);
-                if (__workflow_uTCCaptureTime != null)
-                    callPayload.Queries["UTCCaptureTime"] = ExpressionConverter.Convert(__workflow_uTCCaptureTime);
+                if (__workflow_utcCaptureTime != null)
+                    callPayload.Queries["UTCCaptureTime"] = ExpressionConverter.Convert(__workflow_utcCaptureTime);
                 if (__workflow_outputLanguage != null)
                     callPayload.Queries["OutputLanguage"] = ExpressionConverter.Convert(__workflow_outputLanguage);
                 if (__workflow_testType != null)
                     callPayload.Queries["TestType"] = ExpressionConverter.Convert(__workflow_testType);
-                return new ApiConnectionAction<LVIValidateLeadInternationalResponse>(callPayload);
+                return new ApiConnectionAction<LviValidateLeadInternationalResponse>(callPayload);
             });
         }
 
@@ -274,17 +274,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<IPAVGetLocationByIPResponse, ApiConnectionActionConfiguration> IPAVGetLocationByIP(Expression<Func<string>> iPAddress = null)
+        public IBodyWorkflowAction<IpavGetLocationByIpResponse, ApiConnectionActionConfiguration> IpavGetLocationByIp(Expression<Func<string>> ipAddress = null)
         {
-            var __workflow_iPAddress = WorkflowExpression.Compile(iPAddress, nameof(iPAddress), required: false);
-            return new DeferredBodyAction<IPAVGetLocationByIPResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_ipAddress = WorkflowExpression.Compile(ipAddress, nameof(ipAddress), required: false);
+            return new DeferredBodyAction<IpavGetLocationByIpResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/GPP/web.svc/json/GetLocationByIP_V4";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_iPAddress != null)
-                    callPayload.Queries["IPAddress"] = ExpressionConverter.Convert(__workflow_iPAddress);
-                return new ApiConnectionAction<IPAVGetLocationByIPResponse>(callPayload);
+                if (__workflow_ipAddress != null)
+                    callPayload.Queries["IPAddress"] = ExpressionConverter.Convert(__workflow_ipAddress);
+                return new ApiConnectionAction<IpavGetLocationByIpResponse>(callPayload);
             });
         }
     }
@@ -293,14 +293,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
     {
     }
 
-    public class AVIGetAddressInfoResponse
+    public class AviGetAddressInfoResponse
     {
-        public AVIGetAddressInfoResponseAddressInfoType AddressInfo { get; set; }
-        public AVIGetAddressInfoResponseErrorType Error { get; set; }
+        public AviGetAddressInfoResponseAddressInfoType AddressInfo { get; set; }
+        public AviGetAddressInfoResponseErrorType Error { get; set; }
         public string Debug { get; set; }
     }
 
-    public class AVIGetAddressInfoResponseAddressInfoType
+    public class AviGetAddressInfoResponseAddressInfoType
     {
         public string Status { get; set; }
         public string ResolutionLevel { get; set; }
@@ -316,18 +316,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string AdministrativeArea { get; set; }
         public string PostalCode { get; set; }
         public string Country { get; set; }
-        public string CountryISO2 { get; set; }
-        public string CountryISO3 { get; set; }
-        public AVIGetAddressInfoResponseAddressInfoTypeInformationComponentsTypeItem[] InformationComponents { get; set; }
+
+        [JsonProperty("CountryISO2")]
+        public string CountryIso2 { get; set; }
+
+        [JsonProperty("CountryISO3")]
+        public string CountryIso3 { get; set; }
+        public AviGetAddressInfoResponseAddressInfoTypeInformationComponentsTypeItem[] InformationComponents { get; set; }
     }
 
-    public class AVIGetAddressInfoResponseAddressInfoTypeInformationComponentsTypeItem
+    public class AviGetAddressInfoResponseAddressInfoTypeInformationComponentsTypeItem
     {
         public string Name { get; set; }
         public string Value { get; set; }
     }
 
-    public class AVIGetAddressInfoResponseErrorType
+    public class AviGetAddressInfoResponseErrorType
     {
         public string Type { get; set; }
         public string TypeCode { get; set; }
@@ -335,15 +339,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string DescCode { get; set; }
     }
 
-    public class AGIPlaceSearchResponse
+    public class AgiPlaceSearchResponse
     {
-        public AGIPlaceSearchResponseSearchInfoType SearchInfo { get; set; }
-        public AGIPlaceSearchResponseLocationsTypeItem[] Locations { get; set; }
-        public AGIPlaceSearchResponseErrorType Error { get; set; }
+        public AgiPlaceSearchResponseSearchInfoType SearchInfo { get; set; }
+        public AgiPlaceSearchResponseLocationsTypeItem[] Locations { get; set; }
+        public AgiPlaceSearchResponseErrorType Error { get; set; }
         public string Debug { get; set; }
     }
 
-    public class AGIPlaceSearchResponseSearchInfoType
+    public class AgiPlaceSearchResponseSearchInfoType
     {
         public string Status { get; set; }
         public int NumberOfLocations { get; set; }
@@ -353,16 +357,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string WarningsDesc { get; set; }
     }
 
-    public class AGIPlaceSearchResponseLocationsTypeItem
+    public class AgiPlaceSearchResponseLocationsTypeItem
     {
         public int PrecisionLevel { get; set; }
         public string Type { get; set; }
         public string Latitude { get; set; }
         public string Longitude { get; set; }
-        public AGIPlaceSearchResponseLocationsTypeItemAddressComponentsType AddressComponents { get; set; }
+        public AgiPlaceSearchResponseLocationsTypeItemAddressComponentsType AddressComponents { get; set; }
     }
 
-    public class AGIPlaceSearchResponseLocationsTypeItemAddressComponentsType
+    public class AgiPlaceSearchResponseLocationsTypeItemAddressComponentsType
     {
         public string PremiseNumber { get; set; }
         public string Thoroughfare { get; set; }
@@ -379,15 +383,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string AdministrativeArea1Abbreviation { get; set; }
         public string PostalCode { get; set; }
         public string Country { get; set; }
-        public string CountryISO2 { get; set; }
-        public string CountryISO3 { get; set; }
-        public string BingMapsURL { get; set; }
-        public string GoogleMapsURL { get; set; }
-        public string MapQuestURL { get; set; }
+
+        [JsonProperty("CountryISO2")]
+        public string CountryIso2 { get; set; }
+
+        [JsonProperty("CountryISO3")]
+        public string CountryIso3 { get; set; }
+
+        [JsonProperty("BingMapsURL")]
+        public string BingMapsUrl { get; set; }
+
+        [JsonProperty("GoogleMapsURL")]
+        public string GoogleMapsUrl { get; set; }
+
+        [JsonProperty("MapQuestURL")]
+        public string MapQuestUrl { get; set; }
         public string PlaceName { get; set; }
         public string IsUnincorporated { get; set; }
-        public string StateFIPS { get; set; }
-        public string CountyFIPS { get; set; }
+
+        [JsonProperty("StateFIPS")]
+        public string StateFips { get; set; }
+
+        [JsonProperty("CountyFIPS")]
+        public string CountyFips { get; set; }
         public string CensusTract { get; set; }
         public string CensusBlock { get; set; }
 
@@ -395,14 +413,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string CensusGeoId { get; set; }
         public string ClassFP { get; set; }
         public string CongressCode { get; set; }
-        public string SLDUST { get; set; }
-        public string SLDLST { get; set; }
+
+        [JsonProperty("SLDUST")]
+        public string Sldust { get; set; }
+
+        [JsonProperty("SLDLST")]
+        public string Sldlst { get; set; }
 
         [JsonProperty("TimeZone_UTC")]
-        public string TimeZoneUTC { get; set; }
+        public string TimeZoneUtc { get; set; }
     }
 
-    public class AGIPlaceSearchResponseErrorType
+    public class AgiPlaceSearchResponseErrorType
     {
         public string Type { get; set; }
         public string TypeCode { get; set; }
@@ -410,15 +432,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string DescCode { get; set; }
     }
 
-    public class AGIReverseSearchResponse
+    public class AgiReverseSearchResponse
     {
-        public AGIReverseSearchResponseSearchInfoType SearchInfo { get; set; }
-        public AGIReverseSearchResponseLocationsTypeItem[] Locations { get; set; }
-        public AGIReverseSearchResponseErrorType Error { get; set; }
+        public AgiReverseSearchResponseSearchInfoType SearchInfo { get; set; }
+        public AgiReverseSearchResponseLocationsTypeItem[] Locations { get; set; }
+        public AgiReverseSearchResponseErrorType Error { get; set; }
         public string Debug { get; set; }
     }
 
-    public class AGIReverseSearchResponseSearchInfoType
+    public class AgiReverseSearchResponseSearchInfoType
     {
         public string Status { get; set; }
         public int NumberOfLocations { get; set; }
@@ -428,16 +450,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string WarningsDesc { get; set; }
     }
 
-    public class AGIReverseSearchResponseLocationsTypeItem
+    public class AgiReverseSearchResponseLocationsTypeItem
     {
         public int PrecisionLevel { get; set; }
         public string Type { get; set; }
         public string Latitude { get; set; }
         public string Longitude { get; set; }
-        public AGIReverseSearchResponseLocationsTypeItemAddressComponentsType AddressComponents { get; set; }
+        public AgiReverseSearchResponseLocationsTypeItemAddressComponentsType AddressComponents { get; set; }
     }
 
-    public class AGIReverseSearchResponseLocationsTypeItemAddressComponentsType
+    public class AgiReverseSearchResponseLocationsTypeItemAddressComponentsType
     {
         public string PremiseNumber { get; set; }
         public string Thoroughfare { get; set; }
@@ -454,15 +476,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string AdministrativeArea1Abbreviation { get; set; }
         public string PostalCode { get; set; }
         public string Country { get; set; }
-        public string CountryISO2 { get; set; }
-        public string CountryISO3 { get; set; }
-        public string BingMapsURL { get; set; }
-        public string GoogleMapsURL { get; set; }
-        public string MapQuestURL { get; set; }
+
+        [JsonProperty("CountryISO2")]
+        public string CountryIso2 { get; set; }
+
+        [JsonProperty("CountryISO3")]
+        public string CountryIso3 { get; set; }
+
+        [JsonProperty("BingMapsURL")]
+        public string BingMapsUrl { get; set; }
+
+        [JsonProperty("GoogleMapsURL")]
+        public string GoogleMapsUrl { get; set; }
+
+        [JsonProperty("MapQuestURL")]
+        public string MapQuestUrl { get; set; }
         public string PlaceName { get; set; }
         public string IsUnincorporated { get; set; }
-        public string StateFIPS { get; set; }
-        public string CountyFIPS { get; set; }
+
+        [JsonProperty("StateFIPS")]
+        public string StateFips { get; set; }
+
+        [JsonProperty("CountyFIPS")]
+        public string CountyFips { get; set; }
         public string CensusTract { get; set; }
         public string CensusBlock { get; set; }
 
@@ -470,14 +506,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string CensusGeoId { get; set; }
         public string ClassFP { get; set; }
         public string CongressCode { get; set; }
-        public string SLDUST { get; set; }
-        public string SLDLST { get; set; }
+
+        [JsonProperty("SLDUST")]
+        public string Sldust { get; set; }
+
+        [JsonProperty("SLDLST")]
+        public string Sldlst { get; set; }
 
         [JsonProperty("TimeZone_UTC")]
-        public string TimeZoneUTC { get; set; }
+        public string TimeZoneUtc { get; set; }
     }
 
-    public class AGIReverseSearchResponseErrorType
+    public class AgiReverseSearchResponseErrorType
     {
         public string Type { get; set; }
         public string TypeCode { get; set; }
@@ -504,14 +544,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string Latitude { get; set; }
         public string Longitude { get; set; }
         public string Country { get; set; }
-        public string CountryISO2 { get; set; }
-        public string CountryISO3 { get; set; }
+
+        [JsonProperty("CountryISO2")]
+        public string CountryIso2 { get; set; }
+
+        [JsonProperty("CountryISO3")]
+        public string CountryIso3 { get; set; }
         public string FormatInternational { get; set; }
         public string FormatE164 { get; set; }
         public string Carrier { get; set; }
         public string LineType { get; set; }
-        public string SMSAddress { get; set; }
-        public string MMSAddress { get; set; }
+
+        [JsonProperty("SMSAddress")]
+        public string SmsAddress { get; set; }
+
+        [JsonProperty("MMSAddress")]
+        public string MmsAddress { get; set; }
         public bool IsValid { get; set; }
         public bool IsValidForRegion { get; set; }
         public string NoteCodes { get; set; }
@@ -526,7 +574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string DescCode { get; set; }
     }
 
-    public class LVIValidateLeadInternationalResponse
+    public class LviValidateLeadInternationalResponse
     {
         public string OverallCertainty { get; set; }
         public string OverallQuality { get; set; }
@@ -582,7 +630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string Phone2Country { get; set; }
         public string Phone2NoteCodes { get; set; }
         public string Phone2NoteDesc { get; set; }
-        public LVIValidateLeadInternationalResponsePhoneContactType PhoneContact { get; set; }
+        public LviValidateLeadInternationalResponsePhoneContactType PhoneContact { get; set; }
         public string BusinessCertainty { get; set; }
         public string BusinessQuality { get; set; }
         public string BusinessName { get; set; }
@@ -590,12 +638,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string BusinessEmail { get; set; }
         public string BusinessNoteCodes { get; set; }
         public string BusinessNoteDesc { get; set; }
-        public LVIValidateLeadInternationalResponseInformationComponentsTypeItem[] InformationComponents { get; set; }
-        public LVIValidateLeadInternationalResponseErrorType Error { get; set; }
-        public string DEBUG { get; set; }
+        public LviValidateLeadInternationalResponseInformationComponentsTypeItem[] InformationComponents { get; set; }
+        public LviValidateLeadInternationalResponseErrorType Error { get; set; }
+
+        [JsonProperty("DEBUG")]
+        public string Debug { get; set; }
     }
 
-    public class LVIValidateLeadInternationalResponsePhoneContactType
+    public class LviValidateLeadInternationalResponsePhoneContactType
     {
         public string Name { get; set; }
         public string Address { get; set; }
@@ -605,13 +655,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string Type { get; set; }
     }
 
-    public class LVIValidateLeadInternationalResponseInformationComponentsTypeItem
+    public class LviValidateLeadInternationalResponseInformationComponentsTypeItem
     {
         public string Name { get; set; }
         public string Value { get; set; }
     }
 
-    public class LVIValidateLeadInternationalResponseErrorType
+    public class LviValidateLeadInternationalResponseErrorType
     {
         public string Type { get; set; }
         public string TypeCode { get; set; }
@@ -623,7 +673,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
     {
         public AV3GetBestMatchesResponseAddressesTypeItem[] Addresses { get; set; }
         public AV3GetBestMatchesResponseErrorType Error { get; set; }
-        public bool IsCASS { get; set; }
+
+        [JsonProperty("IsCASS")]
+        public bool IsCass { get; set; }
     }
 
     public class AV3GetBestMatchesResponseAddressesTypeItem
@@ -634,10 +686,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string State { get; set; }
         public string Zip { get; set; }
         public string IsResidential { get; set; }
-        public string DPV { get; set; }
-        public string DPVDesc { get; set; }
-        public string DPVNotes { get; set; }
-        public string DPVNotesDesc { get; set; }
+
+        [JsonProperty("DPV")]
+        public string Dpv { get; set; }
+
+        [JsonProperty("DPVDesc")]
+        public string DpvDesc { get; set; }
+
+        [JsonProperty("DPVNotes")]
+        public string DpvNotes { get; set; }
+
+        [JsonProperty("DPVNotesDesc")]
+        public string DpvNotesDesc { get; set; }
         public string Corrections { get; set; }
         public string CorrectionsDesc { get; set; }
         public string BarcodeDigits { get; set; }
@@ -652,8 +712,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string FragmentPostDir { get; set; }
         public string FragmentUnit { get; set; }
         public string Fragment { get; set; }
-        public string FragmentPMBPrefix { get; set; }
-        public string FragmentPMBNumber { get; set; }
+
+        [JsonProperty("FragmentPMBPrefix")]
+        public string FragmentPmbPrefix { get; set; }
+
+        [JsonProperty("FragmentPMBNumber")]
+        public string FragmentPmbNumber { get; set; }
     }
 
     public class AV3GetBestMatchesResponseErrorType
@@ -664,26 +728,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string DescCode { get; set; }
     }
 
-    public class IPAVGetLocationByIPResponse
+    public class IpavGetLocationByIpResponse
     {
-        public IPAVGetLocationByIPResponseErrorType Error { get; set; }
+        public IpavGetLocationByIpResponseErrorType Error { get; set; }
         public int Certainty { get; set; }
         public string City { get; set; }
         public string Region { get; set; }
         public string Country { get; set; }
-        public string CountryISO3 { get; set; }
-        public string CountryISO2 { get; set; }
+
+        [JsonProperty("CountryISO3")]
+        public string CountryIso3 { get; set; }
+
+        [JsonProperty("CountryISO2")]
+        public string CountryIso2 { get; set; }
         public string PostalCode { get; set; }
         public string MetroCode { get; set; }
-        public string DMA { get; set; }
-        public string StateFIPS { get; set; }
-        public string CountyFIPS { get; set; }
+
+        [JsonProperty("DMA")]
+        public string Dma { get; set; }
+
+        [JsonProperty("StateFIPS")]
+        public string StateFips { get; set; }
+
+        [JsonProperty("CountyFIPS")]
+        public string CountyFips { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public string IsProxy { get; set; }
         public string ProxyType { get; set; }
         public string PossibleMobileDevice { get; set; }
-        public string ISP { get; set; }
+
+        [JsonProperty("ISP")]
+        public string Isp { get; set; }
         public string NetblockOwner { get; set; }
         public string HostNames { get; set; }
         public string IPNoteCodes { get; set; }
@@ -691,7 +767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
         public string Debug { get; set; }
     }
 
-    public class IPAVGetLocationByIPResponseErrorType
+    public class IpavGetLocationByIpResponseErrorType
     {
         public string Desc { get; set; }
         public string Location { get; set; }

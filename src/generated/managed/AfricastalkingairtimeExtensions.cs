@@ -29,16 +29,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingairtime
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingairtime")]
-        public IBodyWorkflowAction<FindTransactionStatusResponse, ApiConnectionActionConfiguration> FindTransactionStatus(Expression<Func<string>> username, Expression<Func<string>> transactionId)
+        public IBodyWorkflowAction<FindTransactionStatusResponse, ApiConnectionActionConfiguration> FindTransactionStatus(Expression<Func<string>> userName, Expression<Func<string>> transactionId)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
             return new DeferredBodyAction<FindTransactionStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/query/transaction/find";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
+                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Queries["transactionId"] = ExpressionConverter.Convert(__workflow_transactionId);
                 return new ApiConnectionAction<FindTransactionStatusResponse>(callPayload);
             });
@@ -47,12 +47,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingairtime
 
     public class AfricastalkingairtimeTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> AirtimeStatusNotification(Expression<Func<string>> username)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> AirtimeStatusNotification(Expression<Func<string>> userName)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/powerapps/{0}/airtime/status/callback", __workflow_username.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/v1/powerapps/{0}/airtime/status/callback", __workflow_userName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
@@ -103,14 +103,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingairtime
 
     public class SendAirtimeBodyInput
     {
-        public SendAirtimeBodyInput(string username, BodyInputRecipientsTypeItem[] recipients)
+        public SendAirtimeBodyInput(string userName, BodyInputRecipientsTypeItem[] recipients)
         {
-            this.Username = username;
+            this.UserName = userName;
             this.Recipients = recipients;
         }
 
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("recipients", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputRecipientsTypeItem[] Recipients { get; set; }

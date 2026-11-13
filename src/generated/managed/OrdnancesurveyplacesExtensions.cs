@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
-        public IBodyWorkflowAction<UPRNResponse, ApiConnectionActionConfiguration> UPRN(Expression<Func<int>> uprn, Expression<Func<string>> format = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null)
+        public IBodyWorkflowAction<UprnResponse, ApiConnectionActionConfiguration> Uprn(Expression<Func<int>> uprn, Expression<Func<string>> format = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null)
         {
             var __workflow_uprn = WorkflowExpression.Compile(uprn, nameof(uprn), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
             var __workflow_lr = WorkflowExpression.Compile(lr, nameof(lr), required: false);
             var __workflow_fq = WorkflowExpression.Compile(fq, nameof(fq), required: false);
             var __workflow_outputSrs = WorkflowExpression.Compile(outputSrs, nameof(outputSrs), required: false);
-            return new DeferredBodyAction<UPRNResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UprnResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/places/v1/addresses/uprn";
                 var apiCallHttpMethod = "get";
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
                     callPayload.Queries["fq"] = ExpressionConverter.Convert(__workflow_fq);
                 if (__workflow_outputSrs != null)
                     callPayload.Queries["output_srs"] = ExpressionConverter.Convert(__workflow_outputSrs);
-                return new ApiConnectionAction<UPRNResponse>(callPayload);
+                return new ApiConnectionAction<UprnResponse>(callPayload);
             });
         }
 
@@ -325,171 +325,200 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
 
     public class FindResponseResultsTypeItem
     {
-        public FindResponseResultsTypeItemDPAType DPA { get; set; }
-        public FindResponseResultsTypeItemLPIType LPI { get; set; }
+        [JsonProperty("DPA")]
+        public FindResponseResultsTypeItemDpaType Dpa { get; set; }
+
+        [JsonProperty("LPI")]
+        public FindResponseResultsTypeItemLpiType Lpi { get; set; }
     }
 
-    public class FindResponseResultsTypeItemDPAType
+    public class FindResponseResultsTypeItemDpaType
     {
-        public string UPRN { get; set; }
-        public string ADDRESS { get; set; }
+        [JsonProperty("UPRN")]
+        public string Uprn { get; set; }
+
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
 
         [JsonProperty("ORGANISATION_NAME")]
-        public string ORGANISATIONNAME { get; set; }
+        public string OrganisationName { get; set; }
 
         [JsonProperty("BUILDING_NUMBER")]
-        public string BUILDINGNUMBER { get; set; }
+        public string BuildingNumber { get; set; }
 
         [JsonProperty("THOROUGHFARE_NAME")]
-        public string THOROUGHFARENAME { get; set; }
+        public string ThoroughfareName { get; set; }
 
         [JsonProperty("DEPENDENT_LOCALITY")]
-        public string DEPENDENTLOCALITY { get; set; }
+        public string DependentLocality { get; set; }
 
         [JsonProperty("POST_TOWN")]
-        public string POSTTOWN { get; set; }
-        public string POSTCODE { get; set; }
-        public string RPC { get; set; }
+        public string PostTown { get; set; }
+
+        [JsonProperty("POSTCODE")]
+        public string Postcode { get; set; }
+
+        [JsonProperty("RPC")]
+        public string Rpc { get; set; }
 
         [JsonProperty("X_COORDINATE")]
-        public double XCOORDINATE { get; set; }
+        public double XCoordinate { get; set; }
 
         [JsonProperty("Y_COORDINATE")]
-        public double YCOORDINATE { get; set; }
-        public string STATUS { get; set; }
+        public double YCoordinate { get; set; }
+
+        [JsonProperty("STATUS")]
+        public string Status { get; set; }
 
         [JsonProperty("LOGICAL_STATUS_CODE")]
-        public string LOGICALSTATUSCODE { get; set; }
+        public string LogicalStatusCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE")]
-        public string CLASSIFICATIONCODE { get; set; }
+        public string ClassificationCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE_DESCRIPTION")]
-        public string CLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string ClassificationCodeDescription { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE")]
-        public int LOCALCUSTODIANCODE { get; set; }
+        public int LocalCustodianCode { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE_DESCRIPTION")]
-        public string LOCALCUSTODIANCODEDESCRIPTION { get; set; }
+        public string LocalCustodianCodeDescription { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE")]
-        public string POSTALADDRESSCODE { get; set; }
+        public string PostalAddressCode { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE_DESCRIPTION")]
-        public string POSTALADDRESSCODEDESCRIPTION { get; set; }
+        public string PostalAddressCodeDescription { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE")]
-        public string BLPUSTATECODE { get; set; }
+        public string BlpuStateCode { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE_DESCRIPTION")]
-        public string BLPUSTATECODEDESCRIPTION { get; set; }
+        public string BlpuStateCodeDescription { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOId { get; set; }
+        public string TopographyLayerToid { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
-        public string LASTUPDATEDATE { get; set; }
+        public string LastUpdateDate { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("BLPU_STATE_DATE")]
-        public string BLPUSTATEDATE { get; set; }
-        public string LANGUAGE { get; set; }
-        public double MATCH { get; set; }
+        public string BlpuStateDate { get; set; }
+
+        [JsonProperty("LANGUAGE")]
+        public string Language { get; set; }
+
+        [JsonProperty("MATCH")]
+        public double Match { get; set; }
 
         [JsonProperty("MATCH_DESCRIPTION")]
-        public string MATCHDESCRIPTION { get; set; }
+        public string MatchDescription { get; set; }
     }
 
-    public class FindResponseResultsTypeItemLPIType
+    public class FindResponseResultsTypeItemLpiType
     {
-        public string UPRN { get; set; }
-        public string ADDRESS { get; set; }
-        public string USRN { get; set; }
+        [JsonProperty("UPRN")]
+        public string Uprn { get; set; }
+
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
+
+        [JsonProperty("USRN")]
+        public string Usrn { get; set; }
 
         [JsonProperty("LPI_KEY")]
-        public string LPIKEY { get; set; }
+        public string LpiKey { get; set; }
 
         [JsonProperty("PAO_START_NUMBER")]
-        public string PAOSTARTNUMBER { get; set; }
+        public string PaoStartNumber { get; set; }
 
         [JsonProperty("STREET_DESCRIPTION")]
-        public string STREETDESCRIPTION { get; set; }
+        public string StreetDescription { get; set; }
 
         [JsonProperty("TOWN_NAME")]
-        public string TOWNNAME { get; set; }
+        public string TownName { get; set; }
 
         [JsonProperty("ADMINISTRATIVE_AREA")]
-        public string ADMINISTRATIVEAREA { get; set; }
+        public string AdministrativeArea { get; set; }
 
         [JsonProperty("POSTCODE_LOCATOR")]
-        public string POSTCODELOCATOR { get; set; }
-        public string RPC { get; set; }
+        public string PostcodeLocator { get; set; }
+
+        [JsonProperty("RPC")]
+        public string Rpc { get; set; }
 
         [JsonProperty("X_COORDINATE")]
-        public double XCOORDINATE { get; set; }
+        public double XCoordinate { get; set; }
 
         [JsonProperty("Y_COORDINATE")]
-        public double YCOORDINATE { get; set; }
-        public string STATUS { get; set; }
+        public double YCoordinate { get; set; }
+
+        [JsonProperty("STATUS")]
+        public string Status { get; set; }
 
         [JsonProperty("LOGICAL_STATUS_CODE")]
-        public string LOGICALSTATUSCODE { get; set; }
+        public string LogicalStatusCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE")]
-        public string CLASSIFICATIONCODE { get; set; }
+        public string ClassificationCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE_DESCRIPTION")]
-        public string CLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string ClassificationCodeDescription { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE")]
-        public int LOCALCUSTODIANCODE { get; set; }
+        public int LocalCustodianCode { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE_DESCRIPTION")]
-        public string LOCALCUSTODIANCODEDESCRIPTION { get; set; }
+        public string LocalCustodianCodeDescription { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE")]
-        public string POSTALADDRESSCODE { get; set; }
+        public string PostalAddressCode { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE_DESCRIPTION")]
-        public string POSTALADDRESSCODEDESCRIPTION { get; set; }
+        public string PostalAddressCodeDescription { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE_DESCRIPTION")]
-        public string BLPUSTATECODEDESCRIPTION { get; set; }
+        public string BlpuStateCodeDescription { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOId { get; set; }
+        public string TopographyLayerToid { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
-        public string LASTUPDATEDATE { get; set; }
+        public string LastUpdateDate { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("STREET_STATE_CODE")]
-        public string STREETSTATECODE { get; set; }
+        public string StreetStateCode { get; set; }
 
         [JsonProperty("STREET_STATE_CODE_DESCRIPTION")]
-        public string STREETSTATECODEDESCRIPTION { get; set; }
+        public string StreetStateCodeDescription { get; set; }
 
         [JsonProperty("STREET_CLASSIFICATION_CODE")]
-        public string STREETCLASSIFICATIONCODE { get; set; }
+        public string StreetClassificationCode { get; set; }
 
         [JsonProperty("STREET_CLASSIFICATION_CODE_DESCRIPTION")]
-        public string STREETCLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string StreetClassificationCodeDescription { get; set; }
 
         [JsonProperty("LPI_LOGICAL_STATUS_CODE")]
-        public string LPILOGICALSTATUSCODE { get; set; }
+        public string LpiLogicalStatusCode { get; set; }
 
         [JsonProperty("LPI_LOGICAL_STATUS_CODE_DESCRIPTION")]
-        public string LPILOGICALSTATUSCODEDESCRIPTION { get; set; }
-        public string LANGUAGE { get; set; }
-        public double MATCH { get; set; }
+        public string LpiLogicalStatusCodeDescription { get; set; }
+
+        [JsonProperty("LANGUAGE")]
+        public string Language { get; set; }
+
+        [JsonProperty("MATCH")]
+        public double Match { get; set; }
 
         [JsonProperty("MATCH_DESCRIPTION")]
-        public string MATCHDESCRIPTION { get; set; }
+        public string MatchDescription { get; set; }
     }
 
     public class PostcodeResponse
@@ -539,183 +568,212 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
 
     public class PostcodeResponseResultsTypeItem
     {
-        public PostcodeResponseResultsTypeItemDPAType DPA { get; set; }
-        public PostcodeResponseResultsTypeItemLPIType LPI { get; set; }
+        [JsonProperty("DPA")]
+        public PostcodeResponseResultsTypeItemDpaType Dpa { get; set; }
+
+        [JsonProperty("LPI")]
+        public PostcodeResponseResultsTypeItemLpiType Lpi { get; set; }
     }
 
-    public class PostcodeResponseResultsTypeItemDPAType
+    public class PostcodeResponseResultsTypeItemDpaType
     {
-        public string UPRN { get; set; }
-        public string ADDRESS { get; set; }
+        [JsonProperty("UPRN")]
+        public string Uprn { get; set; }
+
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
 
         [JsonProperty("ORGANISATION_NAME")]
-        public string ORGANISATIONNAME { get; set; }
+        public string OrganisationName { get; set; }
 
         [JsonProperty("BUILDING_NUMBER")]
-        public string BUILDINGNUMBER { get; set; }
+        public string BuildingNumber { get; set; }
 
         [JsonProperty("THOROUGHFARE_NAME")]
-        public string THOROUGHFARENAME { get; set; }
+        public string ThoroughfareName { get; set; }
 
         [JsonProperty("DEPENDENT_LOCALITY")]
-        public string DEPENDENTLOCALITY { get; set; }
+        public string DependentLocality { get; set; }
 
         [JsonProperty("POST_TOWN")]
-        public string POSTTOWN { get; set; }
-        public string POSTCODE { get; set; }
-        public string RPC { get; set; }
+        public string PostTown { get; set; }
+
+        [JsonProperty("POSTCODE")]
+        public string Postcode { get; set; }
+
+        [JsonProperty("RPC")]
+        public string Rpc { get; set; }
 
         [JsonProperty("X_COORDINATE")]
-        public double XCOORDINATE { get; set; }
+        public double XCoordinate { get; set; }
 
         [JsonProperty("Y_COORDINATE")]
-        public double YCOORDINATE { get; set; }
-        public string STATUS { get; set; }
+        public double YCoordinate { get; set; }
+
+        [JsonProperty("STATUS")]
+        public string Status { get; set; }
 
         [JsonProperty("LOGICAL_STATUS_CODE")]
-        public string LOGICALSTATUSCODE { get; set; }
+        public string LogicalStatusCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE")]
-        public string CLASSIFICATIONCODE { get; set; }
+        public string ClassificationCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE_DESCRIPTION")]
-        public string CLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string ClassificationCodeDescription { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE")]
-        public int LOCALCUSTODIANCODE { get; set; }
+        public int LocalCustodianCode { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE_DESCRIPTION")]
-        public string LOCALCUSTODIANCODEDESCRIPTION { get; set; }
+        public string LocalCustodianCodeDescription { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE")]
-        public string POSTALADDRESSCODE { get; set; }
+        public string PostalAddressCode { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE_DESCRIPTION")]
-        public string POSTALADDRESSCODEDESCRIPTION { get; set; }
+        public string PostalAddressCodeDescription { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE")]
-        public string BLPUSTATECODE { get; set; }
+        public string BlpuStateCode { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE_DESCRIPTION")]
-        public string BLPUSTATECODEDESCRIPTION { get; set; }
+        public string BlpuStateCodeDescription { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOId { get; set; }
+        public string TopographyLayerToid { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
-        public string LASTUPDATEDATE { get; set; }
+        public string LastUpdateDate { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("BLPU_STATE_DATE")]
-        public string BLPUSTATEDATE { get; set; }
-        public string LANGUAGE { get; set; }
-        public double MATCH { get; set; }
+        public string BlpuStateDate { get; set; }
+
+        [JsonProperty("LANGUAGE")]
+        public string Language { get; set; }
+
+        [JsonProperty("MATCH")]
+        public double Match { get; set; }
 
         [JsonProperty("MATCH_DESCRIPTION")]
-        public string MATCHDESCRIPTION { get; set; }
+        public string MatchDescription { get; set; }
     }
 
-    public class PostcodeResponseResultsTypeItemLPIType
+    public class PostcodeResponseResultsTypeItemLpiType
     {
-        public string UPRN { get; set; }
-        public string ADDRESS { get; set; }
-        public string USRN { get; set; }
+        [JsonProperty("UPRN")]
+        public string Uprn { get; set; }
+
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
+
+        [JsonProperty("USRN")]
+        public string Usrn { get; set; }
 
         [JsonProperty("LPI_KEY")]
-        public string LPIKEY { get; set; }
+        public string LpiKey { get; set; }
 
         [JsonProperty("PAO_START_NUMBER")]
-        public string PAOSTARTNUMBER { get; set; }
+        public string PaoStartNumber { get; set; }
 
         [JsonProperty("STREET_DESCRIPTION")]
-        public string STREETDESCRIPTION { get; set; }
+        public string StreetDescription { get; set; }
 
         [JsonProperty("TOWN_NAME")]
-        public string TOWNNAME { get; set; }
+        public string TownName { get; set; }
 
         [JsonProperty("ADMINISTRATIVE_AREA")]
-        public string ADMINISTRATIVEAREA { get; set; }
+        public string AdministrativeArea { get; set; }
 
         [JsonProperty("POSTCODE_LOCATOR")]
-        public string POSTCODELOCATOR { get; set; }
-        public string RPC { get; set; }
+        public string PostcodeLocator { get; set; }
+
+        [JsonProperty("RPC")]
+        public string Rpc { get; set; }
 
         [JsonProperty("X_COORDINATE")]
-        public double XCOORDINATE { get; set; }
+        public double XCoordinate { get; set; }
 
         [JsonProperty("Y_COORDINATE")]
-        public double YCOORDINATE { get; set; }
-        public string STATUS { get; set; }
+        public double YCoordinate { get; set; }
+
+        [JsonProperty("STATUS")]
+        public string Status { get; set; }
 
         [JsonProperty("LOGICAL_STATUS_CODE")]
-        public string LOGICALSTATUSCODE { get; set; }
+        public string LogicalStatusCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE")]
-        public string CLASSIFICATIONCODE { get; set; }
+        public string ClassificationCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE_DESCRIPTION")]
-        public string CLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string ClassificationCodeDescription { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE")]
-        public int LOCALCUSTODIANCODE { get; set; }
+        public int LocalCustodianCode { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE_DESCRIPTION")]
-        public string LOCALCUSTODIANCODEDESCRIPTION { get; set; }
+        public string LocalCustodianCodeDescription { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE")]
-        public string POSTALADDRESSCODE { get; set; }
+        public string PostalAddressCode { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE_DESCRIPTION")]
-        public string POSTALADDRESSCODEDESCRIPTION { get; set; }
+        public string PostalAddressCodeDescription { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE_DESCRIPTION")]
-        public string BLPUSTATECODEDESCRIPTION { get; set; }
+        public string BlpuStateCodeDescription { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOId { get; set; }
+        public string TopographyLayerToid { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
-        public string LASTUPDATEDATE { get; set; }
+        public string LastUpdateDate { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("STREET_STATE_CODE")]
-        public string STREETSTATECODE { get; set; }
+        public string StreetStateCode { get; set; }
 
         [JsonProperty("STREET_STATE_CODE_DESCRIPTION")]
-        public string STREETSTATECODEDESCRIPTION { get; set; }
+        public string StreetStateCodeDescription { get; set; }
 
         [JsonProperty("STREET_CLASSIFICATION_CODE")]
-        public string STREETCLASSIFICATIONCODE { get; set; }
+        public string StreetClassificationCode { get; set; }
 
         [JsonProperty("STREET_CLASSIFICATION_CODE_DESCRIPTION")]
-        public string STREETCLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string StreetClassificationCodeDescription { get; set; }
 
         [JsonProperty("LPI_LOGICAL_STATUS_CODE")]
-        public string LPILOGICALSTATUSCODE { get; set; }
+        public string LpiLogicalStatusCode { get; set; }
 
         [JsonProperty("LPI_LOGICAL_STATUS_CODE_DESCRIPTION")]
-        public string LPILOGICALSTATUSCODEDESCRIPTION { get; set; }
-        public string LANGUAGE { get; set; }
-        public double MATCH { get; set; }
+        public string LpiLogicalStatusCodeDescription { get; set; }
+
+        [JsonProperty("LANGUAGE")]
+        public string Language { get; set; }
+
+        [JsonProperty("MATCH")]
+        public double Match { get; set; }
 
         [JsonProperty("MATCH_DESCRIPTION")]
-        public string MATCHDESCRIPTION { get; set; }
+        public string MatchDescription { get; set; }
     }
 
-    public class UPRNResponse
+    public class UprnResponse
     {
         [JsonProperty("header")]
-        public UPRNResponseHeaderType Header { get; set; }
+        public UprnResponseHeaderType Header { get; set; }
 
         [JsonProperty("results")]
-        public UPRNResponseResultsTypeItem[] Results { get; set; }
+        public UprnResponseResultsTypeItem[] Results { get; set; }
     }
 
-    public class UPRNResponseHeaderType
+    public class UprnResponseHeaderType
     {
         [JsonProperty("uri")]
         public string Uri { get; set; }
@@ -751,173 +809,202 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         public string OutputSrs { get; set; }
     }
 
-    public class UPRNResponseResultsTypeItem
+    public class UprnResponseResultsTypeItem
     {
-        public UPRNResponseResultsTypeItemDPAType DPA { get; set; }
-        public UPRNResponseResultsTypeItemLPIType LPI { get; set; }
+        [JsonProperty("DPA")]
+        public UprnResponseResultsTypeItemDpaType Dpa { get; set; }
+
+        [JsonProperty("LPI")]
+        public UprnResponseResultsTypeItemLpiType Lpi { get; set; }
     }
 
-    public class UPRNResponseResultsTypeItemDPAType
+    public class UprnResponseResultsTypeItemDpaType
     {
-        public string UPRN { get; set; }
-        public string ADDRESS { get; set; }
+        [JsonProperty("UPRN")]
+        public string Uprn { get; set; }
+
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
 
         [JsonProperty("ORGANISATION_NAME")]
-        public string ORGANISATIONNAME { get; set; }
+        public string OrganisationName { get; set; }
 
         [JsonProperty("BUILDING_NUMBER")]
-        public string BUILDINGNUMBER { get; set; }
+        public string BuildingNumber { get; set; }
 
         [JsonProperty("THOROUGHFARE_NAME")]
-        public string THOROUGHFARENAME { get; set; }
+        public string ThoroughfareName { get; set; }
 
         [JsonProperty("DEPENDENT_LOCALITY")]
-        public string DEPENDENTLOCALITY { get; set; }
+        public string DependentLocality { get; set; }
 
         [JsonProperty("POST_TOWN")]
-        public string POSTTOWN { get; set; }
-        public string POSTCODE { get; set; }
-        public string RPC { get; set; }
+        public string PostTown { get; set; }
+
+        [JsonProperty("POSTCODE")]
+        public string Postcode { get; set; }
+
+        [JsonProperty("RPC")]
+        public string Rpc { get; set; }
 
         [JsonProperty("X_COORDINATE")]
-        public double XCOORDINATE { get; set; }
+        public double XCoordinate { get; set; }
 
         [JsonProperty("Y_COORDINATE")]
-        public double YCOORDINATE { get; set; }
-        public string STATUS { get; set; }
+        public double YCoordinate { get; set; }
+
+        [JsonProperty("STATUS")]
+        public string Status { get; set; }
 
         [JsonProperty("LOGICAL_STATUS_CODE")]
-        public string LOGICALSTATUSCODE { get; set; }
+        public string LogicalStatusCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE")]
-        public string CLASSIFICATIONCODE { get; set; }
+        public string ClassificationCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE_DESCRIPTION")]
-        public string CLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string ClassificationCodeDescription { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE")]
-        public int LOCALCUSTODIANCODE { get; set; }
+        public int LocalCustodianCode { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE_DESCRIPTION")]
-        public string LOCALCUSTODIANCODEDESCRIPTION { get; set; }
+        public string LocalCustodianCodeDescription { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE")]
-        public string POSTALADDRESSCODE { get; set; }
+        public string PostalAddressCode { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE_DESCRIPTION")]
-        public string POSTALADDRESSCODEDESCRIPTION { get; set; }
+        public string PostalAddressCodeDescription { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE")]
-        public string BLPUSTATECODE { get; set; }
+        public string BlpuStateCode { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE_DESCRIPTION")]
-        public string BLPUSTATECODEDESCRIPTION { get; set; }
+        public string BlpuStateCodeDescription { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOId { get; set; }
+        public string TopographyLayerToid { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
-        public string LASTUPDATEDATE { get; set; }
+        public string LastUpdateDate { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("BLPU_STATE_DATE")]
-        public string BLPUSTATEDATE { get; set; }
-        public string LANGUAGE { get; set; }
-        public double MATCH { get; set; }
+        public string BlpuStateDate { get; set; }
+
+        [JsonProperty("LANGUAGE")]
+        public string Language { get; set; }
+
+        [JsonProperty("MATCH")]
+        public double Match { get; set; }
 
         [JsonProperty("MATCH_DESCRIPTION")]
-        public string MATCHDESCRIPTION { get; set; }
+        public string MatchDescription { get; set; }
     }
 
-    public class UPRNResponseResultsTypeItemLPIType
+    public class UprnResponseResultsTypeItemLpiType
     {
-        public string UPRN { get; set; }
-        public string ADDRESS { get; set; }
-        public string USRN { get; set; }
+        [JsonProperty("UPRN")]
+        public string Uprn { get; set; }
+
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
+
+        [JsonProperty("USRN")]
+        public string Usrn { get; set; }
 
         [JsonProperty("LPI_KEY")]
-        public string LPIKEY { get; set; }
+        public string LpiKey { get; set; }
 
         [JsonProperty("PAO_START_NUMBER")]
-        public string PAOSTARTNUMBER { get; set; }
+        public string PaoStartNumber { get; set; }
 
         [JsonProperty("STREET_DESCRIPTION")]
-        public string STREETDESCRIPTION { get; set; }
+        public string StreetDescription { get; set; }
 
         [JsonProperty("TOWN_NAME")]
-        public string TOWNNAME { get; set; }
+        public string TownName { get; set; }
 
         [JsonProperty("ADMINISTRATIVE_AREA")]
-        public string ADMINISTRATIVEAREA { get; set; }
+        public string AdministrativeArea { get; set; }
 
         [JsonProperty("POSTCODE_LOCATOR")]
-        public string POSTCODELOCATOR { get; set; }
-        public string RPC { get; set; }
+        public string PostcodeLocator { get; set; }
+
+        [JsonProperty("RPC")]
+        public string Rpc { get; set; }
 
         [JsonProperty("X_COORDINATE")]
-        public double XCOORDINATE { get; set; }
+        public double XCoordinate { get; set; }
 
         [JsonProperty("Y_COORDINATE")]
-        public double YCOORDINATE { get; set; }
-        public string STATUS { get; set; }
+        public double YCoordinate { get; set; }
+
+        [JsonProperty("STATUS")]
+        public string Status { get; set; }
 
         [JsonProperty("LOGICAL_STATUS_CODE")]
-        public string LOGICALSTATUSCODE { get; set; }
+        public string LogicalStatusCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE")]
-        public string CLASSIFICATIONCODE { get; set; }
+        public string ClassificationCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE_DESCRIPTION")]
-        public string CLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string ClassificationCodeDescription { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE")]
-        public int LOCALCUSTODIANCODE { get; set; }
+        public int LocalCustodianCode { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE_DESCRIPTION")]
-        public string LOCALCUSTODIANCODEDESCRIPTION { get; set; }
+        public string LocalCustodianCodeDescription { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE")]
-        public string POSTALADDRESSCODE { get; set; }
+        public string PostalAddressCode { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE_DESCRIPTION")]
-        public string POSTALADDRESSCODEDESCRIPTION { get; set; }
+        public string PostalAddressCodeDescription { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE_DESCRIPTION")]
-        public string BLPUSTATECODEDESCRIPTION { get; set; }
+        public string BlpuStateCodeDescription { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOId { get; set; }
+        public string TopographyLayerToid { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
-        public string LASTUPDATEDATE { get; set; }
+        public string LastUpdateDate { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("STREET_STATE_CODE")]
-        public string STREETSTATECODE { get; set; }
+        public string StreetStateCode { get; set; }
 
         [JsonProperty("STREET_STATE_CODE_DESCRIPTION")]
-        public string STREETSTATECODEDESCRIPTION { get; set; }
+        public string StreetStateCodeDescription { get; set; }
 
         [JsonProperty("STREET_CLASSIFICATION_CODE")]
-        public string STREETCLASSIFICATIONCODE { get; set; }
+        public string StreetClassificationCode { get; set; }
 
         [JsonProperty("STREET_CLASSIFICATION_CODE_DESCRIPTION")]
-        public string STREETCLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string StreetClassificationCodeDescription { get; set; }
 
         [JsonProperty("LPI_LOGICAL_STATUS_CODE")]
-        public string LPILOGICALSTATUSCODE { get; set; }
+        public string LpiLogicalStatusCode { get; set; }
 
         [JsonProperty("LPI_LOGICAL_STATUS_CODE_DESCRIPTION")]
-        public string LPILOGICALSTATUSCODEDESCRIPTION { get; set; }
-        public string LANGUAGE { get; set; }
-        public double MATCH { get; set; }
+        public string LpiLogicalStatusCodeDescription { get; set; }
+
+        [JsonProperty("LANGUAGE")]
+        public string Language { get; set; }
+
+        [JsonProperty("MATCH")]
+        public double Match { get; set; }
 
         [JsonProperty("MATCH_DESCRIPTION")]
-        public string MATCHDESCRIPTION { get; set; }
+        public string MatchDescription { get; set; }
     }
 
     public class NearestResponse
@@ -967,171 +1054,200 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
 
     public class NearestResponseResultsTypeItem
     {
-        public NearestResponseResultsTypeItemDPAType DPA { get; set; }
-        public NearestResponseResultsTypeItemLPIType LPI { get; set; }
+        [JsonProperty("DPA")]
+        public NearestResponseResultsTypeItemDpaType Dpa { get; set; }
+
+        [JsonProperty("LPI")]
+        public NearestResponseResultsTypeItemLpiType Lpi { get; set; }
     }
 
-    public class NearestResponseResultsTypeItemDPAType
+    public class NearestResponseResultsTypeItemDpaType
     {
-        public string UPRN { get; set; }
-        public string ADDRESS { get; set; }
+        [JsonProperty("UPRN")]
+        public string Uprn { get; set; }
+
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
 
         [JsonProperty("ORGANISATION_NAME")]
-        public string ORGANISATIONNAME { get; set; }
+        public string OrganisationName { get; set; }
 
         [JsonProperty("BUILDING_NUMBER")]
-        public string BUILDINGNUMBER { get; set; }
+        public string BuildingNumber { get; set; }
 
         [JsonProperty("THOROUGHFARE_NAME")]
-        public string THOROUGHFARENAME { get; set; }
+        public string ThoroughfareName { get; set; }
 
         [JsonProperty("DEPENDENT_LOCALITY")]
-        public string DEPENDENTLOCALITY { get; set; }
+        public string DependentLocality { get; set; }
 
         [JsonProperty("POST_TOWN")]
-        public string POSTTOWN { get; set; }
-        public string POSTCODE { get; set; }
-        public string RPC { get; set; }
+        public string PostTown { get; set; }
+
+        [JsonProperty("POSTCODE")]
+        public string Postcode { get; set; }
+
+        [JsonProperty("RPC")]
+        public string Rpc { get; set; }
 
         [JsonProperty("X_COORDINATE")]
-        public double XCOORDINATE { get; set; }
+        public double XCoordinate { get; set; }
 
         [JsonProperty("Y_COORDINATE")]
-        public double YCOORDINATE { get; set; }
-        public string STATUS { get; set; }
+        public double YCoordinate { get; set; }
+
+        [JsonProperty("STATUS")]
+        public string Status { get; set; }
 
         [JsonProperty("LOGICAL_STATUS_CODE")]
-        public string LOGICALSTATUSCODE { get; set; }
+        public string LogicalStatusCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE")]
-        public string CLASSIFICATIONCODE { get; set; }
+        public string ClassificationCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE_DESCRIPTION")]
-        public string CLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string ClassificationCodeDescription { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE")]
-        public int LOCALCUSTODIANCODE { get; set; }
+        public int LocalCustodianCode { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE_DESCRIPTION")]
-        public string LOCALCUSTODIANCODEDESCRIPTION { get; set; }
+        public string LocalCustodianCodeDescription { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE")]
-        public string POSTALADDRESSCODE { get; set; }
+        public string PostalAddressCode { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE_DESCRIPTION")]
-        public string POSTALADDRESSCODEDESCRIPTION { get; set; }
+        public string PostalAddressCodeDescription { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE")]
-        public string BLPUSTATECODE { get; set; }
+        public string BlpuStateCode { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE_DESCRIPTION")]
-        public string BLPUSTATECODEDESCRIPTION { get; set; }
+        public string BlpuStateCodeDescription { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOId { get; set; }
+        public string TopographyLayerToid { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
-        public string LASTUPDATEDATE { get; set; }
+        public string LastUpdateDate { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("BLPU_STATE_DATE")]
-        public string BLPUSTATEDATE { get; set; }
-        public string LANGUAGE { get; set; }
-        public double MATCH { get; set; }
+        public string BlpuStateDate { get; set; }
+
+        [JsonProperty("LANGUAGE")]
+        public string Language { get; set; }
+
+        [JsonProperty("MATCH")]
+        public double Match { get; set; }
 
         [JsonProperty("MATCH_DESCRIPTION")]
-        public string MATCHDESCRIPTION { get; set; }
+        public string MatchDescription { get; set; }
     }
 
-    public class NearestResponseResultsTypeItemLPIType
+    public class NearestResponseResultsTypeItemLpiType
     {
-        public string UPRN { get; set; }
-        public string ADDRESS { get; set; }
-        public string USRN { get; set; }
+        [JsonProperty("UPRN")]
+        public string Uprn { get; set; }
+
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
+
+        [JsonProperty("USRN")]
+        public string Usrn { get; set; }
 
         [JsonProperty("LPI_KEY")]
-        public string LPIKEY { get; set; }
+        public string LpiKey { get; set; }
 
         [JsonProperty("PAO_START_NUMBER")]
-        public string PAOSTARTNUMBER { get; set; }
+        public string PaoStartNumber { get; set; }
 
         [JsonProperty("STREET_DESCRIPTION")]
-        public string STREETDESCRIPTION { get; set; }
+        public string StreetDescription { get; set; }
 
         [JsonProperty("TOWN_NAME")]
-        public string TOWNNAME { get; set; }
+        public string TownName { get; set; }
 
         [JsonProperty("ADMINISTRATIVE_AREA")]
-        public string ADMINISTRATIVEAREA { get; set; }
+        public string AdministrativeArea { get; set; }
 
         [JsonProperty("POSTCODE_LOCATOR")]
-        public string POSTCODELOCATOR { get; set; }
-        public string RPC { get; set; }
+        public string PostcodeLocator { get; set; }
+
+        [JsonProperty("RPC")]
+        public string Rpc { get; set; }
 
         [JsonProperty("X_COORDINATE")]
-        public double XCOORDINATE { get; set; }
+        public double XCoordinate { get; set; }
 
         [JsonProperty("Y_COORDINATE")]
-        public double YCOORDINATE { get; set; }
-        public string STATUS { get; set; }
+        public double YCoordinate { get; set; }
+
+        [JsonProperty("STATUS")]
+        public string Status { get; set; }
 
         [JsonProperty("LOGICAL_STATUS_CODE")]
-        public string LOGICALSTATUSCODE { get; set; }
+        public string LogicalStatusCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE")]
-        public string CLASSIFICATIONCODE { get; set; }
+        public string ClassificationCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE_DESCRIPTION")]
-        public string CLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string ClassificationCodeDescription { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE")]
-        public int LOCALCUSTODIANCODE { get; set; }
+        public int LocalCustodianCode { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE_DESCRIPTION")]
-        public string LOCALCUSTODIANCODEDESCRIPTION { get; set; }
+        public string LocalCustodianCodeDescription { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE")]
-        public string POSTALADDRESSCODE { get; set; }
+        public string PostalAddressCode { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE_DESCRIPTION")]
-        public string POSTALADDRESSCODEDESCRIPTION { get; set; }
+        public string PostalAddressCodeDescription { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE_DESCRIPTION")]
-        public string BLPUSTATECODEDESCRIPTION { get; set; }
+        public string BlpuStateCodeDescription { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOId { get; set; }
+        public string TopographyLayerToid { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
-        public string LASTUPDATEDATE { get; set; }
+        public string LastUpdateDate { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("STREET_STATE_CODE")]
-        public string STREETSTATECODE { get; set; }
+        public string StreetStateCode { get; set; }
 
         [JsonProperty("STREET_STATE_CODE_DESCRIPTION")]
-        public string STREETSTATECODEDESCRIPTION { get; set; }
+        public string StreetStateCodeDescription { get; set; }
 
         [JsonProperty("STREET_CLASSIFICATION_CODE")]
-        public string STREETCLASSIFICATIONCODE { get; set; }
+        public string StreetClassificationCode { get; set; }
 
         [JsonProperty("STREET_CLASSIFICATION_CODE_DESCRIPTION")]
-        public string STREETCLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string StreetClassificationCodeDescription { get; set; }
 
         [JsonProperty("LPI_LOGICAL_STATUS_CODE")]
-        public string LPILOGICALSTATUSCODE { get; set; }
+        public string LpiLogicalStatusCode { get; set; }
 
         [JsonProperty("LPI_LOGICAL_STATUS_CODE_DESCRIPTION")]
-        public string LPILOGICALSTATUSCODEDESCRIPTION { get; set; }
-        public string LANGUAGE { get; set; }
-        public double MATCH { get; set; }
+        public string LpiLogicalStatusCodeDescription { get; set; }
+
+        [JsonProperty("LANGUAGE")]
+        public string Language { get; set; }
+
+        [JsonProperty("MATCH")]
+        public double Match { get; set; }
 
         [JsonProperty("MATCH_DESCRIPTION")]
-        public string MATCHDESCRIPTION { get; set; }
+        public string MatchDescription { get; set; }
     }
 
     public class BBoxResponse
@@ -1181,171 +1297,200 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
 
     public class BBoxResponseResultsTypeItem
     {
-        public BBoxResponseResultsTypeItemDPAType DPA { get; set; }
-        public BBoxResponseResultsTypeItemLPIType LPI { get; set; }
+        [JsonProperty("DPA")]
+        public BBoxResponseResultsTypeItemDpaType Dpa { get; set; }
+
+        [JsonProperty("LPI")]
+        public BBoxResponseResultsTypeItemLpiType Lpi { get; set; }
     }
 
-    public class BBoxResponseResultsTypeItemDPAType
+    public class BBoxResponseResultsTypeItemDpaType
     {
-        public string UPRN { get; set; }
-        public string ADDRESS { get; set; }
+        [JsonProperty("UPRN")]
+        public string Uprn { get; set; }
+
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
 
         [JsonProperty("ORGANISATION_NAME")]
-        public string ORGANISATIONNAME { get; set; }
+        public string OrganisationName { get; set; }
 
         [JsonProperty("BUILDING_NUMBER")]
-        public string BUILDINGNUMBER { get; set; }
+        public string BuildingNumber { get; set; }
 
         [JsonProperty("THOROUGHFARE_NAME")]
-        public string THOROUGHFARENAME { get; set; }
+        public string ThoroughfareName { get; set; }
 
         [JsonProperty("DEPENDENT_LOCALITY")]
-        public string DEPENDENTLOCALITY { get; set; }
+        public string DependentLocality { get; set; }
 
         [JsonProperty("POST_TOWN")]
-        public string POSTTOWN { get; set; }
-        public string POSTCODE { get; set; }
-        public string RPC { get; set; }
+        public string PostTown { get; set; }
+
+        [JsonProperty("POSTCODE")]
+        public string Postcode { get; set; }
+
+        [JsonProperty("RPC")]
+        public string Rpc { get; set; }
 
         [JsonProperty("X_COORDINATE")]
-        public double XCOORDINATE { get; set; }
+        public double XCoordinate { get; set; }
 
         [JsonProperty("Y_COORDINATE")]
-        public double YCOORDINATE { get; set; }
-        public string STATUS { get; set; }
+        public double YCoordinate { get; set; }
+
+        [JsonProperty("STATUS")]
+        public string Status { get; set; }
 
         [JsonProperty("LOGICAL_STATUS_CODE")]
-        public string LOGICALSTATUSCODE { get; set; }
+        public string LogicalStatusCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE")]
-        public string CLASSIFICATIONCODE { get; set; }
+        public string ClassificationCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE_DESCRIPTION")]
-        public string CLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string ClassificationCodeDescription { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE")]
-        public int LOCALCUSTODIANCODE { get; set; }
+        public int LocalCustodianCode { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE_DESCRIPTION")]
-        public string LOCALCUSTODIANCODEDESCRIPTION { get; set; }
+        public string LocalCustodianCodeDescription { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE")]
-        public string POSTALADDRESSCODE { get; set; }
+        public string PostalAddressCode { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE_DESCRIPTION")]
-        public string POSTALADDRESSCODEDESCRIPTION { get; set; }
+        public string PostalAddressCodeDescription { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE")]
-        public string BLPUSTATECODE { get; set; }
+        public string BlpuStateCode { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE_DESCRIPTION")]
-        public string BLPUSTATECODEDESCRIPTION { get; set; }
+        public string BlpuStateCodeDescription { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOId { get; set; }
+        public string TopographyLayerToid { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
-        public string LASTUPDATEDATE { get; set; }
+        public string LastUpdateDate { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("BLPU_STATE_DATE")]
-        public string BLPUSTATEDATE { get; set; }
-        public string LANGUAGE { get; set; }
-        public double MATCH { get; set; }
+        public string BlpuStateDate { get; set; }
+
+        [JsonProperty("LANGUAGE")]
+        public string Language { get; set; }
+
+        [JsonProperty("MATCH")]
+        public double Match { get; set; }
 
         [JsonProperty("MATCH_DESCRIPTION")]
-        public string MATCHDESCRIPTION { get; set; }
+        public string MatchDescription { get; set; }
     }
 
-    public class BBoxResponseResultsTypeItemLPIType
+    public class BBoxResponseResultsTypeItemLpiType
     {
-        public string UPRN { get; set; }
-        public string ADDRESS { get; set; }
-        public string USRN { get; set; }
+        [JsonProperty("UPRN")]
+        public string Uprn { get; set; }
+
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
+
+        [JsonProperty("USRN")]
+        public string Usrn { get; set; }
 
         [JsonProperty("LPI_KEY")]
-        public string LPIKEY { get; set; }
+        public string LpiKey { get; set; }
 
         [JsonProperty("PAO_START_NUMBER")]
-        public string PAOSTARTNUMBER { get; set; }
+        public string PaoStartNumber { get; set; }
 
         [JsonProperty("STREET_DESCRIPTION")]
-        public string STREETDESCRIPTION { get; set; }
+        public string StreetDescription { get; set; }
 
         [JsonProperty("TOWN_NAME")]
-        public string TOWNNAME { get; set; }
+        public string TownName { get; set; }
 
         [JsonProperty("ADMINISTRATIVE_AREA")]
-        public string ADMINISTRATIVEAREA { get; set; }
+        public string AdministrativeArea { get; set; }
 
         [JsonProperty("POSTCODE_LOCATOR")]
-        public string POSTCODELOCATOR { get; set; }
-        public string RPC { get; set; }
+        public string PostcodeLocator { get; set; }
+
+        [JsonProperty("RPC")]
+        public string Rpc { get; set; }
 
         [JsonProperty("X_COORDINATE")]
-        public double XCOORDINATE { get; set; }
+        public double XCoordinate { get; set; }
 
         [JsonProperty("Y_COORDINATE")]
-        public double YCOORDINATE { get; set; }
-        public string STATUS { get; set; }
+        public double YCoordinate { get; set; }
+
+        [JsonProperty("STATUS")]
+        public string Status { get; set; }
 
         [JsonProperty("LOGICAL_STATUS_CODE")]
-        public string LOGICALSTATUSCODE { get; set; }
+        public string LogicalStatusCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE")]
-        public string CLASSIFICATIONCODE { get; set; }
+        public string ClassificationCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE_DESCRIPTION")]
-        public string CLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string ClassificationCodeDescription { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE")]
-        public int LOCALCUSTODIANCODE { get; set; }
+        public int LocalCustodianCode { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE_DESCRIPTION")]
-        public string LOCALCUSTODIANCODEDESCRIPTION { get; set; }
+        public string LocalCustodianCodeDescription { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE")]
-        public string POSTALADDRESSCODE { get; set; }
+        public string PostalAddressCode { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE_DESCRIPTION")]
-        public string POSTALADDRESSCODEDESCRIPTION { get; set; }
+        public string PostalAddressCodeDescription { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE_DESCRIPTION")]
-        public string BLPUSTATECODEDESCRIPTION { get; set; }
+        public string BlpuStateCodeDescription { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOId { get; set; }
+        public string TopographyLayerToid { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
-        public string LASTUPDATEDATE { get; set; }
+        public string LastUpdateDate { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("STREET_STATE_CODE")]
-        public string STREETSTATECODE { get; set; }
+        public string StreetStateCode { get; set; }
 
         [JsonProperty("STREET_STATE_CODE_DESCRIPTION")]
-        public string STREETSTATECODEDESCRIPTION { get; set; }
+        public string StreetStateCodeDescription { get; set; }
 
         [JsonProperty("STREET_CLASSIFICATION_CODE")]
-        public string STREETCLASSIFICATIONCODE { get; set; }
+        public string StreetClassificationCode { get; set; }
 
         [JsonProperty("STREET_CLASSIFICATION_CODE_DESCRIPTION")]
-        public string STREETCLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string StreetClassificationCodeDescription { get; set; }
 
         [JsonProperty("LPI_LOGICAL_STATUS_CODE")]
-        public string LPILOGICALSTATUSCODE { get; set; }
+        public string LpiLogicalStatusCode { get; set; }
 
         [JsonProperty("LPI_LOGICAL_STATUS_CODE_DESCRIPTION")]
-        public string LPILOGICALSTATUSCODEDESCRIPTION { get; set; }
-        public string LANGUAGE { get; set; }
-        public double MATCH { get; set; }
+        public string LpiLogicalStatusCodeDescription { get; set; }
+
+        [JsonProperty("LANGUAGE")]
+        public string Language { get; set; }
+
+        [JsonProperty("MATCH")]
+        public double Match { get; set; }
 
         [JsonProperty("MATCH_DESCRIPTION")]
-        public string MATCHDESCRIPTION { get; set; }
+        public string MatchDescription { get; set; }
     }
 
     public class RadiusResponse
@@ -1395,171 +1540,200 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
 
     public class RadiusResponseResultsTypeItem
     {
-        public RadiusResponseResultsTypeItemDPAType DPA { get; set; }
-        public RadiusResponseResultsTypeItemLPIType LPI { get; set; }
+        [JsonProperty("DPA")]
+        public RadiusResponseResultsTypeItemDpaType Dpa { get; set; }
+
+        [JsonProperty("LPI")]
+        public RadiusResponseResultsTypeItemLpiType Lpi { get; set; }
     }
 
-    public class RadiusResponseResultsTypeItemDPAType
+    public class RadiusResponseResultsTypeItemDpaType
     {
-        public string UPRN { get; set; }
-        public string ADDRESS { get; set; }
+        [JsonProperty("UPRN")]
+        public string Uprn { get; set; }
+
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
 
         [JsonProperty("ORGANISATION_NAME")]
-        public string ORGANISATIONNAME { get; set; }
+        public string OrganisationName { get; set; }
 
         [JsonProperty("BUILDING_NUMBER")]
-        public string BUILDINGNUMBER { get; set; }
+        public string BuildingNumber { get; set; }
 
         [JsonProperty("THOROUGHFARE_NAME")]
-        public string THOROUGHFARENAME { get; set; }
+        public string ThoroughfareName { get; set; }
 
         [JsonProperty("DEPENDENT_LOCALITY")]
-        public string DEPENDENTLOCALITY { get; set; }
+        public string DependentLocality { get; set; }
 
         [JsonProperty("POST_TOWN")]
-        public string POSTTOWN { get; set; }
-        public string POSTCODE { get; set; }
-        public string RPC { get; set; }
+        public string PostTown { get; set; }
+
+        [JsonProperty("POSTCODE")]
+        public string Postcode { get; set; }
+
+        [JsonProperty("RPC")]
+        public string Rpc { get; set; }
 
         [JsonProperty("X_COORDINATE")]
-        public double XCOORDINATE { get; set; }
+        public double XCoordinate { get; set; }
 
         [JsonProperty("Y_COORDINATE")]
-        public double YCOORDINATE { get; set; }
-        public string STATUS { get; set; }
+        public double YCoordinate { get; set; }
+
+        [JsonProperty("STATUS")]
+        public string Status { get; set; }
 
         [JsonProperty("LOGICAL_STATUS_CODE")]
-        public string LOGICALSTATUSCODE { get; set; }
+        public string LogicalStatusCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE")]
-        public string CLASSIFICATIONCODE { get; set; }
+        public string ClassificationCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE_DESCRIPTION")]
-        public string CLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string ClassificationCodeDescription { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE")]
-        public int LOCALCUSTODIANCODE { get; set; }
+        public int LocalCustodianCode { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE_DESCRIPTION")]
-        public string LOCALCUSTODIANCODEDESCRIPTION { get; set; }
+        public string LocalCustodianCodeDescription { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE")]
-        public string POSTALADDRESSCODE { get; set; }
+        public string PostalAddressCode { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE_DESCRIPTION")]
-        public string POSTALADDRESSCODEDESCRIPTION { get; set; }
+        public string PostalAddressCodeDescription { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE")]
-        public string BLPUSTATECODE { get; set; }
+        public string BlpuStateCode { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE_DESCRIPTION")]
-        public string BLPUSTATECODEDESCRIPTION { get; set; }
+        public string BlpuStateCodeDescription { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOId { get; set; }
+        public string TopographyLayerToid { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
-        public string LASTUPDATEDATE { get; set; }
+        public string LastUpdateDate { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("BLPU_STATE_DATE")]
-        public string BLPUSTATEDATE { get; set; }
-        public string LANGUAGE { get; set; }
-        public double MATCH { get; set; }
+        public string BlpuStateDate { get; set; }
+
+        [JsonProperty("LANGUAGE")]
+        public string Language { get; set; }
+
+        [JsonProperty("MATCH")]
+        public double Match { get; set; }
 
         [JsonProperty("MATCH_DESCRIPTION")]
-        public string MATCHDESCRIPTION { get; set; }
+        public string MatchDescription { get; set; }
     }
 
-    public class RadiusResponseResultsTypeItemLPIType
+    public class RadiusResponseResultsTypeItemLpiType
     {
-        public string UPRN { get; set; }
-        public string ADDRESS { get; set; }
-        public string USRN { get; set; }
+        [JsonProperty("UPRN")]
+        public string Uprn { get; set; }
+
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
+
+        [JsonProperty("USRN")]
+        public string Usrn { get; set; }
 
         [JsonProperty("LPI_KEY")]
-        public string LPIKEY { get; set; }
+        public string LpiKey { get; set; }
 
         [JsonProperty("PAO_START_NUMBER")]
-        public string PAOSTARTNUMBER { get; set; }
+        public string PaoStartNumber { get; set; }
 
         [JsonProperty("STREET_DESCRIPTION")]
-        public string STREETDESCRIPTION { get; set; }
+        public string StreetDescription { get; set; }
 
         [JsonProperty("TOWN_NAME")]
-        public string TOWNNAME { get; set; }
+        public string TownName { get; set; }
 
         [JsonProperty("ADMINISTRATIVE_AREA")]
-        public string ADMINISTRATIVEAREA { get; set; }
+        public string AdministrativeArea { get; set; }
 
         [JsonProperty("POSTCODE_LOCATOR")]
-        public string POSTCODELOCATOR { get; set; }
-        public string RPC { get; set; }
+        public string PostcodeLocator { get; set; }
+
+        [JsonProperty("RPC")]
+        public string Rpc { get; set; }
 
         [JsonProperty("X_COORDINATE")]
-        public double XCOORDINATE { get; set; }
+        public double XCoordinate { get; set; }
 
         [JsonProperty("Y_COORDINATE")]
-        public double YCOORDINATE { get; set; }
-        public string STATUS { get; set; }
+        public double YCoordinate { get; set; }
+
+        [JsonProperty("STATUS")]
+        public string Status { get; set; }
 
         [JsonProperty("LOGICAL_STATUS_CODE")]
-        public string LOGICALSTATUSCODE { get; set; }
+        public string LogicalStatusCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE")]
-        public string CLASSIFICATIONCODE { get; set; }
+        public string ClassificationCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE_DESCRIPTION")]
-        public string CLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string ClassificationCodeDescription { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE")]
-        public int LOCALCUSTODIANCODE { get; set; }
+        public int LocalCustodianCode { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE_DESCRIPTION")]
-        public string LOCALCUSTODIANCODEDESCRIPTION { get; set; }
+        public string LocalCustodianCodeDescription { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE")]
-        public string POSTALADDRESSCODE { get; set; }
+        public string PostalAddressCode { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE_DESCRIPTION")]
-        public string POSTALADDRESSCODEDESCRIPTION { get; set; }
+        public string PostalAddressCodeDescription { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE_DESCRIPTION")]
-        public string BLPUSTATECODEDESCRIPTION { get; set; }
+        public string BlpuStateCodeDescription { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOId { get; set; }
+        public string TopographyLayerToid { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
-        public string LASTUPDATEDATE { get; set; }
+        public string LastUpdateDate { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("STREET_STATE_CODE")]
-        public string STREETSTATECODE { get; set; }
+        public string StreetStateCode { get; set; }
 
         [JsonProperty("STREET_STATE_CODE_DESCRIPTION")]
-        public string STREETSTATECODEDESCRIPTION { get; set; }
+        public string StreetStateCodeDescription { get; set; }
 
         [JsonProperty("STREET_CLASSIFICATION_CODE")]
-        public string STREETCLASSIFICATIONCODE { get; set; }
+        public string StreetClassificationCode { get; set; }
 
         [JsonProperty("STREET_CLASSIFICATION_CODE_DESCRIPTION")]
-        public string STREETCLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string StreetClassificationCodeDescription { get; set; }
 
         [JsonProperty("LPI_LOGICAL_STATUS_CODE")]
-        public string LPILOGICALSTATUSCODE { get; set; }
+        public string LpiLogicalStatusCode { get; set; }
 
         [JsonProperty("LPI_LOGICAL_STATUS_CODE_DESCRIPTION")]
-        public string LPILOGICALSTATUSCODEDESCRIPTION { get; set; }
-        public string LANGUAGE { get; set; }
-        public double MATCH { get; set; }
+        public string LpiLogicalStatusCodeDescription { get; set; }
+
+        [JsonProperty("LANGUAGE")]
+        public string Language { get; set; }
+
+        [JsonProperty("MATCH")]
+        public double Match { get; set; }
 
         [JsonProperty("MATCH_DESCRIPTION")]
-        public string MATCHDESCRIPTION { get; set; }
+        public string MatchDescription { get; set; }
     }
 
     public class PolygonResponse
@@ -1609,171 +1783,200 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
 
     public class PolygonResponseResultsTypeItem
     {
-        public PolygonResponseResultsTypeItemDPAType DPA { get; set; }
-        public PolygonResponseResultsTypeItemLPIType LPI { get; set; }
+        [JsonProperty("DPA")]
+        public PolygonResponseResultsTypeItemDpaType Dpa { get; set; }
+
+        [JsonProperty("LPI")]
+        public PolygonResponseResultsTypeItemLpiType Lpi { get; set; }
     }
 
-    public class PolygonResponseResultsTypeItemDPAType
+    public class PolygonResponseResultsTypeItemDpaType
     {
-        public string UPRN { get; set; }
-        public string ADDRESS { get; set; }
+        [JsonProperty("UPRN")]
+        public string Uprn { get; set; }
+
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
 
         [JsonProperty("ORGANISATION_NAME")]
-        public string ORGANISATIONNAME { get; set; }
+        public string OrganisationName { get; set; }
 
         [JsonProperty("BUILDING_NUMBER")]
-        public string BUILDINGNUMBER { get; set; }
+        public string BuildingNumber { get; set; }
 
         [JsonProperty("THOROUGHFARE_NAME")]
-        public string THOROUGHFARENAME { get; set; }
+        public string ThoroughfareName { get; set; }
 
         [JsonProperty("DEPENDENT_LOCALITY")]
-        public string DEPENDENTLOCALITY { get; set; }
+        public string DependentLocality { get; set; }
 
         [JsonProperty("POST_TOWN")]
-        public string POSTTOWN { get; set; }
-        public string POSTCODE { get; set; }
-        public string RPC { get; set; }
+        public string PostTown { get; set; }
+
+        [JsonProperty("POSTCODE")]
+        public string Postcode { get; set; }
+
+        [JsonProperty("RPC")]
+        public string Rpc { get; set; }
 
         [JsonProperty("X_COORDINATE")]
-        public double XCOORDINATE { get; set; }
+        public double XCoordinate { get; set; }
 
         [JsonProperty("Y_COORDINATE")]
-        public double YCOORDINATE { get; set; }
-        public string STATUS { get; set; }
+        public double YCoordinate { get; set; }
+
+        [JsonProperty("STATUS")]
+        public string Status { get; set; }
 
         [JsonProperty("LOGICAL_STATUS_CODE")]
-        public string LOGICALSTATUSCODE { get; set; }
+        public string LogicalStatusCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE")]
-        public string CLASSIFICATIONCODE { get; set; }
+        public string ClassificationCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE_DESCRIPTION")]
-        public string CLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string ClassificationCodeDescription { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE")]
-        public int LOCALCUSTODIANCODE { get; set; }
+        public int LocalCustodianCode { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE_DESCRIPTION")]
-        public string LOCALCUSTODIANCODEDESCRIPTION { get; set; }
+        public string LocalCustodianCodeDescription { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE")]
-        public string POSTALADDRESSCODE { get; set; }
+        public string PostalAddressCode { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE_DESCRIPTION")]
-        public string POSTALADDRESSCODEDESCRIPTION { get; set; }
+        public string PostalAddressCodeDescription { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE")]
-        public string BLPUSTATECODE { get; set; }
+        public string BlpuStateCode { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE_DESCRIPTION")]
-        public string BLPUSTATECODEDESCRIPTION { get; set; }
+        public string BlpuStateCodeDescription { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOId { get; set; }
+        public string TopographyLayerToid { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
-        public string LASTUPDATEDATE { get; set; }
+        public string LastUpdateDate { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("BLPU_STATE_DATE")]
-        public string BLPUSTATEDATE { get; set; }
-        public string LANGUAGE { get; set; }
-        public double MATCH { get; set; }
+        public string BlpuStateDate { get; set; }
+
+        [JsonProperty("LANGUAGE")]
+        public string Language { get; set; }
+
+        [JsonProperty("MATCH")]
+        public double Match { get; set; }
 
         [JsonProperty("MATCH_DESCRIPTION")]
-        public string MATCHDESCRIPTION { get; set; }
+        public string MatchDescription { get; set; }
     }
 
-    public class PolygonResponseResultsTypeItemLPIType
+    public class PolygonResponseResultsTypeItemLpiType
     {
-        public string UPRN { get; set; }
-        public string ADDRESS { get; set; }
-        public string USRN { get; set; }
+        [JsonProperty("UPRN")]
+        public string Uprn { get; set; }
+
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
+
+        [JsonProperty("USRN")]
+        public string Usrn { get; set; }
 
         [JsonProperty("LPI_KEY")]
-        public string LPIKEY { get; set; }
+        public string LpiKey { get; set; }
 
         [JsonProperty("PAO_START_NUMBER")]
-        public string PAOSTARTNUMBER { get; set; }
+        public string PaoStartNumber { get; set; }
 
         [JsonProperty("STREET_DESCRIPTION")]
-        public string STREETDESCRIPTION { get; set; }
+        public string StreetDescription { get; set; }
 
         [JsonProperty("TOWN_NAME")]
-        public string TOWNNAME { get; set; }
+        public string TownName { get; set; }
 
         [JsonProperty("ADMINISTRATIVE_AREA")]
-        public string ADMINISTRATIVEAREA { get; set; }
+        public string AdministrativeArea { get; set; }
 
         [JsonProperty("POSTCODE_LOCATOR")]
-        public string POSTCODELOCATOR { get; set; }
-        public string RPC { get; set; }
+        public string PostcodeLocator { get; set; }
+
+        [JsonProperty("RPC")]
+        public string Rpc { get; set; }
 
         [JsonProperty("X_COORDINATE")]
-        public double XCOORDINATE { get; set; }
+        public double XCoordinate { get; set; }
 
         [JsonProperty("Y_COORDINATE")]
-        public double YCOORDINATE { get; set; }
-        public string STATUS { get; set; }
+        public double YCoordinate { get; set; }
+
+        [JsonProperty("STATUS")]
+        public string Status { get; set; }
 
         [JsonProperty("LOGICAL_STATUS_CODE")]
-        public string LOGICALSTATUSCODE { get; set; }
+        public string LogicalStatusCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE")]
-        public string CLASSIFICATIONCODE { get; set; }
+        public string ClassificationCode { get; set; }
 
         [JsonProperty("CLASSIFICATION_CODE_DESCRIPTION")]
-        public string CLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string ClassificationCodeDescription { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE")]
-        public int LOCALCUSTODIANCODE { get; set; }
+        public int LocalCustodianCode { get; set; }
 
         [JsonProperty("LOCAL_CUSTODIAN_CODE_DESCRIPTION")]
-        public string LOCALCUSTODIANCODEDESCRIPTION { get; set; }
+        public string LocalCustodianCodeDescription { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE")]
-        public string POSTALADDRESSCODE { get; set; }
+        public string PostalAddressCode { get; set; }
 
         [JsonProperty("POSTAL_ADDRESS_CODE_DESCRIPTION")]
-        public string POSTALADDRESSCODEDESCRIPTION { get; set; }
+        public string PostalAddressCodeDescription { get; set; }
 
         [JsonProperty("BLPU_STATE_CODE_DESCRIPTION")]
-        public string BLPUSTATECODEDESCRIPTION { get; set; }
+        public string BlpuStateCodeDescription { get; set; }
 
         [JsonProperty("TOPOGRAPHY_LAYER_TOID")]
-        public string TOPOGRAPHYLAYERTOId { get; set; }
+        public string TopographyLayerToid { get; set; }
 
         [JsonProperty("LAST_UPDATE_DATE")]
-        public string LASTUPDATEDATE { get; set; }
+        public string LastUpdateDate { get; set; }
 
         [JsonProperty("ENTRY_DATE")]
-        public string ENTRYDATE { get; set; }
+        public string EntryDate { get; set; }
 
         [JsonProperty("STREET_STATE_CODE")]
-        public string STREETSTATECODE { get; set; }
+        public string StreetStateCode { get; set; }
 
         [JsonProperty("STREET_STATE_CODE_DESCRIPTION")]
-        public string STREETSTATECODEDESCRIPTION { get; set; }
+        public string StreetStateCodeDescription { get; set; }
 
         [JsonProperty("STREET_CLASSIFICATION_CODE")]
-        public string STREETCLASSIFICATIONCODE { get; set; }
+        public string StreetClassificationCode { get; set; }
 
         [JsonProperty("STREET_CLASSIFICATION_CODE_DESCRIPTION")]
-        public string STREETCLASSIFICATIONCODEDESCRIPTION { get; set; }
+        public string StreetClassificationCodeDescription { get; set; }
 
         [JsonProperty("LPI_LOGICAL_STATUS_CODE")]
-        public string LPILOGICALSTATUSCODE { get; set; }
+        public string LpiLogicalStatusCode { get; set; }
 
         [JsonProperty("LPI_LOGICAL_STATUS_CODE_DESCRIPTION")]
-        public string LPILOGICALSTATUSCODEDESCRIPTION { get; set; }
-        public string LANGUAGE { get; set; }
-        public double MATCH { get; set; }
+        public string LpiLogicalStatusCodeDescription { get; set; }
+
+        [JsonProperty("LANGUAGE")]
+        public string Language { get; set; }
+
+        [JsonProperty("MATCH")]
+        public double Match { get; set; }
 
         [JsonProperty("MATCH_DESCRIPTION")]
-        public string MATCHDESCRIPTION { get; set; }
+        public string MatchDescription { get; set; }
     }
 
     public class BodyInput

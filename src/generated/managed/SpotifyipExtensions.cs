@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         public string Type { get; set; }
 
         [JsonProperty("uri")]
-        public string URI { get; set; }
+        public string Uri { get; set; }
     }
 
     public class Artist
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         public string Type { get; set; }
 
         [JsonProperty("uri")]
-        public string URI { get; set; }
+        public string Uri { get; set; }
     }
 
     public class ExternalUrl
@@ -194,13 +194,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
     public class ExternalId
     {
         [JsonProperty("ean")]
-        public string EAN { get; set; }
+        public string Ean { get; set; }
 
         [JsonProperty("isrc")]
-        public string ISRC { get; set; }
+        public string Isrc { get; set; }
 
         [JsonProperty("upc")]
-        public string UPC { get; set; }
+        public string Upc { get; set; }
     }
 
     public class Image
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         public string Name { get; set; }
 
         [JsonProperty("preview_url")]
-        public string PreviewURL { get; set; }
+        public string PreviewUrl { get; set; }
 
         [JsonProperty("restrictions")]
         public TrackRestriction Restrictions { get; set; }
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         public string Type { get; set; }
 
         [JsonProperty("uri")]
-        public string URI { get; set; }
+        public string Uri { get; set; }
     }
 
     public class SimplifiedArtist
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         public string Type { get; set; }
 
         [JsonProperty("uri")]
-        public string URI { get; set; }
+        public string Uri { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -337,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         public string Type { get; set; }
 
         [JsonProperty("uri")]
-        public string URI { get; set; }
+        public string Uri { get; set; }
     }
 
     public class ExplicitContentSettings
@@ -427,7 +427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         public string Type { get; set; }
 
         [JsonProperty("uri")]
-        public string URI { get; set; }
+        public string Uri { get; set; }
     }
 }
 

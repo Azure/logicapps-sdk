@@ -191,17 +191,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataHAROResponse, ApiConnectionActionConfiguration> ExtractDataHARO(Expression<Func<DetectResponseColdEmailBodyInput>> body = null)
+        public IBodyWorkflowAction<ExtractDataHaroResponse, ApiConnectionActionConfiguration> ExtractDataHaro(Expression<Func<DetectResponseColdEmailBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<ExtractDataHAROResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ExtractDataHaroResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/actions/haro";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ExtractDataHAROResponse>(callPayload);
+                return new ApiConnectionAction<ExtractDataHaroResponse>(callPayload);
             });
         }
     }
@@ -257,45 +257,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
 
     public class ExtractDataFromInvoiceResponseOutputsType
     {
-        public string CURRENCY { get; set; }
+        [JsonProperty("CURRENCY")]
+        public string Currency { get; set; }
 
         [JsonProperty("CUSTOMER_ADDRESS")]
-        public string CUSTOMERADDRESS { get; set; }
+        public string CustomerAddress { get; set; }
 
         [JsonProperty("CUSTOMER_NAME")]
-        public string CUSTOMERNAME { get; set; }
-        public string DISCOUNT { get; set; }
+        public string CustomerName { get; set; }
+
+        [JsonProperty("DISCOUNT")]
+        public string Discount { get; set; }
 
         [JsonProperty("DUE_DATE")]
-        public string DUEDATE { get; set; }
+        public string DueDate { get; set; }
 
         [JsonProperty("INVOICE_RECEIPT_DATE")]
-        public string INVOICERECEIPTDATE { get; set; }
+        public string InvoiceReceiptDate { get; set; }
 
         [JsonProperty("INVOICE_RECEIPT_ID")]
-        public string INVOICERECEIPTId { get; set; }
+        public string InvoiceReceiptId { get; set; }
 
         [JsonProperty("LINE_ITEMS")]
-        public string LINEITEMS { get; set; }
+        public string LineItems { get; set; }
 
         [JsonProperty("NUMBER_OF_PAGES")]
-        public int NUMBEROFPAGES { get; set; }
+        public int NumberOfPages { get; set; }
 
         [JsonProperty("RECEIVER_ADDRESS")]
-        public string RECEIVERADDRESS { get; set; }
-        public string RawJSON { get; set; }
-        public string SUBTOTAL { get; set; }
+        public string ReceiverAddress { get; set; }
+
+        [JsonProperty("RawJSON")]
+        public string RawJson { get; set; }
+
+        [JsonProperty("SUBTOTAL")]
+        public string Subtotal { get; set; }
 
         [JsonProperty("SUPPLIER_ADDRESS")]
-        public string SUPPLIERADDRESS { get; set; }
-        public string TAX { get; set; }
-        public string TOTAL { get; set; }
+        public string SupplierAddress { get; set; }
+
+        [JsonProperty("TAX")]
+        public string Tax { get; set; }
+
+        [JsonProperty("TOTAL")]
+        public string Total { get; set; }
 
         [JsonProperty("VENDOR_NAME")]
-        public string VENDORNAME { get; set; }
+        public string VendorName { get; set; }
 
         [JsonProperty("VENDOR_VAT_NUMBER")]
-        public string VENDORVATNUMBER { get; set; }
+        public string VendorVatNumber { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -316,42 +327,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
     public class ExtractDataPurchaseOrdersResponseOutputsType
     {
         [JsonProperty("ACCOUNT_NUMBER")]
-        public string ACCOUNTNUMBER { get; set; }
+        public string AccountNumber { get; set; }
 
         [JsonProperty("CUSTOMER_NAME")]
-        public string CUSTOMERNAME { get; set; }
+        public string CustomerName { get; set; }
 
         [JsonProperty("LINE_ITEMS")]
-        public string LINEITEMS { get; set; }
+        public string LineItems { get; set; }
 
         [JsonProperty("NUMBER_OF_PAGES")]
-        public int NUMBEROFPAGES { get; set; }
+        public int NumberOfPages { get; set; }
 
         [JsonProperty("PURCHASE_ORDER_DATE")]
-        public string PURCHASEORDERDATE { get; set; }
+        public string PurchaseOrderDate { get; set; }
 
         [JsonProperty("PURCHASE_ORDER_ID")]
-        public string PURCHASEORDERId { get; set; }
+        public string PurchaseOrderId { get; set; }
 
         [JsonProperty("PURCHASE_ORDER_NUMBER")]
-        public string PURCHASEORDERNUMBER { get; set; }
+        public string PurchaseOrderNumber { get; set; }
 
         [JsonProperty("RECEIVER_ADDRESS")]
-        public string RECEIVERADDRESS { get; set; }
+        public string ReceiverAddress { get; set; }
 
         [JsonProperty("RECEIVER_NAME")]
-        public string RECEIVERNAME { get; set; }
+        public string ReceiverName { get; set; }
 
         [JsonProperty("REFERENCE_NUMBER")]
-        public string REFERENCENUMBER { get; set; }
-        public string RawJSON { get; set; }
+        public string ReferenceNumber { get; set; }
+
+        [JsonProperty("RawJSON")]
+        public string RawJson { get; set; }
 
         [JsonProperty("TAX_ID")]
-        public string TAXId { get; set; }
-        public string TOTAL { get; set; }
+        public string TaxId { get; set; }
+
+        [JsonProperty("TOTAL")]
+        public string Total { get; set; }
 
         [JsonProperty("TRACKING_NUMBER")]
-        public string TRACKINGNUMBER { get; set; }
+        public string TrackingNumber { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -369,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public string BLNumber { get; set; }
 
         [JsonProperty("BOL Type")]
-        public string BOLType { get; set; }
+        public string BolType { get; set; }
 
         [JsonProperty("Booking N")]
         public string BookingN { get; set; }
@@ -383,7 +398,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
 
         [JsonProperty("Port of Loading")]
         public string PortOfLoading { get; set; }
-        public string RawJSON { get; set; }
+
+        [JsonProperty("RawJSON")]
+        public string RawJson { get; set; }
         public string ShippedOnBoard { get; set; }
         public string Shipper { get; set; }
         public string Vessel { get; set; }
@@ -399,23 +416,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
 
     public class ExtractDataCVResponseOutputsType
     {
-        public string EDUCATION { get; set; }
-        public string EMAILS { get; set; }
-        public string EXPERIENCE { get; set; }
+        [JsonProperty("EDUCATION")]
+        public string Education { get; set; }
+
+        [JsonProperty("EMAILS")]
+        public string Emails { get; set; }
+
+        [JsonProperty("EXPERIENCE")]
+        public string Experience { get; set; }
 
         [JsonProperty("JOB_TITLE")]
-        public string JOBTITLE { get; set; }
-        public string LINKEDIN { get; set; }
-        public string LOCATION { get; set; }
-        public string NAME { get; set; }
+        public string JobTitle { get; set; }
+
+        [JsonProperty("LINKEDIN")]
+        public string Linkedin { get; set; }
+
+        [JsonProperty("LOCATION")]
+        public string Location { get; set; }
+
+        [JsonProperty("NAME")]
+        public string Name { get; set; }
 
         [JsonProperty("PHONE_NUMBERS")]
-        public string PHONENUMBERS { get; set; }
-        public string RawJSON { get; set; }
-        public string SKILLS { get; set; }
+        public string PhoneNumbers { get; set; }
+
+        [JsonProperty("RawJSON")]
+        public string RawJson { get; set; }
+
+        [JsonProperty("SKILLS")]
+        public string Skills { get; set; }
 
         [JsonProperty("TOTAL_YEARS_EXPERIENCE")]
-        public string TOTALYEARSEXPERIENCE { get; set; }
+        public string TotalYearsExperience { get; set; }
     }
 
     public class DetectDocumentTypeResponse
@@ -428,7 +460,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
     {
         [JsonProperty("Document Type")]
         public string DocumentType { get; set; }
-        public string RawJSON { get; set; }
+
+        [JsonProperty("RawJSON")]
+        public string RawJson { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -448,30 +482,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
 
     public class ExtractDataBusinessCardsResponseOutputsType
     {
-        public string ADDRESS { get; set; }
+        [JsonProperty("ADDRESS")]
+        public string Address { get; set; }
 
         [JsonProperty("COMPANY_NAME")]
-        public string COMPANYNAME { get; set; }
+        public string CompanyName { get; set; }
 
         [JsonProperty("EMAIL_ADDRESS")]
-        public string EMAILADDRESS { get; set; }
-        public string FAX { get; set; }
-        public string LOCATION { get; set; }
+        public string EmailAddress { get; set; }
+
+        [JsonProperty("FAX")]
+        public string Fax { get; set; }
+
+        [JsonProperty("LOCATION")]
+        public string Location { get; set; }
 
         [JsonProperty("LOGO_URL")]
-        public string LOGOURL { get; set; }
-        public string MOBILE { get; set; }
+        public string LogoUrl { get; set; }
+
+        [JsonProperty("MOBILE")]
+        public string Mobile { get; set; }
 
         [JsonProperty("PERSON_NAME")]
-        public string PERSONNAME { get; set; }
+        public string PersonName { get; set; }
 
         [JsonProperty("PERSON_POSITION")]
-        public string PERSONPOSITION { get; set; }
+        public string PersonPosition { get; set; }
 
         [JsonProperty("PHONE_NUMBER")]
-        public string PHONENUMBER { get; set; }
-        public string RawJSON { get; set; }
-        public string WEBSITE { get; set; }
+        public string PhoneNumber { get; set; }
+
+        [JsonProperty("RawJSON")]
+        public string RawJson { get; set; }
+
+        [JsonProperty("WEBSITE")]
+        public string Website { get; set; }
     }
 
     public class ExtractQRCodeResponse
@@ -482,7 +527,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
 
     public class ExtractQRCodeResponseOutputsType
     {
-        public string RawJSON { get; set; }
+        [JsonProperty("RawJSON")]
+        public string RawJson { get; set; }
 
         [JsonProperty("qrcode")]
         public string Qrcode { get; set; }
@@ -496,7 +542,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
 
     public class ExtractBarcodeFromFileResponseOutputsType
     {
-        public string RawJSON { get; set; }
+        [JsonProperty("RawJSON")]
+        public string RawJson { get; set; }
 
         [JsonProperty("barcode")]
         public string Barcode { get; set; }
@@ -510,7 +557,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
 
     public class DetectResponseColdEmailResponseOutputsType
     {
-        public string RawJSON { get; set; }
+        [JsonProperty("RawJSON")]
+        public string RawJson { get; set; }
         public string Result { get; set; }
     }
 
@@ -520,24 +568,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public string Text { get; set; }
     }
 
-    public class ExtractDataHAROResponse
+    public class ExtractDataHaroResponse
     {
         [JsonProperty("outputs")]
-        public ExtractDataHAROResponseOutputsType Outputs { get; set; }
+        public ExtractDataHaroResponseOutputsType Outputs { get; set; }
     }
 
-    public class ExtractDataHAROResponseOutputsType
+    public class ExtractDataHaroResponseOutputsType
     {
-        public string CATEGORY { get; set; }
-        public string DEADLINE { get; set; }
-        public string EMAIL { get; set; }
+        [JsonProperty("CATEGORY")]
+        public string Category { get; set; }
+
+        [JsonProperty("DEADLINE")]
+        public string Deadline { get; set; }
+
+        [JsonProperty("EMAIL")]
+        public string Email { get; set; }
 
         [JsonProperty("MEDIA OUTLET")]
-        public string MEDIAOUTLET { get; set; }
-        public string NAME { get; set; }
-        public string QUERY { get; set; }
-        public string REQUIREMENTS { get; set; }
-        public string RawJSON { get; set; }
+        public string MediaOutlet { get; set; }
+
+        [JsonProperty("NAME")]
+        public string Name { get; set; }
+
+        [JsonProperty("QUERY")]
+        public string Query { get; set; }
+
+        [JsonProperty("REQUIREMENTS")]
+        public string Requirements { get; set; }
+
+        [JsonProperty("RawJSON")]
+        public string RawJson { get; set; }
     }
 }
 

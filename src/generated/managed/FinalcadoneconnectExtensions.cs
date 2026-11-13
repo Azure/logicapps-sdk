@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
         public string Language { get; set; } = "fr";
 
         [JsonProperty("timezone")]
-        public string TheUserSTimeZoneInIANAFormat { get; set; }
+        public string TheUserTimeZoneInIanaFormat { get; set; }
     }
 
     public class InitResponse

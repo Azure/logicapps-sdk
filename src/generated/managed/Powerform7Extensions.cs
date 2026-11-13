@@ -13,15 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
     public class Powerform7Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerform7")]
-        public IBodyWorkflowAction<GetCF7FormsResponseItem[], ApiConnectionActionConfiguration> GetCF7Forms(Expression<Func<string>> wPSITEURL)
+        public IBodyWorkflowAction<GetCF7FormsResponseItem[], ApiConnectionActionConfiguration> GetCF7Forms(Expression<Func<string>> wpSiteurl)
         {
-            var __workflow_wPSITEURL = WorkflowExpression.Compile(wPSITEURL, nameof(wPSITEURL), required: true);
+            var __workflow_wpSiteurl = WorkflowExpression.Compile(wpSiteurl, nameof(wpSiteurl), required: true);
             return new DeferredBodyAction<GetCF7FormsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/proxy/contact-form-7/v1/contact-forms";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(__workflow_wPSITEURL);
+                callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(__workflow_wpSiteurl);
                 return new ApiConnectionAction<GetCF7FormsResponseItem[]>(callPayload);
             });
         }
@@ -29,16 +29,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
 
     public class Powerform7Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateWebhook(Expression<Func<string>> wPSITEURL, Expression<Func<string>> formId)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> CreateWebhook(Expression<Func<string>> wpSiteurl, Expression<Func<string>> formId)
         {
-            var __workflow_wPSITEURL = WorkflowExpression.Compile(wPSITEURL, nameof(wPSITEURL), required: true);
+            var __workflow_wpSiteurl = WorkflowExpression.Compile(wpSiteurl, nameof(wpSiteurl), required: true);
             var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/proxy/power-form-7/v1/webhooks/{0}", __workflow_formId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(__workflow_wPSITEURL);
+                callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(__workflow_wpSiteurl);
                 callPayload.Body = new CallbackUrlInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });

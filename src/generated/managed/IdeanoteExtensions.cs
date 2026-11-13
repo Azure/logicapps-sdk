@@ -297,10 +297,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         public double IdeaCollectionStatsIdeasDays7 { get; set; }
 
         [JsonProperty("url_path")]
-        public string IdeaCollectionURLPath { get; set; }
+        public string IdeaCollectionUrlPath { get; set; }
 
         [JsonProperty("url")]
-        public string IdeaCollectionURL { get; set; }
+        public string IdeaCollectionUrl { get; set; }
 
         [JsonProperty("goal_id")]
         public string IdeaCollectionGoalId { get; set; }
@@ -351,10 +351,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         public string IdeaCollectionOwnerCountry { get; set; }
 
         [JsonProperty("owner_url_path")]
-        public string IdeaCollectionOwnerURLPath { get; set; }
+        public string IdeaCollectionOwnerUrlPath { get; set; }
 
         [JsonProperty("owner_url")]
-        public string IdeaCollectionOwnerURL { get; set; }
+        public string IdeaCollectionOwnerUrl { get; set; }
 
         [JsonProperty("workspace_id")]
         public string IdeaCollectionWorkspaceId { get; set; }
@@ -366,10 +366,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         public string IdeaCollectionWorkspaceSubdomain { get; set; }
 
         [JsonProperty("workspace_url_path")]
-        public string IdeaCollectionWorkspaceURLPath { get; set; }
+        public string IdeaCollectionWorkspaceUrlPath { get; set; }
 
         [JsonProperty("workspace_url")]
-        public string IdeaCollectionWorkspaceURL { get; set; }
+        public string IdeaCollectionWorkspaceUrl { get; set; }
 
         [JsonProperty("section_title")]
         public string IdeaCollectionSectionTitle { get; set; }
@@ -399,10 +399,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         public bool IdeaArchived { get; set; }
 
         [JsonProperty("content_html")]
-        public string IdeaContentHTML { get; set; }
+        public string IdeaContentHtml { get; set; }
 
         [JsonProperty("content_json")]
-        public string IdeaContentJSON { get; set; }
+        public string IdeaContentJson { get; set; }
 
         [JsonProperty("content_language")]
         public string IdeaContentLanguage { get; set; }
@@ -468,16 +468,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         public string IdeaCollectionTitle { get; set; }
 
         [JsonProperty("idea_collection_url_path")]
-        public string IdeaCollectionURLPath { get; set; }
+        public string IdeaCollectionUrlPath { get; set; }
 
         [JsonProperty("idea_collection_url")]
-        public string IdeaCollectionURL { get; set; }
+        public string IdeaCollectionUrl { get; set; }
 
         [JsonProperty("idea_collection_workspace_url_path")]
-        public string IdeaCollectionWorkspaceURLPath { get; set; }
+        public string IdeaCollectionWorkspaceUrlPath { get; set; }
 
         [JsonProperty("idea_collection_workspace_url")]
-        public string IdeaCollectionWorkspaceURL { get; set; }
+        public string IdeaCollectionWorkspaceUrl { get; set; }
 
         [JsonProperty("keywords")]
         public string IdeaKeywords { get; set; }
@@ -510,10 +510,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         public int IdeaOwnerRank { get; set; }
 
         [JsonProperty("owner_url_path")]
-        public string IdeaOwnerURLPath { get; set; }
+        public string IdeaOwnerUrlPath { get; set; }
 
         [JsonProperty("owner_url")]
-        public string IdeaOwnerURL { get; set; }
+        public string IdeaOwnerUrl { get; set; }
 
         [JsonProperty("phase_id")]
         public string IdeaPhaseId { get; set; }
@@ -549,10 +549,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         public string IdeaUpdatedAt { get; set; }
 
         [JsonProperty("url_path")]
-        public string IdeaURLPath { get; set; }
+        public string IdeaUrlPath { get; set; }
 
         [JsonProperty("url")]
-        public string IdeaURL { get; set; }
+        public string IdeaUrl { get; set; }
 
         [JsonProperty("workspace_id")]
         public string IdeaWorkspaceId { get; set; }
@@ -564,10 +564,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         public string IdeaWorkspaceSubdomain { get; set; }
 
         [JsonProperty("workspace_url_path")]
-        public string IdeaWorkspaceURLPath { get; set; }
+        public string IdeaWorkspaceUrlPath { get; set; }
 
         [JsonProperty("workspace_url")]
-        public string IdeaWorkspaceURL { get; set; }
+        public string IdeaWorkspaceUrl { get; set; }
 
         [JsonProperty("idea_collection_section_title")]
         public string IdeaCollectionSectionTitle { get; set; }
@@ -588,10 +588,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         public string IdeaMissionQuestion { get; set; }
 
         [JsonProperty("mission_url")]
-        public string IdeaMissionURL { get; set; }
+        public string IdeaMissionUrl { get; set; }
 
         [JsonProperty("mission_url_path")]
-        public string IdeaMissionURLPath { get; set; }
+        public string IdeaMissionUrlPath { get; set; }
     }
 
     public class Comment
@@ -602,8 +602,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         [JsonProperty("text")]
         public string CommentText { get; set; }
 
+        [JsonProperty("url")]
+        public string CommentUrl { get; set; }
+
         [JsonProperty("url_path")]
-        public string CommentURL { get; set; }
+        public string CommentUrl2 { get; set; }
 
         [JsonProperty("anonymity")]
         public string CommentAnonymity { get; set; }
@@ -633,10 +636,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         public string CommentSenderCountry { get; set; }
 
         [JsonProperty("sender_url")]
-        public string CommentSenderURL { get; set; }
+        public string CommentSenderUrl { get; set; }
 
         [JsonProperty("sender_url_path")]
-        public string CommentSenderURLPath { get; set; }
+        public string CommentSenderUrlPath { get; set; }
     }
 
     public class User
@@ -666,10 +669,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ideanote
         public string UserCountry { get; set; }
 
         [JsonProperty("url")]
-        public string UserURL { get; set; }
+        public string UserUrl { get; set; }
 
         [JsonProperty("url_path")]
-        public string UserURLPath { get; set; }
+        public string UserUrlPath { get; set; }
     }
 
     public class UpdateUserBodyInput

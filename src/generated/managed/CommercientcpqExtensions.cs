@@ -13,72 +13,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
     public class CommercientcpqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE100CreateNewCustomerResponse, ApiConnectionActionConfiguration> SAGE100CreateNewCustomer(Expression<Func<SAGE100CreateNewCustomerBodyInput>> body)
+        public IBodyWorkflowAction<Sage100CreateNewCustomerResponse, ApiConnectionActionConfiguration> Sage100CreateNewCustomer(Expression<Func<Sage100CreateNewCustomerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<SAGE100CreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<Sage100CreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/SAGE100/customer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SAGE100CreateNewCustomerResponse>(callPayload);
+                return new ApiConnectionAction<Sage100CreateNewCustomerResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE100CreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SAGE100CreateNewSalesOrder(Expression<Func<SAGE100CreateNewSalesOrderBodyInput>> body)
+        public IBodyWorkflowAction<Sage100CreateNewSalesOrderResponse, ApiConnectionActionConfiguration> Sage100CreateNewSalesOrder(Expression<Func<Sage100CreateNewSalesOrderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<SAGE100CreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<Sage100CreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/SAGE100/salesorder";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SAGE100CreateNewSalesOrderResponse>(callPayload);
+                return new ApiConnectionAction<Sage100CreateNewSalesOrderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<CommercientCPQCreateNewCustomerResponse, ApiConnectionActionConfiguration> CommercientCPQCreateNewCustomer(Expression<Func<CommercientCPQCreateNewCustomerBodyInput>> body)
+        public IBodyWorkflowAction<CommercientCpqCreateNewCustomerResponse, ApiConnectionActionConfiguration> CommercientCpqCreateNewCustomer(Expression<Func<CommercientCpqCreateNewCustomerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<CommercientCPQCreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CommercientCpqCreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/commercientcpq/customer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CommercientCPQCreateNewCustomerResponse>(callPayload);
+                return new ApiConnectionAction<CommercientCpqCreateNewCustomerResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<CommercientCPQCreateNewProductResponse, ApiConnectionActionConfiguration> CommercientCPQCreateNewProduct(Expression<Func<CommercientCPQCreateNewProductBodyInput>> body)
+        public IBodyWorkflowAction<CommercientCpqCreateNewProductResponse, ApiConnectionActionConfiguration> CommercientCpqCreateNewProduct(Expression<Func<CommercientCpqCreateNewProductBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<CommercientCPQCreateNewProductResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CommercientCpqCreateNewProductResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/commercientcpq/product";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CommercientCPQCreateNewProductResponse>(callPayload);
+                return new ApiConnectionAction<CommercientCpqCreateNewProductResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<CommercientCPQCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> CommercientCPQCreateNewSalesOrder(Expression<Func<CommercientCPQCreateNewSalesOrderBodyInput>> body)
+        public IBodyWorkflowAction<CommercientCpqCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> CommercientCpqCreateNewSalesOrder(Expression<Func<CommercientCpqCreateNewSalesOrderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<CommercientCPQCreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CommercientCpqCreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/commercientcpq/salesorder";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CommercientCPQCreateNewSalesOrderResponse>(callPayload);
+                return new ApiConnectionAction<CommercientCpqCreateNewSalesOrderResponse>(callPayload);
             });
         }
 
@@ -112,118 +112,118 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE50UKCreateNewCustomerResponse, ApiConnectionActionConfiguration> SAGE50UKCreateNewCustomer(Expression<Func<SAGE50UKCreateNewCustomerBodyInput>> body)
+        public IBodyWorkflowAction<Sage50UKCreateNewCustomerResponse, ApiConnectionActionConfiguration> Sage50UKCreateNewCustomer(Expression<Func<Sage50UKCreateNewCustomerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<SAGE50UKCreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<Sage50UKCreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/sage50uk/customer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SAGE50UKCreateNewCustomerResponse>(callPayload);
+                return new ApiConnectionAction<Sage50UKCreateNewCustomerResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE50UKCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SAGE50UKCreateNewSalesOrder(Expression<Func<SAGE50UKCreateNewSalesOrderBodyInput>> body = null)
+        public IBodyWorkflowAction<Sage50UKCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> Sage50UKCreateNewSalesOrder(Expression<Func<Sage50UKCreateNewSalesOrderBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SAGE50UKCreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<Sage50UKCreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/sage50uk/salesorder";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SAGE50UKCreateNewSalesOrderResponse>(callPayload);
+                return new ApiConnectionAction<Sage50UKCreateNewSalesOrderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE50USCreateNewCustomerResponse, ApiConnectionActionConfiguration> SAGE50USCreateNewCustomer(Expression<Func<SAGE50USCreateNewCustomerBodyInput>> body)
+        public IBodyWorkflowAction<Sage50USCreateNewCustomerResponse, ApiConnectionActionConfiguration> Sage50USCreateNewCustomer(Expression<Func<Sage50USCreateNewCustomerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<SAGE50USCreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<Sage50USCreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/sage50us/customer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SAGE50USCreateNewCustomerResponse>(callPayload);
+                return new ApiConnectionAction<Sage50USCreateNewCustomerResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE50USCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SAGE50USCreateNewSalesOrder(Expression<Func<SAGE50USCreateNewSalesOrderBodyInput>> body)
+        public IBodyWorkflowAction<Sage50USCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> Sage50USCreateNewSalesOrder(Expression<Func<Sage50USCreateNewSalesOrderBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<SAGE50USCreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<Sage50USCreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/sage50us/salesorder";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SAGE50USCreateNewSalesOrderResponse>(callPayload);
+                return new ApiConnectionAction<Sage50USCreateNewSalesOrderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAPB1CreateNewCustomerResponse, ApiConnectionActionConfiguration> SAPB1CreateNewCustomer(Expression<Func<SAPB1CreateNewCustomerBodyInput>> body = null)
+        public IBodyWorkflowAction<Sapb1CreateNewCustomerResponse, ApiConnectionActionConfiguration> Sapb1CreateNewCustomer(Expression<Func<Sapb1CreateNewCustomerBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SAPB1CreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<Sapb1CreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/sapb1/customer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SAPB1CreateNewCustomerResponse>(callPayload);
+                return new ApiConnectionAction<Sapb1CreateNewCustomerResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAPB1CreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SAPB1CreateNewSalesOrder(Expression<Func<SAPB1CreateNewSalesOrderBodyInput>> body = null)
+        public IBodyWorkflowAction<Sapb1CreateNewSalesOrderResponse, ApiConnectionActionConfiguration> Sapb1CreateNewSalesOrder(Expression<Func<Sapb1CreateNewSalesOrderBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SAPB1CreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<Sapb1CreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/sapb1/salesorder";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SAPB1CreateNewSalesOrderResponse>(callPayload);
+                return new ApiConnectionAction<Sapb1CreateNewSalesOrderResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SYSPROCreateNewCustomerResponse, ApiConnectionActionConfiguration> SYSPROCreateNewCustomer(Expression<Func<SYSPROCreateNewCustomerBodyInput>> body)
+        public IBodyWorkflowAction<SysproCreateNewCustomerResponse, ApiConnectionActionConfiguration> SysproCreateNewCustomer(Expression<Func<SysproCreateNewCustomerBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<SYSPROCreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SysproCreateNewCustomerResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/syspro/customer";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SYSPROCreateNewCustomerResponse>(callPayload);
+                return new ApiConnectionAction<SysproCreateNewCustomerResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SYSPROCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SYSPROCreateNewSalesOrder(Expression<Func<SYSPROCreateNewSalesOrderBodyInput>> body = null)
+        public IBodyWorkflowAction<SysproCreateNewSalesOrderResponse, ApiConnectionActionConfiguration> SysproCreateNewSalesOrder(Expression<Func<SysproCreateNewSalesOrderBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SYSPROCreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SysproCreateNewSalesOrderResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/v1/syspro/salesorder";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SYSPROCreateNewSalesOrderResponse>(callPayload);
+                return new ApiConnectionAction<SysproCreateNewSalesOrderResponse>(callPayload);
             });
         }
     }
@@ -232,19 +232,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
     {
     }
 
-    public class SAGE100CreateNewCustomerResponse
+    public class Sage100CreateNewCustomerResponse
     {
         [JsonProperty("code")]
         public int Code { get; set; }
 
         [JsonProperty("data")]
-        public SAGE100CreateNewCustomerResponseDataType Data { get; set; }
+        public Sage100CreateNewCustomerResponseDataType Data { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
     }
 
-    public class SAGE100CreateNewCustomerResponseDataType
+    public class Sage100CreateNewCustomerResponseDataType
     {
         public string ARDivisionNo { get; set; }
         public string AddressLine1 { get; set; }
@@ -280,11 +280,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string TelephoneExt { get; set; }
         public string TelephoneNo { get; set; }
         public string TermsCode { get; set; }
-        public string URLAddress { get; set; }
+
+        [JsonProperty("URLAddress")]
+        public string UrlAddress { get; set; }
         public string ZipCode { get; set; }
     }
 
-    public class SAGE100CreateNewCustomerBodyInput
+    public class Sage100CreateNewCustomerBodyInput
     {
         public string ARDivisionNo { get; set; }
         public string AddressLine1 { get; set; }
@@ -320,23 +322,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string TelephoneExt { get; set; }
         public string TelephoneNo { get; set; }
         public string TermsCode { get; set; }
-        public string URLAddress { get; set; }
+
+        [JsonProperty("URLAddress")]
+        public string UrlAddress { get; set; }
         public string ZipCode { get; set; }
     }
 
-    public class SAGE100CreateNewSalesOrderResponse
+    public class Sage100CreateNewSalesOrderResponse
     {
         [JsonProperty("code")]
         public int Code { get; set; }
 
         [JsonProperty("data")]
-        public SAGE100CreateNewSalesOrderResponseDataType Data { get; set; }
+        public Sage100CreateNewSalesOrderResponseDataType Data { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
     }
 
-    public class SAGE100CreateNewSalesOrderResponseDataType
+    public class Sage100CreateNewSalesOrderResponseDataType
     {
         public string ARDivisionNo { get; set; }
         public bool BatchFax { get; set; }
@@ -354,7 +358,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string CustomerPONo { get; set; }
         public string CycleCode { get; set; }
         public string EmailAddress { get; set; }
-        public string FOB { get; set; }
+
+        [JsonProperty("FOB")]
+        public string Fob { get; set; }
         public string FaxNo { get; set; }
         public string MasterRepeatingOrderNo { get; set; }
         public int NumberOfShippingLabels { get; set; }
@@ -363,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string OrderType { get; set; }
         public bool PrintPickingSheets { get; set; }
         public bool PrintSalesOrders { get; set; }
-        public SAGE100CreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
+        public Sage100CreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
         public string SalesOrderNo { get; set; }
         public string SalespersonNo { get; set; }
         public string ShipExpireDate { get; set; }
@@ -386,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string WarehouseCode { get; set; }
     }
 
-    public class SAGE100CreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem
+    public class Sage100CreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem
     {
         public string CommentText { get; set; }
         public int Discount { get; set; }
@@ -400,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public int UnitPrice { get; set; }
     }
 
-    public class SAGE100CreateNewSalesOrderBodyInput
+    public class Sage100CreateNewSalesOrderBodyInput
     {
         public string ARDivisionNo { get; set; }
         public bool? BatchFax { get; set; }
@@ -418,7 +424,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string CustomerPONo { get; set; }
         public string CycleCode { get; set; }
         public string EmailAddress { get; set; }
-        public string FOB { get; set; }
+
+        [JsonProperty("FOB")]
+        public string Fob { get; set; }
         public string FaxNo { get; set; }
         public string MasterRepeatingOrderNo { get; set; }
         public int? NumberOfShippingLabels { get; set; }
@@ -427,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string OrderType { get; set; }
         public bool? PrintPickingSheets { get; set; }
         public bool? PrintSalesOrders { get; set; }
-        public SAGE100CreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
+        public Sage100CreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
         public string SalesOrderNo { get; set; }
         public string SalespersonNo { get; set; }
         public string ShipExpireDate { get; set; }
@@ -450,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string WarehouseCode { get; set; }
     }
 
-    public class SAGE100CreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem
+    public class Sage100CreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem
     {
         public string CommentText { get; set; }
         public int? Discount { get; set; }
@@ -464,26 +472,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public int? UnitPrice { get; set; }
     }
 
-    public class CommercientCPQCreateNewCustomerResponse
+    public class CommercientCpqCreateNewCustomerResponse
     {
         [JsonProperty("code")]
         public int Code { get; set; }
 
         [JsonProperty("data")]
-        public CommercientCPQCreateNewCustomerResponseDataType Data { get; set; }
+        public CommercientCpqCreateNewCustomerResponseDataType Data { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
     }
 
-    public class CommercientCPQCreateNewCustomerResponseDataType
+    public class CommercientCpqCreateNewCustomerResponseDataType
     {
         public string BillingCity { get; set; }
         public string BillingCounty { get; set; }
         public string BillingPostalCode { get; set; }
         public string BillingState { get; set; }
         public string BillingStreet { get; set; }
-        public string GUID { get; set; }
+
+        [JsonProperty("GUID")]
+        public string Guid { get; set; }
         public string Name { get; set; }
         public string ShippingCity { get; set; }
         public string ShippingCountry { get; set; }
@@ -495,14 +505,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string Acnm { get; set; }
     }
 
-    public class CommercientCPQCreateNewCustomerBodyInput
+    public class CommercientCpqCreateNewCustomerBodyInput
     {
         public string BillingCity { get; set; }
         public string BillingCounty { get; set; }
         public string BillingPostalCode { get; set; }
         public string BillingState { get; set; }
         public string BillingStreet { get; set; }
-        public string GUID { get; set; }
+
+        [JsonProperty("GUID")]
+        public string Guid { get; set; }
         public string Name { get; set; }
         public string ShippingCity { get; set; }
         public string ShippingCountry { get; set; }
@@ -514,60 +526,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string Acnm { get; set; }
     }
 
-    public class CommercientCPQCreateNewProductResponse
+    public class CommercientCpqCreateNewProductResponse
     {
         [JsonProperty("code")]
         public int Code { get; set; }
 
         [JsonProperty("data")]
-        public CommercientCPQCreateNewProductResponseDataType Data { get; set; }
+        public CommercientCpqCreateNewProductResponseDataType Data { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
     }
 
-    public class CommercientCPQCreateNewProductResponseDataType
+    public class CommercientCpqCreateNewProductResponseDataType
     {
         public string StockCode { get; set; }
     }
 
-    public class CommercientCPQCreateNewProductBodyInput
+    public class CommercientCpqCreateNewProductBodyInput
     {
         public string StockCode { get; set; }
     }
 
-    public class CommercientCPQCreateNewSalesOrderResponse
+    public class CommercientCpqCreateNewSalesOrderResponse
     {
         [JsonProperty("code")]
         public int Code { get; set; }
 
         [JsonProperty("data")]
-        public CommercientCPQCreateNewSalesOrderResponseDataType Data { get; set; }
+        public CommercientCpqCreateNewSalesOrderResponseDataType Data { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
     }
 
-    public class CommercientCPQCreateNewSalesOrderResponseDataType
+    public class CommercientCpqCreateNewSalesOrderResponseDataType
     {
-        public string OrderHeaderGUID { get; set; }
-        public CommercientCPQCreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
+        [JsonProperty("OrderHeaderGUID")]
+        public string OrderHeaderGuid { get; set; }
+        public CommercientCpqCreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
     }
 
-    public class CommercientCPQCreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem
+    public class CommercientCpqCreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem
     {
         public string Price { get; set; }
         public string Qty { get; set; }
         public string StockCode { get; set; }
     }
 
-    public class CommercientCPQCreateNewSalesOrderBodyInput
+    public class CommercientCpqCreateNewSalesOrderBodyInput
     {
-        public string OrderHeaderGUID { get; set; }
-        public CommercientCPQCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
+        [JsonProperty("OrderHeaderGUID")]
+        public string OrderHeaderGuid { get; set; }
+        public CommercientCpqCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
     }
 
-    public class CommercientCPQCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem
+    public class CommercientCpqCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem
     {
         public string Price { get; set; }
         public string Qty { get; set; }
@@ -839,638 +853,676 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string UnitOfMeasure { get; set; }
     }
 
-    public class SAGE50UKCreateNewCustomerResponse
+    public class Sage50UKCreateNewCustomerResponse
     {
         [JsonProperty("code")]
         public int Code { get; set; }
 
         [JsonProperty("data")]
-        public SAGE50UKCreateNewCustomerResponseDataType Data { get; set; }
+        public Sage50UKCreateNewCustomerResponseDataType Data { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
     }
 
-    public class SAGE50UKCreateNewCustomerResponseDataType
+    public class Sage50UKCreateNewCustomerResponseDataType
     {
         [JsonProperty("ACCOUNT_OPENED")]
-        public string ACCOUNTOPENED { get; set; }
+        public string AccountOpened { get; set; }
 
         [JsonProperty("ACCOUNT_REF")]
-        public string ACCOUNTREF { get; set; }
+        public string AccountRef { get; set; }
 
         [JsonProperty("ACCOUNT_STATUS")]
-        public int ACCOUNTSTATUS { get; set; }
+        public int AccountStatus { get; set; }
 
         [JsonProperty("ADDRESS_1")]
-        public string ADDRESS1 { get; set; }
+        public string Address1 { get; set; }
 
         [JsonProperty("ADDRESS_2")]
-        public string ADDRESS2 { get; set; }
+        public string Address2 { get; set; }
 
         [JsonProperty("ADDRESS_3")]
-        public string ADDRESS3 { get; set; }
+        public string Address3 { get; set; }
 
         [JsonProperty("ADDRESS_4")]
-        public string ADDRESS4 { get; set; }
+        public string Address4 { get; set; }
 
         [JsonProperty("ADDRESS_5")]
-        public string ADDRESS5 { get; set; }
+        public string Address5 { get; set; }
 
         [JsonProperty("ANALYSIS_1")]
-        public string ANALYSIS1 { get; set; }
+        public string Analysis1 { get; set; }
 
         [JsonProperty("ANALYSIS_2")]
-        public string ANALYSIS2 { get; set; }
+        public string Analysis2 { get; set; }
 
         [JsonProperty("ANALYSIS_3")]
-        public string ANALYSIS3 { get; set; }
+        public string Analysis3 { get; set; }
 
         [JsonProperty("AVERAGE_PAY_DAYS")]
-        public int AVERAGEPAYDAYS { get; set; }
-        public int BALANCE { get; set; }
+        public int AveragePayDays { get; set; }
+
+        [JsonProperty("BALANCE")]
+        public int Balance { get; set; }
 
         [JsonProperty("CAN_APPLY_CHARGES")]
-        public bool CANAPPLYCHARGES { get; set; }
+        public bool CanApplyCharges { get; set; }
 
         [JsonProperty("CONTACT_NAME")]
-        public string CONTACTNAME { get; set; }
+        public string ContactName { get; set; }
 
         [JsonProperty("COUNTRY_CODE")]
-        public string COUNTRYCODE { get; set; }
+        public string CountryCode { get; set; }
 
         [JsonProperty("CREDIT_APPLIED_FOR")]
-        public string CREDITAPPLIEDFOR { get; set; }
+        public string CreditAppliedFor { get; set; }
 
         [JsonProperty("CREDIT_BUREAU")]
-        public int CREDITBUREAU { get; set; }
+        public int CreditBureau { get; set; }
 
         [JsonProperty("CREDIT_LIMIT")]
-        public int CREDITLIMIT { get; set; }
+        public int CreditLimit { get; set; }
 
         [JsonProperty("CREDIT_POSITION")]
-        public int CREDITPOSITION { get; set; }
+        public int CreditPosition { get; set; }
 
         [JsonProperty("CREDIT_POSITIONSpecified")]
-        public bool CREDITPOSITIONSpecified { get; set; }
+        public bool CreditPositionSpecified { get; set; }
 
         [JsonProperty("CREDIT_REFERENCE")]
-        public string CREDITREFERENCE { get; set; }
-        public int CURRENCY { get; set; }
+        public string CreditReference { get; set; }
+
+        [JsonProperty("CURRENCY")]
+        public int Currency { get; set; }
 
         [JsonProperty("DATE_CREDIT_APP_RECEIVED")]
-        public string DATECREDITAPPRECEIVED { get; set; }
+        public string DateCreditAppReceived { get; set; }
 
         [JsonProperty("DEF_NOM_CODE")]
-        public string DEFNOMCODE { get; set; }
+        public string DefNomCode { get; set; }
 
         [JsonProperty("DEF_TAX_CODE")]
-        public int DEFTAXCODE { get; set; }
+        public int DefTaxCode { get; set; }
 
         [JsonProperty("DEPT_NUMBER")]
-        public int DEPTNUMBER { get; set; }
+        public int DeptNumber { get; set; }
 
         [JsonProperty("DISCOUNT_RATE")]
-        public int DISCOUNTRATE { get; set; }
+        public int DiscountRate { get; set; }
 
         [JsonProperty("DISCOUNT_TYPE")]
-        public int DISCOUNTTYPE { get; set; }
+        public int DiscountType { get; set; }
 
         [JsonProperty("DUNS_NUMBER")]
-        public string DUNSNUMBER { get; set; }
+        public string DunsNumber { get; set; }
 
         [JsonProperty("E_MAIL")]
-        public string EMAIL { get; set; }
+        public string EMail { get; set; }
 
         [JsonProperty("E_MAIL2")]
-        public string EMAIL2 { get; set; }
+        public string EMail2 { get; set; }
 
         [JsonProperty("E_MAIL3")]
-        public string EMAIL3 { get; set; }
-        public string FAX { get; set; }
+        public string EMail3 { get; set; }
+
+        [JsonProperty("FAX")]
+        public string Fax { get; set; }
 
         [JsonProperty("HOLD_MAIL")]
-        public bool HOLDMAIL { get; set; }
+        public bool HoldMail { get; set; }
 
         [JsonProperty("INACTIVE_FLAG")]
-        public bool INACTIVEFLAG { get; set; }
+        public bool InactiveFlag { get; set; }
 
         [JsonProperty("LAST_CREDIT_REV")]
-        public string LASTCREDITREV { get; set; }
-        public string NAME { get; set; }
+        public string LastCreditRev { get; set; }
+
+        [JsonProperty("NAME")]
+        public string Name { get; set; }
 
         [JsonProperty("NEXT_CREDIT_REV")]
-        public string NEXTCREDITREV { get; set; }
+        public string NextCreditRev { get; set; }
 
         [JsonProperty("OVERRIDE_PRODUCT_NOMINAL")]
-        public bool OVERRIdEPRODUCTNOMINAL { get; set; }
+        public bool OverrideProductNominal { get; set; }
 
         [JsonProperty("OVERRIDE_PRODUCT_TAX")]
-        public bool OVERRIdEPRODUCTTAX { get; set; }
+        public bool OverrideProductTax { get; set; }
 
         [JsonProperty("PAYMENT_DUE_DAYS")]
-        public int PAYMENTDUEDAYS { get; set; }
+        public int PaymentDueDays { get; set; }
 
         [JsonProperty("PRICE_LIST_REF")]
-        public string PRICELISTREF { get; set; }
+        public string PriceListRef { get; set; }
 
         [JsonProperty("PRIORITY_TRADER")]
-        public bool PRIORITYTRADER { get; set; }
+        public bool PriorityTrader { get; set; }
 
         [JsonProperty("SEND_INVOICES_ELECTRONICALLY")]
-        public bool SENDINVOICESELECTRONICALLY { get; set; }
+        public bool SendInvoicesElectronically { get; set; }
 
         [JsonProperty("SEND_LETTERS_ELECTRONICALLY")]
-        public bool SENDLETTERSELECTRONICALLY { get; set; }
+        public bool SendLettersElectronically { get; set; }
 
         [JsonProperty("SETTLEMENT_DISC_RATE")]
-        public int SETTLEMENTDISCRATE { get; set; }
+        public int SettlementDiscRate { get; set; }
 
         [JsonProperty("SETTLEMENT_DUE_DAYS")]
-        public int SETTLEMENTDUEDAYS { get; set; }
-        public string TELEPHONE { get; set; }
+        public int SettlementDueDays { get; set; }
+
+        [JsonProperty("TELEPHONE")]
+        public string Telephone { get; set; }
 
         [JsonProperty("TELEPHONE_2")]
-        public string TELEPHONE2 { get; set; }
-        public string TERMS { get; set; }
+        public string Telephone2 { get; set; }
+
+        [JsonProperty("TERMS")]
+        public string Terms { get; set; }
 
         [JsonProperty("TERMS_AGREED_FLAG")]
-        public bool TERMSAGREEDFLAG { get; set; }
+        public bool TermsAgreedFlag { get; set; }
 
         [JsonProperty("TRADE_CONTACT")]
-        public string TRADECONTACT { get; set; }
+        public string TradeContact { get; set; }
 
         [JsonProperty("VAT_REG_NUMBER")]
-        public string VATREGNUMBER { get; set; }
+        public string VatRegNumber { get; set; }
     }
 
-    public class SAGE50UKCreateNewCustomerBodyInput
+    public class Sage50UKCreateNewCustomerBodyInput
     {
         [JsonProperty("ACCOUNT_OPENED")]
-        public string ACCOUNTOPENED { get; set; }
+        public string AccountOpened { get; set; }
 
         [JsonProperty("ACCOUNT_REF")]
-        public string ACCOUNTREF { get; set; }
+        public string AccountRef { get; set; }
 
         [JsonProperty("ACCOUNT_STATUS")]
-        public int? ACCOUNTSTATUS { get; set; }
+        public int? AccountStatus { get; set; }
 
         [JsonProperty("ADDRESS_1")]
-        public string ADDRESS1 { get; set; }
+        public string Address1 { get; set; }
 
         [JsonProperty("ADDRESS_2")]
-        public string ADDRESS2 { get; set; }
+        public string Address2 { get; set; }
 
         [JsonProperty("ADDRESS_3")]
-        public string ADDRESS3 { get; set; }
+        public string Address3 { get; set; }
 
         [JsonProperty("ADDRESS_4")]
-        public string ADDRESS4 { get; set; }
+        public string Address4 { get; set; }
 
         [JsonProperty("ADDRESS_5")]
-        public string ADDRESS5 { get; set; }
+        public string Address5 { get; set; }
 
         [JsonProperty("ANALYSIS_1")]
-        public string ANALYSIS1 { get; set; }
+        public string Analysis1 { get; set; }
 
         [JsonProperty("ANALYSIS_2")]
-        public string ANALYSIS2 { get; set; }
+        public string Analysis2 { get; set; }
 
         [JsonProperty("ANALYSIS_3")]
-        public string ANALYSIS3 { get; set; }
+        public string Analysis3 { get; set; }
 
         [JsonProperty("AVERAGE_PAY_DAYS")]
-        public int? AVERAGEPAYDAYS { get; set; }
-        public int? BALANCE { get; set; }
+        public int? AveragePayDays { get; set; }
+
+        [JsonProperty("BALANCE")]
+        public int? Balance { get; set; }
 
         [JsonProperty("CAN_APPLY_CHARGES")]
-        public bool? CANAPPLYCHARGES { get; set; }
+        public bool? CanApplyCharges { get; set; }
 
         [JsonProperty("CONTACT_NAME")]
-        public string CONTACTNAME { get; set; }
+        public string ContactName { get; set; }
 
         [JsonProperty("COUNTRY_CODE")]
-        public string COUNTRYCODE { get; set; }
+        public string CountryCode { get; set; }
 
         [JsonProperty("CREDIT_APPLIED_FOR")]
-        public string CREDITAPPLIEDFOR { get; set; }
+        public string CreditAppliedFor { get; set; }
 
         [JsonProperty("CREDIT_BUREAU")]
-        public int? CREDITBUREAU { get; set; }
+        public int? CreditBureau { get; set; }
 
         [JsonProperty("CREDIT_LIMIT")]
-        public int? CREDITLIMIT { get; set; }
+        public int? CreditLimit { get; set; }
 
         [JsonProperty("CREDIT_POSITION")]
-        public int? CREDITPOSITION { get; set; }
+        public int? CreditPosition { get; set; }
 
         [JsonProperty("CREDIT_REFERENCE")]
-        public string CREDITREFERENCE { get; set; }
-        public int? CURRENCY { get; set; }
+        public string CreditReference { get; set; }
+
+        [JsonProperty("CURRENCY")]
+        public int? Currency { get; set; }
 
         [JsonProperty("DATE_CREDIT_APP_RECEIVED")]
-        public string DATECREDITAPPRECEIVED { get; set; }
+        public string DateCreditAppReceived { get; set; }
 
         [JsonProperty("DEF_NOM_CODE")]
-        public string DEFNOMCODE { get; set; }
+        public string DefNomCode { get; set; }
 
         [JsonProperty("DEF_TAX_CODE")]
-        public int? DEFTAXCODE { get; set; }
+        public int? DefTaxCode { get; set; }
 
         [JsonProperty("DEPT_NUMBER")]
-        public int? DEPTNUMBER { get; set; }
+        public int? DeptNumber { get; set; }
 
         [JsonProperty("DISCOUNT_RATE")]
-        public int? DISCOUNTRATE { get; set; }
+        public int? DiscountRate { get; set; }
 
         [JsonProperty("DISCOUNT_TYPE")]
-        public int? DISCOUNTTYPE { get; set; }
+        public int? DiscountType { get; set; }
 
         [JsonProperty("DUNS_NUMBER")]
-        public string DUNSNUMBER { get; set; }
+        public string DunsNumber { get; set; }
 
         [JsonProperty("E_MAIL")]
-        public string EMAIL { get; set; }
+        public string EMail { get; set; }
 
         [JsonProperty("E_MAIL2")]
-        public string EMAIL2 { get; set; }
+        public string EMail2 { get; set; }
 
         [JsonProperty("E_MAIL3")]
-        public string EMAIL3 { get; set; }
+        public string EMail3 { get; set; }
         public string ExtraField { get; set; }
-        public string FAX { get; set; }
+
+        [JsonProperty("FAX")]
+        public string Fax { get; set; }
 
         [JsonProperty("HOLD_MAIL")]
-        public bool? HOLDMAIL { get; set; }
+        public bool? HoldMail { get; set; }
 
         [JsonProperty("INACTIVE_FLAG")]
-        public bool? INACTIVEFLAG { get; set; }
+        public bool? InactiveFlag { get; set; }
 
         [JsonProperty("IsACCOUNT_REF_autogenerate")]
-        public bool? IsACCOUNTREFAutogenerate { get; set; }
+        public bool? IsAccountRefAutogenerate { get; set; }
 
         [JsonProperty("LAST_CREDIT_REV")]
-        public string LASTCREDITREV { get; set; }
-        public string NAME { get; set; }
+        public string LastCreditRev { get; set; }
+
+        [JsonProperty("NAME")]
+        public string Name { get; set; }
 
         [JsonProperty("NEXT_CREDIT_REV")]
-        public string NEXTCREDITREV { get; set; }
+        public string NextCreditRev { get; set; }
 
         [JsonProperty("OVERRIDE_PRODUCT_NOMINAL")]
-        public bool? OVERRIdEPRODUCTNOMINAL { get; set; }
+        public bool? OverrideProductNominal { get; set; }
 
         [JsonProperty("OVERRIDE_PRODUCT_TAX")]
-        public bool? OVERRIdEPRODUCTTAX { get; set; }
+        public bool? OverrideProductTax { get; set; }
 
         [JsonProperty("PAYMENT_DUE_DAYS")]
-        public int? PAYMENTDUEDAYS { get; set; }
+        public int? PaymentDueDays { get; set; }
 
         [JsonProperty("PRICE_LIST_REF")]
-        public string PRICELISTREF { get; set; }
+        public string PriceListRef { get; set; }
 
         [JsonProperty("PRIORITY_TRADER")]
-        public bool? PRIORITYTRADER { get; set; }
+        public bool? PriorityTrader { get; set; }
 
         [JsonProperty("SEND_INVOICES_ELECTRONICALLY")]
-        public bool? SENDINVOICESELECTRONICALLY { get; set; }
+        public bool? SendInvoicesElectronically { get; set; }
 
         [JsonProperty("SEND_LETTERS_ELECTRONICALLY")]
-        public bool? SENDLETTERSELECTRONICALLY { get; set; }
+        public bool? SendLettersElectronically { get; set; }
 
         [JsonProperty("SETTLEMENT_DISC_RATE")]
-        public int? SETTLEMENTDISCRATE { get; set; }
+        public int? SettlementDiscRate { get; set; }
 
         [JsonProperty("SETTLEMENT_DUE_DAYS")]
-        public int? SETTLEMENTDUEDAYS { get; set; }
-        public string TELEPHONE { get; set; }
+        public int? SettlementDueDays { get; set; }
+
+        [JsonProperty("TELEPHONE")]
+        public string Telephone { get; set; }
 
         [JsonProperty("TELEPHONE_2")]
-        public string TELEPHONE2 { get; set; }
-        public string TERMS { get; set; }
+        public string Telephone2 { get; set; }
+
+        [JsonProperty("TERMS")]
+        public string Terms { get; set; }
 
         [JsonProperty("TERMS_AGREED_FLAG")]
-        public bool? TERMSAGREEDFLAG { get; set; }
+        public bool? TermsAgreedFlag { get; set; }
 
         [JsonProperty("TRADE_CONTACT")]
-        public string TRADECONTACT { get; set; }
+        public string TradeContact { get; set; }
 
         [JsonProperty("VAT_REG_NUMBER")]
-        public string VATREGNUMBER { get; set; }
+        public string VatRegNumber { get; set; }
     }
 
-    public class SAGE50UKCreateNewSalesOrderResponse
+    public class Sage50UKCreateNewSalesOrderResponse
     {
         [JsonProperty("code")]
         public int Code { get; set; }
 
         [JsonProperty("data")]
-        public SAGE50UKCreateNewSalesOrderResponseDataType Data { get; set; }
+        public Sage50UKCreateNewSalesOrderResponseDataType Data { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
     }
 
-    public class SAGE50UKCreateNewSalesOrderResponseDataType
+    public class Sage50UKCreateNewSalesOrderResponseDataType
     {
         [JsonProperty("ACCOUNT_REF")]
-        public string ACCOUNTREF { get; set; }
+        public string AccountRef { get; set; }
 
         [JsonProperty("ADDRESS_1")]
-        public string ADDRESS1 { get; set; }
+        public string Address1 { get; set; }
 
         [JsonProperty("ADDRESS_2")]
-        public string ADDRESS2 { get; set; }
+        public string Address2 { get; set; }
 
         [JsonProperty("ADDRESS_3")]
-        public string ADDRESS3 { get; set; }
+        public string Address3 { get; set; }
 
         [JsonProperty("ADDRESS_4")]
-        public string ADDRESS4 { get; set; }
+        public string Address4 { get; set; }
 
         [JsonProperty("ADDRESS_5")]
-        public string ADDRESS5 { get; set; }
+        public string Address5 { get; set; }
 
         [JsonProperty("AMOUNT_PREPAID")]
-        public int AMOUNTPREPAId { get; set; }
+        public int AmountPrepaid { get; set; }
 
         [JsonProperty("ANALYSIS_1")]
-        public string ANALYSIS1 { get; set; }
+        public string Analysis1 { get; set; }
 
         [JsonProperty("ANALYSIS_2")]
-        public string ANALYSIS2 { get; set; }
+        public string Analysis2 { get; set; }
 
         [JsonProperty("ANALYSIS_3")]
-        public string ANALYSIS3 { get; set; }
+        public string Analysis3 { get; set; }
 
         [JsonProperty("CARR_DEPT_NUMBER")]
-        public int CARRDEPTNUMBER { get; set; }
+        public int CarrDeptNumber { get; set; }
 
         [JsonProperty("CARR_NET")]
-        public int CARRNET { get; set; }
+        public int CarrNet { get; set; }
 
         [JsonProperty("CARR_NOM_CODE")]
-        public string CARRNOMCODE { get; set; }
+        public string CarrNomCode { get; set; }
 
         [JsonProperty("CARR_TAX")]
-        public int CARRTAX { get; set; }
+        public int CarrTax { get; set; }
 
         [JsonProperty("CARR_TAX_CODE")]
-        public int CARRTAXCODE { get; set; }
+        public int CarrTaxCode { get; set; }
 
         [JsonProperty("CONSIGNMENT_REF")]
-        public string CONSIGNMENTREF { get; set; }
+        public string ConsignmentRef { get; set; }
 
         [JsonProperty("CONTACT_NAME")]
-        public string CONTACTNAME { get; set; }
-        public int COURIER { get; set; }
-        public int CURRENCY { get; set; }
+        public string ContactName { get; set; }
+
+        [JsonProperty("COURIER")]
+        public int Courier { get; set; }
+
+        [JsonProperty("CURRENCY")]
+        public int Currency { get; set; }
 
         [JsonProperty("CUST_DISC_RATE")]
-        public int CUSTDISCRATE { get; set; }
+        public int CustDiscRate { get; set; }
 
         [JsonProperty("CUST_ORDER_NUMBER")]
-        public string CUSTORDERNUMBER { get; set; }
+        public string CustOrderNumber { get; set; }
 
         [JsonProperty("CUST_TEL_NUMBER")]
-        public string CUSTTELNUMBER { get; set; }
+        public string CustTelNumber { get; set; }
 
         [JsonProperty("DEF_TAX_CODE")]
-        public int DEFTAXCODE { get; set; }
+        public int DefTaxCode { get; set; }
 
         [JsonProperty("DELETED_FLAG")]
-        public bool DELETEDFLAG { get; set; }
+        public bool DeletedFlag { get; set; }
 
         [JsonProperty("DELIVERY_NAME")]
-        public string DELIVERYNAME { get; set; }
+        public string DeliveryName { get; set; }
 
         [JsonProperty("DEL_ADDRESS_1")]
-        public string DELADDRESS1 { get; set; }
+        public string DelAddress1 { get; set; }
 
         [JsonProperty("DEL_ADDRESS_2")]
-        public string DELADDRESS2 { get; set; }
+        public string DelAddress2 { get; set; }
 
         [JsonProperty("DEL_ADDRESS_3")]
-        public string DELADDRESS3 { get; set; }
+        public string DelAddress3 { get; set; }
 
         [JsonProperty("DEL_ADDRESS_4")]
-        public string DELADDRESS4 { get; set; }
+        public string DelAddress4 { get; set; }
 
         [JsonProperty("DEL_ADDRESS_5")]
-        public string DELADDRESS5 { get; set; }
+        public string DelAddress5 { get; set; }
 
         [JsonProperty("DESPATCH_DATE")]
-        public string DESPATCHDATE { get; set; }
+        public string DespatchDate { get; set; }
 
         [JsonProperty("DUNS_NUMBER")]
-        public string DUNSNUMBER { get; set; }
+        public string DunsNumber { get; set; }
 
         [JsonProperty("GLOBAL_DEPT_NUMBER")]
-        public int GLOBALDEPTNUMBER { get; set; }
+        public int GlobalDeptNumber { get; set; }
 
         [JsonProperty("GLOBAL_DETAILS")]
-        public string GLOBALDETAILS { get; set; }
+        public string GlobalDetails { get; set; }
 
         [JsonProperty("GLOBAL_NOM_CODE")]
-        public string GLOBALNOMCODE { get; set; }
+        public string GlobalNomCode { get; set; }
 
         [JsonProperty("GLOBAL_TAX_CODE")]
-        public int GLOBALTAXCODE { get; set; }
+        public int GlobalTaxCode { get; set; }
 
         [JsonProperty("INVOICE_NUMBER")]
-        public string INVOICENUMBER { get; set; }
-        public string NAME { get; set; }
+        public string InvoiceNumber { get; set; }
+
+        [JsonProperty("NAME")]
+        public string Name { get; set; }
 
         [JsonProperty("ORDER_DATE")]
-        public string ORDERDATE { get; set; }
+        public string OrderDate { get; set; }
 
         [JsonProperty("ORDER_NUMBER")]
-        public int ORDERNUMBER { get; set; }
+        public int OrderNumber { get; set; }
 
         [JsonProperty("ORDER_TYPE")]
-        public int ORDERTYPE { get; set; }
+        public int OrderType { get; set; }
 
         [JsonProperty("SETTLEMENT_DISC_RATE")]
-        public int SETTLEMENTDISCRATE { get; set; }
+        public int SettlementDiscRate { get; set; }
 
         [JsonProperty("SETTLEMENT_DUE_DAYS")]
-        public int SETTLEMENTDUEDAYS { get; set; }
-        public SAGE50UKCreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
+        public int SettlementDueDays { get; set; }
+        public Sage50UKCreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
     }
 
-    public class SAGE50UKCreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem
+    public class Sage50UKCreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem
     {
-        public string DESCRIPTION { get; set; }
+        [JsonProperty("DESCRIPTION")]
+        public string Description { get; set; }
 
         [JsonProperty("DISCOUNT_RATE")]
-        public int DISCOUNTRATE { get; set; }
+        public int DiscountRate { get; set; }
 
         [JsonProperty("QTY_ORDER")]
-        public int QTYORDER { get; set; }
+        public int QtyOrder { get; set; }
 
         [JsonProperty("STOCK_CODE")]
-        public string STOCKCODE { get; set; }
+        public string StockCode { get; set; }
 
         [JsonProperty("UNIT_PRICE")]
-        public int UNITPRICE { get; set; }
+        public int UnitPrice { get; set; }
     }
 
-    public class SAGE50UKCreateNewSalesOrderBodyInput
+    public class Sage50UKCreateNewSalesOrderBodyInput
     {
         [JsonProperty("ACCOUNT_REF")]
-        public string ACCOUNTREF { get; set; }
+        public string AccountRef { get; set; }
 
         [JsonProperty("ADDRESS_1")]
-        public string ADDRESS1 { get; set; }
+        public string Address1 { get; set; }
 
         [JsonProperty("ADDRESS_2")]
-        public string ADDRESS2 { get; set; }
+        public string Address2 { get; set; }
 
         [JsonProperty("ADDRESS_3")]
-        public string ADDRESS3 { get; set; }
+        public string Address3 { get; set; }
 
         [JsonProperty("ADDRESS_4")]
-        public string ADDRESS4 { get; set; }
+        public string Address4 { get; set; }
 
         [JsonProperty("ADDRESS_5")]
-        public string ADDRESS5 { get; set; }
+        public string Address5 { get; set; }
 
         [JsonProperty("AMOUNT_PREPAID")]
-        public int? AMOUNTPREPAId { get; set; }
+        public int? AmountPrepaid { get; set; }
 
         [JsonProperty("ANALYSIS_1")]
-        public string ANALYSIS1 { get; set; }
+        public string Analysis1 { get; set; }
 
         [JsonProperty("ANALYSIS_2")]
-        public string ANALYSIS2 { get; set; }
+        public string Analysis2 { get; set; }
 
         [JsonProperty("ANALYSIS_3")]
-        public string ANALYSIS3 { get; set; }
+        public string Analysis3 { get; set; }
 
         [JsonProperty("CARR_DEPT_NUMBER")]
-        public int? CARRDEPTNUMBER { get; set; }
+        public int? CarrDeptNumber { get; set; }
 
         [JsonProperty("CARR_NET")]
-        public int? CARRNET { get; set; }
+        public int? CarrNet { get; set; }
 
         [JsonProperty("CARR_NOM_CODE")]
-        public string CARRNOMCODE { get; set; }
+        public string CarrNomCode { get; set; }
 
         [JsonProperty("CARR_TAX")]
-        public int? CARRTAX { get; set; }
+        public int? CarrTax { get; set; }
 
         [JsonProperty("CARR_TAX_CODE")]
-        public int? CARRTAXCODE { get; set; }
+        public int? CarrTaxCode { get; set; }
 
         [JsonProperty("CONSIGNMENT_REF")]
-        public string CONSIGNMENTREF { get; set; }
+        public string ConsignmentRef { get; set; }
 
         [JsonProperty("CONTACT_NAME")]
-        public string CONTACTNAME { get; set; }
-        public int? COURIER { get; set; }
-        public int? CURRENCY { get; set; }
+        public string ContactName { get; set; }
+
+        [JsonProperty("COURIER")]
+        public int? Courier { get; set; }
+
+        [JsonProperty("CURRENCY")]
+        public int? Currency { get; set; }
 
         [JsonProperty("CUST_DISC_RATE")]
-        public int? CUSTDISCRATE { get; set; }
+        public int? CustDiscRate { get; set; }
 
         [JsonProperty("CUST_ORDER_NUMBER")]
-        public string CUSTORDERNUMBER { get; set; }
+        public string CustOrderNumber { get; set; }
 
         [JsonProperty("CUST_TEL_NUMBER")]
-        public string CUSTTELNUMBER { get; set; }
+        public string CustTelNumber { get; set; }
 
         [JsonProperty("DEF_TAX_CODE")]
-        public int? DEFTAXCODE { get; set; }
+        public int? DefTaxCode { get; set; }
 
         [JsonProperty("DELETED_FLAG")]
-        public bool? DELETEDFLAG { get; set; }
+        public bool? DeletedFlag { get; set; }
 
         [JsonProperty("DELIVERY_NAME")]
-        public string DELIVERYNAME { get; set; }
+        public string DeliveryName { get; set; }
 
         [JsonProperty("DEL_ADDRESS_1")]
-        public string DELADDRESS1 { get; set; }
+        public string DelAddress1 { get; set; }
 
         [JsonProperty("DEL_ADDRESS_2")]
-        public string DELADDRESS2 { get; set; }
+        public string DelAddress2 { get; set; }
 
         [JsonProperty("DEL_ADDRESS_3")]
-        public string DELADDRESS3 { get; set; }
+        public string DelAddress3 { get; set; }
 
         [JsonProperty("DEL_ADDRESS_4")]
-        public string DELADDRESS4 { get; set; }
+        public string DelAddress4 { get; set; }
 
         [JsonProperty("DEL_ADDRESS_5")]
-        public string DELADDRESS5 { get; set; }
+        public string DelAddress5 { get; set; }
 
         [JsonProperty("DESPATCH_DATE")]
-        public string DESPATCHDATE { get; set; }
+        public string DespatchDate { get; set; }
 
         [JsonProperty("DUNS_NUMBER")]
-        public string DUNSNUMBER { get; set; }
+        public string DunsNumber { get; set; }
 
         [JsonProperty("GLOBAL_DEPT_NUMBER")]
-        public int? GLOBALDEPTNUMBER { get; set; }
+        public int? GlobalDeptNumber { get; set; }
 
         [JsonProperty("GLOBAL_DETAILS")]
-        public string GLOBALDETAILS { get; set; }
+        public string GlobalDetails { get; set; }
 
         [JsonProperty("GLOBAL_NOM_CODE")]
-        public string GLOBALNOMCODE { get; set; }
+        public string GlobalNomCode { get; set; }
 
         [JsonProperty("GLOBAL_TAX_CODE")]
-        public int? GLOBALTAXCODE { get; set; }
+        public int? GlobalTaxCode { get; set; }
 
         [JsonProperty("INVOICE_NUMBER")]
-        public string INVOICENUMBER { get; set; }
-        public string NAME { get; set; }
+        public string InvoiceNumber { get; set; }
+
+        [JsonProperty("NAME")]
+        public string Name { get; set; }
 
         [JsonProperty("ORDER_DATE")]
-        public string ORDERDATE { get; set; }
+        public string OrderDate { get; set; }
 
         [JsonProperty("ORDER_NUMBER")]
-        public int? ORDERNUMBER { get; set; }
+        public int? OrderNumber { get; set; }
 
         [JsonProperty("ORDER_TYPE")]
-        public int? ORDERTYPE { get; set; }
+        public int? OrderType { get; set; }
 
         [JsonProperty("SETTLEMENT_DISC_RATE")]
-        public int? SETTLEMENTDISCRATE { get; set; }
+        public int? SettlementDiscRate { get; set; }
 
         [JsonProperty("SETTLEMENT_DUE_DAYS")]
-        public int? SETTLEMENTDUEDAYS { get; set; }
-        public SAGE50UKCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
+        public int? SettlementDueDays { get; set; }
+        public Sage50UKCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
     }
 
-    public class SAGE50UKCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem
+    public class Sage50UKCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem
     {
-        public string DESCRIPTION { get; set; }
+        [JsonProperty("DESCRIPTION")]
+        public string Description { get; set; }
 
         [JsonProperty("DISCOUNT_RATE")]
-        public int? DISCOUNTRATE { get; set; }
+        public int? DiscountRate { get; set; }
 
         [JsonProperty("QTY_ORDER")]
-        public int? QTYORDER { get; set; }
+        public int? QtyOrder { get; set; }
 
         [JsonProperty("STOCK_CODE")]
-        public string STOCKCODE { get; set; }
+        public string StockCode { get; set; }
 
         [JsonProperty("UNIT_PRICE")]
-        public int? UNITPRICE { get; set; }
+        public int? UnitPrice { get; set; }
     }
 
-    public class SAGE50USCreateNewCustomerResponse
+    public class Sage50USCreateNewCustomerResponse
     {
         [JsonProperty("code")]
         public int Code { get; set; }
 
         [JsonProperty("data")]
-        public SAGE50USCreateNewCustomerResponseDataType Data { get; set; }
+        public Sage50USCreateNewCustomerResponseDataType Data { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
     }
 
-    public class SAGE50USCreateNewCustomerResponseDataType
+    public class Sage50USCreateNewCustomerResponseDataType
     {
         [JsonProperty("Account_Number")]
         public string AccountNumber { get; set; }
@@ -1499,7 +1551,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string CustomFieldValue3 { get; set; }
         public string CustomFieldValue4 { get; set; }
         public string CustomFieldValue5 { get; set; }
-        public string CustomerGUID { get; set; }
+
+        [JsonProperty("CustomerGUID")]
+        public string CustomerGuid { get; set; }
 
         [JsonProperty("CustomerID")]
         public string CustomerId { get; set; }
@@ -1550,7 +1604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public bool TermsType { get; set; }
 
         [JsonProperty("Use_COD_Terms")]
-        public bool UseCODTerms { get; set; }
+        public bool UseCodTerms { get; set; }
 
         [JsonProperty("Use_Due_Month_End_Terms")]
         public bool UseDueMonthEndTerms { get; set; }
@@ -1565,7 +1619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public bool IsInactive { get; set; }
     }
 
-    public class SAGE50USCreateNewCustomerBodyInput
+    public class Sage50USCreateNewCustomerBodyInput
     {
         [JsonProperty("Account_Number")]
         public string AccountNumber { get; set; }
@@ -1594,7 +1648,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string CustomFieldValue3 { get; set; }
         public string CustomFieldValue4 { get; set; }
         public string CustomFieldValue5 { get; set; }
-        public string CustomerGUID { get; set; }
+
+        [JsonProperty("CustomerGUID")]
+        public string CustomerGuid { get; set; }
 
         [JsonProperty("CustomerID")]
         public string CustomerId { get; set; }
@@ -1645,7 +1701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public bool? TermsType { get; set; }
 
         [JsonProperty("Use_COD_Terms")]
-        public bool? UseCODTerms { get; set; }
+        public bool? UseCodTerms { get; set; }
 
         [JsonProperty("Use_Due_Month_End_Terms")]
         public bool? UseDueMonthEndTerms { get; set; }
@@ -1660,25 +1716,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public bool? IsInactive { get; set; }
     }
 
-    public class SAGE50USCreateNewSalesOrderResponse
+    public class Sage50USCreateNewSalesOrderResponse
     {
         [JsonProperty("code")]
         public int Code { get; set; }
 
         [JsonProperty("data")]
-        public SAGE50USCreateNewSalesOrderResponseDataType Data { get; set; }
+        public Sage50USCreateNewSalesOrderResponseDataType Data { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
     }
 
-    public class SAGE50USCreateNewSalesOrderResponseDataType
+    public class Sage50USCreateNewSalesOrderResponseDataType
     {
         [JsonProperty("Accounts_Receivable_Account")]
         public string AccountsReceivableAccount { get; set; }
 
         [JsonProperty("Accounts_Receivable_Acct_GUID")]
-        public string AccountsReceivableAcctGUID { get; set; }
+        public string AccountsReceivableAcctGuid { get; set; }
 
         [JsonProperty("Accounts_Receivable_Amount")]
         public int AccountsReceivableAmount { get; set; }
@@ -1699,19 +1755,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
 
         [JsonProperty("Drop_Ship")]
         public bool DropShip { get; set; }
-        public string GUID { get; set; }
+
+        [JsonProperty("GUID")]
+        public string Guid { get; set; }
 
         [JsonProperty("Note_Prints_After_Line_Items")]
         public bool NotePrintsAfterLineItems { get; set; }
         public bool Proposal { get; set; }
         public bool ProposalAccepted { get; set; }
-        public SAGE50USCreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
+        public Sage50USCreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
 
         [JsonProperty("Sales_Order_Number")]
         public string SalesOrderNumber { get; set; }
 
         [JsonProperty("Sales_Representative_GUID")]
-        public string SalesRepresentativeGUID { get; set; }
+        public string SalesRepresentativeGuid { get; set; }
 
         [JsonProperty("Sales_Representative_ID")]
         public string SalesRepresentativeId { get; set; }
@@ -1727,13 +1785,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ShipBy { get; set; }
 
         [JsonProperty("Ship_VIA")]
-        public string ShipVIA { get; set; }
+        public string ShipVia { get; set; }
 
         [JsonProperty("Statement_Note_Prints_Before_Inv_Ref")]
         public bool StatementNotePrintsBeforeInvRef { get; set; }
     }
 
-    public class SAGE50USCreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem
+    public class Sage50USCreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem
     {
         public int Amount { get; set; }
         public int DistributionNumber { get; set; }
@@ -1742,16 +1800,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string GLAccount { get; set; }
 
         [JsonProperty("GL_Account_GUID")]
-        public string GLAccountGUID { get; set; }
+        public string GLAccountGuid { get; set; }
 
         [JsonProperty("Item_GUID")]
-        public string ItemGUID { get; set; }
+        public string ItemGuid { get; set; }
 
         [JsonProperty("Item_ID")]
         public string ItemId { get; set; }
 
         [JsonProperty("Job_GUID")]
-        public string JobGUID { get; set; }
+        public string JobGuid { get; set; }
 
         [JsonProperty("Job_ID")]
         public string JobId { get; set; }
@@ -1770,7 +1828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public int TaxType { get; set; }
 
         [JsonProperty("UM_ID")]
-        public string UMId { get; set; }
+        public string UmId { get; set; }
 
         [JsonProperty("UM_Stocking_Units")]
         public int UMStockingUnits { get; set; }
@@ -1780,13 +1838,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public int Weight { get; set; }
     }
 
-    public class SAGE50USCreateNewSalesOrderBodyInput
+    public class Sage50USCreateNewSalesOrderBodyInput
     {
         [JsonProperty("Accounts_Receivable_Account")]
         public string AccountsReceivableAccount { get; set; }
 
         [JsonProperty("Accounts_Receivable_Acct_GUID")]
-        public string AccountsReceivableAcctGUID { get; set; }
+        public string AccountsReceivableAcctGuid { get; set; }
 
         [JsonProperty("Accounts_Receivable_Amount")]
         public int? AccountsReceivableAmount { get; set; }
@@ -1807,19 +1865,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
 
         [JsonProperty("Drop_Ship")]
         public bool? DropShip { get; set; }
-        public string GUID { get; set; }
+
+        [JsonProperty("GUID")]
+        public string Guid { get; set; }
 
         [JsonProperty("Note_Prints_After_Line_Items")]
         public bool? NotePrintsAfterLineItems { get; set; }
         public bool? Proposal { get; set; }
         public bool? ProposalAccepted { get; set; }
-        public SAGE50USCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
+        public Sage50USCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
 
         [JsonProperty("Sales_Order_Number")]
         public string SalesOrderNumber { get; set; }
 
         [JsonProperty("Sales_Representative_GUID")]
-        public string SalesRepresentativeGUID { get; set; }
+        public string SalesRepresentativeGuid { get; set; }
 
         [JsonProperty("Sales_Representative_ID")]
         public string SalesRepresentativeId { get; set; }
@@ -1835,13 +1895,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ShipBy { get; set; }
 
         [JsonProperty("Ship_VIA")]
-        public string ShipVIA { get; set; }
+        public string ShipVia { get; set; }
 
         [JsonProperty("Statement_Note_Prints_Before_Inv_Ref")]
         public bool? StatementNotePrintsBeforeInvRef { get; set; }
     }
 
-    public class SAGE50USCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem
+    public class Sage50USCreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem
     {
         public int? Amount { get; set; }
         public int? DistributionNumber { get; set; }
@@ -1850,16 +1910,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string GLAccount { get; set; }
 
         [JsonProperty("GL_Account_GUID")]
-        public string GLAccountGUID { get; set; }
+        public string GLAccountGuid { get; set; }
 
         [JsonProperty("Item_GUID")]
-        public string ItemGUID { get; set; }
+        public string ItemGuid { get; set; }
 
         [JsonProperty("Item_ID")]
         public string ItemId { get; set; }
 
         [JsonProperty("Job_GUID")]
-        public string JobGUID { get; set; }
+        public string JobGuid { get; set; }
 
         [JsonProperty("Job_ID")]
         public string JobId { get; set; }
@@ -1878,7 +1938,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public int? TaxType { get; set; }
 
         [JsonProperty("UM_ID")]
-        public string UMId { get; set; }
+        public string UmId { get; set; }
 
         [JsonProperty("UM_Stocking_Units")]
         public int? UMStockingUnits { get; set; }
@@ -1888,19 +1948,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public int? Weight { get; set; }
     }
 
-    public class SAPB1CreateNewCustomerResponse
+    public class Sapb1CreateNewCustomerResponse
     {
         [JsonProperty("code")]
         public int Code { get; set; }
 
         [JsonProperty("data")]
-        public SAPB1CreateNewCustomerResponseDataType Data { get; set; }
+        public Sapb1CreateNewCustomerResponseDataType Data { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
     }
 
-    public class SAPB1CreateNewCustomerResponseDataType
+    public class Sapb1CreateNewCustomerResponseDataType
     {
         public string Address { get; set; }
         public string BillingBlock { get; set; }
@@ -1939,10 +1999,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ZipCode { get; set; }
 
         [JsonProperty("lstContactEmployees")]
-        public SAPB1CreateNewCustomerResponseDataTypeLstContactEmployeesTypeItem[] LstContactEmployees { get; set; }
+        public Sapb1CreateNewCustomerResponseDataTypeLstContactEmployeesTypeItem[] LstContactEmployees { get; set; }
     }
 
-    public class SAPB1CreateNewCustomerResponseDataTypeLstContactEmployeesTypeItem
+    public class Sapb1CreateNewCustomerResponseDataTypeLstContactEmployeesTypeItem
     {
         public string Address { get; set; }
         public string CityOfBirth { get; set; }
@@ -1969,7 +2029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string Title { get; set; }
     }
 
-    public class SAPB1CreateNewCustomerBodyInput
+    public class Sapb1CreateNewCustomerBodyInput
     {
         public string Address { get; set; }
         public string BillingAddressName { get; set; }
@@ -2048,19 +2108,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string UserFieldsValues { get; set; }
     }
 
-    public class SAPB1CreateNewSalesOrderResponse
+    public class Sapb1CreateNewSalesOrderResponse
     {
         [JsonProperty("code")]
         public int Code { get; set; }
 
         [JsonProperty("data")]
-        public SAPB1CreateNewSalesOrderResponseDataType Data { get; set; }
+        public Sapb1CreateNewSalesOrderResponseDataType Data { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
     }
 
-    public class SAPB1CreateNewSalesOrderResponseDataType
+    public class Sapb1CreateNewSalesOrderResponseDataType
     {
         public string CardCode { get; set; }
         public string DocDate { get; set; }
@@ -2069,14 +2129,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public bool DocDueDateSpecified { get; set; }
         public int DocNum { get; set; }
         public bool DocNumSpecified { get; set; }
-        public SAPB1CreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
+        public Sapb1CreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
         public int Series { get; set; }
         public bool SeriesSpecified { get; set; }
         public string TaxDate { get; set; }
         public bool TaxDateSpecified { get; set; }
     }
 
-    public class SAPB1CreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem
+    public class Sapb1CreateNewSalesOrderResponseDataTypeSalesOrderLineItemTypeItem
     {
         public int DiscountPercent { get; set; }
         public bool DiscountPercentSpecified { get; set; }
@@ -2088,18 +2148,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string WarehouseCode { get; set; }
     }
 
-    public class SAPB1CreateNewSalesOrderBodyInput
+    public class Sapb1CreateNewSalesOrderBodyInput
     {
         public string CardCode { get; set; }
         public string DocDate { get; set; }
         public string DocDueDate { get; set; }
         public int? DocNum { get; set; }
-        public SAPB1CreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
+        public Sapb1CreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem[] SalesOrderLineItem { get; set; }
         public int? Series { get; set; }
         public string TaxDate { get; set; }
     }
 
-    public class SAPB1CreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem
+    public class Sapb1CreateNewSalesOrderBodyInputSalesOrderLineItemTypeItem
     {
         public int? DiscountPercent { get; set; }
         public string ItemCode { get; set; }
@@ -2108,19 +2168,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string WarehouseCode { get; set; }
     }
 
-    public class SYSPROCreateNewCustomerResponse
+    public class SysproCreateNewCustomerResponse
     {
         [JsonProperty("code")]
         public int Code { get; set; }
 
         [JsonProperty("data")]
-        public SYSPROCreateNewCustomerResponseDataType Data { get; set; }
+        public SysproCreateNewCustomerResponseDataType Data { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
     }
 
-    public class SYSPROCreateNewCustomerResponseDataType
+    public class SysproCreateNewCustomerResponseDataType
     {
         public string AddTelephone { get; set; }
         public string AltMethodFlag { get; set; }
@@ -2224,7 +2284,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string StateCode { get; set; }
         public string StatementReqd { get; set; }
         public string StockInterchange { get; set; }
-        public string TagsToDropFromXML { get; set; }
+
+        [JsonProperty("TagsToDropFromXML")]
+        public string TagsToDropFromXml { get; set; }
         public string TaxExemptNumber { get; set; }
         public string TaxStatus { get; set; }
         public string Telephone { get; set; }
@@ -2246,7 +2308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ESignature { get; set; }
     }
 
-    public class SYSPROCreateNewCustomerBodyInput
+    public class SysproCreateNewCustomerBodyInput
     {
         public string AddTelephone { get; set; }
         public string AltMethodFlag { get; set; }
@@ -2350,7 +2412,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string StateCode { get; set; }
         public string StatementReqd { get; set; }
         public string StockInterchange { get; set; }
-        public string TagsToDropFromXML { get; set; }
+
+        [JsonProperty("TagsToDropFromXML")]
+        public string TagsToDropFromXml { get; set; }
         public string TaxExemptNumber { get; set; }
         public string TaxStatus { get; set; }
         public string Telephone { get; set; }
@@ -2372,19 +2436,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ESignature { get; set; }
     }
 
-    public class SYSPROCreateNewSalesOrderResponse
+    public class SysproCreateNewSalesOrderResponse
     {
         [JsonProperty("code")]
         public int Code { get; set; }
 
         [JsonProperty("data")]
-        public SYSPROCreateNewSalesOrderResponseDataType Data { get; set; }
+        public SysproCreateNewSalesOrderResponseDataType Data { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
     }
 
-    public class SYSPROCreateNewSalesOrderResponseDataType
+    public class SysproCreateNewSalesOrderResponseDataType
     {
         public string AcceptEarlierShipDate { get; set; }
         public string AcceptKitOptional { get; set; }
@@ -2451,7 +2515,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string OrderStatus { get; set; }
         public string OrderType { get; set; }
         public string OverrideCustomerBackOrder { get; set; }
-        public string POSSalesOrder { get; set; }
+
+        [JsonProperty("POSSalesOrder")]
+        public string PosSalesOrder { get; set; }
         public string Process { get; set; }
         public string ProcessFlag { get; set; }
         public string PutEntireQuantityOnNewLoadWhenChanged { get; set; }
@@ -2460,11 +2526,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ReserveStock { get; set; }
         public string ReserveStockRequestAllocs { get; set; }
         public string SalesOrder { get; set; }
-        public SYSPROCreateNewSalesOrderResponseDataTypeSalesOrderDetailsTypeItem[] SalesOrderDetails { get; set; }
-        public SYSPROCreateNewSalesOrderResponseDataTypeSalesOrderFooterCommentsTypeItem[] SalesOrderFooterComments { get; set; }
-        public SYSPROCreateNewSalesOrderResponseDataTypeSalesOrderFreightDetailsTypeItem[] SalesOrderFreightDetails { get; set; }
-        public SYSPROCreateNewSalesOrderResponseDataTypeSalesOrderHeaderCommentsTypeItem[] SalesOrderHeaderComments { get; set; }
-        public SYSPROCreateNewSalesOrderResponseDataTypeSalesOrderMiscChargesDetailsTypeItem[] SalesOrderMiscChargesDetails { get; set; }
+        public SysproCreateNewSalesOrderResponseDataTypeSalesOrderDetailsTypeItem[] SalesOrderDetails { get; set; }
+        public SysproCreateNewSalesOrderResponseDataTypeSalesOrderFooterCommentsTypeItem[] SalesOrderFooterComments { get; set; }
+        public SysproCreateNewSalesOrderResponseDataTypeSalesOrderFreightDetailsTypeItem[] SalesOrderFreightDetails { get; set; }
+        public SysproCreateNewSalesOrderResponseDataTypeSalesOrderHeaderCommentsTypeItem[] SalesOrderHeaderComments { get; set; }
+        public SysproCreateNewSalesOrderResponseDataTypeSalesOrderMiscChargesDetailsTypeItem[] SalesOrderMiscChargesDetails { get; set; }
         public string SalesOrderPromoQualifyAction { get; set; }
         public string SalesOrderPromoSelectAction { get; set; }
         public string Salesperson { get; set; }
@@ -2488,7 +2554,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string StatusInProcess { get; set; }
         public string StatusInProcessResponse { get; set; }
         public string Supplier { get; set; }
-        public string TagsToDropFromXML { get; set; }
+
+        [JsonProperty("TagsToDropFromXML")]
+        public string TagsToDropFromXml { get; set; }
         public string TaxExemptNumber { get; set; }
         public string TaxExemptionStatus { get; set; }
         public string TransactionNature { get; set; }
@@ -2507,7 +2575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string ESignature { get; set; }
     }
 
-    public class SYSPROCreateNewSalesOrderResponseDataTypeSalesOrderDetailsTypeItem
+    public class SysproCreateNewSalesOrderResponseDataTypeSalesOrderDetailsTypeItem
     {
         public string AlwaysUseDiscountEntered { get; set; }
         public string CommissionCode { get; set; }
@@ -2563,14 +2631,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string UserDefined { get; set; }
     }
 
-    public class SYSPROCreateNewSalesOrderResponseDataTypeSalesOrderFooterCommentsTypeItem
+    public class SysproCreateNewSalesOrderResponseDataTypeSalesOrderFooterCommentsTypeItem
     {
         public string FooterComment { get; set; }
         public string FooterCommentType { get; set; }
         public string FooterLineActionType { get; set; }
     }
 
-    public class SYSPROCreateNewSalesOrderResponseDataTypeSalesOrderFreightDetailsTypeItem
+    public class SysproCreateNewSalesOrderResponseDataTypeSalesOrderFreightDetailsTypeItem
     {
         public string FreightCost { get; set; }
         public string FreightFstCode { get; set; }
@@ -2582,14 +2650,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string FreightValue { get; set; }
     }
 
-    public class SYSPROCreateNewSalesOrderResponseDataTypeSalesOrderHeaderCommentsTypeItem
+    public class SysproCreateNewSalesOrderResponseDataTypeSalesOrderHeaderCommentsTypeItem
     {
         public string HeaderComment { get; set; }
         public string HeaderCommentType { get; set; }
         public string HeaderLineActionType { get; set; }
     }
 
-    public class SYSPROCreateNewSalesOrderResponseDataTypeSalesOrderMiscChargesDetailsTypeItem
+    public class SysproCreateNewSalesOrderResponseDataTypeSalesOrderMiscChargesDetailsTypeItem
     {
         public string MiscChargeCode { get; set; }
         public string MiscChargeCost { get; set; }
@@ -2610,7 +2678,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string MiscTaxCode { get; set; }
     }
 
-    public class SYSPROCreateNewSalesOrderBodyInput
+    public class SysproCreateNewSalesOrderBodyInput
     {
         public string AcceptEarlierShipDate { get; set; }
         public string AcceptKitOptional { get; set; }
@@ -2677,7 +2745,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string OrderStatus { get; set; }
         public string OrderType { get; set; }
         public string OverrideCustomerBackOrder { get; set; }
-        public string POSSalesOrder { get; set; }
+
+        [JsonProperty("POSSalesOrder")]
+        public string PosSalesOrder { get; set; }
         public string Process { get; set; }
         public string ProcessFlag { get; set; }
         public string PutEntireQuantityOnNewLoadWhenChanged { get; set; }
@@ -2714,7 +2784,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
         public string StatusInProcess { get; set; }
         public string StatusInProcessResponse { get; set; }
         public string Supplier { get; set; }
-        public string TagsToDropFromXML { get; set; }
+
+        [JsonProperty("TagsToDropFromXML")]
+        public string TagsToDropFromXml { get; set; }
         public string TaxExemptNumber { get; set; }
         public string TaxExemptionStatus { get; set; }
         public string TransactionNature { get; set; }

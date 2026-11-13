@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
     public class CpscrecallsretrievalipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cpscrecallsretrievalip")]
-        public IBodyWorkflowAction<RecallGetResponseItem[], ApiConnectionActionConfiguration> RecallGet(Expression<Func<string>> recallId = null, Expression<Func<string>> recallNumber = null, Expression<Func<string>> recallDateStart = null, Expression<Func<string>> recallDateEnd = null, Expression<Func<string>> lastPublishDateStart = null, Expression<Func<string>> lastPublishDateEnd = null, Expression<Func<string>> recallURL = null, Expression<Func<string>> recallTitle = null, Expression<Func<string>> consumerContact = null, Expression<Func<string>> recallDescription = null, Expression<Func<string>> productName = null, Expression<Func<string>> productDescription = null, Expression<Func<string>> productModel = null, Expression<Func<string>> productType = null, Expression<Func<string>> inconjunctionURL = null, Expression<Func<string>> imageURL = null, Expression<Func<string>> injury = null, Expression<Func<string>> manufacturer = null, Expression<Func<string>> retailer = null, Expression<Func<string>> importer = null, Expression<Func<string>> distributor = null, Expression<Func<string>> manufacturerCountry = null, Expression<Func<string>> uPC = null, Expression<Func<string>> hazard = null, Expression<Func<string>> remedy = null, Expression<Func<string>> remedyOption = null)
+        public IBodyWorkflowAction<RecallGetResponseItem[], ApiConnectionActionConfiguration> RecallGet(Expression<Func<string>> recallId = null, Expression<Func<string>> recallNumber = null, Expression<Func<string>> recallDateStart = null, Expression<Func<string>> recallDateEnd = null, Expression<Func<string>> lastPublishDateStart = null, Expression<Func<string>> lastPublishDateEnd = null, Expression<Func<string>> recallUrl = null, Expression<Func<string>> recallTitle = null, Expression<Func<string>> consumerContact = null, Expression<Func<string>> recallDescription = null, Expression<Func<string>> productName = null, Expression<Func<string>> productDescription = null, Expression<Func<string>> productModel = null, Expression<Func<string>> productType = null, Expression<Func<string>> inconjunctionUrl = null, Expression<Func<string>> imageUrl = null, Expression<Func<string>> injury = null, Expression<Func<string>> manufacturer = null, Expression<Func<string>> retailer = null, Expression<Func<string>> importer = null, Expression<Func<string>> distributor = null, Expression<Func<string>> manufacturerCountry = null, Expression<Func<string>> upc = null, Expression<Func<string>> hazard = null, Expression<Func<string>> remedy = null, Expression<Func<string>> remedyOption = null)
         {
             var __workflow_recallId = WorkflowExpression.Compile(recallId, nameof(recallId), required: false);
             var __workflow_recallNumber = WorkflowExpression.Compile(recallNumber, nameof(recallNumber), required: false);
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
             var __workflow_recallDateEnd = WorkflowExpression.Compile(recallDateEnd, nameof(recallDateEnd), required: false);
             var __workflow_lastPublishDateStart = WorkflowExpression.Compile(lastPublishDateStart, nameof(lastPublishDateStart), required: false);
             var __workflow_lastPublishDateEnd = WorkflowExpression.Compile(lastPublishDateEnd, nameof(lastPublishDateEnd), required: false);
-            var __workflow_recallURL = WorkflowExpression.Compile(recallURL, nameof(recallURL), required: false);
+            var __workflow_recallUrl = WorkflowExpression.Compile(recallUrl, nameof(recallUrl), required: false);
             var __workflow_recallTitle = WorkflowExpression.Compile(recallTitle, nameof(recallTitle), required: false);
             var __workflow_consumerContact = WorkflowExpression.Compile(consumerContact, nameof(consumerContact), required: false);
             var __workflow_recallDescription = WorkflowExpression.Compile(recallDescription, nameof(recallDescription), required: false);
@@ -29,15 +29,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
             var __workflow_productDescription = WorkflowExpression.Compile(productDescription, nameof(productDescription), required: false);
             var __workflow_productModel = WorkflowExpression.Compile(productModel, nameof(productModel), required: false);
             var __workflow_productType = WorkflowExpression.Compile(productType, nameof(productType), required: false);
-            var __workflow_inconjunctionURL = WorkflowExpression.Compile(inconjunctionURL, nameof(inconjunctionURL), required: false);
-            var __workflow_imageURL = WorkflowExpression.Compile(imageURL, nameof(imageURL), required: false);
+            var __workflow_inconjunctionUrl = WorkflowExpression.Compile(inconjunctionUrl, nameof(inconjunctionUrl), required: false);
+            var __workflow_imageUrl = WorkflowExpression.Compile(imageUrl, nameof(imageUrl), required: false);
             var __workflow_injury = WorkflowExpression.Compile(injury, nameof(injury), required: false);
             var __workflow_manufacturer = WorkflowExpression.Compile(manufacturer, nameof(manufacturer), required: false);
             var __workflow_retailer = WorkflowExpression.Compile(retailer, nameof(retailer), required: false);
             var __workflow_importer = WorkflowExpression.Compile(importer, nameof(importer), required: false);
             var __workflow_distributor = WorkflowExpression.Compile(distributor, nameof(distributor), required: false);
             var __workflow_manufacturerCountry = WorkflowExpression.Compile(manufacturerCountry, nameof(manufacturerCountry), required: false);
-            var __workflow_uPC = WorkflowExpression.Compile(uPC, nameof(uPC), required: false);
+            var __workflow_upc = WorkflowExpression.Compile(upc, nameof(upc), required: false);
             var __workflow_hazard = WorkflowExpression.Compile(hazard, nameof(hazard), required: false);
             var __workflow_remedy = WorkflowExpression.Compile(remedy, nameof(remedy), required: false);
             var __workflow_remedyOption = WorkflowExpression.Compile(remedyOption, nameof(remedyOption), required: false);
@@ -58,8 +58,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
                     callPayload.Queries["LastPublishDateStart"] = ExpressionConverter.Convert(__workflow_lastPublishDateStart);
                 if (__workflow_lastPublishDateEnd != null)
                     callPayload.Queries["LastPublishDateEnd"] = ExpressionConverter.Convert(__workflow_lastPublishDateEnd);
-                if (__workflow_recallURL != null)
-                    callPayload.Queries["RecallURL"] = ExpressionConverter.Convert(__workflow_recallURL);
+                if (__workflow_recallUrl != null)
+                    callPayload.Queries["RecallURL"] = ExpressionConverter.Convert(__workflow_recallUrl);
                 if (__workflow_recallTitle != null)
                     callPayload.Queries["RecallTitle"] = ExpressionConverter.Convert(__workflow_recallTitle);
                 if (__workflow_consumerContact != null)
@@ -74,10 +74,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
                     callPayload.Queries["ProductModel"] = ExpressionConverter.Convert(__workflow_productModel);
                 if (__workflow_productType != null)
                     callPayload.Queries["ProductType"] = ExpressionConverter.Convert(__workflow_productType);
-                if (__workflow_inconjunctionURL != null)
-                    callPayload.Queries["InconjunctionURL"] = ExpressionConverter.Convert(__workflow_inconjunctionURL);
-                if (__workflow_imageURL != null)
-                    callPayload.Queries["ImageURL"] = ExpressionConverter.Convert(__workflow_imageURL);
+                if (__workflow_inconjunctionUrl != null)
+                    callPayload.Queries["InconjunctionURL"] = ExpressionConverter.Convert(__workflow_inconjunctionUrl);
+                if (__workflow_imageUrl != null)
+                    callPayload.Queries["ImageURL"] = ExpressionConverter.Convert(__workflow_imageUrl);
                 if (__workflow_injury != null)
                     callPayload.Queries["Injury"] = ExpressionConverter.Convert(__workflow_injury);
                 if (__workflow_manufacturer != null)
@@ -90,8 +90,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
                     callPayload.Queries["Distributor"] = ExpressionConverter.Convert(__workflow_distributor);
                 if (__workflow_manufacturerCountry != null)
                     callPayload.Queries["ManufacturerCountry"] = ExpressionConverter.Convert(__workflow_manufacturerCountry);
-                if (__workflow_uPC != null)
-                    callPayload.Queries["UPC"] = ExpressionConverter.Convert(__workflow_uPC);
+                if (__workflow_upc != null)
+                    callPayload.Queries["UPC"] = ExpressionConverter.Convert(__workflow_upc);
                 if (__workflow_hazard != null)
                     callPayload.Queries["Hazard"] = ExpressionConverter.Convert(__workflow_hazard);
                 if (__workflow_remedy != null)
@@ -114,7 +114,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
         public string RecallNumber { get; set; }
         public string RecallDate { get; set; }
         public string Description { get; set; }
-        public string URL { get; set; }
+
+        [JsonProperty("URL")]
+        public string Url { get; set; }
         public string Title { get; set; }
         public string ConsumerContact { get; set; }
         public string LastPublishDate { get; set; }
@@ -128,7 +130,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
         public RecallGetResponseItemDistributorsTypeItem[] Distributors { get; set; }
         public string SoldAtLabel { get; set; }
         public RecallGetResponseItemManufacturerCountriesTypeItem[] ManufacturerCountries { get; set; }
-        public RecallGetResponseItemProductUPCsTypeItem[] ProductUPCs { get; set; }
+
+        [JsonProperty("ProductUPCs")]
+        public RecallGetResponseItemProductUpcsTypeItem[] ProductUpcs { get; set; }
         public RecallGetResponseItemHazardsTypeItem[] Hazards { get; set; }
         public RecallGetResponseItemRemediesTypeItem[] Remedies { get; set; }
         public RecallGetResponseItemRemedyOptionsTypeItem[] RemedyOptions { get; set; }
@@ -153,7 +157,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
 
     public class RecallGetResponseItemImagesTypeItem
     {
-        public string URL { get; set; }
+        [JsonProperty("URL")]
+        public string Url { get; set; }
     }
 
     public class RecallGetResponseItemInjuriesTypeItem
@@ -198,9 +203,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpscrecallsretrievalip
         public string Country { get; set; }
     }
 
-    public class RecallGetResponseItemProductUPCsTypeItem
+    public class RecallGetResponseItemProductUpcsTypeItem
     {
-        public string UPC { get; set; }
+        [JsonProperty("UPC")]
+        public string Upc { get; set; }
     }
 
     public class RecallGetResponseItemHazardsTypeItem

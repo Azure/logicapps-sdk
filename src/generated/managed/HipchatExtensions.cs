@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         public HistoryResponseItemsTypeItemFileType File { get; set; }
 
         [JsonProperty("from")]
-        public JToken AuthorSInfo { get; set; }
+        public JToken AuthorInfo { get; set; }
 
         [JsonProperty("id")]
         public string MessageId { get; set; }
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         public string FileName { get; set; }
 
         [JsonProperty("url")]
-        public string FileURL { get; set; }
+        public string FileUrl { get; set; }
     }
 
     public class RoomList

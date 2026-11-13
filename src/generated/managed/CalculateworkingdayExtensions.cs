@@ -178,11 +178,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [JsonProperty("working_days")]
         public string[] WorkingDays { get; set; }
 
-        [JsonProperty("non_working_days")]
+        [JsonProperty("working_days_in_words")]
         public string[] WorkingDaysInWords { get; set; }
 
+        [JsonProperty("non_working_days")]
+        public string[] WorkingDaysInWords2 { get; set; }
+
+        [JsonProperty("next_working_day")]
+        public string NextWorkingDay { get; set; }
+
         [JsonProperty("x_days")]
-        public int NextWorkingDay { get; set; }
+        public int NextWorkingDay2 { get; set; }
 
         [JsonProperty("working_day_in_x_days")]
         public string WorkingDayInXDays { get; set; }
@@ -223,8 +229,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [JsonProperty("working_days")]
         public string[] WorkingDays { get; set; }
 
-        [JsonProperty("non_working_days")]
+        [JsonProperty("working_days_in_words")]
         public string[] WorkingDaysInWords { get; set; }
+
+        [JsonProperty("non_working_days")]
+        public string[] WorkingDaysInWords2 { get; set; }
 
         [JsonProperty("next_working_day")]
         public string NextWorkingDay { get; set; }
@@ -253,8 +262,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [JsonProperty("working_days")]
         public string[] WorkingDays { get; set; }
 
-        [JsonProperty("non_working_days")]
+        [JsonProperty("working_days_in_words")]
         public string[] WorkingDaysInWords { get; set; }
+
+        [JsonProperty("non_working_days")]
+        public string[] WorkingDaysInWords2 { get; set; }
 
         [JsonProperty("more_info")]
         public string MoreInfo { get; set; }
@@ -271,8 +283,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [JsonProperty("working_days")]
         public string[] WorkingDays { get; set; }
 
-        [JsonProperty("non_working_days")]
+        [JsonProperty("working_days_in_words")]
         public string[] WorkingDaysInWords { get; set; }
+
+        [JsonProperty("non_working_days")]
+        public string[] WorkingDaysInWords2 { get; set; }
 
         [JsonProperty("first_working_day_of_month")]
         public string FirstWorkingDayOfMonth { get; set; }
@@ -298,8 +313,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [JsonProperty("working_days")]
         public string[] WorkingDays { get; set; }
 
-        [JsonProperty("non_working_days")]
+        [JsonProperty("working_days_in_words")]
         public string[] WorkingDaysInWords { get; set; }
+
+        [JsonProperty("non_working_days")]
+        public string[] WorkingDaysInWords2 { get; set; }
 
         [JsonProperty("more_info")]
         public string MoreInfo { get; set; }
@@ -316,8 +334,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [JsonProperty("working_days")]
         public string[] WorkingDays { get; set; }
 
-        [JsonProperty("non_working_days")]
+        [JsonProperty("working_days_in_words")]
         public string[] WorkingDaysInWords { get; set; }
+
+        [JsonProperty("non_working_days")]
+        public string[] WorkingDaysInWords2 { get; set; }
 
         [JsonProperty("x_days")]
         public int NextWorkingDay { get; set; }

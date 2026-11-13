@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         public string Status { get; set; }
 
         [JsonProperty("htmlLink")]
-        public string HTMLLink { get; set; }
+        public string HtmlLink { get; set; }
 
         [JsonProperty("id")]
         public string EventId { get; set; }
@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         public string Status { get; set; }
 
         [JsonProperty("htmlLink")]
-        public string HTMLLink { get; set; }
+        public string HtmlLink { get; set; }
 
         [JsonProperty("id")]
         public string EventId { get; set; }

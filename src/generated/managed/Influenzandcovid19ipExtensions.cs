@@ -13,12 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     public class Influenzandcovid19ipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19totalsforallUSStatesResponseItem[], ApiConnectionActionConfiguration> GetCOVID19totalsforallUSStates(Expression<Func<GetCOVID19totalsforallUSStatesSortInput>> sort = null, Expression<Func<bool>> yesterday = null, Expression<Func<bool>> allowNull = null)
+        public IBodyWorkflowAction<GetCovid19totalsforallUSStatesResponseItem[], ApiConnectionActionConfiguration> GetCovid19totalsforallUSStates(Expression<Func<GetCovid19totalsforallUSStatesSortInput>> sort = null, Expression<Func<bool>> yesterday = null, Expression<Func<bool>> allowNull = null)
         {
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_yesterday = WorkflowExpression.Compile(yesterday, nameof(yesterday), required: false);
             var __workflow_allowNull = WorkflowExpression.Compile(allowNull, nameof(allowNull), required: false);
-            return new DeferredBodyAction<GetCOVID19totalsforallUSStatesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19totalsforallUSStatesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/covid-19/states";
                 var apiCallHttpMethod = "get";
@@ -29,17 +29,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
                     callPayload.Queries["yesterday"] = ExpressionConverter.Convert(__workflow_yesterday);
                 if (__workflow_allowNull != null)
                     callPayload.Queries["allowNull"] = ExpressionConverter.Convert(__workflow_allowNull);
-                return new ApiConnectionAction<GetCOVID19totalsforallUSStatesResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetCovid19totalsforallUSStatesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19totalsforspecificUSStatesResponse, ApiConnectionActionConfiguration> GetCOVID19totalsforspecificUSStates(Expression<Func<StatesInput>> states, Expression<Func<string>> yesterday = null, Expression<Func<string>> allowNull = null)
+        public IBodyWorkflowAction<GetCovid19totalsforspecificUSStatesResponse, ApiConnectionActionConfiguration> GetCovid19totalsforspecificUSStates(Expression<Func<StatesInput>> states, Expression<Func<string>> yesterday = null, Expression<Func<string>> allowNull = null)
         {
             var __workflow_states = WorkflowExpression.Compile(states, nameof(states), required: true);
             var __workflow_yesterday = WorkflowExpression.Compile(yesterday, nameof(yesterday), required: false);
             var __workflow_allowNull = WorkflowExpression.Compile(allowNull, nameof(allowNull), required: false);
-            return new DeferredBodyAction<GetCOVID19totalsforspecificUSStatesResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19totalsforspecificUSStatesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/covid-19/states/{0}", __workflow_states.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -48,18 +48,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
                     callPayload.Queries["yesterday"] = ExpressionConverter.Convert(__workflow_yesterday);
                 if (__workflow_allowNull != null)
                     callPayload.Queries["allowNull"] = ExpressionConverter.Convert(__workflow_allowNull);
-                return new ApiConnectionAction<GetCOVID19totalsforspecificUSStatesResponse>(callPayload);
+                return new ApiConnectionAction<GetCovid19totalsforspecificUSStatesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19totalsforallcontinentsResponseItem[], ApiConnectionActionConfiguration> GetCOVID19totalsforallcontinents(Expression<Func<bool>> yesterday = null, Expression<Func<bool>> twoDaysAgo = null, Expression<Func<GetCOVID19totalsforallcontinentsSortInput>> sort = null, Expression<Func<bool>> allowNull = null)
+        public IBodyWorkflowAction<GetCovid19totalsforallcontinentsResponseItem[], ApiConnectionActionConfiguration> GetCovid19totalsforallcontinents(Expression<Func<bool>> yesterday = null, Expression<Func<bool>> twoDaysAgo = null, Expression<Func<GetCovid19totalsforallcontinentsSortInput>> sort = null, Expression<Func<bool>> allowNull = null)
         {
             var __workflow_yesterday = WorkflowExpression.Compile(yesterday, nameof(yesterday), required: false);
             var __workflow_twoDaysAgo = WorkflowExpression.Compile(twoDaysAgo, nameof(twoDaysAgo), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_allowNull = WorkflowExpression.Compile(allowNull, nameof(allowNull), required: false);
-            return new DeferredBodyAction<GetCOVID19totalsforallcontinentsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19totalsforallcontinentsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/covid-19/continents";
                 var apiCallHttpMethod = "get";
@@ -72,19 +72,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
                     callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 if (__workflow_allowNull != null)
                     callPayload.Queries["allowNull"] = ExpressionConverter.Convert(__workflow_allowNull);
-                return new ApiConnectionAction<GetCOVID19totalsforallcontinentsResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetCovid19totalsforallcontinentsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19totalsforaspecificcontinentResponse, ApiConnectionActionConfiguration> GetCOVID19totalsforaspecificcontinent(Expression<Func<ContinentInput>> continent, Expression<Func<string>> yesterday = null, Expression<Func<string>> twoDaysAgo = null, Expression<Func<string>> strict = null, Expression<Func<string>> allowNull = null)
+        public IBodyWorkflowAction<GetCovid19totalsforaspecificcontinentResponse, ApiConnectionActionConfiguration> GetCovid19totalsforaspecificcontinent(Expression<Func<ContinentInput>> continent, Expression<Func<string>> yesterday = null, Expression<Func<string>> twoDaysAgo = null, Expression<Func<string>> strict = null, Expression<Func<string>> allowNull = null)
         {
             var __workflow_continent = WorkflowExpression.Compile(continent, nameof(continent), required: true);
             var __workflow_yesterday = WorkflowExpression.Compile(yesterday, nameof(yesterday), required: false);
             var __workflow_twoDaysAgo = WorkflowExpression.Compile(twoDaysAgo, nameof(twoDaysAgo), required: false);
             var __workflow_strict = WorkflowExpression.Compile(strict, nameof(strict), required: false);
             var __workflow_allowNull = WorkflowExpression.Compile(allowNull, nameof(allowNull), required: false);
-            return new DeferredBodyAction<GetCOVID19totalsforaspecificcontinentResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19totalsforaspecificcontinentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/covid-19/continents/{0}", __workflow_continent.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -97,18 +97,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
                     callPayload.Queries["strict"] = ExpressionConverter.Convert(__workflow_strict);
                 if (__workflow_allowNull != null)
                     callPayload.Queries["allowNull"] = ExpressionConverter.Convert(__workflow_allowNull);
-                return new ApiConnectionAction<GetCOVID19totalsforaspecificcontinentResponse>(callPayload);
+                return new ApiConnectionAction<GetCovid19totalsforaspecificcontinentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19totalsforallcountriesResponseItem[], ApiConnectionActionConfiguration> GetCOVID19totalsforallcountries(Expression<Func<string>> yesterday = null, Expression<Func<string>> twoDaysAgo = null, Expression<Func<string>> sort = null, Expression<Func<string>> allowNull = null)
+        public IBodyWorkflowAction<GetCovid19totalsforallcountriesResponseItem[], ApiConnectionActionConfiguration> GetCovid19totalsforallcountries(Expression<Func<string>> yesterday = null, Expression<Func<string>> twoDaysAgo = null, Expression<Func<string>> sort = null, Expression<Func<string>> allowNull = null)
         {
             var __workflow_yesterday = WorkflowExpression.Compile(yesterday, nameof(yesterday), required: false);
             var __workflow_twoDaysAgo = WorkflowExpression.Compile(twoDaysAgo, nameof(twoDaysAgo), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_allowNull = WorkflowExpression.Compile(allowNull, nameof(allowNull), required: false);
-            return new DeferredBodyAction<GetCOVID19totalsforallcountriesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19totalsforallcountriesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/covid-19/countries";
                 var apiCallHttpMethod = "get";
@@ -121,19 +121,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
                     callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 if (__workflow_allowNull != null)
                     callPayload.Queries["allowNull"] = ExpressionConverter.Convert(__workflow_allowNull);
-                return new ApiConnectionAction<GetCOVID19totalsforallcountriesResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetCovid19totalsforallcountriesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19totalsforaspecificcountryResponse, ApiConnectionActionConfiguration> GetCOVID19totalsforaspecificcountry(Expression<Func<GetCOVID19timeseriesdataforaspecificcountryCountryInput>> country, Expression<Func<string>> yesterday = null, Expression<Func<string>> twoDaysAgo = null, Expression<Func<string>> strict = null, Expression<Func<string>> allowNull = null)
+        public IBodyWorkflowAction<GetCovid19totalsforaspecificcountryResponse, ApiConnectionActionConfiguration> GetCovid19totalsforaspecificcountry(Expression<Func<GetCovid19timeseriesdataforaspecificcountryCountryInput>> country, Expression<Func<string>> yesterday = null, Expression<Func<string>> twoDaysAgo = null, Expression<Func<string>> strict = null, Expression<Func<string>> allowNull = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_yesterday = WorkflowExpression.Compile(yesterday, nameof(yesterday), required: false);
             var __workflow_twoDaysAgo = WorkflowExpression.Compile(twoDaysAgo, nameof(twoDaysAgo), required: false);
             var __workflow_strict = WorkflowExpression.Compile(strict, nameof(strict), required: false);
             var __workflow_allowNull = WorkflowExpression.Compile(allowNull, nameof(allowNull), required: false);
-            return new DeferredBodyAction<GetCOVID19totalsforaspecificcountryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19totalsforaspecificcountryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/covid-19/countries/{0}", __workflow_country.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -146,149 +146,149 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
                     callPayload.Queries["strict"] = ExpressionConverter.Convert(__workflow_strict);
                 if (__workflow_allowNull != null)
                     callPayload.Queries["allowNull"] = ExpressionConverter.Convert(__workflow_allowNull);
-                return new ApiConnectionAction<GetCOVID19totalsforaspecificcountryResponse>(callPayload);
+                return new ApiConnectionAction<GetCovid19totalsforaspecificcountryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19totalsforallUScountiesResponseItem[], ApiConnectionActionConfiguration> GetCOVID19totalsforallUScounties()
+        public IBodyWorkflowAction<GetCovid19totalsforallUScountiesResponseItem[], ApiConnectionActionConfiguration> GetCovid19totalsforallUScounties()
         {
-            return new DeferredBodyAction<GetCOVID19totalsforallUScountiesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19totalsforallUScountiesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/covid-19/jhucsse/counties";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetCOVID19totalsforallUScountiesResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetCovid19totalsforallUScountiesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19totalsforaspecificcountyResponseItem[], ApiConnectionActionConfiguration> GetCOVID19totalsforaspecificcounty(Expression<Func<CountyInput>> county)
+        public IBodyWorkflowAction<GetCovid19totalsforaspecificcountyResponseItem[], ApiConnectionActionConfiguration> GetCovid19totalsforaspecificcounty(Expression<Func<CountyInput>> county)
         {
             var __workflow_county = WorkflowExpression.Compile(county, nameof(county), required: true);
-            return new DeferredBodyAction<GetCOVID19totalsforaspecificcountyResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19totalsforaspecificcountyResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/covid-19/jhucsse/counties/{0}", __workflow_county.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetCOVID19totalsforaspecificcountyResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetCovid19totalsforaspecificcountyResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19totalsforallcountriesandtheirprovincesResponseItem[], ApiConnectionActionConfiguration> GetCOVID19totalsforallcountriesandtheirprovinces()
+        public IBodyWorkflowAction<GetCovid19totalsforallcountriesandtheirprovincesResponseItem[], ApiConnectionActionConfiguration> GetCovid19totalsforallcountriesandtheirprovinces()
         {
-            return new DeferredBodyAction<GetCOVID19totalsforallcountriesandtheirprovincesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19totalsforallcountriesandtheirprovincesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/covid-19/jhucsse";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetCOVID19totalsforallcountriesandtheirprovincesResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetCovid19totalsforallcountriesandtheirprovincesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19timeseriesdataforaspecificcountryResponse, ApiConnectionActionConfiguration> GetCOVID19timeseriesdataforaspecificcountry(Expression<Func<GetCOVID19timeseriesdataforaspecificcountryCountryInput>> country, Expression<Func<string>> lastdays = null)
+        public IBodyWorkflowAction<GetCovid19timeseriesdataforaspecificcountryResponse, ApiConnectionActionConfiguration> GetCovid19timeseriesdataforaspecificcountry(Expression<Func<GetCovid19timeseriesdataforaspecificcountryCountryInput>> country, Expression<Func<string>> lastdays = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
-            return new DeferredBodyAction<GetCOVID19timeseriesdataforaspecificcountryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19timeseriesdataforaspecificcountryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/covid-19/historical/{0}", __workflow_country.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_lastdays != null)
                     callPayload.Queries["lastdays"] = ExpressionConverter.Convert(__workflow_lastdays);
-                return new ApiConnectionAction<GetCOVID19timeseriesdataforaspecificcountryResponse>(callPayload);
+                return new ApiConnectionAction<GetCovid19timeseriesdataforaspecificcountryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateResponseItem[], ApiConnectionActionConfiguration> GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstate(Expression<Func<GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateStateInput>> state, Expression<Func<string>> lastdays = null)
+        public IBodyWorkflowAction<GetCovid19timeseriesdataforallcountiesinaspecifiedUSstateResponseItem[], ApiConnectionActionConfiguration> GetCovid19timeseriesdataforallcountiesinaspecifiedUSstate(Expression<Func<GetCovid19timeseriesdataforallcountiesinaspecifiedUSstateStateInput>> state, Expression<Func<string>> lastdays = null)
         {
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
-            return new DeferredBodyAction<GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19timeseriesdataforallcountiesinaspecifiedUSstateResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/covid-19/historical/usacounties/{0}", __workflow_state.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_lastdays != null)
                     callPayload.Queries["lastdays"] = ExpressionConverter.Convert(__workflow_lastdays);
-                return new ApiConnectionAction<GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetCovid19timeseriesdataforallcountiesinaspecifiedUSstateResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19timeseriesdataforallcountriesandtheirprovincesResponseItem[], ApiConnectionActionConfiguration> GetCOVID19timeseriesdataforallcountriesandtheirprovinces(Expression<Func<string>> lastdays = null)
+        public IBodyWorkflowAction<GetCovid19timeseriesdataforallcountriesandtheirprovincesResponseItem[], ApiConnectionActionConfiguration> GetCovid19timeseriesdataforallcountriesandtheirprovinces(Expression<Func<string>> lastdays = null)
         {
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
-            return new DeferredBodyAction<GetCOVID19timeseriesdataforallcountriesandtheirprovincesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19timeseriesdataforallcountriesandtheirprovincesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/covid-19/historical";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_lastdays != null)
                     callPayload.Queries["lastdays"] = ExpressionConverter.Convert(__workflow_lastdays);
-                return new ApiConnectionAction<GetCOVID19timeseriesdataforallcountriesandtheirprovincesResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetCovid19timeseriesdataforallcountriesandtheirprovincesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetglobalaccumulatedCOVID19timeseriesdataResponse, ApiConnectionActionConfiguration> GetglobalaccumulatedCOVID19timeseriesdata(Expression<Func<string>> lastdays = null)
+        public IBodyWorkflowAction<GetglobalaccumulatedCovid19timeseriesdataResponse, ApiConnectionActionConfiguration> GetglobalaccumulatedCovid19timeseriesdata(Expression<Func<string>> lastdays = null)
         {
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
-            return new DeferredBodyAction<GetglobalaccumulatedCOVID19timeseriesdataResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetglobalaccumulatedCovid19timeseriesdataResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/covid-19/historical/all";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_lastdays != null)
                     callPayload.Queries["lastdays"] = ExpressionConverter.Convert(__workflow_lastdays);
-                return new ApiConnectionAction<GetglobalaccumulatedCOVID19timeseriesdataResponse>(callPayload);
+                return new ApiConnectionAction<GetglobalaccumulatedCovid19timeseriesdataResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19timeseriesdataforallavailableUScountiesbeganResponseItem[], ApiConnectionActionConfiguration> GetCOVID19timeseriesdataforallavailableUScountiesbegan(Expression<Func<int>> lastdays = null)
+        public IBodyWorkflowAction<GetCovid19timeseriesdataforallavailableUScountiesbeganResponseItem[], ApiConnectionActionConfiguration> GetCovid19timeseriesdataforallavailableUScountiesbegan(Expression<Func<int>> lastdays = null)
         {
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
-            return new DeferredBodyAction<GetCOVID19timeseriesdataforallavailableUScountiesbeganResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19timeseriesdataforallavailableUScountiesbeganResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/covid-19/nyt/counties";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_lastdays != null)
                     callPayload.Queries["lastdays"] = ExpressionConverter.Convert(__workflow_lastdays);
-                return new ApiConnectionAction<GetCOVID19timeseriesdataforallavailableUScountiesbeganResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetCovid19timeseriesdataforallavailableUScountiesbeganResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19timeseriesdataforsincethepandemicbeganResponseItem[], ApiConnectionActionConfiguration> GetCOVID19timeseriesdataforsincethepandemicbegan(Expression<Func<CountyInput>> county, Expression<Func<string>> lastdays = null)
+        public IBodyWorkflowAction<GetCovid19timeseriesdataforsincethepandemicbeganResponseItem[], ApiConnectionActionConfiguration> GetCovid19timeseriesdataforsincethepandemicbegan(Expression<Func<CountyInput>> county, Expression<Func<string>> lastdays = null)
         {
             var __workflow_county = WorkflowExpression.Compile(county, nameof(county), required: true);
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
-            return new DeferredBodyAction<GetCOVID19timeseriesdataforsincethepandemicbeganResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19timeseriesdataforsincethepandemicbeganResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/covid-19/nyt/counties/{0}", __workflow_county.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_lastdays != null)
                     callPayload.Queries["lastdays"] = ExpressionConverter.Convert(__workflow_lastdays);
-                return new ApiConnectionAction<GetCOVID19timeseriesdataforsincethepandemicbeganResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetCovid19timeseriesdataforsincethepandemicbeganResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19timeseriesdataforentireUSResponseItem[], ApiConnectionActionConfiguration> GetCOVID19timeseriesdataforentireUS()
+        public IBodyWorkflowAction<GetCovid19timeseriesdataforentireUSResponseItem[], ApiConnectionActionConfiguration> GetCovid19timeseriesdataforentireUS()
         {
-            return new DeferredBodyAction<GetCOVID19timeseriesdataforentireUSResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19timeseriesdataforentireUSResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/covid-19/nyt/usa";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetCOVID19timeseriesdataforentireUSResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetCovid19timeseriesdataforentireUSResponseItem[]>(callPayload);
             });
         }
 
@@ -305,27 +305,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19governmentreporteddataforaspecificcountryResponseItem[], ApiConnectionActionConfiguration> GetCOVID19governmentreporteddataforaspecificcountry(Expression<Func<GetCOVID19governmentreporteddataforaspecificcountryCountryInput>> country, Expression<Func<string>> allowNull = null)
+        public IBodyWorkflowAction<GetCovid19governmentreporteddataforaspecificcountryResponseItem[], ApiConnectionActionConfiguration> GetCovid19governmentreporteddataforaspecificcountry(Expression<Func<GetCovid19governmentreporteddataforaspecificcountryCountryInput>> country, Expression<Func<string>> allowNull = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_allowNull = WorkflowExpression.Compile(allowNull, nameof(allowNull), required: false);
-            return new DeferredBodyAction<GetCOVID19governmentreporteddataforaspecificcountryResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19governmentreporteddataforaspecificcountryResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/covid-19/gov/{0}", __workflow_country.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_allowNull != null)
                     callPayload.Queries["allowNull"] = ExpressionConverter.Convert(__workflow_allowNull);
-                return new ApiConnectionAction<GetCOVID19governmentreporteddataforaspecificcountryResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetCovid19governmentreporteddataforaspecificcountryResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19vaccinedosesforallcountriesResponseItem[], ApiConnectionActionConfiguration> GetCOVID19vaccinedosesforallcountries(Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
+        public IBodyWorkflowAction<GetCovid19vaccinedosesforallcountriesResponseItem[], ApiConnectionActionConfiguration> GetCovid19vaccinedosesforallcountries(Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
         {
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
             var __workflow_fullData = WorkflowExpression.Compile(fullData, nameof(fullData), required: false);
-            return new DeferredBodyAction<GetCOVID19vaccinedosesforallcountriesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19vaccinedosesforallcountriesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/covid-19/vaccine/coverage/countries";
                 var apiCallHttpMethod = "get";
@@ -334,17 +334,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
                     callPayload.Queries["lastdays"] = ExpressionConverter.Convert(__workflow_lastdays);
                 if (__workflow_fullData != null)
                     callPayload.Queries["fullData"] = ExpressionConverter.Convert(__workflow_fullData);
-                return new ApiConnectionAction<GetCOVID19vaccinedosesforallcountriesResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetCovid19vaccinedosesforallcountriesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19vaccinedoseforasinglecountryResponse, ApiConnectionActionConfiguration> GetCOVID19vaccinedoseforasinglecountry(Expression<Func<GetCOVID19vaccinedoseforasinglecountryCountryInput>> country, Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
+        public IBodyWorkflowAction<GetCovid19vaccinedoseforasinglecountryResponse, ApiConnectionActionConfiguration> GetCovid19vaccinedoseforasinglecountry(Expression<Func<GetCovid19vaccinedoseforasinglecountryCountryInput>> country, Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
         {
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
             var __workflow_fullData = WorkflowExpression.Compile(fullData, nameof(fullData), required: false);
-            return new DeferredBodyAction<GetCOVID19vaccinedoseforasinglecountryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19vaccinedoseforasinglecountryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/covid-19/vaccine/coverage/countries/{0}", __workflow_country.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -353,16 +353,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
                     callPayload.Queries["lastdays"] = ExpressionConverter.Convert(__workflow_lastdays);
                 if (__workflow_fullData != null)
                     callPayload.Queries["fullData"] = ExpressionConverter.Convert(__workflow_fullData);
-                return new ApiConnectionAction<GetCOVID19vaccinedoseforasinglecountryResponse>(callPayload);
+                return new ApiConnectionAction<GetCovid19vaccinedoseforasinglecountryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19vaccinedosesforallstatesResponseItem[], ApiConnectionActionConfiguration> GetCOVID19vaccinedosesforallstates(Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
+        public IBodyWorkflowAction<GetCovid19vaccinedosesforallstatesResponseItem[], ApiConnectionActionConfiguration> GetCovid19vaccinedosesforallstates(Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
         {
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
             var __workflow_fullData = WorkflowExpression.Compile(fullData, nameof(fullData), required: false);
-            return new DeferredBodyAction<GetCOVID19vaccinedosesforallstatesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19vaccinedosesforallstatesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/covid-19/vaccine/coverage/states";
                 var apiCallHttpMethod = "get";
@@ -371,17 +371,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
                     callPayload.Queries["lastdays"] = ExpressionConverter.Convert(__workflow_lastdays);
                 if (__workflow_fullData != null)
                     callPayload.Queries["fullData"] = ExpressionConverter.Convert(__workflow_fullData);
-                return new ApiConnectionAction<GetCOVID19vaccinedosesforallstatesResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetCovid19vaccinedosesforallstatesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetCOVID19vaccinedoseforastateResponse, ApiConnectionActionConfiguration> GetCOVID19vaccinedoseforastate(Expression<Func<GetCOVID19vaccinedoseforastateStateInput>> state, Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
+        public IBodyWorkflowAction<GetCovid19vaccinedoseforastateResponse, ApiConnectionActionConfiguration> GetCovid19vaccinedoseforastate(Expression<Func<GetCovid19vaccinedoseforastateStateInput>> state, Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
         {
             var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
             var __workflow_fullData = WorkflowExpression.Compile(fullData, nameof(fullData), required: false);
-            return new DeferredBodyAction<GetCOVID19vaccinedoseforastateResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCovid19vaccinedoseforastateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v3/covid-19/vaccine/coverage/states/{0}", __workflow_state.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -390,16 +390,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
                     callPayload.Queries["lastdays"] = ExpressionConverter.Convert(__workflow_lastdays);
                 if (__workflow_fullData != null)
                     callPayload.Queries["fullData"] = ExpressionConverter.Convert(__workflow_fullData);
-                return new ApiConnectionAction<GetCOVID19vaccinedoseforastateResponse>(callPayload);
+                return new ApiConnectionAction<GetCovid19vaccinedoseforastateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GettotalglobalCOVID19vaccinedosesResponse, ApiConnectionActionConfiguration> GettotalglobalCOVID19vaccinedoses(Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
+        public IBodyWorkflowAction<GettotalglobalCovid19vaccinedosesResponse, ApiConnectionActionConfiguration> GettotalglobalCovid19vaccinedoses(Expression<Func<string>> lastdays = null, Expression<Func<string>> fullData = null)
         {
             var __workflow_lastdays = WorkflowExpression.Compile(lastdays, nameof(lastdays), required: false);
             var __workflow_fullData = WorkflowExpression.Compile(fullData, nameof(fullData), required: false);
-            return new DeferredBodyAction<GettotalglobalCOVID19vaccinedosesResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GettotalglobalCovid19vaccinedosesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/covid-19/vaccine/coverage";
                 var apiCallHttpMethod = "get";
@@ -408,24 +408,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
                     callPayload.Queries["lastdays"] = ExpressionConverter.Convert(__workflow_lastdays);
                 if (__workflow_fullData != null)
                     callPayload.Queries["fullData"] = ExpressionConverter.Convert(__workflow_fullData);
-                return new ApiConnectionAction<GettotalglobalCOVID19vaccinedosesResponse>(callPayload);
+                return new ApiConnectionAction<GettotalglobalCovid19vaccinedosesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetvaccinetrialdatafromRAPSbyJeffCravenatResponse, ApiConnectionActionConfiguration> GetvaccinetrialdatafromRAPSbyJeffCravenat()
+        public IBodyWorkflowAction<GetvaccinetrialdatafromRapSbyJeffCravenatResponse, ApiConnectionActionConfiguration> GetvaccinetrialdatafromRapSbyJeffCravenat()
         {
-            return new DeferredBodyAction<GetvaccinetrialdatafromRAPSbyJeffCravenatResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetvaccinetrialdatafromRapSbyJeffCravenatResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/covid-19/vaccine";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetvaccinetrialdatafromRAPSbyJeffCravenatResponse>(callPayload);
+                return new ApiConnectionAction<GetvaccinetrialdatafromRapSbyJeffCravenatResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> GetalistofsupportedcountriesforECDCspecificdata()
+        public IBodyWorkflowAction<string[], ApiConnectionActionConfiguration> GetalistofsupportedcountriesforEcdCspecificdata()
         {
             return new DeferredBodyAction<string[], ApiConnectionActionConfiguration>(() =>
             {
@@ -437,12 +437,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GetglobalCOVID19totalsfortodayyesterdayandtwodaysagoResponse, ApiConnectionActionConfiguration> GetglobalCOVID19totalsfortodayyesterdayandtwodaysago(Expression<Func<string>> yesterday = null, Expression<Func<string>> twoDaysAgo = null, Expression<Func<string>> allowNull = null)
+        public IBodyWorkflowAction<GetglobalCovid19totalsfortodayyesterdayandtwodaysagoResponse, ApiConnectionActionConfiguration> GetglobalCovid19totalsfortodayyesterdayandtwodaysago(Expression<Func<string>> yesterday = null, Expression<Func<string>> twoDaysAgo = null, Expression<Func<string>> allowNull = null)
         {
             var __workflow_yesterday = WorkflowExpression.Compile(yesterday, nameof(yesterday), required: false);
             var __workflow_twoDaysAgo = WorkflowExpression.Compile(twoDaysAgo, nameof(twoDaysAgo), required: false);
             var __workflow_allowNull = WorkflowExpression.Compile(allowNull, nameof(allowNull), required: false);
-            return new DeferredBodyAction<GetglobalCOVID19totalsfortodayyesterdayandtwodaysagoResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetglobalCovid19totalsfortodayyesterdayandtwodaysagoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/covid-19/all";
                 var apiCallHttpMethod = "get";
@@ -453,19 +453,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
                     callPayload.Queries["twoDaysAgo"] = ExpressionConverter.Convert(__workflow_twoDaysAgo);
                 if (__workflow_allowNull != null)
                     callPayload.Queries["allowNull"] = ExpressionConverter.Convert(__workflow_allowNull);
-                return new ApiConnectionAction<GetglobalCOVID19totalsfortodayyesterdayandtwodaysagoResponse>(callPayload);
+                return new ApiConnectionAction<GetglobalCovid19totalsfortodayyesterdayandtwodaysagoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "influenzandcovid19ip")]
-        public IBodyWorkflowAction<GettherapeuticstrialdatafromRAPSbyJeffResponse, ApiConnectionActionConfiguration> GettherapeuticstrialdatafromRAPSbyJeff()
+        public IBodyWorkflowAction<GettherapeuticstrialdatafromRapSbyJeffResponse, ApiConnectionActionConfiguration> GettherapeuticstrialdatafromRapSbyJeff()
         {
-            return new DeferredBodyAction<GettherapeuticstrialdatafromRAPSbyJeffResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GettherapeuticstrialdatafromRapSbyJeffResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v3/covid-19/therapeutics";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GettherapeuticstrialdatafromRAPSbyJeffResponse>(callPayload);
+                return new ApiConnectionAction<GettherapeuticstrialdatafromRapSbyJeffResponse>(callPayload);
             });
         }
 
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     {
     }
 
-    public class GetCOVID19totalsforallUSStatesResponseItem
+    public class GetCovid19totalsforallUSStatesResponseItem
     {
         [JsonProperty("state")]
         public string State { get; set; }
@@ -553,7 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetCOVID19totalsforallUSStatesSortInput
+    public enum GetCovid19totalsforallUSStatesSortInput
     {
         [EnumMember(Value = "cases")]
         Cases,
@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         Active
     }
 
-    public class GetCOVID19totalsforspecificUSStatesResponse
+    public class GetCovid19totalsforspecificUSStatesResponse
     {
         [JsonProperty("state")]
         public string State { get; set; }
@@ -728,7 +728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         Wyoming
     }
 
-    public class GetCOVID19totalsforallcontinentsResponseItem
+    public class GetCovid19totalsforallcontinentsResponseItem
     {
         [JsonProperty("updated")]
         public int Updated { get; set; }
@@ -785,13 +785,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public double CriticalPerOneMillion { get; set; }
 
         [JsonProperty("continentInfo")]
-        public GetCOVID19totalsforallcontinentsResponseItemContinentInfoType ContinentInfo { get; set; }
+        public GetCovid19totalsforallcontinentsResponseItemContinentInfoType ContinentInfo { get; set; }
 
         [JsonProperty("countries")]
         public string[] Countries { get; set; }
     }
 
-    public class GetCOVID19totalsforallcontinentsResponseItemContinentInfoType
+    public class GetCovid19totalsforallcontinentsResponseItemContinentInfoType
     {
         [JsonProperty("lat")]
         public double Lat { get; set; }
@@ -801,7 +801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetCOVID19totalsforallcontinentsSortInput
+    public enum GetCovid19totalsforallcontinentsSortInput
     {
         [EnumMember(Value = "cases")]
         Cases,
@@ -815,7 +815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         Active
     }
 
-    public class GetCOVID19totalsforaspecificcontinentResponse
+    public class GetCovid19totalsforaspecificcontinentResponse
     {
         [JsonProperty("updated")]
         public int Updated { get; set; }
@@ -872,13 +872,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public double CriticalPerOneMillion { get; set; }
 
         [JsonProperty("continentInfo")]
-        public GetCOVID19totalsforaspecificcontinentResponseContinentInfoType ContinentInfo { get; set; }
+        public GetCovid19totalsforaspecificcontinentResponseContinentInfoType ContinentInfo { get; set; }
 
         [JsonProperty("countries")]
         public string[] Countries { get; set; }
     }
 
-    public class GetCOVID19totalsforaspecificcontinentResponseContinentInfoType
+    public class GetCovid19totalsforaspecificcontinentResponseContinentInfoType
     {
         [JsonProperty("lat")]
         public double Lat { get; set; }
@@ -901,7 +901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         Africa
     }
 
-    public class GetCOVID19totalsforallcountriesResponseItem
+    public class GetCovid19totalsforallcountriesResponseItem
     {
         [JsonProperty("updated")]
         public int Updated { get; set; }
@@ -910,7 +910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string Country { get; set; }
 
         [JsonProperty("countryInfo")]
-        public GetCOVID19totalsforallcountriesResponseItemCountryInfoType CountryInfo { get; set; }
+        public GetCovid19totalsforallcountriesResponseItemCountryInfoType CountryInfo { get; set; }
 
         [JsonProperty("cases")]
         public int Cases { get; set; }
@@ -973,7 +973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public double CriticalPerOneMillion { get; set; }
     }
 
-    public class GetCOVID19totalsforallcountriesResponseItemCountryInfoType
+    public class GetCovid19totalsforallcountriesResponseItemCountryInfoType
     {
         [JsonProperty("_id")]
         public int Id { get; set; }
@@ -994,7 +994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string Flag { get; set; }
     }
 
-    public class GetCOVID19totalsforaspecificcountryResponse
+    public class GetCovid19totalsforaspecificcountryResponse
     {
         [JsonProperty("updated")]
         public int Updated { get; set; }
@@ -1003,7 +1003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string Country { get; set; }
 
         [JsonProperty("countryInfo")]
-        public GetCOVID19totalsforaspecificcountryResponseCountryInfoType CountryInfo { get; set; }
+        public GetCovid19totalsforaspecificcountryResponseCountryInfoType CountryInfo { get; set; }
 
         [JsonProperty("cases")]
         public int Cases { get; set; }
@@ -1066,7 +1066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public int CriticalPerOneMillion { get; set; }
     }
 
-    public class GetCOVID19totalsforaspecificcountryResponseCountryInfoType
+    public class GetCovid19totalsforaspecificcountryResponseCountryInfoType
     {
         [JsonProperty("_id")]
         public int Id { get; set; }
@@ -1088,7 +1088,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetCOVID19timeseriesdataforaspecificcountryCountryInput
+    public enum GetCovid19timeseriesdataforaspecificcountryCountryInput
     {
         Australia,
         [EnumMember(Value = "Cook Islands")]
@@ -1210,7 +1210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         Kuwait,
         Kyrgyzstan,
         [EnumMember(Value = "Lao People's Democratic Republic")]
-        LaoPeopleSDemocraticRepublic,
+        LaoPeopleDemocraticRepublic,
         Lebanon,
         Macao,
         Malaysia,
@@ -1240,7 +1240,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [EnumMember(Value = "Timor-Leste")]
         TimorLeste,
         Türkiye,
-        UAE,
+        [EnumMember(Value = "UAE")]
+        Uae,
         Uzbekistan,
         Vietnam,
         Yemen,
@@ -1298,7 +1299,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         TrinidadAndTobago,
         [EnumMember(Value = "Turks and Caicos Islands")]
         TurksAndCaicosIslands,
-        USA,
+        [EnumMember(Value = "USA")]
+        Usa,
         Algeria,
         Angola,
         Benin,
@@ -1316,7 +1318,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         Congo,
         [EnumMember(Value = "Côte d'Ivoire")]
         CôteDIvoire,
-        DRC,
+        [EnumMember(Value = "DRC")]
+        Drc,
         Djibouti,
         Egypt,
         [EnumMember(Value = "Equatorial Guinea")]
@@ -1372,7 +1375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         Zimbabwe
     }
 
-    public class GetCOVID19totalsforallUScountiesResponseItem
+    public class GetCovid19totalsforallUScountiesResponseItem
     {
         [JsonProperty("country")]
         public string Country { get; set; }
@@ -1387,13 +1390,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string UpdatedAt { get; set; }
 
         [JsonProperty("stats")]
-        public GetCOVID19totalsforallUScountiesResponseItemStatsType Stats { get; set; }
+        public GetCovid19totalsforallUScountiesResponseItemStatsType Stats { get; set; }
 
         [JsonProperty("coordinates")]
-        public GetCOVID19totalsforallUScountiesResponseItemCoordinatesType Coordinates { get; set; }
+        public GetCovid19totalsforallUScountiesResponseItemCoordinatesType Coordinates { get; set; }
     }
 
-    public class GetCOVID19totalsforallUScountiesResponseItemStatsType
+    public class GetCovid19totalsforallUScountiesResponseItemStatsType
     {
         [JsonProperty("confirmed")]
         public int Confirmed { get; set; }
@@ -1405,7 +1408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string Recovered { get; set; }
     }
 
-    public class GetCOVID19totalsforallUScountiesResponseItemCoordinatesType
+    public class GetCovid19totalsforallUScountiesResponseItemCoordinatesType
     {
         [JsonProperty("latitude")]
         public string Latitude { get; set; }
@@ -1414,7 +1417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string Longitude { get; set; }
     }
 
-    public class GetCOVID19totalsforaspecificcountyResponseItem
+    public class GetCovid19totalsforaspecificcountyResponseItem
     {
         [JsonProperty("country")]
         public string Country { get; set; }
@@ -1429,13 +1432,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string UpdatedAt { get; set; }
 
         [JsonProperty("stats")]
-        public GetCOVID19totalsforaspecificcountyResponseItemStatsType Stats { get; set; }
+        public GetCovid19totalsforaspecificcountyResponseItemStatsType Stats { get; set; }
 
         [JsonProperty("coordinates")]
-        public GetCOVID19totalsforaspecificcountyResponseItemCoordinatesType Coordinates { get; set; }
+        public GetCovid19totalsforaspecificcountyResponseItemCoordinatesType Coordinates { get; set; }
     }
 
-    public class GetCOVID19totalsforaspecificcountyResponseItemStatsType
+    public class GetCovid19totalsforaspecificcountyResponseItemStatsType
     {
         [JsonProperty("confirmed")]
         public int Confirmed { get; set; }
@@ -1447,7 +1450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string Recovered { get; set; }
     }
 
-    public class GetCOVID19totalsforaspecificcountyResponseItemCoordinatesType
+    public class GetCovid19totalsforaspecificcountyResponseItemCoordinatesType
     {
         [JsonProperty("latitude")]
         public string Latitude { get; set; }
@@ -2753,7 +2756,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [EnumMember(Value = "Prince George")]
         PrinceGeorge,
         [EnumMember(Value = "Prince George's")]
-        PrinceGeorgeS,
+        PrinceGeorge2,
         [EnumMember(Value = "Prince of Wales-Hyder")]
         PrinceOfWalesHyder,
         [EnumMember(Value = "Prince William")]
@@ -2766,7 +2769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         Putnam,
         Quay,
         [EnumMember(Value = "Queen Anne's")]
-        QueenAnneS,
+        QueenAnne,
         Queens,
         Quitman,
         Rabun,
@@ -3013,7 +3016,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [EnumMember(Value = "St. Mary")]
         StMary,
         [EnumMember(Value = "St. Mary's")]
-        StMaryS,
+        StMary2,
         [EnumMember(Value = "St. Tammany")]
         StTammany,
         Stafford,
@@ -3312,7 +3315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         Ziebach
     }
 
-    public class GetCOVID19totalsforallcountriesandtheirprovincesResponseItem
+    public class GetCovid19totalsforallcountriesandtheirprovincesResponseItem
     {
         [JsonProperty("country")]
         public string Country { get; set; }
@@ -3324,16 +3327,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string UpdatedAt { get; set; }
 
         [JsonProperty("stats")]
-        public GetCOVID19totalsforallcountriesandtheirprovincesResponseItemStatsType Stats { get; set; }
+        public GetCovid19totalsforallcountriesandtheirprovincesResponseItemStatsType Stats { get; set; }
 
         [JsonProperty("coordinates")]
-        public GetCOVID19totalsforallcountriesandtheirprovincesResponseItemCoordinatesType Coordinates { get; set; }
+        public GetCovid19totalsforallcountriesandtheirprovincesResponseItemCoordinatesType Coordinates { get; set; }
 
         [JsonProperty("province")]
         public string Province { get; set; }
     }
 
-    public class GetCOVID19totalsforallcountriesandtheirprovincesResponseItemStatsType
+    public class GetCovid19totalsforallcountriesandtheirprovincesResponseItemStatsType
     {
         [JsonProperty("confirmed")]
         public int Confirmed { get; set; }
@@ -3345,7 +3348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public int Recovered { get; set; }
     }
 
-    public class GetCOVID19totalsforallcountriesandtheirprovincesResponseItemCoordinatesType
+    public class GetCovid19totalsforallcountriesandtheirprovincesResponseItemCoordinatesType
     {
         [JsonProperty("latitude")]
         public string Latitude { get; set; }
@@ -3354,7 +3357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string Longitude { get; set; }
     }
 
-    public class GetCOVID19timeseriesdataforaspecificcountryResponse
+    public class GetCovid19timeseriesdataforaspecificcountryResponse
     {
         [JsonProperty("country")]
         public string Country { get; set; }
@@ -3363,40 +3366,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string[] Province { get; set; }
 
         [JsonProperty("timeline")]
-        public GetCOVID19timeseriesdataforaspecificcountryResponseTimelineType Timeline { get; set; }
+        public GetCovid19timeseriesdataforaspecificcountryResponseTimelineType Timeline { get; set; }
     }
 
-    public class GetCOVID19timeseriesdataforaspecificcountryResponseTimelineType
+    public class GetCovid19timeseriesdataforaspecificcountryResponseTimelineType
     {
         [JsonProperty("cases")]
-        public GetCOVID19timeseriesdataforaspecificcountryResponseTimelineTypeCasesType Cases { get; set; }
+        public GetCovid19timeseriesdataforaspecificcountryResponseTimelineTypeCasesType Cases { get; set; }
 
         [JsonProperty("deaths")]
-        public GetCOVID19timeseriesdataforaspecificcountryResponseTimelineTypeDeathsType Deaths { get; set; }
+        public GetCovid19timeseriesdataforaspecificcountryResponseTimelineTypeDeathsType Deaths { get; set; }
 
         [JsonProperty("recovered")]
-        public GetCOVID19timeseriesdataforaspecificcountryResponseTimelineTypeRecoveredType Recovered { get; set; }
+        public GetCovid19timeseriesdataforaspecificcountryResponseTimelineTypeRecoveredType Recovered { get; set; }
     }
 
-    public class GetCOVID19timeseriesdataforaspecificcountryResponseTimelineTypeCasesType
+    public class GetCovid19timeseriesdataforaspecificcountryResponseTimelineTypeCasesType
     {
         [JsonProperty("day-month-year")]
         public int DayMonthYear { get; set; }
     }
 
-    public class GetCOVID19timeseriesdataforaspecificcountryResponseTimelineTypeDeathsType
+    public class GetCovid19timeseriesdataforaspecificcountryResponseTimelineTypeDeathsType
     {
         [JsonProperty("day-month-year")]
         public int DayMonthYear { get; set; }
     }
 
-    public class GetCOVID19timeseriesdataforaspecificcountryResponseTimelineTypeRecoveredType
+    public class GetCovid19timeseriesdataforaspecificcountryResponseTimelineTypeRecoveredType
     {
         [JsonProperty("day-month-year")]
         public int DayMonthYear { get; set; }
     }
 
-    public class GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateResponseItem
+    public class GetCovid19timeseriesdataforallcountiesinaspecifiedUSstateResponseItem
     {
         [JsonProperty("province")]
         public string Province { get; set; }
@@ -3405,32 +3408,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string County { get; set; }
 
         [JsonProperty("timeline")]
-        public GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateResponseItemTimelineType Timeline { get; set; }
+        public GetCovid19timeseriesdataforallcountiesinaspecifiedUSstateResponseItemTimelineType Timeline { get; set; }
     }
 
-    public class GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateResponseItemTimelineType
+    public class GetCovid19timeseriesdataforallcountiesinaspecifiedUSstateResponseItemTimelineType
     {
         [JsonProperty("cases")]
-        public GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateResponseItemTimelineTypeCasesType Cases { get; set; }
+        public GetCovid19timeseriesdataforallcountiesinaspecifiedUSstateResponseItemTimelineTypeCasesType Cases { get; set; }
 
         [JsonProperty("deaths")]
-        public GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateResponseItemTimelineTypeDeathsType Deaths { get; set; }
+        public GetCovid19timeseriesdataforallcountiesinaspecifiedUSstateResponseItemTimelineTypeDeathsType Deaths { get; set; }
     }
 
-    public class GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateResponseItemTimelineTypeCasesType
+    public class GetCovid19timeseriesdataforallcountiesinaspecifiedUSstateResponseItemTimelineTypeCasesType
     {
         [JsonProperty("day-month-year")]
         public int DayMonthYear { get; set; }
     }
 
-    public class GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateResponseItemTimelineTypeDeathsType
+    public class GetCovid19timeseriesdataforallcountiesinaspecifiedUSstateResponseItemTimelineTypeDeathsType
     {
         [JsonProperty("day-month-year")]
         public int DayMonthYear { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetCOVID19timeseriesdataforallcountiesinaspecifiedUSstateStateInput
+    public enum GetCovid19timeseriesdataforallcountiesinaspecifiedUSstateStateInput
     {
         [EnumMember(Value = "alabama")]
         Alabama,
@@ -3550,7 +3553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         Wyoming
     }
 
-    public class GetCOVID19timeseriesdataforallcountriesandtheirprovincesResponseItem
+    public class GetCovid19timeseriesdataforallcountriesandtheirprovincesResponseItem
     {
         [JsonProperty("country")]
         public string Country { get; set; }
@@ -3559,46 +3562,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string Province { get; set; }
 
         [JsonProperty("timeline")]
-        public GetCOVID19timeseriesdataforallcountriesandtheirprovincesResponseItemTimelineType Timeline { get; set; }
+        public GetCovid19timeseriesdataforallcountriesandtheirprovincesResponseItemTimelineType Timeline { get; set; }
     }
 
-    public class GetCOVID19timeseriesdataforallcountriesandtheirprovincesResponseItemTimelineType
+    public class GetCovid19timeseriesdataforallcountriesandtheirprovincesResponseItemTimelineType
     {
         [JsonProperty("day-month-year")]
         public int DayMonthYear { get; set; }
     }
 
-    public class GetglobalaccumulatedCOVID19timeseriesdataResponse
+    public class GetglobalaccumulatedCovid19timeseriesdataResponse
     {
         [JsonProperty("cases")]
-        public GetglobalaccumulatedCOVID19timeseriesdataResponseCasesType Cases { get; set; }
+        public GetglobalaccumulatedCovid19timeseriesdataResponseCasesType Cases { get; set; }
 
         [JsonProperty("deaths")]
-        public GetglobalaccumulatedCOVID19timeseriesdataResponseDeathsType Deaths { get; set; }
+        public GetglobalaccumulatedCovid19timeseriesdataResponseDeathsType Deaths { get; set; }
 
         [JsonProperty("recovered")]
-        public GetglobalaccumulatedCOVID19timeseriesdataResponseRecoveredType Recovered { get; set; }
+        public GetglobalaccumulatedCovid19timeseriesdataResponseRecoveredType Recovered { get; set; }
     }
 
-    public class GetglobalaccumulatedCOVID19timeseriesdataResponseCasesType
+    public class GetglobalaccumulatedCovid19timeseriesdataResponseCasesType
     {
         [JsonProperty("day-month-year")]
         public int DayMonthYear { get; set; }
     }
 
-    public class GetglobalaccumulatedCOVID19timeseriesdataResponseDeathsType
+    public class GetglobalaccumulatedCovid19timeseriesdataResponseDeathsType
     {
         [JsonProperty("day-month-year")]
         public int DayMonthYear { get; set; }
     }
 
-    public class GetglobalaccumulatedCOVID19timeseriesdataResponseRecoveredType
+    public class GetglobalaccumulatedCovid19timeseriesdataResponseRecoveredType
     {
         [JsonProperty("day-month-year")]
         public int DayMonthYear { get; set; }
     }
 
-    public class GetCOVID19timeseriesdataforallavailableUScountiesbeganResponseItem
+    public class GetCovid19timeseriesdataforallavailableUScountiesbeganResponseItem
     {
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -3622,7 +3625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public int Updated { get; set; }
     }
 
-    public class GetCOVID19timeseriesdataforsincethepandemicbeganResponseItem
+    public class GetCovid19timeseriesdataforsincethepandemicbeganResponseItem
     {
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -3646,7 +3649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public int Updated { get; set; }
     }
 
-    public class GetCOVID19timeseriesdataforentireUSResponseItem
+    public class GetCovid19timeseriesdataforentireUSResponseItem
     {
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -3661,7 +3664,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public int Updated { get; set; }
     }
 
-    public class GetCOVID19governmentreporteddataforaspecificcountryResponseItem
+    public class GetCovid19governmentreporteddataforaspecificcountryResponseItem
     {
         [JsonProperty("updated")]
         public int Updated { get; set; }
@@ -3701,7 +3704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetCOVID19governmentreporteddataforaspecificcountryCountryInput
+    public enum GetCovid19governmentreporteddataforaspecificcountryCountryInput
     {
         Austria,
         Canada,
@@ -3723,38 +3726,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         Vietnam
     }
 
-    public class GetCOVID19vaccinedosesforallcountriesResponseItem
+    public class GetCovid19vaccinedosesforallcountriesResponseItem
     {
         [JsonProperty("country")]
         public string Country { get; set; }
 
         [JsonProperty("timeline")]
-        public GetCOVID19vaccinedosesforallcountriesResponseItemTimelineType Timeline { get; set; }
+        public GetCovid19vaccinedosesforallcountriesResponseItemTimelineType Timeline { get; set; }
     }
 
-    public class GetCOVID19vaccinedosesforallcountriesResponseItemTimelineType
+    public class GetCovid19vaccinedosesforallcountriesResponseItemTimelineType
     {
         [JsonProperty("day-month-year")]
         public int DayMonthYear { get; set; }
     }
 
-    public class GetCOVID19vaccinedoseforasinglecountryResponse
+    public class GetCovid19vaccinedoseforasinglecountryResponse
     {
         [JsonProperty("country")]
         public string Country { get; set; }
 
         [JsonProperty("timeline")]
-        public GetCOVID19vaccinedoseforasinglecountryResponseTimelineType Timeline { get; set; }
+        public GetCovid19vaccinedoseforasinglecountryResponseTimelineType Timeline { get; set; }
     }
 
-    public class GetCOVID19vaccinedoseforasinglecountryResponseTimelineType
+    public class GetCovid19vaccinedoseforasinglecountryResponseTimelineType
     {
         [JsonProperty("day-month-year")]
         public int DayMonthYear { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetCOVID19vaccinedoseforasinglecountryCountryInput
+    public enum GetCovid19vaccinedoseforasinglecountryCountryInput
     {
         Afghanistan,
         Albania,
@@ -3819,7 +3822,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         Curaçao,
         Cyprus,
         Czechia,
-        DRC,
+        [EnumMember(Value = "DRC")]
+        Drc,
         Denmark,
         Djibouti,
         Dominica,
@@ -3884,7 +3888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         Kuwait,
         Kyrgyzstan,
         [EnumMember(Value = "Lao People's Democratic Republic")]
-        LaoPeopleSDemocraticRepublic,
+        LaoPeopleDemocraticRepublic,
         Latvia,
         Lebanon,
         Lesotho,
@@ -4004,9 +4008,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         Tuvalu,
         Uganda,
         Ukraine,
-        UAE,
+        [EnumMember(Value = "UAE")]
+        Uae,
         UK,
-        USA,
+        [EnumMember(Value = "USA")]
+        Usa,
         Uruguay,
         Uzbekistan,
         Vanuatu,
@@ -4019,38 +4025,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         Zimbabwe
     }
 
-    public class GetCOVID19vaccinedosesforallstatesResponseItem
+    public class GetCovid19vaccinedosesforallstatesResponseItem
     {
         [JsonProperty("state")]
         public string State { get; set; }
 
         [JsonProperty("timeline")]
-        public GetCOVID19vaccinedosesforallstatesResponseItemTimelineType Timeline { get; set; }
+        public GetCovid19vaccinedosesforallstatesResponseItemTimelineType Timeline { get; set; }
     }
 
-    public class GetCOVID19vaccinedosesforallstatesResponseItemTimelineType
+    public class GetCovid19vaccinedosesforallstatesResponseItemTimelineType
     {
         [JsonProperty("day-month-year")]
         public int DayMonthYear { get; set; }
     }
 
-    public class GetCOVID19vaccinedoseforastateResponse
+    public class GetCovid19vaccinedoseforastateResponse
     {
         [JsonProperty("state")]
         public string State { get; set; }
 
         [JsonProperty("timeline")]
-        public GetCOVID19vaccinedoseforastateResponseTimelineType Timeline { get; set; }
+        public GetCovid19vaccinedoseforastateResponseTimelineType Timeline { get; set; }
     }
 
-    public class GetCOVID19vaccinedoseforastateResponseTimelineType
+    public class GetCovid19vaccinedoseforastateResponseTimelineType
     {
         [JsonProperty("day-month-year")]
         public int DayMonthYear { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum GetCOVID19vaccinedoseforastateStateInput
+    public enum GetCovid19vaccinedoseforastateStateInput
     {
         Alabama,
         Alaska,
@@ -4143,13 +4149,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         Wyoming
     }
 
-    public class GettotalglobalCOVID19vaccinedosesResponse
+    public class GettotalglobalCovid19vaccinedosesResponse
     {
         [JsonProperty("day-month-year")]
         public int DayMonthYear { get; set; }
     }
 
-    public class GetvaccinetrialdatafromRAPSbyJeffCravenatResponse
+    public class GetvaccinetrialdatafromRapSbyJeffCravenatResponse
     {
         [JsonProperty("source")]
         public string Source { get; set; }
@@ -4158,13 +4164,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string TotalCandidates { get; set; }
 
         [JsonProperty("phases")]
-        public GetvaccinetrialdatafromRAPSbyJeffCravenatResponsePhasesTypeItem[] Phases { get; set; }
+        public GetvaccinetrialdatafromRapSbyJeffCravenatResponsePhasesTypeItem[] Phases { get; set; }
 
         [JsonProperty("data")]
-        public GetvaccinetrialdatafromRAPSbyJeffCravenatResponseDataTypeItem[] Data { get; set; }
+        public GetvaccinetrialdatafromRapSbyJeffCravenatResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class GetvaccinetrialdatafromRAPSbyJeffCravenatResponsePhasesTypeItem
+    public class GetvaccinetrialdatafromRapSbyJeffCravenatResponsePhasesTypeItem
     {
         [JsonProperty("phase")]
         public string Phase { get; set; }
@@ -4173,7 +4179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string Candidates { get; set; }
     }
 
-    public class GetvaccinetrialdatafromRAPSbyJeffCravenatResponseDataTypeItem
+    public class GetvaccinetrialdatafromRapSbyJeffCravenatResponseDataTypeItem
     {
         [JsonProperty("candidate")]
         public string Candidate { get; set; }
@@ -4194,7 +4200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string[] Institutions { get; set; }
     }
 
-    public class GetglobalCOVID19totalsfortodayyesterdayandtwodaysagoResponse
+    public class GetglobalCovid19totalsfortodayyesterdayandtwodaysagoResponse
     {
         [JsonProperty("updated")]
         public int Updated { get; set; }
@@ -4260,7 +4266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public int AffectedCountries { get; set; }
     }
 
-    public class GettherapeuticstrialdatafromRAPSbyJeffResponse
+    public class GettherapeuticstrialdatafromRapSbyJeffResponse
     {
         [JsonProperty("source")]
         public string Source { get; set; }
@@ -4269,13 +4275,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string TotalCandidates { get; set; }
 
         [JsonProperty("phases")]
-        public GettherapeuticstrialdatafromRAPSbyJeffResponsePhasesTypeItem[] Phases { get; set; }
+        public GettherapeuticstrialdatafromRapSbyJeffResponsePhasesTypeItem[] Phases { get; set; }
 
         [JsonProperty("data")]
-        public GettherapeuticstrialdatafromRAPSbyJeffResponseDataTypeItem[] Data { get; set; }
+        public GettherapeuticstrialdatafromRapSbyJeffResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class GettherapeuticstrialdatafromRAPSbyJeffResponsePhasesTypeItem
+    public class GettherapeuticstrialdatafromRapSbyJeffResponsePhasesTypeItem
     {
         [JsonProperty("phase")]
         public string Phase { get; set; }
@@ -4284,7 +4290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public string Candidates { get; set; }
     }
 
-    public class GettherapeuticstrialdatafromRAPSbyJeffResponseDataTypeItem
+    public class GettherapeuticstrialdatafromRapSbyJeffResponseDataTypeItem
     {
         [JsonProperty("medicationClass")]
         public string MedicationClass { get; set; }
@@ -4341,16 +4347,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         public int Age64 { get; set; }
 
         [JsonProperty("totalILI")]
-        public int TotalILI { get; set; }
+        public int TotalIli { get; set; }
 
         [JsonProperty("totalPatients")]
         public int TotalPatients { get; set; }
 
         [JsonProperty("percentUnweightedILI")]
-        public double PercentUnweightedILI { get; set; }
+        public double PercentUnweightedIli { get; set; }
 
         [JsonProperty("percentWeightedILI")]
-        public double PercentWeightedILI { get; set; }
+        public double PercentWeightedIli { get; set; }
     }
 
     public class GetInfluenzareportdatareportedbyUSclinicallabsResponse
@@ -4421,8 +4427,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Influenzandcovid19ip
         [JsonProperty("A(Subtyping not performed)")]
         public int ASubtypingNotPerformed { get; set; }
         public int B { get; set; }
-        public int BVIC { get; set; }
-        public int BYAM { get; set; }
+
+        [JsonProperty("BVIC")]
+        public int Bvic { get; set; }
+
+        [JsonProperty("BYAM")]
+        public int Byam { get; set; }
 
         [JsonProperty("totalTests")]
         public int TotalTests { get; set; }

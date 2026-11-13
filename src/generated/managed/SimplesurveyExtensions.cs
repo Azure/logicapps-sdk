@@ -26,53 +26,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simplesurvey")]
-        public IBodyWorkflowAction<GetSurveyRespondentsDetailsResponse, ApiConnectionActionConfiguration> GetSurveyRespondentsDetails(Expression<Func<string>> idProject, Expression<Func<string>> tableCode, Expression<Func<FormatInput>> format, Expression<Func<string>> xSAKKey)
+        public IBodyWorkflowAction<GetSurveyRespondentsDetailsResponse, ApiConnectionActionConfiguration> GetSurveyRespondentsDetails(Expression<Func<string>> idProject, Expression<Func<string>> tableCode, Expression<Func<FormatInput>> format, Expression<Func<string>> xsakKey)
         {
             var __workflow_idProject = WorkflowExpression.Compile(idProject, nameof(idProject), required: true);
             var __workflow_tableCode = WorkflowExpression.Compile(tableCode, nameof(tableCode), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
-            var __workflow_xSAKKey = WorkflowExpression.Compile(xSAKKey, nameof(xSAKKey), required: true);
+            var __workflow_xsakKey = WorkflowExpression.Compile(xsakKey, nameof(xsakKey), required: true);
             return new DeferredBodyAction<GetSurveyRespondentsDetailsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/data/{1}", __workflow_idProject.WithUrlEncoding(1), __workflow_tableCode.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
-                callPayload.Headers["X-SAKKey"] = ExpressionConverter.Convert(__workflow_xSAKKey);
+                callPayload.Headers["X-SAKKey"] = ExpressionConverter.Convert(__workflow_xsakKey);
                 return new ApiConnectionAction<GetSurveyRespondentsDetailsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simplesurvey")]
-        public IBodyWorkflowAction<GetSurveyDataWarehouseReportResponse, ApiConnectionActionConfiguration> GetSurveyDataWarehouseReport(Expression<Func<string>> idProject, Expression<Func<FormatInput>> format, Expression<Func<string>> xSAKKey)
+        public IBodyWorkflowAction<GetSurveyDataWarehouseReportResponse, ApiConnectionActionConfiguration> GetSurveyDataWarehouseReport(Expression<Func<string>> idProject, Expression<Func<FormatInput>> format, Expression<Func<string>> xsakKey)
         {
             var __workflow_idProject = WorkflowExpression.Compile(idProject, nameof(idProject), required: true);
             var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
-            var __workflow_xSAKKey = WorkflowExpression.Compile(xSAKKey, nameof(xSAKKey), required: true);
+            var __workflow_xsakKey = WorkflowExpression.Compile(xsakKey, nameof(xsakKey), required: true);
             return new DeferredBodyAction<GetSurveyDataWarehouseReportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/dw/data", __workflow_idProject.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
-                callPayload.Headers["X-SAKKey"] = ExpressionConverter.Convert(__workflow_xSAKKey);
+                callPayload.Headers["X-SAKKey"] = ExpressionConverter.Convert(__workflow_xsakKey);
                 return new ApiConnectionAction<GetSurveyDataWarehouseReportResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simplesurvey")]
-        public IBodyWorkflowAction<GetSurveyStatsResponse, ApiConnectionActionConfiguration> GetSurveyStats(Expression<Func<string>> idProject, Expression<Func<bool>> f, Expression<Func<string>> xSAKKey)
+        public IBodyWorkflowAction<GetSurveyStatsResponse, ApiConnectionActionConfiguration> GetSurveyStats(Expression<Func<string>> idProject, Expression<Func<bool>> f, Expression<Func<string>> xsakKey)
         {
             var __workflow_idProject = WorkflowExpression.Compile(idProject, nameof(idProject), required: true);
             var __workflow_f = WorkflowExpression.Compile(f, nameof(f), required: true);
-            var __workflow_xSAKKey = WorkflowExpression.Compile(xSAKKey, nameof(xSAKKey), required: true);
+            var __workflow_xsakKey = WorkflowExpression.Compile(xsakKey, nameof(xsakKey), required: true);
             return new DeferredBodyAction<GetSurveyStatsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/projects/{0}/stats", __workflow_idProject.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["f"] = ExpressionConverter.Convert(__workflow_f);
-                callPayload.Headers["X-SAKKey"] = ExpressionConverter.Convert(__workflow_xSAKKey);
+                callPayload.Headers["X-SAKKey"] = ExpressionConverter.Convert(__workflow_xsakKey);
                 return new ApiConnectionAction<GetSurveyStatsResponse>(callPayload);
             });
         }
@@ -80,35 +80,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
 
     public class SimplesurveyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ResponseSubmitted(Expression<Func<string>> idProject, Expression<Func<int>> automationId, Expression<Func<string>> xSAKKey, Expression<Func<BodyInput>> body)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ResponseSubmitted(Expression<Func<string>> idProject, Expression<Func<int>> automationId, Expression<Func<string>> xsakKey, Expression<Func<BodyInput>> body)
         {
             var __workflow_idProject = WorkflowExpression.Compile(idProject, nameof(idProject), required: true);
             var __workflow_automationId = WorkflowExpression.Compile(automationId, nameof(automationId), required: true);
-            var __workflow_xSAKKey = WorkflowExpression.Compile(xSAKKey, nameof(xSAKKey), required: true);
+            var __workflow_xsakKey = WorkflowExpression.Compile(xsakKey, nameof(xsakKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/events/{0}/automations/{1}/webhooks/register", __workflow_idProject.WithUrlEncoding(1), __workflow_automationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-SAKKey"] = ExpressionConverter.Convert(__workflow_xSAKKey);
+                callPayload.Headers["X-SAKKey"] = ExpressionConverter.Convert(__workflow_xsakKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ResponseChanged(Expression<Func<string>> idProject, Expression<Func<int>> automationId, Expression<Func<string>> xSAKKey, Expression<Func<BodyInput>> body)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ResponseChanged(Expression<Func<string>> idProject, Expression<Func<int>> automationId, Expression<Func<string>> xsakKey, Expression<Func<BodyInput>> body)
         {
             var __workflow_idProject = WorkflowExpression.Compile(idProject, nameof(idProject), required: true);
             var __workflow_automationId = WorkflowExpression.Compile(automationId, nameof(automationId), required: true);
-            var __workflow_xSAKKey = WorkflowExpression.Compile(xSAKKey, nameof(xSAKKey), required: true);
+            var __workflow_xsakKey = WorkflowExpression.Compile(xsakKey, nameof(xsakKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/events/{0}/automations/{1}/webhooks/register/cr", __workflow_idProject.WithUrlEncoding(1), __workflow_automationId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-SAKKey"] = ExpressionConverter.Convert(__workflow_xSAKKey);
+                callPayload.Headers["X-SAKKey"] = ExpressionConverter.Convert(__workflow_xsakKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionPollingTrigger(callPayload);
             });
@@ -403,8 +403,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FormatInput
     {
-        JSON,
-        CSV
+        [EnumMember(Value = "JSON")]
+        Json,
+        [EnumMember(Value = "CSV")]
+        Csv
     }
 
     public class GetSurveyDataWarehouseReportResponse
@@ -434,7 +436,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
         public string CreatedAt { get; set; }
         public string UpdatedAt { get; set; }
         public string Location { get; set; }
-        public string GETVariables { get; set; }
+
+        [JsonProperty("GETVariables")]
+        public string GetVariables { get; set; }
         public string Referrer { get; set; }
         public double WeightedScore { get; set; }
         public string IPAddress { get; set; }
@@ -499,7 +503,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simplesurvey
         public int CompletionTimeMed { get; set; }
         public int OptInConfirmationCount { get; set; }
         public int EmailSentCount { get; set; }
-        public int SMSSentCount { get; set; }
+
+        [JsonProperty("SMSSentCount")]
+        public int SmsSentCount { get; set; }
         public string LastCompletedDate { get; set; }
         public string LastUpdatedDate { get; set; }
         public string CompletedCountPerDayString { get; set; }

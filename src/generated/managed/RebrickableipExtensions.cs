@@ -1017,7 +1017,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
     public class LegoColorsListResponseResultsTypeItemExternalIdsType
     {
         public LegoColorsListResponseResultsTypeItemExternalIdsTypeBrickOwlType BrickOwl { get; set; }
-        public LegoColorsListResponseResultsTypeItemExternalIdsTypeLEGOType LEGO { get; set; }
+
+        [JsonProperty("LEGO")]
+        public LegoColorsListResponseResultsTypeItemExternalIdsTypeLegoType Lego { get; set; }
         public LegoColorsListResponseResultsTypeItemExternalIdsTypePeeronType Peeron { get; set; }
         public LegoColorsListResponseResultsTypeItemExternalIdsTypeLDrawType LDraw { get; set; }
         public LegoColorsListResponseResultsTypeItemExternalIdsTypeBrickLinkType BrickLink { get; set; }
@@ -1032,7 +1034,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public string[][] ExtDescrs { get; set; }
     }
 
-    public class LegoColorsListResponseResultsTypeItemExternalIdsTypeLEGOType
+    public class LegoColorsListResponseResultsTypeItemExternalIdsTypeLegoType
     {
         [JsonProperty("ext_ids")]
         public int[] ExtIds { get; set; }
@@ -1089,7 +1091,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
     public class LegoColorsReadResponseExternalIdsType
     {
         public LegoColorsReadResponseExternalIdsTypeBrickOwlType BrickOwl { get; set; }
-        public LegoColorsReadResponseExternalIdsTypeLEGOType LEGO { get; set; }
+
+        [JsonProperty("LEGO")]
+        public LegoColorsReadResponseExternalIdsTypeLegoType Lego { get; set; }
         public LegoColorsReadResponseExternalIdsTypePeeronType Peeron { get; set; }
         public LegoColorsReadResponseExternalIdsTypeLDrawType LDraw { get; set; }
     }
@@ -1103,7 +1107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public string[][] ExtDescrs { get; set; }
     }
 
-    public class LegoColorsReadResponseExternalIdsTypeLEGOType
+    public class LegoColorsReadResponseExternalIdsTypeLegoType
     {
         [JsonProperty("ext_ids")]
         public int[] ExtIds { get; set; }
@@ -1196,7 +1200,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public string[] BrickOwl { get; set; }
         public string[] Brickset { get; set; }
         public string[] LDraw { get; set; }
-        public string[] LEGO { get; set; }
+
+        [JsonProperty("LEGO")]
+        public string[] Lego { get; set; }
     }
 
     public class LegoElementsReadResponseColorType
@@ -1221,7 +1227,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
     {
         public LegoElementsReadResponseColorTypeExternalIdsTypeBrickLinkType BrickLink { get; set; }
         public LegoElementsReadResponseColorTypeExternalIdsTypeBrickOwlType BrickOwl { get; set; }
-        public LegoElementsReadResponseColorTypeExternalIdsTypeLEGOType LEGO { get; set; }
+
+        [JsonProperty("LEGO")]
+        public LegoElementsReadResponseColorTypeExternalIdsTypeLegoType Lego { get; set; }
         public LegoElementsReadResponseColorTypeExternalIdsTypePeeronType Peeron { get; set; }
         public LegoElementsReadResponseColorTypeExternalIdsTypeLDrawType LDraw { get; set; }
     }
@@ -1244,7 +1252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public string[][] ExtDescrs { get; set; }
     }
 
-    public class LegoElementsReadResponseColorTypeExternalIdsTypeLEGOType
+    public class LegoElementsReadResponseColorTypeExternalIdsTypeLegoType
     {
         [JsonProperty("ext_ids")]
         public int[] ExtIds { get; set; }
@@ -1403,7 +1411,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public string[] BrickOwl { get; set; }
         public string[] Brickset { get; set; }
         public string[] LDraw { get; set; }
-        public string[] LEGO { get; set; }
+
+        [JsonProperty("LEGO")]
+        public string[] Lego { get; set; }
         public string[] Peeron { get; set; }
     }
 
@@ -1429,7 +1439,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
     {
         public LegoMinifigsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeBrickLinkType BrickLink { get; set; }
         public LegoMinifigsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeBrickOwlType BrickOwl { get; set; }
-        public LegoMinifigsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLEGOType LEGO { get; set; }
+
+        [JsonProperty("LEGO")]
+        public LegoMinifigsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLegoType Lego { get; set; }
         public LegoMinifigsPartsListResponseResultsTypeItemColorTypeExternalIdsTypePeeronType Peeron { get; set; }
         public LegoMinifigsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLDrawType LDraw { get; set; }
     }
@@ -1452,7 +1464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public string[][] ExtDescrs { get; set; }
     }
 
-    public class LegoMinifigsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLEGOType
+    public class LegoMinifigsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLegoType
     {
         [JsonProperty("ext_ids")]
         public int[] ExtIds { get; set; }
@@ -1599,7 +1611,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public string[] BrickOwl { get; set; }
         public string[] Brickset { get; set; }
         public string[] LDraw { get; set; }
-        public string[] LEGO { get; set; }
+
+        [JsonProperty("LEGO")]
+        public string[] Lego { get; set; }
     }
 
     public class LegoPartsReadResponse
@@ -1646,7 +1660,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public string[] BrickLink { get; set; }
         public string[] BrickOwl { get; set; }
         public string[] Brickset { get; set; }
-        public string[] LEGO { get; set; }
+
+        [JsonProperty("LEGO")]
+        public string[] Lego { get; set; }
     }
 
     public class LegoPartsColorsListResponse
@@ -1970,7 +1986,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public string[] BrickOwl { get; set; }
         public string[] Brickset { get; set; }
         public string[] LDraw { get; set; }
-        public string[] LEGO { get; set; }
+
+        [JsonProperty("LEGO")]
+        public string[] Lego { get; set; }
         public string[] Peeron { get; set; }
     }
 
@@ -1996,7 +2014,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
     {
         public LegoSetsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeBrickLinkType BrickLink { get; set; }
         public LegoSetsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeBrickOwlType BrickOwl { get; set; }
-        public LegoSetsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLEGOType LEGO { get; set; }
+
+        [JsonProperty("LEGO")]
+        public LegoSetsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLegoType Lego { get; set; }
         public LegoSetsPartsListResponseResultsTypeItemColorTypeExternalIdsTypePeeronType Peeron { get; set; }
         public LegoSetsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLDrawType LDraw { get; set; }
     }
@@ -2019,7 +2039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public string[][] ExtDescrs { get; set; }
     }
 
-    public class LegoSetsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLEGOType
+    public class LegoSetsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLegoType
     {
         [JsonProperty("ext_ids")]
         public int[] ExtIds { get; set; }
@@ -2255,7 +2275,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
     {
         public UsersAllpartsListResponseResultsTypeItemColorTypeExternalIdsTypeBrickLinkType BrickLink { get; set; }
         public UsersAllpartsListResponseResultsTypeItemColorTypeExternalIdsTypeBrickOwlType BrickOwl { get; set; }
-        public UsersAllpartsListResponseResultsTypeItemColorTypeExternalIdsTypeLEGOType LEGO { get; set; }
+
+        [JsonProperty("LEGO")]
+        public UsersAllpartsListResponseResultsTypeItemColorTypeExternalIdsTypeLegoType Lego { get; set; }
         public UsersAllpartsListResponseResultsTypeItemColorTypeExternalIdsTypePeeronType Peeron { get; set; }
         public UsersAllpartsListResponseResultsTypeItemColorTypeExternalIdsTypeLDrawType LDraw { get; set; }
     }
@@ -2278,7 +2300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public string[][] ExtDescrs { get; set; }
     }
 
-    public class UsersAllpartsListResponseResultsTypeItemColorTypeExternalIdsTypeLEGOType
+    public class UsersAllpartsListResponseResultsTypeItemColorTypeExternalIdsTypeLegoType
     {
         [JsonProperty("ext_ids")]
         public int[] ExtIds { get; set; }
@@ -2488,7 +2510,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public string[] BrickOwl { get; set; }
         public string[] Brickset { get; set; }
         public string[] LDraw { get; set; }
-        public string[] LEGO { get; set; }
+
+        [JsonProperty("LEGO")]
+        public string[] Lego { get; set; }
     }
 
     public class UsersLostPartsListResponseResultsTypeItemInvPartTypeColorType
@@ -2513,7 +2537,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
     {
         public UsersLostPartsListResponseResultsTypeItemInvPartTypeColorTypeExternalIdsTypeBrickLinkType BrickLink { get; set; }
         public UsersLostPartsListResponseResultsTypeItemInvPartTypeColorTypeExternalIdsTypeBrickOwlType BrickOwl { get; set; }
-        public UsersLostPartsListResponseResultsTypeItemInvPartTypeColorTypeExternalIdsTypeLEGOType LEGO { get; set; }
+
+        [JsonProperty("LEGO")]
+        public UsersLostPartsListResponseResultsTypeItemInvPartTypeColorTypeExternalIdsTypeLegoType Lego { get; set; }
         public UsersLostPartsListResponseResultsTypeItemInvPartTypeColorTypeExternalIdsTypePeeronType Peeron { get; set; }
         public UsersLostPartsListResponseResultsTypeItemInvPartTypeColorTypeExternalIdsTypeLDrawType LDraw { get; set; }
     }
@@ -2536,7 +2562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public string[][] ExtDescrs { get; set; }
     }
 
-    public class UsersLostPartsListResponseResultsTypeItemInvPartTypeColorTypeExternalIdsTypeLEGOType
+    public class UsersLostPartsListResponseResultsTypeItemInvPartTypeColorTypeExternalIdsTypeLegoType
     {
         [JsonProperty("ext_ids")]
         public int[] ExtIds { get; set; }
@@ -2768,7 +2794,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
     {
         public UsersPartlistsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeBrickLinkType BrickLink { get; set; }
         public UsersPartlistsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeBrickOwlType BrickOwl { get; set; }
-        public UsersPartlistsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLEGOType LEGO { get; set; }
+
+        [JsonProperty("LEGO")]
+        public UsersPartlistsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLegoType Lego { get; set; }
         public UsersPartlistsPartsListResponseResultsTypeItemColorTypeExternalIdsTypePeeronType Peeron { get; set; }
         public UsersPartlistsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLDrawType LDraw { get; set; }
     }
@@ -2791,7 +2819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public string[][] ExtDescrs { get; set; }
     }
 
-    public class UsersPartlistsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLEGOType
+    public class UsersPartlistsPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLegoType
     {
         [JsonProperty("ext_ids")]
         public int[] ExtIds { get; set; }
@@ -2883,12 +2911,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
 
     public class UsersPartlistsPartsReadResponseColorTypeExternalIdsType
     {
-        public UsersPartlistsPartsReadResponseColorTypeExternalIdsTypeLEGOType LEGO { get; set; }
+        [JsonProperty("LEGO")]
+        public UsersPartlistsPartsReadResponseColorTypeExternalIdsTypeLegoType Lego { get; set; }
         public UsersPartlistsPartsReadResponseColorTypeExternalIdsTypeBrickLinkType BrickLink { get; set; }
         public UsersPartlistsPartsReadResponseColorTypeExternalIdsTypeLDrawType LDraw { get; set; }
     }
 
-    public class UsersPartlistsPartsReadResponseColorTypeExternalIdsTypeLEGOType
+    public class UsersPartlistsPartsReadResponseColorTypeExternalIdsTypeLegoType
     {
         [JsonProperty("ext_ids")]
         public int[] ExtIds { get; set; }
@@ -2975,7 +3004,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public string[] BrickOwl { get; set; }
         public string[] LDraw { get; set; }
         public string[] Brickset { get; set; }
-        public string[] LEGO { get; set; }
+
+        [JsonProperty("LEGO")]
+        public string[] Lego { get; set; }
     }
 
     public class UsersPartsListResponseResultsTypeItemColorType
@@ -3000,7 +3031,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
     {
         public UsersPartsListResponseResultsTypeItemColorTypeExternalIdsTypeBrickLinkType BrickLink { get; set; }
         public UsersPartsListResponseResultsTypeItemColorTypeExternalIdsTypeBrickOwlType BrickOwl { get; set; }
-        public UsersPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLEGOType LEGO { get; set; }
+
+        [JsonProperty("LEGO")]
+        public UsersPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLegoType Lego { get; set; }
         public UsersPartsListResponseResultsTypeItemColorTypeExternalIdsTypePeeronType Peeron { get; set; }
         public UsersPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLDrawType LDraw { get; set; }
     }
@@ -3023,7 +3056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public string[][] ExtDescrs { get; set; }
     }
 
-    public class UsersPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLEGOType
+    public class UsersPartsListResponseResultsTypeItemColorTypeExternalIdsTypeLegoType
     {
         [JsonProperty("ext_ids")]
         public int[] ExtIds { get; set; }
@@ -3056,7 +3089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrickableip
         public int UserId { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }

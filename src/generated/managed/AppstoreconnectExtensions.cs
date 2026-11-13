@@ -1213,54 +1213,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstoreconnect
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FilterAppStoreVersionsPlatformInput
     {
-        IOS,
+        [EnumMember(Value = "IOS")]
+        Ios,
         [EnumMember(Value = "MAC_OS")]
-        MACOS,
+        MacOs,
         [EnumMember(Value = "TV_OS")]
-        TVOS,
+        TvOs,
         [EnumMember(Value = "VISION_OS")]
-        VISIONOS
+        VisionOs
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FilterAppStoreVersionsAppStoreStateInput
     {
-        ACCEPTED,
+        [EnumMember(Value = "ACCEPTED")]
+        Accepted,
         [EnumMember(Value = "DEVELOPER_REMOVED_FROM_SALE")]
-        DEVELOPERREMOVEDFROMSALE,
+        DeveloperRemovedFromSale,
         [EnumMember(Value = "DEVELOPER_REJECTED")]
-        DEVELOPERREJECTED,
+        DeveloperRejected,
         [EnumMember(Value = "IN_REVIEW")]
-        INREVIEW,
+        InReview,
         [EnumMember(Value = "INVALID_BINARY")]
-        INVALIdBINARY,
+        InvalidBinary,
         [EnumMember(Value = "METADATA_REJECTED")]
-        METADATAREJECTED,
+        MetadataRejected,
         [EnumMember(Value = "PENDING_APPLE_RELEASE")]
-        PENDINGAPPLERELEASE,
+        PendingAppleRelease,
         [EnumMember(Value = "PENDING_CONTRACT")]
-        PENDINGCONTRACT,
+        PendingContract,
         [EnumMember(Value = "PENDING_DEVELOPER_RELEASE")]
-        PENDINGDEVELOPERRELEASE,
+        PendingDeveloperRelease,
         [EnumMember(Value = "PREPARE_FOR_SUBMISSION")]
-        PREPAREFORSUBMISSION,
+        PrepareForSubmission,
         [EnumMember(Value = "PREORDER_READY_FOR_SALE")]
-        PREORDERREADYFORSALE,
+        PreorderReadyForSale,
         [EnumMember(Value = "PROCESSING_FOR_APP_STORE")]
-        PROCESSINGFORAPPSTORE,
+        ProcessingForAppStore,
         [EnumMember(Value = "READY_FOR_REVIEW")]
-        READYFORREVIEW,
+        ReadyForReview,
         [EnumMember(Value = "READY_FOR_SALE")]
-        READYFORSALE,
-        REJECTED,
+        ReadyForSale,
+        [EnumMember(Value = "REJECTED")]
+        Rejected,
         [EnumMember(Value = "REMOVED_FROM_SALE")]
-        REMOVEDFROMSALE,
+        RemovedFromSale,
         [EnumMember(Value = "WAITING_FOR_EXPORT_COMPLIANCE")]
-        WAITINGFOREXPORTCOMPLIANCE,
+        WaitingForExportCompliance,
         [EnumMember(Value = "WAITING_FOR_REVIEW")]
-        WAITINGFORREVIEW,
+        WaitingForReview,
         [EnumMember(Value = "REPLACED_WITH_NEW_VERSION")]
-        REPLACEDWITHNEWVERSION
+        ReplacedWithNewVersion
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

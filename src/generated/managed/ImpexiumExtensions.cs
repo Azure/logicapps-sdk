@@ -2508,7 +2508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -3176,7 +3176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -3386,7 +3386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -3683,7 +3683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -3893,7 +3893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -4118,7 +4118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -4667,7 +4667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -4877,7 +4877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -5364,7 +5364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public bool CanPurchaseForOrganization { get; set; }
 
         [JsonProperty("canManagePAC")]
-        public bool CanManagePAC { get; set; }
+        public bool CanManagePac { get; set; }
 
         [JsonProperty("canManageOrganization")]
         public bool CanManageOrganization { get; set; }
@@ -5706,7 +5706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -6102,7 +6102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -6321,7 +6321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -6636,7 +6636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -7239,7 +7239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -7527,7 +7527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -7800,7 +7800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -8010,7 +8010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -8283,7 +8283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -8707,7 +8707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -9094,7 +9094,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -9590,7 +9590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -9794,7 +9794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -10082,7 +10082,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -10355,7 +10355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -10565,7 +10565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -10841,7 +10841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -11072,7 +11072,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -11424,7 +11424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -11634,7 +11634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -11820,7 +11820,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         public string StateAbbreviation { get; set; }
 
         [JsonProperty("stateISOCode")]
-        public string StateISOCode { get; set; }
+        public string StateIsoCode { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -11931,7 +11931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         internal string Secret { get; set; } = "Impexium";
 
         [JsonProperty("callBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Added by Impexium Connector";
@@ -11946,7 +11946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         internal string Secret { get; set; } = "Impexium";
 
         [JsonProperty("callBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Added by Impexium Connector";
@@ -11961,7 +11961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         internal string Secret { get; set; } = "Impexium";
 
         [JsonProperty("callBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Added by Impexium Connector";
@@ -11984,7 +11984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         internal string Secret { get; set; } = "Impexium";
 
         [JsonProperty("callBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Added by Impexium Connector";
@@ -11999,7 +11999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         internal string Secret { get; set; } = "Impexium";
 
         [JsonProperty("callBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Added by Impexium Connector";
@@ -12022,7 +12022,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         internal string Secret { get; set; } = "Impexium";
 
         [JsonProperty("callBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Added by Impexium Connector";
@@ -12037,7 +12037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         internal string Secret { get; set; } = "Impexium";
 
         [JsonProperty("callBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Added by Impexium Connector";
@@ -12052,7 +12052,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         internal string Secret { get; set; } = "Impexium";
 
         [JsonProperty("callBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Added by Impexium Connector";
@@ -12075,7 +12075,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         internal string Secret { get; set; } = "Impexium";
 
         [JsonProperty("callBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Added by Impexium Connector";
@@ -12090,7 +12090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         internal string Secret { get; set; } = "Impexium";
 
         [JsonProperty("callBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Added by Impexium Connector";
@@ -12105,7 +12105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         internal string Secret { get; set; } = "Impexium";
 
         [JsonProperty("callBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Added by Impexium Connector";
@@ -12120,7 +12120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         internal string Secret { get; set; } = "Impexium";
 
         [JsonProperty("callBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Added by Impexium Connector";
@@ -12135,7 +12135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         internal string Secret { get; set; } = "Impexium";
 
         [JsonProperty("callBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Added by Impexium Connector";
@@ -12158,7 +12158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         internal string Secret { get; set; } = "Impexium";
 
         [JsonProperty("callBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Added by Impexium Connector";
@@ -12181,7 +12181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         internal string Secret { get; set; } = "Impexium";
 
         [JsonProperty("callBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Added by Impexium Connector";
@@ -12196,7 +12196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Impexium
         internal string Secret { get; set; } = "Impexium";
 
         [JsonProperty("callBackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallBackUrl { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Added by Impexium Connector";

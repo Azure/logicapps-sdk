@@ -108,10 +108,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
 
     public class BodyInputTasksTypeImportType
     {
-        public BodyInputTasksTypeImportType(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent @file, string filename)
+        public BodyInputTasksTypeImportType(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent @file, string fileName)
         {
             this.File = @file;
-            this.Filename = filename;
+            this.FileName = fileName;
         }
 
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("filename", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
     }
 
     public class ConvertFileBodyInputTasksTypeConvertType
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
         public string OutputFormat { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("options")]
         public JToken Options { get; set; }
@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
         public string InputFormat { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("options")]
         public JToken Options { get; set; }
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
         public string OutputFormat { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("options")]
         public JToken Options { get; set; }
@@ -300,10 +300,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
 
     public class BodyInputTasksTypeImport1Type
     {
-        public BodyInputTasksTypeImport1Type(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent @file, string filename)
+        public BodyInputTasksTypeImport1Type(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent @file, string fileName)
         {
             this.File = @file;
-            this.Filename = filename;
+            this.FileName = fileName;
         }
 
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -313,15 +313,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("filename", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
     }
 
     public class BodyInputTasksTypeImport2Type
     {
-        public BodyInputTasksTypeImport2Type(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent @file, string filename)
+        public BodyInputTasksTypeImport2Type(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent @file, string fileName)
         {
             this.File = @file;
-            this.Filename = filename;
+            this.FileName = fileName;
         }
 
         [JsonProperty("operation", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent File { get; set; }
 
         [JsonProperty("filename", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
     }
 
     public class BodyInputTasksTypeMergeType
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudconvert
         public string OutputFormat { get; set; } = "pdf";
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("options")]
         public JToken Options { get; set; }

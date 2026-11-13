@@ -1435,8 +1435,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SortOrderInput
     {
-        ASC,
-        DESC
+        [EnumMember(Value = "ASC")]
+        Asc,
+        [EnumMember(Value = "DESC")]
+        Desc
     }
 
     public class CardCreateResponse
@@ -2939,9 +2941,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SortFieldInput
     {
-        DEFAULT,
+        [EnumMember(Value = "DEFAULT")]
+        Default,
         [EnumMember(Value = "CREATED_AT")]
-        CREATEDAT
+        CreatedAt
     }
 
     public class CustomerCreateResponse
@@ -3452,21 +3455,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     public enum StatesInput
     {
         [EnumMember(Value = "UNKNOWN_STATE")]
-        UNKNOWNSTATE,
+        UnknownState,
         [EnumMember(Value = "INQUIRY_EVIDENCE_REQUIRED")]
-        INQUIRYEVIdENCEREQUIRED,
+        InquiryEvidenceRequired,
         [EnumMember(Value = "INQUIRY_PROCESSING")]
-        INQUIRYPROCESSING,
+        InquiryProcessing,
         [EnumMember(Value = "INQUIRY_CLOSED")]
-        INQUIRYCLOSED,
+        InquiryClosed,
         [EnumMember(Value = "EVIDENCE_REQUIRED")]
-        EVIdENCEREQUIRED,
-        PROCESSING,
-        WON,
-        LOST,
-        ACCEPTED,
+        EvidenceRequired,
+        [EnumMember(Value = "PROCESSING")]
+        Processing,
+        [EnumMember(Value = "WON")]
+        Won,
+        [EnumMember(Value = "LOST")]
+        Lost,
+        [EnumMember(Value = "ACCEPTED")]
+        Accepted,
         [EnumMember(Value = "WAITING_THIRD_PARTY")]
-        WAITINGTHIRDPARTY
+        WaitingThirdParty
     }
 
     public class DisputeRetrieveResponse
@@ -3613,7 +3620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     public class DisputeListEvidenceResponseEvidenceTypeItemEvidenceFileType
     {
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("filetype")]
         public string Filetype { get; set; }
@@ -3659,34 +3666,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     public enum BodyInputEvidenceTypeType
     {
         [EnumMember(Value = "GENERIC_EVIDENCE")]
-        GENERICEVIdENCE,
+        GenericEvidence,
         [EnumMember(Value = "ONLINE_OR_APP_ACCESS_LOG")]
-        ONLINEORAPPACCESSLOG,
+        OnlineOrAppAccessLog,
         [EnumMember(Value = "AUTHORIZATION_DOCUMENTATION")]
-        AUTHORIZATIONDOCUMENTATION,
+        AuthorizationDocumentation,
         [EnumMember(Value = "CANCELLATION_OR_REFUND_DOCUMENTATION")]
-        CANCELLATIONORREFUNDDOCUMENTATION,
+        CancellationOrRefundDocumentation,
         [EnumMember(Value = "CARDHOLDER_COMMUNICATION")]
-        CARDHOLDERCOMMUNICATION,
+        CardholderCommunication,
         [EnumMember(Value = "CARDHOLDER_INFORMATION")]
-        CARDHOLDERINFORMATION,
+        CardholderInformation,
         [EnumMember(Value = "PURCHASE_ACKNOWLEDGEMENT")]
-        PURCHASEACKNOWLEDGEMENT,
+        PurchaseAcknowledgement,
         [EnumMember(Value = "DUPLICATE_CHARGE_DOCUMENTATION")]
-        DUPLICATECHARGEDOCUMENTATION,
+        DuplicateChargeDocumentation,
         [EnumMember(Value = "PRODUCT_OR_SERVICE_DESCRIPTION")]
-        PRODUCTORSERVICEDESCRIPTION,
-        RECEIPT,
+        ProductOrServiceDescription,
+        [EnumMember(Value = "RECEIPT")]
+        Receipt,
         [EnumMember(Value = "SERVICE_RECEIVED_DOCUMENTATION")]
-        SERVICERECEIVEDDOCUMENTATION,
+        ServiceReceivedDocumentation,
         [EnumMember(Value = "PROOF_OF_DELIVERY_DOCUMENTATION")]
-        PROOFOFDELIVERYDOCUMENTATION,
+        ProofOfDeliveryDocumentation,
         [EnumMember(Value = "RELATED_TRANSACTION_DOCUMENTATION")]
-        RELATEDTRANSACTIONDOCUMENTATION,
+        RelatedTransactionDocumentation,
         [EnumMember(Value = "REBUTTAL_EXPLANATION")]
-        REBUTTALEXPLANATION,
+        RebuttalExplanation,
         [EnumMember(Value = "TRACKING_NUMBER")]
-        TRACKINGNUMBER
+        TrackingNumber
     }
 
     public class DisputeRetrieveEvidenceResponse
@@ -3716,7 +3724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarepaymentsip
     public class DisputeRetrieveEvidenceResponseEvidenceTypeEvidenceFileType
     {
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("filetype")]
         public string Filetype { get; set; }

@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
         public string Id { get; set; }
 
         [JsonProperty("file_upload_uri")]
-        public string FileUploadURI { get; set; }
+        public string FileUploadUri { get; set; }
 
         [JsonProperty("field_mappings")]
         public ImportApiFieldMapping[] FieldMappings { get; set; }
@@ -352,13 +352,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtimport
     public class ImportApiImportJobExceptionFileDownloadInfo
     {
         [JsonProperty("file_download_uri")]
-        public string FileDownloadURI { get; set; }
+        public string FileDownloadUri { get; set; }
     }
 
     public class ImportApiImportJobFileUploadInfo
     {
         [JsonProperty("file_upload_uri")]
-        public string FileUploadURI { get; set; }
+        public string FileUploadUri { get; set; }
     }
 
     public class ImportApiStartImportJobResponse

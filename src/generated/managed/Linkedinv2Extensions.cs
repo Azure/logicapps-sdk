@@ -126,9 +126,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
 
     public class BodyInputContentTypeArticleType
     {
-        public BodyInputContentTypeArticleType(string uRLOfTheArticle, string title)
+        public BodyInputContentTypeArticleType(string urlOfTheArticle, string title)
         {
-            this.URLOfTheArticle = uRLOfTheArticle;
+            this.UrlOfTheArticle = urlOfTheArticle;
             this.Title = title;
         }
 
@@ -136,13 +136,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         public string Description { get; set; } = "";
 
         [JsonProperty("source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string URLOfTheArticle { get; set; }
+        public string UrlOfTheArticle { get; set; }
 
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
 
         [JsonProperty("thumbnail")]
-        public string ThumbnailURL { get; set; }
+        public string ThumbnailUrl { get; set; }
     }
 
     public class PostUpdateBodyInput

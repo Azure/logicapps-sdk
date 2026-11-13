@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgrid
     public class BodyInputPropertiesTypeDestinationTypePropertiesType
     {
         [JsonProperty("endpointUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
+        internal string EndpointUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
     public class BodyInputPropertiesTypeFilterType

@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
     public class CarbonfootprintipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
-        public IBodyWorkflowAction<AirQualityHealthIndexResponse, ApiConnectionActionConfiguration> AirQualityHealthIndex(Expression<Func<string>> o3, Expression<Func<string>> nO2, Expression<Func<string>> pM)
+        public IBodyWorkflowAction<AirQualityHealthIndexResponse, ApiConnectionActionConfiguration> AirQualityHealthIndex(Expression<Func<string>> o3, Expression<Func<string>> nO2, Expression<Func<string>> pm)
         {
             var __workflow_o3 = WorkflowExpression.Compile(o3, nameof(o3), required: true);
             var __workflow_nO2 = WorkflowExpression.Compile(nO2, nameof(nO2), required: true);
-            var __workflow_pM = WorkflowExpression.Compile(pM, nameof(pM), required: true);
+            var __workflow_pm = WorkflowExpression.Compile(pm, nameof(pm), required: true);
             return new DeferredBodyAction<AirQualityHealthIndexResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AirQualityHealthIndex";
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["O3"] = ExpressionConverter.Convert(__workflow_o3);
                 callPayload.Queries["NO2"] = ExpressionConverter.Convert(__workflow_nO2);
-                callPayload.Queries["PM"] = ExpressionConverter.Convert(__workflow_pM);
+                callPayload.Queries["PM"] = ExpressionConverter.Convert(__workflow_pm);
                 return new ApiConnectionAction<AirQualityHealthIndexResponse>(callPayload);
             });
         }
@@ -193,7 +193,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LocationInput
     {
-        USA,
+        [EnumMember(Value = "USA")]
+        Usa,
         Canada,
         UK,
         Europe,
@@ -232,7 +233,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
     {
         Petrol,
         Diesel,
-        LPG
+        [EnumMember(Value = "LPG")]
+        Lpg
     }
 
     public class CarbonFootprintFromCarTravelResponse
@@ -249,17 +251,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         LargeDieselCar,
         MediumHybridCar,
         LargeHybridCar,
-        MediumLPGCar,
-        LargeLPGCar,
-        MediumCNGCar,
-        LargeCNGCar,
+        [EnumMember(Value = "MediumLPGCar")]
+        MediumLpgCar,
+        [EnumMember(Value = "LargeLPGCar")]
+        LargeLpgCar,
+        [EnumMember(Value = "MediumCNGCar")]
+        MediumCngCar,
+        [EnumMember(Value = "LargeCNGCar")]
+        LargeCngCar,
         SmallPetrolVan,
         LargePetrolVan,
         SmallDieselVan,
         MediumDieselVan,
         LargeDieselVan,
-        LPGVan,
-        CNGVan,
+        [EnumMember(Value = "LPGVan")]
+        LpgVan,
+        [EnumMember(Value = "CNGVan")]
+        CngVan,
         SmallPetrolCar,
         MediumPetrolCar,
         LargePetrolCar,

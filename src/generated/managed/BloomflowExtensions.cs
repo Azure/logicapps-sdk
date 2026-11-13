@@ -13,21 +13,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
     public class BloomflowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bloomflow")]
-        public IBodyWorkflowAction<PublicAPIGetItemsReferenceResponse, ApiConnectionActionConfiguration> PublicAPIGetItemsReference(Expression<Func<string>> bloomflowApiUrl)
+        public IBodyWorkflowAction<PublicApiGetItemsReferenceResponse, ApiConnectionActionConfiguration> PublicApiGetItemsReference(Expression<Func<string>> bloomflowApiUrl)
         {
             var __workflow_bloomflowApiUrl = WorkflowExpression.Compile(bloomflowApiUrl, nameof(bloomflowApiUrl), required: true);
-            return new DeferredBodyAction<PublicAPIGetItemsReferenceResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PublicApiGetItemsReferenceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/public/items/reference_data";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["bloomflow_api_url"] = ExpressionConverter.Convert(__workflow_bloomflowApiUrl);
-                return new ApiConnectionAction<PublicAPIGetItemsReferenceResponse>(callPayload);
+                return new ApiConnectionAction<PublicApiGetItemsReferenceResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bloomflow")]
-        public IBodyWorkflowAction<PublicAPISearchItemsResponse, ApiConnectionActionConfiguration> PublicAPISearchItems(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> typology, Expression<Func<string>> term = null, Expression<Func<string>> fields = null, Expression<Func<string>> tags = null, Expression<Func<string>> labels = null, Expression<Func<string>> sources = null, Expression<Func<string>> updatedAtGt = null, Expression<Func<string>> updatedAtLt = null, Expression<Func<double>> limit = null, Expression<Func<double>> offset = null, Expression<Func<SortInput>> sort = null)
+        public IBodyWorkflowAction<PublicApiSearchItemsResponse, ApiConnectionActionConfiguration> PublicApiSearchItems(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> typology, Expression<Func<string>> term = null, Expression<Func<string>> fields = null, Expression<Func<string>> tags = null, Expression<Func<string>> labels = null, Expression<Func<string>> sources = null, Expression<Func<string>> updatedAtGt = null, Expression<Func<string>> updatedAtLt = null, Expression<Func<double>> limit = null, Expression<Func<double>> offset = null, Expression<Func<SortInput>> sort = null)
         {
             var __workflow_bloomflowApiUrl = WorkflowExpression.Compile(bloomflowApiUrl, nameof(bloomflowApiUrl), required: true);
             var __workflow_typology = WorkflowExpression.Compile(typology, nameof(typology), required: true);
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<PublicAPISearchItemsResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PublicApiSearchItemsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/public/items";
                 var apiCallHttpMethod = "get";
@@ -68,17 +68,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
                 if (__workflow_sort != null)
                     callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
                 callPayload.Headers["bloomflow_api_url"] = ExpressionConverter.Convert(__workflow_bloomflowApiUrl);
-                return new ApiConnectionAction<PublicAPISearchItemsResponse>(callPayload);
+                return new ApiConnectionAction<PublicApiSearchItemsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bloomflow")]
-        public IBodyWorkflowAction<PublicAPIAddItemResponse, ApiConnectionActionConfiguration> PublicAPIAddItem(Expression<Func<string>> bloomflowApiUrl, Expression<Func<PublicAPIAddItemBodyInput>> body, Expression<Func<SyncModeInput>> syncMode = null)
+        public IBodyWorkflowAction<PublicApiAddItemResponse, ApiConnectionActionConfiguration> PublicApiAddItem(Expression<Func<string>> bloomflowApiUrl, Expression<Func<PublicApiAddItemBodyInput>> body, Expression<Func<SyncModeInput>> syncMode = null)
         {
             var __workflow_bloomflowApiUrl = WorkflowExpression.Compile(bloomflowApiUrl, nameof(bloomflowApiUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_syncMode = WorkflowExpression.Compile(syncMode, nameof(syncMode), required: false);
-            return new DeferredBodyAction<PublicAPIAddItemResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PublicApiAddItemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/public/items";
                 var apiCallHttpMethod = "post";
@@ -87,127 +87,127 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
                     callPayload.Queries["sync_mode"] = ExpressionConverter.Convert(__workflow_syncMode);
                 callPayload.Headers["bloomflow_api_url"] = ExpressionConverter.Convert(__workflow_bloomflowApiUrl);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PublicAPIAddItemResponse>(callPayload);
+                return new ApiConnectionAction<PublicApiAddItemResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bloomflow")]
-        public IBodyWorkflowAction<PublicAPIGetItemResponse, ApiConnectionActionConfiguration> PublicAPIGetItem(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> id)
+        public IBodyWorkflowAction<PublicApiGetItemResponse, ApiConnectionActionConfiguration> PublicApiGetItem(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> id)
         {
             var __workflow_bloomflowApiUrl = WorkflowExpression.Compile(bloomflowApiUrl, nameof(bloomflowApiUrl), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<PublicAPIGetItemResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PublicApiGetItemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/public/items/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["bloomflow_api_url"] = ExpressionConverter.Convert(__workflow_bloomflowApiUrl);
-                return new ApiConnectionAction<PublicAPIGetItemResponse>(callPayload);
+                return new ApiConnectionAction<PublicApiGetItemResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bloomflow")]
-        public IBodyWorkflowAction<PublicAPIUpdateItemResponse, ApiConnectionActionConfiguration> PublicAPIUpdateItem(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> id, Expression<Func<PublicAPIUpdateItemBodyInput>> body)
+        public IBodyWorkflowAction<PublicApiUpdateItemResponse, ApiConnectionActionConfiguration> PublicApiUpdateItem(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> id, Expression<Func<PublicApiUpdateItemBodyInput>> body)
         {
             var __workflow_bloomflowApiUrl = WorkflowExpression.Compile(bloomflowApiUrl, nameof(bloomflowApiUrl), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<PublicAPIUpdateItemResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PublicApiUpdateItemResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/public/items/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["bloomflow_api_url"] = ExpressionConverter.Convert(__workflow_bloomflowApiUrl);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PublicAPIUpdateItemResponse>(callPayload);
+                return new ApiConnectionAction<PublicApiUpdateItemResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bloomflow")]
-        public IBodyWorkflowAction<PublicAPIGetItemDocumentsResponseItem[], ApiConnectionActionConfiguration> PublicAPIGetItemDocuments(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> id)
+        public IBodyWorkflowAction<PublicApiGetItemDocumentsResponseItem[], ApiConnectionActionConfiguration> PublicApiGetItemDocuments(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> id)
         {
             var __workflow_bloomflowApiUrl = WorkflowExpression.Compile(bloomflowApiUrl, nameof(bloomflowApiUrl), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<PublicAPIGetItemDocumentsResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PublicApiGetItemDocumentsResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/public/items/{0}/documents", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["bloomflow_api_url"] = ExpressionConverter.Convert(__workflow_bloomflowApiUrl);
-                return new ApiConnectionAction<PublicAPIGetItemDocumentsResponseItem[]>(callPayload);
+                return new ApiConnectionAction<PublicApiGetItemDocumentsResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bloomflow")]
-        public IBodyWorkflowAction<PublicAPIGetItemNotesResponseItem[], ApiConnectionActionConfiguration> PublicAPIGetItemNotes(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> id)
+        public IBodyWorkflowAction<PublicApiGetItemNotesResponseItem[], ApiConnectionActionConfiguration> PublicApiGetItemNotes(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> id)
         {
             var __workflow_bloomflowApiUrl = WorkflowExpression.Compile(bloomflowApiUrl, nameof(bloomflowApiUrl), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<PublicAPIGetItemNotesResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PublicApiGetItemNotesResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/public/items/{0}/notes", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["bloomflow_api_url"] = ExpressionConverter.Convert(__workflow_bloomflowApiUrl);
-                return new ApiConnectionAction<PublicAPIGetItemNotesResponseItem[]>(callPayload);
+                return new ApiConnectionAction<PublicApiGetItemNotesResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bloomflow")]
-        public IBodyWorkflowAction<PublicAPIAddItemNoteResponse, ApiConnectionActionConfiguration> PublicAPIAddItemNote(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> id, Expression<Func<PublicAPIAddItemNoteBodyInput>> body)
+        public IBodyWorkflowAction<PublicApiAddItemNoteResponse, ApiConnectionActionConfiguration> PublicApiAddItemNote(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> id, Expression<Func<PublicApiAddItemNoteBodyInput>> body)
         {
             var __workflow_bloomflowApiUrl = WorkflowExpression.Compile(bloomflowApiUrl, nameof(bloomflowApiUrl), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<PublicAPIAddItemNoteResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PublicApiAddItemNoteResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/public/items/{0}/notes", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["bloomflow_api_url"] = ExpressionConverter.Convert(__workflow_bloomflowApiUrl);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PublicAPIAddItemNoteResponse>(callPayload);
+                return new ApiConnectionAction<PublicApiAddItemNoteResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bloomflow")]
-        public IBodyWorkflowAction<PublicAPICreateApplicationResponse, ApiConnectionActionConfiguration> PublicAPICreateApplication(Expression<Func<string>> applicationFormId, Expression<Func<DataInput>> data)
+        public IBodyWorkflowAction<PublicApiCreateApplicationResponse, ApiConnectionActionConfiguration> PublicApiCreateApplication(Expression<Func<string>> applicationFormId, Expression<Func<DataInput>> data)
         {
             var __workflow_applicationFormId = WorkflowExpression.Compile(applicationFormId, nameof(applicationFormId), required: true);
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
-            return new DeferredBodyAction<PublicAPICreateApplicationResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PublicApiCreateApplicationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/public/application-forms/{0}", __workflow_applicationFormId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_data);
-                return new ApiConnectionAction<PublicAPICreateApplicationResponse>(callPayload);
+                return new ApiConnectionAction<PublicApiCreateApplicationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bloomflow")]
-        public IBodyWorkflowAction<PublicAPIGetUsersReferenceResponse, ApiConnectionActionConfiguration> PublicAPIGetUsersReference(Expression<Func<string>> bloomflowApiUrl)
+        public IBodyWorkflowAction<PublicApiGetUsersReferenceResponse, ApiConnectionActionConfiguration> PublicApiGetUsersReference(Expression<Func<string>> bloomflowApiUrl)
         {
             var __workflow_bloomflowApiUrl = WorkflowExpression.Compile(bloomflowApiUrl, nameof(bloomflowApiUrl), required: true);
-            return new DeferredBodyAction<PublicAPIGetUsersReferenceResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PublicApiGetUsersReferenceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/public/users/reference_data";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["bloomflow_api_url"] = ExpressionConverter.Convert(__workflow_bloomflowApiUrl);
-                return new ApiConnectionAction<PublicAPIGetUsersReferenceResponse>(callPayload);
+                return new ApiConnectionAction<PublicApiGetUsersReferenceResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bloomflow")]
-        public IBodyWorkflowAction<PublicAPISearchUsersResponseItem[], ApiConnectionActionConfiguration> PublicAPISearchUsers(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> provisionningId = null, Expression<Func<string>> id = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> username = null, Expression<Func<string>> linkedin = null, Expression<Func<string>> job = null, Expression<Func<string>> localisation = null, Expression<Func<string>> phone = null, Expression<Func<string>> businessUnit = null, Expression<Func<string>> defaultLanguage = null, Expression<Func<string>> email = null, Expression<Func<string>> role = null, Expression<Func<double>> limit = null, Expression<Func<double>> offset = null)
+        public IBodyWorkflowAction<PublicApiSearchUsersResponseItem[], ApiConnectionActionConfiguration> PublicApiSearchUsers(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> provisionningId = null, Expression<Func<string>> id = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> userName = null, Expression<Func<string>> linkedin = null, Expression<Func<string>> job = null, Expression<Func<string>> localisation = null, Expression<Func<string>> phone = null, Expression<Func<string>> businessUnit = null, Expression<Func<string>> defaultLanguage = null, Expression<Func<string>> email = null, Expression<Func<string>> role = null, Expression<Func<double>> limit = null, Expression<Func<double>> offset = null)
         {
             var __workflow_bloomflowApiUrl = WorkflowExpression.Compile(bloomflowApiUrl, nameof(bloomflowApiUrl), required: true);
             var __workflow_provisionningId = WorkflowExpression.Compile(provisionningId, nameof(provisionningId), required: false);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_firstName = WorkflowExpression.Compile(firstName, nameof(firstName), required: false);
             var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: false);
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: false);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             var __workflow_linkedin = WorkflowExpression.Compile(linkedin, nameof(linkedin), required: false);
             var __workflow_job = WorkflowExpression.Compile(job, nameof(job), required: false);
             var __workflow_localisation = WorkflowExpression.Compile(localisation, nameof(localisation), required: false);
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
             var __workflow_role = WorkflowExpression.Compile(role, nameof(role), required: false);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<PublicAPISearchUsersResponseItem[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PublicApiSearchUsersResponseItem[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/public/users";
                 var apiCallHttpMethod = "get";
@@ -231,8 +231,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
                     callPayload.Queries["firstName"] = ExpressionConverter.Convert(__workflow_firstName);
                 if (__workflow_lastName != null)
                     callPayload.Queries["lastName"] = ExpressionConverter.Convert(__workflow_lastName);
-                if (__workflow_username != null)
-                    callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
+                if (__workflow_userName != null)
+                    callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_userName);
                 if (__workflow_linkedin != null)
                     callPayload.Queries["linkedin"] = ExpressionConverter.Convert(__workflow_linkedin);
                 if (__workflow_job != null)
@@ -254,55 +254,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
                 callPayload.Headers["bloomflow_api_url"] = ExpressionConverter.Convert(__workflow_bloomflowApiUrl);
-                return new ApiConnectionAction<PublicAPISearchUsersResponseItem[]>(callPayload);
+                return new ApiConnectionAction<PublicApiSearchUsersResponseItem[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bloomflow")]
-        public IBodyWorkflowAction<PublicAPIAddUserResponse, ApiConnectionActionConfiguration> PublicAPIAddUser(Expression<Func<string>> bloomflowApiUrl, Expression<Func<PublicAPIAddUserBodyInput>> body)
+        public IBodyWorkflowAction<PublicApiAddUserResponse, ApiConnectionActionConfiguration> PublicApiAddUser(Expression<Func<string>> bloomflowApiUrl, Expression<Func<PublicApiAddUserBodyInput>> body)
         {
             var __workflow_bloomflowApiUrl = WorkflowExpression.Compile(bloomflowApiUrl, nameof(bloomflowApiUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<PublicAPIAddUserResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PublicApiAddUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/public/users";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["bloomflow_api_url"] = ExpressionConverter.Convert(__workflow_bloomflowApiUrl);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PublicAPIAddUserResponse>(callPayload);
+                return new ApiConnectionAction<PublicApiAddUserResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bloomflow")]
-        public IBodyWorkflowAction<PublicAPIGetUserResponse, ApiConnectionActionConfiguration> PublicAPIGetUser(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> id)
+        public IBodyWorkflowAction<PublicApiGetUserResponse, ApiConnectionActionConfiguration> PublicApiGetUser(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> id)
         {
             var __workflow_bloomflowApiUrl = WorkflowExpression.Compile(bloomflowApiUrl, nameof(bloomflowApiUrl), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<PublicAPIGetUserResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PublicApiGetUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/public/users/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["bloomflow_api_url"] = ExpressionConverter.Convert(__workflow_bloomflowApiUrl);
-                return new ApiConnectionAction<PublicAPIGetUserResponse>(callPayload);
+                return new ApiConnectionAction<PublicApiGetUserResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bloomflow")]
-        public IBodyWorkflowAction<PublicAPIUpdateUserResponse, ApiConnectionActionConfiguration> PublicAPIUpdateUser(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> id, Expression<Func<PublicAPIAddUserBodyInput>> body)
+        public IBodyWorkflowAction<PublicApiUpdateUserResponse, ApiConnectionActionConfiguration> PublicApiUpdateUser(Expression<Func<string>> bloomflowApiUrl, Expression<Func<string>> id, Expression<Func<PublicApiAddUserBodyInput>> body)
         {
             var __workflow_bloomflowApiUrl = WorkflowExpression.Compile(bloomflowApiUrl, nameof(bloomflowApiUrl), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<PublicAPIUpdateUserResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PublicApiUpdateUserResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/public/users/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["bloomflow_api_url"] = ExpressionConverter.Convert(__workflow_bloomflowApiUrl);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PublicAPIUpdateUserResponse>(callPayload);
+                return new ApiConnectionAction<PublicApiUpdateUserResponse>(callPayload);
             });
         }
     }
@@ -311,13 +311,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
     {
     }
 
-    public class PublicAPIGetItemsReferenceResponse
+    public class PublicApiGetItemsReferenceResponse
     {
         [JsonProperty("typologies")]
-        public PublicAPIGetItemsReferenceResponseTypologiesTypeItem[] Typologies { get; set; }
+        public PublicApiGetItemsReferenceResponseTypologiesTypeItem[] Typologies { get; set; }
 
         [JsonProperty("custom_fields")]
-        public PublicAPIGetItemsReferenceResponseCustomFieldsTypeItem[] CustomFields { get; set; }
+        public PublicApiGetItemsReferenceResponseCustomFieldsTypeItem[] CustomFields { get; set; }
 
         [JsonProperty("fundraising_stage")]
         public string[] FundraisingStage { get; set; }
@@ -329,10 +329,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string[] Tags { get; set; }
 
         [JsonProperty("market_ids")]
-        public PublicAPIGetItemsReferenceResponseMarketIdsTypeItem[] MarketIds { get; set; }
+        public PublicApiGetItemsReferenceResponseMarketIdsTypeItem[] MarketIds { get; set; }
     }
 
-    public class PublicAPIGetItemsReferenceResponseTypologiesTypeItem
+    public class PublicApiGetItemsReferenceResponseTypologiesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -344,16 +344,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string ParentTypologyId { get; set; }
 
         [JsonProperty("tags")]
-        public PublicAPIGetItemsReferenceResponseTypologiesTypeItemTagsTypeItem[] Tags { get; set; }
+        public PublicApiGetItemsReferenceResponseTypologiesTypeItemTagsTypeItem[] Tags { get; set; }
 
         [JsonProperty("labels")]
-        public PublicAPIGetItemsReferenceResponseTypologiesTypeItemLabelsTypeItem[] Labels { get; set; }
+        public PublicApiGetItemsReferenceResponseTypologiesTypeItemLabelsTypeItem[] Labels { get; set; }
 
         [JsonProperty("sources")]
-        public PublicAPIGetItemsReferenceResponseTypologiesTypeItemSourcesTypeItem[] Sources { get; set; }
+        public PublicApiGetItemsReferenceResponseTypologiesTypeItemSourcesTypeItem[] Sources { get; set; }
     }
 
-    public class PublicAPIGetItemsReferenceResponseTypologiesTypeItemTagsTypeItem
+    public class PublicApiGetItemsReferenceResponseTypologiesTypeItemTagsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Name { get; set; }
     }
 
-    public class PublicAPIGetItemsReferenceResponseTypologiesTypeItemLabelsTypeItem
+    public class PublicApiGetItemsReferenceResponseTypologiesTypeItemLabelsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Name { get; set; }
     }
 
-    public class PublicAPIGetItemsReferenceResponseTypologiesTypeItemSourcesTypeItem
+    public class PublicApiGetItemsReferenceResponseTypologiesTypeItemSourcesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Name { get; set; }
     }
 
-    public class PublicAPIGetItemsReferenceResponseCustomFieldsTypeItem
+    public class PublicApiGetItemsReferenceResponseCustomFieldsTypeItem
     {
         [JsonProperty("types")]
         public string[] Types { get; set; }
@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string FieldId { get; set; }
     }
 
-    public class PublicAPIGetItemsReferenceResponseMarketIdsTypeItem
+    public class PublicApiGetItemsReferenceResponseMarketIdsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -401,16 +401,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string LabelEN { get; set; }
     }
 
-    public class PublicAPISearchItemsResponse
+    public class PublicApiSearchItemsResponse
     {
         [JsonProperty("total")]
         public int Total { get; set; }
 
         [JsonProperty("results")]
-        public PublicAPISearchItemsResponseResultsTypeItem[] Results { get; set; }
+        public PublicApiSearchItemsResponseResultsTypeItem[] Results { get; set; }
     }
 
-    public class PublicAPISearchItemsResponseResultsTypeItem
+    public class PublicApiSearchItemsResponseResultsTypeItem
     {
         [JsonProperty("typology_id")]
         public string TypologyId { get; set; }
@@ -434,19 +434,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string FullDescription { get; set; }
 
         [JsonProperty("tags")]
-        public PublicAPISearchItemsResponseResultsTypeItemTagsTypeItem[] Tags { get; set; }
+        public PublicApiSearchItemsResponseResultsTypeItemTagsTypeItem[] Tags { get; set; }
 
         [JsonProperty("labels")]
-        public PublicAPISearchItemsResponseResultsTypeItemLabelsTypeItem[] Labels { get; set; }
+        public PublicApiSearchItemsResponseResultsTypeItemLabelsTypeItem[] Labels { get; set; }
 
         [JsonProperty("sources")]
-        public PublicAPISearchItemsResponseResultsTypeItemSourcesTypeItem[] Sources { get; set; }
+        public PublicApiSearchItemsResponseResultsTypeItemSourcesTypeItem[] Sources { get; set; }
 
         [JsonProperty("internal_contacts")]
-        public PublicAPISearchItemsResponseResultsTypeItemInternalContactsTypeItem[] InternalContacts { get; set; }
+        public PublicApiSearchItemsResponseResultsTypeItemInternalContactsTypeItem[] InternalContacts { get; set; }
 
         [JsonProperty("external_contacts")]
-        public PublicAPISearchItemsResponseResultsTypeItemExternalContactsTypeItem[] ExternalContacts { get; set; }
+        public PublicApiSearchItemsResponseResultsTypeItemExternalContactsTypeItem[] ExternalContacts { get; set; }
 
         [JsonProperty("creation_date")]
         public string CreationDate { get; set; }
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string HqAddress { get; set; }
 
         [JsonProperty("links")]
-        public PublicAPISearchItemsResponseResultsTypeItemLinksType Links { get; set; }
+        public PublicApiSearchItemsResponseResultsTypeItemLinksType Links { get; set; }
 
         [JsonProperty("press_urls")]
         public string[] PressUrls { get; set; }
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string[] VideoUrls { get; set; }
 
         [JsonProperty("nb_employees")]
-        public PublicAPISearchItemsResponseResultsTypeItemNbEmployeesType NbEmployees { get; set; }
+        public PublicApiSearchItemsResponseResultsTypeItemNbEmployeesType NbEmployees { get; set; }
 
         [JsonProperty("year_founded")]
         public string YearFounded { get; set; }
@@ -503,10 +503,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Competitors { get; set; }
 
         [JsonProperty("workflows")]
-        public PublicAPISearchItemsResponseResultsTypeItemWorkflowsTypeItem[] Workflows { get; set; }
+        public PublicApiSearchItemsResponseResultsTypeItemWorkflowsTypeItem[] Workflows { get; set; }
     }
 
-    public class PublicAPISearchItemsResponseResultsTypeItemTagsTypeItem
+    public class PublicApiSearchItemsResponseResultsTypeItemTagsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Category { get; set; }
     }
 
-    public class PublicAPISearchItemsResponseResultsTypeItemLabelsTypeItem
+    public class PublicApiSearchItemsResponseResultsTypeItemLabelsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -530,7 +530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Name { get; set; }
     }
 
-    public class PublicAPISearchItemsResponseResultsTypeItemSourcesTypeItem
+    public class PublicApiSearchItemsResponseResultsTypeItemSourcesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Category { get; set; }
     }
 
-    public class PublicAPISearchItemsResponseResultsTypeItemInternalContactsTypeItem
+    public class PublicApiSearchItemsResponseResultsTypeItemInternalContactsTypeItem
     {
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public JToken Type { get; set; }
     }
 
-    public class PublicAPISearchItemsResponseResultsTypeItemExternalContactsTypeItem
+    public class PublicApiSearchItemsResponseResultsTypeItemExternalContactsTypeItem
     {
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Position { get; set; }
     }
 
-    public class PublicAPISearchItemsResponseResultsTypeItemLinksType
+    public class PublicApiSearchItemsResponseResultsTypeItemLinksType
     {
         [JsonProperty("facebook_url")]
         public string FacebookUrl { get; set; }
@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PublicAPISearchItemsResponseResultsTypeItemNbEmployeesType
+    public enum PublicApiSearchItemsResponseResultsTypeItemNbEmployeesType
     {
         [EnumMember(Value = "1-10")]
         _110,
@@ -606,25 +606,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         _200
     }
 
-    public class PublicAPISearchItemsResponseResultsTypeItemWorkflowsTypeItem
+    public class PublicApiSearchItemsResponseResultsTypeItemWorkflowsTypeItem
     {
         [JsonProperty("current_status")]
-        public PublicAPISearchItemsResponseResultsTypeItemWorkflowsTypeItemCurrentStatusType CurrentStatus { get; set; }
+        public PublicApiSearchItemsResponseResultsTypeItemWorkflowsTypeItemCurrentStatusType CurrentStatus { get; set; }
 
         [JsonProperty("current_state")]
-        public PublicAPISearchItemsResponseResultsTypeItemWorkflowsTypeItemCurrentStateType CurrentState { get; set; }
+        public PublicApiSearchItemsResponseResultsTypeItemWorkflowsTypeItemCurrentStateType CurrentState { get; set; }
 
         [JsonProperty("states")]
-        public PublicAPISearchItemsResponseResultsTypeItemWorkflowsTypeItemStatesTypeItem[] States { get; set; }
+        public PublicApiSearchItemsResponseResultsTypeItemWorkflowsTypeItemStatesTypeItem[] States { get; set; }
 
         [JsonProperty("status")]
-        public PublicAPISearchItemsResponseResultsTypeItemWorkflowsTypeItemStatusTypeItem[] Status { get; set; }
+        public PublicApiSearchItemsResponseResultsTypeItemWorkflowsTypeItemStatusTypeItem[] Status { get; set; }
 
         [JsonProperty("groups")]
         public string[] Groups { get; set; }
     }
 
-    public class PublicAPISearchItemsResponseResultsTypeItemWorkflowsTypeItemCurrentStatusType
+    public class PublicApiSearchItemsResponseResultsTypeItemWorkflowsTypeItemCurrentStatusType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -636,7 +636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Date { get; set; }
     }
 
-    public class PublicAPISearchItemsResponseResultsTypeItemWorkflowsTypeItemCurrentStateType
+    public class PublicApiSearchItemsResponseResultsTypeItemWorkflowsTypeItemCurrentStateType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -648,7 +648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Date { get; set; }
     }
 
-    public class PublicAPISearchItemsResponseResultsTypeItemWorkflowsTypeItemStatesTypeItem
+    public class PublicApiSearchItemsResponseResultsTypeItemWorkflowsTypeItemStatesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -660,7 +660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Date { get; set; }
     }
 
-    public class PublicAPISearchItemsResponseResultsTypeItemWorkflowsTypeItemStatusTypeItem
+    public class PublicApiSearchItemsResponseResultsTypeItemWorkflowsTypeItemStatusTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -687,7 +687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         Relevance
     }
 
-    public class PublicAPIAddItemResponse
+    public class PublicApiAddItemResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -702,7 +702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string CreatedAt { get; set; }
     }
 
-    public class PublicAPIAddItemBodyInput
+    public class PublicApiAddItemBodyInput
     {
         [JsonProperty("typology_id")]
         public string TypologyId { get; set; }
@@ -909,7 +909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         SyncManual
     }
 
-    public class PublicAPIGetItemResponse
+    public class PublicApiGetItemResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -935,14 +935,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         [JsonProperty("maturity")]
         public string Maturity { get; set; }
 
-        [JsonProperty("typology_id")]
+        [JsonProperty("typologyId")]
         public string TypologyId { get; set; }
 
+        [JsonProperty("typology_id")]
+        public string TypologyId2 { get; set; }
+
         [JsonProperty("tags")]
-        public PublicAPIGetItemResponseTagsTypeItem[] Tags { get; set; }
+        public PublicApiGetItemResponseTagsTypeItem[] Tags { get; set; }
 
         [JsonProperty("labels")]
-        public PublicAPIGetItemResponseLabelsTypeItem[] Labels { get; set; }
+        public PublicApiGetItemResponseLabelsTypeItem[] Labels { get; set; }
 
         [JsonProperty("business_model")]
         public string BusinessModel { get; set; }
@@ -978,7 +981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string ScoringSummary { get; set; }
 
         [JsonProperty("links")]
-        public PublicAPIGetItemResponseLinksType Links { get; set; }
+        public PublicApiGetItemResponseLinksType Links { get; set; }
 
         [JsonProperty("press_urls")]
         public string[] PressUrls { get; set; }
@@ -987,13 +990,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string[] VideoUrls { get; set; }
 
         [JsonProperty("related_items")]
-        public PublicAPIGetItemResponseRelatedItemsTypeItem[] RelatedItems { get; set; }
+        public PublicApiGetItemResponseRelatedItemsTypeItem[] RelatedItems { get; set; }
 
         [JsonProperty("internal_contacts")]
-        public PublicAPIGetItemResponseInternalContactsTypeItem[] InternalContacts { get; set; }
+        public PublicApiGetItemResponseInternalContactsTypeItem[] InternalContacts { get; set; }
 
         [JsonProperty("external_contacts")]
-        public PublicAPIGetItemResponseExternalContactsTypeItem[] ExternalContacts { get; set; }
+        public PublicApiGetItemResponseExternalContactsTypeItem[] ExternalContacts { get; set; }
 
         [JsonProperty("creation_date")]
         public string CreationDate { get; set; }
@@ -1002,7 +1005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string HqAddress { get; set; }
 
         [JsonProperty("nb_employees")]
-        public PublicAPIGetItemResponseNbEmployeesType NbEmployees { get; set; }
+        public PublicApiGetItemResponseNbEmployeesType NbEmployees { get; set; }
 
         [JsonProperty("total_funding_usd")]
         public string TotalFundingUsd { get; set; }
@@ -1011,10 +1014,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string FundraisingStage { get; set; }
 
         [JsonProperty("custom_fields")]
-        public PublicAPIGetItemResponseCustomFieldsType CustomFields { get; set; }
+        public PublicApiGetItemResponseCustomFieldsType CustomFields { get; set; }
 
         [JsonProperty("fundings")]
-        public PublicAPIGetItemResponseFundingsTypeItem[] Fundings { get; set; }
+        public PublicApiGetItemResponseFundingsTypeItem[] Fundings { get; set; }
 
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; }
@@ -1023,7 +1026,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string UpdatedAt { get; set; }
     }
 
-    public class PublicAPIGetItemResponseTagsTypeItem
+    public class PublicApiGetItemResponseTagsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1038,7 +1041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Category { get; set; }
     }
 
-    public class PublicAPIGetItemResponseLabelsTypeItem
+    public class PublicApiGetItemResponseLabelsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1047,13 +1050,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Name { get; set; }
     }
 
-    public class PublicAPIGetItemResponseLinksType
+    public class PublicApiGetItemResponseLinksType
     {
         [JsonProperty("linkedin_url")]
         public string LinkedinUrl { get; set; }
     }
 
-    public class PublicAPIGetItemResponseRelatedItemsTypeItem
+    public class PublicApiGetItemResponseRelatedItemsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1062,7 +1065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Name { get; set; }
     }
 
-    public class PublicAPIGetItemResponseInternalContactsTypeItem
+    public class PublicApiGetItemResponseInternalContactsTypeItem
     {
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -1077,7 +1080,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public JToken Type { get; set; }
     }
 
-    public class PublicAPIGetItemResponseExternalContactsTypeItem
+    public class PublicApiGetItemResponseExternalContactsTypeItem
     {
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -1099,7 +1102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PublicAPIGetItemResponseNbEmployeesType
+    public enum PublicApiGetItemResponseNbEmployeesType
     {
         [EnumMember(Value = "1-10")]
         _110,
@@ -1111,13 +1114,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         _200
     }
 
-    public class PublicAPIGetItemResponseCustomFieldsType
+    public class PublicApiGetItemResponseCustomFieldsType
     {
         [JsonProperty("sourcing_partner_field")]
         public string SourcingPartnerField { get; set; }
     }
 
-    public class PublicAPIGetItemResponseFundingsTypeItem
+    public class PublicApiGetItemResponseFundingsTypeItem
     {
         [JsonProperty("investors")]
         public string Investors { get; set; }
@@ -1135,9 +1138,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Transaction { get; set; }
     }
 
-    public class PublicAPIUpdateItemResponse
+    public class PublicApiUpdateItemResponse
     {
-        [JsonProperty("typologyId")]
+        [JsonProperty("typology_id")]
         public string TypologyId { get; set; }
 
         [JsonProperty("id")]
@@ -1159,25 +1162,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string FullDescription { get; set; }
 
         [JsonProperty("tags")]
-        public PublicAPIUpdateItemResponseTagsTypeItem[] Tags { get; set; }
+        public PublicApiUpdateItemResponseTagsTypeItem[] Tags { get; set; }
 
         [JsonProperty("labels")]
         public JToken[] Labels { get; set; }
 
         [JsonProperty("sources")]
-        public PublicAPIUpdateItemResponseSourcesTypeItem[] Sources { get; set; }
+        public PublicApiUpdateItemResponseSourcesTypeItem[] Sources { get; set; }
 
         [JsonProperty("internal_contacts")]
-        public PublicAPIUpdateItemResponseInternalContactsTypeItem[] InternalContacts { get; set; }
+        public PublicApiUpdateItemResponseInternalContactsTypeItem[] InternalContacts { get; set; }
 
         [JsonProperty("external_contacts")]
-        public PublicAPIUpdateItemResponseExternalContactsTypeItem[] ExternalContacts { get; set; }
+        public PublicApiUpdateItemResponseExternalContactsTypeItem[] ExternalContacts { get; set; }
 
         [JsonProperty("creation_date")]
         public string CreationDate { get; set; }
 
         [JsonProperty("links")]
-        public PublicAPIUpdateItemResponseLinksType Links { get; set; }
+        public PublicApiUpdateItemResponseLinksType Links { get; set; }
 
         [JsonProperty("market_ids")]
         public string[] MarketIds { get; set; }
@@ -1227,11 +1230,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         [JsonProperty("competitors")]
         public string Competitors { get; set; }
 
+        [JsonProperty("typologyId")]
+        public string TypologyId2 { get; set; }
+
         [JsonProperty("related_items")]
         public JToken[] RelatedItems { get; set; }
 
         [JsonProperty("custom_fields")]
-        public PublicAPIUpdateItemResponseCustomFieldsType CustomFields { get; set; }
+        public PublicApiUpdateItemResponseCustomFieldsType CustomFields { get; set; }
 
         [JsonProperty("fundings")]
         public JToken[] Fundings { get; set; }
@@ -1243,7 +1249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string UpdatedAt { get; set; }
     }
 
-    public class PublicAPIUpdateItemResponseTagsTypeItem
+    public class PublicApiUpdateItemResponseTagsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1258,7 +1264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Category { get; set; }
     }
 
-    public class PublicAPIUpdateItemResponseSourcesTypeItem
+    public class PublicApiUpdateItemResponseSourcesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1267,7 +1273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Name { get; set; }
     }
 
-    public class PublicAPIUpdateItemResponseInternalContactsTypeItem
+    public class PublicApiUpdateItemResponseInternalContactsTypeItem
     {
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -1282,7 +1288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public JToken Type { get; set; }
     }
 
-    public class PublicAPIUpdateItemResponseExternalContactsTypeItem
+    public class PublicApiUpdateItemResponseExternalContactsTypeItem
     {
         [JsonProperty("first_name")]
         public string FirstName { get; set; }
@@ -1306,7 +1312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Position { get; set; }
     }
 
-    public class PublicAPIUpdateItemResponseLinksType
+    public class PublicApiUpdateItemResponseLinksType
     {
         [JsonProperty("facebook_url")]
         public string FacebookUrl { get; set; }
@@ -1318,13 +1324,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string LinkedinUrl { get; set; }
     }
 
-    public class PublicAPIUpdateItemResponseCustomFieldsType
+    public class PublicApiUpdateItemResponseCustomFieldsType
     {
         [JsonProperty("sourcing_partner_field")]
         public string SourcingPartnerField { get; set; }
     }
 
-    public class PublicAPIUpdateItemBodyInput
+    public class PublicApiUpdateItemBodyInput
     {
         [JsonProperty("typologyId")]
         public string TypologyId { get; set; }
@@ -1420,7 +1426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public BodyInputCustomFieldsTypeItem[] CustomFields { get; set; }
     }
 
-    public class PublicAPIGetItemDocumentsResponseItem
+    public class PublicApiGetItemDocumentsResponseItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1462,7 +1468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Format { get; set; }
     }
 
-    public class PublicAPIGetItemNotesResponseItem
+    public class PublicApiGetItemNotesResponseItem
     {
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -1507,7 +1513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Name { get; set; }
     }
 
-    public class PublicAPIAddItemNoteResponse
+    public class PublicApiAddItemNoteResponse
     {
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -1552,7 +1558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Name { get; set; }
     }
 
-    public class PublicAPIAddItemNoteBodyInput
+    public class PublicApiAddItemNoteBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1564,7 +1570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Date { get; set; }
     }
 
-    public class PublicAPICreateApplicationResponse
+    public class PublicApiCreateApplicationResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1687,19 +1693,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Email { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
     }
 
-    public class PublicAPIGetUsersReferenceResponse
+    public class PublicApiGetUsersReferenceResponse
     {
         [JsonProperty("roles")]
-        public PublicAPIGetUsersReferenceResponseRolesTypeItem[] Roles { get; set; }
+        public PublicApiGetUsersReferenceResponseRolesTypeItem[] Roles { get; set; }
 
         [JsonProperty("user_groups")]
-        public PublicAPIGetUsersReferenceResponseUserGroupsTypeItem[] UserGroups { get; set; }
+        public PublicApiGetUsersReferenceResponseUserGroupsTypeItem[] UserGroups { get; set; }
     }
 
-    public class PublicAPIGetUsersReferenceResponseRolesTypeItem
+    public class PublicApiGetUsersReferenceResponseRolesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1714,7 +1720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string TypologyFolderId { get; set; }
     }
 
-    public class PublicAPIGetUsersReferenceResponseUserGroupsTypeItem
+    public class PublicApiGetUsersReferenceResponseUserGroupsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1723,10 +1729,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Name { get; set; }
 
         [JsonProperty("roles")]
-        public PublicAPIGetUsersReferenceResponseUserGroupsTypeItemRolesTypeItem[] Roles { get; set; }
+        public PublicApiGetUsersReferenceResponseUserGroupsTypeItemRolesTypeItem[] Roles { get; set; }
     }
 
-    public class PublicAPIGetUsersReferenceResponseUserGroupsTypeItemRolesTypeItem
+    public class PublicApiGetUsersReferenceResponseUserGroupsTypeItemRolesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1741,7 +1747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string TypologyFolderId { get; set; }
     }
 
-    public class PublicAPISearchUsersResponseItem
+    public class PublicApiSearchUsersResponseItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1753,7 +1759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string LastName { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("linkedin")]
         public string Linkedin { get; set; }
@@ -1780,16 +1786,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Role { get; set; }
 
         [JsonProperty("roles")]
-        public PublicAPISearchUsersResponseItemRolesTypeItem[] Roles { get; set; }
+        public PublicApiSearchUsersResponseItemRolesTypeItem[] Roles { get; set; }
 
         [JsonProperty("groups")]
-        public PublicAPISearchUsersResponseItemGroupsTypeItem[] Groups { get; set; }
+        public PublicApiSearchUsersResponseItemGroupsTypeItem[] Groups { get; set; }
 
         [JsonProperty("suspended")]
         public bool Suspended { get; set; }
     }
 
-    public class PublicAPISearchUsersResponseItemRolesTypeItem
+    public class PublicApiSearchUsersResponseItemRolesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1804,7 +1810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string TypologyFolderId { get; set; }
     }
 
-    public class PublicAPISearchUsersResponseItemGroupsTypeItem
+    public class PublicApiSearchUsersResponseItemGroupsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1813,10 +1819,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Name { get; set; }
 
         [JsonProperty("roles")]
-        public PublicAPISearchUsersResponseItemGroupsTypeItemRolesTypeItem[] Roles { get; set; }
+        public PublicApiSearchUsersResponseItemGroupsTypeItemRolesTypeItem[] Roles { get; set; }
     }
 
-    public class PublicAPISearchUsersResponseItemGroupsTypeItemRolesTypeItem
+    public class PublicApiSearchUsersResponseItemGroupsTypeItemRolesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1831,7 +1837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string TypologyFolderId { get; set; }
     }
 
-    public class PublicAPIAddUserResponse
+    public class PublicApiAddUserResponse
     {
         [JsonProperty("provisionning_id")]
         public string ProvisionningId { get; set; }
@@ -1846,7 +1852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string LastName { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("linkedin")]
         public string Linkedin { get; set; }
@@ -1873,7 +1879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Role { get; set; }
 
         [JsonProperty("roles")]
-        public PublicAPIAddUserResponseRolesTypeItem[] Roles { get; set; }
+        public PublicApiAddUserResponseRolesTypeItem[] Roles { get; set; }
 
         [JsonProperty("groups")]
         public JToken[] Groups { get; set; }
@@ -1882,7 +1888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public bool Suspended { get; set; }
     }
 
-    public class PublicAPIAddUserResponseRolesTypeItem
+    public class PublicApiAddUserResponseRolesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1891,7 +1897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Name { get; set; }
     }
 
-    public class PublicAPIAddUserBodyInput
+    public class PublicApiAddUserBodyInput
     {
         [JsonProperty("provisionning_id")]
         public string ProvisionningId { get; set; }
@@ -1930,7 +1936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public bool? Suspended { get; set; }
     }
 
-    public class PublicAPIGetUserResponse
+    public class PublicApiGetUserResponse
     {
         [JsonProperty("provisionning_id")]
         public string ProvisionningId { get; set; }
@@ -1945,7 +1951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string LastName { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("linkedin")]
         public string Linkedin { get; set; }
@@ -1972,7 +1978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Role { get; set; }
 
         [JsonProperty("roles")]
-        public PublicAPIGetUserResponseRolesTypeItem[] Roles { get; set; }
+        public PublicApiGetUserResponseRolesTypeItem[] Roles { get; set; }
 
         [JsonProperty("groups")]
         public JToken[] Groups { get; set; }
@@ -1981,7 +1987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public bool Suspended { get; set; }
     }
 
-    public class PublicAPIGetUserResponseRolesTypeItem
+    public class PublicApiGetUserResponseRolesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1990,7 +1996,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Name { get; set; }
     }
 
-    public class PublicAPIUpdateUserResponse
+    public class PublicApiUpdateUserResponse
     {
         [JsonProperty("provisionning_id")]
         public string ProvisionningId { get; set; }
@@ -2005,7 +2011,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string LastName { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("linkedin")]
         public string Linkedin { get; set; }
@@ -2032,7 +2038,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public string Role { get; set; }
 
         [JsonProperty("roles")]
-        public PublicAPIUpdateUserResponseRolesTypeItem[] Roles { get; set; }
+        public PublicApiUpdateUserResponseRolesTypeItem[] Roles { get; set; }
 
         [JsonProperty("groups")]
         public JToken[] Groups { get; set; }
@@ -2041,7 +2047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bloomflow
         public bool Suspended { get; set; }
     }
 
-    public class PublicAPIUpdateUserResponseRolesTypeItem
+    public class PublicApiUpdateUserResponseRolesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }

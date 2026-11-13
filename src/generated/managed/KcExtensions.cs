@@ -1649,7 +1649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string BankAccountName { get; set; }
 
         [JsonProperty("bankBSB")]
-        public string BankBSB { get; set; }
+        public string BankBsb { get; set; }
 
         [JsonProperty("bankAccountNumber")]
         public string BankAccountNumber { get; set; }
@@ -1995,7 +1995,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kc
         public string BankAccountName { get; set; }
 
         [JsonProperty("bankBSB")]
-        public string BankBSB { get; set; }
+        public string BankBsb { get; set; }
 
         [JsonProperty("bankAccountNumber")]
         public string BankAccountNumber { get; set; }

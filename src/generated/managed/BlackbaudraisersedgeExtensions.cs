@@ -2157,7 +2157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AppendIDsToList(Expression<Func<AppendIDsToListBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AppendIdsToList(Expression<Func<AppendIdsToListBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -2171,7 +2171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudraisersedge")]
-        public IBodyWorkflowAction<ListApiCreatedList, ApiConnectionActionConfiguration> CreateListFromIDs(Expression<Func<CreateListFromIDsBodyInput>> body)
+        public IBodyWorkflowAction<ListApiCreatedList, ApiConnectionActionConfiguration> CreateListFromIds(Expression<Func<CreateListFromIdsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<ListApiCreatedList, ApiConnectionActionConfiguration>(() =>
@@ -2797,7 +2797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -2809,7 +2809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string ThumbnailId { get; set; }
 
         [JsonProperty("thumbnail_url")]
-        public string ThumbnailURL { get; set; }
+        public string ThumbnailUrl { get; set; }
 
         [JsonProperty("content_type")]
         public string ContentType { get; set; }
@@ -2904,7 +2904,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -2932,7 +2932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
     }
 
     public class ConstituentApiCreatedActionCustomField
@@ -3028,13 +3028,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Region { get; set; }
 
         [JsonProperty("cart")]
-        public string CART { get; set; }
+        public string Cart { get; set; }
 
         [JsonProperty("lot")]
-        public string LOT { get; set; }
+        public string Lot { get; set; }
 
         [JsonProperty("dpc")]
-        public string DPC { get; set; }
+        public string Dpc { get; set; }
 
         [JsonProperty("start")]
         public string ValidFrom { get; set; }
@@ -3112,13 +3112,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Region { get; set; }
 
         [JsonProperty("cart")]
-        public string CART { get; set; }
+        public string Cart { get; set; }
 
         [JsonProperty("lot")]
-        public string LOT { get; set; }
+        public string Lot { get; set; }
 
         [JsonProperty("dpc")]
-        public string DPC { get; set; }
+        public string Dpc { get; set; }
 
         [JsonProperty("start")]
         public string ValidFrom { get; set; }
@@ -3796,13 +3796,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Region { get; set; }
 
         [JsonProperty("cart")]
-        public string CART { get; set; }
+        public string Cart { get; set; }
 
         [JsonProperty("lot")]
-        public string LOT { get; set; }
+        public string Lot { get; set; }
 
         [JsonProperty("dpc")]
-        public string DPC { get; set; }
+        public string Dpc { get; set; }
 
         [JsonProperty("start")]
         public string ValidFrom { get; set; }
@@ -3904,7 +3904,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -3916,7 +3916,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string ThumbnailId { get; set; }
 
         [JsonProperty("thumbnail_url")]
-        public string ThumbnailURL { get; set; }
+        public string ThumbnailUrl { get; set; }
 
         [JsonProperty("content_type")]
         public string ContentType { get; set; }
@@ -4089,7 +4089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Degree { get; set; }
 
         [JsonProperty("gpa")]
-        public double GPA { get; set; }
+        public double Gpa { get; set; }
 
         [JsonProperty("majors")]
         public string[] Majors { get; set; }
@@ -4503,10 +4503,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string ConstituentId { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("thumbnail_url")]
-        public string ThumbnailURL { get; set; }
+        public string ThumbnailUrl { get; set; }
     }
 
     public class EditConstituentProfilePictureBodyInput
@@ -4714,7 +4714,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -4817,7 +4817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     public class ConstituentApiFileDefinitionFileUploadType
     {
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("method")]
         public string Method { get; set; }
@@ -4838,7 +4838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     public class ConstituentApiFileDefinitionThumbnailUploadType
     {
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("method")]
         public string Method { get; set; }
@@ -4898,7 +4898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Degree { get; set; }
 
         [JsonProperty("gpa")]
-        public double? GPA { get; set; }
+        public double? Gpa { get; set; }
 
         [JsonProperty("subject_of_study")]
         public string SubjectOfStudy { get; set; }
@@ -4997,7 +4997,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Degree { get; set; }
 
         [JsonProperty("gpa")]
-        public double? GPA { get; set; }
+        public double? Gpa { get; set; }
 
         [JsonProperty("subject_of_study")]
         public string SubjectOfStudy { get; set; }
@@ -5953,7 +5953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string DisplayName { get; set; }
 
         [JsonProperty("iso_alpha2_code")]
-        public string ISOCode { get; set; }
+        public string IsoCode { get; set; }
     }
 
     public class EditEventBodyInput
@@ -6180,7 +6180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string ContactId { get; set; }
 
         [JsonProperty("rsvp_status")]
-        public EventApiParticipantListEntryRSVPStatusType RSVPStatus { get; set; }
+        public EventApiParticipantListEntryRsvpStatusType RsvpStatus { get; set; }
 
         [JsonProperty("attended")]
         public bool Attended { get; set; }
@@ -6189,7 +6189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public EventApiParticipantListEntryInvitationStatusType InvitationStatus { get; set; }
 
         [JsonProperty("rsvp_date")]
-        public EventApiParticipantListEntryRSVPDateType RSVPDate { get; set; }
+        public EventApiParticipantListEntryRsvpDateType RsvpDate { get; set; }
 
         [JsonProperty("participation_level")]
         public EventApiParticipationLevel ParticipationLevel { get; set; }
@@ -6268,7 +6268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EventApiParticipantListEntryRSVPStatusType
+    public enum EventApiParticipantListEntryRsvpStatusType
     {
         NoResponse,
         Attending,
@@ -6287,7 +6287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         Invited
     }
 
-    public class EventApiParticipantListEntryRSVPDateType
+    public class EventApiParticipantListEntryRsvpDateType
     {
         [JsonProperty("d")]
         public int Day { get; set; }
@@ -6390,7 +6390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string HostId { get; set; }
 
         [JsonProperty("rsvp_status")]
-        public BodyInputRSVPStatusType? RSVPStatus { get; set; }
+        public BodyInputRsvpStatusType? RsvpStatus { get; set; }
 
         [JsonProperty("attended")]
         public bool? Attended { get; set; }
@@ -6399,7 +6399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public BodyInputInvitationStatusType? InvitationStatus { get; set; }
 
         [JsonProperty("rsvp_date")]
-        public BodyInputRSVPDateType RSVPDate { get; set; }
+        public BodyInputRsvpDateType RsvpDate { get; set; }
 
         [JsonProperty("invitation_date")]
         public BodyInputInvitationDateType InvitationDate { get; set; }
@@ -6409,7 +6409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BodyInputRSVPStatusType
+    public enum BodyInputRsvpStatusType
     {
         NoResponse,
         Attending,
@@ -6428,7 +6428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         Invited
     }
 
-    public class BodyInputRSVPDateType
+    public class BodyInputRsvpDateType
     {
         [JsonProperty("d")]
         public int? Day { get; set; }
@@ -6489,7 +6489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string HostId { get; set; }
 
         [JsonProperty("rsvp_status")]
-        public EventApiParticipantRSVPStatusType RSVPStatus { get; set; }
+        public EventApiParticipantRsvpStatusType RsvpStatus { get; set; }
 
         [JsonProperty("attended")]
         public bool Attended { get; set; }
@@ -6498,7 +6498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public EventApiParticipantInvitationStatusType InvitationStatus { get; set; }
 
         [JsonProperty("rsvp_date")]
-        public EventApiParticipantRSVPDateType RSVPDate { get; set; }
+        public EventApiParticipantRsvpDateType RsvpDate { get; set; }
 
         [JsonProperty("invitation_date")]
         public EventApiParticipantInvitationDateType InvitationDate { get; set; }
@@ -6514,7 +6514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EventApiParticipantRSVPStatusType
+    public enum EventApiParticipantRsvpStatusType
     {
         NoResponse,
         Attending,
@@ -6533,7 +6533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         Invited
     }
 
-    public class EventApiParticipantRSVPDateType
+    public class EventApiParticipantRsvpDateType
     {
         [JsonProperty("d")]
         public int Day { get; set; }
@@ -6566,7 +6566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string HostId { get; set; }
 
         [JsonProperty("rsvp_status")]
-        public BodyInputRSVPStatusType? RSVPStatus { get; set; }
+        public BodyInputRsvpStatusType? RsvpStatus { get; set; }
 
         [JsonProperty("attended")]
         public bool? Attended { get; set; }
@@ -6575,7 +6575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public BodyInputInvitationStatusType? InvitationStatus { get; set; }
 
         [JsonProperty("rsvp_date")]
-        public BodyInputRSVPDateType RSVPDate { get; set; }
+        public BodyInputRsvpDateType RsvpDate { get; set; }
 
         [JsonProperty("invitation_date")]
         public BodyInputInvitationDateType InvitationDate { get; set; }
@@ -6890,7 +6890,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -6902,7 +6902,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string ThumbnailId { get; set; }
 
         [JsonProperty("thumbnail_url")]
-        public string ThumbnailURL { get; set; }
+        public string ThumbnailUrl { get; set; }
 
         [JsonProperty("content_type")]
         public string ContentType { get; set; }
@@ -6997,7 +6997,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -7114,7 +7114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -7126,7 +7126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string ThumbnailId { get; set; }
 
         [JsonProperty("thumbnail_url")]
-        public string ThumbnailURL { get; set; }
+        public string ThumbnailUrl { get; set; }
 
         [JsonProperty("content_type")]
         public string ContentType { get; set; }
@@ -7221,7 +7221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -7439,7 +7439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -7451,7 +7451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string ThumbnailId { get; set; }
 
         [JsonProperty("thumbnail_url")]
-        public string ThumbnailURL { get; set; }
+        public string ThumbnailUrl { get; set; }
 
         [JsonProperty("content_type")]
         public string ContentType { get; set; }
@@ -7546,7 +7546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -7961,10 +7961,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string AccountToken { get; set; }
 
         [JsonProperty("bbps_configuration_id")]
-        public string BBPSConfigurationId { get; set; }
+        public string BbpsConfigurationId { get; set; }
 
         [JsonProperty("bbps_transaction_id")]
-        public string BBPSTransactionId { get; set; }
+        public string BbpsTransactionId { get; set; }
 
         [JsonProperty("check_date")]
         public GiftApiPaymentReadCheckDateType CheckDate { get; set; }
@@ -8247,7 +8247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -8259,7 +8259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string ThumbnailId { get; set; }
 
         [JsonProperty("thumbnail_url")]
-        public string ThumbnailURL { get; set; }
+        public string ThumbnailUrl { get; set; }
 
         [JsonProperty("content_type")]
         public string ContentType { get; set; }
@@ -8354,7 +8354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -8857,9 +8857,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string BatchNumber { get; set; }
     }
 
-    public class AppendIDsToListBodyInput
+    public class AppendIdsToListBodyInput
     {
-        public AppendIDsToListBodyInput(BodyInputListTypeType listType, string list, string[] idS)
+        public AppendIdsToListBodyInput(BodyInputListTypeType listType, string list, string[] idS)
         {
             this.ListType = listType;
             this.List = list;
@@ -8891,9 +8891,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Id { get; set; }
     }
 
-    public class CreateListFromIDsBodyInput
+    public class CreateListFromIdsBodyInput
     {
-        public CreateListFromIDsBodyInput(string name, string description, BodyInputListTypeType listType, BodyInputPermissionsType permissions, string[] idS)
+        public CreateListFromIdsBodyInput(string name, string description, BodyInputListTypeType listType, BodyInputPermissionsType permissions, string[] idS)
         {
             this.Name = name;
             this.Description = description;
@@ -9194,7 +9194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -9206,7 +9206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string ThumbnailId { get; set; }
 
         [JsonProperty("thumbnail_url")]
-        public string ThumbnailURL { get; set; }
+        public string ThumbnailUrl { get; set; }
 
         [JsonProperty("content_type")]
         public string ContentType { get; set; }
@@ -9301,7 +9301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudraisersedge
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }

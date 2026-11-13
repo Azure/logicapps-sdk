@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
     public class EonetbynasaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<EventsResponse, ApiConnectionActionConfiguration> Events(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<EventsGeoJSONStatusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magId = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
+        public IBodyWorkflowAction<EventsResponse, ApiConnectionActionConfiguration> Events(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<EventsGeoJsonStatusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magId = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<EventsGeoJSONResponse, ApiConnectionActionConfiguration> EventsGeoJSON(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<EventsGeoJSONStatusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magId = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
+        public IBodyWorkflowAction<EventsGeoJsonResponse, ApiConnectionActionConfiguration> EventsGeoJson(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<EventsGeoJsonStatusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magId = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
         {
             var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
             var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
             var __workflow_magMin = WorkflowExpression.Compile(magMin, nameof(magMin), required: false);
             var __workflow_magMax = WorkflowExpression.Compile(magMax, nameof(magMax), required: false);
             var __workflow_bbox = WorkflowExpression.Compile(bbox, nameof(bbox), required: false);
-            return new DeferredBodyAction<EventsGeoJSONResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<EventsGeoJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/events/geojson";
                 var apiCallHttpMethod = "get";
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
                     callPayload.Queries["magMax"] = ExpressionConverter.Convert(__workflow_magMax);
                 if (__workflow_bbox != null)
                     callPayload.Queries["bbox"] = ExpressionConverter.Convert(__workflow_bbox);
-                return new ApiConnectionAction<EventsGeoJSONResponse>(callPayload);
+                return new ApiConnectionAction<EventsGeoJsonResponse>(callPayload);
             });
         }
 
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum EventsGeoJSONStatusInput
+    public enum EventsGeoJsonStatusInput
     {
         [EnumMember(Value = "open")]
         Open,
@@ -266,28 +266,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         All
     }
 
-    public class EventsGeoJSONResponse
+    public class EventsGeoJsonResponse
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("features")]
-        public EventsGeoJSONResponseFeaturesTypeItem[] Features { get; set; }
+        public EventsGeoJsonResponseFeaturesTypeItem[] Features { get; set; }
     }
 
-    public class EventsGeoJSONResponseFeaturesTypeItem
+    public class EventsGeoJsonResponseFeaturesTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("properties")]
-        public EventsGeoJSONResponseFeaturesTypeItemPropertiesType Properties { get; set; }
+        public EventsGeoJsonResponseFeaturesTypeItemPropertiesType Properties { get; set; }
 
         [JsonProperty("geometry")]
-        public EventsGeoJSONResponseFeaturesTypeItemGeometryType Geometry { get; set; }
+        public EventsGeoJsonResponseFeaturesTypeItemGeometryType Geometry { get; set; }
     }
 
-    public class EventsGeoJSONResponseFeaturesTypeItemPropertiesType
+    public class EventsGeoJsonResponseFeaturesTypeItemPropertiesType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -314,13 +314,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         public string MagnitudeUnit { get; set; }
 
         [JsonProperty("categories")]
-        public EventsGeoJSONResponseFeaturesTypeItemPropertiesTypeCategoriesTypeItem[] Categories { get; set; }
+        public EventsGeoJsonResponseFeaturesTypeItemPropertiesTypeCategoriesTypeItem[] Categories { get; set; }
 
         [JsonProperty("sources")]
-        public EventsGeoJSONResponseFeaturesTypeItemPropertiesTypeSourcesTypeItem[] Sources { get; set; }
+        public EventsGeoJsonResponseFeaturesTypeItemPropertiesTypeSourcesTypeItem[] Sources { get; set; }
     }
 
-    public class EventsGeoJSONResponseFeaturesTypeItemPropertiesTypeCategoriesTypeItem
+    public class EventsGeoJsonResponseFeaturesTypeItemPropertiesTypeCategoriesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -329,7 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         public string Title { get; set; }
     }
 
-    public class EventsGeoJSONResponseFeaturesTypeItemPropertiesTypeSourcesTypeItem
+    public class EventsGeoJsonResponseFeaturesTypeItemPropertiesTypeSourcesTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         public string Url { get; set; }
     }
 
-    public class EventsGeoJSONResponseFeaturesTypeItemGeometryType
+    public class EventsGeoJsonResponseFeaturesTypeItemGeometryType
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -505,8 +505,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
 
     public class LayersResponseCategoriesTypeItemLayersTypeItemParametersTypeItem
     {
-        public string TILEMATRIXSET { get; set; }
-        public string FORMAT { get; set; }
+        [JsonProperty("TILEMATRIXSET")]
+        public string Tilematrixset { get; set; }
+
+        [JsonProperty("FORMAT")]
+        public string Format { get; set; }
     }
 
     public class SourcesResponse

@@ -559,8 +559,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         EuropeLondon,
         [EnumMember(Value = "Atlantic/Reykjavik")]
         AtlanticReykjavik,
-        GMT,
-        UTC,
+        [EnumMember(Value = "GMT")]
+        Gmt,
+        [EnumMember(Value = "UTC")]
+        Utc,
         [EnumMember(Value = "Atlantic/Azores")]
         AtlanticAzores,
         [EnumMember(Value = "Atlantic/Cape_Verde")]
@@ -1466,8 +1468,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
         EuropeLondon,
         [EnumMember(Value = "Atlantic/Reykjavik")]
         AtlanticReykjavik,
-        GMT,
-        UTC,
+        [EnumMember(Value = "GMT")]
+        Gmt,
+        [EnumMember(Value = "UTC")]
+        Utc,
         [EnumMember(Value = "Atlantic/Azores")]
         AtlanticAzores,
         [EnumMember(Value = "Atlantic/Cape_Verde")]
@@ -1827,8 +1831,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DstCalculationTimeZoneType
     {
-        UTC,
-        GMT,
+        [EnumMember(Value = "UTC")]
+        Utc,
+        [EnumMember(Value = "GMT")]
+        Gmt,
         [EnumMember(Value = "America/New_York")]
         AmericaNewYork,
         [EnumMember(Value = "America/Chicago")]
@@ -2121,8 +2127,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DstTransitionResponseTimeZoneType
     {
-        UTC,
-        GMT,
+        [EnumMember(Value = "UTC")]
+        Utc,
+        [EnumMember(Value = "GMT")]
+        Gmt,
         [EnumMember(Value = "America/New_York")]
         AmericaNewYork,
         [EnumMember(Value = "America/Chicago")]
@@ -2415,8 +2423,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Durationcalculator
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputTimeZoneType
     {
-        UTC,
-        GMT,
+        [EnumMember(Value = "UTC")]
+        Utc,
+        [EnumMember(Value = "GMT")]
+        Gmt,
         [EnumMember(Value = "America/New_York")]
         AmericaNewYork,
         [EnumMember(Value = "America/Chicago")]

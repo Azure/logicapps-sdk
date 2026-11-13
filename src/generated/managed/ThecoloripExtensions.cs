@@ -94,7 +94,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
 
         [JsonProperty("cmyk")]
         public ColorGetResponseCmykType Cmyk { get; set; }
-        public ColorGetResponseXYZType XYZ { get; set; }
+
+        [JsonProperty("XYZ")]
+        public ColorGetResponseXyzType Xyz { get; set; }
 
         [JsonProperty("image")]
         public ColorGetResponseImageType Image { get; set; }
@@ -256,10 +258,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
         public double K { get; set; }
     }
 
-    public class ColorGetResponseXYZType
+    public class ColorGetResponseXyzType
     {
         [JsonProperty("fraction")]
-        public ColorGetResponseXYZTypeFractionType Fraction { get; set; }
+        public ColorGetResponseXyzTypeFractionType Fraction { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -268,7 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
         public int Z { get; set; }
     }
 
-    public class ColorGetResponseXYZTypeFractionType
+    public class ColorGetResponseXyzTypeFractionType
     {
         public double X { get; set; }
         public double Y { get; set; }
@@ -339,7 +341,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
 
         [JsonProperty("cmyk")]
         public SchemeGetResponseColorsTypeItemCmykType Cmyk { get; set; }
-        public SchemeGetResponseColorsTypeItemXYZType XYZ { get; set; }
+
+        [JsonProperty("XYZ")]
+        public SchemeGetResponseColorsTypeItemXyzType Xyz { get; set; }
 
         [JsonProperty("image")]
         public SchemeGetResponseColorsTypeItemImageType Image { get; set; }
@@ -501,10 +505,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
         public double K { get; set; }
     }
 
-    public class SchemeGetResponseColorsTypeItemXYZType
+    public class SchemeGetResponseColorsTypeItemXyzType
     {
         [JsonProperty("fraction")]
-        public SchemeGetResponseColorsTypeItemXYZTypeFractionType Fraction { get; set; }
+        public SchemeGetResponseColorsTypeItemXyzTypeFractionType Fraction { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -513,7 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
         public int Z { get; set; }
     }
 
-    public class SchemeGetResponseColorsTypeItemXYZTypeFractionType
+    public class SchemeGetResponseColorsTypeItemXyzTypeFractionType
     {
         public double X { get; set; }
         public double Y { get; set; }
@@ -566,7 +570,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
 
         [JsonProperty("cmyk")]
         public SchemeGetResponseSeedTypeCmykType Cmyk { get; set; }
-        public SchemeGetResponseSeedTypeXYZType XYZ { get; set; }
+
+        [JsonProperty("XYZ")]
+        public SchemeGetResponseSeedTypeXyzType Xyz { get; set; }
 
         [JsonProperty("image")]
         public SchemeGetResponseSeedTypeImageType Image { get; set; }
@@ -728,10 +734,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
         public double K { get; set; }
     }
 
-    public class SchemeGetResponseSeedTypeXYZType
+    public class SchemeGetResponseSeedTypeXyzType
     {
         [JsonProperty("fraction")]
-        public SchemeGetResponseSeedTypeXYZTypeFractionType Fraction { get; set; }
+        public SchemeGetResponseSeedTypeXyzTypeFractionType Fraction { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -740,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
         public int Z { get; set; }
     }
 
-    public class SchemeGetResponseSeedTypeXYZTypeFractionType
+    public class SchemeGetResponseSeedTypeXyzTypeFractionType
     {
         public double X { get; set; }
         public double Y { get; set; }

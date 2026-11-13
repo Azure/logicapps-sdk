@@ -13,16 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
     public class MinisouphtmlparserActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<FetchHTMLResponse, ApiConnectionActionConfiguration> FetchHTML(Expression<Func<FetchHTMLBodyInput>> body)
+        public IBodyWorkflowAction<FetchHtmlResponse, ApiConnectionActionConfiguration> FetchHtml(Expression<Func<FetchHtmlBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<FetchHTMLResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<FetchHtmlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fetch-html";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<FetchHTMLResponse>(callPayload);
+                return new ApiConnectionAction<FetchHtmlResponse>(callPayload);
             });
         }
 
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
     {
     }
 
-    public class FetchHTMLResponse
+    public class FetchHtmlResponse
     {
         [JsonProperty("success")]
         public bool Success { get; set; }
@@ -96,9 +96,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         public string Html { get; set; }
     }
 
-    public class FetchHTMLBodyInput
+    public class FetchHtmlBodyInput
     {
-        public FetchHTMLBodyInput(string url)
+        public FetchHtmlBodyInput(string url)
         {
             this.Url = url;
         }

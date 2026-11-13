@@ -566,7 +566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         [EnumMember(Value = "Serial Number")]
         SerialNumber,
         [EnumMember(Value = "ISO 8601")]
-        ISO8601
+        Iso8601
     }
 
     public class CommentsList

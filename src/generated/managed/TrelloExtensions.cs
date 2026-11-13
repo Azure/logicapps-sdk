@@ -1610,7 +1610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public string FullName { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("initials")]
         public string Initials { get; set; }
@@ -1829,8 +1829,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
 
     public class SubscriptionInput
     {
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string NotificationURL { get; set; } = "#{listCallbackUrl()}";
+        [JsonProperty("NotificationURL", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

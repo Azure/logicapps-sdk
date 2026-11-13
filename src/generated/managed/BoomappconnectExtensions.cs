@@ -58,61 +58,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        public IBodyWorkflowAction<VOICEResponse, ApiConnectionActionConfiguration> VOICE(Expression<Func<VOICEBodyInput>> body = null)
+        public IBodyWorkflowAction<VoiceResponse, ApiConnectionActionConfiguration> Voice(Expression<Func<VoiceBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<VOICEResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<VoiceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/voice";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<VOICEResponse>(callPayload);
+                return new ApiConnectionAction<VoiceResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boomappconnect")]
-        public IBodyWorkflowAction<EMAILResponse, ApiConnectionActionConfiguration> EMAIL(Expression<Func<EMAILBodyInput>> body = null)
+        public IBodyWorkflowAction<EmailResponse, ApiConnectionActionConfiguration> Email(Expression<Func<EmailBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<EMAILResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<EmailResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/email";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<EMAILResponse>(callPayload);
+                return new ApiConnectionAction<EmailResponse>(callPayload);
             });
         }
     }
 
     public class BoomappconnectTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GESTRESPONSESTRIGGERResponse, ApiConnectionPollingTriggerConfiguration> GESTRESPONSESTRIGGER()
+        public IBodyWorkflowTrigger<GestresponsestriggerResponse, ApiConnectionPollingTriggerConfiguration> Gestresponsestrigger()
         {
-            return new DeferredBodyTrigger<GESTRESPONSESTRIGGERResponse, ApiConnectionPollingTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GestresponsestriggerResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/get_responses";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ignore_previous"] = Convert.ToString(true);
                 callPayload.Queries["mark_as_read"] = Convert.ToString(true);
-                return new ApiConnectionPollingTrigger<GESTRESPONSESTRIGGERResponse>(callPayload);
+                return new ApiConnectionPollingTrigger<GestresponsestriggerResponse>(callPayload);
             });
         }
 
-        public IBodyWorkflowTrigger<GETDRSTRIGGERResponse, ApiConnectionPollingTriggerConfiguration> GETDRSTRIGGER()
+        public IBodyWorkflowTrigger<GetdrstriggerResponse, ApiConnectionPollingTriggerConfiguration> Getdrstrigger()
         {
-            return new DeferredBodyTrigger<GETDRSTRIGGERResponse, ApiConnectionPollingTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<GetdrstriggerResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/get_all_new_drs";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ignore_previous"] = Convert.ToString(true);
                 callPayload.Queries["drs_after"] = Convert.ToString("1990-01-01 00:00:00");
-                return new ApiConnectionPollingTrigger<GETDRSTRIGGERResponse>(callPayload);
+                return new ApiConnectionPollingTrigger<GetdrstriggerResponse>(callPayload);
             });
         }
     }
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string TelephoneNumber { get; set; }
     }
 
-    public class VOICEResponse
+    public class VoiceResponse
     {
         [JsonProperty("status")]
         public int Status { get; set; }
@@ -264,10 +264,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string Message { get; set; }
 
         [JsonProperty("transactions")]
-        public VOICEResponseTransactionsTypeItem[] Transactions { get; set; }
+        public VoiceResponseTransactionsTypeItem[] Transactions { get; set; }
     }
 
-    public class VOICEResponseTransactionsTypeItem
+    public class VoiceResponseTransactionsTypeItem
     {
         [JsonProperty("transaction_id")]
         public string TransactionId { get; set; }
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string TelephoneNumber { get; set; }
     }
 
-    public class VOICEBodyInput
+    public class VoiceBodyInput
     {
         [JsonProperty("voice_intro")]
         public string VoiceIntro { get; set; }
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string Number { get; set; }
     }
 
-    public class EMAILResponse
+    public class EmailResponse
     {
         [JsonProperty("status")]
         public int Status { get; set; }
@@ -333,10 +333,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string Message { get; set; }
 
         [JsonProperty("transactions")]
-        public EMAILResponseTransactionsTypeItem[] Transactions { get; set; }
+        public EmailResponseTransactionsTypeItem[] Transactions { get; set; }
     }
 
-    public class EMAILResponseTransactionsTypeItem
+    public class EmailResponseTransactionsTypeItem
     {
         [JsonProperty("transaction_id")]
         public string TransactionId { get; set; }
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string EmailAddress { get; set; }
     }
 
-    public class EMAILBodyInput
+    public class EmailBodyInput
     {
         [JsonProperty("from")]
         public string From { get; set; }
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string CustomParameter { get; set; }
     }
 
-    public class GESTRESPONSESTRIGGERResponse
+    public class GestresponsestriggerResponse
     {
         [JsonProperty("status")]
         public int Status { get; set; }
@@ -396,10 +396,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public bool HasMore { get; set; }
 
         [JsonProperty("replies")]
-        public GESTRESPONSESTRIGGERResponseRepliesTypeItem[] Replies { get; set; }
+        public GestresponsestriggerResponseRepliesTypeItem[] Replies { get; set; }
     }
 
-    public class GESTRESPONSESTRIGGERResponseRepliesTypeItem
+    public class GestresponsestriggerResponseRepliesTypeItem
     {
         [JsonProperty("transaction_id")]
         public string TransactionId { get; set; }
@@ -426,7 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public string ResponseDate { get; set; }
     }
 
-    public class GETDRSTRIGGERResponse
+    public class GetdrstriggerResponse
     {
         [JsonProperty("status")]
         public int Status { get; set; }
@@ -438,10 +438,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
         public bool HasMore { get; set; }
 
         [JsonProperty("drs")]
-        public GETDRSTRIGGERResponseDrsTypeItem[] Drs { get; set; }
+        public GetdrstriggerResponseDrsTypeItem[] Drs { get; set; }
     }
 
-    public class GETDRSTRIGGERResponseDrsTypeItem
+    public class GetdrstriggerResponseDrsTypeItem
     {
         [JsonProperty("transaction_id")]
         public string TransactionId { get; set; }

@@ -1737,7 +1737,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public bool? RunForBulkActions { get; set; }
 
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

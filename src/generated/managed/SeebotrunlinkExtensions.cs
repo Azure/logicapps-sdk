@@ -13,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
     public class SeebotrunlinkActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
-        public IBodyWorkflowAction<GetLinksResponse, ApiConnectionActionConfiguration> GetLinks(Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<SearchTypesInput>> searchTypes, Expression<Func<int>> domainId)
+        public IBodyWorkflowAction<GetLinksResponse, ApiConnectionActionConfiguration> GetLinks(Expression<Func<int>> xSbrUserId, Expression<Func<string>> xSbrTokenKey, Expression<Func<SearchTypesInput>> searchTypes, Expression<Func<int>> domainId)
         {
-            var __workflow_xSBRUserId = WorkflowExpression.Compile(xSBRUserId, nameof(xSBRUserId), required: true);
-            var __workflow_xSBRTokenKey = WorkflowExpression.Compile(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
+            var __workflow_xSbrUserId = WorkflowExpression.Compile(xSbrUserId, nameof(xSbrUserId), required: true);
+            var __workflow_xSbrTokenKey = WorkflowExpression.Compile(xSbrTokenKey, nameof(xSbrTokenKey), required: true);
             var __workflow_searchTypes = WorkflowExpression.Compile(searchTypes, nameof(searchTypes), required: true);
             var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
             return new DeferredBodyAction<GetLinksResponse, ApiConnectionActionConfiguration>(() =>
@@ -29,17 +29,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
                 callPayload.Queries["search_types"] = ExpressionConverter.Convert(__workflow_searchTypes);
                 callPayload.Queries["domain_id"] = ExpressionConverter.Convert(__workflow_domainId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSBRUserId);
-                callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSBRTokenKey);
+                callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSbrUserId);
+                callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSbrTokenKey);
                 return new ApiConnectionAction<GetLinksResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
-        public IBodyWorkflowAction<CreateLinkResponse, ApiConnectionActionConfiguration> CreateLink(Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<CreateLinkBodyInput>> body)
+        public IBodyWorkflowAction<CreateLinkResponse, ApiConnectionActionConfiguration> CreateLink(Expression<Func<int>> xSbrUserId, Expression<Func<string>> xSbrTokenKey, Expression<Func<CreateLinkBodyInput>> body)
         {
-            var __workflow_xSBRUserId = WorkflowExpression.Compile(xSBRUserId, nameof(xSBRUserId), required: true);
-            var __workflow_xSBRTokenKey = WorkflowExpression.Compile(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
+            var __workflow_xSbrUserId = WorkflowExpression.Compile(xSbrUserId, nameof(xSbrUserId), required: true);
+            var __workflow_xSbrTokenKey = WorkflowExpression.Compile(xSbrTokenKey, nameof(xSbrTokenKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreateLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -47,53 +47,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSBRUserId);
-                callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSBRTokenKey);
+                callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSbrUserId);
+                callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSbrTokenKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreateLinkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
-        public IBodyWorkflowAction<GetDomainsResponse, ApiConnectionActionConfiguration> GetDomains(Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey)
+        public IBodyWorkflowAction<GetDomainsResponse, ApiConnectionActionConfiguration> GetDomains(Expression<Func<int>> xSbrUserId, Expression<Func<string>> xSbrTokenKey)
         {
-            var __workflow_xSBRUserId = WorkflowExpression.Compile(xSBRUserId, nameof(xSBRUserId), required: true);
-            var __workflow_xSBRTokenKey = WorkflowExpression.Compile(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
+            var __workflow_xSbrUserId = WorkflowExpression.Compile(xSbrUserId, nameof(xSbrUserId), required: true);
+            var __workflow_xSbrTokenKey = WorkflowExpression.Compile(xSbrTokenKey, nameof(xSbrTokenKey), required: true);
             return new DeferredBodyAction<GetDomainsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/domains";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSBRUserId);
-                callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSBRTokenKey);
+                callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSbrUserId);
+                callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSbrTokenKey);
                 return new ApiConnectionAction<GetDomainsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteLink(Expression<Func<int>> id, Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteLink(Expression<Func<int>> id, Expression<Func<int>> xSbrUserId, Expression<Func<string>> xSbrTokenKey)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_xSBRUserId = WorkflowExpression.Compile(xSBRUserId, nameof(xSBRUserId), required: true);
-            var __workflow_xSBRTokenKey = WorkflowExpression.Compile(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
+            var __workflow_xSbrUserId = WorkflowExpression.Compile(xSbrUserId, nameof(xSbrUserId), required: true);
+            var __workflow_xSbrTokenKey = WorkflowExpression.Compile(xSbrTokenKey, nameof(xSbrTokenKey), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/links/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSBRUserId);
-                callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSBRTokenKey);
+                callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSbrUserId);
+                callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSbrTokenKey);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
-        public IBodyWorkflowAction<UpdateLinkResponse, ApiConnectionActionConfiguration> UpdateLink(Expression<Func<int>> id, Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<UpdateLinkBodyInput>> body)
+        public IBodyWorkflowAction<UpdateLinkResponse, ApiConnectionActionConfiguration> UpdateLink(Expression<Func<int>> id, Expression<Func<int>> xSbrUserId, Expression<Func<string>> xSbrTokenKey, Expression<Func<UpdateLinkBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_xSBRUserId = WorkflowExpression.Compile(xSBRUserId, nameof(xSBRUserId), required: true);
-            var __workflow_xSBRTokenKey = WorkflowExpression.Compile(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
+            var __workflow_xSbrUserId = WorkflowExpression.Compile(xSbrUserId, nameof(xSbrUserId), required: true);
+            var __workflow_xSbrTokenKey = WorkflowExpression.Compile(xSbrTokenKey, nameof(xSbrTokenKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<UpdateLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -101,39 +101,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSBRUserId);
-                callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSBRTokenKey);
+                callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSbrUserId);
+                callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSbrTokenKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<UpdateLinkResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeletePredefinedLink(Expression<Func<int>> id, Expression<Func<string>> key, Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeletePredefinedLink(Expression<Func<int>> id, Expression<Func<string>> key, Expression<Func<int>> xSbrUserId, Expression<Func<string>> xSbrTokenKey)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
-            var __workflow_xSBRUserId = WorkflowExpression.Compile(xSBRUserId, nameof(xSBRUserId), required: true);
-            var __workflow_xSBRTokenKey = WorkflowExpression.Compile(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
+            var __workflow_xSbrUserId = WorkflowExpression.Compile(xSbrUserId, nameof(xSbrUserId), required: true);
+            var __workflow_xSbrTokenKey = WorkflowExpression.Compile(xSbrTokenKey, nameof(xSbrTokenKey), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/links/{0}/predefined/{1}", __workflow_id.WithUrlEncoding(1), __workflow_key.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSBRUserId);
-                callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSBRTokenKey);
+                callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSbrUserId);
+                callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSbrTokenKey);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seebotrunlink")]
-        public IBodyWorkflowAction<CreatePredefinedLinkResponse, ApiConnectionActionConfiguration> CreatePredefinedLink(Expression<Func<int>> id, Expression<Func<string>> key, Expression<Func<int>> xSBRUserId, Expression<Func<string>> xSBRTokenKey, Expression<Func<CreatePredefinedLinkBodyInput>> body)
+        public IBodyWorkflowAction<CreatePredefinedLinkResponse, ApiConnectionActionConfiguration> CreatePredefinedLink(Expression<Func<int>> id, Expression<Func<string>> key, Expression<Func<int>> xSbrUserId, Expression<Func<string>> xSbrTokenKey, Expression<Func<CreatePredefinedLinkBodyInput>> body)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
-            var __workflow_xSBRUserId = WorkflowExpression.Compile(xSBRUserId, nameof(xSBRUserId), required: true);
-            var __workflow_xSBRTokenKey = WorkflowExpression.Compile(xSBRTokenKey, nameof(xSBRTokenKey), required: true);
+            var __workflow_xSbrUserId = WorkflowExpression.Compile(xSbrUserId, nameof(xSbrUserId), required: true);
+            var __workflow_xSbrTokenKey = WorkflowExpression.Compile(xSbrTokenKey, nameof(xSbrTokenKey), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<CreatePredefinedLinkResponse, ApiConnectionActionConfiguration>(() =>
             {
@@ -141,8 +141,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seebotrunlink
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-                callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSBRUserId);
-                callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSBRTokenKey);
+                callPayload.Headers["X-SBR-UserID"] = ExpressionConverter.Convert(__workflow_xSbrUserId);
+                callPayload.Headers["X-SBR-TokenKey"] = ExpressionConverter.Convert(__workflow_xSbrTokenKey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<CreatePredefinedLinkResponse>(callPayload);
             });

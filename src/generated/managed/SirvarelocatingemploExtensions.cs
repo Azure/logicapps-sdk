@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         public string DisplayName { get; set; }
 
         [JsonProperty("isDPSClient")]
-        public bool IsDPSClient { get; set; }
+        public bool IsDpsClient { get; set; }
 
         [JsonProperty("orgUid")]
         public int OrgUid { get; set; }
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         public GetRelocationPackageResponseStatusType Status { get; set; }
 
         [JsonProperty("isReadyForESC")]
-        public bool IsReadyForESC { get; set; }
+        public bool IsReadyForEsc { get; set; }
 
         [JsonProperty("packageOwnerShip")]
         public string PackageOwnerShip { get; set; }
@@ -611,7 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         public string UserTime { get; set; }
 
         [JsonProperty("contUID")]
-        public int ContUId { get; set; }
+        public int ContUid { get; set; }
 
         [JsonProperty("outOfOffice")]
         public bool OutOfOffice { get; set; }

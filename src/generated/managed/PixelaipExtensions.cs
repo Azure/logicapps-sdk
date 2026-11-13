@@ -144,13 +144,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphSVGGetResponse, ApiConnectionActionConfiguration> GraphSVGGet(Expression<Func<string>> graphId, Expression<Func<string>> date = null, Expression<Func<ModeInput>> mode = null, Expression<Func<AppearanceInput>> appearance = null)
+        public IBodyWorkflowAction<GraphSvgGetResponse, ApiConnectionActionConfiguration> GraphSvgGet(Expression<Func<string>> graphId, Expression<Func<string>> date = null, Expression<Func<ModeInput>> mode = null, Expression<Func<AppearanceInput>> appearance = null)
         {
             var __workflow_graphId = WorkflowExpression.Compile(graphId, nameof(graphId), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
             var __workflow_mode = WorkflowExpression.Compile(mode, nameof(mode), required: false);
             var __workflow_appearance = WorkflowExpression.Compile(appearance, nameof(appearance), required: false);
-            return new DeferredBodyAction<GraphSVGGetResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GraphSvgGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v1/users/graphs/graphSVG";
                 var apiCallHttpMethod = "get";
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
                     callPayload.Queries["mode"] = ExpressionConverter.Convert(__workflow_mode);
                 if (__workflow_appearance != null)
                     callPayload.Queries["appearance"] = ExpressionConverter.Convert(__workflow_appearance);
-                return new ApiConnectionAction<GraphSVGGetResponse>(callPayload);
+                return new ApiConnectionAction<GraphSvgGetResponse>(callPayload);
             });
         }
 
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public string Token { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("agreeTermsOfService", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputAgreeTermsOfServiceType? AgreeTermsOfService { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip.BodyInputAgreeTermsOfServiceType.Yes;
@@ -455,10 +455,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public string Timezone { get; set; }
 
         [JsonProperty("aboutURL")]
-        public string AboutURL { get; set; }
+        public string AboutUrl { get; set; }
 
         [JsonProperty("contributeURLs")]
-        public string[] ContributeURLs { get; set; }
+        public string[] ContributeUrls { get; set; }
 
         [JsonProperty("pinnedGraphID")]
         public string PinnedGraphId { get; set; }
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public string Timezone { get; set; }
 
         [JsonProperty("purgeCacheURLs")]
-        public string[] PurgeCacheURLs { get; set; }
+        public string[] PurgeCacheUrls { get; set; }
 
         [JsonProperty("selfSufficient")]
         public string SelfSufficient { get; set; }
@@ -637,7 +637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public string Timezone { get; set; }
 
         [JsonProperty("purgeCacheURLs")]
-        public string[] PurgeCacheURLs { get; set; }
+        public string[] PurgeCacheUrls { get; set; }
 
         [JsonProperty("selfSufficient")]
         public string SelfSufficient { get; set; }
@@ -649,7 +649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool PublishOptionalData { get; set; }
     }
 
-    public class GraphSVGGetResponse
+    public class GraphSvgGetResponse
     {
         [JsonProperty("$content-type")]
         public string ContentType { get; set; }

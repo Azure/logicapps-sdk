@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string IncidentTitle { get; set; }
 
         [JsonProperty("self")]
-        public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
+        public string TheApiShowUrlAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
         public string IncidentDetailUrl { get; set; }
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string Summary { get; set; }
 
         [JsonProperty("self")]
-        public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
+        public string TheApiShowUrlAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
         public string HtmlUrl { get; set; }
@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string Summary { get; set; }
 
         [JsonProperty("self")]
-        public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
+        public string TheApiShowUrlAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
         public string HtmlUrl { get; set; }
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string Summary { get; set; }
 
         [JsonProperty("self")]
-        public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
+        public string TheApiShowUrlAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
         public string HtmlUrl { get; set; }
@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string Summary { get; set; }
 
         [JsonProperty("self")]
-        public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
+        public string TheApiShowUrlAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
         public string HtmlUrl { get; set; }
@@ -378,7 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string Summary { get; set; }
 
         [JsonProperty("self")]
-        public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
+        public string TheApiShowUrlAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
         public string HtmlUrl { get; set; }
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string Summary { get; set; }
 
         [JsonProperty("self")]
-        public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
+        public string TheApiShowUrlAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
         public string HtmlUrl { get; set; }
@@ -414,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string Summary { get; set; }
 
         [JsonProperty("self")]
-        public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
+        public string TheApiShowUrlAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
         public string HtmlUrl { get; set; }
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string Summary { get; set; }
 
         [JsonProperty("self")]
-        public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
+        public string TheApiShowUrlAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
         public string HtmlUrl { get; set; }
@@ -492,10 +492,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string Summary { get; set; }
 
         [JsonProperty("self")]
-        public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
+        public string TheApiShowUrlAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
-        public string HTMLURL { get; set; }
+        public string HtmlUrl { get; set; }
     }
 
     public class NotificationRule
@@ -510,10 +510,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string Summary { get; set; }
 
         [JsonProperty("self")]
-        public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
+        public string TheApiShowUrlAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
-        public string HTMLURL { get; set; }
+        public string HtmlUrl { get; set; }
     }
 
     public class AddNoteResponse
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         public string Summary { get; set; }
 
         [JsonProperty("self")]
-        public string TheAPIShowURLAtWhichTheObjectIsAccessible { get; set; }
+        public string TheApiShowUrlAtWhichTheObjectIsAccessible { get; set; }
 
         [JsonProperty("html_url")]
         public string HtmlUrl { get; set; }

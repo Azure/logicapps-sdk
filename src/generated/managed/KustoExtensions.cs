@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kusto
     public class KustoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kusto")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpKustoQueryManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<McpQueryResponse, ApiConnectionActionConfiguration> McpKustoQueryManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyAction<MCPQueryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<McpQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mcp/KustoQueryManagement";
                 var apiCallHttpMethod = "post";
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kusto
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 if (__workflow_queryRequest != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
-                return new ApiConnectionAction<MCPQueryResponse>(callPayload);
+                return new ApiConnectionAction<McpQueryResponse>(callPayload);
             });
         }
     }
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kusto
     {
     }
 
-    public class MCPQueryResponse
+    public class McpQueryResponse
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }

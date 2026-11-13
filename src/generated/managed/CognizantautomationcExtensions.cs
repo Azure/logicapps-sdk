@@ -342,11 +342,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
 
     public class CreateActivityBodyInput
     {
-        public CreateActivityBodyInput(string name, string description, string cIId, string customerId)
+        public CreateActivityBodyInput(string name, string description, string ciId, string customerId)
         {
             this.Name = name;
             this.Description = description;
-            this.CIId = cIId;
+            this.CIId = ciId;
             this.CustomerId = customerId;
         }
 
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognizantautomationc
         public string RunId { get; set; } = "@{workflow().run.name}";
 
         [JsonProperty("pa_run_name", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string WorkflowRunURL { get; set; } = "@{concat('https://india.flow.microsoft.com/manage/environments/',workflow().tags.environmentName,'/flows/',workflow().name,'/runs/',workflow().run.name)}";
+        public string WorkflowRunUrl { get; set; } = "@{concat('https://india.flow.microsoft.com/manage/environments/',workflow().tags.environmentName,'/flows/',workflow().name,'/runs/',workflow().run.name)}";
 
         [JsonProperty("SourceId", DefaultValueHandling = DefaultValueHandling.Include)]
         internal int SetSourceidAs11ToCreateActivityUnderGeneralCategory { get; set; } = 11;

@@ -29,15 +29,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopinip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopinip")]
-        public IBodyWorkflowAction<UserStickerGetResponse, ApiConnectionActionConfiguration> UserStickerGet(Expression<Func<string>> username)
+        public IBodyWorkflowAction<UserStickerGetResponse, ApiConnectionActionConfiguration> UserStickerGet(Expression<Func<string>> userName)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             return new DeferredBodyAction<UserStickerGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/stickers";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
+                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_userName);
                 return new ApiConnectionAction<UserStickerGetResponse>(callPayload);
             });
         }
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopinip
         public string Name { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("image")]
         public string Image { get; set; }

@@ -729,67 +729,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         AustraliaPerth,
         [EnumMember(Value = "Australia/Sydney")]
         AustraliaSydney,
-        CET,
-        CST6CDT,
-        EET,
-        EST,
-        EST5EDT,
+        [EnumMember(Value = "CET")]
+        Cet,
+        [EnumMember(Value = "CST6CDT")]
+        Cst6Cdt,
+        [EnumMember(Value = "EET")]
+        Eet,
+        [EnumMember(Value = "EST")]
+        Est,
+        [EnumMember(Value = "EST5EDT")]
+        Est5Edt,
         [EnumMember(Value = "Etc/GMT")]
-        EtcGMT,
+        EtcGmt,
         [EnumMember(Value = "Etc/GMT+1")]
-        EtcGMT1,
+        EtcGmt1,
         [EnumMember(Value = "Etc/GMT+10")]
-        EtcGMT10,
+        EtcGmt10,
         [EnumMember(Value = "Etc/GMT+11")]
-        EtcGMT11,
+        EtcGmt11,
         [EnumMember(Value = "Etc/GMT+12")]
-        EtcGMT12,
+        EtcGmt12,
         [EnumMember(Value = "Etc/GMT+2")]
-        EtcGMT2,
+        EtcGmt2,
         [EnumMember(Value = "Etc/GMT+3")]
-        EtcGMT3,
+        EtcGmt3,
         [EnumMember(Value = "Etc/GMT+4")]
-        EtcGMT4,
+        EtcGmt4,
         [EnumMember(Value = "Etc/GMT+5")]
-        EtcGMT5,
+        EtcGmt5,
         [EnumMember(Value = "Etc/GMT+6")]
-        EtcGMT6,
+        EtcGmt6,
         [EnumMember(Value = "Etc/GMT+7")]
-        EtcGMT7,
+        EtcGmt7,
         [EnumMember(Value = "Etc/GMT+8")]
-        EtcGMT8,
+        EtcGmt8,
         [EnumMember(Value = "Etc/GMT+9")]
-        EtcGMT9,
+        EtcGmt9,
         [EnumMember(Value = "Etc/GMT-1")]
-        EtcGMT15,
+        EtcGmt15,
         [EnumMember(Value = "Etc/GMT-10")]
-        EtcGMT102,
+        EtcGmt102,
         [EnumMember(Value = "Etc/GMT-11")]
-        EtcGMT112,
+        EtcGmt112,
         [EnumMember(Value = "Etc/GMT-12")]
-        EtcGMT122,
+        EtcGmt122,
         [EnumMember(Value = "Etc/GMT-13")]
-        EtcGMT13,
+        EtcGmt13,
         [EnumMember(Value = "Etc/GMT-14")]
-        EtcGMT14,
+        EtcGmt14,
         [EnumMember(Value = "Etc/GMT-2")]
-        EtcGMT22,
+        EtcGmt22,
         [EnumMember(Value = "Etc/GMT-3")]
-        EtcGMT32,
+        EtcGmt32,
         [EnumMember(Value = "Etc/GMT-4")]
-        EtcGMT42,
+        EtcGmt42,
         [EnumMember(Value = "Etc/GMT-5")]
-        EtcGMT52,
+        EtcGmt52,
         [EnumMember(Value = "Etc/GMT-6")]
-        EtcGMT62,
+        EtcGmt62,
         [EnumMember(Value = "Etc/GMT-7")]
-        EtcGMT72,
+        EtcGmt72,
         [EnumMember(Value = "Etc/GMT-8")]
-        EtcGMT82,
+        EtcGmt82,
         [EnumMember(Value = "Etc/GMT-9")]
-        EtcGMT92,
+        EtcGmt92,
         [EnumMember(Value = "Etc/UTC")]
-        EtcUTC,
+        EtcUtc,
         [EnumMember(Value = "Europe/Amsterdam")]
         EuropeAmsterdam,
         [EnumMember(Value = "Europe/Andorra")]
@@ -882,7 +887,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         EuropeZaporozhye,
         [EnumMember(Value = "Europe/Zurich")]
         EuropeZurich,
-        HST,
+        [EnumMember(Value = "HST")]
+        Hst,
         [EnumMember(Value = "Indian/Chagos")]
         IndianChagos,
         [EnumMember(Value = "Indian/Christmas")]
@@ -899,10 +905,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         IndianMauritius,
         [EnumMember(Value = "Indian/Reunion")]
         IndianReunion,
-        MET,
-        MST,
-        MST7MDT,
-        PST8PDT,
+        [EnumMember(Value = "MET")]
+        Met,
+        [EnumMember(Value = "MST")]
+        Mst,
+        [EnumMember(Value = "MST7MDT")]
+        Mst7Mdt,
+        [EnumMember(Value = "PST8PDT")]
+        Pst8Pdt,
         [EnumMember(Value = "Pacific/Apia")]
         PacificApia,
         [EnumMember(Value = "Pacific/Auckland")]
@@ -975,7 +985,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         PacificWake,
         [EnumMember(Value = "Pacific/Wallis")]
         PacificWallis,
-        WET
+        [EnumMember(Value = "WET")]
+        Wet
     }
 
     public class CreateNewEventAddressResponse
@@ -1558,67 +1569,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         AustraliaPerth,
         [EnumMember(Value = "Australia/Sydney")]
         AustraliaSydney,
-        CET,
-        CST6CDT,
-        EET,
-        EST,
-        EST5EDT,
+        [EnumMember(Value = "CET")]
+        Cet,
+        [EnumMember(Value = "CST6CDT")]
+        Cst6Cdt,
+        [EnumMember(Value = "EET")]
+        Eet,
+        [EnumMember(Value = "EST")]
+        Est,
+        [EnumMember(Value = "EST5EDT")]
+        Est5Edt,
         [EnumMember(Value = "Etc/GMT")]
-        EtcGMT,
+        EtcGmt,
         [EnumMember(Value = "Etc/GMT+1")]
-        EtcGMT1,
+        EtcGmt1,
         [EnumMember(Value = "Etc/GMT+10")]
-        EtcGMT10,
+        EtcGmt10,
         [EnumMember(Value = "Etc/GMT+11")]
-        EtcGMT11,
+        EtcGmt11,
         [EnumMember(Value = "Etc/GMT+12")]
-        EtcGMT12,
+        EtcGmt12,
         [EnumMember(Value = "Etc/GMT+2")]
-        EtcGMT2,
+        EtcGmt2,
         [EnumMember(Value = "Etc/GMT+3")]
-        EtcGMT3,
+        EtcGmt3,
         [EnumMember(Value = "Etc/GMT+4")]
-        EtcGMT4,
+        EtcGmt4,
         [EnumMember(Value = "Etc/GMT+5")]
-        EtcGMT5,
+        EtcGmt5,
         [EnumMember(Value = "Etc/GMT+6")]
-        EtcGMT6,
+        EtcGmt6,
         [EnumMember(Value = "Etc/GMT+7")]
-        EtcGMT7,
+        EtcGmt7,
         [EnumMember(Value = "Etc/GMT+8")]
-        EtcGMT8,
+        EtcGmt8,
         [EnumMember(Value = "Etc/GMT+9")]
-        EtcGMT9,
+        EtcGmt9,
         [EnumMember(Value = "Etc/GMT-1")]
-        EtcGMT15,
+        EtcGmt15,
         [EnumMember(Value = "Etc/GMT-10")]
-        EtcGMT102,
+        EtcGmt102,
         [EnumMember(Value = "Etc/GMT-11")]
-        EtcGMT112,
+        EtcGmt112,
         [EnumMember(Value = "Etc/GMT-12")]
-        EtcGMT122,
+        EtcGmt122,
         [EnumMember(Value = "Etc/GMT-13")]
-        EtcGMT13,
+        EtcGmt13,
         [EnumMember(Value = "Etc/GMT-14")]
-        EtcGMT14,
+        EtcGmt14,
         [EnumMember(Value = "Etc/GMT-2")]
-        EtcGMT22,
+        EtcGmt22,
         [EnumMember(Value = "Etc/GMT-3")]
-        EtcGMT32,
+        EtcGmt32,
         [EnumMember(Value = "Etc/GMT-4")]
-        EtcGMT42,
+        EtcGmt42,
         [EnumMember(Value = "Etc/GMT-5")]
-        EtcGMT52,
+        EtcGmt52,
         [EnumMember(Value = "Etc/GMT-6")]
-        EtcGMT62,
+        EtcGmt62,
         [EnumMember(Value = "Etc/GMT-7")]
-        EtcGMT72,
+        EtcGmt72,
         [EnumMember(Value = "Etc/GMT-8")]
-        EtcGMT82,
+        EtcGmt82,
         [EnumMember(Value = "Etc/GMT-9")]
-        EtcGMT92,
+        EtcGmt92,
         [EnumMember(Value = "Etc/UTC")]
-        EtcUTC,
+        EtcUtc,
         [EnumMember(Value = "Europe/Amsterdam")]
         EuropeAmsterdam,
         [EnumMember(Value = "Europe/Andorra")]
@@ -1711,7 +1727,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         EuropeZaporozhye,
         [EnumMember(Value = "Europe/Zurich")]
         EuropeZurich,
-        HST,
+        [EnumMember(Value = "HST")]
+        Hst,
         [EnumMember(Value = "Indian/Chagos")]
         IndianChagos,
         [EnumMember(Value = "Indian/Christmas")]
@@ -1728,10 +1745,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         IndianMauritius,
         [EnumMember(Value = "Indian/Reunion")]
         IndianReunion,
-        MET,
-        MST,
-        MST7MDT,
-        PST8PDT,
+        [EnumMember(Value = "MET")]
+        Met,
+        [EnumMember(Value = "MST")]
+        Mst,
+        [EnumMember(Value = "MST7MDT")]
+        Mst7Mdt,
+        [EnumMember(Value = "PST8PDT")]
+        Pst8Pdt,
         [EnumMember(Value = "Pacific/Apia")]
         PacificApia,
         [EnumMember(Value = "Pacific/Auckland")]
@@ -1804,7 +1825,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarpro
         PacificWake,
         [EnumMember(Value = "Pacific/Wallis")]
         PacificWallis,
-        WET
+        [EnumMember(Value = "WET")]
+        Wet
     }
 
     public class CreateNewEventAddress

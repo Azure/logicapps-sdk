@@ -730,7 +730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Github
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "github")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeMCPServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeMcpServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -1096,7 +1096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Github
         public string ReleasesUrl { get; set; }
 
         [JsonProperty("ssh_url")]
-        public string SSHUrl { get; set; }
+        public string SshUrl { get; set; }
 
         [JsonProperty("stargazers_url")]
         public string StargazersUrl { get; set; }
@@ -1129,7 +1129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Github
         public string HooksUrl { get; set; }
 
         [JsonProperty("svn_url")]
-        public string SVNUrl { get; set; }
+        public string SvnUrl { get; set; }
 
         [JsonProperty("homepage")]
         public string Homepage { get; set; }
@@ -1243,13 +1243,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Github
         public string Url { get; set; }
 
         [JsonProperty("spdx_id")]
-        public string SPDXId { get; set; }
+        public string SpdxId { get; set; }
 
         [JsonProperty("node_id")]
         public string NodeId { get; set; }
 
         [JsonProperty("html_url")]
-        public string HTMLUrl { get; set; }
+        public string HtmlUrl { get; set; }
     }
 
     public class RepositoryDetailsPermissionsType
@@ -1390,7 +1390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Github
         public string TemplateRepositoryReleasesUrl { get; set; }
 
         [JsonProperty("ssh_url")]
-        public string TemplateRepositorySSHUrl { get; set; }
+        public string TemplateRepositorySshUrl { get; set; }
 
         [JsonProperty("stargazers_url")]
         public string TemplateRepositoryStargazersUrl { get; set; }
@@ -1423,7 +1423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Github
         public string TemplateRepositoryHooksUrl { get; set; }
 
         [JsonProperty("svn_url")]
-        public string TemplateRepositorySVNUrl { get; set; }
+        public string TemplateRepositorySvnUrl { get; set; }
 
         [JsonProperty("homepage")]
         public string TemplateRepositoryHomepage { get; set; }
@@ -1642,7 +1642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Github
         [JsonProperty("html_url")]
         public string PullRequestHtmlUrl { get; set; }
 
-        [JsonProperty("comments_url")]
+        [JsonProperty("diff_url")]
         public string PullRequestDiffUrl { get; set; }
 
         [JsonProperty("patch_url")]
@@ -1659,6 +1659,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Github
 
         [JsonProperty("review_comment_url")]
         public string PullRequestReviewCommentUrl { get; set; }
+
+        [JsonProperty("comments_url")]
+        public string PullRequestDiffUrl2 { get; set; }
 
         [JsonProperty("statuses_url")]
         public string PullRequestStatusesUrl { get; set; }
@@ -1886,7 +1889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Github
         public string Privacy { get; set; }
 
         [JsonProperty("html_url")]
-        public string HTMLUrl { get; set; }
+        public string HtmlUrl { get; set; }
 
         [JsonProperty("repositories_url")]
         public string RepositoriesUrl { get; set; }
@@ -1895,7 +1898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Github
         public string Slug { get; set; }
 
         [JsonProperty("ldap_dn")]
-        public string LDAPDN { get; set; }
+        public string LdapDN { get; set; }
     }
 
     public class PullRequestHeadType
@@ -2126,7 +2129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Github
         public string Url { get; set; }
 
         [JsonProperty("html_url")]
-        public string HTMLUrl { get; set; }
+        public string HtmlUrl { get; set; }
 
         [JsonProperty("permalink_url")]
         public string PermanentUrl { get; set; }
@@ -2174,7 +2177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Github
         public string NodeId { get; set; }
 
         [JsonProperty("html_url")]
-        public string HTMLUrl { get; set; }
+        public string HtmlUrl { get; set; }
 
         [JsonProperty("comments_url")]
         public string CommentsUrl { get; set; }
@@ -2267,7 +2270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Github
         public string ParentBranchUrl { get; set; }
 
         [JsonProperty("html_url")]
-        public string ParentBranchHTMLUrl { get; set; }
+        public string ParentBranchHtmlUrl { get; set; }
     }
 
     public class CommitInfoStatsType

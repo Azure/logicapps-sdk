@@ -441,16 +441,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedAppeal, ApiConnectionActionConfiguration> CreateAppeal(Expression<Func<CreateAppealBodyInput>> body)
+        public IBodyWorkflowAction<NxtDataIntegrationApiCreatedAppeal, ApiConnectionActionConfiguration> CreateAppeal(Expression<Func<CreateAppealBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<NXTDataIntegrationApiCreatedAppeal, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiCreatedAppeal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/appeals";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<NXTDataIntegrationApiCreatedAppeal>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiCreatedAppeal>(callPayload);
             });
         }
 
@@ -470,16 +470,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedCampaign, ApiConnectionActionConfiguration> CreateCampaign(Expression<Func<CreateCampaignBodyInput>> body)
+        public IBodyWorkflowAction<NxtDataIntegrationApiCreatedCampaign, ApiConnectionActionConfiguration> CreateCampaign(Expression<Func<CreateCampaignBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<NXTDataIntegrationApiCreatedCampaign, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiCreatedCampaign, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/campaigns";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<NXTDataIntegrationApiCreatedCampaign>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiCreatedCampaign>(callPayload);
             });
         }
 
@@ -499,16 +499,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedConstituentAppeal, ApiConnectionActionConfiguration> CreateConstituentAppeal(Expression<Func<CreateConstituentAppealBodyInput>> body)
+        public IBodyWorkflowAction<NxtDataIntegrationApiCreatedConstituentAppeal, ApiConnectionActionConfiguration> CreateConstituentAppeal(Expression<Func<CreateConstituentAppealBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<NXTDataIntegrationApiCreatedConstituentAppeal, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiCreatedConstituentAppeal, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/constitappeals";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<NXTDataIntegrationApiCreatedConstituentAppeal>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiCreatedConstituentAppeal>(callPayload);
             });
         }
 
@@ -528,16 +528,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedFund, ApiConnectionActionConfiguration> CreateFund(Expression<Func<CreateFundBodyInput>> body)
+        public IBodyWorkflowAction<NxtDataIntegrationApiCreatedFund, ApiConnectionActionConfiguration> CreateFund(Expression<Func<CreateFundBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<NXTDataIntegrationApiCreatedFund, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiCreatedFund, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/funds";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<NXTDataIntegrationApiCreatedFund>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiCreatedFund>(callPayload);
             });
         }
 
@@ -557,12 +557,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiConstituentRelationshipCollection, ApiConnectionActionConfiguration> ListFundConstituentRelationships(Expression<Func<int>> fundId, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<NxtDataIntegrationApiConstituentRelationshipCollection, ApiConnectionActionConfiguration> ListFundConstituentRelationships(Expression<Func<int>> fundId, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_fundId = WorkflowExpression.Compile(fundId, nameof(fundId), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<NXTDataIntegrationApiConstituentRelationshipCollection, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiConstituentRelationshipCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/nxt-data-integration/v1/re/relationships/constituents/fund/{0}", __workflow_fundId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -571,17 +571,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
-                return new ApiConnectionAction<NXTDataIntegrationApiConstituentRelationshipCollection>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiConstituentRelationshipCollection>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfundraising")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiFundRelationshipCollection, ApiConnectionActionConfiguration> ListConstituentFundRelationships(Expression<Func<int>> constituentId, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<NxtDataIntegrationApiFundRelationshipCollection, ApiConnectionActionConfiguration> ListConstituentFundRelationships(Expression<Func<int>> constituentId, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<NXTDataIntegrationApiFundRelationshipCollection, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiFundRelationshipCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/nxt-data-integration/v1/re/relationships/funds/constituent/{0}", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -590,7 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
-                return new ApiConnectionAction<NXTDataIntegrationApiFundRelationshipCollection>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiFundRelationshipCollection>(callPayload);
             });
         }
     }
@@ -734,7 +734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -746,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string ThumbnailId { get; set; }
 
         [JsonProperty("thumbnail_url")]
-        public string ThumbnailURL { get; set; }
+        public string ThumbnailUrl { get; set; }
 
         [JsonProperty("content_type")]
         public string ContentType { get; set; }
@@ -880,7 +880,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -911,7 +911,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
@@ -1037,7 +1037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -1049,7 +1049,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string ThumbnailId { get; set; }
 
         [JsonProperty("thumbnail_url")]
-        public string ThumbnailURL { get; set; }
+        public string ThumbnailUrl { get; set; }
 
         [JsonProperty("content_type")]
         public string ContentType { get; set; }
@@ -1183,7 +1183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -1306,7 +1306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -1318,7 +1318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string ThumbnailId { get; set; }
 
         [JsonProperty("thumbnail_url")]
-        public string ThumbnailURL { get; set; }
+        public string ThumbnailUrl { get; set; }
 
         [JsonProperty("content_type")]
         public string ContentType { get; set; }
@@ -1452,7 +1452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -1563,7 +1563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public double Value { get; set; }
     }
 
-    public class NXTDataIntegrationApiCreatedAppeal
+    public class NxtDataIntegrationApiCreatedAppeal
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1653,7 +1653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public bool? Inactive { get; set; }
     }
 
-    public class NXTDataIntegrationApiCreatedCampaign
+    public class NxtDataIntegrationApiCreatedCampaign
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1725,7 +1725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public int? DefaultFundId { get; set; }
     }
 
-    public class NXTDataIntegrationApiCreatedConstituentAppeal
+    public class NxtDataIntegrationApiCreatedConstituentAppeal
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1803,7 +1803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Comments { get; set; }
     }
 
-    public class NXTDataIntegrationApiCreatedFund
+    public class NxtDataIntegrationApiCreatedFund
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1893,16 +1893,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public int? DefaultAppealId { get; set; }
     }
 
-    public class NXTDataIntegrationApiConstituentRelationshipCollection
+    public class NxtDataIntegrationApiConstituentRelationshipCollection
     {
         [JsonProperty("count")]
         public int Count { get; set; }
 
         [JsonProperty("value")]
-        public NXTDataIntegrationApiConstituentRelationship[] Value { get; set; }
+        public NxtDataIntegrationApiConstituentRelationship[] Value { get; set; }
     }
 
-    public class NXTDataIntegrationApiConstituentRelationship
+    public class NxtDataIntegrationApiConstituentRelationship
     {
         [JsonProperty("relation_id")]
         public int ConstituentId { get; set; }
@@ -1926,16 +1926,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfundraising
         public string Notes { get; set; }
     }
 
-    public class NXTDataIntegrationApiFundRelationshipCollection
+    public class NxtDataIntegrationApiFundRelationshipCollection
     {
         [JsonProperty("count")]
         public int Count { get; set; }
 
         [JsonProperty("value")]
-        public NXTDataIntegrationApiFundRelationship[] Value { get; set; }
+        public NxtDataIntegrationApiFundRelationship[] Value { get; set; }
     }
 
-    public class NXTDataIntegrationApiFundRelationship
+    public class NxtDataIntegrationApiFundRelationship
     {
         [JsonProperty("relation_id")]
         public int FundId { get; set; }

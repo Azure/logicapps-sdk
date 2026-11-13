@@ -13,13 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     public class Recordedfuturev2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<IPEResponse, ApiConnectionActionConfiguration> IPE(Expression<Func<string>> ip, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
+        public IBodyWorkflowAction<IpeResponse, ApiConnectionActionConfiguration> Ipe(Expression<Func<string>> ip, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
         {
             var __workflow_ip = WorkflowExpression.Compile(ip, nameof(ip), required: true);
             var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: true);
             var __workflow_intelligenceCloud = WorkflowExpression.Compile(intelligenceCloud, nameof(intelligenceCloud), required: false);
             var __workflow_htmlresponse = WorkflowExpression.Compile(htmlresponse, nameof(htmlresponse), required: false);
-            return new DeferredBodyAction<IPEResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<IpeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/lookup/ip/{0}", __workflow_ip.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
                 callPayload.Queries["htmlresponse"] = Convert.ToString(false);
                 if (__workflow_htmlresponse != null)
                     callPayload.Queries["htmlresponse"] = ExpressionConverter.Convert(__workflow_htmlresponse);
-                return new ApiConnectionAction<IPEResponse>(callPayload);
+                return new ApiConnectionAction<IpeResponse>(callPayload);
             });
         }
 
@@ -278,30 +278,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<STIXIndicatorsResponse, ApiConnectionActionConfiguration> STIXIndicators(Expression<Func<STIXIndicatorsBodyInput>> body)
+        public IBodyWorkflowAction<StixIndicatorsResponse, ApiConnectionActionConfiguration> StixIndicators(Expression<Func<StixIndicatorsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<STIXIndicatorsResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<StixIndicatorsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/threat/indicators/actors";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<STIXIndicatorsResponse>(callPayload);
+                return new ApiConnectionAction<StixIndicatorsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
-        public IBodyWorkflowAction<STIXMalwareIndicatorsResponse, ApiConnectionActionConfiguration> STIXMalwareIndicators(Expression<Func<STIXMalwareIndicatorsBodyInput>> body)
+        public IBodyWorkflowAction<StixMalwareIndicatorsResponse, ApiConnectionActionConfiguration> StixMalwareIndicators(Expression<Func<StixMalwareIndicatorsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<STIXMalwareIndicatorsResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<StixMalwareIndicatorsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/threat/indicators/malware";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<STIXMalwareIndicatorsResponse>(callPayload);
+                return new ApiConnectionAction<StixMalwareIndicatorsResponse>(callPayload);
             });
         }
 
@@ -353,19 +353,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     {
     }
 
-    public class IPEResponse
+    public class IpeResponse
     {
         [JsonProperty("data")]
-        public IPEResponseDataType Data { get; set; }
+        public IpeResponseDataType Data { get; set; }
     }
 
-    public class IPEResponseDataType
+    public class IpeResponseDataType
     {
         [JsonProperty("intelCard")]
         public string IntelCard { get; set; }
 
         [JsonProperty("risk")]
-        public IPEResponseDataTypeRiskType Risk { get; set; }
+        public IpeResponseDataTypeRiskType Risk { get; set; }
 
         [JsonProperty("links")]
         public Links Links { get; set; }
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string HtmlResponse { get; set; }
     }
 
-    public class IPEResponseDataTypeRiskType
+    public class IpeResponseDataTypeRiskType
     {
         [JsonProperty("criticalityLabel")]
         public string CriticalityLabel { get; set; }
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public int Score { get; set; }
 
         [JsonProperty("evidenceDetails")]
-        public IPEResponseDataTypeRiskTypeEvidenceDetailsTypeItem[] EvidenceDetails { get; set; }
+        public IpeResponseDataTypeRiskTypeEvidenceDetailsTypeItem[] EvidenceDetails { get; set; }
 
         [JsonProperty("riskString")]
         public string RiskString { get; set; }
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string RiskSummary { get; set; }
     }
 
-    public class IPEResponseDataTypeRiskTypeEvidenceDetailsTypeItem
+    public class IpeResponseDataTypeRiskTypeEvidenceDetailsTypeItem
     {
         [JsonProperty("mitigationString")]
         public string MitigationString { get; set; }
@@ -1276,7 +1276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
     public enum DetectionRuleSearchBodyInputEntitiesTypeItem
     {
         [EnumMember(Value = "CVE-2000-01")]
-        CVE200001,
+        Cve200001,
         [EnumMember(Value = "mitre:TA0001")]
         MitreTA0001
     }
@@ -1683,7 +1683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string[] Watchlists { get; set; }
     }
 
-    public class STIXIndicatorsResponse
+    public class StixIndicatorsResponse
     {
         [JsonProperty("data")]
         public ThreatHuntActorsItem[] Data { get; set; }
@@ -1752,7 +1752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string Url { get; set; }
     }
 
-    public class STIXIndicatorsBodyInput
+    public class StixIndicatorsBodyInput
     {
         [JsonProperty("actors")]
         public string[] Actors { get; set; }
@@ -1782,7 +1782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string ThreatHuntDescription { get; set; }
     }
 
-    public class STIXMalwareIndicatorsResponse
+    public class StixMalwareIndicatorsResponse
     {
         [JsonProperty("data")]
         public ThreatHuntMalwareItem[] Data { get; set; }
@@ -1851,7 +1851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string Url { get; set; }
     }
 
-    public class STIXMalwareIndicatorsBodyInput
+    public class StixMalwareIndicatorsBodyInput
     {
         [JsonProperty("malware")]
         public string[] Malware { get; set; }
@@ -1899,7 +1899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public AlertOwnerV2 OwnerOrganisationDetails { get; set; }
 
         [JsonProperty("url")]
-        public AlertURLV2 Url { get; set; }
+        public AlertUrlV2 Url { get; set; }
 
         [JsonProperty("rule")]
         public AlertRuleV2 Rule { get; set; }
@@ -1959,7 +1959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string OrganisationName { get; set; }
     }
 
-    public class AlertURLV2
+    public class AlertUrlV2
     {
         [JsonProperty("api")]
         public string Api { get; set; }

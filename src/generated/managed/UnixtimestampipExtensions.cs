@@ -13,17 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
     public class UnixtimestampipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
-        public IBodyWorkflowAction<Unix2UTCDateTimeResponse, ApiConnectionActionConfiguration> Unix2UTCDateTime(Expression<Func<int>> unixtimestamp = null)
+        public IBodyWorkflowAction<Unix2UtcDateTimeResponse, ApiConnectionActionConfiguration> Unix2UtcDateTime(Expression<Func<int>> unixtimestamp = null)
         {
             var __workflow_unixtimestamp = WorkflowExpression.Compile(unixtimestamp, nameof(unixtimestamp), required: false);
-            return new DeferredBodyAction<Unix2UTCDateTimeResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<Unix2UtcDateTimeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fromunixtimestamp";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_unixtimestamp != null)
                     callPayload.Queries["unixtimestamp"] = ExpressionConverter.Convert(__workflow_unixtimestamp);
-                return new ApiConnectionAction<Unix2UTCDateTimeResponse>(callPayload);
+                return new ApiConnectionAction<Unix2UtcDateTimeResponse>(callPayload);
             });
         }
 
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
     {
     }
 
-    public class Unix2UTCDateTimeResponse
+    public class Unix2UtcDateTimeResponse
     {
         public string Datetime { get; set; }
     }

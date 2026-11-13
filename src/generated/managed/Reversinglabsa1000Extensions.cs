@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveURLIntelligence(Expression<Func<string>> url)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveUrlIntelligence(Expression<Func<string>> url)
         {
             var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveListOfYARARulesets(Expression<Func<string>> type = null, Expression<Func<string>> status = null, Expression<Func<string>> source = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveListOfYaraRulesets(Expression<Func<string>> type = null, Expression<Func<string>> status = null, Expression<Func<string>> source = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
@@ -362,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveContentsOfYARARuleset(Expression<Func<string>> name)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveContentsOfYaraRuleset(Expression<Func<string>> name)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveYARAMatchesForSpecifiedRulesets(Expression<Func<string>> name, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> RetrieveYaraMatchesForSpecifiedRulesets(Expression<Func<string>> name, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetYARARulesetSynchronizationTime()
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetYaraRulesetSynchronizationTime()
         {
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CheckYARARetroStatusOnAppliance()
+        public IWorkflowAction<ApiConnectionActionConfiguration> CheckYaraRetroStatusOnAppliance()
         {
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabsa1000
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabsa1000")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> YARACloudRetroStatus(Expression<Func<string>> rulesetName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> YaraCloudRetroStatus(Expression<Func<string>> rulesetName)
         {
             var __workflow_rulesetName = WorkflowExpression.Compile(rulesetName, nameof(rulesetName), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>

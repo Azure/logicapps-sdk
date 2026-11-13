@@ -220,10 +220,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thesmsworksip
     public class SmsMessageInputMetadataType
     {
         [JsonProperty("schema")]
-        public MetaData Schema { get; set; }
+        public Metadata Schema { get; set; }
     }
 
-    public class MetaData
+    public class Metadata
     {
         [JsonProperty("key")]
         public string Key { get; set; }
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thesmsworksip
     public class QueryInputMetadataType
     {
         [JsonProperty("schema")]
-        public MetaData Schema { get; set; }
+        public Metadata Schema { get; set; }
     }
 
     public class ScheduleBatchSmsMessageInput

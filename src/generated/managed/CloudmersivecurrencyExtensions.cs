@@ -66,19 +66,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
 
     public class AvailableCurrency
     {
-        public string ISOCurrencyCode { get; set; }
+        [JsonProperty("ISOCurrencyCode")]
+        public string IsoCurrencyCode { get; set; }
         public string CurrencySymbol { get; set; }
         public string CurrencyEnglishName { get; set; }
         public string CountryName { get; set; }
         public string CountryThreeLetterCode { get; set; }
-        public string CountryISOTwoLetterCode { get; set; }
+
+        [JsonProperty("CountryISOTwoLetterCode")]
+        public string CountryIsoTwoLetterCode { get; set; }
         public bool IsEuropeanUnionMember { get; set; }
     }
 
     public class ConvertedCurrencyResult
     {
         public double ConvertedPrice { get; set; }
-        public string ISOCurrencyCode { get; set; }
+
+        [JsonProperty("ISOCurrencyCode")]
+        public string IsoCurrencyCode { get; set; }
         public string CurrencySymbol { get; set; }
         public string FormattedPriceAsString { get; set; }
     }

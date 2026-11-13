@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
         public EmailMessageInputRecipientsTypeCCTypeItem[] CC { get; set; }
 
         [JsonProperty("bCC")]
-        public EmailMessageInputRecipientsTypeBCCTypeItem[] BCC { get; set; }
+        public EmailMessageInputRecipientsTypeBccTypeItem[] Bcc { get; set; }
     }
 
     public class EmailMessageInputRecipientsTypeToTypeItem
@@ -174,9 +174,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
         public string Address { get; set; }
     }
 
-    public class EmailMessageInputRecipientsTypeBCCTypeItem
+    public class EmailMessageInputRecipientsTypeBccTypeItem
     {
-        public EmailMessageInputRecipientsTypeBCCTypeItem(string address)
+        public EmailMessageInputRecipientsTypeBccTypeItem(string address)
         {
             this.Address = address;
         }

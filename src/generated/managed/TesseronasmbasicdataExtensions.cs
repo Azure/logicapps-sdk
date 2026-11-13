@@ -401,7 +401,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmbasicdata
         public string Status { get; set; }
         public string Initials { get; set; }
         public string Title { get; set; }
-        public bool IsVIP { get; set; }
+
+        [JsonProperty("IsVIP")]
+        public bool IsVip { get; set; }
         public string Memo { get; set; }
         public string Responsibilities { get; set; }
         public int EnterpriseId { get; set; }

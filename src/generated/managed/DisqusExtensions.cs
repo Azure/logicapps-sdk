@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         public int Likes { get; set; }
 
         [JsonProperty("message")]
-        public string HTMLMessage { get; set; }
+        public string HtmlMessage { get; set; }
 
         [JsonProperty("id")]
         public string CommentId { get; set; }
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         public bool IsVerifiedAuthor { get; set; }
 
         [JsonProperty("username")]
-        public string AuthorUsername { get; set; }
+        public string AuthorUserName { get; set; }
 
         [JsonProperty("about")]
         public string AboutTheAuthor { get; set; }
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         public string AuthorName { get; set; }
 
         [JsonProperty("profileUrl")]
-        public string AuthorProfileURL { get; set; }
+        public string AuthorProfileUrl { get; set; }
 
         [JsonProperty("isAnonymous")]
         public bool IsAnonymousAuthor { get; set; }
@@ -292,10 +292,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
     public class Forum
     {
         [JsonProperty("description")]
-        public string HTMLDescription { get; set; }
+        public string HtmlDescription { get; set; }
 
         [JsonProperty("url")]
-        public string ChannelURL { get; set; }
+        public string ChannelUrl { get; set; }
 
         [JsonProperty("raw_description")]
         public string Description { get; set; }
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
     public class Thread
     {
         [JsonProperty("feed")]
-        public string RSSFeed { get; set; }
+        public string RssFeed { get; set; }
 
         [JsonProperty("dislikes")]
         public int Dislikes { get; set; }
@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         public int Likes { get; set; }
 
         [JsonProperty("message")]
-        public string HTMLMessage { get; set; }
+        public string HtmlMessage { get; set; }
 
         [JsonProperty("id")]
         public string DiscussionId { get; set; }

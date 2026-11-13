@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finra
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finra")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquityOTCBlockSummary(Expression<Func<string>> contentType, Expression<Func<int>> limit)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> EquityOtcBlockSummary(Expression<Func<string>> contentType, Expression<Func<int>> limit)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: true);

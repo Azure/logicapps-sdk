@@ -119,14 +119,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetAuditExport(Expression<Func<string>> auditId, Expression<Func<string>> exportId, Expression<Func<string>> filename)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetAuditExport(Expression<Func<string>> auditId, Expression<Func<string>> exportId, Expression<Func<string>> fileName)
         {
             var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             var __workflow_exportId = WorkflowExpression.Compile(exportId, nameof(exportId), required: true);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/exports/{1}/{2}", __workflow_auditId.WithUrlEncoding(1), __workflow_exportId.WithUrlEncoding(1), __workflow_filename.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/audits/{0}/exports/{1}/{2}", __workflow_auditId.WithUrlEncoding(1), __workflow_exportId.WithUrlEncoding(1), __workflow_fileName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<string>(callPayload);
@@ -474,7 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [EnumMember(Value = "America/Guatemala")]
         AmericaGuatemala,
         [EnumMember(Value = "Etc/UTC")]
-        EtcUTC
+        EtcUtc
     }
 
     public class ExportStatusResponse
@@ -483,10 +483,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string ExportStatus { get; set; }
 
         [JsonProperty("href")]
-        public string ExportURL { get; set; }
+        public string ExportUrl { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
     }
 
     public class GetAuditLinkResponse
@@ -772,7 +772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     public class InitiateInspectionExportFormatInput
     {
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FormatInputExportFormatType? ExportFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture.FormatInputExportFormatType.PDF;
+        public FormatInputExportFormatType? ExportFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture.FormatInputExportFormatType.Pdf;
 
         [JsonProperty("preference_id")]
         public string PreferenceId { get; set; }
@@ -781,14 +781,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FormatInputExportFormatType
     {
-        PDF,
-        WORD
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "WORD")]
+        Word
     }
 
     public class InspectionExportStatusResponse
     {
         [JsonProperty("url")]
-        public string ExportURL { get; set; }
+        public string ExportUrl { get; set; }
 
         [JsonProperty("status")]
         public string ExportStatus { get; set; }

@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> CustomAPI(Expression<Func<string>> featurePath, Expression<Func<string>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> CustomApi(Expression<Func<string>> featurePath, Expression<Func<string>> body = null)
         {
             var __workflow_featurePath = WorkflowExpression.Compile(featurePath, nameof(featurePath), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -180,8 +180,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputImageTypeType
     {
-        JPG,
-        PNG
+        [EnumMember(Value = "JPG")]
+        Jpg,
+        [EnumMember(Value = "PNG")]
+        Png
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -218,21 +220,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputCurrentImageFormatType
     {
-        BMP,
-        JPG,
-        GIF,
-        PNG,
-        TIF
+        [EnumMember(Value = "BMP")]
+        Bmp,
+        [EnumMember(Value = "JPG")]
+        Jpg,
+        [EnumMember(Value = "GIF")]
+        Gif,
+        [EnumMember(Value = "PNG")]
+        Png,
+        [EnumMember(Value = "TIF")]
+        Tif
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputNewImageFormatType
     {
-        BMP,
-        JPG,
-        GIF,
-        PNG,
-        TIF
+        [EnumMember(Value = "BMP")]
+        Bmp,
+        [EnumMember(Value = "JPG")]
+        Jpg,
+        [EnumMember(Value = "GIF")]
+        Gif,
+        [EnumMember(Value = "PNG")]
+        Png,
+        [EnumMember(Value = "TIF")]
+        Tif
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -293,16 +305,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         public BodyInputDocumentType Document { get; set; }
 
         [JsonProperty("imageTypeExtract", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputImageTypeExtractType ImageTypeExtract { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage.BodyInputImageTypeExtractType.JPG;
+        public BodyInputImageTypeExtractType ImageTypeExtract { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage.BodyInputImageTypeExtractType.Jpg;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputImageTypeExtractType
     {
-        JPG,
-        PNG,
-        TIFF,
-        BMP
+        [EnumMember(Value = "JPG")]
+        Jpg,
+        [EnumMember(Value = "PNG")]
+        Png,
+        [EnumMember(Value = "TIFF")]
+        Tiff,
+        [EnumMember(Value = "BMP")]
+        Bmp
     }
 
     public class RemoveExifTagsFromImageBodyInput

@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public double? OrderOfParty { get; set; }
 
         [JsonProperty("dic")]
-        public string SignerVATId { get; set; }
+        public string SignerVatId { get; set; }
 
         [JsonProperty("email", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SignerEmail { get; set; }
@@ -292,7 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public BodyInputPeopleTypeItemTypeOfPersonType? TypeOfPerson { get; set; }
 
         [JsonProperty("zip_code")]
-        public string SignerZIP { get; set; }
+        public string SignerZip { get; set; }
 
         [JsonProperty("is_proposer", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool ProposerOrNot { get; set; }
@@ -595,7 +595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string SignerStreet { get; set; }
 
         [JsonProperty("dic")]
-        public string SignerVATId { get; set; }
+        public string SignerVatId { get; set; }
 
         [JsonProperty("file_name", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         internal string Webhooks0Url { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("zip_code")]
-        public string SignerZIP { get; set; }
+        public string SignerZip { get; set; }
 
         [JsonProperty("sign_negotiator[position][x]", DefaultValueHandling = DefaultValueHandling.Include)]
         public int SignatureSignerX { get; set; }

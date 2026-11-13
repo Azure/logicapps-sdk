@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
         public string Os { get; set; }
 
         [JsonProperty("os_username")]
-        public string OsUsername { get; set; }
+        public string OsUserName { get; set; }
 
         [JsonProperty("timezone")]
         public string Timezone { get; set; }
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
         public BodyInputFilterTypePropertiesTypeItem[] Properties { get; set; }
 
         [JsonProperty("username_properties")]
-        public BodyInputFilterTypeUsernamePropertiesTypeItem[] UsernameProperties { get; set; }
+        public BodyInputFilterTypeUserNamePropertiesTypeItem[] UserNameProperties { get; set; }
     }
 
     public class BodyInputFilterTypeBreachPropertiesType
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BodyInputFilterTypeUsernamePropertiesTypeItem
+    public enum BodyInputFilterTypeUserNamePropertiesTypeItem
     {
         Email
     }

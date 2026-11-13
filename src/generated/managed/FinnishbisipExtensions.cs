@@ -13,15 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
     public class FinnishbisipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
-        public IBodyWorkflowAction<CompanyByBISCodeResponse, ApiConnectionActionConfiguration> CompanyByBISCode(Expression<Func<string>> businessId)
+        public IBodyWorkflowAction<CompanyByBisCodeResponse, ApiConnectionActionConfiguration> CompanyByBisCode(Expression<Func<string>> businessId)
         {
             var __workflow_businessId = WorkflowExpression.Compile(businessId, nameof(businessId), required: true);
-            return new DeferredBodyAction<CompanyByBISCodeResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CompanyByBisCodeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/bis/v1/{0}", __workflow_businessId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<CompanyByBISCodeResponse>(callPayload);
+                return new ApiConnectionAction<CompanyByBisCodeResponse>(callPayload);
             });
         }
 
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
     {
     }
 
-    public class CompanyByBISCodeResponse
+    public class CompanyByBisCodeResponse
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         public string ExceptionNoticeUri { get; set; }
 
         [JsonProperty("results")]
-        public CompanyByBISCodeResponseResultsTypeItem[] Results { get; set; }
+        public CompanyByBisCodeResponseResultsTypeItem[] Results { get; set; }
     }
 
-    public class CompanyByBISCodeResponseResultsTypeItem
+    public class CompanyByBisCodeResponseResultsTypeItem
     {
         [JsonProperty("businessId")]
         public string BusinessId { get; set; }
@@ -98,40 +98,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         public string DetailsUri { get; set; }
 
         [JsonProperty("liquidations")]
-        public CompanyByBISCodeResponseResultsTypeItemLiquidationsTypeItem[] Liquidations { get; set; }
+        public CompanyByBisCodeResponseResultsTypeItemLiquidationsTypeItem[] Liquidations { get; set; }
 
         [JsonProperty("names")]
-        public CompanyByBISCodeResponseResultsTypeItemNamesTypeItem[] Names { get; set; }
+        public CompanyByBisCodeResponseResultsTypeItemNamesTypeItem[] Names { get; set; }
 
         [JsonProperty("auxiliaryNames")]
-        public CompanyByBISCodeResponseResultsTypeItemAuxiliaryNamesTypeItem[] AuxiliaryNames { get; set; }
+        public CompanyByBisCodeResponseResultsTypeItemAuxiliaryNamesTypeItem[] AuxiliaryNames { get; set; }
 
         [JsonProperty("addresses")]
-        public CompanyByBISCodeResponseResultsTypeItemAddressesTypeItem[] Addresses { get; set; }
+        public CompanyByBisCodeResponseResultsTypeItemAddressesTypeItem[] Addresses { get; set; }
 
         [JsonProperty("companyForms")]
-        public CompanyByBISCodeResponseResultsTypeItemCompanyFormsTypeItem[] CompanyForms { get; set; }
+        public CompanyByBisCodeResponseResultsTypeItemCompanyFormsTypeItem[] CompanyForms { get; set; }
 
         [JsonProperty("businessLines")]
-        public CompanyByBISCodeResponseResultsTypeItemBusinessLinesTypeItem[] BusinessLines { get; set; }
+        public CompanyByBisCodeResponseResultsTypeItemBusinessLinesTypeItem[] BusinessLines { get; set; }
 
         [JsonProperty("languages")]
-        public CompanyByBISCodeResponseResultsTypeItemLanguagesTypeItem[] Languages { get; set; }
+        public CompanyByBisCodeResponseResultsTypeItemLanguagesTypeItem[] Languages { get; set; }
 
         [JsonProperty("registedOffices")]
-        public CompanyByBISCodeResponseResultsTypeItemRegistedOfficesTypeItem[] RegistedOffices { get; set; }
+        public CompanyByBisCodeResponseResultsTypeItemRegistedOfficesTypeItem[] RegistedOffices { get; set; }
 
         [JsonProperty("contactDetails")]
-        public CompanyByBISCodeResponseResultsTypeItemContactDetailsTypeItem[] ContactDetails { get; set; }
+        public CompanyByBisCodeResponseResultsTypeItemContactDetailsTypeItem[] ContactDetails { get; set; }
 
         [JsonProperty("registeredEntries")]
-        public CompanyByBISCodeResponseResultsTypeItemRegisteredEntriesTypeItem[] RegisteredEntries { get; set; }
+        public CompanyByBisCodeResponseResultsTypeItemRegisteredEntriesTypeItem[] RegisteredEntries { get; set; }
 
         [JsonProperty("businessIdChanges")]
-        public CompanyByBISCodeResponseResultsTypeItemBusinessIdChangesTypeItem[] BusinessIdChanges { get; set; }
+        public CompanyByBisCodeResponseResultsTypeItemBusinessIdChangesTypeItem[] BusinessIdChanges { get; set; }
     }
 
-    public class CompanyByBISCodeResponseResultsTypeItemLiquidationsTypeItem
+    public class CompanyByBisCodeResponseResultsTypeItemLiquidationsTypeItem
     {
         [JsonProperty("version")]
         public int Version { get; set; }
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         public int Source { get; set; }
     }
 
-    public class CompanyByBISCodeResponseResultsTypeItemNamesTypeItem
+    public class CompanyByBisCodeResponseResultsTypeItemNamesTypeItem
     {
         [JsonProperty("order")]
         public int Order { get; set; }
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         public string Language { get; set; }
     }
 
-    public class CompanyByBISCodeResponseResultsTypeItemAuxiliaryNamesTypeItem
+    public class CompanyByBisCodeResponseResultsTypeItemAuxiliaryNamesTypeItem
     {
         [JsonProperty("order")]
         public int Order { get; set; }
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         public string Language { get; set; }
     }
 
-    public class CompanyByBISCodeResponseResultsTypeItemAddressesTypeItem
+    public class CompanyByBisCodeResponseResultsTypeItemAddressesTypeItem
     {
         [JsonProperty("careOf")]
         public string CareOf { get; set; }
@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         public int Source { get; set; }
     }
 
-    public class CompanyByBISCodeResponseResultsTypeItemCompanyFormsTypeItem
+    public class CompanyByBisCodeResponseResultsTypeItemCompanyFormsTypeItem
     {
         [JsonProperty("version")]
         public int Version { get; set; }
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         public int Source { get; set; }
     }
 
-    public class CompanyByBISCodeResponseResultsTypeItemBusinessLinesTypeItem
+    public class CompanyByBisCodeResponseResultsTypeItemBusinessLinesTypeItem
     {
         [JsonProperty("order")]
         public int Order { get; set; }
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         public int Source { get; set; }
     }
 
-    public class CompanyByBISCodeResponseResultsTypeItemLanguagesTypeItem
+    public class CompanyByBisCodeResponseResultsTypeItemLanguagesTypeItem
     {
         [JsonProperty("version")]
         public int Version { get; set; }
@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         public int Source { get; set; }
     }
 
-    public class CompanyByBISCodeResponseResultsTypeItemRegistedOfficesTypeItem
+    public class CompanyByBisCodeResponseResultsTypeItemRegistedOfficesTypeItem
     {
         [JsonProperty("order")]
         public int Order { get; set; }
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         public int Source { get; set; }
     }
 
-    public class CompanyByBISCodeResponseResultsTypeItemContactDetailsTypeItem
+    public class CompanyByBisCodeResponseResultsTypeItemContactDetailsTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         public int Source { get; set; }
     }
 
-    public class CompanyByBISCodeResponseResultsTypeItemRegisteredEntriesTypeItem
+    public class CompanyByBisCodeResponseResultsTypeItemRegisteredEntriesTypeItem
     {
         [JsonProperty("authority")]
         public int Authority { get; set; }
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         public string Description { get; set; }
     }
 
-    public class CompanyByBISCodeResponseResultsTypeItemBusinessIdChangesTypeItem
+    public class CompanyByBisCodeResponseResultsTypeItemBusinessIdChangesTypeItem
     {
         [JsonProperty("source")]
         public int Source { get; set; }

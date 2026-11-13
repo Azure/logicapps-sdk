@@ -445,7 +445,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         RenderFlow,
         DropAndSign,
         FillAndSign,
-        PEP,
+        [EnumMember(Value = "PEP")]
+        Pep,
         Thinglysingar,
         Compliance,
         CompanyLookup

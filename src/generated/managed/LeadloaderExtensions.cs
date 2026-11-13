@@ -35,10 +35,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leadloader
     public class UploadLeadsResponse
     {
         [JsonProperty("API-Status")]
-        public string APIStatus { get; set; }
+        public string ApiStatus { get; set; }
 
         [JsonProperty("API-Response")]
-        public string APIResponse { get; set; }
+        public string ApiResponse { get; set; }
 
         [JsonProperty("Company-Result")]
         public string CompanyResult { get; set; }
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leadloader
         public string Domain { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }

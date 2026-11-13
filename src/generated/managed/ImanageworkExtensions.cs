@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> EditNVP(Expression<Func<EditNVPBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> EditNvp(Expression<Func<EditNvpBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
@@ -1875,9 +1875,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Name { get; set; }
     }
 
-    public class EditNVPBodyInput
+    public class EditNvpBodyInput
     {
-        public EditNVPBodyInput(string objectId)
+        public EditNvpBodyInput(string objectId)
         {
             this.ObjectId = objectId;
         }

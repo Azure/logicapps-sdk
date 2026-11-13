@@ -13,13 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
     public class SchipholairportipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
-        public IBodyWorkflowAction<RetrieveFlightUsingGETResponse, ApiConnectionActionConfiguration> RetrieveFlightUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> id)
+        public IBodyWorkflowAction<RetrieveFlightUsingGetResponse, ApiConnectionActionConfiguration> RetrieveFlightUsingGet(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> id)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
             var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<RetrieveFlightUsingGETResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<RetrieveFlightUsingGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/flights/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -28,12 +28,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
                 callPayload.Headers["app_key"] = ExpressionConverter.Convert(__workflow_appKey);
                 callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                return new ApiConnectionAction<RetrieveFlightUsingGETResponse>(callPayload);
+                return new ApiConnectionAction<RetrieveFlightUsingGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
-        public IBodyWorkflowAction<RetrieveFlightsForDateOrPeriodUsingGETResponse, ApiConnectionActionConfiguration> RetrieveFlightsForDateOrPeriodUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> scheduleDate = null, Expression<Func<string>> scheduleTime = null, Expression<Func<string>> flightName = null, Expression<Func<FlightDirectionInput>> flightDirection = null, Expression<Func<string>> airline = null, Expression<Func<int>> airlineCode = null, Expression<Func<string>> route = null, Expression<Func<bool>> includedelays = null, Expression<Func<int>> page = null, Expression<Func<string>> sort = null, Expression<Func<string>> fromDateTime = null, Expression<Func<string>> toDateTime = null, Expression<Func<string>> searchDateTimeField = null, Expression<Func<string>> fromScheduleDate = null, Expression<Func<string>> toScheduleDate = null)
+        public IBodyWorkflowAction<RetrieveFlightsForDateOrPeriodUsingGetResponse, ApiConnectionActionConfiguration> RetrieveFlightsForDateOrPeriodUsingGet(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> scheduleDate = null, Expression<Func<string>> scheduleTime = null, Expression<Func<string>> flightName = null, Expression<Func<FlightDirectionInput>> flightDirection = null, Expression<Func<string>> airline = null, Expression<Func<int>> airlineCode = null, Expression<Func<string>> route = null, Expression<Func<bool>> includedelays = null, Expression<Func<int>> page = null, Expression<Func<string>> sort = null, Expression<Func<string>> fromDateTime = null, Expression<Func<string>> toDateTime = null, Expression<Func<string>> searchDateTimeField = null, Expression<Func<string>> fromScheduleDate = null, Expression<Func<string>> toScheduleDate = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
             var __workflow_searchDateTimeField = WorkflowExpression.Compile(searchDateTimeField, nameof(searchDateTimeField), required: false);
             var __workflow_fromScheduleDate = WorkflowExpression.Compile(fromScheduleDate, nameof(fromScheduleDate), required: false);
             var __workflow_toScheduleDate = WorkflowExpression.Compile(toScheduleDate, nameof(toScheduleDate), required: false);
-            return new DeferredBodyAction<RetrieveFlightsForDateOrPeriodUsingGETResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<RetrieveFlightsForDateOrPeriodUsingGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/flights";
                 var apiCallHttpMethod = "get";
@@ -95,19 +95,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
                 callPayload.Headers["app_key"] = ExpressionConverter.Convert(__workflow_appKey);
                 callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                return new ApiConnectionAction<RetrieveFlightsForDateOrPeriodUsingGETResponse>(callPayload);
+                return new ApiConnectionAction<RetrieveFlightsForDateOrPeriodUsingGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
-        public IBodyWorkflowAction<RetrieveAllAirlinesUsingGETResponse, ApiConnectionActionConfiguration> RetrieveAllAirlinesUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<RetrieveAllAirlinesUsingGetResponse, ApiConnectionActionConfiguration> RetrieveAllAirlinesUsingGet(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
             var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<RetrieveAllAirlinesUsingGETResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<RetrieveAllAirlinesUsingGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/airlines";
                 var apiCallHttpMethod = "get";
@@ -122,18 +122,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
                 callPayload.Headers["app_key"] = ExpressionConverter.Convert(__workflow_appKey);
                 callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                return new ApiConnectionAction<RetrieveAllAirlinesUsingGETResponse>(callPayload);
+                return new ApiConnectionAction<RetrieveAllAirlinesUsingGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
-        public IBodyWorkflowAction<RetrieveAirlineUsingGETResponse, ApiConnectionActionConfiguration> RetrieveAirlineUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> airline)
+        public IBodyWorkflowAction<RetrieveAirlineUsingGetResponse, ApiConnectionActionConfiguration> RetrieveAirlineUsingGet(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> airline)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
             var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
             var __workflow_airline = WorkflowExpression.Compile(airline, nameof(airline), required: true);
-            return new DeferredBodyAction<RetrieveAirlineUsingGETResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<RetrieveAirlineUsingGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/airlines/{0}", __workflow_airline.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -142,12 +142,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
                 callPayload.Headers["app_key"] = ExpressionConverter.Convert(__workflow_appKey);
                 callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                return new ApiConnectionAction<RetrieveAirlineUsingGETResponse>(callPayload);
+                return new ApiConnectionAction<RetrieveAirlineUsingGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
-        public IBodyWorkflowAction<RetrieveAllAircraftTypesUsingGETResponse, ApiConnectionActionConfiguration> RetrieveAllAircraftTypesUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> iataMain = null, Expression<Func<string>> iataSub = null, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<RetrieveAllAircraftTypesUsingGetResponse, ApiConnectionActionConfiguration> RetrieveAllAircraftTypesUsingGet(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> iataMain = null, Expression<Func<string>> iataSub = null, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
             var __workflow_iataSub = WorkflowExpression.Compile(iataSub, nameof(iataSub), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<RetrieveAllAircraftTypesUsingGETResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<RetrieveAllAircraftTypesUsingGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/aircrafttypes";
                 var apiCallHttpMethod = "get";
@@ -175,19 +175,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
                 callPayload.Headers["app_key"] = ExpressionConverter.Convert(__workflow_appKey);
                 callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                return new ApiConnectionAction<RetrieveAllAircraftTypesUsingGETResponse>(callPayload);
+                return new ApiConnectionAction<RetrieveAllAircraftTypesUsingGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
-        public IBodyWorkflowAction<RetrieveAllDestinationsUsingGETResponse, ApiConnectionActionConfiguration> RetrieveAllDestinationsUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<RetrieveAllDestinationsUsingGetResponse, ApiConnectionActionConfiguration> RetrieveAllDestinationsUsingGet(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
             var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<RetrieveAllDestinationsUsingGETResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<RetrieveAllDestinationsUsingGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/destinations";
                 var apiCallHttpMethod = "get";
@@ -202,18 +202,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
                 callPayload.Headers["app_key"] = ExpressionConverter.Convert(__workflow_appKey);
                 callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                return new ApiConnectionAction<RetrieveAllDestinationsUsingGETResponse>(callPayload);
+                return new ApiConnectionAction<RetrieveAllDestinationsUsingGetResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
-        public IBodyWorkflowAction<RetrieveDestinationUsingGETResponse, ApiConnectionActionConfiguration> RetrieveDestinationUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> iata)
+        public IBodyWorkflowAction<RetrieveDestinationUsingGetResponse, ApiConnectionActionConfiguration> RetrieveDestinationUsingGet(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> iata)
         {
             var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
             var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
             var __workflow_iata = WorkflowExpression.Compile(iata, nameof(iata), required: true);
-            return new DeferredBodyAction<RetrieveDestinationUsingGETResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<RetrieveDestinationUsingGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/destinations/{0}", __workflow_iata.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
                 callPayload.Headers["app_key"] = ExpressionConverter.Convert(__workflow_appKey);
                 callPayload.Headers["ResourceVersion"] = ExpressionConverter.Convert(__workflow_resourceVersion);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                return new ApiConnectionAction<RetrieveDestinationUsingGETResponse>(callPayload);
+                return new ApiConnectionAction<RetrieveDestinationUsingGetResponse>(callPayload);
             });
         }
     }
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
     {
     }
 
-    public class RetrieveFlightUsingGETResponse
+    public class RetrieveFlightUsingGetResponse
     {
         [JsonProperty("lastUpdatedAt")]
         public string LastUpdatedAt { get; set; }
@@ -240,10 +240,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public string ActualLandingTime { get; set; }
 
         [JsonProperty("aircraftType")]
-        public RetrieveFlightUsingGETResponseAircraftTypeType AircraftType { get; set; }
+        public RetrieveFlightUsingGetResponseAircraftTypeType AircraftType { get; set; }
 
         [JsonProperty("baggageClaim")]
-        public RetrieveFlightUsingGETResponseBaggageClaimType BaggageClaim { get; set; }
+        public RetrieveFlightUsingGetResponseBaggageClaimType BaggageClaim { get; set; }
 
         [JsonProperty("estimatedLandingTime")]
         public string EstimatedLandingTime { get; set; }
@@ -270,19 +270,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public string MainFlight { get; set; }
 
         [JsonProperty("prefixIATA")]
-        public string PrefixIATA { get; set; }
+        public string PrefixIata { get; set; }
 
         [JsonProperty("prefixICAO")]
-        public string PrefixICAO { get; set; }
+        public string PrefixIcao { get; set; }
 
         [JsonProperty("airlineCode")]
         public int AirlineCode { get; set; }
 
         [JsonProperty("publicFlightState")]
-        public RetrieveFlightUsingGETResponsePublicFlightStateType PublicFlightState { get; set; }
+        public RetrieveFlightUsingGetResponsePublicFlightStateType PublicFlightState { get; set; }
 
         [JsonProperty("route")]
-        public RetrieveFlightUsingGETResponseRouteType Route { get; set; }
+        public RetrieveFlightUsingGetResponseRouteType Route { get; set; }
 
         [JsonProperty("scheduleDateTime")]
         public string ScheduleDateTime { get; set; }
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public string SchemaVersion { get; set; }
     }
 
-    public class RetrieveFlightUsingGETResponseAircraftTypeType
+    public class RetrieveFlightUsingGetResponseAircraftTypeType
     {
         [JsonProperty("iataMain")]
         public string IataMain { get; set; }
@@ -312,19 +312,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public string IataSub { get; set; }
     }
 
-    public class RetrieveFlightUsingGETResponseBaggageClaimType
+    public class RetrieveFlightUsingGetResponseBaggageClaimType
     {
         [JsonProperty("belts")]
         public string[] Belts { get; set; }
     }
 
-    public class RetrieveFlightUsingGETResponsePublicFlightStateType
+    public class RetrieveFlightUsingGetResponsePublicFlightStateType
     {
         [JsonProperty("flightStates")]
         public string[] FlightStates { get; set; }
     }
 
-    public class RetrieveFlightUsingGETResponseRouteType
+    public class RetrieveFlightUsingGetResponseRouteType
     {
         [JsonProperty("destinations")]
         public string[] Destinations { get; set; }
@@ -336,19 +336,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public bool Visa { get; set; }
     }
 
-    public class RetrieveFlightsForDateOrPeriodUsingGETResponse
+    public class RetrieveFlightsForDateOrPeriodUsingGetResponse
     {
         [JsonProperty("statusCode")]
         public int StatusCode { get; set; }
 
         [JsonProperty("headers")]
-        public RetrieveFlightsForDateOrPeriodUsingGETResponseHeadersType Headers { get; set; }
+        public RetrieveFlightsForDateOrPeriodUsingGetResponseHeadersType Headers { get; set; }
 
         [JsonProperty("body")]
-        public RetrieveFlightsForDateOrPeriodUsingGETResponseBodyType Body { get; set; }
+        public RetrieveFlightsForDateOrPeriodUsingGetResponseBodyType Body { get; set; }
     }
 
-    public class RetrieveFlightsForDateOrPeriodUsingGETResponseHeadersType
+    public class RetrieveFlightsForDateOrPeriodUsingGetResponseHeadersType
     {
         [JsonProperty("Transfer-Encoding")]
         public string TransferEncoding { get; set; }
@@ -376,13 +376,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public string ContentLength { get; set; }
     }
 
-    public class RetrieveFlightsForDateOrPeriodUsingGETResponseBodyType
+    public class RetrieveFlightsForDateOrPeriodUsingGetResponseBodyType
     {
         [JsonProperty("flights")]
-        public RetrieveFlightsForDateOrPeriodUsingGETResponseBodyTypeFlightsTypeItem[] Flights { get; set; }
+        public RetrieveFlightsForDateOrPeriodUsingGetResponseBodyTypeFlightsTypeItem[] Flights { get; set; }
     }
 
-    public class RetrieveFlightsForDateOrPeriodUsingGETResponseBodyTypeFlightsTypeItem
+    public class RetrieveFlightsForDateOrPeriodUsingGetResponseBodyTypeFlightsTypeItem
     {
         [JsonProperty("lastUpdatedAt")]
         public string LastUpdatedAt { get; set; }
@@ -391,13 +391,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public string ActualLandingTime { get; set; }
 
         [JsonProperty("aircraftType")]
-        public RetrieveFlightsForDateOrPeriodUsingGETResponseBodyTypeFlightsTypeItemAircraftTypeType AircraftType { get; set; }
+        public RetrieveFlightsForDateOrPeriodUsingGetResponseBodyTypeFlightsTypeItemAircraftTypeType AircraftType { get; set; }
 
         [JsonProperty("baggageClaim")]
-        public RetrieveFlightsForDateOrPeriodUsingGETResponseBodyTypeFlightsTypeItemBaggageClaimType BaggageClaim { get; set; }
+        public RetrieveFlightsForDateOrPeriodUsingGetResponseBodyTypeFlightsTypeItemBaggageClaimType BaggageClaim { get; set; }
 
         [JsonProperty("codeshares")]
-        public RetrieveFlightsForDateOrPeriodUsingGETResponseBodyTypeFlightsTypeItemCodesharesType Codeshares { get; set; }
+        public RetrieveFlightsForDateOrPeriodUsingGetResponseBodyTypeFlightsTypeItemCodesharesType Codeshares { get; set; }
 
         [JsonProperty("estimatedLandingTime")]
         public string EstimatedLandingTime { get; set; }
@@ -424,19 +424,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public string MainFlight { get; set; }
 
         [JsonProperty("prefixIATA")]
-        public string PrefixIATA { get; set; }
+        public string PrefixIata { get; set; }
 
         [JsonProperty("prefixICAO")]
-        public string PrefixICAO { get; set; }
+        public string PrefixIcao { get; set; }
 
         [JsonProperty("airlineCode")]
         public int AirlineCode { get; set; }
 
         [JsonProperty("publicFlightState")]
-        public RetrieveFlightsForDateOrPeriodUsingGETResponseBodyTypeFlightsTypeItemPublicFlightStateType PublicFlightState { get; set; }
+        public RetrieveFlightsForDateOrPeriodUsingGetResponseBodyTypeFlightsTypeItemPublicFlightStateType PublicFlightState { get; set; }
 
         [JsonProperty("route")]
-        public RetrieveFlightsForDateOrPeriodUsingGETResponseBodyTypeFlightsTypeItemRouteType Route { get; set; }
+        public RetrieveFlightsForDateOrPeriodUsingGetResponseBodyTypeFlightsTypeItemRouteType Route { get; set; }
 
         [JsonProperty("scheduleDateTime")]
         public string ScheduleDateTime { get; set; }
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public string PublicEstimatedOffBlockTime { get; set; }
     }
 
-    public class RetrieveFlightsForDateOrPeriodUsingGETResponseBodyTypeFlightsTypeItemAircraftTypeType
+    public class RetrieveFlightsForDateOrPeriodUsingGetResponseBodyTypeFlightsTypeItemAircraftTypeType
     {
         [JsonProperty("iataMain")]
         public string IataMain { get; set; }
@@ -475,25 +475,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public string IataSub { get; set; }
     }
 
-    public class RetrieveFlightsForDateOrPeriodUsingGETResponseBodyTypeFlightsTypeItemBaggageClaimType
+    public class RetrieveFlightsForDateOrPeriodUsingGetResponseBodyTypeFlightsTypeItemBaggageClaimType
     {
         [JsonProperty("belts")]
         public string[] Belts { get; set; }
     }
 
-    public class RetrieveFlightsForDateOrPeriodUsingGETResponseBodyTypeFlightsTypeItemCodesharesType
+    public class RetrieveFlightsForDateOrPeriodUsingGetResponseBodyTypeFlightsTypeItemCodesharesType
     {
         [JsonProperty("codeshares")]
         public string[] Codeshares { get; set; }
     }
 
-    public class RetrieveFlightsForDateOrPeriodUsingGETResponseBodyTypeFlightsTypeItemPublicFlightStateType
+    public class RetrieveFlightsForDateOrPeriodUsingGetResponseBodyTypeFlightsTypeItemPublicFlightStateType
     {
         [JsonProperty("flightStates")]
         public string[] FlightStates { get; set; }
     }
 
-    public class RetrieveFlightsForDateOrPeriodUsingGETResponseBodyTypeFlightsTypeItemRouteType
+    public class RetrieveFlightsForDateOrPeriodUsingGetResponseBodyTypeFlightsTypeItemRouteType
     {
         [JsonProperty("destinations")]
         public string[] Destinations { get; set; }
@@ -512,13 +512,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         D
     }
 
-    public class RetrieveAllAirlinesUsingGETResponse
+    public class RetrieveAllAirlinesUsingGetResponse
     {
         [JsonProperty("airlines")]
-        public RetrieveAllAirlinesUsingGETResponseAirlinesTypeItem[] Airlines { get; set; }
+        public RetrieveAllAirlinesUsingGetResponseAirlinesTypeItem[] Airlines { get; set; }
     }
 
-    public class RetrieveAllAirlinesUsingGETResponseAirlinesTypeItem
+    public class RetrieveAllAirlinesUsingGetResponseAirlinesTypeItem
     {
         [JsonProperty("nvls")]
         public int Nvls { get; set; }
@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public string Iata { get; set; }
     }
 
-    public class RetrieveAirlineUsingGETResponse
+    public class RetrieveAirlineUsingGetResponse
     {
         [JsonProperty("iata")]
         public string Iata { get; set; }
@@ -548,13 +548,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public string PublicName { get; set; }
     }
 
-    public class RetrieveAllAircraftTypesUsingGETResponse
+    public class RetrieveAllAircraftTypesUsingGetResponse
     {
         [JsonProperty("aircraftTypes")]
-        public RetrieveAllAircraftTypesUsingGETResponseAircraftTypesTypeItem[] AircraftTypes { get; set; }
+        public RetrieveAllAircraftTypesUsingGetResponseAircraftTypesTypeItem[] AircraftTypes { get; set; }
     }
 
-    public class RetrieveAllAircraftTypesUsingGETResponseAircraftTypesTypeItem
+    public class RetrieveAllAircraftTypesUsingGetResponseAircraftTypesTypeItem
     {
         [JsonProperty("iataMain")]
         public string IataMain { get; set; }
@@ -569,13 +569,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public string ShortDescription { get; set; }
     }
 
-    public class RetrieveAllDestinationsUsingGETResponse
+    public class RetrieveAllDestinationsUsingGetResponse
     {
         [JsonProperty("destinations")]
-        public RetrieveAllDestinationsUsingGETResponseDestinationsTypeItem[] Destinations { get; set; }
+        public RetrieveAllDestinationsUsingGetResponseDestinationsTypeItem[] Destinations { get; set; }
     }
 
-    public class RetrieveAllDestinationsUsingGETResponseDestinationsTypeItem
+    public class RetrieveAllDestinationsUsingGetResponseDestinationsTypeItem
     {
         [JsonProperty("city")]
         public string City { get; set; }
@@ -587,10 +587,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public string Iata { get; set; }
 
         [JsonProperty("publicName")]
-        public RetrieveAllDestinationsUsingGETResponseDestinationsTypeItemPublicNameType PublicName { get; set; }
+        public RetrieveAllDestinationsUsingGetResponseDestinationsTypeItemPublicNameType PublicName { get; set; }
     }
 
-    public class RetrieveAllDestinationsUsingGETResponseDestinationsTypeItemPublicNameType
+    public class RetrieveAllDestinationsUsingGetResponseDestinationsTypeItemPublicNameType
     {
         [JsonProperty("dutch")]
         public string Dutch { get; set; }
@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public string English { get; set; }
     }
 
-    public class RetrieveDestinationUsingGETResponse
+    public class RetrieveDestinationUsingGetResponse
     {
         [JsonProperty("country")]
         public string Country { get; set; }
@@ -608,10 +608,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public string Iata { get; set; }
 
         [JsonProperty("publicName")]
-        public RetrieveDestinationUsingGETResponsePublicNameType PublicName { get; set; }
+        public RetrieveDestinationUsingGetResponsePublicNameType PublicName { get; set; }
     }
 
-    public class RetrieveDestinationUsingGETResponsePublicNameType
+    public class RetrieveDestinationUsingGetResponsePublicNameType
     {
         [JsonProperty("dutch")]
         public string Dutch { get; set; }

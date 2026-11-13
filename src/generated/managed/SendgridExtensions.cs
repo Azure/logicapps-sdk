@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         public string Bcc { get; set; }
 
         [JsonProperty("bccname")]
-        public string BCCNames { get; set; }
+        public string BccNames { get; set; }
     }
 
     public class EmailAttachment

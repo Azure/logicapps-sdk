@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse, ApiConnectionActionConfiguration> PivotMXIP(Expression<Func<string>> mailserverIp, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse, ApiConnectionActionConfiguration> PivotMxip(Expression<Func<string>> mailserverIp, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
             var __workflow_mailserverIp = WorkflowExpression.Compile(mailserverIp, nameof(mailserverIp), required: true);
             var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse, ApiConnectionActionConfiguration> PivotSSLHash(Expression<Func<string>> sslHash, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse, ApiConnectionActionConfiguration> PivotSslHash(Expression<Func<string>> sslHash, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
             var __workflow_sslHash = WorkflowExpression.Compile(sslHash, nameof(sslHash), required: true);
             var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse, ApiConnectionActionConfiguration> PivotSSLEmail(Expression<Func<string>> sslEmail, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        public IBodyWorkflowAction<InvestigateResponse, ApiConnectionActionConfiguration> PivotSslEmail(Expression<Func<string>> sslEmail, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
             var __workflow_sslEmail = WorkflowExpression.Compile(sslEmail, nameof(sslEmail), required: true);
             var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
@@ -1305,7 +1305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
     public class AccountResponseAccountType
     {
         [JsonProperty("api_username")]
-        public string ApiUsername { get; set; }
+        public string ApiUserName { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }

@@ -448,20 +448,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         public int AccessionP3 { get; set; }
         public int FilingType { get; set; }
         public string ReportedOn { get; set; }
+        public int Issuer { get; set; }
 
         [JsonProperty("_Issuer")]
-        public string Issuer { get; set; }
+        public string Issuer2 { get; set; }
+        public int Owner { get; set; }
 
         [JsonProperty("_Owner")]
-        public string Owner { get; set; }
+        public string Owner2 { get; set; }
     }
 
     public class LatestTransactionsResponseItem
     {
         public string Id { get; set; }
+        public string FromFiling { get; set; }
 
         [JsonProperty("_FromFiling")]
-        public LatestTransactionsResponseItemFromFilingType FromFiling { get; set; }
+        public LatestTransactionsResponseItemFromFiling2Type FromFiling2 { get; set; }
         public int EntryType { get; set; }
         public double QuantityOwnedFollowingTransaction { get; set; }
         public int DirectIndirect { get; set; }
@@ -479,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         public double UnderlyingSecurityQuantity { get; set; }
     }
 
-    public class LatestTransactionsResponseItemFromFilingType
+    public class LatestTransactionsResponseItemFromFiling2Type
     {
         public string Id { get; set; }
         public string FilingUrl { get; set; }
@@ -488,22 +491,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         public int AccessionP3 { get; set; }
         public string FilingType { get; set; }
         public string ReportedOn { get; set; }
+        public int Issuer { get; set; }
 
         [JsonProperty("_Issuer")]
-        public LatestTransactionsResponseItemFromFilingTypeIssuerType Issuer { get; set; }
+        public LatestTransactionsResponseItemFromFiling2TypeIssuer2Type Issuer2 { get; set; }
+        public int Owner { get; set; }
 
         [JsonProperty("_Owner")]
-        public LatestTransactionsResponseItemFromFilingTypeOwnerType Owner { get; set; }
+        public LatestTransactionsResponseItemFromFiling2TypeOwner2Type Owner2 { get; set; }
     }
 
-    public class LatestTransactionsResponseItemFromFilingTypeIssuerType
+    public class LatestTransactionsResponseItemFromFiling2TypeIssuer2Type
     {
         public int Cik { get; set; }
         public string Name { get; set; }
         public string TradingSymbol { get; set; }
     }
 
-    public class LatestTransactionsResponseItemFromFilingTypeOwnerType
+    public class LatestTransactionsResponseItemFromFiling2TypeOwner2Type
     {
         public int Cik { get; set; }
         public string Name { get; set; }
@@ -690,7 +695,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         public double RevenuePerShare { get; set; }
         public double QuarterlyRevenueGrowth { get; set; }
         public double GrossProfit { get; set; }
-        public double EDBITDA { get; set; }
+
+        [JsonProperty("EDBITDA")]
+        public double Edbitda { get; set; }
         public double NetIncomeAvailableToCommon { get; set; }
         public double QuarterlyEarningsGrowth { get; set; }
         public double Cash { get; set; }

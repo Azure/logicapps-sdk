@@ -13,17 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
     public class PdflessActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfless")]
-        public IBodyWorkflowAction<PDFDtoApiResult, ApiConnectionActionConfiguration> CreatePDF(Expression<Func<string>> version, Expression<Func<CommandInput>> command)
+        public IBodyWorkflowAction<PdfDtoApiResult, ApiConnectionActionConfiguration> CreatePdf(Expression<Func<string>> version, Expression<Func<CommandInput>> command)
         {
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             var __workflow_command = WorkflowExpression.Compile(command, nameof(command), required: true);
-            return new DeferredBodyAction<PDFDtoApiResult, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PdfDtoApiResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v{0}/pdfs", __workflow_version.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_command);
-                return new ApiConnectionAction<PDFDtoApiResult>(callPayload);
+                return new ApiConnectionAction<PdfDtoApiResult>(callPayload);
             });
         }
     }
@@ -32,16 +32,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
     {
     }
 
-    public class PDFDtoApiResult
+    public class PdfDtoApiResult
     {
         [JsonProperty("data")]
-        public PDFDto Data { get; set; }
+        public PdfDto Data { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class PDFDto
+    public class PdfDto
     {
         [JsonProperty("reference_id")]
         public string ReferenceId { get; set; }

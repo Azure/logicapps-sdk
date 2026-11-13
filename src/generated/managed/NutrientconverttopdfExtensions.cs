@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InputDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputDataInputOutputFormatType.PDF;
+        public InputDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputDataInputOutputFormatType.Pdf;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
@@ -227,35 +227,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InputDataInputOutputFormatType
     {
-        PDF,
-        XPS,
-        DOCX,
-        DOC,
-        ODT,
-        RTF,
-        TXT,
-        MHT,
-        HTML,
-        XML,
-        XLS,
-        XLSX,
-        CSV,
-        ODS,
-        PPT,
-        PPTX,
-        ODP,
-        PPS,
-        PPSX,
-        TIFF,
-        PNG,
-        GIF,
-        JPG,
-        BMP,
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "XPS")]
+        Xps,
+        [EnumMember(Value = "DOCX")]
+        Docx,
+        [EnumMember(Value = "DOC")]
+        Doc,
+        [EnumMember(Value = "ODT")]
+        Odt,
+        [EnumMember(Value = "RTF")]
+        Rtf,
+        [EnumMember(Value = "TXT")]
+        Txt,
+        [EnumMember(Value = "MHT")]
+        Mht,
+        [EnumMember(Value = "HTML")]
+        Html,
+        [EnumMember(Value = "XML")]
+        Xml,
+        [EnumMember(Value = "XLS")]
+        Xls,
+        [EnumMember(Value = "XLSX")]
+        Xlsx,
+        [EnumMember(Value = "CSV")]
+        Csv,
+        [EnumMember(Value = "ODS")]
+        Ods,
+        [EnumMember(Value = "PPT")]
+        Ppt,
+        [EnumMember(Value = "PPTX")]
+        Pptx,
+        [EnumMember(Value = "ODP")]
+        Odp,
+        [EnumMember(Value = "PPS")]
+        Pps,
+        [EnumMember(Value = "PPSX")]
+        Ppsx,
+        [EnumMember(Value = "TIFF")]
+        Tiff,
+        [EnumMember(Value = "PNG")]
+        Png,
+        [EnumMember(Value = "GIF")]
+        Gif,
+        [EnumMember(Value = "JPG")]
+        Jpg,
+        [EnumMember(Value = "BMP")]
+        Bmp,
         PS,
-        PCL,
-        EPS,
-        FDF,
-        XFDF
+        [EnumMember(Value = "PCL")]
+        Pcl,
+        [EnumMember(Value = "EPS")]
+        Eps,
+        [EnumMember(Value = "FDF")]
+        Fdf,
+        [EnumMember(Value = "XFDF")]
+        Xfdf
     }
 
     public class InputCadDataInput
@@ -437,7 +465,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     {
         Default,
         Merge,
-        AttachAsPDF,
+        [EnumMember(Value = "AttachAsPDF")]
+        AttachAsPdf,
         AttachOriginal
     }
 
@@ -486,7 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InputExcelDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputExcelDataInputOutputFormatType.PDF;
+        public InputExcelDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputExcelDataInputOutputFormatType.Pdf;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
@@ -525,20 +554,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InputExcelDataInputOutputFormatType
     {
-        PDF,
-        XPS,
-        DOCX,
-        DOC,
-        ODT,
-        RTF,
-        TXT,
-        MHT,
-        HTML,
-        XML,
-        XLS,
-        XLSX,
-        CSV,
-        ODS
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "XPS")]
+        Xps,
+        [EnumMember(Value = "DOCX")]
+        Docx,
+        [EnumMember(Value = "DOC")]
+        Doc,
+        [EnumMember(Value = "ODT")]
+        Odt,
+        [EnumMember(Value = "RTF")]
+        Rtf,
+        [EnumMember(Value = "TXT")]
+        Txt,
+        [EnumMember(Value = "MHT")]
+        Mht,
+        [EnumMember(Value = "HTML")]
+        Html,
+        [EnumMember(Value = "XML")]
+        Xml,
+        [EnumMember(Value = "XLS")]
+        Xls,
+        [EnumMember(Value = "XLSX")]
+        Xlsx,
+        [EnumMember(Value = "CSV")]
+        Csv,
+        [EnumMember(Value = "ODS")]
+        Ods
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -559,16 +602,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
 
     public class ConvertHtmlInputDataInput
     {
-        public ConvertHtmlInputDataInput(string sourceURLOrHTML)
+        public ConvertHtmlInputDataInput(string sourceUrlOrHtml)
         {
-            this.SourceURLOrHTML = sourceURLOrHTML;
+            this.SourceUrlOrHtml = sourceUrlOrHtml;
         }
 
         [JsonProperty("use_async_pattern", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool UseAsyncPattern { get; set; } = false;
 
         [JsonProperty("source_url_or_html", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceURLOrHTML { get; set; }
+        public string SourceUrlOrHtml { get; set; }
 
         [JsonProperty("page_orientation", DefaultValueHandling = DefaultValueHandling.Include)]
         public InputDataInputPageOrientationType? PageOrientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputDataInputPageOrientationType.Portrait;
@@ -636,7 +679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InputInfopathDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputInfopathDataInputOutputFormatType.PDF;
+        public InputInfopathDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputInfopathDataInputOutputFormatType.Pdf;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
@@ -702,20 +745,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InputInfopathDataInputOutputFormatType
     {
-        PDF,
-        XPS,
-        DOCX,
-        DOC,
-        ODT,
-        RTF,
-        TXT,
-        MHT,
-        HTML,
-        XML,
-        XLS,
-        XLSX,
-        CSV,
-        ODS
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "XPS")]
+        Xps,
+        [EnumMember(Value = "DOCX")]
+        Docx,
+        [EnumMember(Value = "DOC")]
+        Doc,
+        [EnumMember(Value = "ODT")]
+        Odt,
+        [EnumMember(Value = "RTF")]
+        Rtf,
+        [EnumMember(Value = "TXT")]
+        Txt,
+        [EnumMember(Value = "MHT")]
+        Mht,
+        [EnumMember(Value = "HTML")]
+        Html,
+        [EnumMember(Value = "XML")]
+        Xml,
+        [EnumMember(Value = "XLS")]
+        Xls,
+        [EnumMember(Value = "XLSX")]
+        Xlsx,
+        [EnumMember(Value = "CSV")]
+        Csv,
+        [EnumMember(Value = "ODS")]
+        Ods
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -723,7 +780,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     {
         Default,
         Merge,
-        AttachAsPDF,
+        [EnumMember(Value = "AttachAsPDF")]
+        AttachAsPdf,
         AttachOriginal
     }
 
@@ -804,7 +862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         internal bool CopyMetadata { get; set; } = false;
 
         [JsonProperty("pdf_profile", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InputPdfDataInputPDFProfileType PDFProfile { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputPdfDataInputPDFProfileType.PDFA2B;
+        public InputPdfDataInputPdfProfileType PdfProfile { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputPdfDataInputPdfProfileType.PdfA2B;
 
         [JsonProperty("override_settings")]
         public string OverrideSettings { get; set; }
@@ -814,33 +872,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InputPdfDataInputPDFProfileType
+    public enum InputPdfDataInputPdfProfileType
     {
         Default,
         [EnumMember(Value = "PDF_1_5")]
-        PDF15,
+        Pdf15,
         [EnumMember(Value = "PDF_A1B")]
-        PDFA1B,
+        PdfA1B,
         [EnumMember(Value = "PDF_A2B")]
-        PDFA2B,
+        PdfA2B,
         [EnumMember(Value = "PDF_A2U")]
-        PDFA2U,
+        PdfA2U,
         [EnumMember(Value = "PDF_A3B")]
-        PDFA3B,
+        PdfA3B,
         [EnumMember(Value = "PDF_A3U")]
-        PDFA3U,
+        PdfA3U,
         [EnumMember(Value = "PDF_1_1")]
-        PDF11,
+        Pdf11,
         [EnumMember(Value = "PDF_1_2")]
-        PDF12,
+        Pdf12,
         [EnumMember(Value = "PDF_1_3")]
-        PDF13,
+        Pdf13,
         [EnumMember(Value = "PDF_1_4")]
-        PDF14,
+        Pdf14,
         [EnumMember(Value = "PDF_1_6")]
-        PDF16,
+        Pdf16,
         [EnumMember(Value = "PDF_1_7")]
-        PDF17
+        Pdf17
     }
 
     public class InputPowerpointDataInput
@@ -861,7 +919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InputPowerpointDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputPowerpointDataInputOutputFormatType.PDF;
+        public InputPowerpointDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputPowerpointDataInputOutputFormatType.Pdf;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
@@ -894,15 +952,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InputPowerpointDataInputOutputFormatType
     {
-        PDF,
-        XPS,
-        MHT,
-        XML,
-        PPT,
-        PPTX,
-        ODP,
-        PPS,
-        PPSX
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "XPS")]
+        Xps,
+        [EnumMember(Value = "MHT")]
+        Mht,
+        [EnumMember(Value = "XML")]
+        Xml,
+        [EnumMember(Value = "PPT")]
+        Ppt,
+        [EnumMember(Value = "PPTX")]
+        Pptx,
+        [EnumMember(Value = "ODP")]
+        Odp,
+        [EnumMember(Value = "PPS")]
+        Pps,
+        [EnumMember(Value = "PPSX")]
+        Ppsx
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -953,7 +1020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InputVisioDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputVisioDataInputOutputFormatType.PDF;
+        public InputVisioDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputVisioDataInputOutputFormatType.Pdf;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
@@ -980,8 +1047,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InputVisioDataInputOutputFormatType
     {
-        PDF,
-        XPS
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "XPS")]
+        Xps
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1017,7 +1086,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceFileContent { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public InputWordDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputWordDataInputOutputFormatType.PDF;
+        public InputWordDataInputOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf.InputWordDataInputOutputFormatType.Pdf;
 
         [JsonProperty("copy_metadata", DefaultValueHandling = DefaultValueHandling.Include)]
         internal bool CopyMetadata { get; set; } = false;
@@ -1050,20 +1119,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InputWordDataInputOutputFormatType
     {
-        PDF,
-        XPS,
-        DOCX,
-        DOC,
-        ODT,
-        RTF,
-        TXT,
-        MHT,
-        HTML,
-        XML,
-        XLS,
-        XLSX,
-        CSV,
-        ODS
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "XPS")]
+        Xps,
+        [EnumMember(Value = "DOCX")]
+        Docx,
+        [EnumMember(Value = "DOC")]
+        Doc,
+        [EnumMember(Value = "ODT")]
+        Odt,
+        [EnumMember(Value = "RTF")]
+        Rtf,
+        [EnumMember(Value = "TXT")]
+        Txt,
+        [EnumMember(Value = "MHT")]
+        Mht,
+        [EnumMember(Value = "HTML")]
+        Html,
+        [EnumMember(Value = "XML")]
+        Xml,
+        [EnumMember(Value = "XLS")]
+        Xls,
+        [EnumMember(Value = "XLSX")]
+        Xlsx,
+        [EnumMember(Value = "CSV")]
+        Csv,
+        [EnumMember(Value = "ODS")]
+        Ods
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

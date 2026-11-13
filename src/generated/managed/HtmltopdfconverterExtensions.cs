@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
     public class HtmltopdfconverterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "htmltopdfconverter")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> ConvertHTMLToPDF(Expression<Func<string>> contentType = null, Expression<Func<BodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> ConvertHtmlToPdf(Expression<Func<string>> contentType = null, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);

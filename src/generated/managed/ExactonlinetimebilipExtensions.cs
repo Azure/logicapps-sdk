@@ -1221,7 +1221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         public string Description { get; set; }
 
         [JsonProperty("HID")]
-        public string HId { get; set; }
+        public string Hid { get; set; }
         public bool Main { get; set; }
         public string Modified { get; set; }
         public string Modifier { get; set; }
@@ -1233,7 +1233,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         public string TaxOfficeNumber { get; set; }
         public string TaxReferenceNumber { get; set; }
         public string TemplateCode { get; set; }
-        public string VATNumber { get; set; }
+
+        [JsonProperty("VATNumber")]
+        public string VatNumber { get; set; }
         public string Website { get; set; }
     }
 
@@ -1261,11 +1263,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         public string EmployeeFullName { get; set; }
 
         [JsonProperty("EmployeeHID")]
-        public int EmployeeHId { get; set; }
+        public int EmployeeHid { get; set; }
         public string Employment { get; set; }
 
         [JsonProperty("EmploymentHID")]
-        public int EmploymentHId { get; set; }
+        public int EmploymentHid { get; set; }
         public string EndDate { get; set; }
         public double IntercompanyRate { get; set; }
         public double InternalRate { get; set; }
@@ -2312,8 +2314,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         public string SubscriptionDescription { get; set; }
         public int SubscriptionNumber { get; set; }
         public double Type { get; set; }
-        public string WBS { get; set; }
-        public string WBSDescription { get; set; }
+
+        [JsonProperty("WBS")]
+        public string Wbs { get; set; }
+
+        [JsonProperty("WBSDescription")]
+        public string WbsDescription { get; set; }
     }
 
     public class MeResponse

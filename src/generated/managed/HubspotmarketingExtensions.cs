@@ -568,9 +568,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DataInputEventTypeType
     {
-        WEBINAR,
-        CONFERENCE,
-        WORKSHOP
+        [EnumMember(Value = "WEBINAR")]
+        Webinar,
+        [EnumMember(Value = "CONFERENCE")]
+        Conference,
+        [EnumMember(Value = "WORKSHOP")]
+        Workshop
     }
 
     public class DataInputCustomPropertiesTypeItem

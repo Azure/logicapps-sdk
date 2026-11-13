@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public Category Category { get; set; }
 
         [JsonProperty("metaData")]
-        public JToken MetaData { get; set; }
+        public JToken Metadata { get; set; }
 
         [JsonProperty("searchScore")]
         public double SearchScore { get; set; }
@@ -613,7 +613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
     public class OperationsLiveCshBodyInput
     {
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("userId")]
         public string UserId { get; set; }
@@ -631,7 +631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
     public class OperationsLiveDocumentBodyInput
     {
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("userId")]
         public string UserId { get; set; }
@@ -799,7 +799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public int PanvivaDocumentVersion { get; set; }
 
         [JsonProperty("metaData")]
-        public JToken MetaData { get; set; }
+        public JToken Metadata { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -886,7 +886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public QueryVariationViewModel[] QueryVariations { get; set; }
 
         [JsonProperty("metaData")]
-        public JToken MetaData { get; set; }
+        public JToken Metadata { get; set; }
 
         [JsonProperty("responseVariations")]
         public ResponseVariationViewModel[] ResponseVariations { get; set; }
@@ -1384,7 +1384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uplandpanvivaus
         public int? PanvivaDocumentVersion { get; set; }
 
         [JsonProperty("metaData")]
-        public JToken MetaData { get; set; }
+        public JToken Metadata { get; set; }
     }
 
     public class ResponseVariationModel

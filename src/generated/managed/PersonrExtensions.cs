@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         public string DocSubType { get; set; }
 
         [JsonProperty("docCountryISO")]
-        public string DocCountryISO { get; set; }
+        public string DocCountryIso { get; set; }
 
         [JsonProperty("docFile")]
         public BodyInputDocFileType DocFile { get; set; }
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
     public class BodyInputDocFileType
     {
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("contents")]
         public string Contents { get; set; }

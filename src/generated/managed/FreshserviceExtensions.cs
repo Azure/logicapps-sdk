@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
         public string Body { get; set; }
 
         [JsonProperty("body")]
-        public string BodyHTML { get; set; }
+        public string BodyHtml { get; set; }
 
         [JsonProperty("attachments")]
         public string[] Attachments { get; set; }
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
         public string Description { get; set; }
 
         [JsonProperty("description")]
-        public string DescriptionHTML { get; set; }
+        public string DescriptionHtml { get; set; }
 
         [JsonProperty("to_emails")]
         public string[] ToEmails { get; set; }
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshservice
         public string Description { get; set; }
 
         [JsonProperty("description")]
-        public string DescriptionHTML { get; set; }
+        public string DescriptionHtml { get; set; }
 
         [JsonProperty("to_emails")]
         public string[] ToEmails { get; set; }

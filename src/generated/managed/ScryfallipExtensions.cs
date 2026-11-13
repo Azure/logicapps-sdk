@@ -138,15 +138,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<CardsMTGOGetResponse, ApiConnectionActionConfiguration> CardsMTGOGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CardsMtgoGetResponse, ApiConnectionActionConfiguration> CardsMtgoGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<CardsMTGOGetResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CardsMtgoGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/mtgo/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<CardsMTGOGetResponse>(callPayload);
+                return new ApiConnectionAction<CardsMtgoGetResponse>(callPayload);
             });
         }
 
@@ -254,15 +254,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
-        public IBodyWorkflowAction<RulingsMTGOGetResponse, ApiConnectionActionConfiguration> RulingsMTGOGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<RulingsMtgoGetResponse, ApiConnectionActionConfiguration> RulingsMtgoGet(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<RulingsMTGOGetResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<RulingsMtgoGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/cards/mtgo/{0}/rulings", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<RulingsMTGOGetResponse>(callPayload);
+                return new ApiConnectionAction<RulingsMtgoGetResponse>(callPayload);
             });
         }
 
@@ -2392,7 +2392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string Cardhoarder { get; set; }
     }
 
-    public class CardsMTGOGetResponse
+    public class CardsMtgoGetResponse
     {
         [JsonProperty("object")]
         public string ObjectEntity { get; set; }
@@ -2443,7 +2443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string ImageStatus { get; set; }
 
         [JsonProperty("image_uris")]
-        public CardsMTGOGetResponseImageUrisType ImageUris { get; set; }
+        public CardsMtgoGetResponseImageUrisType ImageUris { get; set; }
 
         [JsonProperty("mana_cost")]
         public string ManaCost { get; set; }
@@ -2470,7 +2470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string[] ProducedMana { get; set; }
 
         [JsonProperty("legalities")]
-        public CardsMTGOGetResponseLegalitiesType Legalities { get; set; }
+        public CardsMtgoGetResponseLegalitiesType Legalities { get; set; }
 
         [JsonProperty("games")]
         public string[] Games { get; set; }
@@ -2575,16 +2575,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public int PennyRank { get; set; }
 
         [JsonProperty("prices")]
-        public CardsMTGOGetResponsePricesType Prices { get; set; }
+        public CardsMtgoGetResponsePricesType Prices { get; set; }
 
         [JsonProperty("related_uris")]
-        public CardsMTGOGetResponseRelatedUrisType RelatedUris { get; set; }
+        public CardsMtgoGetResponseRelatedUrisType RelatedUris { get; set; }
 
         [JsonProperty("purchase_uris")]
-        public CardsMTGOGetResponsePurchaseUrisType PurchaseUris { get; set; }
+        public CardsMtgoGetResponsePurchaseUrisType PurchaseUris { get; set; }
     }
 
-    public class CardsMTGOGetResponseImageUrisType
+    public class CardsMtgoGetResponseImageUrisType
     {
         [JsonProperty("small")]
         public string Small { get; set; }
@@ -2605,7 +2605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string BorderCrop { get; set; }
     }
 
-    public class CardsMTGOGetResponseLegalitiesType
+    public class CardsMtgoGetResponseLegalitiesType
     {
         [JsonProperty("standard")]
         public string Standard { get; set; }
@@ -2671,7 +2671,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string Predh { get; set; }
     }
 
-    public class CardsMTGOGetResponsePricesType
+    public class CardsMtgoGetResponsePricesType
     {
         [JsonProperty("usd")]
         public string Usd { get; set; }
@@ -2692,7 +2692,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string Tix { get; set; }
     }
 
-    public class CardsMTGOGetResponseRelatedUrisType
+    public class CardsMtgoGetResponseRelatedUrisType
     {
         [JsonProperty("gatherer")]
         public string Gatherer { get; set; }
@@ -2707,7 +2707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string Edhrec { get; set; }
     }
 
-    public class CardsMTGOGetResponsePurchaseUrisType
+    public class CardsMtgoGetResponsePurchaseUrisType
     {
         [JsonProperty("tcgplayer")]
         public string Tcgplayer { get; set; }
@@ -4309,7 +4309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string Comment { get; set; }
     }
 
-    public class RulingsMTGOGetResponse
+    public class RulingsMtgoGetResponse
     {
         [JsonProperty("object")]
         public string ObjectEntity { get; set; }
@@ -4318,10 +4318,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public bool HasMore { get; set; }
 
         [JsonProperty("data")]
-        public RulingsMTGOGetResponseDataTypeItem[] Data { get; set; }
+        public RulingsMtgoGetResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class RulingsMTGOGetResponseDataTypeItem
+    public class RulingsMtgoGetResponseDataTypeItem
     {
         [JsonProperty("object")]
         public string ObjectEntity { get; set; }

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascregulatorycomplianceassess
 
     public class AscregulatorycomplianceassessmentTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> ASCRegulatoryComplianceAssessmentTriggerSubscribe()
+        public IBodyWorkflowTrigger<string, ApiConnectionPollingTriggerConfiguration> AscRegulatoryComplianceAssessmentTriggerSubscribe()
         {
             return new DeferredBodyTrigger<string, ApiConnectionPollingTriggerConfiguration>(() =>
             {

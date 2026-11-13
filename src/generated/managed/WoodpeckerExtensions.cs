@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [EnumMember(Value = "+website")]
         Website,
         [EnumMember(Value = "+linkedin_url")]
-        LinkedInURL,
+        LinkedInUrl,
         [EnumMember(Value = "+tags")]
         Tags,
         [EnumMember(Value = "+title")]
@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [EnumMember(Value = "-website")]
         WebsiteDescending,
         [EnumMember(Value = "-linkedin_url")]
-        LinkedInURLDescending,
+        LinkedInUrlDescending,
         [EnumMember(Value = "-tags")]
         TagsDescending,
         [EnumMember(Value = "-title")]
@@ -355,12 +355,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ProspectsGetStatusInput
     {
-        ACTIVE,
-        BLACKLIST,
-        BOUNCED,
+        [EnumMember(Value = "ACTIVE")]
+        Active,
+        [EnumMember(Value = "BLACKLIST")]
+        Blacklist,
+        [EnumMember(Value = "BOUNCED")]
+        Bounced,
         [EnumMember(Value = "INVALID")]
-        INVALId,
-        REPLIED
+        Invalid,
+        [EnumMember(Value = "REPLIED")]
+        Replied
     }
 
     public class ProspectsResponse
@@ -869,17 +873,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [JsonProperty("delivery")]
         public int Delivery { get; set; }
 
+        [JsonProperty("open_")]
+        public string Open { get; set; }
+
         [JsonProperty("open")]
-        public int Open { get; set; }
+        public int Open2 { get; set; }
+
+        [JsonProperty("reply_")]
+        public string Reply { get; set; }
 
         [JsonProperty("reply")]
-        public int Reply { get; set; }
+        public int Reply2 { get; set; }
+
+        [JsonProperty("invalid_")]
+        public string Invalid { get; set; }
 
         [JsonProperty("invalid")]
-        public int Invalid { get; set; }
+        public int Invalid2 { get; set; }
+
+        [JsonProperty("bounce_")]
+        public string Bounce { get; set; }
 
         [JsonProperty("bounce")]
-        public int Bounce { get; set; }
+        public int Bounce2 { get; set; }
     }
 
     public class CampaignsGetResponseItemStatsTypeEmailsTypeItemSundayTypeItem
@@ -948,13 +964,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CampaignsGetStatusInput
     {
-        RUNNING,
-        DRAFT,
-        EDITED,
-        PAUSED,
-        STOPPED,
-        COMPLETED,
-        DELETED
+        [EnumMember(Value = "RUNNING")]
+        Running,
+        [EnumMember(Value = "DRAFT")]
+        Draft,
+        [EnumMember(Value = "EDITED")]
+        Edited,
+        [EnumMember(Value = "PAUSED")]
+        Paused,
+        [EnumMember(Value = "STOPPED")]
+        Stopped,
+        [EnumMember(Value = "COMPLETED")]
+        Completed,
+        [EnumMember(Value = "DELETED")]
+        Deleted
     }
 }
 

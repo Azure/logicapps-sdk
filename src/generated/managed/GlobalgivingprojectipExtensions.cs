@@ -43,17 +43,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
-        public IBodyWorkflowAction<ProjectInformationSetIDsResponse, ApiConnectionActionConfiguration> ProjectInformationSetIDs(Expression<Func<string>> projectIds = null)
+        public IBodyWorkflowAction<ProjectInformationSetIdsResponse, ApiConnectionActionConfiguration> ProjectInformationSetIds(Expression<Func<string>> projectIds = null)
         {
             var __workflow_projectIds = WorkflowExpression.Compile(projectIds, nameof(projectIds), required: false);
-            return new DeferredBodyAction<ProjectInformationSetIDsResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ProjectInformationSetIdsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/public/projectservice/projects/collection/summary/ids";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_projectIds != null)
                     callPayload.Queries["projectIds"] = ExpressionConverter.Convert(__workflow_projectIds);
-                return new ApiConnectionAction<ProjectInformationSetIDsResponse>(callPayload);
+                return new ApiConnectionAction<ProjectInformationSetIdsResponse>(callPayload);
             });
         }
 
@@ -216,14 +216,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "globalgivingprojectip")]
-        public IBodyWorkflowAction<ProjectIDsResponse, ApiConnectionActionConfiguration> ProjectIDs()
+        public IBodyWorkflowAction<ProjectIdsResponse, ApiConnectionActionConfiguration> ProjectIds()
         {
-            return new DeferredBodyAction<ProjectIDsResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ProjectIdsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/public/projectservice/all/projects/ids";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<ProjectIDsResponse>(callPayload);
+                return new ApiConnectionAction<ProjectIdsResponse>(callPayload);
             });
         }
 
@@ -729,13 +729,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string Name { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponse
+    public class ProjectInformationSetIdsResponse
     {
         [JsonProperty("projects")]
-        public ProjectInformationSetIDsResponseProjectsType Projects { get; set; }
+        public ProjectInformationSetIdsResponseProjectsType Projects { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsType
+    public class ProjectInformationSetIdsResponseProjectsType
     {
         [JsonProperty("hasNext")]
         public bool HasNext { get; set; }
@@ -744,10 +744,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public int NextProjectId { get; set; }
 
         [JsonProperty("project")]
-        public ProjectInformationSetIDsResponseProjectsTypeProjectType Project { get; set; }
+        public ProjectInformationSetIdsResponseProjectsTypeProjectType Project { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsTypeProjectType
+    public class ProjectInformationSetIdsResponseProjectsTypeProjectType
     {
         [JsonProperty("active")]
         public bool Active { get; set; }
@@ -792,13 +792,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string Country { get; set; }
 
         [JsonProperty("countries")]
-        public ProjectInformationSetIDsResponseProjectsTypeProjectTypeCountriesType Countries { get; set; }
+        public ProjectInformationSetIdsResponseProjectsTypeProjectTypeCountriesType Countries { get; set; }
 
         [JsonProperty("dateOfMostRecentReport")]
         public string DateOfMostRecentReport { get; set; }
 
         [JsonProperty("donationOptions")]
-        public ProjectInformationSetIDsResponseProjectsTypeProjectTypeDonationOptionsType DonationOptions { get; set; }
+        public ProjectInformationSetIdsResponseProjectsTypeProjectTypeDonationOptionsType DonationOptions { get; set; }
 
         [JsonProperty("funding")]
         public double Funding { get; set; }
@@ -816,7 +816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string ImageLink { get; set; }
 
         [JsonProperty("image")]
-        public ProjectInformationSetIDsResponseProjectsTypeProjectTypeImageType Image { get; set; }
+        public ProjectInformationSetIdsResponseProjectsTypeProjectTypeImageType Image { get; set; }
 
         [JsonProperty("iso3166CountryCode")]
         public string Iso3166CountryCode { get; set; }
@@ -840,7 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string NumberOfReports { get; set; }
 
         [JsonProperty("organization")]
-        public ProjectInformationSetIDsResponseProjectsTypeProjectTypeOrganizationType Organization { get; set; }
+        public ProjectInformationSetIdsResponseProjectsTypeProjectTypeOrganizationType Organization { get; set; }
 
         [JsonProperty("progressReportLink")]
         public string ProgressReportLink { get; set; }
@@ -864,7 +864,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string ThemeName { get; set; }
 
         [JsonProperty("themes")]
-        public ProjectInformationSetIDsResponseProjectsTypeProjectTypeThemesType Themes { get; set; }
+        public ProjectInformationSetIdsResponseProjectsTypeProjectTypeThemesType Themes { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -873,16 +873,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string Type { get; set; }
 
         [JsonProperty("videos")]
-        public ProjectInformationSetIDsResponseProjectsTypeProjectTypeVideosType Videos { get; set; }
+        public ProjectInformationSetIdsResponseProjectsTypeProjectTypeVideosType Videos { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsTypeProjectTypeCountriesType
+    public class ProjectInformationSetIdsResponseProjectsTypeProjectTypeCountriesType
     {
         [JsonProperty("country")]
-        public ProjectInformationSetIDsResponseProjectsTypeProjectTypeCountriesTypeCountryType Country { get; set; }
+        public ProjectInformationSetIdsResponseProjectsTypeProjectTypeCountriesTypeCountryType Country { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsTypeProjectTypeCountriesTypeCountryType
+    public class ProjectInformationSetIdsResponseProjectsTypeProjectTypeCountriesTypeCountryType
     {
         [JsonProperty("iso3166CountryCode")]
         public string Iso3166CountryCode { get; set; }
@@ -891,13 +891,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string Name { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsTypeProjectTypeDonationOptionsType
+    public class ProjectInformationSetIdsResponseProjectsTypeProjectTypeDonationOptionsType
     {
         [JsonProperty("donationOption")]
-        public ProjectInformationSetIDsResponseProjectsTypeProjectTypeDonationOptionsTypeDonationOptionTypeItem[] DonationOption { get; set; }
+        public ProjectInformationSetIdsResponseProjectsTypeProjectTypeDonationOptionsTypeDonationOptionTypeItem[] DonationOption { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsTypeProjectTypeDonationOptionsTypeDonationOptionTypeItem
+    public class ProjectInformationSetIdsResponseProjectsTypeProjectTypeDonationOptionsTypeDonationOptionTypeItem
     {
         [JsonProperty("amount")]
         public double Amount { get; set; }
@@ -906,10 +906,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string Title { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsTypeProjectTypeImageType
+    public class ProjectInformationSetIdsResponseProjectsTypeProjectTypeImageType
     {
         [JsonProperty("imagelink")]
-        public ProjectInformationSetIDsResponseProjectsTypeProjectTypeImageTypeImagelinkTypeItem[] Imagelink { get; set; }
+        public ProjectInformationSetIdsResponseProjectsTypeProjectTypeImageTypeImagelinkTypeItem[] Imagelink { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -918,7 +918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public int Id { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsTypeProjectTypeImageTypeImagelinkTypeItem
+    public class ProjectInformationSetIdsResponseProjectsTypeProjectTypeImageTypeImagelinkTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -927,7 +927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string Size { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsTypeProjectTypeOrganizationType
+    public class ProjectInformationSetIdsResponseProjectsTypeProjectTypeOrganizationType
     {
         [JsonProperty("activeProjects")]
         public string ActiveProjects { get; set; }
@@ -963,19 +963,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string Url { get; set; }
 
         [JsonProperty("themes")]
-        public ProjectInformationSetIDsResponseProjectsTypeProjectTypeOrganizationTypeThemesType Themes { get; set; }
+        public ProjectInformationSetIdsResponseProjectsTypeProjectTypeOrganizationTypeThemesType Themes { get; set; }
 
         [JsonProperty("countries")]
-        public ProjectInformationSetIDsResponseProjectsTypeProjectTypeOrganizationTypeCountriesType Countries { get; set; }
+        public ProjectInformationSetIdsResponseProjectsTypeProjectTypeOrganizationTypeCountriesType Countries { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsTypeProjectTypeOrganizationTypeThemesType
+    public class ProjectInformationSetIdsResponseProjectsTypeProjectTypeOrganizationTypeThemesType
     {
         [JsonProperty("theme")]
-        public ProjectInformationSetIDsResponseProjectsTypeProjectTypeOrganizationTypeThemesTypeThemeTypeItem[] Theme { get; set; }
+        public ProjectInformationSetIdsResponseProjectsTypeProjectTypeOrganizationTypeThemesTypeThemeTypeItem[] Theme { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsTypeProjectTypeOrganizationTypeThemesTypeThemeTypeItem
+    public class ProjectInformationSetIdsResponseProjectsTypeProjectTypeOrganizationTypeThemesTypeThemeTypeItem
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -984,13 +984,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string Name { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsTypeProjectTypeOrganizationTypeCountriesType
+    public class ProjectInformationSetIdsResponseProjectsTypeProjectTypeOrganizationTypeCountriesType
     {
         [JsonProperty("country")]
-        public ProjectInformationSetIDsResponseProjectsTypeProjectTypeOrganizationTypeCountriesTypeCountryTypeItem[] Country { get; set; }
+        public ProjectInformationSetIdsResponseProjectsTypeProjectTypeOrganizationTypeCountriesTypeCountryTypeItem[] Country { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsTypeProjectTypeOrganizationTypeCountriesTypeCountryTypeItem
+    public class ProjectInformationSetIdsResponseProjectsTypeProjectTypeOrganizationTypeCountriesTypeCountryTypeItem
     {
         [JsonProperty("iso3166CountryCode")]
         public string Iso3166CountryCode { get; set; }
@@ -999,13 +999,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string Name { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsTypeProjectTypeThemesType
+    public class ProjectInformationSetIdsResponseProjectsTypeProjectTypeThemesType
     {
         [JsonProperty("theme")]
-        public ProjectInformationSetIDsResponseProjectsTypeProjectTypeThemesTypeThemeTypeItem[] Theme { get; set; }
+        public ProjectInformationSetIdsResponseProjectsTypeProjectTypeThemesTypeThemeTypeItem[] Theme { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsTypeProjectTypeThemesTypeThemeTypeItem
+    public class ProjectInformationSetIdsResponseProjectsTypeProjectTypeThemesTypeThemeTypeItem
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -1014,13 +1014,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string Name { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsTypeProjectTypeVideosType
+    public class ProjectInformationSetIdsResponseProjectsTypeProjectTypeVideosType
     {
         [JsonProperty("video")]
-        public ProjectInformationSetIDsResponseProjectsTypeProjectTypeVideosTypeVideoType Video { get; set; }
+        public ProjectInformationSetIdsResponseProjectsTypeProjectTypeVideosTypeVideoType Video { get; set; }
     }
 
-    public class ProjectInformationSetIDsResponseProjectsTypeProjectTypeVideosTypeVideoType
+    public class ProjectInformationSetIdsResponseProjectsTypeProjectTypeVideosTypeVideoType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -3570,22 +3570,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Globalgivingprojectip
         public string Name { get; set; }
     }
 
-    public class ProjectIDsResponse
+    public class ProjectIdsResponse
     {
         [JsonProperty("projects")]
-        public ProjectIDsResponseProjectsType Projects { get; set; }
+        public ProjectIdsResponseProjectsType Projects { get; set; }
     }
 
-    public class ProjectIDsResponseProjectsType
+    public class ProjectIdsResponseProjectsType
     {
         [JsonProperty("project")]
-        public ProjectIDsResponseProjectsTypeProjectTypeItem[] Project { get; set; }
+        public ProjectIdsResponseProjectsTypeProjectTypeItem[] Project { get; set; }
 
         [JsonProperty("_numberFound")]
         public int NumberFound { get; set; }
     }
 
-    public class ProjectIDsResponseProjectsTypeProjectTypeItem
+    public class ProjectIdsResponseProjectsTypeProjectTypeItem
     {
         [JsonProperty("id")]
         public int Id { get; set; }

@@ -691,7 +691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public HostedAgentContainerConfiguration ContainerConfiguration { get; set; }
 
         [JsonProperty("cpu", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CPU { get; set; } = "1";
+        public string Cpu { get; set; } = "1";
 
         [JsonProperty("memory", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Memory { get; set; } = "2Gi";

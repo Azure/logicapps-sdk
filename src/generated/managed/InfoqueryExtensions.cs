@@ -262,11 +262,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<UploadWebURLDocumentToSpecificFileResponse, ApiConnectionActionConfiguration> UploadWebURLDocumentToSpecificFile(Expression<Func<string>> fileId, Expression<Func<UploadWebURLDocumentToSpecificFileBodyInput>> body = null)
+        public IBodyWorkflowAction<UploadWebUrlDocumentToSpecificFileResponse, ApiConnectionActionConfiguration> UploadWebUrlDocumentToSpecificFile(Expression<Func<string>> fileId, Expression<Func<UploadWebUrlDocumentToSpecificFileBodyInput>> body = null)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<UploadWebURLDocumentToSpecificFileResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UploadWebUrlDocumentToSpecificFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UploadWebUrlDocumentToSpecificFile";
                 var apiCallHttpMethod = "post";
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
                 callPayload.Queries["FileID"] = ExpressionConverter.Convert(__workflow_fileId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<UploadWebURLDocumentToSpecificFileResponse>(callPayload);
+                return new ApiConnectionAction<UploadWebUrlDocumentToSpecificFileResponse>(callPayload);
             });
         }
 
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoquery")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetClosingFeeEstimateReceiptPDF(Expression<Func<string>> closingFeeId)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetClosingFeeEstimateReceiptPdf(Expression<Func<string>> closingFeeId)
         {
             var __workflow_closingFeeId = WorkflowExpression.Compile(closingFeeId, nameof(closingFeeId), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -894,7 +894,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public string CommentsSpecialInstructions { get; set; }
         public bool DontAllowSelectionInSettlement { get; set; }
         public bool Needs1099 { get; set; }
-        public bool MWBE { get; set; }
+
+        [JsonProperty("MWBE")]
+        public bool Mwbe { get; set; }
     }
 
     public class GetPartnerInformationResponseCompanyInformationTypeParentCompanyType
@@ -1240,24 +1242,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
         public string PartnerTypeName { get; set; }
     }
 
-    public class UploadWebURLDocumentToSpecificFileResponse
+    public class UploadWebUrlDocumentToSpecificFileResponse
     {
-        public UploadWebURLDocumentToSpecificFileResponseDocumentType Document { get; set; }
+        public UploadWebUrlDocumentToSpecificFileResponseDocumentType Document { get; set; }
     }
 
-    public class UploadWebURLDocumentToSpecificFileResponseDocumentType
+    public class UploadWebUrlDocumentToSpecificFileResponseDocumentType
     {
         [JsonProperty("DocumentID")]
         public int DocumentId { get; set; }
     }
 
-    public class UploadWebURLDocumentToSpecificFileBodyInput
+    public class UploadWebUrlDocumentToSpecificFileBodyInput
     {
         public string DocumentName { get; set; }
         public BodyInputDocumentTypeType DocumentType { get; set; }
         public string Description { get; set; }
         public bool? InternalOnly { get; set; }
-        public string WebURL { get; set; }
+
+        [JsonProperty("WebURL")]
+        public string WebUrl { get; set; }
     }
 
     public class UpdatePartnerEmployeeResponse
@@ -1657,33 +1661,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
     {
         [JsonProperty("ClosingFeeEstimateID")]
         public int ClosingFeeEstimateId { get; set; }
-        public GetClosingFeeEstimateReceiptResponseResponseTypeHUDFeesTypeItem[] HUDFees { get; set; }
-        public GetClosingFeeEstimateReceiptResponseResponseTypeGFETypeItem[] GFE { get; set; }
+
+        [JsonProperty("HUDFees")]
+        public GetClosingFeeEstimateReceiptResponseResponseTypeHudFeesTypeItem[] HudFees { get; set; }
+
+        [JsonProperty("GFE")]
+        public GetClosingFeeEstimateReceiptResponseResponseTypeGfeTypeItem[] Gfe { get; set; }
         public GetClosingFeeEstimateReceiptResponseResponseTypePremiumsType Premiums { get; set; }
         public string Timestamp { get; set; }
     }
 
-    public class GetClosingFeeEstimateReceiptResponseResponseTypeHUDFeesTypeItem
+    public class GetClosingFeeEstimateReceiptResponseResponseTypeHudFeesTypeItem
     {
         public int Amount { get; set; }
         public string Description { get; set; }
         public string LineNumber { get; set; }
         public int BuyerAmount { get; set; }
-        public int BuyerPOCAmount { get; set; }
+
+        [JsonProperty("BuyerPOCAmount")]
+        public int BuyerPocAmount { get; set; }
         public int SellerAmount { get; set; }
-        public int SellerPOCAmount { get; set; }
-        public int OtherPOCAmount { get; set; }
-        public GetClosingFeeEstimateReceiptResponseResponseTypeHUDFeesTypeItemOtherPOCPartnerTypeType OtherPOCPartnerType { get; set; }
+
+        [JsonProperty("SellerPOCAmount")]
+        public int SellerPocAmount { get; set; }
+
+        [JsonProperty("OtherPOCAmount")]
+        public int OtherPocAmount { get; set; }
+
+        [JsonProperty("OtherPOCPartnerType")]
+        public GetClosingFeeEstimateReceiptResponseResponseTypeHudFeesTypeItemOtherPocPartnerTypeType OtherPocPartnerType { get; set; }
     }
 
-    public class GetClosingFeeEstimateReceiptResponseResponseTypeHUDFeesTypeItemOtherPOCPartnerTypeType
+    public class GetClosingFeeEstimateReceiptResponseResponseTypeHudFeesTypeItemOtherPocPartnerTypeType
     {
         [JsonProperty("PartnerTypeID")]
         public int PartnerTypeId { get; set; }
         public string PartnerTypeName { get; set; }
     }
 
-    public class GetClosingFeeEstimateReceiptResponseResponseTypeGFETypeItem
+    public class GetClosingFeeEstimateReceiptResponseResponseTypeGfeTypeItem
     {
         public string Description { get; set; }
         public int Amount { get; set; }
@@ -1792,33 +1808,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoquery
     {
         [JsonProperty("ClosingFeeEstimateID")]
         public int ClosingFeeEstimateId { get; set; }
-        public EstimateClosingFeeResponseClosingFeeEstimateTypeHUDFeesTypeItem[] HUDFees { get; set; }
-        public EstimateClosingFeeResponseClosingFeeEstimateTypeGFETypeItem[] GFE { get; set; }
+
+        [JsonProperty("HUDFees")]
+        public EstimateClosingFeeResponseClosingFeeEstimateTypeHudFeesTypeItem[] HudFees { get; set; }
+
+        [JsonProperty("GFE")]
+        public EstimateClosingFeeResponseClosingFeeEstimateTypeGfeTypeItem[] Gfe { get; set; }
         public EstimateClosingFeeResponseClosingFeeEstimateTypePremiumsType Premiums { get; set; }
         public string Timestamp { get; set; }
     }
 
-    public class EstimateClosingFeeResponseClosingFeeEstimateTypeHUDFeesTypeItem
+    public class EstimateClosingFeeResponseClosingFeeEstimateTypeHudFeesTypeItem
     {
         public int Amount { get; set; }
         public string Description { get; set; }
         public string LineNumber { get; set; }
         public int BuyerAmount { get; set; }
-        public int BuyerPOCAmount { get; set; }
+
+        [JsonProperty("BuyerPOCAmount")]
+        public int BuyerPocAmount { get; set; }
         public int SellerAmount { get; set; }
-        public int SellerPOCAmount { get; set; }
-        public int OtherPOCAmount { get; set; }
-        public EstimateClosingFeeResponseClosingFeeEstimateTypeHUDFeesTypeItemOtherPOCPartnerTypeType OtherPOCPartnerType { get; set; }
+
+        [JsonProperty("SellerPOCAmount")]
+        public int SellerPocAmount { get; set; }
+
+        [JsonProperty("OtherPOCAmount")]
+        public int OtherPocAmount { get; set; }
+
+        [JsonProperty("OtherPOCPartnerType")]
+        public EstimateClosingFeeResponseClosingFeeEstimateTypeHudFeesTypeItemOtherPocPartnerTypeType OtherPocPartnerType { get; set; }
     }
 
-    public class EstimateClosingFeeResponseClosingFeeEstimateTypeHUDFeesTypeItemOtherPOCPartnerTypeType
+    public class EstimateClosingFeeResponseClosingFeeEstimateTypeHudFeesTypeItemOtherPocPartnerTypeType
     {
         [JsonProperty("PartnerTypeID")]
         public int PartnerTypeId { get; set; }
         public string PartnerTypeName { get; set; }
     }
 
-    public class EstimateClosingFeeResponseClosingFeeEstimateTypeGFETypeItem
+    public class EstimateClosingFeeResponseClosingFeeEstimateTypeGfeTypeItem
     {
         public string Description { get; set; }
         public int Amount { get; set; }

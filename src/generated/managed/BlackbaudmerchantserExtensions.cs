@@ -216,7 +216,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudmerchantser
         SelfServiceTerminal,
         LimitedAmountTerminal,
         MobilePayDevice,
-        ChipAndPIN,
+        [EnumMember(Value = "ChipAndPIN")]
+        ChipAndPin,
         VerifoneP400
     }
 

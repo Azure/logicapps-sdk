@@ -69,13 +69,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Universalprint
     public class PrintFileResponse
     {
         [JsonProperty("statusCode")]
-        public int PrintPDFStatusCode { get; set; }
+        public int PrintPdfStatusCode { get; set; }
 
         [JsonProperty("status")]
-        public string PrintPDFActionStatus { get; set; }
+        public string PrintPdfActionStatus { get; set; }
 
         [JsonProperty("message")]
-        public string PrintPDFStatusMessage { get; set; }
+        public string PrintPdfStatusMessage { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

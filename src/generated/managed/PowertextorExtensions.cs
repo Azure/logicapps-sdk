@@ -512,19 +512,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 var apiCallPath = "/api/twilio/registration";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new MMSWebhookBodyInput().ToJToken();
+                callPayload.Body = new MmsWebhookBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> MMSWebhook()
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> MmsWebhook()
         {
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/api/twilio/MMSregistration";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = new MMSWebhookBodyInput().ToJToken();
+                callPayload.Body = new MmsWebhookBodyInput().ToJToken();
                 return new ApiConnectionPollingTrigger(callPayload);
             });
         }
@@ -580,7 +580,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Body { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class ScheduleReviewTextMessageForContactsResponse
@@ -629,7 +631,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Body { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string GooglePlaceId { get; set; }
@@ -678,7 +682,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Body { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class SendReviewTextGroupsResponse
@@ -722,7 +728,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlaceId { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class ScheduleMessageForAContactResponse
@@ -777,7 +785,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Body { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ScheduledDate { get; set; }
@@ -838,7 +848,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Body { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ScheduledDate { get; set; }
@@ -909,7 +921,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ScheduledTime { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class ScheduleReviewGroupsResponse
@@ -974,7 +988,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ScheduledTime { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class SendTextToAContactResponse
@@ -1021,7 +1037,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Body { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class ScheduleTextToMultipleContactsResponse
@@ -1139,7 +1157,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string GooglePlaceId { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class SendReviewTextMultipleContactsResponse
@@ -1196,7 +1216,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string GooglePlaceId { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class SendTextMessageEventReminderToAContactResponse
@@ -1261,7 +1283,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Time { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class SendTextMessageEventReminderToMultipleContactsResponse
@@ -1326,7 +1350,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Time { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class SendTextMessageEventReminderToGroupsResponse
@@ -1391,7 +1417,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Time { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class SendTextMessageToANumberResponse
@@ -1487,7 +1515,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ScheduledTime { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class ScheduleTextMessagesForAGroupResponse
@@ -1606,7 +1636,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlaceId { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class SendTextMessageToAGroupResponse
@@ -1693,7 +1725,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupName { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class ScheduleTextForANewGroupResponse
@@ -1751,7 +1785,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ScheduledTime { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class SendTextEventReminderToNewGroupResponse
@@ -1813,7 +1849,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Time { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class SendMessageToANewContactResponse
@@ -1869,7 +1907,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class ScheduleReviewTextMessageToANewContactResponse
@@ -1937,7 +1977,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ScheduledTime { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class SendReviewTextMessageToANewContactResponse
@@ -1997,7 +2039,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlaceId { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class ScheduleReviewToANewGroupResponse
@@ -2066,7 +2110,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ScheduledTime { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class SendReviewToANewGroupResponse
@@ -2127,7 +2173,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string PlaceId { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class ScheduleTextForANewContactResponse
@@ -2191,7 +2239,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ScheduledTime { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class CreateAContactResponse
@@ -2302,7 +2352,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Time { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class UpdateAPowerTextorContactResponse
@@ -2402,7 +2454,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Body { get; set; }
-        public bool? ReplySTOPToOptOut { get; set; }
+
+        [JsonProperty("ReplySTOPToOptOut")]
+        public bool? ReplyStopToOptOut { get; set; }
     }
 
     public class SendTextMessageResponse
@@ -2436,7 +2490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
         public string Message { get; set; }
     }
 
-    public class MMSWebhookBodyInput
+    public class MmsWebhookBodyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         internal string WebHookUri { get; set; } = "#{listCallbackUrl()}";

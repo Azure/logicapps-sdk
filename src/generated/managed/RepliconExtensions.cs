@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
 
     public class RepliconTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> WebhookSubscriptionsRestAPI(Expression<Func<string>> hostUrl, Expression<Func<WebhookSubscriptionsRestAPIBodyInput>> body)
+        public IBodyWorkflowTrigger<WebhookSubscriptionResponse, ApiConnectionPollingTriggerConfiguration> WebhookSubscriptionsRestApi(Expression<Func<string>> hostUrl, Expression<Func<WebhookSubscriptionsRestApiBodyInput>> body)
         {
             var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1556,7 +1556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicon
         public string AuthType { get; set; }
     }
 
-    public class WebhookSubscriptionsRestAPIBodyInput
+    public class WebhookSubscriptionsRestApiBodyInput
     {
         [JsonProperty("eventType")]
         public string EventType { get; set; }

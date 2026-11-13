@@ -162,13 +162,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
         public string NameOfAppointment { get; set; }
 
         [JsonProperty("customers_name")]
-        public string CustomerSName { get; set; }
+        public string CustomerName { get; set; }
 
         [JsonProperty("customers_email")]
-        public string CustomerSEmailAddress { get; set; }
+        public string CustomerEmailAddress { get; set; }
 
         [JsonProperty("customers_number")]
-        public string CustomerSPhoneNumber { get; set; }
+        public string CustomerPhoneNumber { get; set; }
 
         [JsonProperty("id")]
         public int AppointmentIdNumber { get; set; }
@@ -180,10 +180,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
         public string Description { get; set; }
 
         [JsonProperty("email")]
-        public string CustomerSEmailAddress { get; set; }
+        public string CustomerEmailAddress { get; set; }
 
         [JsonProperty("mobile_number")]
-        public string CustomerSMobileNumber { get; set; }
+        public string CustomerMobileNumber { get; set; }
 
         [JsonProperty("id")]
         public int CustomerIdNumber { get; set; }

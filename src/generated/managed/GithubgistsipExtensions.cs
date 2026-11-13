@@ -617,7 +617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
         public string Bio { get; set; }
 
         [JsonProperty("twitter_username")]
-        public string TwitterUsername { get; set; }
+        public string TwitterUserName { get; set; }
 
         [JsonProperty("public_repos")]
         public int PublicRepos { get; set; }
@@ -885,16 +885,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubgistsip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AuthorAssociation
     {
-        COLLABORATOR,
-        CONTRIBUTOR,
+        [EnumMember(Value = "COLLABORATOR")]
+        Collaborator,
+        [EnumMember(Value = "CONTRIBUTOR")]
+        Contributor,
         [EnumMember(Value = "FIRST_TIMER")]
-        FIRSTTIMER,
+        FirstTimer,
         [EnumMember(Value = "FIRST_TIME_CONTRIBUTOR")]
-        FIRSTTIMECONTRIBUTOR,
-        MANNEQUIN,
-        MEMBER,
-        NONE,
-        OWNER
+        FirstTimeContributor,
+        [EnumMember(Value = "MANNEQUIN")]
+        Mannequin,
+        [EnumMember(Value = "MEMBER")]
+        Member,
+        [EnumMember(Value = "NONE")]
+        None,
+        [EnumMember(Value = "OWNER")]
+        Owner
     }
 
     public class GistsCreateCommentBodyInput

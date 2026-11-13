@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateQCDIndicatorsValue(Expression<Func<UpdateQCDIndicatorsValueBodyInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateQcdIndicatorsValue(Expression<Func<UpdateQcdIndicatorsValueBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ComputeQCDIndicator(Expression<Func<string>> letterName, Expression<Func<string>> indicatorName, Expression<Func<double>> wedgeValue, Expression<Func<int>> wedgeNumber, Expression<Func<WedgeRingInput>> wedgeRing, Expression<Func<string>> period = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> ComputeQcdIndicator(Expression<Func<string>> letterName, Expression<Func<string>> indicatorName, Expression<Func<double>> wedgeValue, Expression<Func<int>> wedgeNumber, Expression<Func<WedgeRingInput>> wedgeRing, Expression<Func<string>> period = null)
         {
             var __workflow_letterName = WorkflowExpression.Compile(letterName, nameof(letterName), required: true);
             var __workflow_indicatorName = WorkflowExpression.Compile(indicatorName, nameof(indicatorName), required: true);
@@ -332,12 +332,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [EnumMember(Value = "Problem Solving")]
         ProblemSolving,
         [EnumMember(Value = "QCD Action")]
-        QCDAction
+        QcdAction
     }
 
-    public class UpdateQCDIndicatorsValueBodyInput
+    public class UpdateQcdIndicatorsValueBodyInput
     {
-        public UpdateQCDIndicatorsValueBodyInput(string boardId, JToken[] letters)
+        public UpdateQcdIndicatorsValueBodyInput(string boardId, JToken[] letters)
         {
             this.BoardId = boardId;
             this.Letters = letters;

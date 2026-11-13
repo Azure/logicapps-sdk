@@ -51,18 +51,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
         public string String { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputTypeType? Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip.BodyInputTypeType.SHA1;
+        public BodyInputTypeType? Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip.BodyInputTypeType.Sha1;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputTypeType
     {
         [EnumMember(Value = "sha1")]
-        SHA1,
+        Sha1,
         [EnumMember(Value = "sha256")]
-        SHA256,
+        Sha256,
         [EnumMember(Value = "sha512")]
-        SHA512,
+        Sha512,
         [EnumMember(Value = "md5")]
         MD5
     }

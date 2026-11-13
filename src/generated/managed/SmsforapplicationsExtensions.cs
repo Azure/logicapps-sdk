@@ -139,8 +139,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobReportQosType
     {
-        EXPRESS,
-        NORMAL
+        [EnumMember(Value = "EXPRESS")]
+        Express,
+        [EnumMember(Value = "NORMAL")]
+        Normal
     }
 
     public class RecipientReport

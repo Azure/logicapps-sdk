@@ -238,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
     public enum ModelIdInput
     {
         [EnumMember(Value = "26a1a203-3a46-42cb-8cfa-f4de075907d8")]
-        SDXL,
+        Sdxl,
         [EnumMember(Value = "ee88d150-4259-4b77-9d0f-090abe29f650")]
         StableDiffusion21,
         [EnumMember(Value = "8b1b897c-d66d-45a6-b8d7-8e32421d02cf")]

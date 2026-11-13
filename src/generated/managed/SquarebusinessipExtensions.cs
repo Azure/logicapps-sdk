@@ -286,16 +286,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "squarebusinessip")]
-        public IBodyWorkflowAction<GiftCardRetrieveGANResponse, ApiConnectionActionConfiguration> GiftCardRetrieveGAN(Expression<Func<GiftCardRetrieveGANBodyInput>> body)
+        public IBodyWorkflowAction<GiftCardRetrieveGanResponse, ApiConnectionActionConfiguration> GiftCardRetrieveGan(Expression<Func<GiftCardRetrieveGanBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<GiftCardRetrieveGANResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GiftCardRetrieveGanResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/gift-cards/from-gan";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<GiftCardRetrieveGANResponse>(callPayload);
+                return new ApiConnectionAction<GiftCardRetrieveGanResponse>(callPayload);
             });
         }
 
@@ -1421,8 +1421,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SortOrderInput
     {
-        ASC,
-        DESC
+        [EnumMember(Value = "ASC")]
+        Asc,
+        [EnumMember(Value = "DESC")]
+        Desc
     }
 
     public class CashDrawerRetrieveShiftResponse
@@ -2109,10 +2111,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum StatusInput
     {
-        UNKNOWN,
-        UNPAIRED,
-        PAIRED,
-        EXPIRED
+        [EnumMember(Value = "UNKNOWN")]
+        Unknown,
+        [EnumMember(Value = "UNPAIRED")]
+        Unpaired,
+        [EnumMember(Value = "PAIRED")]
+        Paired,
+        [EnumMember(Value = "EXPIRED")]
+        Expired
     }
 
     public class DeviceCreateResponse
@@ -2382,24 +2388,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputGiftCardActivityTypeTypeType
     {
-        ACTIVATE,
-        LOAD,
-        REDEEM,
+        [EnumMember(Value = "ACTIVATE")]
+        Activate,
+        [EnumMember(Value = "LOAD")]
+        Load,
+        [EnumMember(Value = "REDEEM")]
+        Redeem,
         [EnumMember(Value = "CLEAR_BALANCE")]
-        CLEARBALANCE,
-        DEACTIVATE,
+        ClearBalance,
+        [EnumMember(Value = "DEACTIVATE")]
+        Deactivate,
         [EnumMember(Value = "ADJUST_INCREMENT")]
-        ADJUSTINCREMENT,
+        AdjustIncrement,
         [EnumMember(Value = "ADJUST_DECREMENT")]
-        ADJUSTDECREMENT,
-        REFUND,
+        AdjustDecrement,
+        [EnumMember(Value = "REFUND")]
+        Refund,
         [EnumMember(Value = "UNLINKED_ACTIVITY_REFUND")]
-        UNLINKEDACTIVITYREFUND,
-        IMPORT,
-        BLOCK,
-        UNBLOCK,
+        UnlinkedActivityRefund,
+        [EnumMember(Value = "IMPORT")]
+        Import,
+        [EnumMember(Value = "BLOCK")]
+        Block,
+        [EnumMember(Value = "UNBLOCK")]
+        Unblock,
         [EnumMember(Value = "IMPORT_REVERSAL")]
-        IMPORTREVERSAL
+        ImportReversal
     }
 
     public class BodyInputGiftCardActivityTypeActivateActivityDetailsType
@@ -2411,13 +2425,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string LineItemUid { get; set; }
     }
 
-    public class GiftCardRetrieveGANResponse
+    public class GiftCardRetrieveGanResponse
     {
         [JsonProperty("gift_card")]
-        public GiftCardRetrieveGANResponseGiftCardType GiftCard { get; set; }
+        public GiftCardRetrieveGanResponseGiftCardType GiftCard { get; set; }
     }
 
-    public class GiftCardRetrieveGANResponseGiftCardType
+    public class GiftCardRetrieveGanResponseGiftCardType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2432,7 +2446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string State { get; set; }
 
         [JsonProperty("balance_money")]
-        public GiftCardRetrieveGANResponseGiftCardTypeBalanceMoneyType BalanceMoney { get; set; }
+        public GiftCardRetrieveGanResponseGiftCardTypeBalanceMoneyType BalanceMoney { get; set; }
 
         [JsonProperty("gan")]
         public string Gan { get; set; }
@@ -2441,7 +2455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string CreatedAt { get; set; }
     }
 
-    public class GiftCardRetrieveGANResponseGiftCardTypeBalanceMoneyType
+    public class GiftCardRetrieveGanResponseGiftCardTypeBalanceMoneyType
     {
         [JsonProperty("amount")]
         public int Amount { get; set; }
@@ -2450,7 +2464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Currency { get; set; }
     }
 
-    public class GiftCardRetrieveGANBodyInput
+    public class GiftCardRetrieveGanBodyInput
     {
         [JsonProperty("gan")]
         public string Gan { get; set; }
@@ -3584,10 +3598,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string WebsiteUrl { get; set; }
 
         [JsonProperty("twitter_username")]
-        public string TwitterUsername { get; set; }
+        public string TwitterUserName { get; set; }
 
         [JsonProperty("instagram_username")]
-        public string InstagramUsername { get; set; }
+        public string InstagramUserName { get; set; }
 
         [JsonProperty("coordinates")]
         public LocationCreateResponseLocationTypeCoordinatesType Coordinates { get; set; }
@@ -3785,10 +3799,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string Description { get; set; }
 
         [JsonProperty("twitter_username")]
-        public string TwitterUsername { get; set; }
+        public string TwitterUserName { get; set; }
 
         [JsonProperty("instagram_username")]
-        public string InstagramUsername { get; set; }
+        public string InstagramUserName { get; set; }
 
         [JsonProperty("coordinates")]
         public LocationUpdateResponseLocationTypeCoordinatesType Coordinates { get; set; }
@@ -3857,10 +3871,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string FacebookUrl { get; set; }
 
         [JsonProperty("twitter_username")]
-        public string TwitterUsername { get; set; }
+        public string TwitterUserName { get; set; }
 
         [JsonProperty("instagram_username")]
-        public string InstagramUsername { get; set; }
+        public string InstagramUserName { get; set; }
 
         [JsonProperty("address")]
         public BodyInputLocationTypeAddressType Address { get; set; }
@@ -5081,19 +5095,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
     public class TeamUpdateBulkMembersBodyInputTeamMembersType
     {
         [JsonProperty("fpgteZNMaf0qOK-a4t6P")]
-        public BodyInputTeamMembersTypeFpgteZNMaf0qOKA4t6PType FpgteZNMaf0qOKA4t6P { get; set; }
+        public BodyInputTeamMembersTypeFpgteZNMaf0qOka4t6PType FpgteZNMaf0qOka4t6P { get; set; }
 
         [JsonProperty("AFMwA08kR-MIF-3Vs0OE")]
-        public BodyInputTeamMembersTypeAFMwA08kRMIF3Vs0OEType AFMwA08kRMIF3Vs0OE { get; set; }
+        public BodyInputTeamMembersTypeAFMwA08kRMif3Vs0OEType AFMwA08kRMif3Vs0OE { get; set; }
     }
 
-    public class BodyInputTeamMembersTypeFpgteZNMaf0qOKA4t6PType
+    public class BodyInputTeamMembersTypeFpgteZNMaf0qOka4t6PType
     {
         [JsonProperty("team_member")]
-        public BodyInputTeamMembersTypeFpgteZNMaf0qOKA4t6PTypeTeamMemberType TeamMember { get; set; }
+        public BodyInputTeamMembersTypeFpgteZNMaf0qOka4t6PTypeTeamMemberType TeamMember { get; set; }
     }
 
-    public class BodyInputTeamMembersTypeFpgteZNMaf0qOKA4t6PTypeTeamMemberType
+    public class BodyInputTeamMembersTypeFpgteZNMaf0qOka4t6PTypeTeamMemberType
     {
         [JsonProperty("reference_id")]
         public string ReferenceId { get; set; }
@@ -5117,10 +5131,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string PhoneNumber { get; set; }
 
         [JsonProperty("assigned_locations")]
-        public BodyInputTeamMembersTypeFpgteZNMaf0qOKA4t6PTypeTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
+        public BodyInputTeamMembersTypeFpgteZNMaf0qOka4t6PTypeTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
     }
 
-    public class BodyInputTeamMembersTypeFpgteZNMaf0qOKA4t6PTypeTeamMemberTypeAssignedLocationsType
+    public class BodyInputTeamMembersTypeFpgteZNMaf0qOka4t6PTypeTeamMemberTypeAssignedLocationsType
     {
         [JsonProperty("location_ids")]
         public string[] LocationIds { get; set; }
@@ -5129,13 +5143,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string AssignmentType { get; set; }
     }
 
-    public class BodyInputTeamMembersTypeAFMwA08kRMIF3Vs0OEType
+    public class BodyInputTeamMembersTypeAFMwA08kRMif3Vs0OEType
     {
         [JsonProperty("team_member")]
-        public BodyInputTeamMembersTypeAFMwA08kRMIF3Vs0OETypeTeamMemberType TeamMember { get; set; }
+        public BodyInputTeamMembersTypeAFMwA08kRMif3Vs0OETypeTeamMemberType TeamMember { get; set; }
     }
 
-    public class BodyInputTeamMembersTypeAFMwA08kRMIF3Vs0OETypeTeamMemberType
+    public class BodyInputTeamMembersTypeAFMwA08kRMif3Vs0OETypeTeamMemberType
     {
         [JsonProperty("reference_id")]
         public string ReferenceId { get; set; }
@@ -5159,10 +5173,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Squarebusinessip
         public string PhoneNumber { get; set; }
 
         [JsonProperty("assigned_locations")]
-        public BodyInputTeamMembersTypeAFMwA08kRMIF3Vs0OETypeTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
+        public BodyInputTeamMembersTypeAFMwA08kRMif3Vs0OETypeTeamMemberTypeAssignedLocationsType AssignedLocations { get; set; }
     }
 
-    public class BodyInputTeamMembersTypeAFMwA08kRMIF3Vs0OETypeTeamMemberTypeAssignedLocationsType
+    public class BodyInputTeamMembersTypeAFMwA08kRMif3Vs0OETypeTeamMemberTypeAssignedLocationsType
     {
         [JsonProperty("assignment_type")]
         public string AssignmentType { get; set; }

@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
     public class FileidcsvInput
     {
         [JsonProperty("fileidCSV")]
-        public string FileidCSV { get; set; }
+        public string FileidCsv { get; set; }
     }
 
     public class Site
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Sitefolderpermission { get; set; }
 
         [JsonProperty("module")]
-        public CreateSiteModuleDBOResponse Module { get; set; }
+        public CreateSiteModuleDboResponse Module { get; set; }
 
         [JsonProperty("adminnote")]
         public string Adminnote { get; set; }
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int EncryptedPassword { get; set; }
 
         [JsonProperty("availableIPRangeCSV")]
-        public string AvailableIPRangeCSV { get; set; }
+        public string AvailableIPRangeCsv { get; set; }
 
         [JsonProperty("siteModuleID")]
         public int SiteModuleId { get; set; }
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string ExcelReportFooterText { get; set; }
 
         [JsonProperty("announcementMLJSON")]
-        public string AnnouncementMLJSON { get; set; }
+        public string AnnouncementMljson { get; set; }
 
         [JsonProperty("templateType")]
         public int TemplateType { get; set; }
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Lastaccesseddate { get; set; }
 
         [JsonProperty("defaultViewerMetaDataTab")]
-        public int DefaultViewerMetaDataTab { get; set; }
+        public int DefaultViewerMetadataTab { get; set; }
 
         [JsonProperty("documentMetadataViewId")]
         public int DocumentMetadataViewId { get; set; }
@@ -342,49 +342,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int Filerelationshipsitepermissionlevel { get; set; }
     }
 
-    public class CreateSiteModuleDBOResponse
+    public class CreateSiteModuleDboResponse
     {
         [JsonProperty("home")]
-        public CreateSiteHomeDBOResponse Home { get; set; }
+        public CreateSiteHomeDboResponse Home { get; set; }
 
         [JsonProperty("activity")]
-        public CreateSiteActivityDBOResponse Activity { get; set; }
+        public CreateSiteActivityDboResponse Activity { get; set; }
 
         [JsonProperty("document")]
-        public CreateSiteDocumentDBOResponse Document { get; set; }
+        public CreateSiteDocumentDboResponse Document { get; set; }
 
         [JsonProperty("blog")]
-        public CreateSiteBlogDBOResponse Blog { get; set; }
+        public CreateSiteBlogDboResponse Blog { get; set; }
 
         [JsonProperty("wiki")]
-        public CreateSiteWikiDBOResponse Wiki { get; set; }
+        public CreateSiteWikiDboResponse Wiki { get; set; }
 
         [JsonProperty("task")]
-        public CreateSiteTaskDBOResponse TaskObject { get; set; }
+        public CreateSiteTaskDboResponse TaskObject { get; set; }
 
         [JsonProperty("event")]
-        public CreateSiteEventDBOResponse Event { get; set; }
+        public CreateSiteEventDboResponse Event { get; set; }
 
         [JsonProperty("isheet")]
-        public CreateSiteISheetDBOResponse Isheet { get; set; }
+        public CreateSiteISheetDboResponse Isheet { get; set; }
 
         [JsonProperty("qa")]
-        public CreateSiteQaDBOResponse Qa { get; set; }
+        public CreateSiteQaDboResponse Qa { get; set; }
 
         [JsonProperty("people")]
-        public CreateSitePeopleDBOResponse People { get; set; }
+        public CreateSitePeopleDboResponse People { get; set; }
 
         [JsonProperty("contractexpress")]
-        public CreateSiteContractExpressDBOResponse Contractexpress { get; set; }
+        public CreateSiteContractExpressDboResponse Contractexpress { get; set; }
     }
 
-    public class CreateSiteHomeDBOResponse
+    public class CreateSiteHomeDboResponse
     {
         [JsonProperty("enable")]
         public string Enable { get; set; }
     }
 
-    public class CreateSiteActivityDBOResponse
+    public class CreateSiteActivityDboResponse
     {
         [JsonProperty("enable")]
         public string Enable { get; set; }
@@ -393,13 +393,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Microblog { get; set; }
     }
 
-    public class CreateSiteDocumentDBOResponse
+    public class CreateSiteDocumentDboResponse
     {
         [JsonProperty("docid")]
         public string Docid { get; set; }
     }
 
-    public class CreateSiteBlogDBOResponse
+    public class CreateSiteBlogDboResponse
     {
         [JsonProperty("blogTitle")]
         public string BlogTitle { get; set; }
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Enable { get; set; }
     }
 
-    public class CreateSiteWikiDBOResponse
+    public class CreateSiteWikiDboResponse
     {
         [JsonProperty("wikiid")]
         public int Wikiid { get; set; }
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int Wikiversionid { get; set; }
     }
 
-    public class CreateSiteTaskDBOResponse
+    public class CreateSiteTaskDboResponse
     {
         [JsonProperty("index")]
         public string Index { get; set; }
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Resource { get; set; }
     }
 
-    public class CreateSiteEventDBOResponse
+    public class CreateSiteEventDboResponse
     {
         [JsonProperty("eventTitle")]
         public string EventTitle { get; set; }
@@ -600,7 +600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Enable { get; set; }
     }
 
-    public class CreateSiteISheetDBOResponse
+    public class CreateSiteISheetDboResponse
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -687,19 +687,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int Sheettypeid { get; set; }
     }
 
-    public class CreateSiteQaDBOResponse
+    public class CreateSiteQaDboResponse
     {
         [JsonProperty("enable")]
         public string Enable { get; set; }
     }
 
-    public class CreateSitePeopleDBOResponse
+    public class CreateSitePeopleDboResponse
     {
         [JsonProperty("person")]
-        public CreateSitePersonDBOResponse[] Person { get; set; }
+        public CreateSitePersonDboResponse[] Person { get; set; }
     }
 
-    public class CreateSitePersonDBOResponse
+    public class CreateSitePersonDboResponse
     {
         [JsonProperty("userid")]
         public int Userid { get; set; }
@@ -729,7 +729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Department { get; set; }
     }
 
-    public class CreateSiteContractExpressDBOResponse
+    public class CreateSiteContractExpressDboResponse
     {
         [JsonProperty("enable")]
         public string Enable { get; set; }
@@ -759,7 +759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Sitefolderpermission { get; set; }
 
         [JsonProperty("module")]
-        public CreateSiteModuleDBO Module { get; set; }
+        public CreateSiteModuleDbo Module { get; set; }
 
         [JsonProperty("adminnote")]
         public string Adminnote { get; set; }
@@ -921,7 +921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int? EncryptedPassword { get; set; }
 
         [JsonProperty("availableIPRangeCSV")]
-        public string AvailableIPRangeCSV { get; set; }
+        public string AvailableIPRangeCsv { get; set; }
 
         [JsonProperty("siteModuleID")]
         public int? SiteModuleId { get; set; }
@@ -942,7 +942,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string ExcelReportFooterText { get; set; }
 
         [JsonProperty("announcementMLJSON")]
-        public string AnnouncementMLJSON { get; set; }
+        public string AnnouncementMljson { get; set; }
 
         [JsonProperty("templateType")]
         public int? TemplateType { get; set; }
@@ -966,7 +966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Lastaccesseddate { get; set; }
 
         [JsonProperty("defaultViewerMetaDataTab")]
-        public int? DefaultViewerMetaDataTab { get; set; }
+        public int? DefaultViewerMetadataTab { get; set; }
 
         [JsonProperty("documentMetadataViewId")]
         public int? DocumentMetadataViewId { get; set; }
@@ -1005,49 +1005,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int? Filerelationshipsitepermissionlevel { get; set; }
     }
 
-    public class CreateSiteModuleDBO
+    public class CreateSiteModuleDbo
     {
         [JsonProperty("home")]
-        public CreateSiteHomeDBO Home { get; set; }
+        public CreateSiteHomeDbo Home { get; set; }
 
         [JsonProperty("activity")]
-        public CreateSiteActivityDBO Activity { get; set; }
+        public CreateSiteActivityDbo Activity { get; set; }
 
         [JsonProperty("document")]
-        public CreateSiteDocumentDBO Document { get; set; }
+        public CreateSiteDocumentDbo Document { get; set; }
 
         [JsonProperty("blog")]
-        public CreateSiteBlogDBO Blog { get; set; }
+        public CreateSiteBlogDbo Blog { get; set; }
 
         [JsonProperty("wiki")]
-        public CreateSiteWikiDBO Wiki { get; set; }
+        public CreateSiteWikiDbo Wiki { get; set; }
 
         [JsonProperty("task")]
-        public CreateSiteTaskDBO TaskObject { get; set; }
+        public CreateSiteTaskDbo TaskObject { get; set; }
 
         [JsonProperty("event")]
-        public CreateSiteEventDBO Event { get; set; }
+        public CreateSiteEventDbo Event { get; set; }
 
         [JsonProperty("isheet")]
-        public CreateSiteISheetDBO Isheet { get; set; }
+        public CreateSiteISheetDbo Isheet { get; set; }
 
         [JsonProperty("qa")]
-        public CreateSiteQaDBO Qa { get; set; }
+        public CreateSiteQaDbo Qa { get; set; }
 
         [JsonProperty("people")]
-        public CreateSitePeopleDBO People { get; set; }
+        public CreateSitePeopleDbo People { get; set; }
 
         [JsonProperty("contractexpress")]
-        public CreateSiteContractExpressDBO Contractexpress { get; set; }
+        public CreateSiteContractExpressDbo Contractexpress { get; set; }
     }
 
-    public class CreateSiteHomeDBO
+    public class CreateSiteHomeDbo
     {
         [JsonProperty("enable")]
         public string Enable { get; set; }
     }
 
-    public class CreateSiteActivityDBO
+    public class CreateSiteActivityDbo
     {
         [JsonProperty("enable")]
         public string Enable { get; set; }
@@ -1056,13 +1056,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Microblog { get; set; }
     }
 
-    public class CreateSiteDocumentDBO
+    public class CreateSiteDocumentDbo
     {
         [JsonProperty("docid")]
         public string Docid { get; set; }
     }
 
-    public class CreateSiteBlogDBO
+    public class CreateSiteBlogDbo
     {
         [JsonProperty("blogTitle")]
         public string BlogTitle { get; set; }
@@ -1110,7 +1110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Enable { get; set; }
     }
 
-    public class CreateSiteWikiDBO
+    public class CreateSiteWikiDbo
     {
         [JsonProperty("wikiid")]
         public int? Wikiid { get; set; }
@@ -1155,7 +1155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int? Wikiversionid { get; set; }
     }
 
-    public class CreateSiteTaskDBO
+    public class CreateSiteTaskDbo
     {
         [JsonProperty("index")]
         public string Index { get; set; }
@@ -1200,7 +1200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Resource { get; set; }
     }
 
-    public class CreateSiteEventDBO
+    public class CreateSiteEventDbo
     {
         [JsonProperty("eventTitle")]
         public string EventTitle { get; set; }
@@ -1263,7 +1263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Enable { get; set; }
     }
 
-    public class CreateSiteISheetDBO
+    public class CreateSiteISheetDbo
     {
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -1350,19 +1350,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public int? Sheettypeid { get; set; }
     }
 
-    public class CreateSiteQaDBO
+    public class CreateSiteQaDbo
     {
         [JsonProperty("enable")]
         public string Enable { get; set; }
     }
 
-    public class CreateSitePeopleDBO
+    public class CreateSitePeopleDbo
     {
         [JsonProperty("person")]
-        public CreateSitePersonDBO[] Person { get; set; }
+        public CreateSitePersonDbo[] Person { get; set; }
     }
 
-    public class CreateSitePersonDBO
+    public class CreateSitePersonDbo
     {
         [JsonProperty("userid")]
         public int? Userid { get; set; }
@@ -1392,7 +1392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
         public string Department { get; set; }
     }
 
-    public class CreateSiteContractExpressDBO
+    public class CreateSiteContractExpressDbo
     {
         [JsonProperty("enable")]
         public string Enable { get; set; }

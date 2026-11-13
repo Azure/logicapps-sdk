@@ -451,16 +451,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qppngintegrationhub
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "qppngintegrationhub")]
-        public IBodyWorkflowAction<TokenFromAuthWrapperResponse, ApiConnectionActionConfiguration> TokenFromAuthWrapper(Expression<Func<string>> username, Expression<Func<string>> password)
+        public IBodyWorkflowAction<TokenFromAuthWrapperResponse, ApiConnectionActionConfiguration> TokenFromAuthWrapper(Expression<Func<string>> userName, Expression<Func<string>> password)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: true);
             return new DeferredBodyAction<TokenFromAuthWrapperResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/auth/token";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_username);
+                callPayload.Queries["username"] = ExpressionConverter.Convert(__workflow_userName);
                 callPayload.Queries["password"] = ExpressionConverter.Convert(__workflow_password);
                 return new ApiConnectionAction<TokenFromAuthWrapperResponse>(callPayload);
             });
@@ -1625,12 +1625,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qppngintegrationhub
         public string WebhookType { get; set; } = "EVENT";
 
         [JsonProperty("object", DefaultValueHandling = DefaultValueHandling.Include)]
-        public RequestBodyOfWebhookInputObjectEntityType ObjectEntity { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Qppngintegrationhub.RequestBodyOfWebhookInputObjectEntityType.ASSET;
+        public RequestBodyOfWebhookInputObjectEntityType ObjectEntity { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Qppngintegrationhub.RequestBodyOfWebhookInputObjectEntityType.Asset;
 
         [JsonProperty("changeType", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestBodyOfWebhookInputChangeTypeTypeItem[] ChangeType { get; set; } = new RequestBodyOfWebhookInputChangeTypeTypeItem[]
         {
-            global::Microsoft.Azure.Workflows.Sdk.Connectors.Qppngintegrationhub.RequestBodyOfWebhookInputChangeTypeTypeItem.ASSETADDED
+            global::Microsoft.Azure.Workflows.Sdk.Connectors.Qppngintegrationhub.RequestBodyOfWebhookInputChangeTypeTypeItem.AssetAdded
         };
 
         [JsonProperty("endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
@@ -1646,256 +1646,273 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Qppngintegrationhub
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RequestBodyOfWebhookInputObjectEntityType
     {
-        COLLECTION,
-        DOMAIN,
+        [EnumMember(Value = "COLLECTION")]
+        Collection,
+        [EnumMember(Value = "DOMAIN")]
+        Domain,
         [EnumMember(Value = "SERVER_STATUS")]
-        SERVERSTATUS,
-        ATTRIBUTE,
-        USERCLASS,
-        FORM,
-        ASSET,
+        ServerStatus,
+        [EnumMember(Value = "ATTRIBUTE")]
+        Attribute,
+        [EnumMember(Value = "USERCLASS")]
+        Userclass,
+        [EnumMember(Value = "FORM")]
+        Form,
+        [EnumMember(Value = "ASSET")]
+        Asset,
         [EnumMember(Value = "RELATION_TYPE")]
-        RELATIONTYPE,
+        RelationType,
         [EnumMember(Value = "ASSET_RELATION")]
-        ASSETRELATION,
-        PUBLISHING,
-        USER,
-        GROUP,
-        ARTICLE,
-        QUERY,
+        AssetRelation,
+        [EnumMember(Value = "PUBLISHING")]
+        Publishing,
+        [EnumMember(Value = "USER")]
+        User,
+        [EnumMember(Value = "GROUP")]
+        Group,
+        [EnumMember(Value = "ARTICLE")]
+        Article,
+        [EnumMember(Value = "QUERY")]
+        Query,
         [EnumMember(Value = "CONTENT_TYPE")]
-        CONTENTTYPE,
-        CUSTOM,
-        SCHEDULER,
+        ContentType,
+        [EnumMember(Value = "CUSTOM")]
+        Custom,
+        [EnumMember(Value = "SCHEDULER")]
+        Scheduler,
         [EnumMember(Value = "SYSTEM_PREFERENCE")]
-        SYSTEMPREFERENCE,
-        WORKFLOW,
+        SystemPreference,
+        [EnumMember(Value = "WORKFLOW")]
+        Workflow,
         [EnumMember(Value = "SERVER_SHUTDOWN")]
-        SERVERSHUTDOWN
+        ServerShutdown
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RequestBodyOfWebhookInputChangeTypeTypeItem
     {
         [EnumMember(Value = "COLLECTION_ADDED")]
-        COLLECTIONADDED,
+        CollectionAdded,
         [EnumMember(Value = "COLLECTION_CHANGED")]
-        COLLECTIONCHANGED,
+        CollectionChanged,
         [EnumMember(Value = "COLLECTION_DEFAULT_JOBJACKET_CHANGED")]
-        COLLECTIONDEFAULTJOBJACKETCHANGED,
+        CollectionDefaultJobjacketChanged,
         [EnumMember(Value = "COLLECTION_DELETED")]
-        COLLECTIONDELETED,
+        CollectionDeleted,
         [EnumMember(Value = "COLLECTION_GROUPS_CHANGED")]
-        COLLECTIONGROUPSCHANGED,
+        CollectionGroupsChanged,
         [EnumMember(Value = "COLLECTION_JOBJACKETS_CHANGED")]
-        COLLECTIONJOBJACKETSCHANGED,
+        CollectionJobjacketsChanged,
         [EnumMember(Value = "COLLECTION_MOVED")]
-        COLLECTIONMOVED,
+        CollectionMoved,
         [EnumMember(Value = "COLLECTION_REVISION_CONTROLS_CHANGED")]
-        COLLECTIONREVISIONCONTROLSCHANGED,
+        CollectionRevisionControlsChanged,
         [EnumMember(Value = "COLLECTION_ROUTINGS_CHANGED")]
-        COLLECTIONROUTINGSCHANGED,
+        CollectionRoutingsChanged,
         [EnumMember(Value = "COLLECTION_USERS_CHANGED")]
-        COLLECTIONUSERSCHANGED,
+        CollectionUsersChanged,
         [EnumMember(Value = "COLLECTION_WORKFLOWS_CHANGED")]
-        COLLECTIONWORKFLOWSCHANGED,
+        CollectionWorkflowsChanged,
         [EnumMember(Value = "DOMAIN_ADDED")]
-        DOMAINADDED,
+        DomainAdded,
         [EnumMember(Value = "DOMAIN_DEFINITION_CHANGED")]
-        DOMAINDEFINITIONCHANGED,
+        DomainDefinitionChanged,
         [EnumMember(Value = "DOMAIN_DELETED")]
-        DOMAINDELETED,
+        DomainDeleted,
         [EnumMember(Value = "DOMAIN_VALUES_CHANGED")]
-        DOMAINVALUESCHANGED,
+        DomainValuesChanged,
         [EnumMember(Value = "DOMAIN_VALUES_MOVED")]
-        DOMAINVALUESMOVED,
+        DomainValuesMoved,
         [EnumMember(Value = "DOMAIN_VALUE_XML_CHANGED")]
-        DOMAINVALUEXMLCHANGED,
+        DomainValueXmlChanged,
         [EnumMember(Value = "SERVER_STATUS_CHANGED")]
-        SERVERSTATUSCHANGED,
+        ServerStatusChanged,
         [EnumMember(Value = "ATTRIBUTE_ADDED")]
-        ATTRIBUTEADDED,
+        AttributeAdded,
         [EnumMember(Value = "ATTRIBUTE_CHANGED")]
-        ATTRIBUTECHANGED,
+        AttributeChanged,
         [EnumMember(Value = "ATTRIBUTE_DELETED")]
-        ATTRIBUTEDELETED,
+        AttributeDeleted,
         [EnumMember(Value = "USERCLASS_ADDED")]
-        USERCLASSADDED,
+        UserclassAdded,
         [EnumMember(Value = "USERCLASS_CHANGED")]
-        USERCLASSCHANGED,
+        UserclassChanged,
         [EnumMember(Value = "USERCLASS_DELETED")]
-        USERCLASSDELETED,
+        UserclassDeleted,
         [EnumMember(Value = "USERCLASS_REASSIGNED")]
-        USERCLASSREASSIGNED,
+        UserclassReassigned,
         [EnumMember(Value = "USERCLASS_STATUS_PRIVILEGES_CHANGED")]
-        USERCLASSSTATUSPRIVILEGESCHANGED,
+        UserclassStatusPrivilegesChanged,
         [EnumMember(Value = "USERCLASS_STATUS_PRIVILEGES_DELETED")]
-        USERCLASSSTATUSPRIVILEGESDELETED,
+        UserclassStatusPrivilegesDeleted,
         [EnumMember(Value = "FORM_ADDED")]
-        FORMADDED,
+        FormAdded,
         [EnumMember(Value = "FORM_CHANGED")]
-        FORMCHANGED,
+        FormChanged,
         [EnumMember(Value = "FORM_DELETED")]
-        FORMDELETED,
+        FormDeleted,
         [EnumMember(Value = "ASSET_ADDED")]
-        ASSETADDED,
+        AssetAdded,
         [EnumMember(Value = "ASSET_CHANGED")]
-        ASSETCHANGED,
+        AssetChanged,
         [EnumMember(Value = "ASSET_CHECKOUT")]
-        ASSETCHECKOUT,
+        AssetCheckout,
         [EnumMember(Value = "ASSET_CHECKOUT_ABORT")]
-        ASSETCHECKOUTABORT,
+        AssetCheckoutAbort,
         [EnumMember(Value = "ASSET_DELETED")]
-        ASSETDELETED,
+        AssetDeleted,
         [EnumMember(Value = "ASSET_DOWNLOADED")]
-        ASSETDOWNLOADED,
+        AssetDownloaded,
         [EnumMember(Value = "ASSET_DOWNLOAD_INFO_REQUESTED")]
-        ASSETDOWNLOADINFOREQUESTED,
+        AssetDownloadInfoRequested,
         [EnumMember(Value = "ASSET_DRAFT_ADDED")]
-        ASSETDRAFTADDED,
+        AssetDraftAdded,
         [EnumMember(Value = "ASSET_DRAFT_DOWNLOADED")]
-        ASSETDRAFTDOWNLOADED,
+        AssetDraftDownloaded,
         [EnumMember(Value = "ASSET_DRAFT_DOWNLOAD_INFO_REQUESTED")]
-        ASSETDRAFTDOWNLOADINFOREQUESTED,
+        AssetDraftDownloadInfoRequested,
         [EnumMember(Value = "ASSET_ESIGN_STATUS")]
-        ASSETESIGNSTATUS,
+        AssetEsignStatus,
         [EnumMember(Value = "ASSET_RENDITION_CREATED")]
-        ASSETRENDITIONCREATED,
+        AssetRenditionCreated,
         [EnumMember(Value = "ASSET_RENDITION_DOWNLOAD_INFO_REQUESTED")]
-        ASSETRENDITIONDOWNLOADINFOREQUESTED,
+        AssetRenditionDownloadInfoRequested,
         [EnumMember(Value = "ASSET_RENDITION_PART_DOWNLOAD_INFO_REQUESTED")]
-        ASSETRENDITIONPARTDOWNLOADINFOREQUESTED,
+        AssetRenditionPartDownloadInfoRequested,
         [EnumMember(Value = "ASSET_VERSION_ADDED")]
-        ASSETVERSIONADDED,
+        AssetVersionAdded,
         [EnumMember(Value = "ASSET_VERSION_DELETED")]
-        ASSETVERSIONDELETED,
+        AssetVersionDeleted,
         [EnumMember(Value = "ASSET_WORKFLOW_CHANGED")]
-        ASSETWORKFLOWCHANGED,
+        AssetWorkflowChanged,
         [EnumMember(Value = "BRANCH_CHANGED")]
-        BRANCHCHANGED,
+        BranchChanged,
         [EnumMember(Value = "BRANCH_CREATED")]
-        BRANCHCREATED,
+        BranchCreated,
         [EnumMember(Value = "BRANCH_DELETED")]
-        BRANCHDELETED,
+        BranchDeleted,
         [EnumMember(Value = "RELATION_ATTRIBUTE_MAPPINGS_CHANGED")]
-        RELATIONATTRIBUTEMAPPINGSCHANGED,
+        RelationAttributeMappingsChanged,
         [EnumMember(Value = "RELATION_TYPE_ADDED")]
-        RELATIONTYPEADDED,
+        RelationTypeAdded,
         [EnumMember(Value = "RELATION_TYPE_CHANGED")]
-        RELATIONTYPECHANGED,
+        RelationTypeChanged,
         [EnumMember(Value = "RELATION_TYPE_DELETED")]
-        RELATIONTYPEDELETED,
+        RelationTypeDeleted,
         [EnumMember(Value = "ASSET_RELATION_ADDED")]
-        ASSETRELATIONADDED,
+        AssetRelationAdded,
         [EnumMember(Value = "ASSET_RELATION_CHILD_VERSION_CHANGED")]
-        ASSETRELATIONCHILDVERSIONCHANGED,
+        AssetRelationChildVersionChanged,
         [EnumMember(Value = "ASSET_RELATION_DELETED")]
-        ASSETRELATIONDELETED,
-        DATADOC,
-        DELIVER,
-        PUBLISH,
+        AssetRelationDeleted,
+        [EnumMember(Value = "DATADOC")]
+        Datadoc,
+        [EnumMember(Value = "DELIVER")]
+        Deliver,
+        [EnumMember(Value = "PUBLISH")]
+        Publish,
         [EnumMember(Value = "LICENSE_ASSIGNED")]
-        LICENSEASSIGNED,
+        LicenseAssigned,
         [EnumMember(Value = "LICENSE_REVOKED")]
-        LICENSEREVOKED,
+        LicenseRevoked,
         [EnumMember(Value = "ROLE_FOR_USER_CHANGED")]
-        ROLEFORUSERCHANGED,
+        RoleForUserChanged,
         [EnumMember(Value = "USER_ADDED")]
-        USERADDED,
+        UserAdded,
         [EnumMember(Value = "USER_CHANGED")]
-        USERCHANGED,
+        UserChanged,
         [EnumMember(Value = "USER_DELETED")]
-        USERDELETED,
+        UserDeleted,
         [EnumMember(Value = "USER_MEMBERSHIP_CHANGED")]
-        USERMEMBERSHIPCHANGED,
+        UserMembershipChanged,
         [EnumMember(Value = "USER_PASSWORD_CHANGED")]
-        USERPASSWORDCHANGED,
+        UserPasswordChanged,
         [EnumMember(Value = "USER_REDLINING_COLOR_CHANGED")]
-        USERREDLININGCOLORCHANGED,
+        UserRedliningColorChanged,
         [EnumMember(Value = "GROUP_ADDED")]
-        GROUPADDED,
+        GroupAdded,
         [EnumMember(Value = "GROUP_CHANGED")]
-        GROUPCHANGED,
+        GroupChanged,
         [EnumMember(Value = "GROUP_DELETED")]
-        GROUPDELETED,
+        GroupDeleted,
         [EnumMember(Value = "ARTICLE_GEOMETRY_UPDATED")]
-        ARTICLEGEOMETRYUPDATED,
+        ArticleGeometryUpdated,
         [EnumMember(Value = "QUERY_CHANGED")]
-        QUERYCHANGED,
+        QueryChanged,
         [EnumMember(Value = "QUERY_CREATED")]
-        QUERYCREATED,
+        QueryCreated,
         [EnumMember(Value = "QUERY_DELETED")]
-        QUERYDELETED,
+        QueryDeleted,
         [EnumMember(Value = "QUERY_REASSIGNED")]
-        QUERYREASSIGNED,
+        QueryReassigned,
         [EnumMember(Value = "QUERY_SHARED")]
-        QUERYSHARED,
+        QueryShared,
         [EnumMember(Value = "QUERY_SHARING_REMOVED")]
-        QUERYSHARINGREMOVED,
+        QuerySharingRemoved,
         [EnumMember(Value = "CONTENT_TYPE_ADDED")]
-        CONTENTTYPEADDED,
+        ContentTypeAdded,
         [EnumMember(Value = "CONTENT_TYPE_ATTRIBUTES_UPDATED")]
-        CONTENTTYPEATTRIBUTESUPDATED,
+        ContentTypeAttributesUpdated,
         [EnumMember(Value = "CONTENT_TYPE_CHANGED")]
-        CONTENTTYPECHANGED,
+        ContentTypeChanged,
         [EnumMember(Value = "CONTENT_TYPE_DELETED")]
-        CONTENTTYPEDELETED,
+        ContentTypeDeleted,
         [EnumMember(Value = "CUSTOM_CEDEV")]
-        CUSTOMCEDEV,
+        CustomCedev,
         [EnumMember(Value = "CUSTOM_EVENT")]
-        CUSTOMEVENT,
+        CustomEvent,
         [EnumMember(Value = "HKV_DEV")]
-        HKVDEV,
+        HkvDev,
         [EnumMember(Value = "HKV_DEV3X")]
-        HKVDEV3X,
+        HkvDeV3X,
         [EnumMember(Value = "LOGGED_OUT")]
-        LOGGEDOUT,
+        LoggedOut,
         [EnumMember(Value = "LOGIN_FAILED")]
-        LOGINFAILED,
+        LoginFailed,
         [EnumMember(Value = "LOGIN_SUCCESS")]
-        LOGINSUCCESS,
+        LoginSuccess,
         [EnumMember(Value = "SCHEDULE_REACHED")]
-        SCHEDULEREACHED,
+        ScheduleReached,
         [EnumMember(Value = "SYSTEM_PREFERENCE_CHANGED")]
-        SYSTEMPREFERENCECHANGED,
+        SystemPreferenceChanged,
         [EnumMember(Value = "ATTRIBUTE_CONSTRAINTS_CHANGED")]
-        ATTRIBUTECONSTRAINTSCHANGED,
+        AttributeConstraintsChanged,
         [EnumMember(Value = "CHECK_IN_RULE_EVALUATION_CHANGED")]
-        CHECKINRULEEVALUATIONCHANGED,
+        CheckInRuleEvaluationChanged,
         [EnumMember(Value = "PRINT_RULE_EVALUATION_CHANGED")]
-        PRINTRULEEVALUATIONCHANGED,
+        PrintRuleEvaluationChanged,
         [EnumMember(Value = "REDLINING_CHANGED")]
-        REDLININGCHANGED,
+        RedliningChanged,
         [EnumMember(Value = "STATUS_ADDED")]
-        STATUSADDED,
+        StatusAdded,
         [EnumMember(Value = "STATUS_CHANGED")]
-        STATUSCHANGED,
+        StatusChanged,
         [EnumMember(Value = "STATUS_DELETED")]
-        STATUSDELETED,
+        StatusDeleted,
         [EnumMember(Value = "STATUS_PRIVILEGES_CHANGED")]
-        STATUSPRIVILEGESCHANGED,
+        StatusPrivilegesChanged,
         [EnumMember(Value = "STATUS_PRIVILEGES_DELETED")]
-        STATUSPRIVILEGESDELETED,
+        StatusPrivilegesDeleted,
         [EnumMember(Value = "STATUS_REASSIGNED")]
-        STATUSREASSIGNED,
+        StatusReassigned,
         [EnumMember(Value = "STATUS_ROUTING_USERCLASSES_CHANGED")]
-        STATUSROUTINGUSERCLASSESCHANGED,
+        StatusRoutingUserclassesChanged,
         [EnumMember(Value = "STATUS_TRANSITION_CHANGED")]
-        STATUSTRANSITIONCHANGED,
+        StatusTransitionChanged,
         [EnumMember(Value = "WORKFLOW_ADDED")]
-        WORKFLOWADDED,
+        WorkflowAdded,
         [EnumMember(Value = "WORKFLOW_CHANGED")]
-        WORKFLOWCHANGED,
+        WorkflowChanged,
         [EnumMember(Value = "WORKFLOW_CONTENT_TYPES_CHANGED")]
-        WORKFLOWCONTENTTYPESCHANGED,
+        WorkflowContentTypesChanged,
         [EnumMember(Value = "WORKFLOW_DELETED")]
-        WORKFLOWDELETED,
+        WorkflowDeleted,
         [EnumMember(Value = "WORKFLOW_OVERRIDDEN_ATTRIBUTE_CONSTRAINTS_CHANGED")]
-        WORKFLOWOVERRIdDENATTRIBUTECONSTRAINTSCHANGED,
+        WorkflowOverriddenAttributeConstraintsChanged,
         [EnumMember(Value = "WORKFLOW_OVERRIDDEN_STATUS_TRANSITIONS_CHANGED")]
-        WORKFLOWOVERRIdDENSTATUSTRANSITIONSCHANGED,
+        WorkflowOverriddenStatusTransitionsChanged,
         [EnumMember(Value = "SERVER_SHUTDOWN_TIME_APPROACHING")]
-        SERVERSHUTDOWNTIMEAPPROACHING
+        ServerShutdownTimeApproaching
     }
 }
 

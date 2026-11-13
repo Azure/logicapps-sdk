@@ -593,15 +593,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
     public enum BodyInputTaskTypeType
     {
         [EnumMember(Value = "RETRIEVAL_QUERY")]
-        RETRIEVALQUERY,
+        RetrievalQuery,
         [EnumMember(Value = "RETRIEVAL_DOCUMENT")]
-        RETRIEVALDOCUMENT,
+        RetrievalDocument,
         [EnumMember(Value = "SEMANTIC_SIMILARITY")]
-        SEMANTICSIMILARITY,
-        CLASSIFICATION,
-        CLUSTERING,
+        SemanticSimilarity,
+        [EnumMember(Value = "CLASSIFICATION")]
+        Classification,
+        [EnumMember(Value = "CLUSTERING")]
+        Clustering,
         [EnumMember(Value = "TASK_TYPE_UNSPECIFIED")]
-        TASKTYPEUNSPECIFIED
+        TaskTypeUnspecified
     }
 
     public class BatchEmbedContentsResponse

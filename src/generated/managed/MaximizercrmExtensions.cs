@@ -1168,7 +1168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string WithOpportunityLeaderKeyValue { get; set; }
 
         [JsonProperty("withOpportunityLeaderKeyUID")]
-        public string WithOpportunityLeaderKeyUId { get; set; }
+        public string WithOpportunityLeaderKeyUid { get; set; }
 
         [JsonProperty("withOpportunityLeaderDisplayValue")]
         public string WithOpportunityLeaderDisplayValue { get; set; }
@@ -1760,7 +1760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string Key { get; set; }
 
         [JsonProperty("assignedToKeyUID")]
-        public string AssignedToKeyUId { get; set; }
+        public string AssignedToKeyUid { get; set; }
 
         [JsonProperty("assignedToKeyValue")]
         public string AssignedToKeyValue { get; set; }
@@ -1796,7 +1796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string LastModifyDate { get; set; }
 
         [JsonProperty("creatorKeyUID")]
-        public string CreatorKeyUId { get; set; }
+        public string CreatorKeyUid { get; set; }
 
         [JsonProperty("creatorKeyValue")]
         public string CreatorKeyValue { get; set; }
@@ -1805,7 +1805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string CreatorDisplayValue { get; set; }
 
         [JsonProperty("modifiedByKeyUID")]
-        public string ModifiedByKeyUId { get; set; }
+        public string ModifiedByKeyUid { get; set; }
 
         [JsonProperty("modifiedByKeyValue")]
         public string ModifiedByKeyValue { get; set; }
@@ -2462,7 +2462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string[] PartnerKeys { get; set; }
 
         [JsonProperty("partnerIDs")]
-        public string[] PartnerIDs { get; set; }
+        public string[] PartnerIds { get; set; }
 
         [JsonProperty("partnerInfo")]
         public OpportunityPartner[] PartnerInfo { get; set; }
@@ -3332,7 +3332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string DateTime { get; set; }
 
         [JsonProperty("creatorKeyUID")]
-        public string CreatorKeyUId { get; set; }
+        public string CreatorKeyUid { get; set; }
 
         [JsonProperty("creatorKeyValue")]
         public string CreatorKeyValue { get; set; }
@@ -3383,7 +3383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string Key { get; set; }
 
         [JsonProperty("assignedToKeyUID")]
-        public string AssignedToKeyUId { get; set; }
+        public string AssignedToKeyUid { get; set; }
 
         [JsonProperty("assignedToKeyValue")]
         public string AssignedToKeyValue { get; set; }
@@ -3419,7 +3419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string LastModifyDate { get; set; }
 
         [JsonProperty("creatorKeyUID")]
-        public string CreatorKeyUId { get; set; }
+        public string CreatorKeyUid { get; set; }
 
         [JsonProperty("creatorKeyValue")]
         public string CreatorKeyValue { get; set; }
@@ -3428,7 +3428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string CreatorDisplayValue { get; set; }
 
         [JsonProperty("modifiedByKeyUID")]
-        public string ModifiedByKeyUId { get; set; }
+        public string ModifiedByKeyUid { get; set; }
 
         [JsonProperty("modifiedByKeyValue")]
         public string ModifiedByKeyValue { get; set; }
@@ -3860,7 +3860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string WithOpportunityLeaderKeyValue { get; set; }
 
         [JsonProperty("withOpportunityLeaderKeyUID")]
-        public string WithOpportunityLeaderKeyUId { get; set; }
+        public string WithOpportunityLeaderKeyUid { get; set; }
 
         [JsonProperty("withOpportunityLeaderDisplayValue")]
         public string WithOpportunityLeaderDisplayValue { get; set; }
@@ -4280,7 +4280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string Key { get; set; }
 
         [JsonProperty("assignedToKeyUID")]
-        public string AssignedToKeyUId { get; set; }
+        public string AssignedToKeyUid { get; set; }
 
         [JsonProperty("assignedToKeyValue")]
         public string AssignedToKeyValue { get; set; }
@@ -4316,7 +4316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string LastModifyDate { get; set; }
 
         [JsonProperty("creatorKeyUID")]
-        public string CreatorKeyUId { get; set; }
+        public string CreatorKeyUid { get; set; }
 
         [JsonProperty("creatorKeyValue")]
         public string CreatorKeyValue { get; set; }
@@ -4325,7 +4325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string CreatorDisplayValue { get; set; }
 
         [JsonProperty("modifiedByKeyUID")]
-        public string ModifiedByKeyUId { get; set; }
+        public string ModifiedByKeyUid { get; set; }
 
         [JsonProperty("modifiedByKeyValue")]
         public string ModifiedByKeyValue { get; set; }
@@ -4817,7 +4817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string[] PartnerKeys { get; set; }
 
         [JsonProperty("partnerIDs")]
-        public string[] PartnerIDs { get; set; }
+        public string[] PartnerIds { get; set; }
 
         [JsonProperty("partnerInfo")]
         public OpportunityPartner[] PartnerInfo { get; set; }

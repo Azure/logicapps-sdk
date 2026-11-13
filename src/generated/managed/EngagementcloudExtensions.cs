@@ -297,11 +297,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
             this.CampaignId = campaignId;
         }
 
-        public int[] AddressBookIDs { get; set; }
+        [JsonProperty("AddressBookIDs")]
+        public int[] AddressBookIds { get; set; }
 
         [JsonProperty("CampaignID", DefaultValueHandling = DefaultValueHandling.Include)]
         public int CampaignId { get; set; }
-        public int[] ContactIDs { get; set; }
+
+        [JsonProperty("ContactIDs")]
+        public int[] ContactIds { get; set; }
         public string SendDate { get; set; }
     }
 

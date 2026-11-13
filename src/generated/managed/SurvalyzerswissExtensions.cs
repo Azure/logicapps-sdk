@@ -1185,7 +1185,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         RemoteIntegerRange,
         RemoteString,
         RemoteInteger,
-        SQL
+        [EnumMember(Value = "SQL")]
+        Sql
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1230,9 +1231,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     public enum CreateSurveyCodeAccessMode
     {
         None,
-        StrongUsernamePassword,
+        [EnumMember(Value = "StrongUsernamePassword")]
+        StrongUserNamePassword,
         StrongAccessCode,
-        WeakUsernamePassword,
+        [EnumMember(Value = "WeakUsernamePassword")]
+        WeakUserNamePassword,
         WeakAccessCode
     }
 
@@ -1956,7 +1959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         public string Path { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("workspaceId")]
         public int? WorkspaceId { get; set; }
@@ -2641,7 +2644,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         RemoteIntegerRange,
         RemoteString,
         RemoteInteger,
-        SQL
+        [EnumMember(Value = "SQL")]
+        Sql
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2886,9 +2890,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
     public enum ReadInterviewCodeAccessModeResponse
     {
         None,
-        StrongUsernamePassword,
+        [EnumMember(Value = "StrongUsernamePassword")]
+        StrongUserNamePassword,
         StrongAccessCode,
-        WeakUsernamePassword,
+        [EnumMember(Value = "WeakUsernamePassword")]
+        WeakUserNamePassword,
         WeakAccessCode
     }
 
@@ -4451,8 +4457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzerswiss
         DateTime,
         Time,
         Money,
-        [EnumMember(Value = "Guid")]
-        Id,
+        Guid,
         Boolean,
         Date,
         Json

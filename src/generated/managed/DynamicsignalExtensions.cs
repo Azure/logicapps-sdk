@@ -559,7 +559,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         Yelp,
         Flickr,
         Foursquare,
-        SMS,
+        [EnumMember(Value = "SMS")]
+        Sms,
         WordPress,
         TypePad,
         LiveJournal,
@@ -847,10 +848,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string LastName { get; set; }
 
         [JsonProperty("divisionIds")]
-        public int[] DivisionIDs { get; set; }
+        public int[] DivisionIds { get; set; }
 
         [JsonProperty("targetIds")]
-        public int[] TargetIDs { get; set; }
+        public int[] TargetIds { get; set; }
 
         [JsonProperty("tags")]
         public UserTagRequestResponse[] Tags { get; set; }
@@ -1323,7 +1324,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         Yelp,
         Flickr,
         Foursquare,
-        SMS,
+        [EnumMember(Value = "SMS")]
+        Sms,
         WordPress,
         TypePad,
         LiveJournal,
@@ -1394,7 +1396,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         Yelp,
         Flickr,
         Foursquare,
-        SMS,
+        [EnumMember(Value = "SMS")]
+        Sms,
         WordPress,
         TypePad,
         LiveJournal,
@@ -1541,10 +1544,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public bool? DisplayCreator { get; set; }
 
         [JsonProperty("categoryIds")]
-        public int[] CategoryIDs { get; set; }
+        public int[] CategoryIds { get; set; }
 
         [JsonProperty("targetIds")]
-        public int[] TargetIDs { get; set; }
+        public int[] TargetIds { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1846,25 +1849,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
 
     public class ManagePostsBodyInput
     {
-        public ManagePostsBodyInput(string[] postIDs)
+        public ManagePostsBodyInput(string[] postIds)
         {
-            this.PostIDs = postIDs;
+            this.PostIds = postIds;
         }
 
         [JsonProperty("postIds", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] PostIDs { get; set; }
+        public string[] PostIds { get; set; }
 
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
 
         [JsonProperty("divisionIds")]
-        public int[] DivisionIDs { get; set; }
+        public int[] DivisionIds { get; set; }
 
         [JsonProperty("categoryIds")]
-        public int[] CategoryIDs { get; set; }
+        public int[] CategoryIds { get; set; }
 
         [JsonProperty("targetIds")]
-        public int[] TargetIDs { get; set; }
+        public int[] TargetIds { get; set; }
 
         [JsonProperty("approvalState")]
         public BodyInputApprovalStateType? ApprovalState { get; set; }

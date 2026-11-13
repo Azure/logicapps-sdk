@@ -467,13 +467,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         public SectionGetResponseValueTypeItemLastModifiedByType LastModifiedBy { get; set; }
 
         [JsonProperty("parentNotebook@odata.context")]
-        public string ParentNotebookOdataContext { get; set; }
+        public string ParentNotebookODataContext { get; set; }
 
         [JsonProperty("parentNotebook")]
         public SectionGetResponseValueTypeItemParentNotebookType ParentNotebook { get; set; }
 
         [JsonProperty("parentSectionGroup@odata.context")]
-        public string ParentSectionGroupOdataContext { get; set; }
+        public string ParentSectionGroupODataContext { get; set; }
 
         [JsonProperty("parentSectionGroup")]
         public string ParentSectionGroup { get; set; }
@@ -620,7 +620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         public PageGetResponseValueTypeItemLinksType Links { get; set; }
 
         [JsonProperty("parentSection@odata.context")]
-        public string ParentSectionOdataContext { get; set; }
+        public string ParentSectionODataContext { get; set; }
 
         [JsonProperty("parentSection")]
         public string ParentSection { get; set; }

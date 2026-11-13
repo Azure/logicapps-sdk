@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         public WeatherPointRequestResponseHoursTypeItem[] Hours { get; set; }
 
         [JsonProperty("meta")]
-        public MetaDataModel Meta { get; set; }
+        public MetadataModel Meta { get; set; }
     }
 
     public class WeatherPointRequestResponseHoursTypeItem
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         public JToken WindWavePeriod { get; set; }
     }
 
-    public class MetaDataModel
+    public class MetadataModel
     {
         [JsonProperty("cost")]
         public int Cost { get; set; }
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         public BioPointRequestResponseHoursTypeItem[] Hours { get; set; }
 
         [JsonProperty("meta")]
-        public MetaDataModel Meta { get; set; }
+        public MetadataModel Meta { get; set; }
     }
 
     public class BioPointRequestResponseHoursTypeItem
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         public TimeExtremesPointRequestResponseDataTypeItem[] Data { get; set; }
 
         [JsonProperty("meta")]
-        public TideMetaDataModel Meta { get; set; }
+        public TideMetadataModel Meta { get; set; }
     }
 
     public class TimeExtremesPointRequestResponseDataTypeItem
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         public string Type { get; set; }
     }
 
-    public class TideMetaDataModel
+    public class TideMetadataModel
     {
         [JsonProperty("cost")]
         public int Cost { get; set; }
@@ -533,10 +533,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         public string Start { get; set; }
 
         [JsonProperty("station")]
-        public TideMetaDataModelStationType Station { get; set; }
+        public TideMetadataModelStationType Station { get; set; }
     }
 
-    public class TideMetaDataModelStationType
+    public class TideMetadataModelStationType
     {
         [JsonProperty("distance")]
         public int Distance { get; set; }
@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         public TimeSealLevelPointRequestResponseDataTypeItem[] Data { get; set; }
 
         [JsonProperty("meta")]
-        public TideMetaDataModel Meta { get; set; }
+        public TideMetadataModel Meta { get; set; }
     }
 
     public class TimeSealLevelPointRequestResponseDataTypeItem
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         public GetTideStationsResponseDataTypeItem[] Data { get; set; }
 
         [JsonProperty("meta")]
-        public StationMetaDataModel Meta { get; set; }
+        public StationMetadataModel Meta { get; set; }
     }
 
     public class GetTideStationsResponseDataTypeItem
@@ -623,7 +623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         public string Source { get; set; }
     }
 
-    public class StationMetaDataModel
+    public class StationMetadataModel
     {
         [JsonProperty("cost")]
         public int Cost { get; set; }
@@ -641,7 +641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         public GetTideStationsAreaResponseDataTypeItem[] Data { get; set; }
 
         [JsonProperty("meta")]
-        public StationMetaDataModel Meta { get; set; }
+        public StationMetadataModel Meta { get; set; }
     }
 
     public class GetTideStationsAreaResponseDataTypeItem
@@ -769,7 +769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         public SolarPointRequestResponseDataTypeItem[] Data { get; set; }
 
         [JsonProperty("meta")]
-        public MetaDataModel Meta { get; set; }
+        public MetadataModel Meta { get; set; }
     }
 
     public class SolarPointRequestResponseDataTypeItem

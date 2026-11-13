@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagiaip
         public int MessagesSent { get; set; }
 
         [JsonProperty("in_SMS_blacklist")]
-        public bool InSMSBlacklist { get; set; }
+        public bool InSmsBlacklist { get; set; }
     }
 
     public class SendSmsBodyInput
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mensagiaip
         public int MessagesSent { get; set; }
 
         [JsonProperty("in_SMS_blacklist")]
-        public bool InSMSBlacklist { get; set; }
+        public bool InSmsBlacklist { get; set; }
     }
 
     public class SendSmsCampaignsBodyInput

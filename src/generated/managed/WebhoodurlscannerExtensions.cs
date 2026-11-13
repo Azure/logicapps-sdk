@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
         public string Slug { get; set; }
 
         [JsonProperty("url")]
-        public string ScanURL { get; set; }
+        public string ScanUrl { get; set; }
 
         [JsonProperty("final_url")]
-        public string FinalURL { get; set; }
+        public string FinalUrl { get; set; }
 
         [JsonProperty("status")]
         public ScanStatusType Status { get; set; }
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
         public string[] ScreenshotList { get; set; }
 
         [JsonProperty("html")]
-        public string[] HTMLList { get; set; }
+        public string[] HtmlList { get; set; }
 
         [JsonProperty("error")]
         public string ErrorDescription { get; set; }

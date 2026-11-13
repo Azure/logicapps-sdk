@@ -179,11 +179,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             });
         }
 
-        public IBodyWorkflowTrigger<NEWCONDITIONALMAILResponse, ApiConnectionPollingTriggerConfiguration> NEWCONDITIONALMAIL(Expression<Func<string>> accId, Expression<Func<NEWCONDITIONALMAILBodyInput>> body)
+        public IBodyWorkflowTrigger<NewConditionalMailResponse, ApiConnectionPollingTriggerConfiguration> NewConditionalMail(Expression<Func<string>> accId, Expression<Func<NewConditionalMailBodyInput>> body)
         {
             var __workflow_accId = WorkflowExpression.Compile(accId, nameof(accId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyTrigger<NEWCONDITIONALMAILResponse, ApiConnectionPollingTriggerConfiguration>(() =>
+            return new DeferredBodyTrigger<NewConditionalMailResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
                 var apiCallPath = "/integPlatform/api/outgoingconditionWebhooks";
                 var apiCallHttpMethod = "post";
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
                 callPayload.Queries["metaOnly"] = Convert.ToString(false);
                 callPayload.Queries["matchingCondition"] = Convert.ToString("and");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionPollingTrigger<NEWCONDITIONALMAILResponse>(callPayload);
+                return new ApiConnectionPollingTrigger<NewConditionalMailResponse>(callPayload);
             });
         }
     }
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string Summary { get; set; }
 
         [JsonProperty("sentDateInGMT")]
-        public string SentDateInGMT { get; set; }
+        public string SentDateInGmt { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string Summary { get; set; }
 
         [JsonProperty("sentDateInGMT")]
-        public string SentDateInGMT { get; set; }
+        public string SentDateInGmt { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
@@ -653,7 +653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string Functionid { get; set; }
 
         [JsonProperty("FILTER_DATA")]
-        public NewMailTriggerResponseDataTypeDataTypeFILTERDATAType FILTERDATA { get; set; }
+        public NewMailTriggerResponseDataTypeDataTypeFilterDataType FilterData { get; set; }
 
         [JsonProperty("X-Hook-Secret")]
         public string XHookSecret { get; set; }
@@ -674,13 +674,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public int Category { get; set; }
 
         [JsonProperty("webhookURL")]
-        public string WebhookURL { get; set; }
+        public string WebhookUrl { get; set; }
 
         [JsonProperty("status")]
         public int Status { get; set; }
     }
 
-    public class NewMailTriggerResponseDataTypeDataTypeFILTERDATAType
+    public class NewMailTriggerResponseDataTypeDataTypeFilterDataType
     {
         [JsonProperty("filterId")]
         public string FilterId { get; set; }
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public bool Enable { get; set; }
 
         [JsonProperty("criterias")]
-        public NewMailTriggerResponseDataTypeDataTypeFILTERDATATypeCriteriasTypeItem[] Criterias { get; set; }
+        public NewMailTriggerResponseDataTypeDataTypeFilterDataTypeCriteriasTypeItem[] Criterias { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -713,13 +713,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public int FilterType { get; set; }
 
         [JsonProperty("actions")]
-        public NewMailTriggerResponseDataTypeDataTypeFILTERDATATypeActionsType Actions { get; set; }
+        public NewMailTriggerResponseDataTypeDataTypeFilterDataTypeActionsType Actions { get; set; }
 
         [JsonProperty("forImport")]
         public bool ForImport { get; set; }
     }
 
-    public class NewMailTriggerResponseDataTypeDataTypeFILTERDATATypeCriteriasTypeItem
+    public class NewMailTriggerResponseDataTypeDataTypeFilterDataTypeCriteriasTypeItem
     {
         [JsonProperty("criteriaId")]
         public string CriteriaId { get; set; }
@@ -734,16 +734,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string Operator { get; set; }
     }
 
-    public class NewMailTriggerResponseDataTypeDataTypeFILTERDATATypeActionsType
+    public class NewMailTriggerResponseDataTypeDataTypeFilterDataTypeActionsType
     {
         [JsonProperty("outgoingWebhooks")]
-        public NewMailTriggerResponseDataTypeDataTypeFILTERDATATypeActionsTypeOutgoingWebhooksType OutgoingWebhooks { get; set; }
+        public NewMailTriggerResponseDataTypeDataTypeFilterDataTypeActionsTypeOutgoingWebhooksType OutgoingWebhooks { get; set; }
 
         [JsonProperty("stopEvaluation")]
         public string StopEvaluation { get; set; }
     }
 
-    public class NewMailTriggerResponseDataTypeDataTypeFILTERDATATypeActionsTypeOutgoingWebhooksType
+    public class NewMailTriggerResponseDataTypeDataTypeFilterDataTypeActionsTypeOutgoingWebhooksType
     {
         [JsonProperty("integId")]
         public int IntegId { get; set; }
@@ -755,31 +755,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
     public class NewMailTriggerBodyInput
     {
         [JsonProperty("webhookURL", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
+        internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
-    public class NEWCONDITIONALMAILResponse
+    public class NewConditionalMailResponse
     {
         [JsonProperty("data")]
-        public NEWCONDITIONALMAILResponseDataType Data { get; set; }
+        public NewConditionalMailResponseDataType Data { get; set; }
     }
 
-    public class NEWCONDITIONALMAILResponseDataType
+    public class NewConditionalMailResponseDataType
     {
         [JsonProperty("data")]
-        public NEWCONDITIONALMAILResponseDataTypeDataType Data { get; set; }
+        public NewConditionalMailResponseDataTypeDataType Data { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class NEWCONDITIONALMAILResponseDataTypeDataType
+    public class NewConditionalMailResponseDataTypeDataType
     {
         [JsonProperty("functionid")]
         public string Functionid { get; set; }
 
         [JsonProperty("FILTER_DATA")]
-        public NEWCONDITIONALMAILResponseDataTypeDataTypeFILTERDATAType FILTERDATA { get; set; }
+        public NewConditionalMailResponseDataTypeDataTypeFilterDataType FilterData { get; set; }
 
         [JsonProperty("X-Hook-Secret")]
         public string XHookSecret { get; set; }
@@ -800,13 +800,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public int Category { get; set; }
 
         [JsonProperty("webhookURL")]
-        public string WebhookURL { get; set; }
+        public string WebhookUrl { get; set; }
 
         [JsonProperty("status")]
         public int Status { get; set; }
     }
 
-    public class NEWCONDITIONALMAILResponseDataTypeDataTypeFILTERDATAType
+    public class NewConditionalMailResponseDataTypeDataTypeFilterDataType
     {
         [JsonProperty("filterId")]
         public string FilterId { get; set; }
@@ -827,7 +827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public bool Enable { get; set; }
 
         [JsonProperty("criterias")]
-        public NEWCONDITIONALMAILResponseDataTypeDataTypeFILTERDATATypeCriteriasTypeItem[] Criterias { get; set; }
+        public NewConditionalMailResponseDataTypeDataTypeFilterDataTypeCriteriasTypeItem[] Criterias { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -839,13 +839,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public int FilterType { get; set; }
 
         [JsonProperty("actions")]
-        public NEWCONDITIONALMAILResponseDataTypeDataTypeFILTERDATATypeActionsType Actions { get; set; }
+        public NewConditionalMailResponseDataTypeDataTypeFilterDataTypeActionsType Actions { get; set; }
 
         [JsonProperty("forImport")]
         public bool ForImport { get; set; }
     }
 
-    public class NEWCONDITIONALMAILResponseDataTypeDataTypeFILTERDATATypeCriteriasTypeItem
+    public class NewConditionalMailResponseDataTypeDataTypeFilterDataTypeCriteriasTypeItem
     {
         [JsonProperty("criteriaId")]
         public string CriteriaId { get; set; }
@@ -860,16 +860,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string Operator { get; set; }
     }
 
-    public class NEWCONDITIONALMAILResponseDataTypeDataTypeFILTERDATATypeActionsType
+    public class NewConditionalMailResponseDataTypeDataTypeFilterDataTypeActionsType
     {
         [JsonProperty("outgoingWebhooks")]
-        public NEWCONDITIONALMAILResponseDataTypeDataTypeFILTERDATATypeActionsTypeOutgoingWebhooksType OutgoingWebhooks { get; set; }
+        public NewConditionalMailResponseDataTypeDataTypeFilterDataTypeActionsTypeOutgoingWebhooksType OutgoingWebhooks { get; set; }
 
         [JsonProperty("stopEvaluation")]
         public string StopEvaluation { get; set; }
     }
 
-    public class NEWCONDITIONALMAILResponseDataTypeDataTypeFILTERDATATypeActionsTypeOutgoingWebhooksType
+    public class NewConditionalMailResponseDataTypeDataTypeFilterDataTypeActionsTypeOutgoingWebhooksType
     {
         [JsonProperty("integId")]
         public int IntegId { get; set; }
@@ -878,9 +878,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public int Zuid { get; set; }
     }
 
-    public class NEWCONDITIONALMAILBodyInput
+    public class NewConditionalMailBodyInput
     {
-        public NEWCONDITIONALMAILBodyInput(BodyInputCriteriasTypeItem[] criterias)
+        public NewConditionalMailBodyInput(BodyInputCriteriasTypeItem[] criterias)
         {
             this.Criterias = criterias;
         }
@@ -889,7 +889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public BodyInputCriteriasTypeItem[] Criterias { get; set; }
 
         [JsonProperty("webhookURL", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
+        internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
     }
 
     public class BodyInputCriteriasTypeItem

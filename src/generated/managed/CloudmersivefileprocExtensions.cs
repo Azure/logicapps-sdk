@@ -139,30 +139,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse, ApiConnectionActionConfiguration> EditTextRemoveAllWhitespace(Expression<Func<EditTextRemoveAllWhitespaceRequestInput>> request)
+        public IBodyWorkflowAction<RemoveWhiteSpaceFromTextResponse, ApiConnectionActionConfiguration> EditTextRemoveAllWhiteSpace(Expression<Func<EditTextRemoveAllWhiteSpaceRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
-            return new DeferredBodyAction<RemoveWhitespaceFromTextResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<RemoveWhiteSpaceFromTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/edit/text/remove/whitespace/all";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
-                return new ApiConnectionAction<RemoveWhitespaceFromTextResponse>(callPayload);
+                return new ApiConnectionAction<RemoveWhiteSpaceFromTextResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivefileproc")]
-        public IBodyWorkflowAction<RemoveWhitespaceFromTextResponse, ApiConnectionActionConfiguration> EditTextTrimWhitespace(Expression<Func<EditTextRemoveAllWhitespaceRequestInput>> request)
+        public IBodyWorkflowAction<RemoveWhiteSpaceFromTextResponse, ApiConnectionActionConfiguration> EditTextTrimWhiteSpace(Expression<Func<EditTextRemoveAllWhiteSpaceRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
-            return new DeferredBodyAction<RemoveWhitespaceFromTextResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<RemoveWhiteSpaceFromTextResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/convert/edit/text/remove/whitespace/trim";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
-                return new ApiConnectionAction<RemoveWhitespaceFromTextResponse>(callPayload);
+                return new ApiConnectionAction<RemoveWhiteSpaceFromTextResponse>(callPayload);
             });
         }
 
@@ -338,15 +338,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivefileproc
         public string TextContainingHtml { get; set; }
     }
 
-    public class RemoveWhitespaceFromTextResponse
+    public class RemoveWhiteSpaceFromTextResponse
     {
         public bool Successful { get; set; }
         public string TextContentResult { get; set; }
     }
 
-    public class EditTextRemoveAllWhitespaceRequestInput
+    public class EditTextRemoveAllWhiteSpaceRequestInput
     {
-        public string TextContainingWhitespace { get; set; }
+        [JsonProperty("TextContainingWhitespace")]
+        public string TextContainingWhiteSpace { get; set; }
     }
 
     public class ZipArchiveZipCreateAdvancedRequestInput

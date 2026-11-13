@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public InviteInputAdvancedTypeItem[] Advanced { get; set; }
 
         [JsonProperty("signature")]
-        public InviteInputQESSignatureType? QESSignature { get; set; }
+        public InviteInputQesSignatureType? QesSignature { get; set; }
     }
 
     public class CreateDocGroupEmbeddedInvitesInviteInputInvitesTypeItem
@@ -712,7 +712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum InviteInputQESSignatureType
+    public enum InviteInputQesSignatureType
     {
         Eideasy,
         Nom151
@@ -777,7 +777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public InviteInputInviteAdvancedParametersTypeItem[] InviteAdvancedParameters { get; set; }
 
         [JsonProperty("signature")]
-        public InviteInputQESSignatureType? QESSignature { get; set; }
+        public InviteInputQesSignatureType? QesSignature { get; set; }
     }
 
     public class CreateEmbeddedInvitesInviteInputInvitesTypeItem
@@ -1087,7 +1087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     public class CreateSigningLinkResponse
     {
         [JsonProperty("url_no_signup")]
-        public string URL { get; set; }
+        public string Url { get; set; }
     }
 
     public class SendUserDefinedInviteBodyInput
@@ -1116,7 +1116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string EMail { get; set; }
 
         [JsonProperty("phone_invite")]
-        public string PhoneNumberInviteViaSMS { get; set; }
+        public string PhoneNumberInviteViaSms { get; set; }
 
         [JsonProperty("order", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? Order { get; set; } = 1;
@@ -1158,7 +1158,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         Password,
         [EnumMember(Value = "Phone Call")]
         PhoneCall,
-        SMS
+        [EnumMember(Value = "SMS")]
+        Sms
     }
 
     public class GetInviteStatusResponse
@@ -1508,7 +1509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string CCMessage { get; set; }
 
         [JsonProperty("signature")]
-        public InviteInputQESSignatureType? QESSignature { get; set; }
+        public InviteInputQesSignatureType? QesSignature { get; set; }
     }
 
     public class InviteInputSignersTypeItem
@@ -1821,7 +1822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public InviteInputCCTypeItem[] CC { get; set; }
 
         [JsonProperty("signature")]
-        public InviteInputQESSignatureType? QESSignature { get; set; }
+        public InviteInputQesSignatureType? QesSignature { get; set; }
     }
 
     public class InviteInputInviteStepsTypeItem

@@ -295,182 +295,356 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputExpenseTypeAmountTypeCurrencyType
     {
-        AED,
-        AMD,
-        ANG,
-        ARS,
-        AUD,
-        AWG,
-        AZN,
-        BAM,
-        BBD,
-        BDT,
-        BGN,
-        BHD,
-        BIF,
-        BMD,
-        BND,
-        BOB,
-        BOV,
-        BRL,
-        BSD,
-        BTN,
-        BWP,
-        BYN,
-        BYR,
-        BZD,
-        CAD,
-        CDF,
-        CHE,
-        CHF,
-        CHW,
-        CLF,
-        CLP,
-        CNY,
-        COP,
-        COU,
-        CRC,
-        CUC,
-        CUP,
-        CVE,
-        CZK,
-        DJF,
-        DKK,
-        DOP,
-        EGP,
-        ERN,
-        ETB,
-        EUR,
-        FJD,
-        FKP,
-        GBP,
-        GEL,
-        GHS,
-        GIP,
-        GMD,
-        GNF,
-        GTQ,
-        GYD,
-        HKD,
-        HNL,
-        HRK,
-        HTG,
-        HUF,
+        [EnumMember(Value = "AED")]
+        Aed,
+        [EnumMember(Value = "AMD")]
+        Amd,
+        [EnumMember(Value = "ANG")]
+        Ang,
+        [EnumMember(Value = "ARS")]
+        Ars,
+        [EnumMember(Value = "AUD")]
+        Aud,
+        [EnumMember(Value = "AWG")]
+        Awg,
+        [EnumMember(Value = "AZN")]
+        Azn,
+        [EnumMember(Value = "BAM")]
+        Bam,
+        [EnumMember(Value = "BBD")]
+        Bbd,
+        [EnumMember(Value = "BDT")]
+        Bdt,
+        [EnumMember(Value = "BGN")]
+        Bgn,
+        [EnumMember(Value = "BHD")]
+        Bhd,
+        [EnumMember(Value = "BIF")]
+        Bif,
+        [EnumMember(Value = "BMD")]
+        Bmd,
+        [EnumMember(Value = "BND")]
+        Bnd,
+        [EnumMember(Value = "BOB")]
+        Bob,
+        [EnumMember(Value = "BOV")]
+        Bov,
+        [EnumMember(Value = "BRL")]
+        Brl,
+        [EnumMember(Value = "BSD")]
+        Bsd,
+        [EnumMember(Value = "BTN")]
+        Btn,
+        [EnumMember(Value = "BWP")]
+        Bwp,
+        [EnumMember(Value = "BYN")]
+        Byn,
+        [EnumMember(Value = "BYR")]
+        Byr,
+        [EnumMember(Value = "BZD")]
+        Bzd,
+        [EnumMember(Value = "CAD")]
+        Cad,
+        [EnumMember(Value = "CDF")]
+        Cdf,
+        [EnumMember(Value = "CHE")]
+        Che,
+        [EnumMember(Value = "CHF")]
+        Chf,
+        [EnumMember(Value = "CHW")]
+        Chw,
+        [EnumMember(Value = "CLF")]
+        Clf,
+        [EnumMember(Value = "CLP")]
+        Clp,
+        [EnumMember(Value = "CNY")]
+        Cny,
+        [EnumMember(Value = "COP")]
+        Cop,
+        [EnumMember(Value = "COU")]
+        Cou,
+        [EnumMember(Value = "CRC")]
+        Crc,
+        [EnumMember(Value = "CUC")]
+        Cuc,
+        [EnumMember(Value = "CUP")]
+        Cup,
+        [EnumMember(Value = "CVE")]
+        Cve,
+        [EnumMember(Value = "CZK")]
+        Czk,
+        [EnumMember(Value = "DJF")]
+        Djf,
+        [EnumMember(Value = "DKK")]
+        Dkk,
+        [EnumMember(Value = "DOP")]
+        Dop,
+        [EnumMember(Value = "EGP")]
+        Egp,
+        [EnumMember(Value = "ERN")]
+        Ern,
+        [EnumMember(Value = "ETB")]
+        Etb,
+        [EnumMember(Value = "EUR")]
+        Eur,
+        [EnumMember(Value = "FJD")]
+        Fjd,
+        [EnumMember(Value = "FKP")]
+        Fkp,
+        [EnumMember(Value = "GBP")]
+        Gbp,
+        [EnumMember(Value = "GEL")]
+        Gel,
+        [EnumMember(Value = "GHS")]
+        Ghs,
+        [EnumMember(Value = "GIP")]
+        Gip,
+        [EnumMember(Value = "GMD")]
+        Gmd,
+        [EnumMember(Value = "GNF")]
+        Gnf,
+        [EnumMember(Value = "GTQ")]
+        Gtq,
+        [EnumMember(Value = "GYD")]
+        Gyd,
+        [EnumMember(Value = "HKD")]
+        Hkd,
+        [EnumMember(Value = "HNL")]
+        Hnl,
+        [EnumMember(Value = "HRK")]
+        Hrk,
+        [EnumMember(Value = "HTG")]
+        Htg,
+        [EnumMember(Value = "HUF")]
+        Huf,
         [EnumMember(Value = "IDR")]
-        IdR,
-        ILS,
-        INR,
-        IQD,
-        IRR,
-        ISK,
-        JMD,
-        JOD,
-        JPY,
-        KES,
-        KGS,
-        KHR,
-        KMF,
-        KPW,
-        KRW,
-        KWD,
-        KYD,
-        KZT,
-        LAK,
-        LBP,
-        LKR,
-        LRD,
-        LSL,
-        LYD,
-        MAD,
-        MDL,
-        MGA,
-        MKD,
-        MMK,
-        MNT,
-        MOP,
-        MRO,
-        MUR,
-        MVR,
-        MWK,
-        MXN,
-        MXV,
-        MYR,
-        MZN,
-        NAD,
-        NGN,
-        NIO,
-        NOK,
-        NPR,
-        NZD,
-        OMR,
-        PAB,
-        PEN,
-        PGK,
-        PHP,
-        PKR,
-        PLN,
-        PYG,
-        QAR,
-        RON,
-        RSD,
-        RUB,
-        RWF,
-        SAR,
-        SBD,
-        SCR,
-        SDG,
-        SEK,
-        SGD,
-        SHP,
-        SLL,
-        SOS,
-        SRD,
-        SSP,
-        STD,
-        SVC,
-        SYP,
-        SZL,
-        THB,
-        TJS,
-        TMT,
-        TND,
-        TOP,
-        TRY,
-        TTD,
-        TWD,
-        TZS,
-        UAH,
-        UGX,
-        USD,
-        USN,
-        UYI,
-        UYU,
-        UZS,
-        VEF,
-        VND,
-        VUV,
-        WST,
-        XAF,
-        XAG,
-        XAU,
-        XBA,
-        XBB,
-        XBC,
-        XBD,
-        XCD,
-        XDR,
-        XOF,
-        XPD,
-        XPF,
-        XPT,
-        XSU,
-        XTS,
-        XUA,
-        XXX,
-        YER,
-        ZAR,
-        ZMW,
-        ZWL
+        Idr,
+        [EnumMember(Value = "ILS")]
+        Ils,
+        [EnumMember(Value = "INR")]
+        Inr,
+        [EnumMember(Value = "IQD")]
+        Iqd,
+        [EnumMember(Value = "IRR")]
+        Irr,
+        [EnumMember(Value = "ISK")]
+        Isk,
+        [EnumMember(Value = "JMD")]
+        Jmd,
+        [EnumMember(Value = "JOD")]
+        Jod,
+        [EnumMember(Value = "JPY")]
+        Jpy,
+        [EnumMember(Value = "KES")]
+        Kes,
+        [EnumMember(Value = "KGS")]
+        Kgs,
+        [EnumMember(Value = "KHR")]
+        Khr,
+        [EnumMember(Value = "KMF")]
+        Kmf,
+        [EnumMember(Value = "KPW")]
+        Kpw,
+        [EnumMember(Value = "KRW")]
+        Krw,
+        [EnumMember(Value = "KWD")]
+        Kwd,
+        [EnumMember(Value = "KYD")]
+        Kyd,
+        [EnumMember(Value = "KZT")]
+        Kzt,
+        [EnumMember(Value = "LAK")]
+        Lak,
+        [EnumMember(Value = "LBP")]
+        Lbp,
+        [EnumMember(Value = "LKR")]
+        Lkr,
+        [EnumMember(Value = "LRD")]
+        Lrd,
+        [EnumMember(Value = "LSL")]
+        Lsl,
+        [EnumMember(Value = "LYD")]
+        Lyd,
+        [EnumMember(Value = "MAD")]
+        Mad,
+        [EnumMember(Value = "MDL")]
+        Mdl,
+        [EnumMember(Value = "MGA")]
+        Mga,
+        [EnumMember(Value = "MKD")]
+        Mkd,
+        [EnumMember(Value = "MMK")]
+        Mmk,
+        [EnumMember(Value = "MNT")]
+        Mnt,
+        [EnumMember(Value = "MOP")]
+        Mop,
+        [EnumMember(Value = "MRO")]
+        Mro,
+        [EnumMember(Value = "MUR")]
+        Mur,
+        [EnumMember(Value = "MVR")]
+        Mvr,
+        [EnumMember(Value = "MWK")]
+        Mwk,
+        [EnumMember(Value = "MXN")]
+        Mxn,
+        [EnumMember(Value = "MXV")]
+        Mxv,
+        [EnumMember(Value = "MYR")]
+        Myr,
+        [EnumMember(Value = "MZN")]
+        Mzn,
+        [EnumMember(Value = "NAD")]
+        Nad,
+        [EnumMember(Value = "NGN")]
+        Ngn,
+        [EnumMember(Value = "NIO")]
+        Nio,
+        [EnumMember(Value = "NOK")]
+        Nok,
+        [EnumMember(Value = "NPR")]
+        Npr,
+        [EnumMember(Value = "NZD")]
+        Nzd,
+        [EnumMember(Value = "OMR")]
+        Omr,
+        [EnumMember(Value = "PAB")]
+        Pab,
+        [EnumMember(Value = "PEN")]
+        Pen,
+        [EnumMember(Value = "PGK")]
+        Pgk,
+        [EnumMember(Value = "PHP")]
+        Php,
+        [EnumMember(Value = "PKR")]
+        Pkr,
+        [EnumMember(Value = "PLN")]
+        Pln,
+        [EnumMember(Value = "PYG")]
+        Pyg,
+        [EnumMember(Value = "QAR")]
+        Qar,
+        [EnumMember(Value = "RON")]
+        Ron,
+        [EnumMember(Value = "RSD")]
+        Rsd,
+        [EnumMember(Value = "RUB")]
+        Rub,
+        [EnumMember(Value = "RWF")]
+        Rwf,
+        [EnumMember(Value = "SAR")]
+        Sar,
+        [EnumMember(Value = "SBD")]
+        Sbd,
+        [EnumMember(Value = "SCR")]
+        Scr,
+        [EnumMember(Value = "SDG")]
+        Sdg,
+        [EnumMember(Value = "SEK")]
+        Sek,
+        [EnumMember(Value = "SGD")]
+        Sgd,
+        [EnumMember(Value = "SHP")]
+        Shp,
+        [EnumMember(Value = "SLL")]
+        Sll,
+        [EnumMember(Value = "SOS")]
+        Sos,
+        [EnumMember(Value = "SRD")]
+        Srd,
+        [EnumMember(Value = "SSP")]
+        Ssp,
+        [EnumMember(Value = "STD")]
+        Std,
+        [EnumMember(Value = "SVC")]
+        Svc,
+        [EnumMember(Value = "SYP")]
+        Syp,
+        [EnumMember(Value = "SZL")]
+        Szl,
+        [EnumMember(Value = "THB")]
+        Thb,
+        [EnumMember(Value = "TJS")]
+        Tjs,
+        [EnumMember(Value = "TMT")]
+        Tmt,
+        [EnumMember(Value = "TND")]
+        Tnd,
+        [EnumMember(Value = "TOP")]
+        Top,
+        [EnumMember(Value = "TRY")]
+        Try,
+        [EnumMember(Value = "TTD")]
+        Ttd,
+        [EnumMember(Value = "TWD")]
+        Twd,
+        [EnumMember(Value = "TZS")]
+        Tzs,
+        [EnumMember(Value = "UAH")]
+        Uah,
+        [EnumMember(Value = "UGX")]
+        Ugx,
+        [EnumMember(Value = "USD")]
+        Usd,
+        [EnumMember(Value = "USN")]
+        Usn,
+        [EnumMember(Value = "UYI")]
+        Uyi,
+        [EnumMember(Value = "UYU")]
+        Uyu,
+        [EnumMember(Value = "UZS")]
+        Uzs,
+        [EnumMember(Value = "VEF")]
+        Vef,
+        [EnumMember(Value = "VND")]
+        Vnd,
+        [EnumMember(Value = "VUV")]
+        Vuv,
+        [EnumMember(Value = "WST")]
+        Wst,
+        [EnumMember(Value = "XAF")]
+        Xaf,
+        [EnumMember(Value = "XAG")]
+        Xag,
+        [EnumMember(Value = "XAU")]
+        Xau,
+        [EnumMember(Value = "XBA")]
+        Xba,
+        [EnumMember(Value = "XBB")]
+        Xbb,
+        [EnumMember(Value = "XBC")]
+        Xbc,
+        [EnumMember(Value = "XBD")]
+        Xbd,
+        [EnumMember(Value = "XCD")]
+        Xcd,
+        [EnumMember(Value = "XDR")]
+        Xdr,
+        [EnumMember(Value = "XOF")]
+        Xof,
+        [EnumMember(Value = "XPD")]
+        Xpd,
+        [EnumMember(Value = "XPF")]
+        Xpf,
+        [EnumMember(Value = "XPT")]
+        Xpt,
+        [EnumMember(Value = "XSU")]
+        Xsu,
+        [EnumMember(Value = "XTS")]
+        Xts,
+        [EnumMember(Value = "XUA")]
+        Xua,
+        [EnumMember(Value = "XXX")]
+        Xxx,
+        [EnumMember(Value = "YER")]
+        Yer,
+        [EnumMember(Value = "ZAR")]
+        Zar,
+        [EnumMember(Value = "ZMW")]
+        Zmw,
+        [EnumMember(Value = "ZWL")]
+        Zwl
     }
 
     public class UpdateExpenseBodyInput
@@ -556,30 +730,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         public string FaNumber { get; set; }
 
         [JsonProperty("vat_number")]
-        public string VATNumber { get; set; }
+        public string VatNumber { get; set; }
 
         [JsonProperty("vat_name")]
-        public string VATName { get; set; }
+        public string VatName { get; set; }
 
         [JsonProperty("id")]
         public int ClientId { get; set; }
 
-        [JsonProperty("p_province")]
+        [JsonProperty("s_province")]
         public string Province { get; set; }
 
-        [JsonProperty("p_country")]
+        [JsonProperty("s_country")]
         public string Country { get; set; }
 
-        [JsonProperty("p_city")]
+        [JsonProperty("s_city")]
         public string City { get; set; }
 
-        [JsonProperty("p_street")]
+        [JsonProperty("s_street")]
         public string Street { get; set; }
 
-        [JsonProperty("p_street2")]
+        [JsonProperty("s_street2")]
         public string Street2 { get; set; }
 
-        [JsonProperty("p_code")]
+        [JsonProperty("s_code")]
         public string PostalCode { get; set; }
 
         [JsonProperty("note")]
@@ -598,10 +772,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         public string Email { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("updated")]
         public string Updated { get; set; }
+
+        [JsonProperty("p_province")]
+        public string Province2 { get; set; }
+
+        [JsonProperty("p_country")]
+        public string Country2 { get; set; }
+
+        [JsonProperty("p_city")]
+        public string City2 { get; set; }
+
+        [JsonProperty("p_street")]
+        public string Street3 { get; set; }
+
+        [JsonProperty("p_code")]
+        public string PostalCode2 { get; set; }
+
+        [JsonProperty("p_street2")]
+        public string Street22 { get; set; }
 
         [JsonProperty("bus_phone")]
         public string Phone { get; set; }
@@ -675,182 +867,356 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputClientTypeCurrencyType
     {
-        AED,
-        AMD,
-        ANG,
-        ARS,
-        AUD,
-        AWG,
-        AZN,
-        BAM,
-        BBD,
-        BDT,
-        BGN,
-        BHD,
-        BIF,
-        BMD,
-        BND,
-        BOB,
-        BOV,
-        BRL,
-        BSD,
-        BTN,
-        BWP,
-        BYN,
-        BYR,
-        BZD,
-        CAD,
-        CDF,
-        CHE,
-        CHF,
-        CHW,
-        CLF,
-        CLP,
-        CNY,
-        COP,
-        COU,
-        CRC,
-        CUC,
-        CUP,
-        CVE,
-        CZK,
-        DJF,
-        DKK,
-        DOP,
-        EGP,
-        ERN,
-        ETB,
-        EUR,
-        FJD,
-        FKP,
-        GBP,
-        GEL,
-        GHS,
-        GIP,
-        GMD,
-        GNF,
-        GTQ,
-        GYD,
-        HKD,
-        HNL,
-        HRK,
-        HTG,
-        HUF,
+        [EnumMember(Value = "AED")]
+        Aed,
+        [EnumMember(Value = "AMD")]
+        Amd,
+        [EnumMember(Value = "ANG")]
+        Ang,
+        [EnumMember(Value = "ARS")]
+        Ars,
+        [EnumMember(Value = "AUD")]
+        Aud,
+        [EnumMember(Value = "AWG")]
+        Awg,
+        [EnumMember(Value = "AZN")]
+        Azn,
+        [EnumMember(Value = "BAM")]
+        Bam,
+        [EnumMember(Value = "BBD")]
+        Bbd,
+        [EnumMember(Value = "BDT")]
+        Bdt,
+        [EnumMember(Value = "BGN")]
+        Bgn,
+        [EnumMember(Value = "BHD")]
+        Bhd,
+        [EnumMember(Value = "BIF")]
+        Bif,
+        [EnumMember(Value = "BMD")]
+        Bmd,
+        [EnumMember(Value = "BND")]
+        Bnd,
+        [EnumMember(Value = "BOB")]
+        Bob,
+        [EnumMember(Value = "BOV")]
+        Bov,
+        [EnumMember(Value = "BRL")]
+        Brl,
+        [EnumMember(Value = "BSD")]
+        Bsd,
+        [EnumMember(Value = "BTN")]
+        Btn,
+        [EnumMember(Value = "BWP")]
+        Bwp,
+        [EnumMember(Value = "BYN")]
+        Byn,
+        [EnumMember(Value = "BYR")]
+        Byr,
+        [EnumMember(Value = "BZD")]
+        Bzd,
+        [EnumMember(Value = "CAD")]
+        Cad,
+        [EnumMember(Value = "CDF")]
+        Cdf,
+        [EnumMember(Value = "CHE")]
+        Che,
+        [EnumMember(Value = "CHF")]
+        Chf,
+        [EnumMember(Value = "CHW")]
+        Chw,
+        [EnumMember(Value = "CLF")]
+        Clf,
+        [EnumMember(Value = "CLP")]
+        Clp,
+        [EnumMember(Value = "CNY")]
+        Cny,
+        [EnumMember(Value = "COP")]
+        Cop,
+        [EnumMember(Value = "COU")]
+        Cou,
+        [EnumMember(Value = "CRC")]
+        Crc,
+        [EnumMember(Value = "CUC")]
+        Cuc,
+        [EnumMember(Value = "CUP")]
+        Cup,
+        [EnumMember(Value = "CVE")]
+        Cve,
+        [EnumMember(Value = "CZK")]
+        Czk,
+        [EnumMember(Value = "DJF")]
+        Djf,
+        [EnumMember(Value = "DKK")]
+        Dkk,
+        [EnumMember(Value = "DOP")]
+        Dop,
+        [EnumMember(Value = "EGP")]
+        Egp,
+        [EnumMember(Value = "ERN")]
+        Ern,
+        [EnumMember(Value = "ETB")]
+        Etb,
+        [EnumMember(Value = "EUR")]
+        Eur,
+        [EnumMember(Value = "FJD")]
+        Fjd,
+        [EnumMember(Value = "FKP")]
+        Fkp,
+        [EnumMember(Value = "GBP")]
+        Gbp,
+        [EnumMember(Value = "GEL")]
+        Gel,
+        [EnumMember(Value = "GHS")]
+        Ghs,
+        [EnumMember(Value = "GIP")]
+        Gip,
+        [EnumMember(Value = "GMD")]
+        Gmd,
+        [EnumMember(Value = "GNF")]
+        Gnf,
+        [EnumMember(Value = "GTQ")]
+        Gtq,
+        [EnumMember(Value = "GYD")]
+        Gyd,
+        [EnumMember(Value = "HKD")]
+        Hkd,
+        [EnumMember(Value = "HNL")]
+        Hnl,
+        [EnumMember(Value = "HRK")]
+        Hrk,
+        [EnumMember(Value = "HTG")]
+        Htg,
+        [EnumMember(Value = "HUF")]
+        Huf,
         [EnumMember(Value = "IDR")]
-        IdR,
-        ILS,
-        INR,
-        IQD,
-        IRR,
-        ISK,
-        JMD,
-        JOD,
-        JPY,
-        KES,
-        KGS,
-        KHR,
-        KMF,
-        KPW,
-        KRW,
-        KWD,
-        KYD,
-        KZT,
-        LAK,
-        LBP,
-        LKR,
-        LRD,
-        LSL,
-        LYD,
-        MAD,
-        MDL,
-        MGA,
-        MKD,
-        MMK,
-        MNT,
-        MOP,
-        MRO,
-        MUR,
-        MVR,
-        MWK,
-        MXN,
-        MXV,
-        MYR,
-        MZN,
-        NAD,
-        NGN,
-        NIO,
-        NOK,
-        NPR,
-        NZD,
-        OMR,
-        PAB,
-        PEN,
-        PGK,
-        PHP,
-        PKR,
-        PLN,
-        PYG,
-        QAR,
-        RON,
-        RSD,
-        RUB,
-        RWF,
-        SAR,
-        SBD,
-        SCR,
-        SDG,
-        SEK,
-        SGD,
-        SHP,
-        SLL,
-        SOS,
-        SRD,
-        SSP,
-        STD,
-        SVC,
-        SYP,
-        SZL,
-        THB,
-        TJS,
-        TMT,
-        TND,
-        TOP,
-        TRY,
-        TTD,
-        TWD,
-        TZS,
-        UAH,
-        UGX,
-        USD,
-        USN,
-        UYI,
-        UYU,
-        UZS,
-        VEF,
-        VND,
-        VUV,
-        WST,
-        XAF,
-        XAG,
-        XAU,
-        XBA,
-        XBB,
-        XBC,
-        XBD,
-        XCD,
-        XDR,
-        XOF,
-        XPD,
-        XPF,
-        XPT,
-        XSU,
-        XTS,
-        XUA,
-        XXX,
-        YER,
-        ZAR,
-        ZMW,
-        ZWL
+        Idr,
+        [EnumMember(Value = "ILS")]
+        Ils,
+        [EnumMember(Value = "INR")]
+        Inr,
+        [EnumMember(Value = "IQD")]
+        Iqd,
+        [EnumMember(Value = "IRR")]
+        Irr,
+        [EnumMember(Value = "ISK")]
+        Isk,
+        [EnumMember(Value = "JMD")]
+        Jmd,
+        [EnumMember(Value = "JOD")]
+        Jod,
+        [EnumMember(Value = "JPY")]
+        Jpy,
+        [EnumMember(Value = "KES")]
+        Kes,
+        [EnumMember(Value = "KGS")]
+        Kgs,
+        [EnumMember(Value = "KHR")]
+        Khr,
+        [EnumMember(Value = "KMF")]
+        Kmf,
+        [EnumMember(Value = "KPW")]
+        Kpw,
+        [EnumMember(Value = "KRW")]
+        Krw,
+        [EnumMember(Value = "KWD")]
+        Kwd,
+        [EnumMember(Value = "KYD")]
+        Kyd,
+        [EnumMember(Value = "KZT")]
+        Kzt,
+        [EnumMember(Value = "LAK")]
+        Lak,
+        [EnumMember(Value = "LBP")]
+        Lbp,
+        [EnumMember(Value = "LKR")]
+        Lkr,
+        [EnumMember(Value = "LRD")]
+        Lrd,
+        [EnumMember(Value = "LSL")]
+        Lsl,
+        [EnumMember(Value = "LYD")]
+        Lyd,
+        [EnumMember(Value = "MAD")]
+        Mad,
+        [EnumMember(Value = "MDL")]
+        Mdl,
+        [EnumMember(Value = "MGA")]
+        Mga,
+        [EnumMember(Value = "MKD")]
+        Mkd,
+        [EnumMember(Value = "MMK")]
+        Mmk,
+        [EnumMember(Value = "MNT")]
+        Mnt,
+        [EnumMember(Value = "MOP")]
+        Mop,
+        [EnumMember(Value = "MRO")]
+        Mro,
+        [EnumMember(Value = "MUR")]
+        Mur,
+        [EnumMember(Value = "MVR")]
+        Mvr,
+        [EnumMember(Value = "MWK")]
+        Mwk,
+        [EnumMember(Value = "MXN")]
+        Mxn,
+        [EnumMember(Value = "MXV")]
+        Mxv,
+        [EnumMember(Value = "MYR")]
+        Myr,
+        [EnumMember(Value = "MZN")]
+        Mzn,
+        [EnumMember(Value = "NAD")]
+        Nad,
+        [EnumMember(Value = "NGN")]
+        Ngn,
+        [EnumMember(Value = "NIO")]
+        Nio,
+        [EnumMember(Value = "NOK")]
+        Nok,
+        [EnumMember(Value = "NPR")]
+        Npr,
+        [EnumMember(Value = "NZD")]
+        Nzd,
+        [EnumMember(Value = "OMR")]
+        Omr,
+        [EnumMember(Value = "PAB")]
+        Pab,
+        [EnumMember(Value = "PEN")]
+        Pen,
+        [EnumMember(Value = "PGK")]
+        Pgk,
+        [EnumMember(Value = "PHP")]
+        Php,
+        [EnumMember(Value = "PKR")]
+        Pkr,
+        [EnumMember(Value = "PLN")]
+        Pln,
+        [EnumMember(Value = "PYG")]
+        Pyg,
+        [EnumMember(Value = "QAR")]
+        Qar,
+        [EnumMember(Value = "RON")]
+        Ron,
+        [EnumMember(Value = "RSD")]
+        Rsd,
+        [EnumMember(Value = "RUB")]
+        Rub,
+        [EnumMember(Value = "RWF")]
+        Rwf,
+        [EnumMember(Value = "SAR")]
+        Sar,
+        [EnumMember(Value = "SBD")]
+        Sbd,
+        [EnumMember(Value = "SCR")]
+        Scr,
+        [EnumMember(Value = "SDG")]
+        Sdg,
+        [EnumMember(Value = "SEK")]
+        Sek,
+        [EnumMember(Value = "SGD")]
+        Sgd,
+        [EnumMember(Value = "SHP")]
+        Shp,
+        [EnumMember(Value = "SLL")]
+        Sll,
+        [EnumMember(Value = "SOS")]
+        Sos,
+        [EnumMember(Value = "SRD")]
+        Srd,
+        [EnumMember(Value = "SSP")]
+        Ssp,
+        [EnumMember(Value = "STD")]
+        Std,
+        [EnumMember(Value = "SVC")]
+        Svc,
+        [EnumMember(Value = "SYP")]
+        Syp,
+        [EnumMember(Value = "SZL")]
+        Szl,
+        [EnumMember(Value = "THB")]
+        Thb,
+        [EnumMember(Value = "TJS")]
+        Tjs,
+        [EnumMember(Value = "TMT")]
+        Tmt,
+        [EnumMember(Value = "TND")]
+        Tnd,
+        [EnumMember(Value = "TOP")]
+        Top,
+        [EnumMember(Value = "TRY")]
+        Try,
+        [EnumMember(Value = "TTD")]
+        Ttd,
+        [EnumMember(Value = "TWD")]
+        Twd,
+        [EnumMember(Value = "TZS")]
+        Tzs,
+        [EnumMember(Value = "UAH")]
+        Uah,
+        [EnumMember(Value = "UGX")]
+        Ugx,
+        [EnumMember(Value = "USD")]
+        Usd,
+        [EnumMember(Value = "USN")]
+        Usn,
+        [EnumMember(Value = "UYI")]
+        Uyi,
+        [EnumMember(Value = "UYU")]
+        Uyu,
+        [EnumMember(Value = "UZS")]
+        Uzs,
+        [EnumMember(Value = "VEF")]
+        Vef,
+        [EnumMember(Value = "VND")]
+        Vnd,
+        [EnumMember(Value = "VUV")]
+        Vuv,
+        [EnumMember(Value = "WST")]
+        Wst,
+        [EnumMember(Value = "XAF")]
+        Xaf,
+        [EnumMember(Value = "XAG")]
+        Xag,
+        [EnumMember(Value = "XAU")]
+        Xau,
+        [EnumMember(Value = "XBA")]
+        Xba,
+        [EnumMember(Value = "XBB")]
+        Xbb,
+        [EnumMember(Value = "XBC")]
+        Xbc,
+        [EnumMember(Value = "XBD")]
+        Xbd,
+        [EnumMember(Value = "XCD")]
+        Xcd,
+        [EnumMember(Value = "XDR")]
+        Xdr,
+        [EnumMember(Value = "XOF")]
+        Xof,
+        [EnumMember(Value = "XPD")]
+        Xpd,
+        [EnumMember(Value = "XPF")]
+        Xpf,
+        [EnumMember(Value = "XPT")]
+        Xpt,
+        [EnumMember(Value = "XSU")]
+        Xsu,
+        [EnumMember(Value = "XTS")]
+        Xts,
+        [EnumMember(Value = "XUA")]
+        Xua,
+        [EnumMember(Value = "XXX")]
+        Xxx,
+        [EnumMember(Value = "YER")]
+        Yer,
+        [EnumMember(Value = "ZAR")]
+        Zar,
+        [EnumMember(Value = "ZMW")]
+        Zmw,
+        [EnumMember(Value = "ZWL")]
+        Zwl
     }
 
     public class Invoice
@@ -1009,7 +1375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         public string Email { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("organization")]
         public string Organization { get; set; }

@@ -1159,7 +1159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public CreateCeremonyEmailLinkBodyInputAuthenticationType Authentication { get; set; } = new CreateCeremonyEmailLinkBodyInputAuthenticationType();
 
         [JsonProperty("redirect_url")]
-        public string RedirectURL { get; set; }
+        public string RedirectUrl { get; set; }
 
         [JsonProperty("extra")]
         public string ExtraProperties { get; set; }
@@ -1188,7 +1188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public CreateCeremonyCustomBodyInputAuthenticationType Authentication { get; set; }
 
         [JsonProperty("redirect_url")]
-        public string RedirectURL { get; set; }
+        public string RedirectUrl { get; set; }
 
         [JsonProperty("extra")]
         public string ExtraProperties { get; set; }
@@ -1251,7 +1251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string[] Topics { get; set; }
 
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string EndpointURL { get; set; } = "#{listCallbackUrl()}";
+        internal string EndpointUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

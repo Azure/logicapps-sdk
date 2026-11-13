@@ -314,13 +314,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         public string MediaType { get; set; }
 
         [JsonProperty("previewImageUrl")]
-        public string PreviewImageURL { get; set; }
+        public string PreviewImageUrl { get; set; }
 
         [JsonProperty("previewText")]
         public string PreviewText { get; set; }
 
         [JsonProperty("containerWebUrl")]
-        public string ContainerWebURL { get; set; }
+        public string ContainerWebUrl { get; set; }
 
         [JsonProperty("containerDisplayName")]
         public string ContainerDisplayName { get; set; }
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         public string Profession { get; set; }
 
         [JsonProperty("userPrincipalName")]
-        public string UserPrincipalNameUPN { get; set; }
+        public string UserPrincipalNameUpn { get; set; }
 
         [JsonProperty("imAddress")]
         public string IMAddress { get; set; }
@@ -455,11 +455,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MethodInput
     {
-        GET,
-        POST,
-        PUT,
-        PATCH,
-        DELETE
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "PUT")]
+        Put,
+        [EnumMember(Value = "PATCH")]
+        Patch,
+        [EnumMember(Value = "DELETE")]
+        Delete
     }
 
     public class DirectReportsResponse
@@ -601,7 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365users
         public string TelephoneNumber { get; set; }
 
         [JsonProperty("UserPrincipalName")]
-        public string UserPrincipalNameUPN { get; set; }
+        public string UserPrincipalNameUpn { get; set; }
     }
 }
 

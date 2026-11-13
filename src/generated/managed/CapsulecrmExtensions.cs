@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string Name { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
     }
 
     public class OpportunityResponsePartyType
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string LastName { get; set; }
 
         [JsonProperty("pictureURL")]
-        public string PictureURL { get; set; }
+        public string PictureUrl { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -465,13 +465,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputOpportunityTypeDurationBasisType
     {
-        FIXED,
-        HOUR,
-        DAY,
-        MONTH,
-        YEAR,
-        WEEK,
-        QUARTER
+        [EnumMember(Value = "FIXED")]
+        Fixed,
+        [EnumMember(Value = "HOUR")]
+        Hour,
+        [EnumMember(Value = "DAY")]
+        Day,
+        [EnumMember(Value = "MONTH")]
+        Month,
+        [EnumMember(Value = "YEAR")]
+        Year,
+        [EnumMember(Value = "WEEK")]
+        Week,
+        [EnumMember(Value = "QUARTER")]
+        Quarter
     }
 
     public class BodyInputOpportunityTypeExpectedType
@@ -587,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public PartyResponsePhoneNumbersTypeItem[] PhoneNumbers { get; set; }
 
         [JsonProperty("pictureURL")]
-        public string PictureURL { get; set; }
+        public string PictureUrl { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -746,21 +753,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputPartyTypeWebsitesTypeWebsiteServiceType
     {
-        FEED,
-        FACEBOOK,
-        FLICKR,
-        GITHUB,
+        [EnumMember(Value = "FEED")]
+        Feed,
+        [EnumMember(Value = "FACEBOOK")]
+        Facebook,
+        [EnumMember(Value = "FLICKR")]
+        Flickr,
+        [EnumMember(Value = "GITHUB")]
+        Github,
         [EnumMember(Value = "GOOGLE_PLUS")]
-        GOOGLEPLUS,
-        INSTAGRAM,
+        GooglePlus,
+        [EnumMember(Value = "INSTAGRAM")]
+        Instagram,
         [EnumMember(Value = "LINKED_IN")]
-        LINKEDIN,
-        PINTEREST,
-        SKYPE,
-        TWITTER,
-        URL,
-        XING,
-        YOUTUBE
+        LinkedIn,
+        [EnumMember(Value = "PINTEREST")]
+        Pinterest,
+        [EnumMember(Value = "SKYPE")]
+        Skype,
+        [EnumMember(Value = "TWITTER")]
+        Twitter,
+        [EnumMember(Value = "URL")]
+        Url,
+        [EnumMember(Value = "XING")]
+        Xing,
+        [EnumMember(Value = "YOUTUBE")]
+        Youtube
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -874,7 +892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string Organisation { get; set; }
 
         [JsonProperty("pictureURL")]
-        public string PictureURL { get; set; }
+        public string PictureUrl { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -955,7 +973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string Name { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
     }
 
     public class TaskResponsePartyType
@@ -970,7 +988,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string LastName { get; set; }
 
         [JsonProperty("pictureURL")]
-        public string PictureURL { get; set; }
+        public string PictureUrl { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -1086,7 +1104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public PartyResponseV2PhoneNumbersTypeItem[] PhoneNumbers { get; set; }
 
         [JsonProperty("pictureURL")]
-        public string PictureURL { get; set; }
+        public string PictureUrl { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1140,7 +1158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string Name { get; set; }
 
         [JsonProperty("pictureURL")]
-        public string PictureURL { get; set; }
+        public string PictureUrl { get; set; }
     }
 
     public class PartyResponseV2PhoneNumbersTypeItem
@@ -1284,7 +1302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public ListpartiesResponseV2PartiesTypeItemNestedOrganisationType NestedOrganisation { get; set; }
 
         [JsonProperty("pictureURL")]
-        public string PictureURL { get; set; }
+        public string PictureUrl { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -1305,7 +1323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string Name { get; set; }
 
         [JsonProperty("pictureURL")]
-        public string PictureURL { get; set; }
+        public string PictureUrl { get; set; }
     }
 
     public class UpdatePersonResponse

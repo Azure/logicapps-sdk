@@ -764,10 +764,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string CampaignManager { get; set; }
 
         [JsonProperty("IS INACTIVE")]
-        public string ISINACTIVE { get; set; }
+        public string ISInactive { get; set; }
 
         [JsonProperty("IN HISTORY")]
-        public string INHISTORY { get; set; }
+        public string INHistory { get; set; }
 
         [JsonProperty("Used For Discounting")]
         public string UsedForDiscounting { get; set; }
@@ -1205,16 +1205,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string EmployeeName { get; set; }
 
         [JsonProperty("SET FOR")]
-        public string SETFOR { get; set; }
+        public string SetFor { get; set; }
 
         [JsonProperty("SET BY")]
-        public string SETBY { get; set; }
+        public string SetBY { get; set; }
 
         [JsonProperty("SET ON")]
-        public string SETON { get; set; }
+        public string SetON { get; set; }
 
         [JsonProperty("IS CLEARED")]
-        public string ISCLEARED { get; set; }
+        public string ISCleared { get; set; }
 
         [JsonProperty("Cleared By")]
         public string ClearedBy { get; set; }
@@ -1223,9 +1223,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string ClearedOn { get; set; }
 
         [JsonProperty("ACCOUNT TYPE")]
-        public string ACCOUNTTYPE { get; set; }
+        public string AccountType { get; set; }
         public string Priority { get; set; }
-        public string TYPE { get; set; }
+
+        [JsonProperty("TYPE")]
+        public string Type { get; set; }
         public string Details { get; set; }
 
         [JsonProperty("Account Name")]
@@ -1247,7 +1249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string ReminderTime { get; set; }
 
         [JsonProperty("WORK ORDER")]
-        public string WORKORDER { get; set; }
+        public string WorkOrder { get; set; }
 
         [JsonProperty("Sales Lead")]
         public string SalesLead { get; set; }
@@ -1351,13 +1353,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Category5 { get; set; }
 
         [JsonProperty("Base UOM")]
-        public string BaseUOM { get; set; }
+        public string BaseUom { get; set; }
 
         [JsonProperty("Sell UOM")]
-        public string SellUOM { get; set; }
+        public string SellUom { get; set; }
 
         [JsonProperty("Buy UOM")]
-        public string BuyUOM { get; set; }
+        public string BuyUom { get; set; }
 
         [JsonProperty("Base Warehouse")]
         public string BaseWarehouse { get; set; }
@@ -1451,17 +1453,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string ItemMessage { get; set; }
 
         [JsonProperty("ON SALE")]
-        public string ONSALE { get; set; }
+        public string ONSale { get; set; }
 
         [JsonProperty("IS ASSEMBLY")]
-        public string ISASSEMBLY { get; set; }
+        public string ISAssembly { get; set; }
 
         [JsonProperty("Manufacturer Part Number")]
         public string ManufacturerPartNumber { get; set; }
-        public string OEM { get; set; }
+
+        [JsonProperty("OEM")]
+        public string Oem { get; set; }
 
         [JsonProperty("BIN Location")]
-        public string BINLocation { get; set; }
+        public string BinLocation { get; set; }
 
         [JsonProperty("Primary Vendor")]
         public string PrimaryVendor { get; set; }
@@ -1879,7 +1883,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
 
         [JsonProperty("Email 4")]
         public string Email4 { get; set; }
-        public string OPTOUT { get; set; }
+
+        [JsonProperty("OPTOUT")]
+        public string Optout { get; set; }
         public string Phone1 { get; set; }
         public string Phone2 { get; set; }
         public string Phone3 { get; set; }
@@ -2298,7 +2304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string OrderId { get; set; }
 
         [JsonProperty("PROCESSING PHASE")]
-        public string PROCESSINGPHASE { get; set; }
+        public string ProcessingPhase { get; set; }
         public string Account { get; set; }
 
         [JsonProperty("Account Name")]
@@ -2329,7 +2335,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
 
         [JsonProperty("Shipping Warehouse")]
         public string ShippingWarehouse { get; set; }
-        public string FOB { get; set; }
+
+        [JsonProperty("FOB")]
+        public string Fob { get; set; }
 
         [JsonProperty("Deposit Required")]
         public string DepositRequired { get; set; }
@@ -2347,10 +2355,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string InvoiceShipping { get; set; }
 
         [JsonProperty("IN HISTORY")]
-        public string INHISTORY { get; set; }
+        public string INHistory { get; set; }
 
         [JsonProperty("IS INACTIVE")]
-        public string ISINACTIVE { get; set; }
+        public string ISInactive { get; set; }
 
         [JsonProperty("In-Pipeline")]
         public string InPipeline { get; set; }
@@ -2588,8 +2596,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string WorkOrderNumber { get; set; }
 
         [JsonProperty("IN HISTORY")]
-        public string INHISTORY { get; set; }
-        public string INACTIVE { get; set; }
+        public string INHistory { get; set; }
+
+        [JsonProperty("INACTIVE")]
+        public string Inactive { get; set; }
         public string Priority { get; set; }
 
         [JsonProperty("account")]
@@ -2618,7 +2628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string OpenedBy { get; set; }
 
         [JsonProperty("CONTRACT ID")]
-        public string CONTRACTId { get; set; }
+        public string ContractId { get; set; }
         public string Source { get; set; }
 
         [JsonProperty("Custom Status")]

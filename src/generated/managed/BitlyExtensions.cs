@@ -45,21 +45,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
     public class BitlinkV2
     {
         [JsonProperty("link")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("long_url")]
-        public string LongURL { get; set; }
+        public string LongUrl { get; set; }
     }
 
     public class BodyInput
     {
-        public BodyInput(string uRL)
+        public BodyInput(string url)
         {
-            this.URL = uRL;
+            this.Url = url;
         }
 
         [JsonProperty("long_url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string URL { get; set; }
+        public string Url { get; set; }
     }
 
     public class OnBitlinkCreatedResponse

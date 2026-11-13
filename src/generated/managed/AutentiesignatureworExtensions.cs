@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         public string Id { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -192,17 +192,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum StatusInput
     {
-        DRAFT,
+        [EnumMember(Value = "DRAFT")]
+        Draft,
         [EnumMember(Value = "DOCUMENT_PROCESS")]
-        DOCUMENTPROCESS,
-        EVERYTHING
+        DocumentProcess,
+        [EnumMember(Value = "EVERYTHING")]
+        Everything
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SortInput
     {
-        ASCENDING,
-        DESCENDING
+        [EnumMember(Value = "ASCENDING")]
+        Ascending,
+        [EnumMember(Value = "DESCENDING")]
+        Descending
     }
 
     public class DocumentProcessParticipantsResponse
@@ -360,10 +364,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputRoleTypeType
     {
-        VIEWER,
-        SIGNER,
-        APPROVER,
-        REVIEWER
+        [EnumMember(Value = "VIEWER")]
+        Viewer,
+        [EnumMember(Value = "SIGNER")]
+        Signer,
+        [EnumMember(Value = "APPROVER")]
+        Approver,
+        [EnumMember(Value = "REVIEWER")]
+        Reviewer
     }
 
     public class GetFilesInfoResponse
@@ -372,7 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         public string Id { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("filePurpose")]
         public string FilePurpose { get; set; }
@@ -385,11 +393,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
     public enum FilePurposeInput
     {
         [EnumMember(Value = "SOURCE_FILE")]
-        SOURCEFILE,
+        SourceFile,
         [EnumMember(Value = "SIGNED_CONTENT_FILE")]
-        SIGNEDCONTENTFILE,
+        SignedContentFile,
         [EnumMember(Value = "CONTENT_ARCHIVE")]
-        CONTENTARCHIVE
+        ContentArchive
     }
 
     public class ActionsAvailabilityResponse
@@ -610,7 +618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         public string Id { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }

@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
     public class GetProcessedEmailsResponseDataTypeDetailsTypeItemEmailInfoType
     {
         [JsonProperty("is_smtp_trigger")]
-        public bool IsSMTP { get; set; }
+        public bool IsSmtp { get; set; }
 
         [JsonProperty("subject")]
         public string Subject { get; set; }
@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         public EmailAddressItems[] CC { get; set; }
 
         [JsonProperty("bcc")]
-        public EmailAddressItems[] BCC { get; set; }
+        public EmailAddressItems[] Bcc { get; set; }
 
         [JsonProperty("mailtype", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputMailTypeType? MailType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail.BodyInputMailTypeType.Html;
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         public EmailAddressItems[] CC { get; set; }
 
         [JsonProperty("bcc")]
-        public EmailAddressItems[] BCC { get; set; }
+        public EmailAddressItems[] Bcc { get; set; }
 
         [JsonProperty("merge_key_detail")]
         public BodyInputMergeInfoTypeItem[] MergeInfo { get; set; }

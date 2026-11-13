@@ -58,8 +58,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Text { get; set; }
-        public string URL { get; set; }
-        public string PictureURL { get; set; }
+
+        [JsonProperty("URL")]
+        public string Url { get; set; }
+
+        [JsonProperty("PictureURL")]
+        public string PictureUrl { get; set; }
         public string Tags { get; set; }
         public int? TimeToLiveInDays { get; set; }
         public string UserId { get; set; }

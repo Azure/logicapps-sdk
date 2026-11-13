@@ -206,9 +206,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
     {
         public string TweetText { get; set; }
         public string TweetId { get; set; }
+        public string CreatedAt { get; set; }
 
         [JsonProperty("CreatedAtIso")]
-        public string CreatedAt { get; set; }
+        public string CreatedAt2 { get; set; }
         public int RetweetCount { get; set; }
         public string TweetedBy { get; set; }
         public string[] MediaUrls { get; set; }
@@ -244,8 +245,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [JsonProperty("TweetId")]
         public string OriginalTweetId { get; set; }
 
-        [JsonProperty("CreatedAtIso")]
+        [JsonProperty("CreatedAt")]
         public string OriginalTweetCreatedAt { get; set; }
+
+        [JsonProperty("CreatedAtIso")]
+        public string OriginalTweetCreatedAt2 { get; set; }
 
         [JsonProperty("RetweetCount")]
         public int OriginalTweetRetweetCount { get; set; }

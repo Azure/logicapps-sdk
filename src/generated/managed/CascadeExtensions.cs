@@ -599,26 +599,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputGoalTypeStatusType
     {
-        APPRO,
-        DRAFT,
-        ARCHI
+        [EnumMember(Value = "APPRO")]
+        Appro,
+        [EnumMember(Value = "DRAFT")]
+        Draft,
+        [EnumMember(Value = "ARCHI")]
+        Archi
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputGoalTypeCompletionCriteriaType
     {
         [EnumMember(Value = "TARGET-REACHED")]
-        TARGETREACHED,
+        TargetReached,
         [EnumMember(Value = "TARGET-DEADLINE-REACHED")]
-        TARGETDEADLINEREACHED
+        TargetDeadlineReached
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputGoalTypeTargetFlowType
     {
-        OVER,
-        UNDER,
-        NONE
+        [EnumMember(Value = "OVER")]
+        Over,
+        [EnumMember(Value = "UNDER")]
+        Under,
+        [EnumMember(Value = "NONE")]
+        None
     }
 
     public enum BodyInputGoalTypeWeightIdType
@@ -638,14 +644,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputGoalTypeTrackingTypeType
     {
-        MANUAL,
+        [EnumMember(Value = "MANUAL")]
+        Manual,
         [EnumMember(Value = "SUBGOAL-SUM")]
-        SUBGOALSUM,
+        SubgoalSum,
         [EnumMember(Value = "SUBGOAL-MEAN")]
-        SUBGOALMEAN,
+        SubgoalMean,
         [EnumMember(Value = "WEIGHTED-MEAN")]
-        WEIGHTEDMEAN,
-        TASKS
+        WeightedMean,
+        [EnumMember(Value = "TASKS")]
+        Tasks
     }
 
     public class GetSingleGoalResponse

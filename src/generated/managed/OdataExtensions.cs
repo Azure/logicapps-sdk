@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
+namespace Microsoft.Azure.Workflows.Sdk.Connectors.OData
 {
     using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
@@ -10,12 +10,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
-    public class OdataActions([ConnectionName] string connectionId)
+    public class ODataActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GetEntityData(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<double>> top = null, Expression<Func<double>> skip = null, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null)
+        public IBodyWorkflowAction<JToken[], ApiConnectionActionConfiguration> GetEntityData(Expression<Func<string>> oDataUri, Expression<Func<string>> entity, Expression<Func<double>> top = null, Expression<Func<double>> skip = null, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null)
         {
-            var __workflow_odataUri = WorkflowExpression.Compile(odataUri, nameof(odataUri), required: true);
+            var __workflow_oDataUri = WorkflowExpression.Compile(oDataUri, nameof(oDataUri), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 var apiCallPath = "/getentitydata";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
+                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_oDataUri);
                 callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 if (__workflow_top != null)
                     callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
@@ -44,25 +44,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetSchema(Expression<Func<string>> odataUri, Expression<Func<string>> entity)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetSchema(Expression<Func<string>> oDataUri, Expression<Func<string>> entity)
         {
-            var __workflow_odataUri = WorkflowExpression.Compile(odataUri, nameof(odataUri), required: true);
+            var __workflow_oDataUri = WorkflowExpression.Compile(oDataUri, nameof(oDataUri), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/getschema";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
+                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_oDataUri);
                 callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetSingleSchema(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<int>> option = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetSingleSchema(Expression<Func<string>> oDataUri, Expression<Func<string>> entity, Expression<Func<int>> option = null)
         {
-            var __workflow_odataUri = WorkflowExpression.Compile(odataUri, nameof(odataUri), required: true);
+            var __workflow_oDataUri = WorkflowExpression.Compile(oDataUri, nameof(oDataUri), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_option = WorkflowExpression.Compile(option, nameof(option), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 var apiCallPath = "/getsingleschema";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
+                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_oDataUri);
                 callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 if (__workflow_option != null)
                     callPayload.Queries["option"] = ExpressionConverter.Convert(__workflow_option);
@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetEntry(Expression<Func<string>> oDataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
         {
-            var __workflow_odataUri = WorkflowExpression.Compile(odataUri, nameof(odataUri), required: true);
+            var __workflow_oDataUri = WorkflowExpression.Compile(oDataUri, nameof(oDataUri), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 var apiCallPath = "/getentry";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
+                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_oDataUri);
                 callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 if (__workflow_entryInput != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
@@ -98,9 +98,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> CreateEntry(Expression<Func<string>> oDataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
         {
-            var __workflow_odataUri = WorkflowExpression.Compile(odataUri, nameof(odataUri), required: true);
+            var __workflow_oDataUri = WorkflowExpression.Compile(oDataUri, nameof(oDataUri), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 var apiCallPath = "/createentry";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
+                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_oDataUri);
                 callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 if (__workflow_entryInput != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
@@ -117,9 +117,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> UpdateEntry(Expression<Func<string>> oDataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
         {
-            var __workflow_odataUri = WorkflowExpression.Compile(odataUri, nameof(odataUri), required: true);
+            var __workflow_oDataUri = WorkflowExpression.Compile(oDataUri, nameof(oDataUri), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 var apiCallPath = "/updateentry";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
+                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_oDataUri);
                 callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 if (__workflow_entryInput != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
@@ -136,9 +136,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeleteEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> DeleteEntry(Expression<Func<string>> oDataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
         {
-            var __workflow_odataUri = WorkflowExpression.Compile(odataUri, nameof(odataUri), required: true);
+            var __workflow_oDataUri = WorkflowExpression.Compile(oDataUri, nameof(oDataUri), required: true);
             var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
             var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
                 var apiCallPath = "/deleteentry";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_odataUri);
+                callPayload.Queries["odataUri"] = ExpressionConverter.Convert(__workflow_oDataUri);
                 callPayload.Queries["entity"] = ExpressionConverter.Convert(__workflow_entity);
                 if (__workflow_entryInput != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_entryInput);
@@ -155,22 +155,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
         }
     }
 
-    public class OdataTriggers([ConnectionName] string connectionId)
+    public class ODataTriggers([ConnectionName] string connectionId)
     {
     }
 }
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
-    using Microsoft.Azure.Workflows.Sdk.Connectors.Odata;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.OData;
 
     public partial class WorkflowManagedActions
     {
-        public OdataActions Odata(string connectionId) => new OdataActions(connectionId);
+        public ODataActions OData(string connectionId) => new ODataActions(connectionId);
     }
 
     public partial class WorkflowManagedTriggers
     {
-        public OdataTriggers Odata(string connectionId) => new OdataTriggers(connectionId);
+        public ODataTriggers OData(string connectionId) => new ODataTriggers(connectionId);
     }
 }

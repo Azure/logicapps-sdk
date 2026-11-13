@@ -863,7 +863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public string Name { get; set; }
 
         [JsonProperty("nodeGuid")]
-        public string NodeGUID { get; set; }
+        public string NodeGuid { get; set; }
 
         [JsonProperty("nodeId")]
         public string NodeId { get; set; }
@@ -872,7 +872,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public AssociationNodeTypeType NodeType { get; set; }
 
         [JsonProperty("spaceGuid")]
-        public string SpaceGUID { get; set; }
+        public string SpaceGuid { get; set; }
 
         [JsonProperty("spaceId")]
         public string SpaceId { get; set; }
@@ -1017,7 +1017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
         public int StepId { get; set; }
 
         [JsonProperty("subTaskIds")]
-        public string[] SubTaskIDs { get; set; }
+        public string[] SubTaskIds { get; set; }
 
         [JsonProperty("subTasks")]
         public PlannerSubTask[] SubTasks { get; set; }
@@ -1175,7 +1175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
     public class AsyncOperationResponse
     {
         [JsonProperty("asyncOperationIds")]
-        public string[] AsyncOperationIDs { get; set; }
+        public string[] AsyncOperationIds { get; set; }
     }
 
     public class CreateProjectBodyInput
@@ -1614,7 +1614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicplanner
     public class DeleteRequestsBodyInput
     {
         [JsonProperty("ids")]
-        public string[] RequestIDs { get; set; }
+        public string[] RequestIds { get; set; }
     }
 
     public class CreateRequestBodyInput

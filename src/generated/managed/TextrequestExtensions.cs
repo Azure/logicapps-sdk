@@ -594,7 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string MessageDirection { get; set; }
 
         [JsonProperty("response_by_username")]
-        public string ResponseByUsername { get; set; }
+        public string ResponseByUserName { get; set; }
 
         [JsonProperty("message_timestamp_utc")]
         public string MessageTimestampUtc { get; set; }
@@ -621,7 +621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string MessageDirection { get; set; }
 
         [JsonProperty("response_by_username")]
-        public string ResponseByUsername { get; set; }
+        public string ResponseByUserName { get; set; }
 
         [JsonProperty("message_timestamp_utc")]
         public string MessageTimestampUtc { get; set; }
@@ -651,7 +651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string LocationCallback { get; set; }
 
         [JsonProperty("mms_media")]
-        public string[] MMSMediaAttachmentsForThisMessage { get; set; }
+        public string[] MmsMediaAttachmentsForThisMessage { get; set; }
     }
 
     public class GetContactByPhoneNumberResponse
@@ -747,7 +747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string MessageDirection { get; set; }
 
         [JsonProperty("response_by_username")]
-        public string ResponseByUsername { get; set; }
+        public string ResponseByUserName { get; set; }
 
         [JsonProperty("message_timestamp_utc")]
         public string MessageTimestampUtc { get; set; }
@@ -855,7 +855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string MessageDirection { get; set; }
 
         [JsonProperty("response_by_username")]
-        public string ResponseByUsername { get; set; }
+        public string ResponseByUserName { get; set; }
 
         [JsonProperty("message_timestamp_utc")]
         public string MessageTimestampUtc { get; set; }
@@ -1032,7 +1032,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string MessageDirection { get; set; }
 
         [JsonProperty("response_by_username")]
-        public string ResponseByUsername { get; set; }
+        public string ResponseByUserName { get; set; }
 
         [JsonProperty("message_timestamp_utc")]
         public string MessageTimestampUtc { get; set; }
@@ -1140,7 +1140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string MessageDirection { get; set; }
 
         [JsonProperty("response_by_username")]
-        public string ResponseByUsername { get; set; }
+        public string ResponseByUserName { get; set; }
 
         [JsonProperty("message_timestamp_utc")]
         public string MessageTimestampUtc { get; set; }
@@ -1689,7 +1689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Textrequest
         public string MessageDirection { get; set; }
 
         [JsonProperty("response_by_username")]
-        public string ResponseByUsername { get; set; }
+        public string ResponseByUserName { get; set; }
 
         [JsonProperty("message_timestamp_utc")]
         public string MessageTimestampUtc { get; set; }

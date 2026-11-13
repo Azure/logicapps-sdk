@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         public string ExternalLinkLabel { get; set; }
 
         [JsonProperty("url")]
-        public string ExternalLinkURL { get; set; }
+        public string ExternalLinkUrl { get; set; }
     }
 
     public class CardResponse

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
     public class WorkdaysoapActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SOAPOperation(Expression<Func<ServiceInput>> service, Expression<Func<string>> version, Expression<Func<string>> requestBody)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> SoapOperation(Expression<Func<ServiceInput>> service, Expression<Func<string>> version, Expression<Func<string>> requestBody)
         {
             var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
             var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RESTOperation(Expression<Func<string>> relativePath, Expression<Func<MethodInput>> method = null, Expression<Func<ContentTypeInput>> contentType = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> RestOperation(Expression<Func<string>> relativePath, Expression<Func<MethodInput>> method = null, Expression<Func<ContentTypeInput>> contentType = null, Expression<Func<string>> body = null)
         {
             var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: true);
             var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: false);
@@ -286,13 +286,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         OrgStudio,
         Payroll,
         [EnumMember(Value = "Payroll_AUS")]
-        PayrollAUS,
+        PayrollAus,
         [EnumMember(Value = "Payroll_CAN")]
-        PayrollCAN,
+        PayrollCan,
         [EnumMember(Value = "Payroll_FRA")]
-        PayrollFRA,
+        PayrollFra,
         [EnumMember(Value = "Payroll_GBR")]
-        PayrollGBR,
+        PayrollGbr,
         [EnumMember(Value = "Payroll_Interface")]
         PayrollInterface,
         [EnumMember(Value = "Performance_Management")]
@@ -333,11 +333,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MethodInput
     {
-        GET,
-        POST,
-        PUT,
-        PATCH,
-        DELETE
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "PUT")]
+        Put,
+        [EnumMember(Value = "PATCH")]
+        Patch,
+        [EnumMember(Value = "DELETE")]
+        Delete
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -438,7 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         public string EffectiveDate { get; set; }
 
         [JsonProperty("moveManagersTeam")]
-        public bool? MoveManagerSTeam { get; set; }
+        public bool? MoveManagerTeam { get; set; }
     }
 
     public class RequestFeedbackWorkdayObjectReference
@@ -524,7 +529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         public string WorkerName { get; set; }
 
         [JsonProperty("href")]
-        public string WorkerURL { get; set; }
+        public string WorkerUrl { get; set; }
 
         [JsonProperty("isManager")]
         public bool IsManager { get; set; }
@@ -560,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         public string OrganizationName { get; set; }
 
         [JsonProperty("href")]
-        public string OrganizationURL { get; set; }
+        public string OrganizationUrl { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -587,7 +592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         public string WorkerName { get; set; }
 
         [JsonProperty("href")]
-        public string WorkerURL { get; set; }
+        public string WorkerUrl { get; set; }
 
         [JsonProperty("isManager")]
         public bool IsManager { get; set; }

@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         public string CrStreetOrAddressLine2 { get; set; }
 
         [JsonProperty("currency", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputCurrencyType? Currency { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr.BodyInputCurrencyType.CHF;
+        public BodyInputCurrencyType? Currency { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr.BodyInputCurrencyType.Chf;
 
         [JsonProperty("docContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocContent { get; set; }
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         public string Reference { get; set; }
 
         [JsonProperty("referenceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputReferenceTypeType? ReferenceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr.BodyInputReferenceTypeType.QRR;
+        public BodyInputReferenceTypeType? ReferenceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr.BodyInputReferenceTypeType.Qrr;
 
         [JsonProperty("seperatorLine", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputSeperatorLineType? SeperatorLine { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr.BodyInputSeperatorLineType.LineWithScissor;
@@ -155,8 +155,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputCurrencyType
     {
-        CHF,
-        EUR
+        [EnumMember(Value = "CHF")]
+        Chf,
+        [EnumMember(Value = "EUR")]
+        Eur
     }
 
     public class BodyInputDocumentType
@@ -182,9 +184,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputReferenceTypeType
     {
-        QRR,
-        SCOR,
-        NON
+        [EnumMember(Value = "QRR")]
+        Qrr,
+        [EnumMember(Value = "SCOR")]
+        Scor,
+        [EnumMember(Value = "NON")]
+        Non
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

@@ -676,7 +676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public bool _2FAEnabled { get; set; }
 
         [JsonProperty("api_token")]
-        public string APIToken { get; set; }
+        public string ApiToken { get; set; }
 
         [JsonProperty("at")]
         public string LastUpdated { get; set; }
@@ -712,7 +712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public int UserId { get; set; }
 
         [JsonProperty("image_url")]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
 
         [JsonProperty("intercom_hash")]
         public string IntercomHash { get; set; }
@@ -973,7 +973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public string LastModified { get; set; }
 
         [JsonProperty("avatar_url")]
-        public string AvatarURL { get; set; }
+        public string AvatarUrl { get; set; }
 
         [JsonProperty("client_name")]
         public string ClientName { get; set; }
@@ -1060,7 +1060,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public bool DurationOnly { get; set; }
 
         [JsonProperty("expense_ids")]
-        public int[] ExpenseIDs { get; set; }
+        public int[] ExpenseIds { get; set; }
 
         [JsonProperty("id")]
         public int TimeEntryId { get; set; }
@@ -1096,7 +1096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public string StopTime { get; set; }
 
         [JsonProperty("tag_ids")]
-        public int[] TagIDs { get; set; }
+        public int[] TagIds { get; set; }
 
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
@@ -1114,7 +1114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public int UserIdLegacy { get; set; }
 
         [JsonProperty("user_avatar_url")]
-        public string UserAvatarURL { get; set; }
+        public string UserAvatarUrl { get; set; }
 
         [JsonProperty("user_id")]
         public int UserId { get; set; }
@@ -1150,7 +1150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public bool Admin { get; set; }
 
         [JsonProperty("api_token")]
-        public string APIToken { get; set; }
+        public string ApiToken { get; set; }
 
         [JsonProperty("at")]
         public string LastChanged { get; set; }
@@ -1159,7 +1159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public bool BusinessWorkspace { get; set; }
 
         [JsonProperty("csv_upload")]
-        public JToken CSVUpload { get; set; }
+        public JToken CsvUpload { get; set; }
 
         [JsonProperty("default_currency")]
         public string DefaultCurrency { get; set; }
@@ -1180,7 +1180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public bool ICalEnabled { get; set; }
 
         [JsonProperty("ical_url")]
-        public string ICalURL { get; set; }
+        public string ICalUrl { get; set; }
 
         [JsonProperty("id")]
         public int WorkspaceId { get; set; }
@@ -1192,7 +1192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public bool LimitPublicProjectData { get; set; }
 
         [JsonProperty("logo_url")]
-        public string LogoURL { get; set; }
+        public string LogoUrl { get; set; }
 
         [JsonProperty("max_data_retention_days")]
         public JToken MaxDataRetentionDays { get; set; }
@@ -1261,7 +1261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public bool _2FAEnabled { get; set; }
 
         [JsonProperty("api_token")]
-        public string APIToken { get; set; }
+        public string ApiToken { get; set; }
 
         [JsonProperty("at")]
         public string LastUpdated { get; set; }
@@ -1291,7 +1291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public int UserId { get; set; }
 
         [JsonProperty("image_url")]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
 
         [JsonProperty("openid_email")]
         public string OpenIdEmail { get; set; }
@@ -1462,7 +1462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public int Frequency { get; set; }
 
         [JsonProperty("group_ids")]
-        public int[] GroupIDs { get; set; }
+        public int[] GroupIds { get; set; }
 
         [JsonProperty("reminder_id")]
         public int ReminderId { get; set; }
@@ -1471,7 +1471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public int Threshold { get; set; }
 
         [JsonProperty("user_ids")]
-        public int[] UserIDs { get; set; }
+        public int[] UserIds { get; set; }
 
         [JsonProperty("workspace_id")]
         public int WorkspaceId { get; set; }
@@ -1498,7 +1498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public EventMetadata EventMetadata { get; set; }
 
         [JsonProperty("expense_ids")]
-        public int[] ExpenseIDs { get; set; }
+        public int[] ExpenseIds { get; set; }
 
         [JsonProperty("pid")]
         public int? ProjectIdLegacy { get; set; }
@@ -1507,7 +1507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public int? ProjectId { get; set; }
 
         [JsonProperty("shared_with_user_ids")]
-        public int[] SharedWithUserIDs { get; set; }
+        public int[] SharedWithUserIds { get; set; }
 
         [JsonProperty("start")]
         public string StartTime { get; set; }
@@ -1522,7 +1522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public BodyInputTagActionType? TagAction { get; set; }
 
         [JsonProperty("tag_ids")]
-        public int[] TagIDs { get; set; }
+        public int[] TagIds { get; set; }
 
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
@@ -1570,7 +1570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public BulkEditFailure[] Failures { get; set; }
 
         [JsonProperty("success")]
-        public int[] SuccessIDs { get; set; }
+        public int[] SuccessIds { get; set; }
     }
 
     public class BulkEditFailure
@@ -1626,13 +1626,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public string LastUpdated { get; set; }
 
         [JsonProperty("avatar_file_name")]
-        public string AvatarURL { get; set; }
+        public string AvatarUrl { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
 
         [JsonProperty("group_ids")]
-        public int[] GroupIDs { get; set; }
+        public int[] GroupIds { get; set; }
 
         [JsonProperty("id")]
         public int UserWorkspaceId { get; set; }
@@ -1644,7 +1644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public string InvitationCode { get; set; }
 
         [JsonProperty("invite_url")]
-        public string InviteURL { get; set; }
+        public string InviteUrl { get; set; }
 
         [JsonProperty("is_direct")]
         public bool IsDirectMember { get; set; }
@@ -1688,7 +1688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         [JsonProperty("view_edit_labor_costs")]
         public bool ViewEditLaborCosts { get; set; }
 
-        [JsonProperty("workspace_id")]
+        [JsonProperty("wid")]
         public int WorkspaceId { get; set; }
 
         [JsonProperty("working_hours_in_minutes")]
@@ -1696,6 +1696,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
 
         [JsonProperty("workspace_admin")]
         public bool WorkspaceAdmin { get; set; }
+
+        [JsonProperty("workspace_id")]
+        public int WorkspaceId2 { get; set; }
     }
 
     public class Rate
@@ -1897,7 +1900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
         public string Description { get; set; }
 
         [JsonProperty("url_callback")]
-        public string CallbackURL { get; set; }
+        public string CallbackUrl { get; set; }
 
         [JsonProperty("enabled")]
         public bool Enabled { get; set; }
@@ -1924,7 +1927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toggltrack
     public class OnTimeEntryCreatedBodyInput
     {
         [JsonProperty("url_callback", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("description", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Description { get; set; } = "Power Automate Time Tracking Trigger";

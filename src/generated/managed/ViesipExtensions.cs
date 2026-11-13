@@ -13,16 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
     public class ViesipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viesip")]
-        public IBodyWorkflowAction<CheckVATValidityResponse, ApiConnectionActionConfiguration> CheckVATValidity(Expression<Func<BodyInput>> body)
+        public IBodyWorkflowAction<CheckVatValidityResponse, ApiConnectionActionConfiguration> CheckVatValidity(Expression<Func<BodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<CheckVATValidityResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CheckVatValidityResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/taxation_customs/vies/services/checkVatService";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CheckVATValidityResponse>(callPayload);
+                return new ApiConnectionAction<CheckVatValidityResponse>(callPayload);
             });
         }
     }
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
     {
     }
 
-    public class CheckVATValidityResponse
+    public class CheckVatValidityResponse
     {
         [JsonProperty("countryCode")]
         public string CountryCode { get; set; }

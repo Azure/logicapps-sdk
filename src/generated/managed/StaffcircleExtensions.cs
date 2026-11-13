@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public GetPersonResponseResultsTypeItemRoleType Role { get; set; }
 
         [JsonProperty("avatarURL")]
-        public string AvatarURL { get; set; }
+        public string AvatarUrl { get; set; }
 
         [JsonProperty("status")]
         public GetPersonResponseResultsTypeItemStatusType Status { get; set; }
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public string KnownAs { get; set; }
 
         [JsonProperty("avatarURL")]
-        public string AvatarURL { get; set; }
+        public string AvatarUrl { get; set; }
 
         [JsonProperty("titleId")]
         public int? TitleId { get; set; }
@@ -563,510 +563,510 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public bool? IsContactDataEnabled { get; set; }
 
         [JsonProperty("timeZone", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputTimeZoneType? TimeZone { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle.BodyInputTimeZoneType.GMT0000London;
+        public BodyInputTimeZoneType? TimeZone { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle.BodyInputTimeZoneType.Gmt0000London;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputTimeZoneType
     {
         [EnumMember(Value = "(GMT-11:00) Niue")]
-        GMT1100Niue,
+        Gmt1100Niue,
         [EnumMember(Value = "(GMT-11:00) Pago Pago")]
-        GMT1100PagoPago,
+        Gmt1100PagoPago,
         [EnumMember(Value = "(GMT-10:00) Hawaii Time")]
-        GMT1000HawaiiTime,
+        Gmt1000HawaiiTime,
         [EnumMember(Value = "(GMT-10:00) Rarotonga")]
-        GMT1000Rarotonga,
+        Gmt1000Rarotonga,
         [EnumMember(Value = "(GMT-10:00) Tahiti")]
-        GMT1000Tahiti,
+        Gmt1000Tahiti,
         [EnumMember(Value = "(GMT-09:30) Marquesas")]
-        GMT0930Marquesas,
+        Gmt0930Marquesas,
         [EnumMember(Value = "(GMT-09:00) Alaska Time")]
-        GMT0900AlaskaTime,
+        Gmt0900AlaskaTime,
         [EnumMember(Value = "(GMT-09:00) Gambier")]
-        GMT0900Gambier,
+        Gmt0900Gambier,
         [EnumMember(Value = "(GMT-08:00) Pacific Time")]
-        GMT0800PacificTime,
+        Gmt0800PacificTime,
         [EnumMember(Value = "(GMT-08:00) Pacific Time - Tijuana")]
-        GMT0800PacificTimeTijuana,
+        Gmt0800PacificTimeTijuana,
         [EnumMember(Value = "(GMT-08:00) Pacific Time - Vancouver")]
-        GMT0800PacificTimeVancouver,
+        Gmt0800PacificTimeVancouver,
         [EnumMember(Value = "(GMT-08:00) Pacific Time - Whitehorse")]
-        GMT0800PacificTimeWhitehorse,
+        Gmt0800PacificTimeWhitehorse,
         [EnumMember(Value = "(GMT-08:00) Pitcairn")]
-        GMT0800Pitcairn,
+        Gmt0800Pitcairn,
         [EnumMember(Value = "(GMT-07:00) Mountain Time")]
-        GMT0700MountainTime,
+        Gmt0700MountainTime,
         [EnumMember(Value = "(GMT-07:00) Mountain Time - Arizona")]
-        GMT0700MountainTimeArizona,
+        Gmt0700MountainTimeArizona,
         [EnumMember(Value = "(GMT-07:00) Mountain Time - Chihuahua, Mazatlan")]
-        GMT0700MountainTimeChihuahuaMazatlan,
+        Gmt0700MountainTimeChihuahuaMazatlan,
         [EnumMember(Value = "(GMT-07:00) Mountain Time - Dawson Creek")]
-        GMT0700MountainTimeDawsonCreek,
+        Gmt0700MountainTimeDawsonCreek,
         [EnumMember(Value = "(GMT-07:00) Mountain Time - Edmonton")]
-        GMT0700MountainTimeEdmonton,
+        Gmt0700MountainTimeEdmonton,
         [EnumMember(Value = "(GMT-07:00) Mountain Time - Hermosillo")]
-        GMT0700MountainTimeHermosillo,
+        Gmt0700MountainTimeHermosillo,
         [EnumMember(Value = "(GMT-07:00) Mountain Time - Yellowknife")]
-        GMT0700MountainTimeYellowknife,
+        Gmt0700MountainTimeYellowknife,
         [EnumMember(Value = "(GMT-06:00) Belize")]
-        GMT0600Belize,
+        Gmt0600Belize,
         [EnumMember(Value = "(GMT-06:00) Central Time")]
-        GMT0600CentralTime,
+        Gmt0600CentralTime,
         [EnumMember(Value = "(GMT-06:00) Central Time - Mexico City")]
-        GMT0600CentralTimeMexicoCity,
+        Gmt0600CentralTimeMexicoCity,
         [EnumMember(Value = "(GMT-06:00) Central Time - Regina")]
-        GMT0600CentralTimeRegina,
+        Gmt0600CentralTimeRegina,
         [EnumMember(Value = "(GMT-06:00) Central Time - Tegucigalpa")]
-        GMT0600CentralTimeTegucigalpa,
+        Gmt0600CentralTimeTegucigalpa,
         [EnumMember(Value = "(GMT-06:00) Central Time - Winnipeg")]
-        GMT0600CentralTimeWinnipeg,
+        Gmt0600CentralTimeWinnipeg,
         [EnumMember(Value = "(GMT-06:00) Costa Rica")]
-        GMT0600CostaRica,
+        Gmt0600CostaRica,
         [EnumMember(Value = "(GMT-06:00) El Salvador")]
-        GMT0600ElSalvador,
+        Gmt0600ElSalvador,
         [EnumMember(Value = "(GMT-06:00) Galapagos")]
-        GMT0600Galapagos,
+        Gmt0600Galapagos,
         [EnumMember(Value = "(GMT-06:00) Guatemala")]
-        GMT0600Guatemala,
+        Gmt0600Guatemala,
         [EnumMember(Value = "(GMT-06:00) Managua")]
-        GMT0600Managua,
+        Gmt0600Managua,
         [EnumMember(Value = "(GMT-05:00) America Cancun")]
-        GMT0500AmericaCancun,
+        Gmt0500AmericaCancun,
         [EnumMember(Value = "(GMT-05:00) Bogota")]
-        GMT0500Bogota,
+        Gmt0500Bogota,
         [EnumMember(Value = "(GMT-05:00) Easter Island")]
-        GMT0500EasterIsland,
+        Gmt0500EasterIsland,
         [EnumMember(Value = "(GMT-05:00) Eastern Time")]
-        GMT0500EasternTime,
+        Gmt0500EasternTime,
         [EnumMember(Value = "(GMT-05:00) Eastern Time - Iqaluit")]
-        GMT0500EasternTimeIqaluit,
+        Gmt0500EasternTimeIqaluit,
         [EnumMember(Value = "(GMT-05:00) Eastern Time - Toronto")]
-        GMT0500EasternTimeToronto,
+        Gmt0500EasternTimeToronto,
         [EnumMember(Value = "(GMT-05:00) Guayaquil")]
-        GMT0500Guayaquil,
+        Gmt0500Guayaquil,
         [EnumMember(Value = "(GMT-05:00) Havana")]
-        GMT0500Havana,
+        Gmt0500Havana,
         [EnumMember(Value = "(GMT-05:00) Jamaica")]
-        GMT0500Jamaica,
+        Gmt0500Jamaica,
         [EnumMember(Value = "(GMT-05:00) Lima")]
-        GMT0500Lima,
+        Gmt0500Lima,
         [EnumMember(Value = "(GMT-05:00) Nassau")]
-        GMT0500Nassau,
+        Gmt0500Nassau,
         [EnumMember(Value = "(GMT-05:00) Panama")]
-        GMT0500Panama,
+        Gmt0500Panama,
         [EnumMember(Value = "(GMT-05:00) Port-au-Prince")]
-        GMT0500PortAuPrince,
+        Gmt0500PortAuPrince,
         [EnumMember(Value = "(GMT-05:00) Rio Branco")]
-        GMT0500RioBranco,
+        Gmt0500RioBranco,
         [EnumMember(Value = "(GMT-04:00) Atlantic Time - Halifax")]
-        GMT0400AtlanticTimeHalifax,
+        Gmt0400AtlanticTimeHalifax,
         [EnumMember(Value = "(GMT-04:00) Barbados")]
-        GMT0400Barbados,
+        Gmt0400Barbados,
         [EnumMember(Value = "(GMT-04:00) Bermuda")]
-        GMT0400Bermuda,
+        Gmt0400Bermuda,
         [EnumMember(Value = "(GMT-04:00) Boa Vista")]
-        GMT0400BoaVista,
+        Gmt0400BoaVista,
         [EnumMember(Value = "(GMT-04:00) Caracas")]
-        GMT0400Caracas,
+        Gmt0400Caracas,
         [EnumMember(Value = "(GMT-04:00) Curacao")]
-        GMT0400Curacao,
+        Gmt0400Curacao,
         [EnumMember(Value = "(GMT-04:00) Grand Turk")]
-        GMT0400GrandTurk,
+        Gmt0400GrandTurk,
         [EnumMember(Value = "(GMT-04:00) Guyana")]
-        GMT0400Guyana,
+        Gmt0400Guyana,
         [EnumMember(Value = "(GMT-04:00) La Paz")]
-        GMT0400LaPaz,
+        Gmt0400LaPaz,
         [EnumMember(Value = "(GMT-04:00) Manaus")]
-        GMT0400Manaus,
+        Gmt0400Manaus,
         [EnumMember(Value = "(GMT-04:00) Martinique")]
-        GMT0400Martinique,
+        Gmt0400Martinique,
         [EnumMember(Value = "(GMT-04:00) Port of Spain")]
-        GMT0400PortOfSpain,
+        Gmt0400PortOfSpain,
         [EnumMember(Value = "(GMT-04:00) Porto Velho")]
-        GMT0400PortoVelho,
+        Gmt0400PortoVelho,
         [EnumMember(Value = "(GMT-04:00) Puerto Rico")]
-        GMT0400PuertoRico,
+        Gmt0400PuertoRico,
         [EnumMember(Value = "(GMT-04:00) Santo Domingo")]
-        GMT0400SantoDomingo,
+        Gmt0400SantoDomingo,
         [EnumMember(Value = "(GMT-04:00) Thule")]
-        GMT0400Thule,
+        Gmt0400Thule,
         [EnumMember(Value = "(GMT-03:30) Newfoundland Time - St. Johns")]
-        GMT0330NewfoundlandTimeStJohns,
+        Gmt0330NewfoundlandTimeStJohns,
         [EnumMember(Value = "(GMT-03:00) Araguaina")]
-        GMT0300Araguaina,
+        Gmt0300Araguaina,
         [EnumMember(Value = "(GMT-03:00) Asuncion")]
-        GMT0300Asuncion,
+        Gmt0300Asuncion,
         [EnumMember(Value = "(GMT-03:00) Belem")]
-        GMT0300Belem,
+        Gmt0300Belem,
         [EnumMember(Value = "(GMT-03:00) Buenos Aires")]
-        GMT0300BuenosAires,
+        Gmt0300BuenosAires,
         [EnumMember(Value = "(GMT-03:00) Campo Grande")]
-        GMT0300CampoGrande,
+        Gmt0300CampoGrande,
         [EnumMember(Value = "(GMT-03:00) Cayenne")]
-        GMT0300Cayenne,
+        Gmt0300Cayenne,
         [EnumMember(Value = "(GMT-03:00) Cuiaba")]
-        GMT0300Cuiaba,
+        Gmt0300Cuiaba,
         [EnumMember(Value = "(GMT-03:00) Fortaleza")]
-        GMT0300Fortaleza,
+        Gmt0300Fortaleza,
         [EnumMember(Value = "(GMT-03:00) Godthab")]
-        GMT0300Godthab,
+        Gmt0300Godthab,
         [EnumMember(Value = "(GMT-03:00) Maceio")]
-        GMT0300Maceio,
+        Gmt0300Maceio,
         [EnumMember(Value = "(GMT-03:00) Miquelon")]
-        GMT0300Miquelon,
+        Gmt0300Miquelon,
         [EnumMember(Value = "(GMT-03:00) Montevideo")]
-        GMT0300Montevideo,
+        Gmt0300Montevideo,
         [EnumMember(Value = "(GMT-03:00) Palmer")]
-        GMT0300Palmer,
+        Gmt0300Palmer,
         [EnumMember(Value = "(GMT-03:00) Paramaribo")]
-        GMT0300Paramaribo,
+        Gmt0300Paramaribo,
         [EnumMember(Value = "(GMT-03:00) Punta Arenas")]
-        GMT0300PuntaArenas,
+        Gmt0300PuntaArenas,
         [EnumMember(Value = "(GMT-03:00) Recife")]
-        GMT0300Recife,
+        Gmt0300Recife,
         [EnumMember(Value = "(GMT-03:00) Rothera")]
-        GMT0300Rothera,
+        Gmt0300Rothera,
         [EnumMember(Value = "(GMT-03:00) Salvador")]
-        GMT0300Salvador,
+        Gmt0300Salvador,
         [EnumMember(Value = "(GMT-03:00) Santiago")]
-        GMT0300Santiago,
+        Gmt0300Santiago,
         [EnumMember(Value = "(GMT-03:00) Stanley")]
-        GMT0300Stanley,
+        Gmt0300Stanley,
         [EnumMember(Value = "(GMT-02:00) Noronha")]
-        GMT0200Noronha,
+        Gmt0200Noronha,
         [EnumMember(Value = "(GMT-02:00) Sao Paulo")]
-        GMT0200SaoPaulo,
+        Gmt0200SaoPaulo,
         [EnumMember(Value = "(GMT-02:00) South Georgia")]
-        GMT0200SouthGeorgia,
+        Gmt0200SouthGeorgia,
         [EnumMember(Value = "(GMT-01:00) Azores")]
-        GMT0100Azores,
+        Gmt0100Azores,
         [EnumMember(Value = "(GMT-01:00) Cape Verde")]
-        GMT0100CapeVerde,
+        Gmt0100CapeVerde,
         [EnumMember(Value = "(GMT-01:00) Scoresbysund")]
-        GMT0100Scoresbysund,
+        Gmt0100Scoresbysund,
         [EnumMember(Value = "(GMT+00:00) Abidjan")]
-        GMT0000Abidjan,
+        Gmt0000Abidjan,
         [EnumMember(Value = "(GMT+00:00) Accra")]
-        GMT0000Accra,
+        Gmt0000Accra,
         [EnumMember(Value = "(GMT+00:00) Bissau")]
-        GMT0000Bissau,
+        Gmt0000Bissau,
         [EnumMember(Value = "(GMT+00:00) Canary Islands")]
-        GMT0000CanaryIslands,
+        Gmt0000CanaryIslands,
         [EnumMember(Value = "(GMT+00:00) Casablanca")]
-        GMT0000Casablanca,
+        Gmt0000Casablanca,
         [EnumMember(Value = "(GMT+00:00) Danmarkshavn")]
-        GMT0000Danmarkshavn,
+        Gmt0000Danmarkshavn,
         [EnumMember(Value = "(GMT+00:00) Dublin")]
-        GMT0000Dublin,
+        Gmt0000Dublin,
         [EnumMember(Value = "(GMT+00:00) El Aaiun")]
-        GMT0000ElAaiun,
+        Gmt0000ElAaiun,
         [EnumMember(Value = "(GMT+00:00) Faeroe")]
-        GMT0000Faeroe,
+        Gmt0000Faeroe,
         [EnumMember(Value = "(GMT+00:00) GMT (no daylight saving)")]
-        GMT0000GMTNoDaylightSaving,
+        Gmt0000GmtNoDaylightSaving,
         [EnumMember(Value = "(GMT+00:00) Lisbon")]
-        GMT0000Lisbon,
+        Gmt0000Lisbon,
         [EnumMember(Value = "(GMT+00:00) London")]
-        GMT0000London,
+        Gmt0000London,
         [EnumMember(Value = "(GMT+00:00) Monrovia")]
-        GMT0000Monrovia,
+        Gmt0000Monrovia,
         [EnumMember(Value = "(GMT+00:00) Reykjavik")]
-        GMT0000Reykjavik,
+        Gmt0000Reykjavik,
         [EnumMember(Value = "(GMT+01:00) Algiers")]
-        GMT0100Algiers,
+        Gmt0100Algiers,
         [EnumMember(Value = "(GMT+01:00) Amsterdam")]
-        GMT0100Amsterdam,
+        Gmt0100Amsterdam,
         [EnumMember(Value = "(GMT+01:00) Andorra")]
-        GMT0100Andorra,
+        Gmt0100Andorra,
         [EnumMember(Value = "(GMT+01:00) Berlin")]
-        GMT0100Berlin,
+        Gmt0100Berlin,
         [EnumMember(Value = "(GMT+01:00) Brussels")]
-        GMT0100Brussels,
+        Gmt0100Brussels,
         [EnumMember(Value = "(GMT+01:00) Budapest")]
-        GMT0100Budapest,
+        Gmt0100Budapest,
         [EnumMember(Value = "(GMT+01:00) Central European Time - Belgrade")]
-        GMT0100CentralEuropeanTimeBelgrade,
+        Gmt0100CentralEuropeanTimeBelgrade,
         [EnumMember(Value = "(GMT+01:00) Central European Time - Prague")]
-        GMT0100CentralEuropeanTimePrague,
+        Gmt0100CentralEuropeanTimePrague,
         [EnumMember(Value = "(GMT+01:00) Ceuta")]
-        GMT0100Ceuta,
+        Gmt0100Ceuta,
         [EnumMember(Value = "(GMT+01:00) Copenhagen")]
-        GMT0100Copenhagen,
+        Gmt0100Copenhagen,
         [EnumMember(Value = "(GMT+01:00) Gibraltar")]
-        GMT0100Gibraltar,
+        Gmt0100Gibraltar,
         [EnumMember(Value = "(GMT+01:00) Lagos")]
-        GMT0100Lagos,
+        Gmt0100Lagos,
         [EnumMember(Value = "(GMT+01:00) Luxembourg")]
-        GMT0100Luxembourg,
+        Gmt0100Luxembourg,
         [EnumMember(Value = "(GMT+01:00) Madrid")]
-        GMT0100Madrid,
+        Gmt0100Madrid,
         [EnumMember(Value = "(GMT+01:00) Malta")]
-        GMT0100Malta,
+        Gmt0100Malta,
         [EnumMember(Value = "(GMT+01:00) Monaco")]
-        GMT0100Monaco,
+        Gmt0100Monaco,
         [EnumMember(Value = "(GMT+01:00) Ndjamena")]
-        GMT0100Ndjamena,
+        Gmt0100Ndjamena,
         [EnumMember(Value = "(GMT+01:00) Oslo")]
-        GMT0100Oslo,
+        Gmt0100Oslo,
         [EnumMember(Value = "(GMT+01:00) Paris")]
-        GMT0100Paris,
+        Gmt0100Paris,
         [EnumMember(Value = "(GMT+01:00) Rome")]
-        GMT0100Rome,
+        Gmt0100Rome,
         [EnumMember(Value = "(GMT+01:00) Stockholm")]
-        GMT0100Stockholm,
+        Gmt0100Stockholm,
         [EnumMember(Value = "(GMT+01:00) Tirane")]
-        GMT0100Tirane,
+        Gmt0100Tirane,
         [EnumMember(Value = "(GMT+01:00) Tunis")]
-        GMT0100Tunis,
+        Gmt0100Tunis,
         [EnumMember(Value = "(GMT+01:00) Vienna")]
-        GMT0100Vienna,
+        Gmt0100Vienna,
         [EnumMember(Value = "(GMT+01:00) Warsaw")]
-        GMT0100Warsaw,
+        Gmt0100Warsaw,
         [EnumMember(Value = "(GMT+01:00) Zurich")]
-        GMT0100Zurich,
+        Gmt0100Zurich,
         [EnumMember(Value = "(GMT+02:00) Amman")]
-        GMT0200Amman,
+        Gmt0200Amman,
         [EnumMember(Value = "(GMT+02:00) Athens")]
-        GMT0200Athens,
+        Gmt0200Athens,
         [EnumMember(Value = "(GMT+02:00) Beirut")]
-        GMT0200Beirut,
+        Gmt0200Beirut,
         [EnumMember(Value = "(GMT+02:00) Bucharest")]
-        GMT0200Bucharest,
+        Gmt0200Bucharest,
         [EnumMember(Value = "(GMT+02:00) Cairo")]
-        GMT0200Cairo,
+        Gmt0200Cairo,
         [EnumMember(Value = "(GMT+02:00) Chisinau")]
-        GMT0200Chisinau,
+        Gmt0200Chisinau,
         [EnumMember(Value = "(GMT+02:00) Damascus")]
-        GMT0200Damascus,
+        Gmt0200Damascus,
         [EnumMember(Value = "(GMT+02:00) Gaza")]
-        GMT0200Gaza,
+        Gmt0200Gaza,
         [EnumMember(Value = "(GMT+02:00) Helsinki")]
-        GMT0200Helsinki,
+        Gmt0200Helsinki,
         [EnumMember(Value = "(GMT+02:00) Jerusalem")]
-        GMT0200Jerusalem,
+        Gmt0200Jerusalem,
         [EnumMember(Value = "(GMT+02:00) Johannesburg")]
-        GMT0200Johannesburg,
+        Gmt0200Johannesburg,
         [EnumMember(Value = "(GMT+02:00) Khartoum")]
-        GMT0200Khartoum,
+        Gmt0200Khartoum,
         [EnumMember(Value = "(GMT+02:00) Kiev")]
-        GMT0200Kiev,
+        Gmt0200Kiev,
         [EnumMember(Value = "(GMT+02:00) Maputo")]
-        GMT0200Maputo,
+        Gmt0200Maputo,
         [EnumMember(Value = "(GMT+02:00) Moscow-01 - Kaliningrad")]
-        GMT0200Moscow01Kaliningrad,
+        Gmt0200Moscow01Kaliningrad,
         [EnumMember(Value = "(GMT+02:00) Nicosia")]
-        GMT0200Nicosia,
+        Gmt0200Nicosia,
         [EnumMember(Value = "(GMT+02:00) Riga")]
-        GMT0200Riga,
+        Gmt0200Riga,
         [EnumMember(Value = "(GMT+02:00) Sofia")]
-        GMT0200Sofia,
+        Gmt0200Sofia,
         [EnumMember(Value = "(GMT+02:00) Tallinn")]
-        GMT0200Tallinn,
+        Gmt0200Tallinn,
         [EnumMember(Value = "(GMT+02:00) Tripoli")]
-        GMT0200Tripoli,
+        Gmt0200Tripoli,
         [EnumMember(Value = "(GMT+02:00) Vilnius")]
-        GMT0200Vilnius,
+        Gmt0200Vilnius,
         [EnumMember(Value = "(GMT+02:00) Windhoek")]
-        GMT0200Windhoek,
+        Gmt0200Windhoek,
         [EnumMember(Value = "(GMT+03:00) Baghdad")]
-        GMT0300Baghdad,
+        Gmt0300Baghdad,
         [EnumMember(Value = "(GMT+03:00) Istanbul")]
-        GMT0300Istanbul,
+        Gmt0300Istanbul,
         [EnumMember(Value = "(GMT+03:00) Minsk")]
-        GMT0300Minsk,
+        Gmt0300Minsk,
         [EnumMember(Value = "(GMT+03:00) Moscow+00 - Moscow")]
-        GMT0300Moscow00Moscow,
+        Gmt0300Moscow00Moscow,
         [EnumMember(Value = "(GMT+03:00) Nairobi")]
-        GMT0300Nairobi,
+        Gmt0300Nairobi,
         [EnumMember(Value = "(GMT+03:00) Qatar")]
-        GMT0300Qatar,
+        Gmt0300Qatar,
         [EnumMember(Value = "(GMT+03:00) Riyadh")]
-        GMT0300Riyadh,
+        Gmt0300Riyadh,
         [EnumMember(Value = "(GMT+03:00) Syowa")]
-        GMT0300Syowa,
+        Gmt0300Syowa,
         [EnumMember(Value = "(GMT+03:30) Tehran")]
-        GMT0330Tehran,
+        Gmt0330Tehran,
         [EnumMember(Value = "(GMT+04:00) Baku")]
-        GMT0400Baku,
+        Gmt0400Baku,
         [EnumMember(Value = "(GMT+04:00) Dubai")]
-        GMT0400Dubai,
+        Gmt0400Dubai,
         [EnumMember(Value = "(GMT+04:00) Mahe")]
-        GMT0400Mahe,
+        Gmt0400Mahe,
         [EnumMember(Value = "(GMT+04:00) Mauritius")]
-        GMT0400Mauritius,
+        Gmt0400Mauritius,
         [EnumMember(Value = "(GMT+04:00) Moscow+01 - Samara")]
-        GMT0400Moscow01Samara,
+        Gmt0400Moscow01Samara,
         [EnumMember(Value = "(GMT+04:00) Reunion")]
-        GMT0400Reunion,
+        Gmt0400Reunion,
         [EnumMember(Value = "(GMT+04:00) Tbilisi")]
-        GMT0400Tbilisi,
+        Gmt0400Tbilisi,
         [EnumMember(Value = "(GMT+04:00) Yerevan")]
-        GMT0400Yerevan,
+        Gmt0400Yerevan,
         [EnumMember(Value = "(GMT+04:30) Kabul")]
-        GMT0430Kabul,
+        Gmt0430Kabul,
         [EnumMember(Value = "(GMT+05:00) Aqtau")]
-        GMT0500Aqtau,
+        Gmt0500Aqtau,
         [EnumMember(Value = "(GMT+05:00) Aqtobe")]
-        GMT0500Aqtobe,
+        Gmt0500Aqtobe,
         [EnumMember(Value = "(GMT+05:00) Ashgabat")]
-        GMT0500Ashgabat,
+        Gmt0500Ashgabat,
         [EnumMember(Value = "(GMT+05:00) Dushanbe")]
-        GMT0500Dushanbe,
+        Gmt0500Dushanbe,
         [EnumMember(Value = "(GMT+05:00) Karachi")]
-        GMT0500Karachi,
+        Gmt0500Karachi,
         [EnumMember(Value = "(GMT+05:00) Kerguelen")]
-        GMT0500Kerguelen,
+        Gmt0500Kerguelen,
         [EnumMember(Value = "(GMT+05:00) Maldives")]
-        GMT0500Maldives,
+        Gmt0500Maldives,
         [EnumMember(Value = "(GMT+05:00) Mawson")]
-        GMT0500Mawson,
+        Gmt0500Mawson,
         [EnumMember(Value = "(GMT+05:00) Moscow+02 - Yekaterinburg")]
-        GMT0500Moscow02Yekaterinburg,
+        Gmt0500Moscow02Yekaterinburg,
         [EnumMember(Value = "(GMT+05:00) Tashkent")]
-        GMT0500Tashkent,
+        Gmt0500Tashkent,
         [EnumMember(Value = "(GMT+05:30) Colombo")]
-        GMT0530Colombo,
+        Gmt0530Colombo,
         [EnumMember(Value = "(GMT+05:30) India Standard Time")]
-        GMT0530IndiaStandardTime,
+        Gmt0530IndiaStandardTime,
         [EnumMember(Value = "(GMT+05:45) Kathmandu")]
-        GMT0545Kathmandu,
+        Gmt0545Kathmandu,
         [EnumMember(Value = "(GMT+06:00) Almaty")]
-        GMT0600Almaty,
+        Gmt0600Almaty,
         [EnumMember(Value = "(GMT+06:00) Bishkek")]
-        GMT0600Bishkek,
+        Gmt0600Bishkek,
         [EnumMember(Value = "(GMT+06:00) Chagos")]
-        GMT0600Chagos,
+        Gmt0600Chagos,
         [EnumMember(Value = "(GMT+06:00) Dhaka")]
-        GMT0600Dhaka,
+        Gmt0600Dhaka,
         [EnumMember(Value = "(GMT+06:00) Moscow+03 - Omsk")]
-        GMT0600Moscow03Omsk,
+        Gmt0600Moscow03Omsk,
         [EnumMember(Value = "(GMT+06:00) Thimphu")]
-        GMT0600Thimphu,
+        Gmt0600Thimphu,
         [EnumMember(Value = "(GMT+06:00) Vostok")]
-        GMT0600Vostok,
+        Gmt0600Vostok,
         [EnumMember(Value = "(GMT+06:30) Cocos")]
-        GMT0630Cocos,
+        Gmt0630Cocos,
         [EnumMember(Value = "(GMT+06:30) Rangoon")]
-        GMT0630Rangoon,
+        Gmt0630Rangoon,
         [EnumMember(Value = "(GMT+07:00) Bangkok")]
-        GMT0700Bangkok,
+        Gmt0700Bangkok,
         [EnumMember(Value = "(GMT+07:00) Christmas")]
-        GMT0700Christmas,
+        Gmt0700Christmas,
         [EnumMember(Value = "(GMT+07:00) Davis")]
-        GMT0700Davis,
+        Gmt0700Davis,
         [EnumMember(Value = "(GMT+07:00) Hanoi")]
-        GMT0700Hanoi,
+        Gmt0700Hanoi,
         [EnumMember(Value = "(GMT+07:00) Hovd")]
-        GMT0700Hovd,
+        Gmt0700Hovd,
         [EnumMember(Value = "(GMT+07:00) Jakarta")]
-        GMT0700Jakarta,
+        Gmt0700Jakarta,
         [EnumMember(Value = "(GMT+07:00) Moscow+04 - Krasnoyarsk")]
-        GMT0700Moscow04Krasnoyarsk,
+        Gmt0700Moscow04Krasnoyarsk,
         [EnumMember(Value = "(GMT+08:00) Brunei")]
-        GMT0800Brunei,
+        Gmt0800Brunei,
         [EnumMember(Value = "(GMT+08:00) China Time - Beijing")]
-        GMT0800ChinaTimeBeijing,
+        Gmt0800ChinaTimeBeijing,
         [EnumMember(Value = "(GMT+08:00) Choibalsan")]
-        GMT0800Choibalsan,
+        Gmt0800Choibalsan,
         [EnumMember(Value = "(GMT+08:00) Hong Kong")]
-        GMT0800HongKong,
+        Gmt0800HongKong,
         [EnumMember(Value = "(GMT+08:00) Kuala Lumpur")]
-        GMT0800KualaLumpur,
+        Gmt0800KualaLumpur,
         [EnumMember(Value = "(GMT+08:00) Macau")]
-        GMT0800Macau,
+        Gmt0800Macau,
         [EnumMember(Value = "(GMT+08:00) Makassar")]
-        GMT0800Makassar,
+        Gmt0800Makassar,
         [EnumMember(Value = "(GMT+08:00) Manila")]
-        GMT0800Manila,
+        Gmt0800Manila,
         [EnumMember(Value = "(GMT+08:00) Moscow+05 - Irkutsk")]
-        GMT0800Moscow05Irkutsk,
+        Gmt0800Moscow05Irkutsk,
         [EnumMember(Value = "(GMT+08:00) Singapore")]
-        GMT0800Singapore,
+        Gmt0800Singapore,
         [EnumMember(Value = "(GMT+08:00) Taipei")]
-        GMT0800Taipei,
+        Gmt0800Taipei,
         [EnumMember(Value = "(GMT+08:00) Ulaanbaatar")]
-        GMT0800Ulaanbaatar,
+        Gmt0800Ulaanbaatar,
         [EnumMember(Value = "(GMT+08:00) Western Time - Perth")]
-        GMT0800WesternTimePerth,
+        Gmt0800WesternTimePerth,
         [EnumMember(Value = "(GMT+08:30) Pyongyang")]
-        GMT0830Pyongyang,
+        Gmt0830Pyongyang,
         [EnumMember(Value = "(GMT+09:00) Dili")]
-        GMT0900Dili,
+        Gmt0900Dili,
         [EnumMember(Value = "(GMT+09:00) Jayapura")]
-        GMT0900Jayapura,
+        Gmt0900Jayapura,
         [EnumMember(Value = "(GMT+09:00) Moscow+06 - Yakutsk")]
-        GMT0900Moscow06Yakutsk,
+        Gmt0900Moscow06Yakutsk,
         [EnumMember(Value = "(GMT+09:00) Palau")]
-        GMT0900Palau,
+        Gmt0900Palau,
         [EnumMember(Value = "(GMT+09:00) Seoul")]
-        GMT0900Seoul,
+        Gmt0900Seoul,
         [EnumMember(Value = "(GMT+09:00) Tokyo")]
-        GMT0900Tokyo,
+        Gmt0900Tokyo,
         [EnumMember(Value = "(GMT+09:30) Central Time - Darwin")]
-        GMT0930CentralTimeDarwin,
+        Gmt0930CentralTimeDarwin,
         [EnumMember(Value = "(GMT+10:00) Dumont D''Urville")]
-        GMT1000DumontDUrville,
+        Gmt1000DumontDUrville,
         [EnumMember(Value = "(GMT+10:00) Eastern Time - Brisbane")]
-        GMT1000EasternTimeBrisbane,
+        Gmt1000EasternTimeBrisbane,
         [EnumMember(Value = "(GMT+10:00) Guam")]
-        GMT1000Guam,
+        Gmt1000Guam,
         [EnumMember(Value = "(GMT+10:00) Moscow+07 - Vladivostok")]
-        GMT1000Moscow07Vladivostok,
+        Gmt1000Moscow07Vladivostok,
         [EnumMember(Value = "(GMT+10:00) Port Moresby")]
-        GMT1000PortMoresby,
+        Gmt1000PortMoresby,
         [EnumMember(Value = "(GMT+10:00) Truk")]
-        GMT1000Truk,
+        Gmt1000Truk,
         [EnumMember(Value = "(GMT+10:30) Central Time - Adelaide")]
-        GMT1030CentralTimeAdelaide,
+        Gmt1030CentralTimeAdelaide,
         [EnumMember(Value = "(GMT+11:00) Casey")]
-        GMT1100Casey,
+        Gmt1100Casey,
         [EnumMember(Value = "(GMT+11:00) Eastern Time - Hobart")]
-        GMT1100EasternTimeHobart,
+        Gmt1100EasternTimeHobart,
         [EnumMember(Value = "(GMT+11:00) Eastern Time - Melbourne, Sydney")]
-        GMT1100EasternTimeMelbourneSydney,
+        Gmt1100EasternTimeMelbourneSydney,
         [EnumMember(Value = "(GMT+11:00) Efate")]
-        GMT1100Efate,
+        Gmt1100Efate,
         [EnumMember(Value = "(GMT+11:00) Guadalcanal")]
-        GMT1100Guadalcanal,
+        Gmt1100Guadalcanal,
         [EnumMember(Value = "(GMT+11:00) Kosrae")]
-        GMT1100Kosrae,
+        Gmt1100Kosrae,
         [EnumMember(Value = "(GMT+11:00) Moscow+08 - Magadan")]
-        GMT1100Moscow08Magadan,
+        Gmt1100Moscow08Magadan,
         [EnumMember(Value = "(GMT+11:00) Norfolk")]
-        GMT1100Norfolk,
+        Gmt1100Norfolk,
         [EnumMember(Value = "(GMT+11:00) Noumea")]
-        GMT1100Noumea,
+        Gmt1100Noumea,
         [EnumMember(Value = "(GMT+11:00) Ponape")]
-        GMT1100Ponape,
+        Gmt1100Ponape,
         [EnumMember(Value = "(GMT+12:00) Funafuti")]
-        GMT1200Funafuti,
+        Gmt1200Funafuti,
         [EnumMember(Value = "(GMT+12:00) Kwajalein")]
-        GMT1200Kwajalein,
+        Gmt1200Kwajalein,
         [EnumMember(Value = "(GMT+12:00) Majuro")]
-        GMT1200Majuro,
+        Gmt1200Majuro,
         [EnumMember(Value = "(GMT+12:00) Moscow+09 - Petropavlovsk-Kamchatskiy")]
-        GMT1200Moscow09PetropavlovskKamchatskiy,
+        Gmt1200Moscow09PetropavlovskKamchatskiy,
         [EnumMember(Value = "(GMT+12:00) Nauru")]
-        GMT1200Nauru,
+        Gmt1200Nauru,
         [EnumMember(Value = "(GMT+12:00) Tarawa")]
-        GMT1200Tarawa,
+        Gmt1200Tarawa,
         [EnumMember(Value = "(GMT+12:00) Wake")]
-        GMT1200Wake,
+        Gmt1200Wake,
         [EnumMember(Value = "(GMT+12:00) Wallis")]
-        GMT1200Wallis,
+        Gmt1200Wallis,
         [EnumMember(Value = "(GMT+13:00) Auckland")]
-        GMT1300Auckland,
+        Gmt1300Auckland,
         [EnumMember(Value = "(GMT+13:00) Enderbury")]
-        GMT1300Enderbury,
+        Gmt1300Enderbury,
         [EnumMember(Value = "(GMT+13:00) Fakaofo")]
-        GMT1300Fakaofo,
+        Gmt1300Fakaofo,
         [EnumMember(Value = "(GMT+13:00) Fiji")]
-        GMT1300Fiji,
+        Gmt1300Fiji,
         [EnumMember(Value = "(GMT+13:00) Tongatapu")]
-        GMT1300Tongatapu,
+        Gmt1300Tongatapu,
         [EnumMember(Value = "(GMT+14:00) Apia")]
-        GMT1400Apia
+        Gmt1400Apia
     }
 
     public class GetObjectivesResponse

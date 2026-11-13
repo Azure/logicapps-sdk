@@ -354,12 +354,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
     public enum CurationPropertiesStateType
     {
         [EnumMember(Value = "IN_DRAFT")]
-        INDRAFT,
-        SUBMITTED,
-        REJECTED,
-        PUBLISHED,
-        RETIRED,
-        UNPUBLISHED
+        InDraft,
+        [EnumMember(Value = "SUBMITTED")]
+        Submitted,
+        [EnumMember(Value = "REJECTED")]
+        Rejected,
+        [EnumMember(Value = "PUBLISHED")]
+        Published,
+        [EnumMember(Value = "RETIRED")]
+        Retired,
+        [EnumMember(Value = "UNPUBLISHED")]
+        Unpublished
     }
 
     public class GetCurationPropertiesForDocumentBodyInput
@@ -549,8 +554,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum KnowledgeAdminTypeType
     {
-        USER,
-        GROUP
+        [EnumMember(Value = "USER")]
+        User,
+        [EnumMember(Value = "GROUP")]
+        Group
     }
 
     public class SearchCurationTaxonomyNodeValuesResponse

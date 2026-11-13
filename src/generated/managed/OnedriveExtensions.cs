@@ -566,10 +566,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ConvertFileByPathTypeInput
     {
-        PDF,
-        GLB,
-        HTML,
-        JPG
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "GLB")]
+        Glb,
+        [EnumMember(Value = "HTML")]
+        Html,
+        [EnumMember(Value = "JPG")]
+        Jpg
     }
 
     public class TagsInfo
@@ -601,8 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
 
     public class SharingLink
     {
-        [JsonProperty("WebUrl")]
-        public string WebURL { get; set; }
+        public string WebUrl { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

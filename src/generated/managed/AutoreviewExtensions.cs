@@ -13,19 +13,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
     public class AutoreviewActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IBodyWorkflowAction<GETInfoResponse, ApiConnectionActionConfiguration> GETInfo()
+        public IBodyWorkflowAction<GetInfoResponse, ApiConnectionActionConfiguration> GetInfo()
         {
-            return new DeferredBodyAction<GETInfoResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/autoreview/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETInfoResponse>(callPayload);
+                return new ApiConnectionAction<GetInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> POSTHttp(Expression<Func<string>> path = null, Expression<Func<POSTHttpBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> PostHttp(Expression<Func<string>> path = null, Expression<Func<PostHttpBodyInput>> body = null)
         {
             var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -43,44 +43,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IBodyWorkflowAction<POSTJsonResponse, ApiConnectionActionConfiguration> POSTJson(Expression<Func<POSTJsonBodyInput>> body)
+        public IBodyWorkflowAction<PostJsonResponse, ApiConnectionActionConfiguration> PostJson(Expression<Func<PostJsonBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<POSTJsonResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PostJsonResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/autoreview/json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<POSTJsonResponse>(callPayload);
+                return new ApiConnectionAction<PostJsonResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IBodyWorkflowAction<POSTDiagramResponse, ApiConnectionActionConfiguration> POSTDiagram(Expression<Func<POSTDiagramBodyInput>> body)
+        public IBodyWorkflowAction<PostDiagramResponse, ApiConnectionActionConfiguration> PostDiagram(Expression<Func<PostDiagramBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<POSTDiagramResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PostDiagramResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/autoreview/diagram";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<POSTDiagramResponse>(callPayload);
+                return new ApiConnectionAction<PostDiagramResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
-        public IBodyWorkflowAction<POSTFileResponse, ApiConnectionActionConfiguration> POSTFile(Expression<Func<POSTFileBodyInput>> body)
+        public IBodyWorkflowAction<PostFileResponse, ApiConnectionActionConfiguration> PostFile(Expression<Func<PostFileBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<POSTFileResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PostFileResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/autoreview/file";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<POSTFileResponse>(callPayload);
+                return new ApiConnectionAction<PostFileResponse>(callPayload);
             });
         }
     }
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
     {
     }
 
-    public class GETInfoResponse
+    public class GetInfoResponse
     {
         [JsonProperty("version")]
         public string Version { get; set; }
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public string Diagram { get; set; }
     }
 
-    public class POSTHttpBodyInput
+    public class PostHttpBodyInput
     {
         [JsonProperty("configs")]
         public JToken Config { get; set; }
@@ -116,13 +116,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public JToken Properties { get; set; }
     }
 
-    public class POSTJsonResponse
+    public class PostJsonResponse
     {
         [JsonProperty("data")]
-        public POSTJsonResponseDataType Data { get; set; }
+        public PostJsonResponseDataType Data { get; set; }
     }
 
-    public class POSTJsonResponseDataType
+    public class PostJsonResponseDataType
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -206,28 +206,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public bool MainScope { get; set; }
 
         [JsonProperty("variableArray")]
-        public POSTJsonResponseDataTypeVariableArrayTypeItem[] VariableArray { get; set; }
+        public PostJsonResponseDataTypeVariableArrayTypeItem[] VariableArray { get; set; }
 
         [JsonProperty("actionArray")]
-        public POSTJsonResponseDataTypeActionArrayTypeItem[] ActionArray { get; set; }
+        public PostJsonResponseDataTypeActionArrayTypeItem[] ActionArray { get; set; }
 
         [JsonProperty("apiActionArray")]
-        public POSTJsonResponseDataTypeApiActionArrayTypeItem[] ApiActionArray { get; set; }
+        public PostJsonResponseDataTypeApiActionArrayTypeItem[] ApiActionArray { get; set; }
 
         [JsonProperty("exceptionArray")]
-        public POSTJsonResponseDataTypeExceptionArrayTypeItem[] ExceptionArray { get; set; }
+        public PostJsonResponseDataTypeExceptionArrayTypeItem[] ExceptionArray { get; set; }
 
         [JsonProperty("connectionArray")]
-        public POSTJsonResponseDataTypeConnectionArrayTypeItem[] ConnectionArray { get; set; }
+        public PostJsonResponseDataTypeConnectionArrayTypeItem[] ConnectionArray { get; set; }
 
         [JsonProperty("error")]
         public string Error { get; set; }
 
         [JsonProperty("actionObjectArray")]
-        public POSTJsonResponseDataTypeActionObjectArrayTypeItem[] ActionObjectArray { get; set; }
+        public PostJsonResponseDataTypeActionObjectArrayTypeItem[] ActionObjectArray { get; set; }
     }
 
-    public class POSTJsonResponseDataTypeVariableArrayTypeItem
+    public class PostJsonResponseDataTypeVariableArrayTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public bool Named { get; set; }
     }
 
-    public class POSTJsonResponseDataTypeActionArrayTypeItem
+    public class PostJsonResponseDataTypeActionArrayTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public string Connector { get; set; }
 
         [JsonProperty("imgURL")]
-        public string ImgURL { get; set; }
+        public string ImgUrl { get; set; }
 
         [JsonProperty("runAfter")]
         public string RunAfter { get; set; }
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public string Nested { get; set; }
     }
 
-    public class POSTJsonResponseDataTypeApiActionArrayTypeItem
+    public class PostJsonResponseDataTypeApiActionArrayTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public string Connector { get; set; }
 
         [JsonProperty("imgURL")]
-        public string ImgURL { get; set; }
+        public string ImgUrl { get; set; }
 
         [JsonProperty("runAfter")]
         public string RunAfter { get; set; }
@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public string Nested { get; set; }
     }
 
-    public class POSTJsonResponseDataTypeExceptionArrayTypeItem
+    public class PostJsonResponseDataTypeExceptionArrayTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -443,7 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public string Connector { get; set; }
 
         [JsonProperty("imgURL")]
-        public string ImgURL { get; set; }
+        public string ImgUrl { get; set; }
 
         [JsonProperty("runAfter")]
         public string RunAfter { get; set; }
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public string Nested { get; set; }
     }
 
-    public class POSTJsonResponseDataTypeConnectionArrayTypeItem
+    public class PostJsonResponseDataTypeConnectionArrayTypeItem
     {
         [JsonProperty("conName")]
         public string ConName { get; set; }
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public int Count { get; set; }
     }
 
-    public class POSTJsonResponseDataTypeActionObjectArrayTypeItem
+    public class PostJsonResponseDataTypeActionObjectArrayTypeItem
     {
         [JsonProperty("step")]
         public string Step { get; set; }
@@ -551,9 +551,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public string Parent { get; set; }
     }
 
-    public class POSTJsonBodyInput
+    public class PostJsonBodyInput
     {
-        public POSTJsonBodyInput(BodyInputFlowPropertiesType flowProperties)
+        public PostJsonBodyInput(BodyInputFlowPropertiesType flowProperties)
         {
             this.FlowProperties = flowProperties;
         }
@@ -610,13 +610,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         internal string ResponseType { get; set; } = "json";
     }
 
-    public class POSTDiagramResponse
+    public class PostDiagramResponse
     {
         [JsonProperty("data")]
-        public POSTDiagramResponseDataType Data { get; set; }
+        public PostDiagramResponseDataType Data { get; set; }
     }
 
-    public class POSTDiagramResponseDataType
+    public class PostDiagramResponseDataType
     {
         [JsonProperty("image")]
         public string Image { get; set; }
@@ -625,9 +625,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public string Info { get; set; }
     }
 
-    public class POSTDiagramBodyInput
+    public class PostDiagramBodyInput
     {
-        public POSTDiagramBodyInput(BodyInputPropertiesType properties)
+        public PostDiagramBodyInput(BodyInputPropertiesType properties)
         {
             this.Properties = properties;
         }
@@ -636,7 +636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public BodyInputPropertiesType Properties { get; set; }
 
         [JsonProperty("configs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public POSTDiagramBodyInputConfigType Config { get; set; } = new POSTDiagramBodyInputConfigType();
+        public PostDiagramBodyInputConfigType Config { get; set; } = new PostDiagramBodyInputConfigType();
     }
 
     public class BodyInputPropertiesType
@@ -666,26 +666,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public JToken Definition { get; set; }
     }
 
-    public class POSTDiagramBodyInputConfigType
+    public class PostDiagramBodyInputConfigType
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal BodyInputConfigTypeImageTypeType ImageType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview.BodyInputConfigTypeImageTypeType.SVG;
+        internal BodyInputConfigTypeImageTypeType ImageType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview.BodyInputConfigTypeImageTypeType.Svg;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputConfigTypeImageTypeType
     {
-        SVG,
-        PNG
+        [EnumMember(Value = "SVG")]
+        Svg,
+        [EnumMember(Value = "PNG")]
+        Png
     }
 
-    public class POSTFileResponse
+    public class PostFileResponse
     {
         [JsonProperty("data")]
-        public POSTFileResponseDataType Data { get; set; }
+        public PostFileResponseDataType Data { get; set; }
     }
 
-    public class POSTFileResponseDataType
+    public class PostFileResponseDataType
     {
         [JsonProperty("file")]
         public string File { get; set; }
@@ -694,9 +696,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public string Info { get; set; }
     }
 
-    public class POSTFileBodyInput
+    public class PostFileBodyInput
     {
-        public POSTFileBodyInput(BodyInputFlowPropertiesType flowProperties)
+        public PostFileBodyInput(BodyInputFlowPropertiesType flowProperties)
         {
             this.FlowProperties = flowProperties;
         }
@@ -705,10 +707,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public BodyInputFlowPropertiesType FlowProperties { get; set; }
 
         [JsonProperty("configs", DefaultValueHandling = DefaultValueHandling.Include)]
-        public POSTFileBodyInputConfigType Config { get; set; } = new POSTFileBodyInputConfigType();
+        public PostFileBodyInputConfigType Config { get; set; } = new PostFileBodyInputConfigType();
     }
 
-    public class POSTFileBodyInputConfigType
+    public class PostFileBodyInputConfigType
     {
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputConfigTypeFileTypeType FileType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview.BodyInputConfigTypeFileTypeType.Review;

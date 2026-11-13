@@ -925,8 +925,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateArticleBodyInputTypeType
     {
-        PRODUCT,
-        SERVICE
+        [EnumMember(Value = "PRODUCT")]
+        Product,
+        [EnumMember(Value = "SERVICE")]
+        Service
     }
 
     public class RetrieveAnArticleResponse
@@ -1066,7 +1068,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public double GrossPrice { get; set; }
 
         [JsonProperty("leadingPrice", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputPriceTypeLeadingPriceType LeadingPrice { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice.BodyInputPriceTypeLeadingPriceType.GROSS;
+        public BodyInputPriceTypeLeadingPriceType LeadingPrice { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice.BodyInputPriceTypeLeadingPriceType.Gross;
 
         [JsonProperty("netPrice", DefaultValueHandling = DefaultValueHandling.Include)]
         public double NetPrice { get; set; }
@@ -1078,8 +1080,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputPriceTypeLeadingPriceType
     {
-        GROSS,
-        NET
+        [EnumMember(Value = "GROSS")]
+        Gross,
+        [EnumMember(Value = "NET")]
+        Net
     }
 
     public class ResponseContactsGet

@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
         public double TotalAgenciesAnalyzed { get; set; }
 
         [JsonProperty("totalFinalUrlBaseDomains")]
-        public double TotalFinalURLBaseDomains { get; set; }
+        public double TotalFinalUrlBaseDomains { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -160,55 +160,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
         public bool CloudGovPagesHosting { get; set; }
 
         [JsonProperty("cms")]
-        public string ContentManagementSystemCMS { get; set; }
+        public string ContentManagementSystemCms { get; set; }
 
         [JsonProperty("dap_detected_final_url")]
-        public bool DAPDetectedAtFinalURL { get; set; }
+        public bool DapDetectedAtFinalUrl { get; set; }
 
         [JsonProperty("dap_parameters_final_url")]
-        public JToken DAPParametersAtFinalURL { get; set; }
+        public JToken DapParametersAtFinalUrl { get; set; }
 
         [JsonProperty("dns_hostname")]
-        public string DNSHostname { get; set; }
+        public string DnsHostname { get; set; }
 
         [JsonProperty("final_url")]
-        public string FinalURL { get; set; }
+        public string FinalUrl { get; set; }
 
         [JsonProperty("final_url_MIMEType")]
-        public string FinalURLMIMEType { get; set; }
+        public string FinalUrlMimeType { get; set; }
 
         [JsonProperty("final_url_domain")]
-        public string FinalURLDomain { get; set; }
+        public string FinalUrlDomain { get; set; }
 
         [JsonProperty("final_url_live")]
-        public bool FinalURLLive { get; set; }
+        public bool FinalUrlLive { get; set; }
 
         [JsonProperty("final_url_same_domain")]
-        public bool FinalURLSameDomain { get; set; }
+        public bool FinalUrlSameDomain { get; set; }
 
         [JsonProperty("final_url_same_website")]
-        public bool FinalURLSameWebsite { get; set; }
+        public bool FinalUrlSameWebsite { get; set; }
 
         [JsonProperty("final_url_status_code")]
-        public double FinalURLStatusCode { get; set; }
+        public double FinalUrlStatusCode { get; set; }
 
         [JsonProperty("final_url_website")]
-        public string FinalURLWebsite { get; set; }
+        public string FinalUrlWebsite { get; set; }
 
         [JsonProperty("main_element_present_final_url")]
-        public bool MainElementPresenceAtFinalURL { get; set; }
+        public bool MainElementPresenceAtFinalUrl { get; set; }
 
         [JsonProperty("og_article_modified_final_url")]
-        public string OpenGraphArticleModifiedDateAtFinalURL { get; set; }
+        public string OpenGraphArticleModifiedDateAtFinalUrl { get; set; }
 
         [JsonProperty("og_article_published_final_url")]
-        public string OpenGraphArticlePublishedDateAtFinalURL { get; set; }
+        public string OpenGraphArticlePublishedDateAtFinalUrl { get; set; }
 
         [JsonProperty("og_description_final_url")]
-        public string OpenGraphDescriptionAtFinalURL { get; set; }
+        public string OpenGraphDescriptionAtFinalUrl { get; set; }
 
         [JsonProperty("og_title_final_url")]
-        public string OpenGraphTitleAtFinalURL { get; set; }
+        public string OpenGraphTitleAtFinalUrl { get; set; }
 
         [JsonProperty("robots_txt_crawl_delay")]
         public int RobotsTxtCrawlDelay { get; set; }
@@ -217,22 +217,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
         public bool RobotsTxtDetected { get; set; }
 
         [JsonProperty("robots_txt_final_url")]
-        public string RobotsTxtFinalURL { get; set; }
+        public string RobotsTxtFinalUrl { get; set; }
 
         [JsonProperty("robots_txt_final_url_MIMETYPE")]
-        public string RobotsTxtFinalURLMIMEType { get; set; }
+        public string RobotsTxtFinalUrlMimeType { get; set; }
 
         [JsonProperty("robots_txt_final_url_live")]
-        public bool RobotsTxtFinalURLLive { get; set; }
+        public bool RobotsTxtFinalUrlLive { get; set; }
 
         [JsonProperty("robots_txt_final_url_size_in_bytes")]
-        public double RobotsTxtFinalURLSizeInBytes { get; set; }
+        public double RobotsTxtFinalUrlSizeInBytes { get; set; }
 
         [JsonProperty("robots_txt_final_url_status_code")]
-        public double RobotsTxtFinalURLStatusCode { get; set; }
+        public double RobotsTxtFinalUrlStatusCode { get; set; }
 
         [JsonProperty("robots_txt_target_url_redirects")]
-        public bool RobotsTxtTargetURLRedirects { get; set; }
+        public bool RobotsTxtTargetUrlRedirects { get; set; }
 
         [JsonProperty("scan_date")]
         public string ScanDate { get; set; }
@@ -241,34 +241,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
         public WebsiteApiResultDtoScanStatusType ScanStatus { get; set; }
 
         [JsonProperty("sitemap_xml_count")]
-        public int SitemapXmlURLCount { get; set; }
+        public int SitemapXmlUrlCount { get; set; }
 
         [JsonProperty("sitemap_xml_detected")]
         public bool SitemapXmlDetected { get; set; }
 
         [JsonProperty("sitemap_xml_final_url")]
-        public string SitemapXmlFinalURL { get; set; }
+        public string SitemapXmlFinalUrl { get; set; }
 
         [JsonProperty("sitemap_xml_final_url_MIMETYPE")]
-        public string SitemapXmlFinalURLMIMEType { get; set; }
+        public string SitemapXmlFinalUrlMimeType { get; set; }
 
         [JsonProperty("sitemap_xml_final_url_filesize")]
-        public int SitemapXmlFinalURLFilesize { get; set; }
+        public int SitemapXmlFinalUrlFilesize { get; set; }
 
         [JsonProperty("sitemap_xml_final_url_live")]
-        public bool SitemapXmlFinalURLLive { get; set; }
+        public bool SitemapXmlFinalUrlLive { get; set; }
 
         [JsonProperty("sitemap_xml_final_url_status_code")]
-        public double SitemapXmlFinalURLStatusCode { get; set; }
+        public double SitemapXmlFinalUrlStatusCode { get; set; }
 
         [JsonProperty("sitemap_xml_pdf_count")]
-        public int SitemapXmlPDFURLCount { get; set; }
+        public int SitemapXmlPdfUrlCount { get; set; }
 
         [JsonProperty("sitemap_xml_target_url_redirects")]
-        public bool SitemapXmlTargetURLRedirects { get; set; }
+        public bool SitemapXmlTargetUrlRedirects { get; set; }
 
         [JsonProperty("source_list_dap")]
-        public bool SourcedFromDAPList { get; set; }
+        public bool SourcedFromDapList { get; set; }
 
         [JsonProperty("source_list_federal_domains")]
         public bool SourcedFromFederalDomainsList { get; set; }
@@ -277,28 +277,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
         public bool SourcedFromOtherLists { get; set; }
 
         [JsonProperty("source_list_pulse")]
-        public bool SourcedFromPulseCIOList { get; set; }
+        public bool SourcedFromPulseCioList { get; set; }
 
         [JsonProperty("target_url")]
-        public string TargetURL { get; set; }
+        public string TargetUrl { get; set; }
 
         [JsonProperty("target_url_404_test")]
-        public bool TargetURL404Test { get; set; }
+        public bool TargetUrl404Test { get; set; }
 
         [JsonProperty("target_url_agency_owner")]
-        public string TargetURLAgencyOwner { get; set; }
+        public string TargetUrlAgencyOwner { get; set; }
 
         [JsonProperty("target_url_branch")]
-        public string TargetURLGovernmentBranch { get; set; }
+        public string TargetUrlGovernmentBranch { get; set; }
 
         [JsonProperty("target_url_bureau_owner")]
-        public string TargetURLBureauOwner { get; set; }
+        public string TargetUrlBureauOwner { get; set; }
 
         [JsonProperty("target_url_domain")]
-        public string TargetURLDomain { get; set; }
+        public string TargetUrlDomain { get; set; }
 
         [JsonProperty("target_url_redirects")]
-        public bool TargetURLRedirects { get; set; }
+        public bool TargetUrlRedirects { get; set; }
 
         [JsonProperty("third_party_service_count")]
         public double ThirdPartyServiceCount { get; set; }
@@ -307,40 +307,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
         public string[] ThirdPartyServiceDomains { get; set; }
 
         [JsonProperty("uswds_count")]
-        public double USWDSCount { get; set; }
+        public double UswdsCount { get; set; }
 
         [JsonProperty("uswds_favicon")]
-        public double USWDSFavicon { get; set; }
+        public double UswdsFavicon { get; set; }
 
         [JsonProperty("uswds_favicon_in_css")]
-        public double USWDSFaviconInCSS { get; set; }
+        public double UswdsFaviconInCss { get; set; }
 
         [JsonProperty("uswds_inline_css")]
-        public double USWDSInlineCSS { get; set; }
+        public double UswdsInlineCss { get; set; }
 
         [JsonProperty("uswds_publicsans_font")]
-        public double USWDSPublicSansFont { get; set; }
+        public double UswdsPublicSansFont { get; set; }
 
         [JsonProperty("uswds_semantic_version")]
-        public string USWDSSemanticVersion { get; set; }
+        public string UswdsSemanticVersion { get; set; }
 
         [JsonProperty("uswds_source_sans_font")]
-        public double USWDSSourceSansFont { get; set; }
+        public double UswdsSourceSansFont { get; set; }
 
         [JsonProperty("uswds_string")]
-        public double USWDSStringOccurrences { get; set; }
+        public double UswdsStringOccurrences { get; set; }
 
         [JsonProperty("uswds_string_in_css")]
-        public double USWDSStringInCSS { get; set; }
+        public double UswdsStringInCss { get; set; }
 
         [JsonProperty("uswds_tables")]
-        public double USWDSTables { get; set; }
+        public double UswdsTables { get; set; }
 
         [JsonProperty("uswds_usa_classes")]
-        public double USWDSUSAClasses { get; set; }
+        public double UswdsUsaClasses { get; set; }
 
         [JsonProperty("uswds_version")]
-        public double USWDSVersion { get; set; }
+        public double UswdsVersion { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

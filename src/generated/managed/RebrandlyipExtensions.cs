@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         public string FullName { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
     public class UpdateLinkBodyInput
     {
         [JsonProperty("destination")]
-        public string DestinationURL { get; set; }
+        public string DestinationUrl { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }

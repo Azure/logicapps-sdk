@@ -69,11 +69,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RequestInputMethodType
     {
-        GET,
-        DELETE,
-        PATCH,
-        POST,
-        PUT
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "DELETE")]
+        Delete,
+        [EnumMember(Value = "PATCH")]
+        Patch,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "PUT")]
+        Put
     }
 }
 

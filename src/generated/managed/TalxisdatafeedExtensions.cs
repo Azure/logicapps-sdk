@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         public string IncorporationDate { get; set; }
 
         [JsonProperty("reliableVATPayer")]
-        public bool ReliableVATPayer { get; set; }
+        public bool ReliableVatPayer { get; set; }
 
         [JsonProperty("registeredAddressFull")]
         public string RegisteredAddressFull { get; set; }

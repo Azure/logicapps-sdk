@@ -176,15 +176,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alertrelay
 
     public class BodyInput
     {
-        public BodyInput(string siteURL, string listOrLibrary, int itemId)
+        public BodyInput(string siteUrl, string listOrLibrary, int itemId)
         {
-            this.SiteURL = siteURL;
+            this.SiteUrl = siteUrl;
             this.ListOrLibrary = listOrLibrary;
             this.ItemId = itemId;
         }
 
         [JsonProperty("siteUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SiteURL { get; set; }
+        public string SiteUrl { get; set; }
 
         [JsonProperty("listId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListOrLibrary { get; set; }

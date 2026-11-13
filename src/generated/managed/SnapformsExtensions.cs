@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Snapforms
         public string FileName { get; set; }
 
         [JsonProperty("url")]
-        public string FileURL { get; set; }
+        public string FileUrl { get; set; }
     }
 
     public class WebhookCreationResource

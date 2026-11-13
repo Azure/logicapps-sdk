@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string LongDesc { get; set; }
 
         [JsonProperty("access", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputAccessType? Access { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet.BodyInputAccessType.INVITEDONLY;
+        public BodyInputAccessType? Access { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet.BodyInputAccessType.InvitedOnly;
 
         [JsonProperty("eventType", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string EventType { get; set; } = "MEETUP";
@@ -329,11 +329,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
     public enum BodyInputAccessType
     {
         [EnumMember(Value = "INVITED_ONLY")]
-        INVITEDONLY,
+        InvitedOnly,
         [EnumMember(Value = "WITH_VERIFIED_EMAIL")]
-        WITHVERIFIEDEMAIL,
+        WithVerifiedEmail,
         [EnumMember(Value = "WITHOUT_VERIFIED_EMAIL")]
-        WITHOUTVERIFIEDEMAIL
+        WithoutVerifiedEmail
     }
 
     public class BodyInputTimingType
@@ -456,14 +456,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
     public class StartAndEndAirmeetBodyInput
     {
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputStatusType Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet.BodyInputStatusType.ONGOING;
+        public BodyInputStatusType Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet.BodyInputStatusType.Ongoing;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputStatusType
     {
-        ONGOING,
-        FINISHED
+        [EnumMember(Value = "ONGOING")]
+        Ongoing,
+        [EnumMember(Value = "FINISHED")]
+        Finished
     }
 
     public class AirmeetRegistrationsResponse
@@ -581,8 +583,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SortingDirectionInput
     {
-        ASC,
-        DESC
+        [EnumMember(Value = "ASC")]
+        Asc,
+        [EnumMember(Value = "DESC")]
+        Desc
     }
 
     public class CustomRegistrationFieldsResponse
@@ -663,13 +667,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string TrackOrder { get; set; }
 
         [JsonProperty("metaData")]
-        public FetchEventTracksResponseTracksTypeItemMetaDataType MetaData { get; set; }
+        public FetchEventTracksResponseTracksTypeItemMetadataType Metadata { get; set; }
 
         [JsonProperty("sessions")]
         public string[] Sessions { get; set; }
     }
 
-    public class FetchEventTracksResponseTracksTypeItemMetaDataType
+    public class FetchEventTracksResponseTracksTypeItemMetadataType
     {
         [JsonProperty("colorCode")]
         public string ColorCode { get; set; }
@@ -774,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string[] Tags { get; set; }
 
         [JsonProperty("metaData", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputMetaDataType MetaData { get; set; } = new BodyInputMetaDataType();
+        public BodyInputMetadataType Metadata { get; set; } = new BodyInputMetadataType();
     }
 
     public class BodyInputExhibitorInfoTypeItem
@@ -788,18 +792,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string Email { get; set; }
 
         [JsonProperty("exhibitorAttendanceType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputExhibitorInfoTypeItemExhibitorAttendanceTypeType? ExhibitorAttendanceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet.BodyInputExhibitorInfoTypeItemExhibitorAttendanceTypeType.HYBRId;
+        public BodyInputExhibitorInfoTypeItemExhibitorAttendanceTypeType? ExhibitorAttendanceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet.BodyInputExhibitorInfoTypeItemExhibitorAttendanceTypeType.Hybrid;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputExhibitorInfoTypeItemExhibitorAttendanceTypeType
     {
         [EnumMember(Value = "HYBRID")]
-        HYBRId,
-        ONLINE
+        Hybrid,
+        [EnumMember(Value = "ONLINE")]
+        Online
     }
 
-    public class BodyInputMetaDataType
+    public class BodyInputMetadataType
     {
         [JsonProperty("chatEnabled", DefaultValueHandling = DefaultValueHandling.Include)]
         public bool ChatEnabled { get; set; } = false;
@@ -842,7 +847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string LastName { get; set; }
 
         [JsonProperty("attendance_type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputAttendanceTypeType? AttendanceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet.BodyInputAttendanceTypeType.INPERSON;
+        public BodyInputAttendanceTypeType? AttendanceType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet.BodyInputAttendanceTypeType.INPerson;
 
         [JsonProperty("city")]
         public string City { get; set; }
@@ -869,9 +874,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputAttendanceTypeType
     {
-        VIRTUAL,
+        [EnumMember(Value = "VIRTUAL")]
+        Virtual,
         [EnumMember(Value = "IN-PERSON")]
-        INPERSON
+        INPerson
     }
 
     public class BodyInputCustomFieldMappingTypeItem
@@ -919,7 +925,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
         public string[] CohostEmails { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputTypeType? Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet.BodyInputTypeType.HOSTING;
+        public BodyInputTypeType? Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet.BodyInputTypeType.Hosting;
 
         [JsonProperty("tracks")]
         public string[] Tracks { get; set; }
@@ -940,16 +946,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airmeet
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputTypeType
     {
-        HOSTING,
+        [EnumMember(Value = "HOSTING")]
+        Hosting,
         [EnumMember(Value = "FLUID_LOUNGE")]
-        FLUIdLOUNGE,
-        BOOTH,
-        BREAK,
+        FluidLounge,
+        [EnumMember(Value = "BOOTH")]
+        Booth,
+        [EnumMember(Value = "BREAK")]
+        Break,
         [EnumMember(Value = "LARGE_CALL")]
-        LARGECALL,
+        LargeCall,
         [EnumMember(Value = "SPEED_NETWORKING")]
-        SPEEDNETWORKING,
-        STREAMING
+        SpeedNetworking,
+        [EnumMember(Value = "STREAMING")]
+        Streaming
     }
 
     public class BodyInputSpeedNetworkingDataType

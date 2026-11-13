@@ -1232,7 +1232,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public bool IsActive { get; set; }
 
         [JsonProperty("userIds")]
-        public string[] UserIDs { get; set; }
+        public string[] UserIds { get; set; }
     }
 
     public class ListTimeOffRequestsResponse

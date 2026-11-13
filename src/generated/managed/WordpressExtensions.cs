@@ -141,8 +141,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
 
     public class PostModel
     {
-        [JsonProperty("guid")]
-        public string Id { get; set; }
+        [JsonProperty("ID")]
+        public int Id { get; set; }
 
         [JsonProperty("site_ID")]
         public int SiteId { get; set; }
@@ -155,10 +155,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
 
         [JsonProperty("title")]
         public string Title { get; set; }
-        public string URL { get; set; }
+
+        [JsonProperty("URL")]
+        public string Url { get; set; }
 
         [JsonProperty("short_URL")]
-        public string ShortURL { get; set; }
+        public string ShortUrl { get; set; }
 
         [JsonProperty("content")]
         public string Content { get; set; }
@@ -168,6 +170,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
 
         [JsonProperty("slug")]
         public string Slug { get; set; }
+
+        [JsonProperty("guid")]
+        public string Guid { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -258,8 +263,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
 
     public class PostResponse
     {
-        [JsonProperty("guid")]
-        public string Id { get; set; }
+        [JsonProperty("ID")]
+        public int Id { get; set; }
 
         [JsonProperty("comment_count")]
         public int CommentCount { get; set; }
@@ -275,10 +280,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
 
         [JsonProperty("title")]
         public string Title { get; set; }
-        public string URL { get; set; }
+
+        [JsonProperty("URL")]
+        public string Url { get; set; }
 
         [JsonProperty("slug")]
         public string Slug { get; set; }
+
+        [JsonProperty("guid")]
+        public string Guid { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }

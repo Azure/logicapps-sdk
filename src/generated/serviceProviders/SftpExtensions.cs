@@ -599,7 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         public int Size { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("pathRelativeToRootDirectory")]
         public string PathRelativeToRootDirectory { get; set; }

@@ -475,11 +475,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputAggregationTypeType
     {
-        AVG,
-        SUM,
-        COUNT,
-        MAX,
-        MIN
+        [EnumMember(Value = "AVG")]
+        Avg,
+        [EnumMember(Value = "SUM")]
+        Sum,
+        [EnumMember(Value = "COUNT")]
+        Count,
+        [EnumMember(Value = "MAX")]
+        Max,
+        [EnumMember(Value = "MIN")]
+        Min
     }
 
     public class AdvancedOptions
@@ -617,12 +622,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputEncodingType
     {
-        ASCII,
-        UTF8,
-        UTF16LittleEndian,
-        UTF16BigEndian,
+        [EnumMember(Value = "ASCII")]
+        Ascii,
+        [EnumMember(Value = "UTF8")]
+        Utf8,
+        [EnumMember(Value = "UTF16LittleEndian")]
+        Utf16LittleEndian,
+        [EnumMember(Value = "UTF16BigEndian")]
+        Utf16BigEndian,
         [EnumMember(Value = "ISO-8859-1")]
-        ISO88591
+        Iso88591
     }
 
     public class DistinctBodyInput
@@ -932,7 +941,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         public double RatioThreshold { get; set; }
         public string ApplyRatioThresholdTo { get; set; }
         public bool CaseSensitive { get; set; }
-        public bool RemoveWhitespace { get; set; }
+
+        [JsonProperty("RemoveWhitespace")]
+        public bool RemoveWhiteSpace { get; set; }
         public bool RemoveSpecialCharacters { get; set; }
         public string RatioSelectionType { get; set; }
         public string TokenSortType { get; set; }
@@ -994,7 +1005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         public bool? CaseSensitive { get; set; }
 
         [JsonProperty("removeWhitespace")]
-        public bool? RemoveWhitespace { get; set; }
+        public bool? RemoveWhiteSpace { get; set; }
 
         [JsonProperty("removeSpecialCharacters")]
         public bool? RemoveSpecialCharacters { get; set; }
@@ -1115,8 +1126,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleSortOrder
     {
-        ASC,
-        DESC
+        [EnumMember(Value = "ASC")]
+        Asc,
+        [EnumMember(Value = "DESC")]
+        Desc
     }
 
     public class SimpleDistinctBodyInput

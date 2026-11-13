@@ -109,10 +109,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ironfangrender
     public class CaptureScreenshotBodyInput
     {
         [JsonProperty("url")]
-        public string PageURL { get; set; }
+        public string PageUrl { get; set; }
 
         [JsonProperty("html")]
-        public string HTML { get; set; }
+        public string Html { get; set; }
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputImageFormatType? ImageFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Ironfangrender.BodyInputImageFormatType.Png;
@@ -190,10 +190,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ironfangrender
     public class CreatePdfBodyInput
     {
         [JsonProperty("url")]
-        public string PageURL { get; set; }
+        public string PageUrl { get; set; }
 
         [JsonProperty("html")]
-        public string HTML { get; set; }
+        public string Html { get; set; }
 
         [JsonProperty("paper_format")]
         public BodyInputPaperSizeType? PaperSize { get; set; }
@@ -208,10 +208,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ironfangrender
         public BodyInputMarginsType Margins { get; set; }
 
         [JsonProperty("header_html")]
-        public string HeaderHTML { get; set; }
+        public string HeaderHtml { get; set; }
 
         [JsonProperty("footer_html")]
-        public string FooterHTML { get; set; }
+        public string FooterHtml { get; set; }
 
         [JsonProperty("scale")]
         public double? Scale { get; set; }
@@ -326,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ironfangrender
         public int SizeBytes { get; set; }
 
         [JsonProperty("sha256")]
-        public string SHA256Hash { get; set; }
+        public string Sha256Hash { get; set; }
 
         [JsonProperty("available")]
         public bool Available { get; set; }
@@ -363,10 +363,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ironfangrender
     public class ScreenshotRequest
     {
         [JsonProperty("url")]
-        public string PageURL { get; set; }
+        public string PageUrl { get; set; }
 
         [JsonProperty("html")]
-        public string HTML { get; set; }
+        public string Html { get; set; }
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
         public ScreenshotRequestImageFormatType? ImageFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Ironfangrender.ScreenshotRequestImageFormatType.Png;
@@ -452,10 +452,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ironfangrender
     public class PdfRequest
     {
         [JsonProperty("url")]
-        public string PageURL { get; set; }
+        public string PageUrl { get; set; }
 
         [JsonProperty("html")]
-        public string HTML { get; set; }
+        public string Html { get; set; }
 
         [JsonProperty("paper_format")]
         public PdfRequestPaperSizeType? PaperSize { get; set; }
@@ -470,10 +470,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ironfangrender
         public PdfRequestMarginsType Margins { get; set; }
 
         [JsonProperty("header_html")]
-        public string HeaderHTML { get; set; }
+        public string HeaderHtml { get; set; }
 
         [JsonProperty("footer_html")]
-        public string FooterHTML { get; set; }
+        public string FooterHtml { get; set; }
 
         [JsonProperty("scale")]
         public double? Scale { get; set; }

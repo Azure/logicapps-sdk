@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
 
     public class CluedinTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> RequestRACIRuleApproval()
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> RequestRaciRuleApproval()
         {
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> RequestRACIVocabularyApproval()
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> RequestRaciVocabularyApproval()
         {
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> RequestRACIVocabularyKeyApproval()
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> RequestRaciVocabularyKeyApproval()
         {
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> RequestRACIEntityTypeApproval()
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> RequestRaciEntityTypeApproval()
         {
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
             });
         }
 
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> RequestRACIUserInviteApproval()
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> RequestRaciUserInviteApproval()
         {
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {

@@ -505,16 +505,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsail")]
-        public IBodyWorkflowAction<DocumentContentWithFilenameResponse, ApiConnectionActionConfiguration> FlowV1DocumentsJobsCreateArchive(Expression<Func<FlowV1DocumentsJobsCreateArchiveRequestInput>> request)
+        public IBodyWorkflowAction<DocumentContentWithFileNameResponse, ApiConnectionActionConfiguration> FlowV1DocumentsJobsCreateArchive(Expression<Func<FlowV1DocumentsJobsCreateArchiveRequestInput>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
-            return new DeferredBodyAction<DocumentContentWithFilenameResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DocumentContentWithFileNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/flow/v1/Documents/jobs/CreateArchive";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_request);
-                return new ApiConnectionAction<DocumentContentWithFilenameResponse>(callPayload);
+                return new ApiConnectionAction<DocumentContentWithFileNameResponse>(callPayload);
             });
         }
 
@@ -650,7 +650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         public JToken TemplateData { get; set; }
 
         [JsonProperty("outputType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FlowV1DocumentsJobsApplyDocxTemplateRequestInputDocumentOutputTypeType DocumentOutputType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail.FlowV1DocumentsJobsApplyDocxTemplateRequestInputDocumentOutputTypeType.DOCX;
+        public FlowV1DocumentsJobsApplyDocxTemplateRequestInputDocumentOutputTypeType DocumentOutputType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail.FlowV1DocumentsJobsApplyDocxTemplateRequestInputDocumentOutputTypeType.Docx;
 
         [JsonProperty("locale", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestInputLocaleType? Locale { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail.RequestInputLocaleType.EnUS;
@@ -665,8 +665,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FlowV1DocumentsJobsApplyDocxTemplateRequestInputDocumentOutputTypeType
     {
-        DOCX,
-        PDF
+        [EnumMember(Value = "DOCX")]
+        Docx,
+        [EnumMember(Value = "PDF")]
+        Pdf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1053,7 +1055,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "en-US")]
         EnUS,
         [EnumMember(Value = "en-US-POSIX")]
-        EnUSPOSIX,
+        EnUSPosix,
         [EnumMember(Value = "en-VC")]
         EnVC,
         [EnumMember(Value = "en-VG")]
@@ -1834,7 +1836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Asia/Muscat")]
         AsiaMuscat,
         [EnumMember(Value = "Etc/GMT-4")]
-        EtcGMT42,
+        EtcGmt42,
         [EnumMember(Value = "Asia/Baghdad")]
         AsiaBaghdad,
         [EnumMember(Value = "America/Buenos_Aires")]
@@ -1902,7 +1904,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Atlantic/Cape_Verde")]
         AtlanticCapeVerde,
         [EnumMember(Value = "Etc/GMT+1")]
-        EtcGMT1,
+        EtcGmt1,
         [EnumMember(Value = "Asia/Yerevan")]
         AsiaYerevan,
         [EnumMember(Value = "Australia/Adelaide")]
@@ -1924,7 +1926,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "America/El_Salvador")]
         AmericaElSalvador,
         [EnumMember(Value = "Etc/GMT+6")]
-        EtcGMT6,
+        EtcGmt6,
         [EnumMember(Value = "Asia/Bishkek")]
         AsiaBishkek,
         [EnumMember(Value = "Antarctica/Vostok")]
@@ -1934,7 +1936,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Indian/Chagos")]
         IndianChagos,
         [EnumMember(Value = "Etc/GMT-6")]
-        EtcGMT62,
+        EtcGmt62,
         [EnumMember(Value = "America/Cuiaba")]
         AmericaCuiaba,
         [EnumMember(Value = "America/Campo_Grande")]
@@ -1974,7 +1976,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Pacific/Efate")]
         PacificEfate,
         [EnumMember(Value = "Etc/GMT-11")]
-        EtcGMT112,
+        EtcGmt112,
         [EnumMember(Value = "America/Mexico_City")]
         AmericaMexicoCity,
         [EnumMember(Value = "America/Bahia_Banderas")]
@@ -2020,7 +2022,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "America/Havana")]
         AmericaHavana,
         [EnumMember(Value = "Etc/GMT+12")]
-        EtcGMT12,
+        EtcGmt12,
         [EnumMember(Value = "Africa/Nairobi")]
         AfricaNairobi,
         [EnumMember(Value = "Antarctica/Syowa")]
@@ -2044,7 +2046,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Indian/Mayotte")]
         IndianMayotte,
         [EnumMember(Value = "Etc/GMT-3")]
-        EtcGMT32,
+        EtcGmt32,
         [EnumMember(Value = "Australia/Brisbane")]
         AustraliaBrisbane,
         [EnumMember(Value = "Australia/Lindeman")]
@@ -2166,7 +2168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Pacific/Tahiti")]
         PacificTahiti,
         [EnumMember(Value = "Etc/GMT+10")]
-        EtcGMT10,
+        EtcGmt10,
         [EnumMember(Value = "Asia/Calcutta")]
         AsiaCalcutta,
         [EnumMember(Value = "Asia/Tehran")]
@@ -2184,7 +2186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Pacific/Kiritimati")]
         PacificKiritimati,
         [EnumMember(Value = "Etc/GMT-14")]
-        EtcGMT14,
+        EtcGmt14,
         [EnumMember(Value = "Australia/Lord_Howe")]
         AustraliaLordHowe,
         [EnumMember(Value = "Asia/Magadan")]
@@ -2310,7 +2312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "America/Paramaribo")]
         AmericaParamaribo,
         [EnumMember(Value = "Etc/GMT+3")]
-        EtcGMT3,
+        EtcGmt3,
         [EnumMember(Value = "America/Bogota")]
         AmericaBogota,
         [EnumMember(Value = "America/Rio_Branco")]
@@ -2330,7 +2332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "America/Lima")]
         AmericaLima,
         [EnumMember(Value = "Etc/GMT+5")]
-        EtcGMT5,
+        EtcGmt5,
         [EnumMember(Value = "America/La_Paz")]
         AmericaLaPaz,
         [EnumMember(Value = "America/Antigua")]
@@ -2388,7 +2390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "America/St_Thomas")]
         AmericaStThomas,
         [EnumMember(Value = "Etc/GMT+4")]
-        EtcGMT4,
+        EtcGmt4,
         [EnumMember(Value = "Asia/Bangkok")]
         AsiaBangkok,
         [EnumMember(Value = "Antarctica/Davis")]
@@ -2406,7 +2408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Asia/Saigon")]
         AsiaSaigon,
         [EnumMember(Value = "Etc/GMT-7")]
-        EtcGMT72,
+        EtcGmt72,
         [EnumMember(Value = "America/Miquelon")]
         AmericaMiquelon,
         [EnumMember(Value = "Asia/Sakhalin")]
@@ -2430,7 +2432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Asia/Manila")]
         AsiaManila,
         [EnumMember(Value = "Etc/GMT-8")]
-        EtcGMT82,
+        EtcGmt82,
         [EnumMember(Value = "Africa/Johannesburg")]
         AfricaJohannesburg,
         [EnumMember(Value = "Africa/Bujumbura")]
@@ -2454,7 +2456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Africa/Harare")]
         AfricaHarare,
         [EnumMember(Value = "Etc/GMT-2")]
-        EtcGMT22,
+        EtcGmt22,
         [EnumMember(Value = "Africa/Juba")]
         AfricaJuba,
         [EnumMember(Value = "Asia/Colombo")]
@@ -2480,7 +2482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Asia/Dili")]
         AsiaDili,
         [EnumMember(Value = "Etc/GMT-9")]
-        EtcGMT92,
+        EtcGmt92,
         [EnumMember(Value = "Asia/Tomsk")]
         AsiaTomsk,
         [EnumMember(Value = "Pacific/Tongatapu")]
@@ -2508,9 +2510,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "America/Hermosillo")]
         AmericaHermosillo,
         [EnumMember(Value = "Etc/GMT+7")]
-        EtcGMT7,
+        EtcGmt7,
         [EnumMember(Value = "Etc/GMT-12")]
-        EtcGMT122,
+        EtcGmt122,
         [EnumMember(Value = "Pacific/Tarawa")]
         PacificTarawa,
         [EnumMember(Value = "Pacific/Majuro")]
@@ -2526,31 +2528,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Pacific/Wallis")]
         PacificWallis,
         [EnumMember(Value = "Etc/GMT-13")]
-        EtcGMT13,
+        EtcGmt13,
         [EnumMember(Value = "Pacific/Enderbury")]
         PacificEnderbury,
         [EnumMember(Value = "Pacific/Fakaofo")]
         PacificFakaofo,
         [EnumMember(Value = "Etc/UTC")]
-        EtcUTC,
+        EtcUtc,
         [EnumMember(Value = "Etc/GMT")]
-        EtcGMT,
+        EtcGmt,
         [EnumMember(Value = "Etc/GMT+2")]
-        EtcGMT2,
+        EtcGmt2,
         [EnumMember(Value = "America/Noronha")]
         AmericaNoronha,
         [EnumMember(Value = "Atlantic/South_Georgia")]
         AtlanticSouthGeorgia,
         [EnumMember(Value = "Etc/GMT+8")]
-        EtcGMT8,
+        EtcGmt8,
         [EnumMember(Value = "Pacific/Pitcairn")]
         PacificPitcairn,
         [EnumMember(Value = "Etc/GMT+9")]
-        EtcGMT9,
+        EtcGmt9,
         [EnumMember(Value = "Pacific/Gambier")]
         PacificGambier,
         [EnumMember(Value = "Etc/GMT+11")]
-        EtcGMT11,
+        EtcGmt11,
         [EnumMember(Value = "Pacific/Pago_Pago")]
         PacificPagoPago,
         [EnumMember(Value = "Pacific/Niue")]
@@ -2596,7 +2598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Africa/Tunis")]
         AfricaTunis,
         [EnumMember(Value = "Etc/GMT-1")]
-        EtcGMT15,
+        EtcGmt15,
         [EnumMember(Value = "Europe/Berlin")]
         EuropeBerlin,
         [EnumMember(Value = "Europe/Andorra")]
@@ -2660,7 +2662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Asia/Samarkand")]
         AsiaSamarkand,
         [EnumMember(Value = "Etc/GMT-5")]
-        EtcGMT52,
+        EtcGmt52,
         [EnumMember(Value = "Asia/Hebron")]
         AsiaHebron,
         [EnumMember(Value = "Asia/Gaza")]
@@ -2676,7 +2678,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Pacific/Saipan")]
         PacificSaipan,
         [EnumMember(Value = "Etc/GMT-10")]
-        EtcGMT102,
+        EtcGmt102,
         [EnumMember(Value = "Asia/Yakutsk")]
         AsiaYakutsk,
         [EnumMember(Value = "Asia/Khandyga")]
@@ -2714,13 +2716,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         AmericaArgentinaMendoza,
         [EnumMember(Value = "US/Central")]
         USCentral,
-        CST6CDT,
+        [EnumMember(Value = "CST6CDT")]
+        Cst6Cdt,
         [EnumMember(Value = "America/Shiprock")]
         AmericaShiprock,
         Navajo,
         [EnumMember(Value = "US/Mountain")]
         USMountain,
-        MST7MDT,
+        [EnumMember(Value = "MST7MDT")]
+        Mst7Mdt,
         [EnumMember(Value = "US/Michigan")]
         USMichigan,
         [EnumMember(Value = "Canada/Mountain")]
@@ -2745,7 +2749,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         AmericaKentuckyLouisville,
         [EnumMember(Value = "US/Pacific")]
         USPacific,
-        PST8PDT,
+        [EnumMember(Value = "PST8PDT")]
+        Pst8Pdt,
         [EnumMember(Value = "Brazil/West")]
         BrazilWest,
         [EnumMember(Value = "Mexico/BajaSur")]
@@ -2754,17 +2759,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         MexicoGeneral,
         [EnumMember(Value = "US/Eastern")]
         USEastern,
-        EST5EDT,
+        [EnumMember(Value = "EST5EDT")]
+        Est5Edt,
         [EnumMember(Value = "Brazil/DeNoronha")]
         BrazilDeNoronha,
         [EnumMember(Value = "America/Nuuk")]
         AmericaNuuk,
         [EnumMember(Value = "America/Atikokan")]
         AmericaAtikokan,
-        EST,
+        [EnumMember(Value = "EST")]
+        Est,
         [EnumMember(Value = "US/Arizona")]
         USArizona,
-        MST,
+        [EnumMember(Value = "MST")]
+        Mst,
         [EnumMember(Value = "America/Virgin")]
         AmericaVirgin,
         [EnumMember(Value = "Canada/Saskatchewan")]
@@ -2821,16 +2829,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         AsiaUjungPandang,
         [EnumMember(Value = "Europe/Nicosia")]
         EuropeNicosia,
-        ROK,
+        [EnumMember(Value = "ROK")]
+        Rok,
         [EnumMember(Value = "Asia/Chongqing")]
         AsiaChongqing,
         [EnumMember(Value = "Asia/Chungking")]
         AsiaChungking,
         [EnumMember(Value = "Asia/Harbin")]
         AsiaHarbin,
-        PRC,
+        [EnumMember(Value = "PRC")]
+        Prc,
         Singapore,
-        ROC,
+        [EnumMember(Value = "ROC")]
+        Roc,
         Iran,
         [EnumMember(Value = "Asia/Thimbu")]
         AsiaThimbu,
@@ -2858,48 +2869,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Australia/Currie")]
         AustraliaCurrie,
         [EnumMember(Value = "Australia/LHI")]
-        AustraliaLHI,
+        AustraliaLhi,
         [EnumMember(Value = "Australia/Victoria")]
         AustraliaVictoria,
         [EnumMember(Value = "Australia/West")]
         AustraliaWest,
         [EnumMember(Value = "Australia/ACT")]
-        AustraliaACT,
+        AustraliaAct,
         [EnumMember(Value = "Australia/Canberra")]
         AustraliaCanberra,
         [EnumMember(Value = "Australia/NSW")]
-        AustraliaNSW,
+        AustraliaNsw,
         [EnumMember(Value = "Etc/GMT+0")]
-        EtcGMT0,
+        EtcGmt0,
         [EnumMember(Value = "Etc/GMT-0")]
-        EtcGMT02,
+        EtcGmt02,
         [EnumMember(Value = "Etc/GMT0")]
-        EtcGMT03,
+        EtcGmt03,
         [EnumMember(Value = "Etc/Greenwich")]
         EtcGreenwich,
-        GMT,
+        [EnumMember(Value = "GMT")]
+        Gmt,
         [EnumMember(Value = "GMT+0")]
-        GMT0,
+        Gmt0,
         [EnumMember(Value = "GMT-0")]
-        GMT02,
+        Gmt02,
         [EnumMember(Value = "GMT0")]
-        GMT03,
+        Gmt03,
         Greenwich,
         [EnumMember(Value = "Etc/UCT")]
-        EtcUCT,
+        EtcUct,
         [EnumMember(Value = "Etc/Universal")]
         EtcUniversal,
         [EnumMember(Value = "Etc/Zulu")]
         EtcZulu,
-        UCT,
-        UTC,
+        [EnumMember(Value = "UCT")]
+        Uct,
+        [EnumMember(Value = "UTC")]
+        Utc,
         Universal,
         Zulu,
-        EET,
+        [EnumMember(Value = "EET")]
+        Eet,
         [EnumMember(Value = "Atlantic/Jan_Mayen")]
         AtlanticJanMayen,
-        CET,
-        MET,
+        [EnumMember(Value = "CET")]
+        Cet,
+        [EnumMember(Value = "MET")]
+        Met,
         [EnumMember(Value = "Europe/Tiraspol")]
         EuropeTiraspol,
         Eire,
@@ -2913,20 +2930,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         [EnumMember(Value = "Europe/Uzhgorod")]
         EuropeUzhgorod,
         Portugal,
-        WET,
+        [EnumMember(Value = "WET")]
+        Wet,
         [EnumMember(Value = "Europe/Belfast")]
         EuropeBelfast,
         GB,
         [EnumMember(Value = "GB-Eire")]
         GBEire,
         [EnumMember(Value = "W-SU")]
-        WSU,
+        Wsu,
         Poland,
         [EnumMember(Value = "Antarctica/South_Pole")]
         AntarcticaSouthPole,
         NZ,
         [EnumMember(Value = "NZ-CHAT")]
-        NZCHAT,
+        NZChat,
         [EnumMember(Value = "Chile/EasterIsland")]
         ChileEasterIsland,
         [EnumMember(Value = "Pacific/Pohnpei")]
@@ -2935,7 +2953,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         USHawaii,
         [EnumMember(Value = "Pacific/Johnston")]
         PacificJohnston,
-        HST,
+        [EnumMember(Value = "HST")]
+        Hst,
         [EnumMember(Value = "Pacific/Kanton")]
         PacificKanton,
         Kwajalein,
@@ -2975,7 +2994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         public JToken TemplateData { get; set; }
 
         [JsonProperty("outputType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FlowV1DocumentsJobsApplyXlsxTemplateRequestInputDocumentOutputTypeType DocumentOutputType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail.FlowV1DocumentsJobsApplyXlsxTemplateRequestInputDocumentOutputTypeType.XLSX;
+        public FlowV1DocumentsJobsApplyXlsxTemplateRequestInputDocumentOutputTypeType DocumentOutputType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail.FlowV1DocumentsJobsApplyXlsxTemplateRequestInputDocumentOutputTypeType.Xlsx;
 
         [JsonProperty("locale", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestInputLocaleType? Locale { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail.RequestInputLocaleType.EnUS;
@@ -2990,8 +3009,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FlowV1DocumentsJobsApplyXlsxTemplateRequestInputDocumentOutputTypeType
     {
-        XLSX,
-        PDF
+        [EnumMember(Value = "XLSX")]
+        Xlsx,
+        [EnumMember(Value = "PDF")]
+        Pdf
     }
 
     public class DocumentProcessingResponse
@@ -3015,7 +3036,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         public JToken TemplateData { get; set; }
 
         [JsonProperty("outputType", DefaultValueHandling = DefaultValueHandling.Include)]
-        public FlowV1DocumentsJobsApplyPptxRequestInputDocumentOutputTypeType DocumentOutputType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail.FlowV1DocumentsJobsApplyPptxRequestInputDocumentOutputTypeType.PPTX;
+        public FlowV1DocumentsJobsApplyPptxRequestInputDocumentOutputTypeType DocumentOutputType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail.FlowV1DocumentsJobsApplyPptxRequestInputDocumentOutputTypeType.Pptx;
 
         [JsonProperty("locale", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestInputLocaleType? Locale { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail.RequestInputLocaleType.EnUS;
@@ -3027,20 +3048,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FlowV1DocumentsJobsApplyPptxRequestInputDocumentOutputTypeType
     {
-        PPTX,
-        PDF
+        [EnumMember(Value = "PPTX")]
+        Pptx,
+        [EnumMember(Value = "PDF")]
+        Pdf
     }
 
     public class FlowV1DocumentsJobsApplyDocxRequestInput
     {
-        public FlowV1DocumentsJobsApplyDocxRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent dOCXDocumentContent, JToken templateData)
+        public FlowV1DocumentsJobsApplyDocxRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent docxDocumentContent, JToken templateData)
         {
-            this.DOCXDocumentContent = dOCXDocumentContent;
+            this.DocxDocumentContent = docxDocumentContent;
             this.TemplateData = templateData;
         }
 
         [JsonProperty("docxDocument", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DOCXDocumentContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocxDocumentContent { get; set; }
 
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken TemplateData { get; set; }
@@ -3049,19 +3072,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class ApplyHtmlTemplateResponse
     {
         [JsonProperty("htmlResult")]
-        public string ResultHTML { get; set; }
+        public string ResultHtml { get; set; }
     }
 
     public class FlowV1DocumentsJobsApplyHtmlRequestInput
     {
-        public FlowV1DocumentsJobsApplyHtmlRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceHTML, JToken templateData)
+        public FlowV1DocumentsJobsApplyHtmlRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent sourceHtml, JToken templateData)
         {
-            this.SourceHTML = sourceHTML;
+            this.SourceHtml = sourceHtml;
             this.TemplateData = templateData;
         }
 
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceHTML { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent SourceHtml { get; set; }
 
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken TemplateData { get; set; }
@@ -3075,13 +3098,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
 
     public class FlowV1DocumentsJobsHtml2PdfRequestInput
     {
-        public FlowV1DocumentsJobsHtml2PdfRequestInput(string sourceHTML)
+        public FlowV1DocumentsJobsHtml2PdfRequestInput(string sourceHtml)
         {
-            this.SourceHTML = sourceHTML;
+            this.SourceHtml = sourceHtml;
         }
 
         [JsonProperty("html", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceHTML { get; set; }
+        public string SourceHtml { get; set; }
 
         [JsonProperty("engine", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestInputEngineType? Engine { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail.RequestInputEngineType.Modern;
@@ -3096,10 +3119,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         public string Margins { get; set; }
 
         [JsonProperty("headerHtml")]
-        public string HeaderHTML { get; set; }
+        public string HeaderHtml { get; set; }
 
         [JsonProperty("footerHtml")]
-        public string FooterHTML { get; set; }
+        public string FooterHtml { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -3141,10 +3164,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         public string FileContent { get; set; }
 
         [JsonProperty("rawHtml")]
-        public string HTMLData { get; set; }
+        public string HtmlData { get; set; }
 
         [JsonProperty("htmlUrl")]
-        public string HTMLURL { get; set; }
+        public string HtmlUrl { get; set; }
 
         [JsonProperty("paperSize", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestInputPaperSizeType? PaperSize { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail.RequestInputPaperSizeType.A4;
@@ -3153,7 +3176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         public RequestInputOrientationType? Orientation { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail.RequestInputOrientationType.Portrait;
 
         [JsonProperty("decodeHtml")]
-        public bool? DecodeHTML { get; set; }
+        public bool? DecodeHtml { get; set; }
 
         [JsonProperty("margins")]
         public string Margins { get; set; }
@@ -3188,13 +3211,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class DocumentsWithFilenamesResponse
     {
         [JsonProperty("resultFiles")]
-        public DocumentContentWithFilenameResponse[] ResultFiles { get; set; }
+        public DocumentContentWithFileNameResponse[] ResultFiles { get; set; }
     }
 
-    public class DocumentContentWithFilenameResponse
+    public class DocumentContentWithFileNameResponse
     {
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("fileContent")]
         public string FileContent { get; set; }
@@ -3252,7 +3275,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public enum RequestInputResultTypeType
     {
         Raw,
-        HTML
+        [EnumMember(Value = "HTML")]
+        Html
     }
 
     public class FlowV1DocumentsJobsPdf2ImageV2RequestInput
@@ -3266,7 +3290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
 
         [JsonProperty("filenamePrefix")]
-        public string FilenamePrefix { get; set; }
+        public string FileNamePrefix { get; set; }
 
         [JsonProperty("startPage")]
         public int? StartPage { get; set; }
@@ -3281,7 +3305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         public RequestInputImageFormatType? ImageFormat { get; set; }
 
         [JsonProperty("dpi")]
-        public int? DPI { get; set; }
+        public int? Dpi { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }
@@ -3312,17 +3336,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
 
     public class FlowV1DocumentsJobsFillInPdfFormRequestInput
     {
-        public FlowV1DocumentsJobsFillInPdfFormRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent documentContent, JToken jSONData)
+        public FlowV1DocumentsJobsFillInPdfFormRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent documentContent, JToken jsonData)
         {
             this.DocumentContent = documentContent;
-            this.JSONData = jSONData;
+            this.JsonData = jsonData;
         }
 
         [JsonProperty("documentContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent DocumentContent { get; set; }
 
         [JsonProperty("jsonData", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken JSONData { get; set; }
+        public JToken JsonData { get; set; }
 
         [JsonProperty("lockFormFields")]
         public bool? LockFormFields { get; set; }
@@ -3372,10 +3396,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         public bool EnableAnnotate { get; set; }
 
         [JsonProperty("newOwnerPassword")]
-        public string PDFOwnerPassword { get; set; }
+        public string PdfOwnerPassword { get; set; }
 
         [JsonProperty("newUserPassword")]
-        public string PDFUserPassword { get; set; }
+        public string PdfUserPassword { get; set; }
 
         [JsonProperty("password")]
         public string Password { get; set; }
@@ -3440,14 +3464,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
 
     public class FlowV1DocumentsJobsParseCsvRequestInput
     {
-        public FlowV1DocumentsJobsParseCsvRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent contentOfCSVDocument, string headers)
+        public FlowV1DocumentsJobsParseCsvRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent contentOfCsvDocument, string headers)
         {
-            this.ContentOfCSVDocument = contentOfCSVDocument;
+            this.ContentOfCsvDocument = contentOfCsvDocument;
             this.Headers = headers;
         }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ContentOfCSVDocument { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ContentOfCsvDocument { get; set; }
 
         [JsonProperty("delimiter")]
         public RequestInputDelimiterType? Delimiter { get; set; }
@@ -3476,13 +3500,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
 
     public class FlowV1DocumentsJobsCsv2XlsxRequestInput
     {
-        public FlowV1DocumentsJobsCsv2XlsxRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent contentOfCSVDocument)
+        public FlowV1DocumentsJobsCsv2XlsxRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent contentOfCsvDocument)
         {
-            this.ContentOfCSVDocument = contentOfCSVDocument;
+            this.ContentOfCsvDocument = contentOfCsvDocument;
         }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ContentOfCSVDocument { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ContentOfCsvDocument { get; set; }
 
         [JsonProperty("delimiter")]
         public RequestInputDelimiterType? Delimiter { get; set; }
@@ -3502,23 +3526,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
 
     public class Csv2XlsxColumnMapping
     {
-        public Csv2XlsxColumnMapping(string cSVColumnNameOrIndex)
+        public Csv2XlsxColumnMapping(string csvColumnNameOrIndex)
         {
-            this.CSVColumnNameOrIndex = cSVColumnNameOrIndex;
+            this.CsvColumnNameOrIndex = csvColumnNameOrIndex;
         }
 
         [JsonProperty("csvColumnIndexOrName", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CSVColumnNameOrIndex { get; set; }
+        public string CsvColumnNameOrIndex { get; set; }
 
         [JsonProperty("xlsxColumnType")]
-        public Csv2XlsxColumnMappingXLSXColumnTypeType? XLSXColumnType { get; set; }
+        public Csv2XlsxColumnMappingXlsxColumnTypeType? XlsxColumnType { get; set; }
 
         [JsonProperty("xlsxColumnName")]
-        public string XLSXColumnName { get; set; }
+        public string XlsxColumnName { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum Csv2XlsxColumnMappingXLSXColumnTypeType
+    public enum Csv2XlsxColumnMappingXlsxColumnTypeType
     {
         General,
         Text,
@@ -3537,16 +3561,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class FlowV1DocumentsJobsJson2XlsxRequestInput
     {
         [JsonProperty("content")]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent JSONFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent JsonFileContent { get; set; }
 
         [JsonProperty("jsonData")]
-        public string JSONData { get; set; }
+        public string JsonData { get; set; }
 
         [JsonProperty("locale", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestInputLocaleType? Locale { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail.RequestInputLocaleType.EnUS;
 
         [JsonProperty("pathToJsonArray")]
-        public string PathToJSONArray { get; set; }
+        public string PathToJsonArray { get; set; }
 
         [JsonProperty("mappings")]
         public Json2XlsxColumnMapping[] Mappings { get; set; }
@@ -3554,23 +3578,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
 
     public class Json2XlsxColumnMapping
     {
-        public Json2XlsxColumnMapping(string jSONProperty)
+        public Json2XlsxColumnMapping(string jsonProperty)
         {
-            this.JSONProperty = jSONProperty;
+            this.JsonProperty = jsonProperty;
         }
 
         [JsonProperty("jsonProperty", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string JSONProperty { get; set; }
+        public string JsonProperty { get; set; }
 
         [JsonProperty("xlsxColumnType")]
-        public Json2XlsxColumnMappingXLSXColumnTypeType? XLSXColumnType { get; set; }
+        public Json2XlsxColumnMappingXlsxColumnTypeType? XlsxColumnType { get; set; }
 
         [JsonProperty("xlsxColumnName")]
-        public string XLSXColumnName { get; set; }
+        public string XlsxColumnName { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum Json2XlsxColumnMappingXLSXColumnTypeType
+    public enum Json2XlsxColumnMappingXlsxColumnTypeType
     {
         General,
         Text,
@@ -3589,16 +3613,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
     public class FlowV1DocumentsJobsJson2CsvRequestInput
     {
         [JsonProperty("content")]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent JSONFileContent { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent JsonFileContent { get; set; }
 
         [JsonProperty("jsonData")]
-        public string JSONData { get; set; }
+        public string JsonData { get; set; }
 
         [JsonProperty("locale", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestInputLocaleType? Locale { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail.RequestInputLocaleType.EnUS;
 
         [JsonProperty("pathToJsonArray")]
-        public string PathToJSONArray { get; set; }
+        public string PathToJsonArray { get; set; }
 
         [JsonProperty("delimiter")]
         public RequestInputDelimiterType? Delimiter { get; set; }

@@ -819,7 +819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "morta")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadTableViewCSV(Expression<Func<string>> viewId, Expression<Func<string>> filter = null, Expression<Func<string>> sort = null, Expression<Func<string>> processId = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadTableViewCsv(Expression<Func<string>> viewId, Expression<Func<string>> filter = null, Expression<Func<string>> sort = null, Expression<Func<string>> processId = null)
         {
             var __workflow_viewId = WorkflowExpression.Compile(viewId, nameof(viewId), required: true);
             var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
@@ -2039,18 +2039,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "morta")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetFileForTableCell(Expression<Func<string>> tableId, Expression<Func<string>> columnId, Expression<Func<string>> filename)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> GetFileForTableCell(Expression<Func<string>> tableId, Expression<Func<string>> columnId, Expression<Func<string>> fileName)
         {
             var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
             var __workflow_columnId = WorkflowExpression.Compile(columnId, nameof(columnId), required: true);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
             return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v1/table/{0}/file", __workflow_tableId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["column_id"] = ExpressionConverter.Convert(__workflow_columnId);
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
+                callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 return new ApiConnectionAction<string>(callPayload);
             });
         }
@@ -2156,7 +2156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "morta")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadTableAsCSV(Expression<Func<string>> tableId, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadTableAsCsv(Expression<Func<string>> tableId, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null)
         {
             var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
@@ -2665,11 +2665,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Morta
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputMethodType
     {
-        GET,
-        PUT,
-        POST,
-        DELETE,
-        PATCH
+        [EnumMember(Value = "GET")]
+        Get,
+        [EnumMember(Value = "PUT")]
+        Put,
+        [EnumMember(Value = "POST")]
+        Post,
+        [EnumMember(Value = "DELETE")]
+        Delete,
+        [EnumMember(Value = "PATCH")]
+        Patch
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

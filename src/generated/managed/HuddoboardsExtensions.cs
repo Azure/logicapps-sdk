@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         public string Organisation { get; set; }
 
         [JsonProperty("providerURL")]
-        public string ProviderURL { get; set; }
+        public string ProviderUrl { get; set; }
     }
 
     public class AddedToBoardBodyInput

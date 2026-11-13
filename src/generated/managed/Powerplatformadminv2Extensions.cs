@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
     public class Powerplatformadminv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeAdvisorMCP(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> InvokeAdvisorMcp(Expression<Func<string>> mcpSessionId = null, Expression<Func<QueryRequestInput>> queryRequest = null)
         {
             var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
@@ -952,16 +952,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<CrossTenantConnectionReportsResponseWithOdataContinuation, ApiConnectionActionConfiguration> ListCrossTenantConnectionReports(Expression<Func<string>> apiVersion)
+        public IBodyWorkflowAction<CrossTenantConnectionReportsResponseWithODataContinuation, ApiConnectionActionConfiguration> ListCrossTenantConnectionReports(Expression<Func<string>> apiVersion)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
-            return new DeferredBodyAction<CrossTenantConnectionReportsResponseWithOdataContinuation, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CrossTenantConnectionReportsResponseWithODataContinuation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/governance/crossTenantConnectionReports";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
-                return new ApiConnectionAction<CrossTenantConnectionReportsResponseWithOdataContinuation>(callPayload);
+                return new ApiConnectionAction<CrossTenantConnectionReportsResponseWithODataContinuation>(callPayload);
             });
         }
 
@@ -1120,11 +1120,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<BillingPolicyResponseModelResponseWithOdataContinuation, ApiConnectionActionConfiguration> ListBillingPolicies(Expression<Func<string>> apiVersion, Expression<Func<string>> top = null)
+        public IBodyWorkflowAction<BillingPolicyResponseModelResponseWithODataContinuation, ApiConnectionActionConfiguration> ListBillingPolicies(Expression<Func<string>> apiVersion, Expression<Func<string>> top = null)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<BillingPolicyResponseModelResponseWithOdataContinuation, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<BillingPolicyResponseModelResponseWithODataContinuation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/licensing/billingPolicies";
                 var apiCallHttpMethod = "get";
@@ -1132,7 +1132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
-                return new ApiConnectionAction<BillingPolicyResponseModelResponseWithOdataContinuation>(callPayload);
+                return new ApiConnectionAction<BillingPolicyResponseModelResponseWithODataContinuation>(callPayload);
             });
         }
 
@@ -1202,17 +1202,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation, ApiConnectionActionConfiguration> ListBillingPolicyEnvironments(Expression<Func<string>> billingPolicyId, Expression<Func<string>> apiVersion)
+        public IBodyWorkflowAction<BillingPolicyEnvironmentResponseModelV1ResponseWithODataContinuation, ApiConnectionActionConfiguration> ListBillingPolicyEnvironments(Expression<Func<string>> billingPolicyId, Expression<Func<string>> apiVersion)
         {
             var __workflow_billingPolicyId = WorkflowExpression.Compile(billingPolicyId, nameof(billingPolicyId), required: true);
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
-            return new DeferredBodyAction<BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<BillingPolicyEnvironmentResponseModelV1ResponseWithODataContinuation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/licensing/billingPolicies/{0}/environments", __workflow_billingPolicyId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
-                return new ApiConnectionAction<BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation>(callPayload);
+                return new ApiConnectionAction<BillingPolicyEnvironmentResponseModelV1ResponseWithODataContinuation>(callPayload);
             });
         }
 
@@ -1332,11 +1332,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<IsvContractResponseModelResponseWithOdataContinuation, ApiConnectionActionConfiguration> ListISVContracts(Expression<Func<string>> apiVersion, Expression<Func<string>> top = null)
+        public IBodyWorkflowAction<IsvContractResponseModelResponseWithODataContinuation, ApiConnectionActionConfiguration> ListIsvContracts(Expression<Func<string>> apiVersion, Expression<Func<string>> top = null)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
-            return new DeferredBodyAction<IsvContractResponseModelResponseWithOdataContinuation, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<IsvContractResponseModelResponseWithODataContinuation, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/licensing/isvContracts";
                 var apiCallHttpMethod = "get";
@@ -1344,12 +1344,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                 if (__workflow_top != null)
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
-                return new ApiConnectionAction<IsvContractResponseModelResponseWithOdataContinuation>(callPayload);
+                return new ApiConnectionAction<IsvContractResponseModelResponseWithODataContinuation>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<IsvContractResponseModel, ApiConnectionActionConfiguration> CreateISVContract(Expression<Func<string>> apiVersion, Expression<Func<CreateISVContractBodyInput>> body)
+        public IBodyWorkflowAction<IsvContractResponseModel, ApiConnectionActionConfiguration> CreateIsvContract(Expression<Func<string>> apiVersion, Expression<Func<CreateIsvContractBodyInput>> body)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -1365,7 +1365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<IsvContractResponseModel, ApiConnectionActionConfiguration> GetISVContract(Expression<Func<string>> isvContractId, Expression<Func<string>> apiVersion)
+        public IBodyWorkflowAction<IsvContractResponseModel, ApiConnectionActionConfiguration> GetIsvContract(Expression<Func<string>> isvContractId, Expression<Func<string>> apiVersion)
         {
             var __workflow_isvContractId = WorkflowExpression.Compile(isvContractId, nameof(isvContractId), required: true);
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
@@ -1380,7 +1380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<IsvContractResponseModel, ApiConnectionActionConfiguration> UpdateISVContract(Expression<Func<string>> isvContractId, Expression<Func<string>> apiVersion, Expression<Func<UpdateISVContractBodyInput>> body = null)
+        public IBodyWorkflowAction<IsvContractResponseModel, ApiConnectionActionConfiguration> UpdateIsvContract(Expression<Func<string>> isvContractId, Expression<Func<string>> apiVersion, Expression<Func<UpdateIsvContractBodyInput>> body = null)
         {
             var __workflow_isvContractId = WorkflowExpression.Compile(isvContractId, nameof(isvContractId), required: true);
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
@@ -1398,7 +1398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteISVContract(Expression<Func<string>> isvContractId, Expression<Func<string>> apiVersion)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteIsvContract(Expression<Func<string>> isvContractId, Expression<Func<string>> apiVersion)
         {
             var __workflow_isvContractId = WorkflowExpression.Compile(isvContractId, nameof(isvContractId), required: true);
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
@@ -1982,11 +1982,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpEnvironmentManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<McpQueryResponse, ApiConnectionActionConfiguration> McpEnvironmentManagement(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyAction<MCPQueryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<McpQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mcp/EnvironmentManagement";
                 var apiCallHttpMethod = "post";
@@ -1995,16 +1995,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 if (__workflow_queryRequest != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
-                return new ApiConnectionAction<MCPQueryResponse>(callPayload);
+                return new ApiConnectionAction<McpQueryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
-        public IBodyWorkflowAction<MCPQueryResponse, ApiConnectionActionConfiguration> McpGovernance(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<McpQueryResponse, ApiConnectionActionConfiguration> McpGovernance(Expression<Func<QueryRequestInput>> queryRequest = null, Expression<Func<string>> sessionId = null)
         {
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
-            return new DeferredBodyAction<MCPQueryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<McpQueryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mcp/Governance";
                 var apiCallHttpMethod = "post";
@@ -2013,7 +2013,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
                 if (__workflow_queryRequest != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_queryRequest);
-                return new ApiConnectionAction<MCPQueryResponse>(callPayload);
+                return new ApiConnectionAction<McpQueryResponse>(callPayload);
             });
         }
 
@@ -3598,7 +3598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public RuleAssignment[] Value { get; set; }
     }
 
-    public class CrossTenantConnectionReportsResponseWithOdataContinuation
+    public class CrossTenantConnectionReportsResponseWithODataContinuation
     {
         [JsonProperty("value")]
         public CrossTenantConnectionReport[] Value { get; set; }
@@ -4120,22 +4120,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         ApiCalls,
         VAConversations,
         AppPassForTeams,
-        PAUnattendedRPA,
+        [EnumMember(Value = "PAUnattendedRPA")]
+        PAUnattendedRpa,
         PowerPagesAuthenticated,
         PowerPagesAnonymous,
-        PAHostedRPA,
+        [EnumMember(Value = "PAHostedRPA")]
+        PAHostedRpa,
         Invoice,
         PortalAddOns,
         PowerAutomatePerProcess,
-        MCSSessions,
-        MCSMessages,
+        [EnumMember(Value = "MCSSessions")]
+        McsSessions,
+        [EnumMember(Value = "MCSMessages")]
+        McsMessages,
         SCMessages,
         ProcessMiningDataStorage,
-        W365APAYGO,
+        [EnumMember(Value = "W365APAYGO")]
+        W365Apaygo,
         [EnumMember(Value = "Internal_AI_BC")]
-        InternalAIBC,
+        InternalAibc,
         [EnumMember(Value = "Internal_ISV_DataverseUserSync")]
-        InternalISVDataverseUserSync,
+        InternalIsvDataverseUserSync,
         [EnumMember(Value = "Internal_AI_TemporaryCapacity")]
         InternalAITemporaryCapacity,
         [EnumMember(Value = "Internal_OmniChannelRecordRouting")]
@@ -4154,9 +4159,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         PowerPagesMigrationPortalLogins,
         [EnumMember(Value = "PowerPagesMigration_PortalViews")]
         PowerPagesMigrationPortalViews,
-        MCSMessagesStandard,
-        MCSMessagesGenAI,
-        MCSMessagesUnbillable,
+        [EnumMember(Value = "MCSMessagesStandard")]
+        McsMessagesStandard,
+        [EnumMember(Value = "MCSMessagesGenAI")]
+        McsMessagesGenAI,
+        [EnumMember(Value = "MCSMessagesUnbillable")]
+        McsMessagesUnbillable,
         TenantM365Copilot
     }
 
@@ -4221,10 +4229,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         AppPass,
         AppPassForTeams,
         Invoice,
-        MCSSessions,
-        MCSMessages,
-        PAHostedRPA,
-        PAUnattendedRPA,
+        [EnumMember(Value = "MCSSessions")]
+        McsSessions,
+        [EnumMember(Value = "MCSMessages")]
+        McsMessages,
+        [EnumMember(Value = "PAHostedRPA")]
+        PAHostedRpa,
+        [EnumMember(Value = "PAUnattendedRPA")]
+        PAUnattendedRpa,
         PerFlowPlan,
         PortalAddOns,
         PortalLogins,
@@ -4286,10 +4298,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         AppPass,
         AppPassForTeams,
         Invoice,
-        MCSSessions,
-        MCSMessages,
-        PAHostedRPA,
-        PAUnattendedRPA,
+        [EnumMember(Value = "MCSSessions")]
+        McsSessions,
+        [EnumMember(Value = "MCSMessages")]
+        McsMessages,
+        [EnumMember(Value = "PAHostedRPA")]
+        PAHostedRpa,
+        [EnumMember(Value = "PAUnattendedRPA")]
+        PAUnattendedRpa,
         PerFlowPlan,
         PortalAddOns,
         PortalLogins,
@@ -4320,7 +4336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         Deny
     }
 
-    public class BillingPolicyResponseModelResponseWithOdataContinuation
+    public class BillingPolicyResponseModelResponseWithODataContinuation
     {
         [JsonProperty("value")]
         public BillingPolicyResponseModel[] Value { get; set; }
@@ -4439,7 +4455,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public CreateBillingPolicyBillingPolicyStatus? Status { get; set; }
     }
 
-    public class BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation
+    public class BillingPolicyEnvironmentResponseModelV1ResponseWithODataContinuation
     {
         [JsonProperty("value")]
         public BillingPolicyEnvironmentResponseModelV1[] Value { get; set; }
@@ -4496,7 +4512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public int? Allocated { get; set; }
     }
 
-    public class IsvContractResponseModelResponseWithOdataContinuation
+    public class IsvContractResponseModelResponseWithODataContinuation
     {
         [JsonProperty("value")]
         public IsvContractResponseModel[] Value { get; set; }
@@ -4520,16 +4536,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string Geo { get; set; }
 
         [JsonProperty("consumer")]
-        public CreateISVContractConsumerIdentityModelResponse Consumer { get; set; }
+        public CreateIsvContractConsumerIdentityModelResponse Consumer { get; set; }
 
         [JsonProperty("conditions")]
-        public CreateISVContractBillingPolicyConditionsModelResponse Conditions { get; set; }
+        public CreateIsvContractBillingPolicyConditionsModelResponse Conditions { get; set; }
 
         [JsonProperty("billingInstrument")]
         public CreateBillingPolicyBillingInstrumentModelResponse BillingInstrument { get; set; }
 
         [JsonProperty("powerAutomatePolicy")]
-        public CreateISVContractPowerAutomatePolicyModelResponse PowerAutomatePolicy { get; set; }
+        public CreateIsvContractPowerAutomatePolicyModelResponse PowerAutomatePolicy { get; set; }
 
         [JsonProperty("createdOn")]
         public string CreatedOn { get; set; }
@@ -4544,55 +4560,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public LicensingPrincipal LastModifiedBy { get; set; }
     }
 
-    public class CreateISVContractConsumerIdentityModelResponse
+    public class CreateIsvContractConsumerIdentityModelResponse
     {
         [JsonProperty("tenantId")]
         public string TenantId { get; set; }
     }
 
-    public class CreateISVContractBillingPolicyConditionsModelResponse
+    public class CreateIsvContractBillingPolicyConditionsModelResponse
     {
         [JsonProperty("apiFilter")]
-        public CreateISVContractBillingPolicyConditionsApiFilterModelResponse ApiFilter { get; set; }
+        public CreateIsvContractBillingPolicyConditionsApiFilterModelResponse ApiFilter { get; set; }
     }
 
-    public class CreateISVContractBillingPolicyConditionsApiFilterModelResponse
+    public class CreateIsvContractBillingPolicyConditionsApiFilterModelResponse
     {
         [JsonProperty("allowOtherPremiumConnectors")]
         public bool AllowOtherPremiumConnectors { get; set; }
 
         [JsonProperty("requiredApis")]
-        public CreateISVContractBillingPolicyConditionsApiModelResponse[] RequiredApis { get; set; }
+        public CreateIsvContractBillingPolicyConditionsApiModelResponse[] RequiredApis { get; set; }
     }
 
-    public class CreateISVContractBillingPolicyConditionsApiModelResponse
+    public class CreateIsvContractBillingPolicyConditionsApiModelResponse
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateISVContractPowerAutomatePolicyModelResponse
+    public class CreateIsvContractPowerAutomatePolicyModelResponse
     {
         [JsonProperty("cloudFlowRunsPayAsYouGoState")]
-        public CreateISVContractPayAsYouGoStateResponse CloudFlowRunsPayAsYouGoState { get; set; }
+        public CreateIsvContractPayAsYouGoStateResponse CloudFlowRunsPayAsYouGoState { get; set; }
 
         [JsonProperty("desktopFlowUnattendedRunsPayAsYouGoState")]
-        public CreateISVContractPayAsYouGoStateResponse DesktopFlowUnattendedRunsPayAsYouGoState { get; set; }
+        public CreateIsvContractPayAsYouGoStateResponse DesktopFlowUnattendedRunsPayAsYouGoState { get; set; }
 
         [JsonProperty("desktopFlowAttendedRunsPayAsYouGoState")]
-        public CreateISVContractPayAsYouGoStateResponse DesktopFlowAttendedRunsPayAsYouGoState { get; set; }
+        public CreateIsvContractPayAsYouGoStateResponse DesktopFlowAttendedRunsPayAsYouGoState { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateISVContractPayAsYouGoStateResponse
+    public enum CreateIsvContractPayAsYouGoStateResponse
     {
         Enabled,
         Disabled
     }
 
-    public class CreateISVContractBodyInput
+    public class CreateIsvContractBodyInput
     {
-        public CreateISVContractBodyInput(string name, CreateBillingPolicyBillingPolicyStatus status, string geo, CreateISVContractConsumerIdentityModel consumer, CreateISVContractBillingPolicyConditionsModel conditions, CreateBillingPolicyBillingInstrumentModel billingInstrument, CreateISVContractPowerAutomatePolicyModel powerAutomatePolicy)
+        public CreateIsvContractBodyInput(string name, CreateBillingPolicyBillingPolicyStatus status, string geo, CreateIsvContractConsumerIdentityModel consumer, CreateIsvContractBillingPolicyConditionsModel conditions, CreateBillingPolicyBillingInstrumentModel billingInstrument, CreateIsvContractPowerAutomatePolicyModel powerAutomatePolicy)
         {
             this.Name = name;
             this.Status = status;
@@ -4613,65 +4629,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string Geo { get; set; }
 
         [JsonProperty("consumer", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateISVContractConsumerIdentityModel Consumer { get; set; }
+        public CreateIsvContractConsumerIdentityModel Consumer { get; set; }
 
         [JsonProperty("conditions", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateISVContractBillingPolicyConditionsModel Conditions { get; set; }
+        public CreateIsvContractBillingPolicyConditionsModel Conditions { get; set; }
 
         [JsonProperty("billingInstrument", DefaultValueHandling = DefaultValueHandling.Include)]
         public CreateBillingPolicyBillingInstrumentModel BillingInstrument { get; set; }
 
         [JsonProperty("powerAutomatePolicy", DefaultValueHandling = DefaultValueHandling.Include)]
-        public CreateISVContractPowerAutomatePolicyModel PowerAutomatePolicy { get; set; }
+        public CreateIsvContractPowerAutomatePolicyModel PowerAutomatePolicy { get; set; }
     }
 
-    public class CreateISVContractConsumerIdentityModel
+    public class CreateIsvContractConsumerIdentityModel
     {
         [JsonProperty("tenantId")]
         public string TenantId { get; set; }
     }
 
-    public class CreateISVContractBillingPolicyConditionsModel
+    public class CreateIsvContractBillingPolicyConditionsModel
     {
         [JsonProperty("apiFilter")]
-        public CreateISVContractBillingPolicyConditionsApiFilterModel ApiFilter { get; set; }
+        public CreateIsvContractBillingPolicyConditionsApiFilterModel ApiFilter { get; set; }
     }
 
-    public class CreateISVContractBillingPolicyConditionsApiFilterModel
+    public class CreateIsvContractBillingPolicyConditionsApiFilterModel
     {
         [JsonProperty("allowOtherPremiumConnectors")]
         public bool? AllowOtherPremiumConnectors { get; set; }
 
         [JsonProperty("requiredApis")]
-        public CreateISVContractBillingPolicyConditionsApiModel[] RequiredApis { get; set; }
+        public CreateIsvContractBillingPolicyConditionsApiModel[] RequiredApis { get; set; }
     }
 
-    public class CreateISVContractBillingPolicyConditionsApiModel
+    public class CreateIsvContractBillingPolicyConditionsApiModel
     {
         [JsonProperty("name")]
         public string Name { get; set; }
     }
 
-    public class CreateISVContractPowerAutomatePolicyModel
+    public class CreateIsvContractPowerAutomatePolicyModel
     {
         [JsonProperty("cloudFlowRunsPayAsYouGoState")]
-        public CreateISVContractPayAsYouGoState? CloudFlowRunsPayAsYouGoState { get; set; }
+        public CreateIsvContractPayAsYouGoState? CloudFlowRunsPayAsYouGoState { get; set; }
 
         [JsonProperty("desktopFlowUnattendedRunsPayAsYouGoState")]
-        public CreateISVContractPayAsYouGoState? DesktopFlowUnattendedRunsPayAsYouGoState { get; set; }
+        public CreateIsvContractPayAsYouGoState? DesktopFlowUnattendedRunsPayAsYouGoState { get; set; }
 
         [JsonProperty("desktopFlowAttendedRunsPayAsYouGoState")]
-        public CreateISVContractPayAsYouGoState? DesktopFlowAttendedRunsPayAsYouGoState { get; set; }
+        public CreateIsvContractPayAsYouGoState? DesktopFlowAttendedRunsPayAsYouGoState { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CreateISVContractPayAsYouGoState
+    public enum CreateIsvContractPayAsYouGoState
     {
         Enabled,
         Disabled
     }
 
-    public class UpdateISVContractBodyInput
+    public class UpdateIsvContractBodyInput
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -4680,10 +4696,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public CreateBillingPolicyBillingPolicyStatus? Status { get; set; }
 
         [JsonProperty("conditions")]
-        public CreateISVContractBillingPolicyConditionsModel Conditions { get; set; }
+        public CreateIsvContractBillingPolicyConditionsModel Conditions { get; set; }
 
         [JsonProperty("powerAutomatePolicy")]
-        public CreateISVContractPowerAutomatePolicyModel PowerAutomatePolicy { get; set; }
+        public CreateIsvContractPowerAutomatePolicyModel PowerAutomatePolicy { get; set; }
     }
 
     public class TenantCapacityDetailsModel
@@ -5382,7 +5398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string ConnectorDisplayName { get; set; }
 
         [JsonProperty("iconUri")]
-        public string IconURI { get; set; }
+        public string IconUri { get; set; }
 
         [JsonProperty("dataSources")]
         public string[] DataSources { get; set; }
@@ -5400,10 +5416,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public bool BypassConsent { get; set; }
 
         [JsonProperty("apiTier")]
-        public string APITier { get; set; }
+        public string ApiTier { get; set; }
 
         [JsonProperty("isCustomApiConnection")]
-        public bool CustomAPIFlag { get; set; }
+        public bool CustomApiFlag { get; set; }
 
         [JsonProperty("runtimePolicyName")]
         public string RuntimePolicyName { get; set; }
@@ -5789,7 +5805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public ConversationTranscriptToolCall[] ToolCalls { get; set; }
     }
 
-    public class MCPQueryResponse
+    public class McpQueryResponse
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }

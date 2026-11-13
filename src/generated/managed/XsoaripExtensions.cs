@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xsoarip
     public class XsoaripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xsoarip")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendToXSOAR(Expression<Func<object>> requestBody)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendToXsoar(Expression<Func<object>> requestBody)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>

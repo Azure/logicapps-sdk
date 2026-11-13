@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
     public class JobsGetResponseItemRequestTypeFilesTypeItem
     {
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("content_type")]
         public string ContentType { get; set; }
@@ -252,11 +252,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum StatusInput
     {
-        COMPLETED,
+        [EnumMember(Value = "COMPLETED")]
+        Completed,
         [EnumMember(Value = "IN_PROGRESS")]
-        INPROGRESS,
-        QUEUED,
-        FAILED
+        InProgress,
+        [EnumMember(Value = "QUEUED")]
+        Queued,
+        [EnumMember(Value = "FAILED")]
+        Failed
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1011,7 +1014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
     public class JobDetailsGetResponseRequestTypeFilesTypeItem
     {
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("content_type")]
         public string ContentType { get; set; }

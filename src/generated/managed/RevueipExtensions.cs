@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Account, ApiConnectionActionConfiguration> GetProfileURL()
+        public IBodyWorkflowAction<Account, ApiConnectionActionConfiguration> GetProfileUrl()
         {
             return new DeferredBodyAction<Account, ApiConnectionActionConfiguration>(() =>
             {

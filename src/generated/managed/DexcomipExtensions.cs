@@ -13,11 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dexcomip
     public class DexcomipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dexcomip")]
-        public IBodyWorkflowAction<GetEGVsResponse, ApiConnectionActionConfiguration> GetEGVs(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
+        public IBodyWorkflowAction<GetEgvsResponse, ApiConnectionActionConfiguration> GetEgvs(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
         {
             var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
             var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
-            return new DeferredBodyAction<GetEGVsResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetEgvsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/users/self/egvs";
                 var apiCallHttpMethod = "get";
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dexcomip
                     callPayload.Queries["startDate"] = ExpressionConverter.Convert(__workflow_startDate);
                 if (__workflow_endDate != null)
                     callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
-                return new ApiConnectionAction<GetEGVsResponse>(callPayload);
+                return new ApiConnectionAction<GetEgvsResponse>(callPayload);
             });
         }
     }
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dexcomip
     {
     }
 
-    public class GetEGVsResponse
+    public class GetEgvsResponse
     {
         [JsonProperty("unit")]
         public string Unit { get; set; }
@@ -44,10 +44,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dexcomip
         public string RateUnit { get; set; }
 
         [JsonProperty("egvs")]
-        public GetEGVsResponseEgvsTypeItem[] Egvs { get; set; }
+        public GetEgvsResponseEgvsTypeItem[] Egvs { get; set; }
     }
 
-    public class GetEGVsResponseEgvsTypeItem
+    public class GetEgvsResponseEgvsTypeItem
     {
         [JsonProperty("systemTime")]
         public string SystemTime { get; set; }

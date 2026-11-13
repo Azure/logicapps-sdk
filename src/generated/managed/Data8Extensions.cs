@@ -27,30 +27,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsCallableTPSResponse, ApiConnectionActionConfiguration> IsCallableTPS(Expression<Func<IsCallableCTPSBodyInput>> body)
+        public IBodyWorkflowAction<IsCallableTpsResponse, ApiConnectionActionConfiguration> IsCallableTps(Expression<Func<IsCallableCtpsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<IsCallableTPSResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<IsCallableTpsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/TPS/IsCallable.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<IsCallableTPSResponse>(callPayload);
+                return new ApiConnectionAction<IsCallableTpsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsCallableCTPSResponse, ApiConnectionActionConfiguration> IsCallableCTPS(Expression<Func<IsCallableCTPSBodyInput>> body)
+        public IBodyWorkflowAction<IsCallableCtpsResponse, ApiConnectionActionConfiguration> IsCallableCtps(Expression<Func<IsCallableCtpsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<IsCallableCTPSResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<IsCallableCtpsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CTPS/IsCallable.json";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<IsCallableCTPSResponse>(callPayload);
+                return new ApiConnectionAction<IsCallableCtpsResponse>(callPayload);
             });
         }
 
@@ -250,23 +250,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string Surname { get; set; }
     }
 
-    public class IsCallableTPSResponse
+    public class IsCallableTpsResponse
     {
-        public IsCallableTPSResponseStatusType Status { get; set; }
+        public IsCallableTpsResponseStatusType Status { get; set; }
         public bool Callable { get; set; }
         public string TelephoneNumber { get; set; }
     }
 
-    public class IsCallableTPSResponseStatusType
+    public class IsCallableTpsResponseStatusType
     {
         public bool Success { get; set; }
         public string ErrorMessage { get; set; }
         public double CreditsRemaining { get; set; }
     }
 
-    public class IsCallableCTPSBodyInput
+    public class IsCallableCtpsBodyInput
     {
-        public IsCallableCTPSBodyInput(string number)
+        public IsCallableCtpsBodyInput(string number)
         {
             this.Number = number;
         }
@@ -275,14 +275,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string Number { get; set; }
     }
 
-    public class IsCallableCTPSResponse
+    public class IsCallableCtpsResponse
     {
-        public IsCallableCTPSResponseStatusType Status { get; set; }
+        public IsCallableCtpsResponseStatusType Status { get; set; }
         public bool Callable { get; set; }
         public string TelephoneNumber { get; set; }
     }
 
-    public class IsCallableCTPSResponseStatusType
+    public class IsCallableCtpsResponseStatusType
     {
         public bool Success { get; set; }
         public string ErrorMessage { get; set; }
@@ -295,20 +295,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string Valid { get; set; }
         public string SortCode { get; set; }
         public string AccountNumber { get; set; }
-        public string BICCode { get; set; }
-        public string IBAN { get; set; }
+
+        [JsonProperty("BICCode")]
+        public string BicCode { get; set; }
+
+        [JsonProperty("IBAN")]
+        public string Iban { get; set; }
         public string BranchName { get; set; }
         public string ShortBankName { get; set; }
         public string FullBankName { get; set; }
         public IsValidBankAccountResponseAddressType Address { get; set; }
-        public bool AcceptsBACSPayments { get; set; }
+
+        [JsonProperty("AcceptsBACSPayments")]
+        public bool AcceptsBacsPayments { get; set; }
         public bool AcceptsDirectDebitTransactions { get; set; }
         public bool AcceptsDirectCreditTransactions { get; set; }
         public bool AcceptsUnpaidChequeClaimTransactions { get; set; }
         public bool AcceptsBuildingSocietyCreditTransactions { get; set; }
         public bool AcceptsDividendInterestPaymentTransactions { get; set; }
         public bool AcceptsDirectDebitInstructionTransactions { get; set; }
-        public bool AcceptsCHAPSPayments { get; set; }
+
+        [JsonProperty("AcceptsCHAPSPayments")]
+        public bool AcceptsChapsPayments { get; set; }
         public bool AcceptsCheques { get; set; }
         public bool AcceptsFasterPayments { get; set; }
     }
@@ -535,7 +543,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string PostalCounty { get; set; }
         public string TraditionalCounty { get; set; }
         public string AdministrativeCounty { get; set; }
-        public string CountryISO2 { get; set; }
+
+        [JsonProperty("CountryISO2")]
+        public string CountryIso2 { get; set; }
         public string UniqueReference { get; set; }
         public GetFullAddressResponseResultsTypeItemRawAddressTypeLocationType Location { get; set; }
     }
@@ -603,12 +613,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public bool? UseAnyAvailableCounty { get; set; }
         public bool? UnwantedPunctuation { get; set; }
         public bool? FixBuilding { get; set; }
-        public bool? IncludeUDPRN { get; set; }
+
+        [JsonProperty("IncludeUDPRN")]
+        public bool? IncludeUdprn { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IncludeLocation { get; set; } = true;
         public bool? ReturnResultCount { get; set; }
-        public bool? IncludeNYB { get; set; }
+
+        [JsonProperty("IncludeNYB")]
+        public bool? IncludeNyb { get; set; }
         public bool? IncludeMR { get; set; }
         public BodyInputOptionsTypeFormatterType? Formatter { get; set; }
     }
@@ -617,7 +631,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
     public enum BodyInputOptionsTypeFormatterType
     {
         DefaultFormatter,
-        PAFStandardFormatter,
+        [EnumMember(Value = "PAFStandardFormatter")]
+        PafStandardFormatter,
         NoOrganisationFormatter
     }
 
@@ -765,7 +780,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
     public class DrilldownPredictiveAddressBodyInputOptionsType
     {
         public bool? IncludeMR { get; set; }
-        public bool? IncludeNYB { get; set; }
+
+        [JsonProperty("IncludeNYB")]
+        public bool? IncludeNyb { get; set; }
     }
 
     public class DrilldownPredictiveAddressResponse
@@ -865,7 +882,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string PostalCounty { get; set; }
         public string TraditionalCounty { get; set; }
         public string AdministrativeCounty { get; set; }
-        public string CountryISO2 { get; set; }
+
+        [JsonProperty("CountryISO2")]
+        public string CountryIso2 { get; set; }
         public string UniqueReference { get; set; }
         public RetrievePredictiveAddressResponseResultTypeRawAddressTypeLocationType Location { get; set; }
         public string AdditionalData { get; set; }
@@ -926,11 +945,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputOptionsTypeFormatterType? Formatter { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Data8.BodyInputOptionsTypeFormatterType.DefaultFormatter;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? IncludeUDPRN { get; set; } = false;
+        [JsonProperty("IncludeUDPRN", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncludeUdprn { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? IncludeUPRN { get; set; } = false;
+        [JsonProperty("IncludeUPRN", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncludeUprn { get; set; } = false;
     }
 
     public class CleanseEmailResponse

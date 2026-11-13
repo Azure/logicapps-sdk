@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport
     public class ReportApiExecuteReportResponse
     {
         [JsonProperty("job_ids")]
-        public string[] JobIDs { get; set; }
+        public string[] JobIds { get; set; }
     }
 
     public class BodyInput
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport
         public int ReportInstance { get; set; }
 
         [JsonProperty("output_format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputExecutionParametersTypeOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport.BodyInputExecutionParametersTypeOutputFormatType.CSV;
+        public BodyInputExecutionParametersTypeOutputFormatType OutputFormat { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport.BodyInputExecutionParametersTypeOutputFormatType.Csv;
 
         [JsonProperty("time_zone_offset_in_minutes")]
         public int? TimeZoneOffset { get; set; }
@@ -164,8 +164,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputExecutionParametersTypeOutputFormatType
     {
-        PDF,
-        CSV
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "CSV")]
+        Csv
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -245,8 +247,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReportApiReportJobOutputFormatType
     {
-        PDF,
-        CSV
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "CSV")]
+        Csv
     }
 
     public class ReportApiReportExecutionJob
@@ -261,7 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudrenxtreport
         public ReportApiReportExecutionJobReportInstanceType ReportInstance { get; set; }
 
         [JsonProperty("sas_uri")]
-        public string ReportResultsURI { get; set; }
+        public string ReportResultsUri { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

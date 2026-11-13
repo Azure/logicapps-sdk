@@ -71,18 +71,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goqr
     public enum CharsetSourceInput
     {
         [EnumMember(Value = "ISO-8859-1")]
-        ISO88591,
+        Iso88591,
         [EnumMember(Value = "UTF-8")]
-        UTF8
+        Utf8
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CharsetTargetInput
     {
         [EnumMember(Value = "ISO-8859-1")]
-        ISO88591,
+        Iso88591,
         [EnumMember(Value = "UTF-8")]
-        UTF8
+        Utf8
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

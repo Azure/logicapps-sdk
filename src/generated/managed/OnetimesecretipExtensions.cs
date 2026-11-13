@@ -57,13 +57,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
-        public IBodyWorkflowAction<RetrieveSecretResponse, ApiConnectionActionConfiguration> RetrieveSecret(Expression<Func<string>> sECRETKEY, Expression<Func<string>> passphrase = null)
+        public IBodyWorkflowAction<RetrieveSecretResponse, ApiConnectionActionConfiguration> RetrieveSecret(Expression<Func<string>> secretKey, Expression<Func<string>> passphrase = null)
         {
-            var __workflow_sECRETKEY = WorkflowExpression.Compile(sECRETKEY, nameof(sECRETKEY), required: true);
+            var __workflow_secretKey = WorkflowExpression.Compile(secretKey, nameof(secretKey), required: true);
             var __workflow_passphrase = WorkflowExpression.Compile(passphrase, nameof(passphrase), required: false);
             return new DeferredBodyAction<RetrieveSecretResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/secret/{0}", __workflow_sECRETKEY.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/secret/{0}", __workflow_secretKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_passphrase != null)
@@ -73,12 +73,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
-        public IBodyWorkflowAction<RetrieveMetadataResponse, ApiConnectionActionConfiguration> RetrieveMetadata(Expression<Func<string>> mETADATAKEY)
+        public IBodyWorkflowAction<RetrieveMetadataResponse, ApiConnectionActionConfiguration> RetrieveMetadata(Expression<Func<string>> metadataKey)
         {
-            var __workflow_mETADATAKEY = WorkflowExpression.Compile(mETADATAKEY, nameof(mETADATAKEY), required: true);
+            var __workflow_metadataKey = WorkflowExpression.Compile(metadataKey, nameof(metadataKey), required: true);
             return new DeferredBodyAction<RetrieveMetadataResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/private/{0}", __workflow_mETADATAKEY.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/private/{0}", __workflow_metadataKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<RetrieveMetadataResponse>(callPayload);
@@ -86,12 +86,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
-        public IBodyWorkflowAction<BurnASecretResponse, ApiConnectionActionConfiguration> BurnASecret(Expression<Func<string>> mETADATAKEY)
+        public IBodyWorkflowAction<BurnASecretResponse, ApiConnectionActionConfiguration> BurnASecret(Expression<Func<string>> metadataKey)
         {
-            var __workflow_mETADATAKEY = WorkflowExpression.Compile(mETADATAKEY, nameof(mETADATAKEY), required: true);
+            var __workflow_metadataKey = WorkflowExpression.Compile(metadataKey, nameof(metadataKey), required: true);
             return new DeferredBodyAction<BurnASecretResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/private/{0}/burn", __workflow_mETADATAKEY.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/private/{0}/burn", __workflow_metadataKey.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<BurnASecretResponse>(callPayload);

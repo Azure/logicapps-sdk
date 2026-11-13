@@ -13,13 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     public class ShopranosActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<AttributeSetDTO[], ApiConnectionActionConfiguration> AttributeSetsGETGetAll(Expression<Func<string>> title = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<AttributeSetDto[], ApiConnectionActionConfiguration> AttributeSetsGetGetAll(Expression<Func<string>> title = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<AttributeSetDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AttributeSetDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/AttributeSets";
                 var apiCallHttpMethod = "get";
@@ -32,12 +32,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<AttributeSetDTO[]>(callPayload);
+                return new ApiConnectionAction<AttributeSetDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<AttributeDTO, ApiConnectionActionConfiguration> AttributesGETGetAll(Expression<Func<AttributesGETGetAllStatusInput>> status = null, Expression<Func<string>> type = null, Expression<Func<bool>> isFilterable = null, Expression<Func<bool>> displayOnProduct = null, Expression<Func<bool>> displayInList = null, Expression<Func<string>> search = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<AttributeDto, ApiConnectionActionConfiguration> AttributesGetGetAll(Expression<Func<AttributesGetGetAllStatusInput>> status = null, Expression<Func<string>> type = null, Expression<Func<bool>> isFilterable = null, Expression<Func<bool>> displayOnProduct = null, Expression<Func<bool>> displayInList = null, Expression<Func<string>> search = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<AttributeDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AttributeDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Attributes";
                 var apiCallHttpMethod = "get";
@@ -74,12 +74,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<AttributeDTO>(callPayload);
+                return new ApiConnectionAction<AttributeDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<BrandDTO[], ApiConnectionActionConfiguration> BrandsGETGetAll(Expression<Func<AttributesGETGetAllStatusInput>> status = null, Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<BrandDto[], ApiConnectionActionConfiguration> BrandsGetGetAll(Expression<Func<AttributesGetGetAllStatusInput>> status = null, Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<BrandDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<BrandDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Brands";
                 var apiCallHttpMethod = "get";
@@ -107,12 +107,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<BrandDTO[]>(callPayload);
+                return new ApiConnectionAction<BrandDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<CategoryDTO[], ApiConnectionActionConfiguration> CategoriesGETGetAll(Expression<Func<string>> title = null, Expression<Func<string>> id = null, Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> parentId = null, Expression<Func<string>> path = null, Expression<Func<string>> parentIds = null, Expression<Func<AttributesGETGetAllStatusInput>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<CategoryDto[], ApiConnectionActionConfiguration> CategoriesGetGetAll(Expression<Func<string>> title = null, Expression<Func<string>> id = null, Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> parentId = null, Expression<Func<string>> path = null, Expression<Func<string>> parentIds = null, Expression<Func<AttributesGetGetAllStatusInput>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<CategoryDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CategoryDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Categories";
                 var apiCallHttpMethod = "get";
@@ -152,12 +152,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<CategoryDTO[]>(callPayload);
+                return new ApiConnectionAction<CategoryDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<ProblemDetails, ApiConnectionActionConfiguration> FiltersPOSTBuildFilters()
+        public IBodyWorkflowAction<ProblemDetails, ApiConnectionActionConfiguration> FiltersPostBuildFilters()
         {
             return new DeferredBodyAction<ProblemDetails, ApiConnectionActionConfiguration>(() =>
             {
@@ -169,14 +169,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<IcoTagDTO[], ApiConnectionActionConfiguration> IcoTagsGETGetAll(Expression<Func<string>> name = null, Expression<Func<AttributesGETGetAllStatusInput>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<IcoTagDto[], ApiConnectionActionConfiguration> IcoTagsGetGetAll(Expression<Func<string>> name = null, Expression<Func<AttributesGetGetAllStatusInput>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<IcoTagDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<IcoTagDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/IcoTags";
                 var apiCallHttpMethod = "get";
@@ -191,12 +191,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<IcoTagDTO[]>(callPayload);
+                return new ApiConnectionAction<IcoTagDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<ProblemDetails, ApiConnectionActionConfiguration> ProductVariantsGETGetAllFlat(Expression<Func<string>> price = null, Expression<Func<double>> maxPrice = null, Expression<Func<string>> size1 = null, Expression<Func<string>> size2 = null, Expression<Func<string>> size3 = null, Expression<Func<string>> insertDate = null, Expression<Func<string>> date1 = null, Expression<Func<string>> date2 = null, Expression<Func<string>> date3 = null, Expression<Func<string>> date1DateRange = null, Expression<Func<string>> date2DateRange = null, Expression<Func<string>> date3DateRange = null, Expression<Func<string>> insertDateRange = null, Expression<Func<string>> search = null, Expression<Func<double>> minPrice = null, Expression<Func<AttributesGETGetAllStatusInput>> status = null, Expression<Func<string>> availability = null, Expression<Func<string>> tag = null, Expression<Func<string>> sourceTag = null, Expression<Func<string>> privacyRule = null, Expression<Func<string>> rule = null, Expression<Func<string>> condition = null, Expression<Func<string>> ids = null, Expression<Func<string>> id = null, Expression<Func<string>> priceRange = null, Expression<Func<string>> brandCode = null, Expression<Func<string>> brandId = null, Expression<Func<string>> attribute = null, Expression<Func<string>> pathCategory = null, Expression<Func<string>> categoryId = null, Expression<Func<string>> additionalCategoryId = null, Expression<Func<string>> stockAvailabilityId = null, Expression<Func<string>> attributeSetId = null, Expression<Func<string>> priceCategoryId = null, Expression<Func<bool>> hasMedia = null, Expression<Func<string>> masterId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<ProblemDetails, ApiConnectionActionConfiguration> ProductVariantsGetGetAllFlat(Expression<Func<string>> price = null, Expression<Func<double>> maxPrice = null, Expression<Func<string>> size1 = null, Expression<Func<string>> size2 = null, Expression<Func<string>> size3 = null, Expression<Func<string>> insertDate = null, Expression<Func<string>> date1 = null, Expression<Func<string>> date2 = null, Expression<Func<string>> date3 = null, Expression<Func<string>> date1DateRange = null, Expression<Func<string>> date2DateRange = null, Expression<Func<string>> date3DateRange = null, Expression<Func<string>> insertDateRange = null, Expression<Func<string>> search = null, Expression<Func<double>> minPrice = null, Expression<Func<AttributesGetGetAllStatusInput>> status = null, Expression<Func<string>> availability = null, Expression<Func<string>> tag = null, Expression<Func<string>> sourceTag = null, Expression<Func<string>> privacyRule = null, Expression<Func<string>> rule = null, Expression<Func<string>> condition = null, Expression<Func<string>> ids = null, Expression<Func<string>> id = null, Expression<Func<string>> priceRange = null, Expression<Func<string>> brandCode = null, Expression<Func<string>> brandId = null, Expression<Func<string>> attribute = null, Expression<Func<string>> pathCategory = null, Expression<Func<string>> categoryId = null, Expression<Func<string>> additionalCategoryId = null, Expression<Func<string>> stockAvailabilityId = null, Expression<Func<string>> attributeSetId = null, Expression<Func<string>> priceCategoryId = null, Expression<Func<bool>> hasMedia = null, Expression<Func<string>> masterId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_price = WorkflowExpression.Compile(price, nameof(price), required: false);
             var __workflow_maxPrice = WorkflowExpression.Compile(maxPrice, nameof(maxPrice), required: false);
@@ -325,27 +325,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<RelatedProductVariantDTO, ApiConnectionActionConfiguration> RelatedProductsGETGetRelated(Expression<Func<string>> productId, Expression<Func<string>> variantId)
+        public IBodyWorkflowAction<RelatedProductVariantDto, ApiConnectionActionConfiguration> RelatedProductsGetGetRelated(Expression<Func<string>> productId, Expression<Func<string>> variantId)
         {
             var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: true);
             var __workflow_variantId = WorkflowExpression.Compile(variantId, nameof(variantId), required: true);
-            return new DeferredBodyAction<RelatedProductVariantDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<RelatedProductVariantDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/RelatedProducts/{0}/{1}", __workflow_productId.WithUrlEncoding(1), __workflow_variantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<RelatedProductVariantDTO>(callPayload);
+                return new ApiConnectionAction<RelatedProductVariantDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<StockAvailabilityDTO[], ApiConnectionActionConfiguration> StockAvailabilityGETGetAll(Expression<Func<string>> title = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<StockAvailabilityDto[], ApiConnectionActionConfiguration> StockAvailabilityGetGetAll(Expression<Func<string>> title = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<StockAvailabilityDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<StockAvailabilityDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/StockAvailability";
                 var apiCallHttpMethod = "get";
@@ -358,18 +358,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<StockAvailabilityDTO[]>(callPayload);
+                return new ApiConnectionAction<StockAvailabilityDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<UnitDTO[], ApiConnectionActionConfiguration> UnitsGETGetAll(Expression<Func<string>> name = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<UnitDto[], ApiConnectionActionConfiguration> UnitsGetGetAll(Expression<Func<string>> name = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<UnitDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UnitDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Units";
                 var apiCallHttpMethod = "get";
@@ -382,12 +382,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<UnitDTO[]>(callPayload);
+                return new ApiConnectionAction<UnitDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<ProblemDetails, ApiConnectionActionConfiguration> CartDELETERemoveFromCart(Expression<Func<string>> token, Expression<Func<string>> productVariantId)
+        public IBodyWorkflowAction<ProblemDetails, ApiConnectionActionConfiguration> CartDeleteRemoveFromCart(Expression<Func<string>> token, Expression<Func<string>> productVariantId)
         {
             var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             var __workflow_productVariantId = WorkflowExpression.Compile(productVariantId, nameof(productVariantId), required: true);
@@ -401,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<AssortmentValueDTO[], ApiConnectionActionConfiguration> AssortmentValueGETGetAll(Expression<Func<string>> customerid, Expression<Func<AssortmentValueGETGetAllStatusInput>> status = null, Expression<Func<SourceInput>> source = null, Expression<Func<string>> type = null, Expression<Func<string>> category = null, Expression<Func<string>> id = null, Expression<Func<string>> productId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<AssortmentValueDto[], ApiConnectionActionConfiguration> AssortmentValueGetGetAll(Expression<Func<string>> customerid, Expression<Func<AssortmentValueGetGetAllStatusInput>> status = null, Expression<Func<SourceInput>> source = null, Expression<Func<string>> type = null, Expression<Func<string>> category = null, Expression<Func<string>> id = null, Expression<Func<string>> productId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_customerid = WorkflowExpression.Compile(customerid, nameof(customerid), required: true);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<AssortmentValueDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AssortmentValueDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/assortment/{0}/values", __workflow_customerid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -436,12 +436,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<AssortmentValueDTO[]>(callPayload);
+                return new ApiConnectionAction<AssortmentValueDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<CustomerDTO[], ApiConnectionActionConfiguration> CustomersGETGetAll(Expression<Func<CustomersGETGetAllStatusInput>> status = null, Expression<Func<string>> search = null, Expression<Func<string>> name = null, Expression<Func<string>> salesmanId = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<CustomerDto[], ApiConnectionActionConfiguration> CustomersGetGetAll(Expression<Func<CustomersGetGetAllStatusInput>> status = null, Expression<Func<string>> search = null, Expression<Func<string>> name = null, Expression<Func<string>> salesmanId = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<CustomerDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CustomerDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Customers";
                 var apiCallHttpMethod = "get";
@@ -472,25 +472,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<CustomerDTO[]>(callPayload);
+                return new ApiConnectionAction<CustomerDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<InventoryLevelDTO[], ApiConnectionActionConfiguration> InventoryLevelsGETGetByVariantId(Expression<Func<string>> variantId)
+        public IBodyWorkflowAction<InventoryLevelDto[], ApiConnectionActionConfiguration> InventoryLevelsGetGetByVariantId(Expression<Func<string>> variantId)
         {
             var __workflow_variantId = WorkflowExpression.Compile(variantId, nameof(variantId), required: true);
-            return new DeferredBodyAction<InventoryLevelDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<InventoryLevelDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/InventoryLevels/variant/{0}", __workflow_variantId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<InventoryLevelDTO[]>(callPayload);
+                return new ApiConnectionAction<InventoryLevelDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<OrderDTO[], ApiConnectionActionConfiguration> OrderGETGetAll(Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> customerId = null, Expression<Func<string>> orderStatus = null, Expression<Func<string>> status = null, Expression<Func<string>> tag = null, Expression<Func<string>> customerCode = null, Expression<Func<string>> customerTin = null, Expression<Func<string>> insertDate = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<OrderDto[], ApiConnectionActionConfiguration> OrderGetGetAll(Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> customerId = null, Expression<Func<string>> orderStatus = null, Expression<Func<string>> status = null, Expression<Func<string>> tag = null, Expression<Func<string>> customerCode = null, Expression<Func<string>> customerTin = null, Expression<Func<string>> insertDate = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: false);
@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<OrderDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<OrderDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Order";
                 var apiCallHttpMethod = "get";
@@ -533,7 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<OrderDTO[]>(callPayload);
+                return new ApiConnectionAction<OrderDto[]>(callPayload);
             });
         }
     }
@@ -944,7 +944,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         }
     }
 
-    public class AttributeSetDTO
+    public class AttributeSetDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -959,7 +959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string Description { get; set; }
 
         [JsonProperty("groups")]
-        public AttributeSetGroupDTO[] Groups { get; set; }
+        public AttributeSetGroupDto[] Groups { get; set; }
 
         [JsonProperty("updateDate")]
         public string UpdateDate { get; set; }
@@ -968,7 +968,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string InsertDate { get; set; }
     }
 
-    public class AttributeSetGroupDTO
+    public class AttributeSetGroupDto
     {
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -980,10 +980,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public int Position { get; set; }
 
         [JsonProperty("items")]
-        public AttributeSetItemDTO[] Items { get; set; }
+        public AttributeSetItemDto[] Items { get; set; }
     }
 
-    public class AttributeSetItemDTO
+    public class AttributeSetItemDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -992,7 +992,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public int Position { get; set; }
     }
 
-    public class AttributeDTO
+    public class AttributeDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1022,7 +1022,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public bool DisplayOnCompare { get; set; }
 
         [JsonProperty("type")]
-        public AttributeDTOTypeType Type { get; set; }
+        public AttributeDtoTypeType Type { get; set; }
 
         [JsonProperty("slug")]
         public string Slug { get; set; }
@@ -1031,7 +1031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public int Position { get; set; }
 
         [JsonProperty("status")]
-        public AttributeDTOStatusType Status { get; set; }
+        public AttributeDtoStatusType Status { get; set; }
 
         [JsonProperty("updateDate")]
         public string UpdateDate { get; set; }
@@ -1040,14 +1040,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string InsertDate { get; set; }
 
         [JsonProperty("items")]
-        public AttributeItemDTO[] Items { get; set; }
+        public AttributeItemDto[] Items { get; set; }
 
         [JsonProperty("translation")]
         public JToken Translation { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AttributeDTOTypeType
+    public enum AttributeDtoTypeType
     {
         Text,
         Items,
@@ -1056,7 +1056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AttributeDTOStatusType
+    public enum AttributeDtoStatusType
     {
         Draft,
         Active,
@@ -1065,7 +1065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Ignore
     }
 
-    public class AttributeItemDTO
+    public class AttributeItemDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1090,7 +1090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AttributesGETGetAllStatusInput
+    public enum AttributesGetGetAllStatusInput
     {
         Draft,
         Active,
@@ -1099,7 +1099,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Ignore
     }
 
-    public class BrandDTO
+    public class BrandDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1126,7 +1126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string MetaDescription { get; set; }
 
         [JsonProperty("status")]
-        public BrandDTOStatusType Status { get; set; }
+        public BrandDtoStatusType Status { get; set; }
 
         [JsonProperty("metaKeywords")]
         public string[] MetaKeywords { get; set; }
@@ -1151,7 +1151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BrandDTOStatusType
+    public enum BrandDtoStatusType
     {
         Draft,
         Active,
@@ -1160,7 +1160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Ignore
     }
 
-    public class CategoryDTO
+    public class CategoryDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1229,11 +1229,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string Link { get; set; }
 
         [JsonProperty("status")]
-        public CategoryDTOStatusType Status { get; set; }
+        public CategoryDtoStatusType Status { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CategoryDTOStatusType
+    public enum CategoryDtoStatusType
     {
         Draft,
         Active,
@@ -1260,7 +1260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string Instance { get; set; }
     }
 
-    public class IcoTagDTO
+    public class IcoTagDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1299,10 +1299,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string DateTo { get; set; }
 
         [JsonProperty("mode")]
-        public IcoTagDTOModeType Mode { get; set; }
+        public IcoTagDtoModeType Mode { get; set; }
 
         [JsonProperty("status")]
-        public IcoTagDTOStatusType Status { get; set; }
+        public IcoTagDtoStatusType Status { get; set; }
 
         [JsonProperty("rule")]
         public JToken Rule { get; set; }
@@ -1312,7 +1312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum IcoTagDTOModeType
+    public enum IcoTagDtoModeType
     {
         Automatic,
         Manual,
@@ -1321,7 +1321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum IcoTagDTOStatusType
+    public enum IcoTagDtoStatusType
     {
         Draft,
         Active,
@@ -1330,7 +1330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Ignore
     }
 
-    public class RelatedProductVariantDTO
+    public class RelatedProductVariantDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1351,7 +1351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string[] Dimension3ItemIds { get; set; }
     }
 
-    public class StockAvailabilityDTO
+    public class StockAvailabilityDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1375,10 +1375,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string InsertDate { get; set; }
 
         [JsonProperty("lines")]
-        public StockAvailabilityLineDTO[] Lines { get; set; }
+        public StockAvailabilityLineDto[] Lines { get; set; }
     }
 
-    public class StockAvailabilityLineDTO
+    public class StockAvailabilityLineDto
     {
         [JsonProperty("mediaItem")]
         public JToken MediaItem { get; set; }
@@ -1396,7 +1396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public JToken Translation { get; set; }
     }
 
-    public class UnitDTO
+    public class UnitDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1420,7 +1420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string InsertDate { get; set; }
     }
 
-    public class AssortmentValueDTO
+    public class AssortmentValueDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1441,10 +1441,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string TypeId { get; set; }
 
         [JsonProperty("status")]
-        public AssortmentValueDTOStatusType Status { get; set; }
+        public AssortmentValueDtoStatusType Status { get; set; }
 
         [JsonProperty("source")]
-        public AssortmentValueDTOSourceType Source { get; set; }
+        public AssortmentValueDtoSourceType Source { get; set; }
 
         [JsonProperty("insertDate")]
         public string InsertDate { get; set; }
@@ -1454,14 +1454,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AssortmentValueDTOStatusType
+    public enum AssortmentValueDtoStatusType
     {
         Inactive,
         Active
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AssortmentValueDTOSourceType
+    public enum AssortmentValueDtoSourceType
     {
         [EnumMember(Value = "manual")]
         Manual,
@@ -1470,7 +1470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum AssortmentValueGETGetAllStatusInput
+    public enum AssortmentValueGetGetAllStatusInput
     {
         Inactive,
         Active
@@ -1485,7 +1485,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Orders
     }
 
-    public class CustomerDTO
+    public class CustomerDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1533,16 +1533,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string Notes { get; set; }
 
         [JsonProperty("status")]
-        public CustomerDTOStatusType Status { get; set; }
+        public CustomerDtoStatusType Status { get; set; }
 
         [JsonProperty("branches")]
-        public CustomerBranchDTO[] Branches { get; set; }
+        public CustomerBranchDto[] Branches { get; set; }
 
         [JsonProperty("additionalFeatures")]
         public JToken AdditionalFeatures { get; set; }
 
         [JsonProperty("customFields")]
-        public CustomerCustomFieldDTO[] CustomFields { get; set; }
+        public CustomerCustomFieldDto[] CustomFields { get; set; }
 
         [JsonProperty("updateDate")]
         public string UpdateDate { get; set; }
@@ -1560,17 +1560,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string ContactLanguage { get; set; }
 
         [JsonProperty("vatType")]
-        public CustomerDTOVatTypeType VatType { get; set; }
+        public CustomerDtoVatTypeType VatType { get; set; }
 
         [JsonProperty("shopType")]
-        public CustomerDTOShopTypeType ShopType { get; set; }
+        public CustomerDtoShopTypeType ShopType { get; set; }
 
         [JsonProperty("shippingAddresses")]
-        public CustomerShippingAddressDTO[] ShippingAddresses { get; set; }
+        public CustomerShippingAddressDto[] ShippingAddresses { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CustomerDTOStatusType
+    public enum CustomerDtoStatusType
     {
         Active,
         Inactive,
@@ -1579,7 +1579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Ignore
     }
 
-    public class CustomerBranchDTO
+    public class CustomerBranchDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1606,11 +1606,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public JToken Address { get; set; }
 
         [JsonProperty("status")]
-        public CustomerBranchDTOStatusType Status { get; set; }
+        public CustomerBranchDtoStatusType Status { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CustomerBranchDTOStatusType
+    public enum CustomerBranchDtoStatusType
     {
         Active,
         Inactive,
@@ -1619,7 +1619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Ignore
     }
 
-    public class CustomerCustomFieldDTO
+    public class CustomerCustomFieldDto
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1632,7 +1632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CustomerDTOVatTypeType
+    public enum CustomerDtoVatTypeType
     {
         Zero,
         Regular,
@@ -1642,7 +1642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CustomerDTOShopTypeType
+    public enum CustomerDtoShopTypeType
     {
         B2B,
         B2C,
@@ -1651,7 +1651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Ignore
     }
 
-    public class CustomerShippingAddressDTO
+    public class CustomerShippingAddressDto
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1661,7 +1661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum CustomersGETGetAllStatusInput
+    public enum CustomersGetGetAllStatusInput
     {
         Active,
         Inactive,
@@ -1670,7 +1670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Ignore
     }
 
-    public class InventoryLevelDTO
+    public class InventoryLevelDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1691,13 +1691,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public double Quantity { get; set; }
 
         [JsonProperty("expectedInventoryLines")]
-        public ExpectedInventoryLineDTO[] ExpectedInventoryLines { get; set; }
+        public ExpectedInventoryLineDto[] ExpectedInventoryLines { get; set; }
 
         [JsonProperty("updateDate")]
         public string UpdateDate { get; set; }
     }
 
-    public class ExpectedInventoryLineDTO
+    public class ExpectedInventoryLineDto
     {
         [JsonProperty("deliveryDate")]
         public string DeliveryDate { get; set; }
@@ -1706,7 +1706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public double ExpectedQuantity { get; set; }
     }
 
-    public class OrderDTO
+    public class OrderDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1724,7 +1724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string CartToken { get; set; }
 
         [JsonProperty("status")]
-        public OrderDTOStatusType Status { get; set; }
+        public OrderDtoStatusType Status { get; set; }
 
         [JsonProperty("customerId")]
         public string CustomerId { get; set; }
@@ -1751,7 +1751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string CustomerBranchName { get; set; }
 
         [JsonProperty("currency")]
-        public OrderDTOCurrencyType Currency { get; set; }
+        public OrderDtoCurrencyType Currency { get; set; }
 
         [JsonProperty("cancelledAt")]
         public string CancelledAt { get; set; }
@@ -1787,10 +1787,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public double ExpenseAmount { get; set; }
 
         [JsonProperty("financialStatus")]
-        public OrderDTOFinancialStatusType FinancialStatus { get; set; }
+        public OrderDtoFinancialStatusType FinancialStatus { get; set; }
 
         [JsonProperty("fulfillmentStatus")]
-        public OrderDTOFulfillmentStatusType FulfillmentStatus { get; set; }
+        public OrderDtoFulfillmentStatusType FulfillmentStatus { get; set; }
 
         [JsonProperty("billingAddress")]
         public JToken BillingAddress { get; set; }
@@ -1802,10 +1802,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public bool RequiresCalculation { get; set; }
 
         [JsonProperty("lines")]
-        public OrderLineDTO[] Lines { get; set; }
+        public OrderLineDto[] Lines { get; set; }
 
         [JsonProperty("vatAnalysis")]
-        public VatAnalysisDTO[] VatAnalysis { get; set; }
+        public VatAnalysisDto[] VatAnalysis { get; set; }
 
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
@@ -1841,16 +1841,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string[] Notified { get; set; }
 
         [JsonProperty("customFields")]
-        public OrderCustomFieldDTO[] CustomFields { get; set; }
+        public OrderCustomFieldDto[] CustomFields { get; set; }
 
         [JsonProperty("shippingLine")]
         public JToken ShippingLine { get; set; }
 
         [JsonProperty("giftLines")]
-        public GiftLineDTO[] GiftLines { get; set; }
+        public GiftLineDto[] GiftLines { get; set; }
 
         [JsonProperty("expenseLines")]
-        public ExpenseLineDTO[] ExpenseLines { get; set; }
+        public ExpenseLineDto[] ExpenseLines { get; set; }
 
         [JsonProperty("payment")]
         public JToken Payment { get; set; }
@@ -1860,7 +1860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OrderDTOStatusType
+    public enum OrderDtoStatusType
     {
         Draft,
         Placed,
@@ -1878,7 +1878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OrderDTOCurrencyType
+    public enum OrderDtoCurrencyType
     {
         [EnumMember(Value = "aed")]
         Aed,
@@ -2243,7 +2243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OrderDTOFinancialStatusType
+    public enum OrderDtoFinancialStatusType
     {
         Pending,
         Authorized,
@@ -2254,7 +2254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum OrderDTOFulfillmentStatusType
+    public enum OrderDtoFulfillmentStatusType
     {
         Fulfilled,
         Null,
@@ -2262,7 +2262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Restocked
     }
 
-    public class OrderLineDTO
+    public class OrderLineDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2349,7 +2349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string Dimension3Value { get; set; }
     }
 
-    public class VatAnalysisDTO
+    public class VatAnalysisDto
     {
         [JsonProperty("vatRate")]
         public double VatRate { get; set; }
@@ -2364,7 +2364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public double NetAmount { get; set; }
     }
 
-    public class OrderCustomFieldDTO
+    public class OrderCustomFieldDto
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2373,7 +2373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public JToken Value { get; set; }
     }
 
-    public class GiftLineDTO
+    public class GiftLineDto
     {
         [JsonProperty("productId")]
         public string ProductId { get; set; }
@@ -2397,7 +2397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string ProductAlias { get; set; }
     }
 
-    public class ExpenseLineDTO
+    public class ExpenseLineDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }

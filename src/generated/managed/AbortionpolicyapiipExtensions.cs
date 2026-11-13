@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
     public class GetGestationalLimitsbyStateResponseStateType
     {
         [JsonProperty("banned_after_weeks_since_LMP")]
-        public int BannedAfterWeeksSinceLMP { get; set; }
+        public int BannedAfterWeeksSinceLmp { get; set; }
 
         [JsonProperty("exception_life")]
         public bool ExceptionLife { get; set; }
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
     public class GetGestationalLimitsbyStatebyZipResponseStateType
     {
         [JsonProperty("banned_after_weeks_since_LMP")]
-        public int BannedAfterWeeksSinceLMP { get; set; }
+        public int BannedAfterWeeksSinceLmp { get; set; }
 
         [JsonProperty("exception_life")]
         public bool ExceptionLife { get; set; }

@@ -13,14 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lcpicordis
     public class LcpicordisActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lcpicordis")]
-        public IBodyWorkflowAction<EloketExport, ApiConnectionActionConfiguration> EloketExport(Expression<Func<int>> formid, Expression<Func<int>> entryid = null, Expression<Func<string>> lastsynch = null, Expression<Func<bool>> includeFiles = null, Expression<Func<bool>> includePDF = null, Expression<Func<bool>> includeHTML = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<EloketExport, ApiConnectionActionConfiguration> EloketExport(Expression<Func<int>> formid, Expression<Func<int>> entryid = null, Expression<Func<string>> lastsynch = null, Expression<Func<bool>> includeFiles = null, Expression<Func<bool>> includePdf = null, Expression<Func<bool>> includeHtml = null, Expression<Func<int>> page = null)
         {
             var __workflow_formid = WorkflowExpression.Compile(formid, nameof(formid), required: true);
             var __workflow_entryid = WorkflowExpression.Compile(entryid, nameof(entryid), required: false);
             var __workflow_lastsynch = WorkflowExpression.Compile(lastsynch, nameof(lastsynch), required: false);
             var __workflow_includeFiles = WorkflowExpression.Compile(includeFiles, nameof(includeFiles), required: false);
-            var __workflow_includePDF = WorkflowExpression.Compile(includePDF, nameof(includePDF), required: false);
-            var __workflow_includeHTML = WorkflowExpression.Compile(includeHTML, nameof(includeHTML), required: false);
+            var __workflow_includePdf = WorkflowExpression.Compile(includePdf, nameof(includePdf), required: false);
+            var __workflow_includeHtml = WorkflowExpression.Compile(includeHtml, nameof(includeHtml), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<EloketExport, ApiConnectionActionConfiguration>(() =>
             {
@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lcpicordis
                     callPayload.Queries["lastsynch"] = ExpressionConverter.Convert(__workflow_lastsynch);
                 if (__workflow_includeFiles != null)
                     callPayload.Queries["includeFiles"] = ExpressionConverter.Convert(__workflow_includeFiles);
-                if (__workflow_includePDF != null)
-                    callPayload.Queries["includePDF"] = ExpressionConverter.Convert(__workflow_includePDF);
-                if (__workflow_includeHTML != null)
-                    callPayload.Queries["includeHTML"] = ExpressionConverter.Convert(__workflow_includeHTML);
+                if (__workflow_includePdf != null)
+                    callPayload.Queries["includePDF"] = ExpressionConverter.Convert(__workflow_includePdf);
+                if (__workflow_includeHtml != null)
+                    callPayload.Queries["includeHTML"] = ExpressionConverter.Convert(__workflow_includeHtml);
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
                 return new ApiConnectionAction<EloketExport>(callPayload);
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lcpicordis
     public class NewEntryBodyInput
     {
         [JsonProperty("webhookURL", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WebhookURL { get; set; } = "#{listCallbackUrl()}";
+        internal string WebhookUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

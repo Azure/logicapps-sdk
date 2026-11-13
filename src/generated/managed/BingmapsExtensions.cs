@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
         public string CountryRegion { get; set; }
 
         [JsonProperty("countryRegionIso2")]
-        public string CountryRegionISO2 { get; set; }
+        public string CountryRegionIso2 { get; set; }
 
         [JsonProperty("formattedAddress")]
         public string FormattedAddress { get; set; }

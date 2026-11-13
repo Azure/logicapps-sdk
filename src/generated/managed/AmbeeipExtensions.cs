@@ -429,7 +429,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
     {
         public double CO { get; set; }
         public double NO2 { get; set; }
-        public double OZONE { get; set; }
+
+        [JsonProperty("OZONE")]
+        public double Ozone { get; set; }
         public double PM10 { get; set; }
         public double PM25 { get; set; }
         public double SO2 { get; set; }
@@ -460,7 +462,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
 
         [JsonProperty("updatedAt")]
         public string UpdatedAt { get; set; }
-        public int AQI { get; set; }
+
+        [JsonProperty("AQI")]
+        public int Aqi { get; set; }
 
         [JsonProperty("aqiInfo")]
         public AirQualityGeoResponseStationsTypeItemAqiInfoType AqiInfo { get; set; }
@@ -491,7 +495,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
     {
         public double CO { get; set; }
         public double NO2 { get; set; }
-        public double OZONE { get; set; }
+
+        [JsonProperty("OZONE")]
+        public double Ozone { get; set; }
         public double PM10 { get; set; }
         public double PM25 { get; set; }
         public double SO2 { get; set; }
@@ -522,7 +528,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
 
         [JsonProperty("updatedAt")]
         public string UpdatedAt { get; set; }
-        public int AQI { get; set; }
+
+        [JsonProperty("AQI")]
+        public int Aqi { get; set; }
 
         [JsonProperty("aqiInfo")]
         public AirQualityPostalResponseStationsTypeItemAqiInfoType AqiInfo { get; set; }
@@ -553,7 +561,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
     {
         public double CO { get; set; }
         public double NO2 { get; set; }
-        public double OZONE { get; set; }
+
+        [JsonProperty("OZONE")]
+        public double Ozone { get; set; }
         public double PM10 { get; set; }
         public double PM25 { get; set; }
         public double SO2 { get; set; }
@@ -584,7 +594,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
 
         [JsonProperty("updatedAt")]
         public string UpdatedAt { get; set; }
-        public int AQI { get; set; }
+
+        [JsonProperty("AQI")]
+        public int Aqi { get; set; }
 
         [JsonProperty("aqiInfo")]
         public AirQualityCityResponseStationsTypeItemAqiInfoType AqiInfo { get; set; }
@@ -615,7 +627,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
     {
         public double CO { get; set; }
         public double NO2 { get; set; }
-        public double OZONE { get; set; }
+
+        [JsonProperty("OZONE")]
+        public double Ozone { get; set; }
         public double PM10 { get; set; }
         public double PM25 { get; set; }
         public double SO2 { get; set; }
@@ -646,7 +660,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
 
         [JsonProperty("updatedAt")]
         public string UpdatedAt { get; set; }
-        public int AQI { get; set; }
+
+        [JsonProperty("AQI")]
+        public int Aqi { get; set; }
 
         [JsonProperty("aqiInfo")]
         public AirQualityCountryResponseStationsTypeItemAqiInfoType AqiInfo { get; set; }
@@ -680,8 +696,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         public double PM25 { get; set; }
         public double CO { get; set; }
         public double SO2 { get; set; }
-        public double OZONE { get; set; }
-        public int AQI { get; set; }
+
+        [JsonProperty("OZONE")]
+        public double Ozone { get; set; }
+
+        [JsonProperty("AQI")]
+        public int Aqi { get; set; }
 
         [JsonProperty("lat")]
         public double Lat { get; set; }
@@ -712,7 +732,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
     {
         public double CO { get; set; }
         public double NO2 { get; set; }
-        public double OZONE { get; set; }
+
+        [JsonProperty("OZONE")]
+        public double Ozone { get; set; }
         public double PM10 { get; set; }
         public double PM25 { get; set; }
         public double SO2 { get; set; }
@@ -743,7 +765,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
 
         [JsonProperty("updatedAt")]
         public string UpdatedAt { get; set; }
-        public int AQI { get; set; }
+
+        [JsonProperty("AQI")]
+        public int Aqi { get; set; }
 
         [JsonProperty("aqiInfo")]
         public AirQualityPostalHistoryResponseStationsTypeItemAqiInfoType AqiInfo { get; set; }
@@ -777,8 +801,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         public double PM25 { get; set; }
         public double CO { get; set; }
         public double SO2 { get; set; }
-        public double OZONE { get; set; }
-        public int AQI { get; set; }
+
+        [JsonProperty("OZONE")]
+        public double Ozone { get; set; }
+
+        [JsonProperty("AQI")]
+        public int Aqi { get; set; }
 
         [JsonProperty("lat")]
         public double Lat { get; set; }
@@ -809,7 +837,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
     {
         public double CO { get; set; }
         public double NO2 { get; set; }
-        public double OZONE { get; set; }
+
+        [JsonProperty("OZONE")]
+        public double Ozone { get; set; }
         public double PM10 { get; set; }
         public double PM25 { get; set; }
         public double SO2 { get; set; }
@@ -840,7 +870,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
 
         [JsonProperty("updatedAt")]
         public string UpdatedAt { get; set; }
-        public int AQI { get; set; }
+
+        [JsonProperty("AQI")]
+        public int Aqi { get; set; }
 
         [JsonProperty("aqiInfo")]
         public AirQualityLeastPollutedResponseStationsTypeItemAqiInfoType AqiInfo { get; set; }

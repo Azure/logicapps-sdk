@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         public string UploadStatus { get; set; }
 
         [JsonProperty("url")]
-        public string UploadURL { get; set; }
+        public string UploadUrl { get; set; }
     }
 
     public class CreateDocumentUploadBodyInput
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         public string UploadStatus { get; set; }
 
         [JsonProperty("url")]
-        public string UploadURL { get; set; }
+        public string UploadUrl { get; set; }
     }
 
     public class CreateVendorUploadBodyInput

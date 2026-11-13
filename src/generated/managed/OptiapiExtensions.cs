@@ -826,7 +826,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 
     public class GetPdfMetadataInformationResponseMetadataType
     {
-        public string PDFVersion { get; set; }
+        [JsonProperty("PDFVersion")]
+        public string PdfVersion { get; set; }
 
         [JsonProperty("author")]
         public string Author { get; set; }

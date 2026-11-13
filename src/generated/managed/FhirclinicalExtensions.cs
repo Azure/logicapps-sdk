@@ -13,671 +13,671 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
     public class FhirclinicalActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETAdverseEventResponse, ApiConnectionActionConfiguration> GETAdverseEvent(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GetAdverseEventResponse, ApiConnectionActionConfiguration> GetAdverseEvent(Expression<Func<string>> count = null, Expression<Func<string>> sort = null, Expression<Func<string>> patient = null)
         {
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETAdverseEventResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetAdverseEventResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AdverseEvent";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
-                return new ApiConnectionAction<GETAdverseEventResponse>(callPayload);
+                return new ApiConnectionAction<GetAdverseEventResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTAdverseEventResponse, ApiConnectionActionConfiguration> POSTAdverseEvent(Expression<Func<POSTAdverseEventBodyInput>> body = null)
+        public IBodyWorkflowAction<PostAdverseEventResponse, ApiConnectionActionConfiguration> PostAdverseEvent(Expression<Func<PostAdverseEventBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<POSTAdverseEventResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PostAdverseEventResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AdverseEvent";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<POSTAdverseEventResponse>(callPayload);
+                return new ApiConnectionAction<PostAdverseEventResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETAdverseEventIdResponse, ApiConnectionActionConfiguration> GETAdverseEventId(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
+        public IBodyWorkflowAction<GetAdverseEventIdResponse, ApiConnectionActionConfiguration> GetAdverseEventId(Expression<Func<string>> id, Expression<Func<string>> count = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
-            return new DeferredBodyAction<GETAdverseEventIdResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<GetAdverseEventIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AdverseEvent/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
-                return new ApiConnectionAction<GETAdverseEventIdResponse>(callPayload);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
+                return new ApiConnectionAction<GetAdverseEventIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEAdverseEventIdResponse, ApiConnectionActionConfiguration> DELETEAdverseEventId(Expression<Func<string>> id, Expression<Func<DELETEAdverseEventIdBodyInput>> body = null)
+        public IBodyWorkflowAction<DeleteAdverseEventIdResponse, ApiConnectionActionConfiguration> DeleteAdverseEventId(Expression<Func<string>> id, Expression<Func<DeleteAdverseEventIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<DELETEAdverseEventIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DeleteAdverseEventIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AdverseEvent/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<DELETEAdverseEventIdResponse>(callPayload);
+                return new ApiConnectionAction<DeleteAdverseEventIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTAdverseEventIdResponse, ApiConnectionActionConfiguration> PUTAdverseEventId(Expression<Func<string>> id, Expression<Func<DELETEAdverseEventIdBodyInput>> body = null)
+        public IBodyWorkflowAction<PutAdverseEventIdResponse, ApiConnectionActionConfiguration> PutAdverseEventId(Expression<Func<string>> id, Expression<Func<DeleteAdverseEventIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PUTAdverseEventIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PutAdverseEventIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AdverseEvent/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PUTAdverseEventIdResponse>(callPayload);
+                return new ApiConnectionAction<PutAdverseEventIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETAllergyIntoleranceResponse, ApiConnectionActionConfiguration> GETAllergyIntolerance(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GetAllergyIntoleranceResponse, ApiConnectionActionConfiguration> GetAllergyIntolerance(Expression<Func<string>> count = null, Expression<Func<string>> sort = null, Expression<Func<string>> patient = null)
         {
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETAllergyIntoleranceResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetAllergyIntoleranceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AllergyIntolerance";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
-                return new ApiConnectionAction<GETAllergyIntoleranceResponse>(callPayload);
+                return new ApiConnectionAction<GetAllergyIntoleranceResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTAllergyIntoleranceResponse, ApiConnectionActionConfiguration> POSTAllergyIntolerance(Expression<Func<POSTAllergyIntoleranceBodyInput>> body = null)
+        public IBodyWorkflowAction<PostAllergyIntoleranceResponse, ApiConnectionActionConfiguration> PostAllergyIntolerance(Expression<Func<PostAllergyIntoleranceBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<POSTAllergyIntoleranceResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PostAllergyIntoleranceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/AllergyIntolerance";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<POSTAllergyIntoleranceResponse>(callPayload);
+                return new ApiConnectionAction<PostAllergyIntoleranceResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration> GETAllergyIntoleranceId(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
+        public IBodyWorkflowAction<GetAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration> GetAllergyIntoleranceId(Expression<Func<string>> id, Expression<Func<string>> count = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
-            return new DeferredBodyAction<GETAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<GetAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AllergyIntolerance/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
-                return new ApiConnectionAction<GETAllergyIntoleranceIdResponse>(callPayload);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
+                return new ApiConnectionAction<GetAllergyIntoleranceIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration> DELETEAllergyIntoleranceId(Expression<Func<string>> id, Expression<Func<DELETEAllergyIntoleranceIdBodyInput>> body = null)
+        public IBodyWorkflowAction<DeleteAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration> DeleteAllergyIntoleranceId(Expression<Func<string>> id, Expression<Func<DeleteAllergyIntoleranceIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<DELETEAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DeleteAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AllergyIntolerance/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<DELETEAllergyIntoleranceIdResponse>(callPayload);
+                return new ApiConnectionAction<DeleteAllergyIntoleranceIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration> PUTAllergyIntoleranceId(Expression<Func<string>> id, Expression<Func<DELETEAllergyIntoleranceIdBodyInput>> body = null)
+        public IBodyWorkflowAction<PutAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration> PutAllergyIntoleranceId(Expression<Func<string>> id, Expression<Func<DeleteAllergyIntoleranceIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PUTAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PutAllergyIntoleranceIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/AllergyIntolerance/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PUTAllergyIntoleranceIdResponse>(callPayload);
+                return new ApiConnectionAction<PutAllergyIntoleranceIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETCarePlanResponse, ApiConnectionActionConfiguration> GETCarePlan(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GetCarePlanResponse, ApiConnectionActionConfiguration> GetCarePlan(Expression<Func<string>> count = null, Expression<Func<string>> sort = null, Expression<Func<string>> patient = null)
         {
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETCarePlanResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCarePlanResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CarePlan";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
-                return new ApiConnectionAction<GETCarePlanResponse>(callPayload);
+                return new ApiConnectionAction<GetCarePlanResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTCarePlanResponse, ApiConnectionActionConfiguration> POSTCarePlan(Expression<Func<POSTCarePlanBodyInput>> body = null)
+        public IBodyWorkflowAction<PostCarePlanResponse, ApiConnectionActionConfiguration> PostCarePlan(Expression<Func<PostCarePlanBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<POSTCarePlanResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PostCarePlanResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CarePlan";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<POSTCarePlanResponse>(callPayload);
+                return new ApiConnectionAction<PostCarePlanResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETCarePlanIdResponse, ApiConnectionActionConfiguration> GETCarePlanId(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
+        public IBodyWorkflowAction<GetCarePlanIdResponse, ApiConnectionActionConfiguration> GetCarePlanId(Expression<Func<string>> id, Expression<Func<string>> count = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
-            return new DeferredBodyAction<GETCarePlanIdResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<GetCarePlanIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/CarePlan/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
-                return new ApiConnectionAction<GETCarePlanIdResponse>(callPayload);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
+                return new ApiConnectionAction<GetCarePlanIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETECarePlanIdResponse, ApiConnectionActionConfiguration> DELETECarePlanId(Expression<Func<string>> id, Expression<Func<DELETECarePlanIdBodyInput>> body = null)
+        public IBodyWorkflowAction<DeleteCarePlanIdResponse, ApiConnectionActionConfiguration> DeleteCarePlanId(Expression<Func<string>> id, Expression<Func<DeleteCarePlanIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<DELETECarePlanIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DeleteCarePlanIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/CarePlan/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<DELETECarePlanIdResponse>(callPayload);
+                return new ApiConnectionAction<DeleteCarePlanIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTCarePlanIdResponse, ApiConnectionActionConfiguration> PUTCarePlanId(Expression<Func<string>> id, Expression<Func<DELETECarePlanIdBodyInput>> body = null)
+        public IBodyWorkflowAction<PutCarePlanIdResponse, ApiConnectionActionConfiguration> PutCarePlanId(Expression<Func<string>> id, Expression<Func<DeleteCarePlanIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PUTCarePlanIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PutCarePlanIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/CarePlan/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PUTCarePlanIdResponse>(callPayload);
+                return new ApiConnectionAction<PutCarePlanIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETConditionResponse, ApiConnectionActionConfiguration> GETCondition(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GetConditionResponse, ApiConnectionActionConfiguration> GetCondition(Expression<Func<string>> count = null, Expression<Func<string>> sort = null, Expression<Func<string>> patient = null)
         {
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETConditionResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetConditionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Condition";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
-                return new ApiConnectionAction<GETConditionResponse>(callPayload);
+                return new ApiConnectionAction<GetConditionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTConditionResponse, ApiConnectionActionConfiguration> POSTCondition(Expression<Func<POSTConditionBodyInput>> body = null)
+        public IBodyWorkflowAction<PostConditionResponse, ApiConnectionActionConfiguration> PostCondition(Expression<Func<PostConditionBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<POSTConditionResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PostConditionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Condition";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<POSTConditionResponse>(callPayload);
+                return new ApiConnectionAction<PostConditionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETConditionIdResponse, ApiConnectionActionConfiguration> GETConditionId(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
+        public IBodyWorkflowAction<GetConditionIdResponse, ApiConnectionActionConfiguration> GetConditionId(Expression<Func<string>> id, Expression<Func<string>> count = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
-            return new DeferredBodyAction<GETConditionIdResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<GetConditionIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Condition/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
-                return new ApiConnectionAction<GETConditionIdResponse>(callPayload);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
+                return new ApiConnectionAction<GetConditionIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEConditionIdResponse, ApiConnectionActionConfiguration> DELETEConditionId(Expression<Func<string>> id, Expression<Func<DELETEConditionIdBodyInput>> body = null)
+        public IBodyWorkflowAction<DeleteConditionIdResponse, ApiConnectionActionConfiguration> DeleteConditionId(Expression<Func<string>> id, Expression<Func<DeleteConditionIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<DELETEConditionIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DeleteConditionIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Condition/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<DELETEConditionIdResponse>(callPayload);
+                return new ApiConnectionAction<DeleteConditionIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTConditionIdResponse, ApiConnectionActionConfiguration> PUTConditionId(Expression<Func<string>> id, Expression<Func<DELETEConditionIdBodyInput>> body = null)
+        public IBodyWorkflowAction<PutConditionIdResponse, ApiConnectionActionConfiguration> PutConditionId(Expression<Func<string>> id, Expression<Func<DeleteConditionIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PUTConditionIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PutConditionIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Condition/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PUTConditionIdResponse>(callPayload);
+                return new ApiConnectionAction<PutConditionIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETDiagnosticReportResponse, ApiConnectionActionConfiguration> GETDiagnosticReport(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GetDiagnosticReportResponse, ApiConnectionActionConfiguration> GetDiagnosticReport(Expression<Func<string>> count = null, Expression<Func<string>> sort = null, Expression<Func<string>> patient = null)
         {
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETDiagnosticReportResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetDiagnosticReportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DiagnosticReport";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
-                return new ApiConnectionAction<GETDiagnosticReportResponse>(callPayload);
+                return new ApiConnectionAction<GetDiagnosticReportResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTDiagnosticReportResponse, ApiConnectionActionConfiguration> POSTDiagnosticReport(Expression<Func<POSTDiagnosticReportBodyInput>> body = null)
+        public IBodyWorkflowAction<PostDiagnosticReportResponse, ApiConnectionActionConfiguration> PostDiagnosticReport(Expression<Func<PostDiagnosticReportBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<POSTDiagnosticReportResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PostDiagnosticReportResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/DiagnosticReport";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<POSTDiagnosticReportResponse>(callPayload);
+                return new ApiConnectionAction<PostDiagnosticReportResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETDiagnosticReportIdResponse, ApiConnectionActionConfiguration> GETDiagnosticReportId(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
+        public IBodyWorkflowAction<GetDiagnosticReportIdResponse, ApiConnectionActionConfiguration> GetDiagnosticReportId(Expression<Func<string>> id, Expression<Func<string>> count = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
-            return new DeferredBodyAction<GETDiagnosticReportIdResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<GetDiagnosticReportIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/DiagnosticReport/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
-                return new ApiConnectionAction<GETDiagnosticReportIdResponse>(callPayload);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
+                return new ApiConnectionAction<GetDiagnosticReportIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEDiagnosticReportIdResponse, ApiConnectionActionConfiguration> DELETEDiagnosticReportId(Expression<Func<string>> id, Expression<Func<DELETEDiagnosticReportIdBodyInput>> body = null)
+        public IBodyWorkflowAction<DeleteDiagnosticReportIdResponse, ApiConnectionActionConfiguration> DeleteDiagnosticReportId(Expression<Func<string>> id, Expression<Func<DeleteDiagnosticReportIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<DELETEDiagnosticReportIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DeleteDiagnosticReportIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/DiagnosticReport/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<DELETEDiagnosticReportIdResponse>(callPayload);
+                return new ApiConnectionAction<DeleteDiagnosticReportIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTDiagnosticReportIdResponse, ApiConnectionActionConfiguration> PUTDiagnosticReportId(Expression<Func<string>> id, Expression<Func<DELETEDiagnosticReportIdBodyInput>> body = null)
+        public IBodyWorkflowAction<PutDiagnosticReportIdResponse, ApiConnectionActionConfiguration> PutDiagnosticReportId(Expression<Func<string>> id, Expression<Func<DeleteDiagnosticReportIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PUTDiagnosticReportIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PutDiagnosticReportIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/DiagnosticReport/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PUTDiagnosticReportIdResponse>(callPayload);
+                return new ApiConnectionAction<PutDiagnosticReportIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETMedicationResponse, ApiConnectionActionConfiguration> GETMedication(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GetMedicationResponse, ApiConnectionActionConfiguration> GetMedication(Expression<Func<string>> count = null, Expression<Func<string>> sort = null, Expression<Func<string>> patient = null)
         {
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETMedicationResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetMedicationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Medication";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
-                return new ApiConnectionAction<GETMedicationResponse>(callPayload);
+                return new ApiConnectionAction<GetMedicationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTMedicationResponse, ApiConnectionActionConfiguration> POSTMedication(Expression<Func<POSTMedicationBodyInput>> body = null)
+        public IBodyWorkflowAction<PostMedicationResponse, ApiConnectionActionConfiguration> PostMedication(Expression<Func<PostMedicationBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<POSTMedicationResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PostMedicationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Medication";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<POSTMedicationResponse>(callPayload);
+                return new ApiConnectionAction<PostMedicationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETMedicationIdResponse, ApiConnectionActionConfiguration> GETMedicationId(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
+        public IBodyWorkflowAction<GetMedicationIdResponse, ApiConnectionActionConfiguration> GetMedicationId(Expression<Func<string>> id, Expression<Func<string>> count = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
-            return new DeferredBodyAction<GETMedicationIdResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<GetMedicationIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Medication/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
-                return new ApiConnectionAction<GETMedicationIdResponse>(callPayload);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
+                return new ApiConnectionAction<GetMedicationIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEMedicationIdResponse, ApiConnectionActionConfiguration> DELETEMedicationId(Expression<Func<string>> id, Expression<Func<DELETEMedicationIdBodyInput>> body = null)
+        public IBodyWorkflowAction<DeleteMedicationIdResponse, ApiConnectionActionConfiguration> DeleteMedicationId(Expression<Func<string>> id, Expression<Func<DeleteMedicationIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<DELETEMedicationIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DeleteMedicationIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Medication/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<DELETEMedicationIdResponse>(callPayload);
+                return new ApiConnectionAction<DeleteMedicationIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTMedicationIdResponse, ApiConnectionActionConfiguration> PUTMedicationId(Expression<Func<string>> id, Expression<Func<PUTMedicationIdBodyInput>> body = null)
+        public IBodyWorkflowAction<PutMedicationIdResponse, ApiConnectionActionConfiguration> PutMedicationId(Expression<Func<string>> id, Expression<Func<PutMedicationIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PUTMedicationIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PutMedicationIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Medication/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PUTMedicationIdResponse>(callPayload);
+                return new ApiConnectionAction<PutMedicationIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETMedicationRequestResponse, ApiConnectionActionConfiguration> GETMedicationRequest(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GetMedicationRequestResponse, ApiConnectionActionConfiguration> GetMedicationRequest(Expression<Func<string>> count = null, Expression<Func<string>> sort = null, Expression<Func<string>> patient = null)
         {
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETMedicationRequestResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetMedicationRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/MedicationRequest";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
-                return new ApiConnectionAction<GETMedicationRequestResponse>(callPayload);
+                return new ApiConnectionAction<GetMedicationRequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTMedicationRequestResponse, ApiConnectionActionConfiguration> POSTMedicationRequest(Expression<Func<POSTMedicationRequestBodyInput>> body = null)
+        public IBodyWorkflowAction<PostMedicationRequestResponse, ApiConnectionActionConfiguration> PostMedicationRequest(Expression<Func<PostMedicationRequestBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<POSTMedicationRequestResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PostMedicationRequestResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/MedicationRequest";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<POSTMedicationRequestResponse>(callPayload);
+                return new ApiConnectionAction<PostMedicationRequestResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETMedicationRequestIdResponse, ApiConnectionActionConfiguration> GETMedicationRequestId(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
+        public IBodyWorkflowAction<GetMedicationRequestIdResponse, ApiConnectionActionConfiguration> GetMedicationRequestId(Expression<Func<string>> id, Expression<Func<string>> count = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
-            return new DeferredBodyAction<GETMedicationRequestIdResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<GetMedicationRequestIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/MedicationRequest/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
-                return new ApiConnectionAction<GETMedicationRequestIdResponse>(callPayload);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
+                return new ApiConnectionAction<GetMedicationRequestIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEMedicationRequestIdResponse, ApiConnectionActionConfiguration> DELETEMedicationRequestId(Expression<Func<string>> id, Expression<Func<DELETEMedicationRequestIdBodyInput>> body = null)
+        public IBodyWorkflowAction<DeleteMedicationRequestIdResponse, ApiConnectionActionConfiguration> DeleteMedicationRequestId(Expression<Func<string>> id, Expression<Func<DeleteMedicationRequestIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<DELETEMedicationRequestIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DeleteMedicationRequestIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/MedicationRequest/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<DELETEMedicationRequestIdResponse>(callPayload);
+                return new ApiConnectionAction<DeleteMedicationRequestIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTMedicationRequestIdResponse, ApiConnectionActionConfiguration> PUTMedicationRequestId(Expression<Func<string>> id, Expression<Func<DELETEMedicationRequestIdBodyInput>> body = null)
+        public IBodyWorkflowAction<PutMedicationRequestIdResponse, ApiConnectionActionConfiguration> PutMedicationRequestId(Expression<Func<string>> id, Expression<Func<DeleteMedicationRequestIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PUTMedicationRequestIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PutMedicationRequestIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/MedicationRequest/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PUTMedicationRequestIdResponse>(callPayload);
+                return new ApiConnectionAction<PutMedicationRequestIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETMedicationStatementResponse, ApiConnectionActionConfiguration> GETMedicationStatement(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GetMedicationStatementResponse, ApiConnectionActionConfiguration> GetMedicationStatement(Expression<Func<string>> count = null, Expression<Func<string>> sort = null, Expression<Func<string>> patient = null)
         {
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETMedicationStatementResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetMedicationStatementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/MedicationStatement";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
-                return new ApiConnectionAction<GETMedicationStatementResponse>(callPayload);
+                return new ApiConnectionAction<GetMedicationStatementResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTMedicationStatementResponse, ApiConnectionActionConfiguration> POSTMedicationStatement(Expression<Func<DELETEMedicationStatementIdBodyInput>> body = null)
+        public IBodyWorkflowAction<PostMedicationStatementResponse, ApiConnectionActionConfiguration> PostMedicationStatement(Expression<Func<DeleteMedicationStatementIdBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<POSTMedicationStatementResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PostMedicationStatementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/MedicationStatement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<POSTMedicationStatementResponse>(callPayload);
+                return new ApiConnectionAction<PostMedicationStatementResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETMedicationStatementIdResponse, ApiConnectionActionConfiguration> GETMedicationStatementId(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
+        public IBodyWorkflowAction<GetMedicationStatementIdResponse, ApiConnectionActionConfiguration> GetMedicationStatementId(Expression<Func<string>> id, Expression<Func<string>> count = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
-            return new DeferredBodyAction<GETMedicationStatementIdResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<GetMedicationStatementIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/MedicationStatement/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
-                return new ApiConnectionAction<GETMedicationStatementIdResponse>(callPayload);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
+                return new ApiConnectionAction<GetMedicationStatementIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> DELETEMedicationStatementId(Expression<Func<string>> id, Expression<Func<DELETEMedicationStatementIdBodyInput>> body = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteMedicationStatementId(Expression<Func<string>> id, Expression<Func<DeleteMedicationStatementIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
@@ -693,316 +693,316 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTMedicationStatementIdResponse, ApiConnectionActionConfiguration> PUTMedicationStatementId(Expression<Func<string>> id, Expression<Func<DELETEMedicationStatementIdBodyInput>> body = null)
+        public IBodyWorkflowAction<PutMedicationStatementIdResponse, ApiConnectionActionConfiguration> PutMedicationStatementId(Expression<Func<string>> id, Expression<Func<DeleteMedicationStatementIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PUTMedicationStatementIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PutMedicationStatementIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/MedicationStatement/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PUTMedicationStatementIdResponse>(callPayload);
+                return new ApiConnectionAction<PutMedicationStatementIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETObservationResponse, ApiConnectionActionConfiguration> GETObservation(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null, Expression<Func<string>> encounter = null)
+        public IBodyWorkflowAction<GetObservationResponse, ApiConnectionActionConfiguration> GetObservation(Expression<Func<string>> count = null, Expression<Func<string>> sort = null, Expression<Func<string>> patient = null, Expression<Func<string>> encounter = null)
         {
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
             var __workflow_encounter = WorkflowExpression.Compile(encounter, nameof(encounter), required: false);
-            return new DeferredBodyAction<GETObservationResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetObservationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Observation";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
                 if (__workflow_encounter != null)
                     callPayload.Queries["encounter"] = ExpressionConverter.Convert(__workflow_encounter);
-                return new ApiConnectionAction<GETObservationResponse>(callPayload);
+                return new ApiConnectionAction<GetObservationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTObservationResponse, ApiConnectionActionConfiguration> POSTObservation(Expression<Func<POSTObservationBodyInput>> body = null)
+        public IBodyWorkflowAction<PostObservationResponse, ApiConnectionActionConfiguration> PostObservation(Expression<Func<PostObservationBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<POSTObservationResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PostObservationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Observation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<POSTObservationResponse>(callPayload);
+                return new ApiConnectionAction<PostObservationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETObservationIdResponse, ApiConnectionActionConfiguration> GETObservationId(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
+        public IBodyWorkflowAction<GetObservationIdResponse, ApiConnectionActionConfiguration> GetObservationId(Expression<Func<string>> id, Expression<Func<string>> count = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
-            return new DeferredBodyAction<GETObservationIdResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<GetObservationIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Observation/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
-                return new ApiConnectionAction<GETObservationIdResponse>(callPayload);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
+                return new ApiConnectionAction<GetObservationIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEObservationIdResponse, ApiConnectionActionConfiguration> DELETEObservationId(Expression<Func<string>> id, Expression<Func<DELETEObservationIdBodyInput>> body = null)
+        public IBodyWorkflowAction<DeleteObservationIdResponse, ApiConnectionActionConfiguration> DeleteObservationId(Expression<Func<string>> id, Expression<Func<DeleteObservationIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<DELETEObservationIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DeleteObservationIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Observation/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<DELETEObservationIdResponse>(callPayload);
+                return new ApiConnectionAction<DeleteObservationIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTObservationIdResponse, ApiConnectionActionConfiguration> PUTObservationId(Expression<Func<string>> id, Expression<Func<DELETEObservationIdBodyInput>> body = null)
+        public IBodyWorkflowAction<PutObservationIdResponse, ApiConnectionActionConfiguration> PutObservationId(Expression<Func<string>> id, Expression<Func<DeleteObservationIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PUTObservationIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PutObservationIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Observation/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PUTObservationIdResponse>(callPayload);
+                return new ApiConnectionAction<PutObservationIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETProcedureResponse, ApiConnectionActionConfiguration> GETProcedure(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GetProcedureResponse, ApiConnectionActionConfiguration> GetProcedure(Expression<Func<string>> count = null, Expression<Func<string>> sort = null, Expression<Func<string>> patient = null)
         {
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETProcedureResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetProcedureResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Procedure";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
-                return new ApiConnectionAction<GETProcedureResponse>(callPayload);
+                return new ApiConnectionAction<GetProcedureResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTProcedureResponse, ApiConnectionActionConfiguration> POSTProcedure(Expression<Func<POSTProcedureBodyInput>> body = null)
+        public IBodyWorkflowAction<PostProcedureResponse, ApiConnectionActionConfiguration> PostProcedure(Expression<Func<PostProcedureBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<POSTProcedureResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PostProcedureResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/Procedure";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<POSTProcedureResponse>(callPayload);
+                return new ApiConnectionAction<PostProcedureResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETProcedureIdResponse, ApiConnectionActionConfiguration> GETProcedureId(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
+        public IBodyWorkflowAction<GetProcedureIdResponse, ApiConnectionActionConfiguration> GetProcedureId(Expression<Func<string>> id, Expression<Func<string>> count = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
-            return new DeferredBodyAction<GETProcedureIdResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<GetProcedureIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Procedure/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
-                return new ApiConnectionAction<GETProcedureIdResponse>(callPayload);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
+                return new ApiConnectionAction<GetProcedureIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETEProcedureIdResponse, ApiConnectionActionConfiguration> DELETEProcedureId(Expression<Func<string>> id, Expression<Func<DELETEProcedureIdBodyInput>> body = null)
+        public IBodyWorkflowAction<DeleteProcedureIdResponse, ApiConnectionActionConfiguration> DeleteProcedureId(Expression<Func<string>> id, Expression<Func<DeleteProcedureIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<DELETEProcedureIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DeleteProcedureIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Procedure/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<DELETEProcedureIdResponse>(callPayload);
+                return new ApiConnectionAction<DeleteProcedureIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTProcedureIdResponse, ApiConnectionActionConfiguration> PUTProcedureId(Expression<Func<string>> id, Expression<Func<DELETEProcedureIdBodyInput>> body = null)
+        public IBodyWorkflowAction<PutProcedureIdResponse, ApiConnectionActionConfiguration> PutProcedureId(Expression<Func<string>> id, Expression<Func<DeleteProcedureIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PUTProcedureIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PutProcedureIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/Procedure/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PUTProcedureIdResponse>(callPayload);
+                return new ApiConnectionAction<PutProcedureIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETRiskAssessmentResponse, ApiConnectionActionConfiguration> GETRiskAssessment(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GetRiskAssessmentResponse, ApiConnectionActionConfiguration> GetRiskAssessment(Expression<Func<string>> count = null, Expression<Func<string>> sort = null, Expression<Func<string>> patient = null)
         {
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETRiskAssessmentResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetRiskAssessmentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RiskAssessment";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
-                return new ApiConnectionAction<GETRiskAssessmentResponse>(callPayload);
+                return new ApiConnectionAction<GetRiskAssessmentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<POSTRiskAssessmentResponse, ApiConnectionActionConfiguration> POSTRiskAssessment(Expression<Func<DELETERiskAssessmentIdBodyInput>> body = null)
+        public IBodyWorkflowAction<PostRiskAssessmentResponse, ApiConnectionActionConfiguration> PostRiskAssessment(Expression<Func<DeleteRiskAssessmentIdBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<POSTRiskAssessmentResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PostRiskAssessmentResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/RiskAssessment";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<POSTRiskAssessmentResponse>(callPayload);
+                return new ApiConnectionAction<PostRiskAssessmentResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETRiskAssessmentIdResponse, ApiConnectionActionConfiguration> GETRiskAssessmentId(Expression<Func<string>> id, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
+        public IBodyWorkflowAction<GetRiskAssessmentIdResponse, ApiConnectionActionConfiguration> GetRiskAssessmentId(Expression<Func<string>> id, Expression<Func<string>> count = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
-            return new DeferredBodyAction<GETRiskAssessmentIdResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<GetRiskAssessmentIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/RiskAssessment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
-                return new ApiConnectionAction<GETRiskAssessmentIdResponse>(callPayload);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
+                return new ApiConnectionAction<GetRiskAssessmentIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<DELETERiskAssessmentIdResponse, ApiConnectionActionConfiguration> DELETERiskAssessmentId(Expression<Func<string>> id, Expression<Func<DELETERiskAssessmentIdBodyInput>> body = null)
+        public IBodyWorkflowAction<DeleteRiskAssessmentIdResponse, ApiConnectionActionConfiguration> DeleteRiskAssessmentId(Expression<Func<string>> id, Expression<Func<DeleteRiskAssessmentIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<DELETERiskAssessmentIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DeleteRiskAssessmentIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/RiskAssessment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<DELETERiskAssessmentIdResponse>(callPayload);
+                return new ApiConnectionAction<DeleteRiskAssessmentIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<PUTRiskAssessmentIdResponse, ApiConnectionActionConfiguration> PUTRiskAssessmentId(Expression<Func<string>> id, Expression<Func<DELETERiskAssessmentIdBodyInput>> body = null)
+        public IBodyWorkflowAction<PutRiskAssessmentIdResponse, ApiConnectionActionConfiguration> PutRiskAssessmentId(Expression<Func<string>> id, Expression<Func<DeleteRiskAssessmentIdBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PUTRiskAssessmentIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PutRiskAssessmentIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/RiskAssessment/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PUTRiskAssessmentIdResponse>(callPayload);
+                return new ApiConnectionAction<PutRiskAssessmentIdResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETCareTeamResponse, ApiConnectionActionConfiguration> GETCareTeam(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GetCareTeamResponse, ApiConnectionActionConfiguration> GetCareTeam(Expression<Func<string>> count = null, Expression<Func<string>> sort = null, Expression<Func<string>> patient = null)
         {
-            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
-            var __workflow_Sort = WorkflowExpression.Compile(Sort, nameof(Sort), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             var __workflow_patient = WorkflowExpression.Compile(patient, nameof(patient), required: false);
-            return new DeferredBodyAction<GETCareTeamResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCareTeamResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/CareTeam";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_Count != null)
-                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
-                if (__workflow_Sort != null)
-                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_Sort);
+                if (__workflow_count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_count);
+                if (__workflow_sort != null)
+                    callPayload.Queries["_sort"] = ExpressionConverter.Convert(__workflow_sort);
                 if (__workflow_patient != null)
                     callPayload.Queries["patient"] = ExpressionConverter.Convert(__workflow_patient);
-                return new ApiConnectionAction<GETCareTeamResponse>(callPayload);
+                return new ApiConnectionAction<GetCareTeamResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirclinical")]
-        public IBodyWorkflowAction<GETCareTeamIdResponse, ApiConnectionActionConfiguration> GETCareTeamId(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetCareTeamIdResponse, ApiConnectionActionConfiguration> GetCareTeamId(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<GETCareTeamIdResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetCareTeamIdResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/CareTeam/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GETCareTeamIdResponse>(callPayload);
+                return new ApiConnectionAction<GetCareTeamIdResponse>(callPayload);
             });
         }
     }
@@ -1011,7 +1011,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
     {
     }
 
-    public class GETAdverseEventResponse
+    public class GetAdverseEventResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -1020,25 +1020,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAdverseEventResponseMetaType Meta { get; set; }
+        public GetAdverseEventResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETAdverseEventResponseLinkTypeItem[] Link { get; set; }
+        public GetAdverseEventResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETAdverseEventResponseEntryTypeItem[] Entry { get; set; }
+        public GetAdverseEventResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETAdverseEventResponseMetaType
+    public class GetAdverseEventResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETAdverseEventResponseLinkTypeItem
+    public class GetAdverseEventResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -1047,19 +1047,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItem
+    public class GetAdverseEventResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETAdverseEventResponseEntryTypeItemResourceType Resource { get; set; }
+        public GetAdverseEventResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETAdverseEventResponseEntryTypeItemSearchType Search { get; set; }
+        public GetAdverseEventResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItemResourceType
+    public class GetAdverseEventResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -1068,40 +1068,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAdverseEventResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GetAdverseEventResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("identifier")]
-        public GETAdverseEventResponseEntryTypeItemResourceTypeIdentifierType Identifier { get; set; }
+        public GetAdverseEventResponseEntryTypeItemResourceTypeIdentifierType Identifier { get; set; }
 
         [JsonProperty("actuality")]
         public string Actuality { get; set; }
 
         [JsonProperty("category")]
-        public GETAdverseEventResponseEntryTypeItemResourceTypeCategoryTypeItem[] Category { get; set; }
+        public GetAdverseEventResponseEntryTypeItemResourceTypeCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("event")]
-        public GETAdverseEventResponseEntryTypeItemResourceTypeEventType Event { get; set; }
+        public GetAdverseEventResponseEntryTypeItemResourceTypeEventType Event { get; set; }
 
         [JsonProperty("subject")]
-        public GETAdverseEventResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
+        public GetAdverseEventResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
 
         [JsonProperty("date")]
         public string Date { get; set; }
 
         [JsonProperty("seriousness")]
-        public GETAdverseEventResponseEntryTypeItemResourceTypeSeriousnessType Seriousness { get; set; }
+        public GetAdverseEventResponseEntryTypeItemResourceTypeSeriousnessType Seriousness { get; set; }
 
         [JsonProperty("severity")]
-        public GETAdverseEventResponseEntryTypeItemResourceTypeSeverityType Severity { get; set; }
+        public GetAdverseEventResponseEntryTypeItemResourceTypeSeverityType Severity { get; set; }
 
         [JsonProperty("recorder")]
-        public GETAdverseEventResponseEntryTypeItemResourceTypeRecorderType Recorder { get; set; }
+        public GetAdverseEventResponseEntryTypeItemResourceTypeRecorderType Recorder { get; set; }
 
         [JsonProperty("suspectEntity")]
-        public GETAdverseEventResponseEntryTypeItemResourceTypeSuspectEntityTypeItem[] SuspectEntity { get; set; }
+        public GetAdverseEventResponseEntryTypeItemResourceTypeSuspectEntityTypeItem[] SuspectEntity { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItemResourceTypeMetaType
+    public class GetAdverseEventResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -1110,7 +1110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItemResourceTypeIdentifierType
+    public class GetAdverseEventResponseEntryTypeItemResourceTypeIdentifierType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1119,13 +1119,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItemResourceTypeCategoryTypeItem
+    public class GetAdverseEventResponseEntryTypeItemResourceTypeCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public GETAdverseEventResponseEntryTypeItemResourceTypeCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetAdverseEventResponseEntryTypeItemResourceTypeCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItemResourceTypeCategoryTypeItemCodingTypeItem
+    public class GetAdverseEventResponseEntryTypeItemResourceTypeCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1137,16 +1137,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItemResourceTypeEventType
+    public class GetAdverseEventResponseEntryTypeItemResourceTypeEventType
     {
         [JsonProperty("coding")]
-        public GETAdverseEventResponseEntryTypeItemResourceTypeEventTypeCodingTypeItem[] Coding { get; set; }
+        public GetAdverseEventResponseEntryTypeItemResourceTypeEventTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItemResourceTypeEventTypeCodingTypeItem
+    public class GetAdverseEventResponseEntryTypeItemResourceTypeEventTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1158,19 +1158,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItemResourceTypeSubjectType
+    public class GetAdverseEventResponseEntryTypeItemResourceTypeSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItemResourceTypeSeriousnessType
+    public class GetAdverseEventResponseEntryTypeItemResourceTypeSeriousnessType
     {
         [JsonProperty("coding")]
-        public GETAdverseEventResponseEntryTypeItemResourceTypeSeriousnessTypeCodingTypeItem[] Coding { get; set; }
+        public GetAdverseEventResponseEntryTypeItemResourceTypeSeriousnessTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItemResourceTypeSeriousnessTypeCodingTypeItem
+    public class GetAdverseEventResponseEntryTypeItemResourceTypeSeriousnessTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1182,13 +1182,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItemResourceTypeSeverityType
+    public class GetAdverseEventResponseEntryTypeItemResourceTypeSeverityType
     {
         [JsonProperty("coding")]
-        public GETAdverseEventResponseEntryTypeItemResourceTypeSeverityTypeCodingTypeItem[] Coding { get; set; }
+        public GetAdverseEventResponseEntryTypeItemResourceTypeSeverityTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItemResourceTypeSeverityTypeCodingTypeItem
+    public class GetAdverseEventResponseEntryTypeItemResourceTypeSeverityTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1200,31 +1200,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItemResourceTypeRecorderType
+    public class GetAdverseEventResponseEntryTypeItemResourceTypeRecorderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItemResourceTypeSuspectEntityTypeItem
+    public class GetAdverseEventResponseEntryTypeItemResourceTypeSuspectEntityTypeItem
     {
         [JsonProperty("instance")]
-        public GETAdverseEventResponseEntryTypeItemResourceTypeSuspectEntityTypeItemInstanceType Instance { get; set; }
+        public GetAdverseEventResponseEntryTypeItemResourceTypeSuspectEntityTypeItemInstanceType Instance { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItemResourceTypeSuspectEntityTypeItemInstanceType
+    public class GetAdverseEventResponseEntryTypeItemResourceTypeSuspectEntityTypeItemInstanceType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETAdverseEventResponseEntryTypeItemSearchType
+    public class GetAdverseEventResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class POSTAdverseEventResponse
+    public class PostAdverseEventResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -1233,40 +1233,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public POSTAdverseEventResponseMetaType Meta { get; set; }
+        public PostAdverseEventResponseMetaType Meta { get; set; }
 
         [JsonProperty("identifier")]
-        public POSTAdverseEventResponseIdentifierType Identifier { get; set; }
+        public PostAdverseEventResponseIdentifierType Identifier { get; set; }
 
         [JsonProperty("actuality")]
         public string Actuality { get; set; }
 
         [JsonProperty("category")]
-        public POSTAdverseEventResponseCategoryTypeItem[] Category { get; set; }
+        public PostAdverseEventResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("event")]
-        public POSTAdverseEventResponseEventType Event { get; set; }
+        public PostAdverseEventResponseEventType Event { get; set; }
 
         [JsonProperty("subject")]
-        public POSTAdverseEventResponseSubjectType Subject { get; set; }
+        public PostAdverseEventResponseSubjectType Subject { get; set; }
 
         [JsonProperty("date")]
         public string Date { get; set; }
 
         [JsonProperty("seriousness")]
-        public POSTAdverseEventResponseSeriousnessType Seriousness { get; set; }
+        public PostAdverseEventResponseSeriousnessType Seriousness { get; set; }
 
         [JsonProperty("severity")]
-        public POSTAdverseEventResponseSeverityType Severity { get; set; }
+        public PostAdverseEventResponseSeverityType Severity { get; set; }
 
         [JsonProperty("recorder")]
-        public POSTAdverseEventResponseRecorderType Recorder { get; set; }
+        public PostAdverseEventResponseRecorderType Recorder { get; set; }
 
         [JsonProperty("suspectEntity")]
-        public POSTAdverseEventResponseSuspectEntityTypeItem[] SuspectEntity { get; set; }
+        public PostAdverseEventResponseSuspectEntityTypeItem[] SuspectEntity { get; set; }
     }
 
-    public class POSTAdverseEventResponseMetaType
+    public class PostAdverseEventResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -1275,7 +1275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class POSTAdverseEventResponseIdentifierType
+    public class PostAdverseEventResponseIdentifierType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1284,13 +1284,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class POSTAdverseEventResponseCategoryTypeItem
+    public class PostAdverseEventResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public POSTAdverseEventResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public PostAdverseEventResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAdverseEventResponseCategoryTypeItemCodingTypeItem
+    public class PostAdverseEventResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1302,16 +1302,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAdverseEventResponseEventType
+    public class PostAdverseEventResponseEventType
     {
         [JsonProperty("coding")]
-        public POSTAdverseEventResponseEventTypeCodingTypeItem[] Coding { get; set; }
+        public PostAdverseEventResponseEventTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTAdverseEventResponseEventTypeCodingTypeItem
+    public class PostAdverseEventResponseEventTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1323,19 +1323,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAdverseEventResponseSubjectType
+    public class PostAdverseEventResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTAdverseEventResponseSeriousnessType
+    public class PostAdverseEventResponseSeriousnessType
     {
         [JsonProperty("coding")]
-        public POSTAdverseEventResponseSeriousnessTypeCodingTypeItem[] Coding { get; set; }
+        public PostAdverseEventResponseSeriousnessTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAdverseEventResponseSeriousnessTypeCodingTypeItem
+    public class PostAdverseEventResponseSeriousnessTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1347,13 +1347,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAdverseEventResponseSeverityType
+    public class PostAdverseEventResponseSeverityType
     {
         [JsonProperty("coding")]
-        public POSTAdverseEventResponseSeverityTypeCodingTypeItem[] Coding { get; set; }
+        public PostAdverseEventResponseSeverityTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAdverseEventResponseSeverityTypeCodingTypeItem
+    public class PostAdverseEventResponseSeverityTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1365,25 +1365,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAdverseEventResponseRecorderType
+    public class PostAdverseEventResponseRecorderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTAdverseEventResponseSuspectEntityTypeItem
+    public class PostAdverseEventResponseSuspectEntityTypeItem
     {
         [JsonProperty("instance")]
-        public POSTAdverseEventResponseSuspectEntityTypeItemInstanceType Instance { get; set; }
+        public PostAdverseEventResponseSuspectEntityTypeItemInstanceType Instance { get; set; }
     }
 
-    public class POSTAdverseEventResponseSuspectEntityTypeItemInstanceType
+    public class PostAdverseEventResponseSuspectEntityTypeItemInstanceType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTAdverseEventBodyInput
+    public class PostAdverseEventBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -1398,13 +1398,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Actuality { get; set; }
 
         [JsonProperty("category")]
-        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
+        public DeleteAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("event")]
         public BodyInputEventType Event { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
+        public DeleteAdverseEventIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -1416,7 +1416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputSeverityType Severity { get; set; }
 
         [JsonProperty("recorder")]
-        public DELETEAdverseEventIdBodyInputRecorderType Recorder { get; set; }
+        public DeleteAdverseEventIdBodyInputRecorderType Recorder { get; set; }
 
         [JsonProperty("suspectEntity")]
         public BodyInputSuspectEntityTypeItem[] SuspectEntity { get; set; }
@@ -1431,7 +1431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class DELETEAdverseEventIdBodyInputCategoryTypeItem
+    public class DeleteAdverseEventIdBodyInputCategoryTypeItem
     {
         [JsonProperty("coding")]
         public BodyInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
@@ -1470,7 +1470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEAdverseEventIdBodyInputSubjectType
+    public class DeleteAdverseEventIdBodyInputSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -1512,7 +1512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEAdverseEventIdBodyInputRecorderType
+    public class DeleteAdverseEventIdBodyInputRecorderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -1530,7 +1530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class GETAdverseEventIdResponse
+    public class GetAdverseEventIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -1539,40 +1539,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAdverseEventIdResponseMetaType Meta { get; set; }
+        public GetAdverseEventIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("identifier")]
-        public GETAdverseEventIdResponseIdentifierType Identifier { get; set; }
+        public GetAdverseEventIdResponseIdentifierType Identifier { get; set; }
 
         [JsonProperty("actuality")]
         public string Actuality { get; set; }
 
         [JsonProperty("category")]
-        public GETAdverseEventIdResponseCategoryTypeItem[] Category { get; set; }
+        public GetAdverseEventIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("event")]
-        public GETAdverseEventIdResponseEventType Event { get; set; }
+        public GetAdverseEventIdResponseEventType Event { get; set; }
 
         [JsonProperty("subject")]
-        public GETAdverseEventIdResponseSubjectType Subject { get; set; }
+        public GetAdverseEventIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("date")]
         public string Date { get; set; }
 
         [JsonProperty("seriousness")]
-        public GETAdverseEventIdResponseSeriousnessType Seriousness { get; set; }
+        public GetAdverseEventIdResponseSeriousnessType Seriousness { get; set; }
 
         [JsonProperty("severity")]
-        public GETAdverseEventIdResponseSeverityType Severity { get; set; }
+        public GetAdverseEventIdResponseSeverityType Severity { get; set; }
 
         [JsonProperty("recorder")]
-        public GETAdverseEventIdResponseRecorderType Recorder { get; set; }
+        public GetAdverseEventIdResponseRecorderType Recorder { get; set; }
 
         [JsonProperty("suspectEntity")]
-        public GETAdverseEventIdResponseSuspectEntityTypeItem[] SuspectEntity { get; set; }
+        public GetAdverseEventIdResponseSuspectEntityTypeItem[] SuspectEntity { get; set; }
     }
 
-    public class GETAdverseEventIdResponseMetaType
+    public class GetAdverseEventIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -1581,7 +1581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETAdverseEventIdResponseIdentifierType
+    public class GetAdverseEventIdResponseIdentifierType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1590,13 +1590,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class GETAdverseEventIdResponseCategoryTypeItem
+    public class GetAdverseEventIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public GETAdverseEventIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetAdverseEventIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETAdverseEventIdResponseCategoryTypeItemCodingTypeItem
+    public class GetAdverseEventIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1608,16 +1608,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETAdverseEventIdResponseEventType
+    public class GetAdverseEventIdResponseEventType
     {
         [JsonProperty("coding")]
-        public GETAdverseEventIdResponseEventTypeCodingTypeItem[] Coding { get; set; }
+        public GetAdverseEventIdResponseEventTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETAdverseEventIdResponseEventTypeCodingTypeItem
+    public class GetAdverseEventIdResponseEventTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1629,19 +1629,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETAdverseEventIdResponseSubjectType
+    public class GetAdverseEventIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETAdverseEventIdResponseSeriousnessType
+    public class GetAdverseEventIdResponseSeriousnessType
     {
         [JsonProperty("coding")]
-        public GETAdverseEventIdResponseSeriousnessTypeCodingTypeItem[] Coding { get; set; }
+        public GetAdverseEventIdResponseSeriousnessTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETAdverseEventIdResponseSeriousnessTypeCodingTypeItem
+    public class GetAdverseEventIdResponseSeriousnessTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1653,13 +1653,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETAdverseEventIdResponseSeverityType
+    public class GetAdverseEventIdResponseSeverityType
     {
         [JsonProperty("coding")]
-        public GETAdverseEventIdResponseSeverityTypeCodingTypeItem[] Coding { get; set; }
+        public GetAdverseEventIdResponseSeverityTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETAdverseEventIdResponseSeverityTypeCodingTypeItem
+    public class GetAdverseEventIdResponseSeverityTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1671,25 +1671,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETAdverseEventIdResponseRecorderType
+    public class GetAdverseEventIdResponseRecorderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETAdverseEventIdResponseSuspectEntityTypeItem
+    public class GetAdverseEventIdResponseSuspectEntityTypeItem
     {
         [JsonProperty("instance")]
-        public GETAdverseEventIdResponseSuspectEntityTypeItemInstanceType Instance { get; set; }
+        public GetAdverseEventIdResponseSuspectEntityTypeItemInstanceType Instance { get; set; }
     }
 
-    public class GETAdverseEventIdResponseSuspectEntityTypeItemInstanceType
+    public class GetAdverseEventIdResponseSuspectEntityTypeItemInstanceType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEAdverseEventIdResponse
+    public class DeleteAdverseEventIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -1698,40 +1698,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEAdverseEventIdResponseMetaType Meta { get; set; }
+        public DeleteAdverseEventIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("identifier")]
-        public DELETEAdverseEventIdResponseIdentifierType Identifier { get; set; }
+        public DeleteAdverseEventIdResponseIdentifierType Identifier { get; set; }
 
         [JsonProperty("actuality")]
         public string Actuality { get; set; }
 
         [JsonProperty("category")]
-        public DELETEAdverseEventIdResponseCategoryTypeItem[] Category { get; set; }
+        public DeleteAdverseEventIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("event")]
-        public DELETEAdverseEventIdResponseEventType Event { get; set; }
+        public DeleteAdverseEventIdResponseEventType Event { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEAdverseEventIdResponseSubjectType Subject { get; set; }
+        public DeleteAdverseEventIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("date")]
         public string Date { get; set; }
 
         [JsonProperty("seriousness")]
-        public DELETEAdverseEventIdResponseSeriousnessType Seriousness { get; set; }
+        public DeleteAdverseEventIdResponseSeriousnessType Seriousness { get; set; }
 
         [JsonProperty("severity")]
-        public DELETEAdverseEventIdResponseSeverityType Severity { get; set; }
+        public DeleteAdverseEventIdResponseSeverityType Severity { get; set; }
 
         [JsonProperty("recorder")]
-        public DELETEAdverseEventIdResponseRecorderType Recorder { get; set; }
+        public DeleteAdverseEventIdResponseRecorderType Recorder { get; set; }
 
         [JsonProperty("suspectEntity")]
-        public DELETEAdverseEventIdResponseSuspectEntityTypeItem[] SuspectEntity { get; set; }
+        public DeleteAdverseEventIdResponseSuspectEntityTypeItem[] SuspectEntity { get; set; }
     }
 
-    public class DELETEAdverseEventIdResponseMetaType
+    public class DeleteAdverseEventIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -1740,7 +1740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEAdverseEventIdResponseIdentifierType
+    public class DeleteAdverseEventIdResponseIdentifierType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1749,13 +1749,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class DELETEAdverseEventIdResponseCategoryTypeItem
+    public class DeleteAdverseEventIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public DELETEAdverseEventIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public DeleteAdverseEventIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEAdverseEventIdResponseCategoryTypeItemCodingTypeItem
+    public class DeleteAdverseEventIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1767,16 +1767,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEAdverseEventIdResponseEventType
+    public class DeleteAdverseEventIdResponseEventType
     {
         [JsonProperty("coding")]
-        public DELETEAdverseEventIdResponseEventTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteAdverseEventIdResponseEventTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEAdverseEventIdResponseEventTypeCodingTypeItem
+    public class DeleteAdverseEventIdResponseEventTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1788,19 +1788,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEAdverseEventIdResponseSubjectType
+    public class DeleteAdverseEventIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEAdverseEventIdResponseSeriousnessType
+    public class DeleteAdverseEventIdResponseSeriousnessType
     {
         [JsonProperty("coding")]
-        public DELETEAdverseEventIdResponseSeriousnessTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteAdverseEventIdResponseSeriousnessTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEAdverseEventIdResponseSeriousnessTypeCodingTypeItem
+    public class DeleteAdverseEventIdResponseSeriousnessTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1812,13 +1812,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEAdverseEventIdResponseSeverityType
+    public class DeleteAdverseEventIdResponseSeverityType
     {
         [JsonProperty("coding")]
-        public DELETEAdverseEventIdResponseSeverityTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteAdverseEventIdResponseSeverityTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEAdverseEventIdResponseSeverityTypeCodingTypeItem
+    public class DeleteAdverseEventIdResponseSeverityTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1830,25 +1830,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEAdverseEventIdResponseRecorderType
+    public class DeleteAdverseEventIdResponseRecorderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEAdverseEventIdResponseSuspectEntityTypeItem
+    public class DeleteAdverseEventIdResponseSuspectEntityTypeItem
     {
         [JsonProperty("instance")]
-        public DELETEAdverseEventIdResponseSuspectEntityTypeItemInstanceType Instance { get; set; }
+        public DeleteAdverseEventIdResponseSuspectEntityTypeItemInstanceType Instance { get; set; }
     }
 
-    public class DELETEAdverseEventIdResponseSuspectEntityTypeItemInstanceType
+    public class DeleteAdverseEventIdResponseSuspectEntityTypeItemInstanceType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEAdverseEventIdBodyInput
+    public class DeleteAdverseEventIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -1866,13 +1866,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Actuality { get; set; }
 
         [JsonProperty("category")]
-        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
+        public DeleteAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("event")]
         public BodyInputEventType Event { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
+        public DeleteAdverseEventIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("date")]
         public string Date { get; set; }
@@ -1884,7 +1884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputSeverityType Severity { get; set; }
 
         [JsonProperty("recorder")]
-        public DELETEAdverseEventIdBodyInputRecorderType Recorder { get; set; }
+        public DeleteAdverseEventIdBodyInputRecorderType Recorder { get; set; }
 
         [JsonProperty("suspectEntity")]
         public BodyInputSuspectEntityTypeItem[] SuspectEntity { get; set; }
@@ -1899,7 +1899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class PUTAdverseEventIdResponse
+    public class PutAdverseEventIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -1908,40 +1908,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTAdverseEventIdResponseMetaType Meta { get; set; }
+        public PutAdverseEventIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("identifier")]
-        public PUTAdverseEventIdResponseIdentifierType Identifier { get; set; }
+        public PutAdverseEventIdResponseIdentifierType Identifier { get; set; }
 
         [JsonProperty("actuality")]
         public string Actuality { get; set; }
 
         [JsonProperty("category")]
-        public PUTAdverseEventIdResponseCategoryTypeItem[] Category { get; set; }
+        public PutAdverseEventIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("event")]
-        public PUTAdverseEventIdResponseEventType Event { get; set; }
+        public PutAdverseEventIdResponseEventType Event { get; set; }
 
         [JsonProperty("subject")]
-        public PUTAdverseEventIdResponseSubjectType Subject { get; set; }
+        public PutAdverseEventIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("date")]
         public string Date { get; set; }
 
         [JsonProperty("seriousness")]
-        public PUTAdverseEventIdResponseSeriousnessType Seriousness { get; set; }
+        public PutAdverseEventIdResponseSeriousnessType Seriousness { get; set; }
 
         [JsonProperty("severity")]
-        public PUTAdverseEventIdResponseSeverityType Severity { get; set; }
+        public PutAdverseEventIdResponseSeverityType Severity { get; set; }
 
         [JsonProperty("recorder")]
-        public PUTAdverseEventIdResponseRecorderType Recorder { get; set; }
+        public PutAdverseEventIdResponseRecorderType Recorder { get; set; }
 
         [JsonProperty("suspectEntity")]
-        public PUTAdverseEventIdResponseSuspectEntityTypeItem[] SuspectEntity { get; set; }
+        public PutAdverseEventIdResponseSuspectEntityTypeItem[] SuspectEntity { get; set; }
     }
 
-    public class PUTAdverseEventIdResponseMetaType
+    public class PutAdverseEventIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -1950,7 +1950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class PUTAdverseEventIdResponseIdentifierType
+    public class PutAdverseEventIdResponseIdentifierType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1959,13 +1959,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class PUTAdverseEventIdResponseCategoryTypeItem
+    public class PutAdverseEventIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public PUTAdverseEventIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public PutAdverseEventIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTAdverseEventIdResponseCategoryTypeItemCodingTypeItem
+    public class PutAdverseEventIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1977,16 +1977,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTAdverseEventIdResponseEventType
+    public class PutAdverseEventIdResponseEventType
     {
         [JsonProperty("coding")]
-        public PUTAdverseEventIdResponseEventTypeCodingTypeItem[] Coding { get; set; }
+        public PutAdverseEventIdResponseEventTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTAdverseEventIdResponseEventTypeCodingTypeItem
+    public class PutAdverseEventIdResponseEventTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -1998,19 +1998,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTAdverseEventIdResponseSubjectType
+    public class PutAdverseEventIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTAdverseEventIdResponseSeriousnessType
+    public class PutAdverseEventIdResponseSeriousnessType
     {
         [JsonProperty("coding")]
-        public PUTAdverseEventIdResponseSeriousnessTypeCodingTypeItem[] Coding { get; set; }
+        public PutAdverseEventIdResponseSeriousnessTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTAdverseEventIdResponseSeriousnessTypeCodingTypeItem
+    public class PutAdverseEventIdResponseSeriousnessTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2022,13 +2022,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTAdverseEventIdResponseSeverityType
+    public class PutAdverseEventIdResponseSeverityType
     {
         [JsonProperty("coding")]
-        public PUTAdverseEventIdResponseSeverityTypeCodingTypeItem[] Coding { get; set; }
+        public PutAdverseEventIdResponseSeverityTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTAdverseEventIdResponseSeverityTypeCodingTypeItem
+    public class PutAdverseEventIdResponseSeverityTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2040,25 +2040,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTAdverseEventIdResponseRecorderType
+    public class PutAdverseEventIdResponseRecorderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTAdverseEventIdResponseSuspectEntityTypeItem
+    public class PutAdverseEventIdResponseSuspectEntityTypeItem
     {
         [JsonProperty("instance")]
-        public PUTAdverseEventIdResponseSuspectEntityTypeItemInstanceType Instance { get; set; }
+        public PutAdverseEventIdResponseSuspectEntityTypeItemInstanceType Instance { get; set; }
     }
 
-    public class PUTAdverseEventIdResponseSuspectEntityTypeItemInstanceType
+    public class PutAdverseEventIdResponseSuspectEntityTypeItemInstanceType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETAllergyIntoleranceResponse
+    public class GetAllergyIntoleranceResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -2067,25 +2067,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAllergyIntoleranceResponseMetaType Meta { get; set; }
+        public GetAllergyIntoleranceResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETAllergyIntoleranceResponseLinkTypeItem[] Link { get; set; }
+        public GetAllergyIntoleranceResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETAllergyIntoleranceResponseEntryTypeItem[] Entry { get; set; }
+        public GetAllergyIntoleranceResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETAllergyIntoleranceResponseMetaType
+    public class GetAllergyIntoleranceResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETAllergyIntoleranceResponseLinkTypeItem
+    public class GetAllergyIntoleranceResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -2094,19 +2094,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class GETAllergyIntoleranceResponseEntryTypeItem
+    public class GetAllergyIntoleranceResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETAllergyIntoleranceResponseEntryTypeItemResourceType Resource { get; set; }
+        public GetAllergyIntoleranceResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETAllergyIntoleranceResponseEntryTypeItemSearchType Search { get; set; }
+        public GetAllergyIntoleranceResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETAllergyIntoleranceResponseEntryTypeItemResourceType
+    public class GetAllergyIntoleranceResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -2115,13 +2115,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAllergyIntoleranceResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GetAllergyIntoleranceResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public GETAllergyIntoleranceResponseEntryTypeItemResourceTypeClinicalStatusType ClinicalStatus { get; set; }
+        public GetAllergyIntoleranceResponseEntryTypeItemResourceTypeClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public GETAllergyIntoleranceResponseEntryTypeItemResourceTypeVerificationStatusType VerificationStatus { get; set; }
+        public GetAllergyIntoleranceResponseEntryTypeItemResourceTypeVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2133,16 +2133,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Criticality { get; set; }
 
         [JsonProperty("code")]
-        public GETAllergyIntoleranceResponseEntryTypeItemResourceTypeCodeType Code { get; set; }
+        public GetAllergyIntoleranceResponseEntryTypeItemResourceTypeCodeType Code { get; set; }
 
         [JsonProperty("patient")]
-        public GETAllergyIntoleranceResponseEntryTypeItemResourceTypePatientType Patient { get; set; }
+        public GetAllergyIntoleranceResponseEntryTypeItemResourceTypePatientType Patient { get; set; }
 
         [JsonProperty("recordedDate")]
         public string RecordedDate { get; set; }
     }
 
-    public class GETAllergyIntoleranceResponseEntryTypeItemResourceTypeMetaType
+    public class GetAllergyIntoleranceResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -2151,13 +2151,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETAllergyIntoleranceResponseEntryTypeItemResourceTypeClinicalStatusType
+    public class GetAllergyIntoleranceResponseEntryTypeItemResourceTypeClinicalStatusType
     {
         [JsonProperty("coding")]
-        public GETAllergyIntoleranceResponseEntryTypeItemResourceTypeClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public GetAllergyIntoleranceResponseEntryTypeItemResourceTypeClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETAllergyIntoleranceResponseEntryTypeItemResourceTypeClinicalStatusTypeCodingTypeItem
+    public class GetAllergyIntoleranceResponseEntryTypeItemResourceTypeClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2166,13 +2166,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETAllergyIntoleranceResponseEntryTypeItemResourceTypeVerificationStatusType
+    public class GetAllergyIntoleranceResponseEntryTypeItemResourceTypeVerificationStatusType
     {
         [JsonProperty("coding")]
-        public GETAllergyIntoleranceResponseEntryTypeItemResourceTypeVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public GetAllergyIntoleranceResponseEntryTypeItemResourceTypeVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETAllergyIntoleranceResponseEntryTypeItemResourceTypeVerificationStatusTypeCodingTypeItem
+    public class GetAllergyIntoleranceResponseEntryTypeItemResourceTypeVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2181,16 +2181,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETAllergyIntoleranceResponseEntryTypeItemResourceTypeCodeType
+    public class GetAllergyIntoleranceResponseEntryTypeItemResourceTypeCodeType
     {
         [JsonProperty("coding")]
-        public GETAllergyIntoleranceResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GetAllergyIntoleranceResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETAllergyIntoleranceResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem
+    public class GetAllergyIntoleranceResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2202,19 +2202,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETAllergyIntoleranceResponseEntryTypeItemResourceTypePatientType
+    public class GetAllergyIntoleranceResponseEntryTypeItemResourceTypePatientType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETAllergyIntoleranceResponseEntryTypeItemSearchType
+    public class GetAllergyIntoleranceResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class POSTAllergyIntoleranceResponse
+    public class PostAllergyIntoleranceResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -2223,16 +2223,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public POSTAllergyIntoleranceResponseMetaType Meta { get; set; }
+        public PostAllergyIntoleranceResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public POSTAllergyIntoleranceResponseTextType Text { get; set; }
+        public PostAllergyIntoleranceResponseTextType Text { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public POSTAllergyIntoleranceResponseClinicalStatusType ClinicalStatus { get; set; }
+        public PostAllergyIntoleranceResponseClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public POSTAllergyIntoleranceResponseVerificationStatusType VerificationStatus { get; set; }
+        public PostAllergyIntoleranceResponseVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2244,22 +2244,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Criticality { get; set; }
 
         [JsonProperty("code")]
-        public POSTAllergyIntoleranceResponseCodeType Code { get; set; }
+        public PostAllergyIntoleranceResponseCodeType Code { get; set; }
 
         [JsonProperty("patient")]
-        public POSTAllergyIntoleranceResponsePatientType Patient { get; set; }
+        public PostAllergyIntoleranceResponsePatientType Patient { get; set; }
 
         [JsonProperty("recordedDate")]
         public string RecordedDate { get; set; }
 
         [JsonProperty("recorder")]
-        public POSTAllergyIntoleranceResponseRecorderType Recorder { get; set; }
+        public PostAllergyIntoleranceResponseRecorderType Recorder { get; set; }
 
         [JsonProperty("reaction")]
-        public POSTAllergyIntoleranceResponseReactionTypeItem[] Reaction { get; set; }
+        public PostAllergyIntoleranceResponseReactionTypeItem[] Reaction { get; set; }
     }
 
-    public class POSTAllergyIntoleranceResponseMetaType
+    public class PostAllergyIntoleranceResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -2268,19 +2268,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class POSTAllergyIntoleranceResponseTextType
+    public class PostAllergyIntoleranceResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class POSTAllergyIntoleranceResponseClinicalStatusType
+    public class PostAllergyIntoleranceResponseClinicalStatusType
     {
         [JsonProperty("coding")]
-        public POSTAllergyIntoleranceResponseClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public PostAllergyIntoleranceResponseClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAllergyIntoleranceResponseClinicalStatusTypeCodingTypeItem
+    public class PostAllergyIntoleranceResponseClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2292,13 +2292,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAllergyIntoleranceResponseVerificationStatusType
+    public class PostAllergyIntoleranceResponseVerificationStatusType
     {
         [JsonProperty("coding")]
-        public POSTAllergyIntoleranceResponseVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public PostAllergyIntoleranceResponseVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAllergyIntoleranceResponseVerificationStatusTypeCodingTypeItem
+    public class PostAllergyIntoleranceResponseVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2310,13 +2310,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAllergyIntoleranceResponseCodeType
+    public class PostAllergyIntoleranceResponseCodeType
     {
         [JsonProperty("coding")]
-        public POSTAllergyIntoleranceResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PostAllergyIntoleranceResponseCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAllergyIntoleranceResponseCodeTypeCodingTypeItem
+    public class PostAllergyIntoleranceResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2328,31 +2328,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAllergyIntoleranceResponsePatientType
+    public class PostAllergyIntoleranceResponsePatientType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTAllergyIntoleranceResponseRecorderType
+    public class PostAllergyIntoleranceResponseRecorderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTAllergyIntoleranceResponseReactionTypeItem
+    public class PostAllergyIntoleranceResponseReactionTypeItem
     {
         [JsonProperty("manifestation")]
-        public POSTAllergyIntoleranceResponseReactionTypeItemManifestationTypeItem[] Manifestation { get; set; }
+        public PostAllergyIntoleranceResponseReactionTypeItemManifestationTypeItem[] Manifestation { get; set; }
     }
 
-    public class POSTAllergyIntoleranceResponseReactionTypeItemManifestationTypeItem
+    public class PostAllergyIntoleranceResponseReactionTypeItemManifestationTypeItem
     {
         [JsonProperty("coding")]
-        public POSTAllergyIntoleranceResponseReactionTypeItemManifestationTypeItemCodingTypeItem[] Coding { get; set; }
+        public PostAllergyIntoleranceResponseReactionTypeItemManifestationTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAllergyIntoleranceResponseReactionTypeItemManifestationTypeItemCodingTypeItem
+    public class PostAllergyIntoleranceResponseReactionTypeItemManifestationTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2364,7 +2364,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAllergyIntoleranceBodyInput
+    public class PostAllergyIntoleranceBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -2376,13 +2376,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public POSTAllergyIntoleranceBodyInputClinicalStatusType ClinicalStatus { get; set; }
+        public PostAllergyIntoleranceBodyInputClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public POSTAllergyIntoleranceBodyInputVerificationStatusType VerificationStatus { get; set; }
+        public PostAllergyIntoleranceBodyInputVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2394,7 +2394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Criticality { get; set; }
 
         [JsonProperty("code")]
-        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
+        public DeleteDiagnosticReportIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("patient")]
         public BodyInputPatientType Patient { get; set; }
@@ -2403,25 +2403,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string RecordedDate { get; set; }
 
         [JsonProperty("recorder")]
-        public DELETEAdverseEventIdBodyInputRecorderType Recorder { get; set; }
+        public DeleteAdverseEventIdBodyInputRecorderType Recorder { get; set; }
 
         [JsonProperty("reaction")]
         public BodyInputReactionTypeItem[] Reaction { get; set; }
     }
 
-    public class DELETECarePlanIdBodyInputTextType
+    public class DeleteCarePlanIdBodyInputTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class POSTAllergyIntoleranceBodyInputClinicalStatusType
+    public class PostAllergyIntoleranceBodyInputClinicalStatusType
     {
         [JsonProperty("coding")]
-        public POSTAllergyIntoleranceBodyInputClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public PostAllergyIntoleranceBodyInputClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAllergyIntoleranceBodyInputClinicalStatusTypeCodingTypeItem
+    public class PostAllergyIntoleranceBodyInputClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2433,13 +2433,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTAllergyIntoleranceBodyInputVerificationStatusType
+    public class PostAllergyIntoleranceBodyInputVerificationStatusType
     {
         [JsonProperty("coding")]
-        public POSTAllergyIntoleranceBodyInputVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public PostAllergyIntoleranceBodyInputVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTAllergyIntoleranceBodyInputVerificationStatusTypeCodingTypeItem
+    public class PostAllergyIntoleranceBodyInputVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2451,7 +2451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEDiagnosticReportIdBodyInputCodeType
+    public class DeleteDiagnosticReportIdBodyInputCodeType
     {
         [JsonProperty("coding")]
         public BodyInputCodeTypeCodingTypeItem[] Coding { get; set; }
@@ -2499,7 +2499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETAllergyIntoleranceIdResponse
+    public class GetAllergyIntoleranceIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -2508,13 +2508,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAllergyIntoleranceIdResponseMetaType Meta { get; set; }
+        public GetAllergyIntoleranceIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public GETAllergyIntoleranceIdResponseClinicalStatusType ClinicalStatus { get; set; }
+        public GetAllergyIntoleranceIdResponseClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public GETAllergyIntoleranceIdResponseVerificationStatusType VerificationStatus { get; set; }
+        public GetAllergyIntoleranceIdResponseVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2526,16 +2526,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Criticality { get; set; }
 
         [JsonProperty("code")]
-        public GETAllergyIntoleranceIdResponseCodeType Code { get; set; }
+        public GetAllergyIntoleranceIdResponseCodeType Code { get; set; }
 
         [JsonProperty("patient")]
-        public GETAllergyIntoleranceIdResponsePatientType Patient { get; set; }
+        public GetAllergyIntoleranceIdResponsePatientType Patient { get; set; }
 
         [JsonProperty("recordedDate")]
         public string RecordedDate { get; set; }
     }
 
-    public class GETAllergyIntoleranceIdResponseMetaType
+    public class GetAllergyIntoleranceIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -2544,13 +2544,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETAllergyIntoleranceIdResponseClinicalStatusType
+    public class GetAllergyIntoleranceIdResponseClinicalStatusType
     {
         [JsonProperty("coding")]
-        public GETAllergyIntoleranceIdResponseClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public GetAllergyIntoleranceIdResponseClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETAllergyIntoleranceIdResponseClinicalStatusTypeCodingTypeItem
+    public class GetAllergyIntoleranceIdResponseClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2559,13 +2559,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETAllergyIntoleranceIdResponseVerificationStatusType
+    public class GetAllergyIntoleranceIdResponseVerificationStatusType
     {
         [JsonProperty("coding")]
-        public GETAllergyIntoleranceIdResponseVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public GetAllergyIntoleranceIdResponseVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETAllergyIntoleranceIdResponseVerificationStatusTypeCodingTypeItem
+    public class GetAllergyIntoleranceIdResponseVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2574,16 +2574,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETAllergyIntoleranceIdResponseCodeType
+    public class GetAllergyIntoleranceIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public GETAllergyIntoleranceIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GetAllergyIntoleranceIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETAllergyIntoleranceIdResponseCodeTypeCodingTypeItem
+    public class GetAllergyIntoleranceIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2595,13 +2595,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETAllergyIntoleranceIdResponsePatientType
+    public class GetAllergyIntoleranceIdResponsePatientType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdResponse
+    public class DeleteAllergyIntoleranceIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -2610,13 +2610,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEAllergyIntoleranceIdResponseMetaType Meta { get; set; }
+        public DeleteAllergyIntoleranceIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public DELETEAllergyIntoleranceIdResponseClinicalStatusType ClinicalStatus { get; set; }
+        public DeleteAllergyIntoleranceIdResponseClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public DELETEAllergyIntoleranceIdResponseVerificationStatusType VerificationStatus { get; set; }
+        public DeleteAllergyIntoleranceIdResponseVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2628,16 +2628,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Criticality { get; set; }
 
         [JsonProperty("code")]
-        public DELETEAllergyIntoleranceIdResponseCodeType Code { get; set; }
+        public DeleteAllergyIntoleranceIdResponseCodeType Code { get; set; }
 
         [JsonProperty("patient")]
-        public DELETEAllergyIntoleranceIdResponsePatientType Patient { get; set; }
+        public DeleteAllergyIntoleranceIdResponsePatientType Patient { get; set; }
 
         [JsonProperty("recordedDate")]
         public string RecordedDate { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdResponseMetaType
+    public class DeleteAllergyIntoleranceIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -2646,13 +2646,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdResponseClinicalStatusType
+    public class DeleteAllergyIntoleranceIdResponseClinicalStatusType
     {
         [JsonProperty("coding")]
-        public DELETEAllergyIntoleranceIdResponseClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteAllergyIntoleranceIdResponseClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdResponseClinicalStatusTypeCodingTypeItem
+    public class DeleteAllergyIntoleranceIdResponseClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2661,13 +2661,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdResponseVerificationStatusType
+    public class DeleteAllergyIntoleranceIdResponseVerificationStatusType
     {
         [JsonProperty("coding")]
-        public DELETEAllergyIntoleranceIdResponseVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteAllergyIntoleranceIdResponseVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdResponseVerificationStatusTypeCodingTypeItem
+    public class DeleteAllergyIntoleranceIdResponseVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2676,16 +2676,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdResponseCodeType
+    public class DeleteAllergyIntoleranceIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public DELETEAllergyIntoleranceIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteAllergyIntoleranceIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdResponseCodeTypeCodingTypeItem
+    public class DeleteAllergyIntoleranceIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2697,13 +2697,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdResponsePatientType
+    public class DeleteAllergyIntoleranceIdResponsePatientType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdBodyInput
+    public class DeleteAllergyIntoleranceIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -2715,10 +2715,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public DELETEAllergyIntoleranceIdBodyInputClinicalStatusType ClinicalStatus { get; set; }
+        public DeleteAllergyIntoleranceIdBodyInputClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public DELETEAllergyIntoleranceIdBodyInputVerificationStatusType VerificationStatus { get; set; }
+        public DeleteAllergyIntoleranceIdBodyInputVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2730,7 +2730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Criticality { get; set; }
 
         [JsonProperty("code")]
-        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
+        public DeleteAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("patient")]
         public BodyInputPatientType Patient { get; set; }
@@ -2739,13 +2739,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string RecordedDate { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdBodyInputClinicalStatusType
+    public class DeleteAllergyIntoleranceIdBodyInputClinicalStatusType
     {
         [JsonProperty("coding")]
-        public DELETEAllergyIntoleranceIdBodyInputClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteAllergyIntoleranceIdBodyInputClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdBodyInputClinicalStatusTypeCodingTypeItem
+    public class DeleteAllergyIntoleranceIdBodyInputClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2754,13 +2754,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdBodyInputVerificationStatusType
+    public class DeleteAllergyIntoleranceIdBodyInputVerificationStatusType
     {
         [JsonProperty("coding")]
-        public DELETEAllergyIntoleranceIdBodyInputVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteAllergyIntoleranceIdBodyInputVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdBodyInputVerificationStatusTypeCodingTypeItem
+    public class DeleteAllergyIntoleranceIdBodyInputVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2769,7 +2769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETEAllergyIntoleranceIdBodyInputCodeType
+    public class DeleteAllergyIntoleranceIdBodyInputCodeType
     {
         [JsonProperty("coding")]
         public BodyInputCodeTypeCodingTypeItem[] Coding { get; set; }
@@ -2778,7 +2778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Text { get; set; }
     }
 
-    public class PUTAllergyIntoleranceIdResponse
+    public class PutAllergyIntoleranceIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -2787,13 +2787,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTAllergyIntoleranceIdResponseMetaType Meta { get; set; }
+        public PutAllergyIntoleranceIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public PUTAllergyIntoleranceIdResponseClinicalStatusType ClinicalStatus { get; set; }
+        public PutAllergyIntoleranceIdResponseClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public PUTAllergyIntoleranceIdResponseVerificationStatusType VerificationStatus { get; set; }
+        public PutAllergyIntoleranceIdResponseVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2805,16 +2805,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Criticality { get; set; }
 
         [JsonProperty("code")]
-        public PUTAllergyIntoleranceIdResponseCodeType Code { get; set; }
+        public PutAllergyIntoleranceIdResponseCodeType Code { get; set; }
 
         [JsonProperty("patient")]
-        public PUTAllergyIntoleranceIdResponsePatientType Patient { get; set; }
+        public PutAllergyIntoleranceIdResponsePatientType Patient { get; set; }
 
         [JsonProperty("recordedDate")]
         public string RecordedDate { get; set; }
     }
 
-    public class PUTAllergyIntoleranceIdResponseMetaType
+    public class PutAllergyIntoleranceIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -2823,13 +2823,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class PUTAllergyIntoleranceIdResponseClinicalStatusType
+    public class PutAllergyIntoleranceIdResponseClinicalStatusType
     {
         [JsonProperty("coding")]
-        public PUTAllergyIntoleranceIdResponseClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public PutAllergyIntoleranceIdResponseClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTAllergyIntoleranceIdResponseClinicalStatusTypeCodingTypeItem
+    public class PutAllergyIntoleranceIdResponseClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2838,13 +2838,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTAllergyIntoleranceIdResponseVerificationStatusType
+    public class PutAllergyIntoleranceIdResponseVerificationStatusType
     {
         [JsonProperty("coding")]
-        public PUTAllergyIntoleranceIdResponseVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public PutAllergyIntoleranceIdResponseVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTAllergyIntoleranceIdResponseVerificationStatusTypeCodingTypeItem
+    public class PutAllergyIntoleranceIdResponseVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2853,16 +2853,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTAllergyIntoleranceIdResponseCodeType
+    public class PutAllergyIntoleranceIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public PUTAllergyIntoleranceIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PutAllergyIntoleranceIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTAllergyIntoleranceIdResponseCodeTypeCodingTypeItem
+    public class PutAllergyIntoleranceIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -2874,13 +2874,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTAllergyIntoleranceIdResponsePatientType
+    public class PutAllergyIntoleranceIdResponsePatientType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETCarePlanResponse
+    public class GetCarePlanResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -2889,25 +2889,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETCarePlanResponseMetaType Meta { get; set; }
+        public GetCarePlanResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETCarePlanResponseLinkTypeItem[] Link { get; set; }
+        public GetCarePlanResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETCarePlanResponseEntryTypeItem[] Entry { get; set; }
+        public GetCarePlanResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETCarePlanResponseMetaType
+    public class GetCarePlanResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETCarePlanResponseLinkTypeItem
+    public class GetCarePlanResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -2916,19 +2916,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItem
+    public class GetCarePlanResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETCarePlanResponseEntryTypeItemResourceType Resource { get; set; }
+        public GetCarePlanResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETCarePlanResponseEntryTypeItemSearchType Search { get; set; }
+        public GetCarePlanResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemResourceType
+    public class GetCarePlanResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -2937,10 +2937,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETCarePlanResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GetCarePlanResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETCarePlanResponseEntryTypeItemResourceTypeTextType Text { get; set; }
+        public GetCarePlanResponseEntryTypeItemResourceTypeTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -2949,31 +2949,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("category")]
-        public GETCarePlanResponseEntryTypeItemResourceTypeCategoryTypeItem[] Category { get; set; }
+        public GetCarePlanResponseEntryTypeItemResourceTypeCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("subject")]
-        public GETCarePlanResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
+        public GetCarePlanResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public GETCarePlanResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
+        public GetCarePlanResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
 
         [JsonProperty("period")]
-        public GETCarePlanResponseEntryTypeItemResourceTypePeriodType Period { get; set; }
+        public GetCarePlanResponseEntryTypeItemResourceTypePeriodType Period { get; set; }
 
         [JsonProperty("careTeam")]
-        public GETCarePlanResponseEntryTypeItemResourceTypeCareTeamTypeItem[] CareTeam { get; set; }
+        public GetCarePlanResponseEntryTypeItemResourceTypeCareTeamTypeItem[] CareTeam { get; set; }
 
         [JsonProperty("addresses")]
-        public GETCarePlanResponseEntryTypeItemResourceTypeAddressesTypeItem[] Addresses { get; set; }
+        public GetCarePlanResponseEntryTypeItemResourceTypeAddressesTypeItem[] Addresses { get; set; }
 
         [JsonProperty("goal")]
-        public GETCarePlanResponseEntryTypeItemResourceTypeGoalTypeItem[] Goal { get; set; }
+        public GetCarePlanResponseEntryTypeItemResourceTypeGoalTypeItem[] Goal { get; set; }
 
         [JsonProperty("activity")]
-        public GETCarePlanResponseEntryTypeItemResourceTypeActivityTypeItem[] Activity { get; set; }
+        public GetCarePlanResponseEntryTypeItemResourceTypeActivityTypeItem[] Activity { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemResourceTypeMetaType
+    public class GetCarePlanResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -2982,7 +2982,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemResourceTypeTextType
+    public class GetCarePlanResponseEntryTypeItemResourceTypeTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -2991,16 +2991,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Div { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemResourceTypeCategoryTypeItem
+    public class GetCarePlanResponseEntryTypeItemResourceTypeCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public GETCarePlanResponseEntryTypeItemResourceTypeCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetCarePlanResponseEntryTypeItemResourceTypeCategoryTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemResourceTypeCategoryTypeItemCodingTypeItem
+    public class GetCarePlanResponseEntryTypeItemResourceTypeCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3012,19 +3012,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemResourceTypeSubjectType
+    public class GetCarePlanResponseEntryTypeItemResourceTypeSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemResourceTypeEncounterType
+    public class GetCarePlanResponseEntryTypeItemResourceTypeEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemResourceTypePeriodType
+    public class GetCarePlanResponseEntryTypeItemResourceTypePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -3033,52 +3033,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string End { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemResourceTypeCareTeamTypeItem
+    public class GetCarePlanResponseEntryTypeItemResourceTypeCareTeamTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemResourceTypeAddressesTypeItem
+    public class GetCarePlanResponseEntryTypeItemResourceTypeAddressesTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemResourceTypeGoalTypeItem
+    public class GetCarePlanResponseEntryTypeItemResourceTypeGoalTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemResourceTypeActivityTypeItem
+    public class GetCarePlanResponseEntryTypeItemResourceTypeActivityTypeItem
     {
         [JsonProperty("detail")]
-        public GETCarePlanResponseEntryTypeItemResourceTypeActivityTypeItemDetailType Detail { get; set; }
+        public GetCarePlanResponseEntryTypeItemResourceTypeActivityTypeItemDetailType Detail { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemResourceTypeActivityTypeItemDetailType
+    public class GetCarePlanResponseEntryTypeItemResourceTypeActivityTypeItemDetailType
     {
         [JsonProperty("code")]
-        public GETCarePlanResponseEntryTypeItemResourceTypeActivityTypeItemDetailTypeCodeType Code { get; set; }
+        public GetCarePlanResponseEntryTypeItemResourceTypeActivityTypeItemDetailTypeCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("location")]
-        public GETCarePlanResponseEntryTypeItemResourceTypeActivityTypeItemDetailTypeLocationType Location { get; set; }
+        public GetCarePlanResponseEntryTypeItemResourceTypeActivityTypeItemDetailTypeLocationType Location { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemResourceTypeActivityTypeItemDetailTypeCodeType
+    public class GetCarePlanResponseEntryTypeItemResourceTypeActivityTypeItemDetailTypeCodeType
     {
         [JsonProperty("coding")]
-        public GETCarePlanResponseEntryTypeItemResourceTypeActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GetCarePlanResponseEntryTypeItemResourceTypeActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemResourceTypeActivityTypeItemDetailTypeCodeTypeCodingTypeItem
+    public class GetCarePlanResponseEntryTypeItemResourceTypeActivityTypeItemDetailTypeCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3090,19 +3090,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemResourceTypeActivityTypeItemDetailTypeLocationType
+    public class GetCarePlanResponseEntryTypeItemResourceTypeActivityTypeItemDetailTypeLocationType
     {
         [JsonProperty("display")]
         public string Display { get; set; }
     }
 
-    public class GETCarePlanResponseEntryTypeItemSearchType
+    public class GetCarePlanResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class POSTCarePlanResponse
+    public class PostCarePlanResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -3111,13 +3111,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public POSTCarePlanResponseMetaType Meta { get; set; }
+        public PostCarePlanResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public POSTCarePlanResponseTextType Text { get; set; }
+        public PostCarePlanResponseTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public POSTCarePlanResponseContainedTypeItem[] Contained { get; set; }
+        public PostCarePlanResponseContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3126,25 +3126,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("subject")]
-        public POSTCarePlanResponseSubjectType Subject { get; set; }
+        public PostCarePlanResponseSubjectType Subject { get; set; }
 
         [JsonProperty("period")]
-        public POSTCarePlanResponsePeriodType Period { get; set; }
+        public PostCarePlanResponsePeriodType Period { get; set; }
 
         [JsonProperty("careTeam")]
-        public POSTCarePlanResponseCareTeamTypeItem[] CareTeam { get; set; }
+        public PostCarePlanResponseCareTeamTypeItem[] CareTeam { get; set; }
 
         [JsonProperty("addresses")]
-        public POSTCarePlanResponseAddressesTypeItem[] Addresses { get; set; }
+        public PostCarePlanResponseAddressesTypeItem[] Addresses { get; set; }
 
         [JsonProperty("goal")]
-        public POSTCarePlanResponseGoalTypeItem[] Goal { get; set; }
+        public PostCarePlanResponseGoalTypeItem[] Goal { get; set; }
 
         [JsonProperty("activity")]
-        public POSTCarePlanResponseActivityTypeItem[] Activity { get; set; }
+        public PostCarePlanResponseActivityTypeItem[] Activity { get; set; }
     }
 
-    public class POSTCarePlanResponseMetaType
+    public class PostCarePlanResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -3153,13 +3153,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class POSTCarePlanResponseTextType
+    public class PostCarePlanResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class POSTCarePlanResponseContainedTypeItem
+    public class PostCarePlanResponseContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -3168,34 +3168,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public POSTCarePlanResponseContainedTypeItemClinicalStatusType ClinicalStatus { get; set; }
+        public PostCarePlanResponseContainedTypeItemClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public POSTCarePlanResponseContainedTypeItemVerificationStatusType VerificationStatus { get; set; }
+        public PostCarePlanResponseContainedTypeItemVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("code")]
-        public POSTCarePlanResponseContainedTypeItemCodeType Code { get; set; }
+        public PostCarePlanResponseContainedTypeItemCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public POSTCarePlanResponseContainedTypeItemSubjectType Subject { get; set; }
+        public PostCarePlanResponseContainedTypeItemSubjectType Subject { get; set; }
 
         [JsonProperty("participant")]
-        public POSTCarePlanResponseContainedTypeItemParticipantTypeItem[] Participant { get; set; }
+        public PostCarePlanResponseContainedTypeItemParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("lifecycleStatus")]
         public string LifecycleStatus { get; set; }
 
         [JsonProperty("description")]
-        public POSTCarePlanResponseContainedTypeItemDescriptionType Description { get; set; }
+        public PostCarePlanResponseContainedTypeItemDescriptionType Description { get; set; }
     }
 
-    public class POSTCarePlanResponseContainedTypeItemClinicalStatusType
+    public class PostCarePlanResponseContainedTypeItemClinicalStatusType
     {
         [JsonProperty("coding")]
-        public POSTCarePlanResponseContainedTypeItemClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public PostCarePlanResponseContainedTypeItemClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTCarePlanResponseContainedTypeItemClinicalStatusTypeCodingTypeItem
+    public class PostCarePlanResponseContainedTypeItemClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3204,13 +3204,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTCarePlanResponseContainedTypeItemVerificationStatusType
+    public class PostCarePlanResponseContainedTypeItemVerificationStatusType
     {
         [JsonProperty("coding")]
-        public POSTCarePlanResponseContainedTypeItemVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public PostCarePlanResponseContainedTypeItemVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTCarePlanResponseContainedTypeItemVerificationStatusTypeCodingTypeItem
+    public class PostCarePlanResponseContainedTypeItemVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3219,13 +3219,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTCarePlanResponseContainedTypeItemCodeType
+    public class PostCarePlanResponseContainedTypeItemCodeType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTCarePlanResponseContainedTypeItemSubjectType
+    public class PostCarePlanResponseContainedTypeItemSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3234,28 +3234,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTCarePlanResponseContainedTypeItemParticipantTypeItem
+    public class PostCarePlanResponseContainedTypeItemParticipantTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
         [JsonProperty("role")]
-        public POSTCarePlanResponseContainedTypeItemParticipantTypeItemRoleTypeItem[] Role { get; set; }
+        public PostCarePlanResponseContainedTypeItemParticipantTypeItemRoleTypeItem[] Role { get; set; }
 
         [JsonProperty("member")]
-        public POSTCarePlanResponseContainedTypeItemParticipantTypeItemMemberType Member { get; set; }
+        public PostCarePlanResponseContainedTypeItemParticipantTypeItemMemberType Member { get; set; }
     }
 
-    public class POSTCarePlanResponseContainedTypeItemParticipantTypeItemRoleTypeItem
+    public class PostCarePlanResponseContainedTypeItemParticipantTypeItemRoleTypeItem
     {
         [JsonProperty("coding")]
-        public POSTCarePlanResponseContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem[] Coding { get; set; }
+        public PostCarePlanResponseContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTCarePlanResponseContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem
+    public class PostCarePlanResponseContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3264,7 +3264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTCarePlanResponseContainedTypeItemParticipantTypeItemMemberType
+    public class PostCarePlanResponseContainedTypeItemParticipantTypeItemMemberType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3273,13 +3273,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTCarePlanResponseContainedTypeItemDescriptionType
+    public class PostCarePlanResponseContainedTypeItemDescriptionType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTCarePlanResponseSubjectType
+    public class PostCarePlanResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3288,19 +3288,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTCarePlanResponsePeriodType
+    public class PostCarePlanResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
     }
 
-    public class POSTCarePlanResponseCareTeamTypeItem
+    public class PostCarePlanResponseCareTeamTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTCarePlanResponseAddressesTypeItem
+    public class PostCarePlanResponseAddressesTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3309,34 +3309,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTCarePlanResponseGoalTypeItem
+    public class PostCarePlanResponseGoalTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTCarePlanResponseActivityTypeItem
+    public class PostCarePlanResponseActivityTypeItem
     {
         [JsonProperty("outcomeReference")]
-        public POSTCarePlanResponseActivityTypeItemOutcomeReferenceTypeItem[] OutcomeReference { get; set; }
+        public PostCarePlanResponseActivityTypeItemOutcomeReferenceTypeItem[] OutcomeReference { get; set; }
 
         [JsonProperty("detail")]
-        public POSTCarePlanResponseActivityTypeItemDetailType Detail { get; set; }
+        public PostCarePlanResponseActivityTypeItemDetailType Detail { get; set; }
     }
 
-    public class POSTCarePlanResponseActivityTypeItemOutcomeReferenceTypeItem
+    public class PostCarePlanResponseActivityTypeItemOutcomeReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTCarePlanResponseActivityTypeItemDetailType
+    public class PostCarePlanResponseActivityTypeItemDetailType
     {
         [JsonProperty("kind")]
         public string Kind { get; set; }
 
         [JsonProperty("code")]
-        public POSTCarePlanResponseActivityTypeItemDetailTypeCodeType Code { get; set; }
+        public PostCarePlanResponseActivityTypeItemDetailTypeCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3345,22 +3345,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public bool DoNotPerform { get; set; }
 
         [JsonProperty("scheduledPeriod")]
-        public POSTCarePlanResponseActivityTypeItemDetailTypeScheduledPeriodType ScheduledPeriod { get; set; }
+        public PostCarePlanResponseActivityTypeItemDetailTypeScheduledPeriodType ScheduledPeriod { get; set; }
 
         [JsonProperty("performer")]
-        public POSTCarePlanResponseActivityTypeItemDetailTypePerformerTypeItem[] Performer { get; set; }
+        public PostCarePlanResponseActivityTypeItemDetailTypePerformerTypeItem[] Performer { get; set; }
     }
 
-    public class POSTCarePlanResponseActivityTypeItemDetailTypeCodeType
+    public class PostCarePlanResponseActivityTypeItemDetailTypeCodeType
     {
         [JsonProperty("coding")]
-        public POSTCarePlanResponseActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PostCarePlanResponseActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTCarePlanResponseActivityTypeItemDetailTypeCodeTypeCodingTypeItem
+    public class PostCarePlanResponseActivityTypeItemDetailTypeCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3369,7 +3369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTCarePlanResponseActivityTypeItemDetailTypeScheduledPeriodType
+    public class PostCarePlanResponseActivityTypeItemDetailTypeScheduledPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -3378,7 +3378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string End { get; set; }
     }
 
-    public class POSTCarePlanResponseActivityTypeItemDetailTypePerformerTypeItem
+    public class PostCarePlanResponseActivityTypeItemDetailTypePerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3387,7 +3387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTCarePlanBodyInput
+    public class PostCarePlanBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -3399,7 +3399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3408,7 +3408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("category")]
-        public POSTCarePlanBodyInputCategoryTypeItem[] Category { get; set; }
+        public PostCarePlanBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -3417,25 +3417,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Description { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
+        public DeleteAdverseEventIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public POSTCarePlanBodyInputEncounterType Encounter { get; set; }
+        public PostCarePlanBodyInputEncounterType Encounter { get; set; }
 
         [JsonProperty("period")]
-        public POSTCarePlanBodyInputPeriodType Period { get; set; }
+        public PostCarePlanBodyInputPeriodType Period { get; set; }
 
         [JsonProperty("careTeam")]
         public BodyInputCareTeamTypeItem[] CareTeam { get; set; }
 
         [JsonProperty("addresses")]
-        public POSTCarePlanBodyInputAddressesTypeItem[] Addresses { get; set; }
+        public PostCarePlanBodyInputAddressesTypeItem[] Addresses { get; set; }
 
         [JsonProperty("activity")]
-        public POSTCarePlanBodyInputActivityTypeItem[] Activity { get; set; }
+        public PostCarePlanBodyInputActivityTypeItem[] Activity { get; set; }
     }
 
-    public class POSTCarePlanBodyInputCategoryTypeItem
+    public class PostCarePlanBodyInputCategoryTypeItem
     {
         [JsonProperty("coding")]
         public BodyInputCategoryTypeItemCodingTypeItem[] Coding { get; set; }
@@ -3444,13 +3444,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Text { get; set; }
     }
 
-    public class POSTCarePlanBodyInputEncounterType
+    public class PostCarePlanBodyInputEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTCarePlanBodyInputPeriodType
+    public class PostCarePlanBodyInputPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -3465,22 +3465,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class POSTCarePlanBodyInputAddressesTypeItem
+    public class PostCarePlanBodyInputAddressesTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTCarePlanBodyInputActivityTypeItem
+    public class PostCarePlanBodyInputActivityTypeItem
     {
         [JsonProperty("detail")]
-        public POSTCarePlanBodyInputActivityTypeItemDetailType Detail { get; set; }
+        public PostCarePlanBodyInputActivityTypeItemDetailType Detail { get; set; }
     }
 
-    public class POSTCarePlanBodyInputActivityTypeItemDetailType
+    public class PostCarePlanBodyInputActivityTypeItemDetailType
     {
         [JsonProperty("code")]
-        public POSTCarePlanBodyInputActivityTypeItemDetailTypeCodeType Code { get; set; }
+        public PostCarePlanBodyInputActivityTypeItemDetailTypeCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3489,16 +3489,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputActivityTypeItemDetailTypeLocationType Location { get; set; }
     }
 
-    public class POSTCarePlanBodyInputActivityTypeItemDetailTypeCodeType
+    public class PostCarePlanBodyInputActivityTypeItemDetailTypeCodeType
     {
         [JsonProperty("coding")]
-        public POSTCarePlanBodyInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PostCarePlanBodyInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTCarePlanBodyInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem
+    public class PostCarePlanBodyInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3516,7 +3516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETCarePlanIdResponse
+    public class GetCarePlanIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -3525,10 +3525,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETCarePlanIdResponseMetaType Meta { get; set; }
+        public GetCarePlanIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETCarePlanIdResponseTextType Text { get; set; }
+        public GetCarePlanIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3537,7 +3537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("category")]
-        public GETCarePlanIdResponseCategoryTypeItem[] Category { get; set; }
+        public GetCarePlanIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -3546,25 +3546,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Description { get; set; }
 
         [JsonProperty("subject")]
-        public GETCarePlanIdResponseSubjectType Subject { get; set; }
+        public GetCarePlanIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public GETCarePlanIdResponseEncounterType Encounter { get; set; }
+        public GetCarePlanIdResponseEncounterType Encounter { get; set; }
 
         [JsonProperty("period")]
-        public GETCarePlanIdResponsePeriodType Period { get; set; }
+        public GetCarePlanIdResponsePeriodType Period { get; set; }
 
         [JsonProperty("careTeam")]
-        public GETCarePlanIdResponseCareTeamTypeItem[] CareTeam { get; set; }
+        public GetCarePlanIdResponseCareTeamTypeItem[] CareTeam { get; set; }
 
         [JsonProperty("addresses")]
-        public GETCarePlanIdResponseAddressesTypeItem[] Addresses { get; set; }
+        public GetCarePlanIdResponseAddressesTypeItem[] Addresses { get; set; }
 
         [JsonProperty("activity")]
-        public GETCarePlanIdResponseActivityTypeItem[] Activity { get; set; }
+        public GetCarePlanIdResponseActivityTypeItem[] Activity { get; set; }
     }
 
-    public class GETCarePlanIdResponseMetaType
+    public class GetCarePlanIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -3573,22 +3573,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETCarePlanIdResponseTextType
+    public class GetCarePlanIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class GETCarePlanIdResponseCategoryTypeItem
+    public class GetCarePlanIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public GETCarePlanIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetCarePlanIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETCarePlanIdResponseCategoryTypeItemCodingTypeItem
+    public class GetCarePlanIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3600,19 +3600,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETCarePlanIdResponseSubjectType
+    public class GetCarePlanIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETCarePlanIdResponseEncounterType
+    public class GetCarePlanIdResponseEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETCarePlanIdResponsePeriodType
+    public class GetCarePlanIdResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -3621,46 +3621,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string End { get; set; }
     }
 
-    public class GETCarePlanIdResponseCareTeamTypeItem
+    public class GetCarePlanIdResponseCareTeamTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETCarePlanIdResponseAddressesTypeItem
+    public class GetCarePlanIdResponseAddressesTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETCarePlanIdResponseActivityTypeItem
+    public class GetCarePlanIdResponseActivityTypeItem
     {
         [JsonProperty("detail")]
-        public GETCarePlanIdResponseActivityTypeItemDetailType Detail { get; set; }
+        public GetCarePlanIdResponseActivityTypeItemDetailType Detail { get; set; }
     }
 
-    public class GETCarePlanIdResponseActivityTypeItemDetailType
+    public class GetCarePlanIdResponseActivityTypeItemDetailType
     {
         [JsonProperty("code")]
-        public GETCarePlanIdResponseActivityTypeItemDetailTypeCodeType Code { get; set; }
+        public GetCarePlanIdResponseActivityTypeItemDetailTypeCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("location")]
-        public GETCarePlanIdResponseActivityTypeItemDetailTypeLocationType Location { get; set; }
+        public GetCarePlanIdResponseActivityTypeItemDetailTypeLocationType Location { get; set; }
     }
 
-    public class GETCarePlanIdResponseActivityTypeItemDetailTypeCodeType
+    public class GetCarePlanIdResponseActivityTypeItemDetailTypeCodeType
     {
         [JsonProperty("coding")]
-        public GETCarePlanIdResponseActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GetCarePlanIdResponseActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETCarePlanIdResponseActivityTypeItemDetailTypeCodeTypeCodingTypeItem
+    public class GetCarePlanIdResponseActivityTypeItemDetailTypeCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3672,13 +3672,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETCarePlanIdResponseActivityTypeItemDetailTypeLocationType
+    public class GetCarePlanIdResponseActivityTypeItemDetailTypeLocationType
     {
         [JsonProperty("display")]
         public string Display { get; set; }
     }
 
-    public class DELETECarePlanIdResponse
+    public class DeleteCarePlanIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -3687,13 +3687,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETECarePlanIdResponseMetaType Meta { get; set; }
+        public DeleteCarePlanIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdResponseTextType Text { get; set; }
+        public DeleteCarePlanIdResponseTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public DELETECarePlanIdResponseContainedTypeItem[] Contained { get; set; }
+        public DeleteCarePlanIdResponseContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3702,25 +3702,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("subject")]
-        public DELETECarePlanIdResponseSubjectType Subject { get; set; }
+        public DeleteCarePlanIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("period")]
-        public DELETECarePlanIdResponsePeriodType Period { get; set; }
+        public DeleteCarePlanIdResponsePeriodType Period { get; set; }
 
         [JsonProperty("careTeam")]
-        public DELETECarePlanIdResponseCareTeamTypeItem[] CareTeam { get; set; }
+        public DeleteCarePlanIdResponseCareTeamTypeItem[] CareTeam { get; set; }
 
         [JsonProperty("addresses")]
-        public DELETECarePlanIdResponseAddressesTypeItem[] Addresses { get; set; }
+        public DeleteCarePlanIdResponseAddressesTypeItem[] Addresses { get; set; }
 
         [JsonProperty("goal")]
-        public DELETECarePlanIdResponseGoalTypeItem[] Goal { get; set; }
+        public DeleteCarePlanIdResponseGoalTypeItem[] Goal { get; set; }
 
         [JsonProperty("activity")]
-        public DELETECarePlanIdResponseActivityTypeItem[] Activity { get; set; }
+        public DeleteCarePlanIdResponseActivityTypeItem[] Activity { get; set; }
     }
 
-    public class DELETECarePlanIdResponseMetaType
+    public class DeleteCarePlanIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -3729,13 +3729,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class DELETECarePlanIdResponseTextType
+    public class DeleteCarePlanIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class DELETECarePlanIdResponseContainedTypeItem
+    public class DeleteCarePlanIdResponseContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -3744,34 +3744,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public DELETECarePlanIdResponseContainedTypeItemClinicalStatusType ClinicalStatus { get; set; }
+        public DeleteCarePlanIdResponseContainedTypeItemClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public DELETECarePlanIdResponseContainedTypeItemVerificationStatusType VerificationStatus { get; set; }
+        public DeleteCarePlanIdResponseContainedTypeItemVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("code")]
-        public DELETECarePlanIdResponseContainedTypeItemCodeType Code { get; set; }
+        public DeleteCarePlanIdResponseContainedTypeItemCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public DELETECarePlanIdResponseContainedTypeItemSubjectType Subject { get; set; }
+        public DeleteCarePlanIdResponseContainedTypeItemSubjectType Subject { get; set; }
 
         [JsonProperty("participant")]
-        public DELETECarePlanIdResponseContainedTypeItemParticipantTypeItem[] Participant { get; set; }
+        public DeleteCarePlanIdResponseContainedTypeItemParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("lifecycleStatus")]
         public string LifecycleStatus { get; set; }
 
         [JsonProperty("description")]
-        public DELETECarePlanIdResponseContainedTypeItemDescriptionType Description { get; set; }
+        public DeleteCarePlanIdResponseContainedTypeItemDescriptionType Description { get; set; }
     }
 
-    public class DELETECarePlanIdResponseContainedTypeItemClinicalStatusType
+    public class DeleteCarePlanIdResponseContainedTypeItemClinicalStatusType
     {
         [JsonProperty("coding")]
-        public DELETECarePlanIdResponseContainedTypeItemClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteCarePlanIdResponseContainedTypeItemClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETECarePlanIdResponseContainedTypeItemClinicalStatusTypeCodingTypeItem
+    public class DeleteCarePlanIdResponseContainedTypeItemClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3780,13 +3780,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETECarePlanIdResponseContainedTypeItemVerificationStatusType
+    public class DeleteCarePlanIdResponseContainedTypeItemVerificationStatusType
     {
         [JsonProperty("coding")]
-        public DELETECarePlanIdResponseContainedTypeItemVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteCarePlanIdResponseContainedTypeItemVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETECarePlanIdResponseContainedTypeItemVerificationStatusTypeCodingTypeItem
+    public class DeleteCarePlanIdResponseContainedTypeItemVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3795,13 +3795,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETECarePlanIdResponseContainedTypeItemCodeType
+    public class DeleteCarePlanIdResponseContainedTypeItemCodeType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETECarePlanIdResponseContainedTypeItemSubjectType
+    public class DeleteCarePlanIdResponseContainedTypeItemSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3810,28 +3810,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETECarePlanIdResponseContainedTypeItemParticipantTypeItem
+    public class DeleteCarePlanIdResponseContainedTypeItemParticipantTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
         [JsonProperty("role")]
-        public DELETECarePlanIdResponseContainedTypeItemParticipantTypeItemRoleTypeItem[] Role { get; set; }
+        public DeleteCarePlanIdResponseContainedTypeItemParticipantTypeItemRoleTypeItem[] Role { get; set; }
 
         [JsonProperty("member")]
-        public DELETECarePlanIdResponseContainedTypeItemParticipantTypeItemMemberType Member { get; set; }
+        public DeleteCarePlanIdResponseContainedTypeItemParticipantTypeItemMemberType Member { get; set; }
     }
 
-    public class DELETECarePlanIdResponseContainedTypeItemParticipantTypeItemRoleTypeItem
+    public class DeleteCarePlanIdResponseContainedTypeItemParticipantTypeItemRoleTypeItem
     {
         [JsonProperty("coding")]
-        public DELETECarePlanIdResponseContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem[] Coding { get; set; }
+        public DeleteCarePlanIdResponseContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETECarePlanIdResponseContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem
+    public class DeleteCarePlanIdResponseContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3840,7 +3840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETECarePlanIdResponseContainedTypeItemParticipantTypeItemMemberType
+    public class DeleteCarePlanIdResponseContainedTypeItemParticipantTypeItemMemberType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3849,13 +3849,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETECarePlanIdResponseContainedTypeItemDescriptionType
+    public class DeleteCarePlanIdResponseContainedTypeItemDescriptionType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETECarePlanIdResponseSubjectType
+    public class DeleteCarePlanIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3864,19 +3864,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETECarePlanIdResponsePeriodType
+    public class DeleteCarePlanIdResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
     }
 
-    public class DELETECarePlanIdResponseCareTeamTypeItem
+    public class DeleteCarePlanIdResponseCareTeamTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETECarePlanIdResponseAddressesTypeItem
+    public class DeleteCarePlanIdResponseAddressesTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3885,34 +3885,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETECarePlanIdResponseGoalTypeItem
+    public class DeleteCarePlanIdResponseGoalTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETECarePlanIdResponseActivityTypeItem
+    public class DeleteCarePlanIdResponseActivityTypeItem
     {
         [JsonProperty("outcomeReference")]
-        public DELETECarePlanIdResponseActivityTypeItemOutcomeReferenceTypeItem[] OutcomeReference { get; set; }
+        public DeleteCarePlanIdResponseActivityTypeItemOutcomeReferenceTypeItem[] OutcomeReference { get; set; }
 
         [JsonProperty("detail")]
-        public DELETECarePlanIdResponseActivityTypeItemDetailType Detail { get; set; }
+        public DeleteCarePlanIdResponseActivityTypeItemDetailType Detail { get; set; }
     }
 
-    public class DELETECarePlanIdResponseActivityTypeItemOutcomeReferenceTypeItem
+    public class DeleteCarePlanIdResponseActivityTypeItemOutcomeReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETECarePlanIdResponseActivityTypeItemDetailType
+    public class DeleteCarePlanIdResponseActivityTypeItemDetailType
     {
         [JsonProperty("kind")]
         public string Kind { get; set; }
 
         [JsonProperty("code")]
-        public DELETECarePlanIdResponseActivityTypeItemDetailTypeCodeType Code { get; set; }
+        public DeleteCarePlanIdResponseActivityTypeItemDetailTypeCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3921,22 +3921,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public bool DoNotPerform { get; set; }
 
         [JsonProperty("scheduledPeriod")]
-        public DELETECarePlanIdResponseActivityTypeItemDetailTypeScheduledPeriodType ScheduledPeriod { get; set; }
+        public DeleteCarePlanIdResponseActivityTypeItemDetailTypeScheduledPeriodType ScheduledPeriod { get; set; }
 
         [JsonProperty("performer")]
-        public DELETECarePlanIdResponseActivityTypeItemDetailTypePerformerTypeItem[] Performer { get; set; }
+        public DeleteCarePlanIdResponseActivityTypeItemDetailTypePerformerTypeItem[] Performer { get; set; }
     }
 
-    public class DELETECarePlanIdResponseActivityTypeItemDetailTypeCodeType
+    public class DeleteCarePlanIdResponseActivityTypeItemDetailTypeCodeType
     {
         [JsonProperty("coding")]
-        public DELETECarePlanIdResponseActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteCarePlanIdResponseActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETECarePlanIdResponseActivityTypeItemDetailTypeCodeTypeCodingTypeItem
+    public class DeleteCarePlanIdResponseActivityTypeItemDetailTypeCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3945,7 +3945,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETECarePlanIdResponseActivityTypeItemDetailTypeScheduledPeriodType
+    public class DeleteCarePlanIdResponseActivityTypeItemDetailTypeScheduledPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -3954,7 +3954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string End { get; set; }
     }
 
-    public class DELETECarePlanIdResponseActivityTypeItemDetailTypePerformerTypeItem
+    public class DeleteCarePlanIdResponseActivityTypeItemDetailTypePerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3963,7 +3963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETECarePlanIdBodyInput
+    public class DeleteCarePlanIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -3975,10 +3975,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public DELETECarePlanIdBodyInputContainedTypeItem[] Contained { get; set; }
+        public DeleteCarePlanIdBodyInputContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3987,25 +3987,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("subject")]
-        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
+        public DeleteCarePlanIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("period")]
-        public DELETECarePlanIdBodyInputPeriodType Period { get; set; }
+        public DeleteCarePlanIdBodyInputPeriodType Period { get; set; }
 
         [JsonProperty("careTeam")]
         public BodyInputCareTeamTypeItem[] CareTeam { get; set; }
 
         [JsonProperty("addresses")]
-        public DELETECarePlanIdBodyInputAddressesTypeItem[] Addresses { get; set; }
+        public DeleteCarePlanIdBodyInputAddressesTypeItem[] Addresses { get; set; }
 
         [JsonProperty("goal")]
         public BodyInputGoalTypeItem[] Goal { get; set; }
 
         [JsonProperty("activity")]
-        public DELETECarePlanIdBodyInputActivityTypeItem[] Activity { get; set; }
+        public DeleteCarePlanIdBodyInputActivityTypeItem[] Activity { get; set; }
     }
 
-    public class DELETECarePlanIdBodyInputContainedTypeItem
+    public class DeleteCarePlanIdBodyInputContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4020,7 +4020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputContainedTypeItemVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("code")]
-        public DELETECarePlanIdBodyInputContainedTypeItemCodeType Code { get; set; }
+        public DeleteCarePlanIdBodyInputContainedTypeItemCodeType Code { get; set; }
 
         [JsonProperty("subject")]
         public BodyInputContainedTypeItemSubjectType Subject { get; set; }
@@ -4065,7 +4065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETECarePlanIdBodyInputContainedTypeItemCodeType
+    public class DeleteCarePlanIdBodyInputContainedTypeItemCodeType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -4125,7 +4125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Text { get; set; }
     }
 
-    public class DELETECarePlanIdBodyInputSubjectType
+    public class DeleteCarePlanIdBodyInputSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4134,13 +4134,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETECarePlanIdBodyInputPeriodType
+    public class DeleteCarePlanIdBodyInputPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
     }
 
-    public class DELETECarePlanIdBodyInputAddressesTypeItem
+    public class DeleteCarePlanIdBodyInputAddressesTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4155,13 +4155,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class DELETECarePlanIdBodyInputActivityTypeItem
+    public class DeleteCarePlanIdBodyInputActivityTypeItem
     {
         [JsonProperty("outcomeReference")]
         public BodyInputActivityTypeItemOutcomeReferenceTypeItem[] OutcomeReference { get; set; }
 
         [JsonProperty("detail")]
-        public DELETECarePlanIdBodyInputActivityTypeItemDetailType Detail { get; set; }
+        public DeleteCarePlanIdBodyInputActivityTypeItemDetailType Detail { get; set; }
     }
 
     public class BodyInputActivityTypeItemOutcomeReferenceTypeItem
@@ -4170,13 +4170,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class DELETECarePlanIdBodyInputActivityTypeItemDetailType
+    public class DeleteCarePlanIdBodyInputActivityTypeItemDetailType
     {
         [JsonProperty("kind")]
         public string Kind { get; set; }
 
         [JsonProperty("code")]
-        public DELETECarePlanIdBodyInputActivityTypeItemDetailTypeCodeType Code { get; set; }
+        public DeleteCarePlanIdBodyInputActivityTypeItemDetailTypeCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4191,16 +4191,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputActivityTypeItemDetailTypePerformerTypeItem[] Performer { get; set; }
     }
 
-    public class DELETECarePlanIdBodyInputActivityTypeItemDetailTypeCodeType
+    public class DeleteCarePlanIdBodyInputActivityTypeItemDetailTypeCodeType
     {
         [JsonProperty("coding")]
-        public DELETECarePlanIdBodyInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteCarePlanIdBodyInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETECarePlanIdBodyInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem
+    public class DeleteCarePlanIdBodyInputActivityTypeItemDetailTypeCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4227,7 +4227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTCarePlanIdResponse
+    public class PutCarePlanIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4236,13 +4236,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTCarePlanIdResponseMetaType Meta { get; set; }
+        public PutCarePlanIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public PUTCarePlanIdResponseTextType Text { get; set; }
+        public PutCarePlanIdResponseTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public PUTCarePlanIdResponseContainedTypeItem[] Contained { get; set; }
+        public PutCarePlanIdResponseContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4251,25 +4251,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("subject")]
-        public PUTCarePlanIdResponseSubjectType Subject { get; set; }
+        public PutCarePlanIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("period")]
-        public PUTCarePlanIdResponsePeriodType Period { get; set; }
+        public PutCarePlanIdResponsePeriodType Period { get; set; }
 
         [JsonProperty("careTeam")]
-        public PUTCarePlanIdResponseCareTeamTypeItem[] CareTeam { get; set; }
+        public PutCarePlanIdResponseCareTeamTypeItem[] CareTeam { get; set; }
 
         [JsonProperty("addresses")]
-        public PUTCarePlanIdResponseAddressesTypeItem[] Addresses { get; set; }
+        public PutCarePlanIdResponseAddressesTypeItem[] Addresses { get; set; }
 
         [JsonProperty("goal")]
-        public PUTCarePlanIdResponseGoalTypeItem[] Goal { get; set; }
+        public PutCarePlanIdResponseGoalTypeItem[] Goal { get; set; }
 
         [JsonProperty("activity")]
-        public PUTCarePlanIdResponseActivityTypeItem[] Activity { get; set; }
+        public PutCarePlanIdResponseActivityTypeItem[] Activity { get; set; }
     }
 
-    public class PUTCarePlanIdResponseMetaType
+    public class PutCarePlanIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4278,13 +4278,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class PUTCarePlanIdResponseTextType
+    public class PutCarePlanIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class PUTCarePlanIdResponseContainedTypeItem
+    public class PutCarePlanIdResponseContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4293,34 +4293,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public PUTCarePlanIdResponseContainedTypeItemClinicalStatusType ClinicalStatus { get; set; }
+        public PutCarePlanIdResponseContainedTypeItemClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public PUTCarePlanIdResponseContainedTypeItemVerificationStatusType VerificationStatus { get; set; }
+        public PutCarePlanIdResponseContainedTypeItemVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("code")]
-        public PUTCarePlanIdResponseContainedTypeItemCodeType Code { get; set; }
+        public PutCarePlanIdResponseContainedTypeItemCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public PUTCarePlanIdResponseContainedTypeItemSubjectType Subject { get; set; }
+        public PutCarePlanIdResponseContainedTypeItemSubjectType Subject { get; set; }
 
         [JsonProperty("participant")]
-        public PUTCarePlanIdResponseContainedTypeItemParticipantTypeItem[] Participant { get; set; }
+        public PutCarePlanIdResponseContainedTypeItemParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("lifecycleStatus")]
         public string LifecycleStatus { get; set; }
 
         [JsonProperty("description")]
-        public PUTCarePlanIdResponseContainedTypeItemDescriptionType Description { get; set; }
+        public PutCarePlanIdResponseContainedTypeItemDescriptionType Description { get; set; }
     }
 
-    public class PUTCarePlanIdResponseContainedTypeItemClinicalStatusType
+    public class PutCarePlanIdResponseContainedTypeItemClinicalStatusType
     {
         [JsonProperty("coding")]
-        public PUTCarePlanIdResponseContainedTypeItemClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public PutCarePlanIdResponseContainedTypeItemClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTCarePlanIdResponseContainedTypeItemClinicalStatusTypeCodingTypeItem
+    public class PutCarePlanIdResponseContainedTypeItemClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4329,13 +4329,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTCarePlanIdResponseContainedTypeItemVerificationStatusType
+    public class PutCarePlanIdResponseContainedTypeItemVerificationStatusType
     {
         [JsonProperty("coding")]
-        public PUTCarePlanIdResponseContainedTypeItemVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public PutCarePlanIdResponseContainedTypeItemVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTCarePlanIdResponseContainedTypeItemVerificationStatusTypeCodingTypeItem
+    public class PutCarePlanIdResponseContainedTypeItemVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4344,13 +4344,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTCarePlanIdResponseContainedTypeItemCodeType
+    public class PutCarePlanIdResponseContainedTypeItemCodeType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTCarePlanIdResponseContainedTypeItemSubjectType
+    public class PutCarePlanIdResponseContainedTypeItemSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4359,28 +4359,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTCarePlanIdResponseContainedTypeItemParticipantTypeItem
+    public class PutCarePlanIdResponseContainedTypeItemParticipantTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
 
         [JsonProperty("role")]
-        public PUTCarePlanIdResponseContainedTypeItemParticipantTypeItemRoleTypeItem[] Role { get; set; }
+        public PutCarePlanIdResponseContainedTypeItemParticipantTypeItemRoleTypeItem[] Role { get; set; }
 
         [JsonProperty("member")]
-        public PUTCarePlanIdResponseContainedTypeItemParticipantTypeItemMemberType Member { get; set; }
+        public PutCarePlanIdResponseContainedTypeItemParticipantTypeItemMemberType Member { get; set; }
     }
 
-    public class PUTCarePlanIdResponseContainedTypeItemParticipantTypeItemRoleTypeItem
+    public class PutCarePlanIdResponseContainedTypeItemParticipantTypeItemRoleTypeItem
     {
         [JsonProperty("coding")]
-        public PUTCarePlanIdResponseContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem[] Coding { get; set; }
+        public PutCarePlanIdResponseContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTCarePlanIdResponseContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem
+    public class PutCarePlanIdResponseContainedTypeItemParticipantTypeItemRoleTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4389,7 +4389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTCarePlanIdResponseContainedTypeItemParticipantTypeItemMemberType
+    public class PutCarePlanIdResponseContainedTypeItemParticipantTypeItemMemberType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4398,13 +4398,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTCarePlanIdResponseContainedTypeItemDescriptionType
+    public class PutCarePlanIdResponseContainedTypeItemDescriptionType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTCarePlanIdResponseSubjectType
+    public class PutCarePlanIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4413,19 +4413,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTCarePlanIdResponsePeriodType
+    public class PutCarePlanIdResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
     }
 
-    public class PUTCarePlanIdResponseCareTeamTypeItem
+    public class PutCarePlanIdResponseCareTeamTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTCarePlanIdResponseAddressesTypeItem
+    public class PutCarePlanIdResponseAddressesTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4434,34 +4434,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTCarePlanIdResponseGoalTypeItem
+    public class PutCarePlanIdResponseGoalTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTCarePlanIdResponseActivityTypeItem
+    public class PutCarePlanIdResponseActivityTypeItem
     {
         [JsonProperty("outcomeReference")]
-        public PUTCarePlanIdResponseActivityTypeItemOutcomeReferenceTypeItem[] OutcomeReference { get; set; }
+        public PutCarePlanIdResponseActivityTypeItemOutcomeReferenceTypeItem[] OutcomeReference { get; set; }
 
         [JsonProperty("detail")]
-        public PUTCarePlanIdResponseActivityTypeItemDetailType Detail { get; set; }
+        public PutCarePlanIdResponseActivityTypeItemDetailType Detail { get; set; }
     }
 
-    public class PUTCarePlanIdResponseActivityTypeItemOutcomeReferenceTypeItem
+    public class PutCarePlanIdResponseActivityTypeItemOutcomeReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTCarePlanIdResponseActivityTypeItemDetailType
+    public class PutCarePlanIdResponseActivityTypeItemDetailType
     {
         [JsonProperty("kind")]
         public string Kind { get; set; }
 
         [JsonProperty("code")]
-        public PUTCarePlanIdResponseActivityTypeItemDetailTypeCodeType Code { get; set; }
+        public PutCarePlanIdResponseActivityTypeItemDetailTypeCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4470,22 +4470,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public bool DoNotPerform { get; set; }
 
         [JsonProperty("scheduledPeriod")]
-        public PUTCarePlanIdResponseActivityTypeItemDetailTypeScheduledPeriodType ScheduledPeriod { get; set; }
+        public PutCarePlanIdResponseActivityTypeItemDetailTypeScheduledPeriodType ScheduledPeriod { get; set; }
 
         [JsonProperty("performer")]
-        public PUTCarePlanIdResponseActivityTypeItemDetailTypePerformerTypeItem[] Performer { get; set; }
+        public PutCarePlanIdResponseActivityTypeItemDetailTypePerformerTypeItem[] Performer { get; set; }
     }
 
-    public class PUTCarePlanIdResponseActivityTypeItemDetailTypeCodeType
+    public class PutCarePlanIdResponseActivityTypeItemDetailTypeCodeType
     {
         [JsonProperty("coding")]
-        public PUTCarePlanIdResponseActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PutCarePlanIdResponseActivityTypeItemDetailTypeCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTCarePlanIdResponseActivityTypeItemDetailTypeCodeTypeCodingTypeItem
+    public class PutCarePlanIdResponseActivityTypeItemDetailTypeCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4494,7 +4494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTCarePlanIdResponseActivityTypeItemDetailTypeScheduledPeriodType
+    public class PutCarePlanIdResponseActivityTypeItemDetailTypeScheduledPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -4503,7 +4503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string End { get; set; }
     }
 
-    public class PUTCarePlanIdResponseActivityTypeItemDetailTypePerformerTypeItem
+    public class PutCarePlanIdResponseActivityTypeItemDetailTypePerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4512,7 +4512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETConditionResponse
+    public class GetConditionResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4521,25 +4521,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETConditionResponseMetaType Meta { get; set; }
+        public GetConditionResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETConditionResponseLinkTypeItem[] Link { get; set; }
+        public GetConditionResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETConditionResponseEntryTypeItem[] Entry { get; set; }
+        public GetConditionResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETConditionResponseMetaType
+    public class GetConditionResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETConditionResponseLinkTypeItem
+    public class GetConditionResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -4548,19 +4548,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class GETConditionResponseEntryTypeItem
+    public class GetConditionResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETConditionResponseEntryTypeItemResourceType Resource { get; set; }
+        public GetConditionResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETConditionResponseEntryTypeItemSearchType Search { get; set; }
+        public GetConditionResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETConditionResponseEntryTypeItemResourceType
+    public class GetConditionResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4569,22 +4569,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETConditionResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GetConditionResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public GETConditionResponseEntryTypeItemResourceTypeClinicalStatusType ClinicalStatus { get; set; }
+        public GetConditionResponseEntryTypeItemResourceTypeClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public GETConditionResponseEntryTypeItemResourceTypeVerificationStatusType VerificationStatus { get; set; }
+        public GetConditionResponseEntryTypeItemResourceTypeVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("code")]
-        public GETConditionResponseEntryTypeItemResourceTypeCodeType Code { get; set; }
+        public GetConditionResponseEntryTypeItemResourceTypeCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public GETConditionResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
+        public GetConditionResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public GETConditionResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
+        public GetConditionResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
 
         [JsonProperty("onsetDateTime")]
         public string OnsetDateTime { get; set; }
@@ -4596,7 +4596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string AbatementDateTime { get; set; }
     }
 
-    public class GETConditionResponseEntryTypeItemResourceTypeMetaType
+    public class GetConditionResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4605,13 +4605,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETConditionResponseEntryTypeItemResourceTypeClinicalStatusType
+    public class GetConditionResponseEntryTypeItemResourceTypeClinicalStatusType
     {
         [JsonProperty("coding")]
-        public GETConditionResponseEntryTypeItemResourceTypeClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public GetConditionResponseEntryTypeItemResourceTypeClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETConditionResponseEntryTypeItemResourceTypeClinicalStatusTypeCodingTypeItem
+    public class GetConditionResponseEntryTypeItemResourceTypeClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4620,13 +4620,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETConditionResponseEntryTypeItemResourceTypeVerificationStatusType
+    public class GetConditionResponseEntryTypeItemResourceTypeVerificationStatusType
     {
         [JsonProperty("coding")]
-        public GETConditionResponseEntryTypeItemResourceTypeVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public GetConditionResponseEntryTypeItemResourceTypeVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETConditionResponseEntryTypeItemResourceTypeVerificationStatusTypeCodingTypeItem
+    public class GetConditionResponseEntryTypeItemResourceTypeVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4635,16 +4635,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETConditionResponseEntryTypeItemResourceTypeCodeType
+    public class GetConditionResponseEntryTypeItemResourceTypeCodeType
     {
         [JsonProperty("coding")]
-        public GETConditionResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GetConditionResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETConditionResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem
+    public class GetConditionResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4656,25 +4656,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETConditionResponseEntryTypeItemResourceTypeSubjectType
+    public class GetConditionResponseEntryTypeItemResourceTypeSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETConditionResponseEntryTypeItemResourceTypeEncounterType
+    public class GetConditionResponseEntryTypeItemResourceTypeEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETConditionResponseEntryTypeItemSearchType
+    public class GetConditionResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class POSTConditionResponse
+    public class PostConditionResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4683,37 +4683,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public POSTConditionResponseMetaType Meta { get; set; }
+        public PostConditionResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public POSTConditionResponseTextType Text { get; set; }
+        public PostConditionResponseTextType Text { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public POSTConditionResponseClinicalStatusType ClinicalStatus { get; set; }
+        public PostConditionResponseClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public POSTConditionResponseVerificationStatusType VerificationStatus { get; set; }
+        public PostConditionResponseVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("category")]
-        public POSTConditionResponseCategoryTypeItem[] Category { get; set; }
+        public PostConditionResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("severity")]
-        public POSTConditionResponseSeverityType Severity { get; set; }
+        public PostConditionResponseSeverityType Severity { get; set; }
 
         [JsonProperty("code")]
-        public POSTConditionResponseCodeType Code { get; set; }
+        public PostConditionResponseCodeType Code { get; set; }
 
         [JsonProperty("bodySite")]
-        public POSTConditionResponseBodySiteTypeItem[] BodySite { get; set; }
+        public PostConditionResponseBodySiteTypeItem[] BodySite { get; set; }
 
         [JsonProperty("subject")]
-        public POSTConditionResponseSubjectType Subject { get; set; }
+        public PostConditionResponseSubjectType Subject { get; set; }
 
         [JsonProperty("onsetDateTime")]
         public string OnsetDateTime { get; set; }
     }
 
-    public class POSTConditionResponseMetaType
+    public class PostConditionResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4722,19 +4722,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class POSTConditionResponseTextType
+    public class PostConditionResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class POSTConditionResponseClinicalStatusType
+    public class PostConditionResponseClinicalStatusType
     {
         [JsonProperty("coding")]
-        public POSTConditionResponseClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public PostConditionResponseClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTConditionResponseClinicalStatusTypeCodingTypeItem
+    public class PostConditionResponseClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4743,13 +4743,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTConditionResponseVerificationStatusType
+    public class PostConditionResponseVerificationStatusType
     {
         [JsonProperty("coding")]
-        public POSTConditionResponseVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public PostConditionResponseVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTConditionResponseVerificationStatusTypeCodingTypeItem
+    public class PostConditionResponseVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4758,31 +4758,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTConditionResponseCategoryTypeItem
+    public class PostConditionResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public POSTConditionResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public PostConditionResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTConditionResponseCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTConditionResponseSeverityType
-    {
-        [JsonProperty("coding")]
-        public POSTConditionResponseSeverityTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class POSTConditionResponseSeverityTypeCodingTypeItem
+    public class PostConditionResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4794,16 +4776,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTConditionResponseCodeType
+    public class PostConditionResponseSeverityType
     {
         [JsonProperty("coding")]
-        public POSTConditionResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PostConditionResponseSeverityTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class PostConditionResponseSeverityTypeCodingTypeItem
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class PostConditionResponseCodeType
+    {
+        [JsonProperty("coding")]
+        public PostConditionResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTConditionResponseCodeTypeCodingTypeItem
+    public class PostConditionResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4815,16 +4815,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTConditionResponseBodySiteTypeItem
+    public class PostConditionResponseBodySiteTypeItem
     {
         [JsonProperty("coding")]
-        public POSTConditionResponseBodySiteTypeItemCodingTypeItem[] Coding { get; set; }
+        public PostConditionResponseBodySiteTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTConditionResponseBodySiteTypeItemCodingTypeItem
+    public class PostConditionResponseBodySiteTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4836,13 +4836,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTConditionResponseSubjectType
+    public class PostConditionResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTConditionBodyInput
+    public class PostConditionBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4851,28 +4851,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public DELETEAllergyIntoleranceIdBodyInputClinicalStatusType ClinicalStatus { get; set; }
+        public DeleteAllergyIntoleranceIdBodyInputClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public DELETEAllergyIntoleranceIdBodyInputVerificationStatusType VerificationStatus { get; set; }
+        public DeleteAllergyIntoleranceIdBodyInputVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("category")]
-        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
+        public DeleteAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("severity")]
         public BodyInputSeverityType Severity { get; set; }
 
         [JsonProperty("code")]
-        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
+        public DeleteAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("bodySite")]
         public BodyInputBodySiteTypeItem[] BodySite { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
+        public DeleteAdverseEventIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("onsetDateTime")]
         public string OnsetDateTime { get; set; }
@@ -4899,7 +4899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETConditionIdResponse
+    public class GetConditionIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4908,37 +4908,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETConditionIdResponseMetaType Meta { get; set; }
+        public GetConditionIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETConditionIdResponseTextType Text { get; set; }
+        public GetConditionIdResponseTextType Text { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public GETConditionIdResponseClinicalStatusType ClinicalStatus { get; set; }
+        public GetConditionIdResponseClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public GETConditionIdResponseVerificationStatusType VerificationStatus { get; set; }
+        public GetConditionIdResponseVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("category")]
-        public GETConditionIdResponseCategoryTypeItem[] Category { get; set; }
+        public GetConditionIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("severity")]
-        public GETConditionIdResponseSeverityType Severity { get; set; }
+        public GetConditionIdResponseSeverityType Severity { get; set; }
 
         [JsonProperty("code")]
-        public GETConditionIdResponseCodeType Code { get; set; }
+        public GetConditionIdResponseCodeType Code { get; set; }
 
         [JsonProperty("bodySite")]
-        public GETConditionIdResponseBodySiteTypeItem[] BodySite { get; set; }
+        public GetConditionIdResponseBodySiteTypeItem[] BodySite { get; set; }
 
         [JsonProperty("subject")]
-        public GETConditionIdResponseSubjectType Subject { get; set; }
+        public GetConditionIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("onsetDateTime")]
         public string OnsetDateTime { get; set; }
     }
 
-    public class GETConditionIdResponseMetaType
+    public class GetConditionIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4947,19 +4947,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETConditionIdResponseTextType
+    public class GetConditionIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class GETConditionIdResponseClinicalStatusType
+    public class GetConditionIdResponseClinicalStatusType
     {
         [JsonProperty("coding")]
-        public GETConditionIdResponseClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public GetConditionIdResponseClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETConditionIdResponseClinicalStatusTypeCodingTypeItem
+    public class GetConditionIdResponseClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4968,13 +4968,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETConditionIdResponseVerificationStatusType
+    public class GetConditionIdResponseVerificationStatusType
     {
         [JsonProperty("coding")]
-        public GETConditionIdResponseVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public GetConditionIdResponseVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETConditionIdResponseVerificationStatusTypeCodingTypeItem
+    public class GetConditionIdResponseVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4983,31 +4983,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETConditionIdResponseCategoryTypeItem
+    public class GetConditionIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public GETConditionIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetConditionIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETConditionIdResponseCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class GETConditionIdResponseSeverityType
-    {
-        [JsonProperty("coding")]
-        public GETConditionIdResponseSeverityTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class GETConditionIdResponseSeverityTypeCodingTypeItem
+    public class GetConditionIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5019,16 +5001,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETConditionIdResponseCodeType
+    public class GetConditionIdResponseSeverityType
     {
         [JsonProperty("coding")]
-        public GETConditionIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GetConditionIdResponseSeverityTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class GetConditionIdResponseSeverityTypeCodingTypeItem
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class GetConditionIdResponseCodeType
+    {
+        [JsonProperty("coding")]
+        public GetConditionIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETConditionIdResponseCodeTypeCodingTypeItem
+    public class GetConditionIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5040,16 +5040,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETConditionIdResponseBodySiteTypeItem
+    public class GetConditionIdResponseBodySiteTypeItem
     {
         [JsonProperty("coding")]
-        public GETConditionIdResponseBodySiteTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetConditionIdResponseBodySiteTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETConditionIdResponseBodySiteTypeItemCodingTypeItem
+    public class GetConditionIdResponseBodySiteTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5061,13 +5061,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETConditionIdResponseSubjectType
+    public class GetConditionIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEConditionIdResponse
+    public class DeleteConditionIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5076,37 +5076,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEConditionIdResponseMetaType Meta { get; set; }
+        public DeleteConditionIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEConditionIdResponseTextType Text { get; set; }
+        public DeleteConditionIdResponseTextType Text { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public DELETEConditionIdResponseClinicalStatusType ClinicalStatus { get; set; }
+        public DeleteConditionIdResponseClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public DELETEConditionIdResponseVerificationStatusType VerificationStatus { get; set; }
+        public DeleteConditionIdResponseVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("category")]
-        public DELETEConditionIdResponseCategoryTypeItem[] Category { get; set; }
+        public DeleteConditionIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("severity")]
-        public DELETEConditionIdResponseSeverityType Severity { get; set; }
+        public DeleteConditionIdResponseSeverityType Severity { get; set; }
 
         [JsonProperty("code")]
-        public DELETEConditionIdResponseCodeType Code { get; set; }
+        public DeleteConditionIdResponseCodeType Code { get; set; }
 
         [JsonProperty("bodySite")]
-        public DELETEConditionIdResponseBodySiteTypeItem[] BodySite { get; set; }
+        public DeleteConditionIdResponseBodySiteTypeItem[] BodySite { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEConditionIdResponseSubjectType Subject { get; set; }
+        public DeleteConditionIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("onsetDateTime")]
         public string OnsetDateTime { get; set; }
     }
 
-    public class DELETEConditionIdResponseMetaType
+    public class DeleteConditionIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5115,19 +5115,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEConditionIdResponseTextType
+    public class DeleteConditionIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class DELETEConditionIdResponseClinicalStatusType
+    public class DeleteConditionIdResponseClinicalStatusType
     {
         [JsonProperty("coding")]
-        public DELETEConditionIdResponseClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteConditionIdResponseClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEConditionIdResponseClinicalStatusTypeCodingTypeItem
+    public class DeleteConditionIdResponseClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5136,13 +5136,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETEConditionIdResponseVerificationStatusType
+    public class DeleteConditionIdResponseVerificationStatusType
     {
         [JsonProperty("coding")]
-        public DELETEConditionIdResponseVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteConditionIdResponseVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEConditionIdResponseVerificationStatusTypeCodingTypeItem
+    public class DeleteConditionIdResponseVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5151,31 +5151,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETEConditionIdResponseCategoryTypeItem
+    public class DeleteConditionIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public DELETEConditionIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public DeleteConditionIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEConditionIdResponseCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEConditionIdResponseSeverityType
-    {
-        [JsonProperty("coding")]
-        public DELETEConditionIdResponseSeverityTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEConditionIdResponseSeverityTypeCodingTypeItem
+    public class DeleteConditionIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5187,16 +5169,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEConditionIdResponseCodeType
+    public class DeleteConditionIdResponseSeverityType
     {
         [JsonProperty("coding")]
-        public DELETEConditionIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteConditionIdResponseSeverityTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class DeleteConditionIdResponseSeverityTypeCodingTypeItem
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class DeleteConditionIdResponseCodeType
+    {
+        [JsonProperty("coding")]
+        public DeleteConditionIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEConditionIdResponseCodeTypeCodingTypeItem
+    public class DeleteConditionIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5208,16 +5208,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEConditionIdResponseBodySiteTypeItem
+    public class DeleteConditionIdResponseBodySiteTypeItem
     {
         [JsonProperty("coding")]
-        public DELETEConditionIdResponseBodySiteTypeItemCodingTypeItem[] Coding { get; set; }
+        public DeleteConditionIdResponseBodySiteTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEConditionIdResponseBodySiteTypeItemCodingTypeItem
+    public class DeleteConditionIdResponseBodySiteTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5229,13 +5229,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEConditionIdResponseSubjectType
+    public class DeleteConditionIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEConditionIdBodyInput
+    public class DeleteConditionIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5247,34 +5247,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public DELETEAllergyIntoleranceIdBodyInputClinicalStatusType ClinicalStatus { get; set; }
+        public DeleteAllergyIntoleranceIdBodyInputClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public DELETEAllergyIntoleranceIdBodyInputVerificationStatusType VerificationStatus { get; set; }
+        public DeleteAllergyIntoleranceIdBodyInputVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("category")]
-        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
+        public DeleteAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("severity")]
         public BodyInputSeverityType Severity { get; set; }
 
         [JsonProperty("code")]
-        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
+        public DeleteAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("bodySite")]
         public BodyInputBodySiteTypeItem[] BodySite { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
+        public DeleteAdverseEventIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("onsetDateTime")]
         public string OnsetDateTime { get; set; }
     }
 
-    public class PUTConditionIdResponse
+    public class PutConditionIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5283,37 +5283,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTConditionIdResponseMetaType Meta { get; set; }
+        public PutConditionIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public PUTConditionIdResponseTextType Text { get; set; }
+        public PutConditionIdResponseTextType Text { get; set; }
 
         [JsonProperty("clinicalStatus")]
-        public PUTConditionIdResponseClinicalStatusType ClinicalStatus { get; set; }
+        public PutConditionIdResponseClinicalStatusType ClinicalStatus { get; set; }
 
         [JsonProperty("verificationStatus")]
-        public PUTConditionIdResponseVerificationStatusType VerificationStatus { get; set; }
+        public PutConditionIdResponseVerificationStatusType VerificationStatus { get; set; }
 
         [JsonProperty("category")]
-        public PUTConditionIdResponseCategoryTypeItem[] Category { get; set; }
+        public PutConditionIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("severity")]
-        public PUTConditionIdResponseSeverityType Severity { get; set; }
+        public PutConditionIdResponseSeverityType Severity { get; set; }
 
         [JsonProperty("code")]
-        public PUTConditionIdResponseCodeType Code { get; set; }
+        public PutConditionIdResponseCodeType Code { get; set; }
 
         [JsonProperty("bodySite")]
-        public PUTConditionIdResponseBodySiteTypeItem[] BodySite { get; set; }
+        public PutConditionIdResponseBodySiteTypeItem[] BodySite { get; set; }
 
         [JsonProperty("subject")]
-        public PUTConditionIdResponseSubjectType Subject { get; set; }
+        public PutConditionIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("onsetDateTime")]
         public string OnsetDateTime { get; set; }
     }
 
-    public class PUTConditionIdResponseMetaType
+    public class PutConditionIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5322,19 +5322,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class PUTConditionIdResponseTextType
+    public class PutConditionIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class PUTConditionIdResponseClinicalStatusType
+    public class PutConditionIdResponseClinicalStatusType
     {
         [JsonProperty("coding")]
-        public PUTConditionIdResponseClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
+        public PutConditionIdResponseClinicalStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTConditionIdResponseClinicalStatusTypeCodingTypeItem
+    public class PutConditionIdResponseClinicalStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5343,13 +5343,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTConditionIdResponseVerificationStatusType
+    public class PutConditionIdResponseVerificationStatusType
     {
         [JsonProperty("coding")]
-        public PUTConditionIdResponseVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
+        public PutConditionIdResponseVerificationStatusTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTConditionIdResponseVerificationStatusTypeCodingTypeItem
+    public class PutConditionIdResponseVerificationStatusTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5358,31 +5358,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTConditionIdResponseCategoryTypeItem
+    public class PutConditionIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public PUTConditionIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public PutConditionIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTConditionIdResponseCategoryTypeItemCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTConditionIdResponseSeverityType
-    {
-        [JsonProperty("coding")]
-        public PUTConditionIdResponseSeverityTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTConditionIdResponseSeverityTypeCodingTypeItem
+    public class PutConditionIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5394,16 +5376,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTConditionIdResponseCodeType
+    public class PutConditionIdResponseSeverityType
     {
         [JsonProperty("coding")]
-        public PUTConditionIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PutConditionIdResponseSeverityTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class PutConditionIdResponseSeverityTypeCodingTypeItem
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class PutConditionIdResponseCodeType
+    {
+        [JsonProperty("coding")]
+        public PutConditionIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTConditionIdResponseCodeTypeCodingTypeItem
+    public class PutConditionIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5415,16 +5415,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTConditionIdResponseBodySiteTypeItem
+    public class PutConditionIdResponseBodySiteTypeItem
     {
         [JsonProperty("coding")]
-        public PUTConditionIdResponseBodySiteTypeItemCodingTypeItem[] Coding { get; set; }
+        public PutConditionIdResponseBodySiteTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTConditionIdResponseBodySiteTypeItemCodingTypeItem
+    public class PutConditionIdResponseBodySiteTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5436,13 +5436,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTConditionIdResponseSubjectType
+    public class PutConditionIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETDiagnosticReportResponse
+    public class GetDiagnosticReportResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5451,25 +5451,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETDiagnosticReportResponseMetaType Meta { get; set; }
+        public GetDiagnosticReportResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETDiagnosticReportResponseLinkTypeItem[] Link { get; set; }
+        public GetDiagnosticReportResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETDiagnosticReportResponseEntryTypeItem[] Entry { get; set; }
+        public GetDiagnosticReportResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETDiagnosticReportResponseMetaType
+    public class GetDiagnosticReportResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETDiagnosticReportResponseLinkTypeItem
+    public class GetDiagnosticReportResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -5478,19 +5478,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class GETDiagnosticReportResponseEntryTypeItem
+    public class GetDiagnosticReportResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETDiagnosticReportResponseEntryTypeItemResourceType Resource { get; set; }
+        public GetDiagnosticReportResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETDiagnosticReportResponseEntryTypeItemSearchType Search { get; set; }
+        public GetDiagnosticReportResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETDiagnosticReportResponseEntryTypeItemResourceType
+    public class GetDiagnosticReportResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5499,22 +5499,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETDiagnosticReportResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GetDiagnosticReportResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public GETDiagnosticReportResponseEntryTypeItemResourceTypeCategoryTypeItem[] Category { get; set; }
+        public GetDiagnosticReportResponseEntryTypeItemResourceTypeCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public GETDiagnosticReportResponseEntryTypeItemResourceTypeCodeType Code { get; set; }
+        public GetDiagnosticReportResponseEntryTypeItemResourceTypeCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public GETDiagnosticReportResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
+        public GetDiagnosticReportResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public GETDiagnosticReportResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
+        public GetDiagnosticReportResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
 
         [JsonProperty("effectiveDateTime")]
         public string EffectiveDateTime { get; set; }
@@ -5523,10 +5523,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Issued { get; set; }
 
         [JsonProperty("result")]
-        public GETDiagnosticReportResponseEntryTypeItemResourceTypeResultTypeItem[] Result { get; set; }
+        public GetDiagnosticReportResponseEntryTypeItemResourceTypeResultTypeItem[] Result { get; set; }
     }
 
-    public class GETDiagnosticReportResponseEntryTypeItemResourceTypeMetaType
+    public class GetDiagnosticReportResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5535,13 +5535,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETDiagnosticReportResponseEntryTypeItemResourceTypeCategoryTypeItem
+    public class GetDiagnosticReportResponseEntryTypeItemResourceTypeCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public GETDiagnosticReportResponseEntryTypeItemResourceTypeCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetDiagnosticReportResponseEntryTypeItemResourceTypeCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETDiagnosticReportResponseEntryTypeItemResourceTypeCategoryTypeItemCodingTypeItem
+    public class GetDiagnosticReportResponseEntryTypeItemResourceTypeCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5553,16 +5553,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETDiagnosticReportResponseEntryTypeItemResourceTypeCodeType
+    public class GetDiagnosticReportResponseEntryTypeItemResourceTypeCodeType
     {
         [JsonProperty("coding")]
-        public GETDiagnosticReportResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GetDiagnosticReportResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETDiagnosticReportResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem
+    public class GetDiagnosticReportResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5574,19 +5574,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETDiagnosticReportResponseEntryTypeItemResourceTypeSubjectType
+    public class GetDiagnosticReportResponseEntryTypeItemResourceTypeSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETDiagnosticReportResponseEntryTypeItemResourceTypeEncounterType
+    public class GetDiagnosticReportResponseEntryTypeItemResourceTypeEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETDiagnosticReportResponseEntryTypeItemResourceTypeResultTypeItem
+    public class GetDiagnosticReportResponseEntryTypeItemResourceTypeResultTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5595,13 +5595,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETDiagnosticReportResponseEntryTypeItemSearchType
+    public class GetDiagnosticReportResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class POSTDiagnosticReportResponse
+    public class PostDiagnosticReportResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5610,43 +5610,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public POSTDiagnosticReportResponseMetaType Meta { get; set; }
+        public PostDiagnosticReportResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public POSTDiagnosticReportResponseTextType Text { get; set; }
+        public PostDiagnosticReportResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public POSTDiagnosticReportResponseIdentifierTypeItem[] Identifier { get; set; }
+        public PostDiagnosticReportResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("basedOn")]
-        public POSTDiagnosticReportResponseBasedOnTypeItem[] BasedOn { get; set; }
+        public PostDiagnosticReportResponseBasedOnTypeItem[] BasedOn { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public POSTDiagnosticReportResponseCategoryTypeItem[] Category { get; set; }
+        public PostDiagnosticReportResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public POSTDiagnosticReportResponseCodeType Code { get; set; }
+        public PostDiagnosticReportResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public POSTDiagnosticReportResponseSubjectType Subject { get; set; }
+        public PostDiagnosticReportResponseSubjectType Subject { get; set; }
 
         [JsonProperty("issued")]
         public string Issued { get; set; }
 
         [JsonProperty("performer")]
-        public POSTDiagnosticReportResponsePerformerTypeItem[] Performer { get; set; }
+        public PostDiagnosticReportResponsePerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("result")]
-        public POSTDiagnosticReportResponseResultTypeItem[] Result { get; set; }
+        public PostDiagnosticReportResponseResultTypeItem[] Result { get; set; }
 
         [JsonProperty("conclusion")]
         public string Conclusion { get; set; }
     }
 
-    public class POSTDiagnosticReportResponseMetaType
+    public class PostDiagnosticReportResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5655,13 +5655,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class POSTDiagnosticReportResponseTextType
+    public class PostDiagnosticReportResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class POSTDiagnosticReportResponseIdentifierTypeItem
+    public class PostDiagnosticReportResponseIdentifierTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -5673,19 +5673,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class POSTDiagnosticReportResponseBasedOnTypeItem
+    public class PostDiagnosticReportResponseBasedOnTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTDiagnosticReportResponseCategoryTypeItem
+    public class PostDiagnosticReportResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public POSTDiagnosticReportResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public PostDiagnosticReportResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTDiagnosticReportResponseCategoryTypeItemCodingTypeItem
+    public class PostDiagnosticReportResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5697,13 +5697,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTDiagnosticReportResponseCodeType
+    public class PostDiagnosticReportResponseCodeType
     {
         [JsonProperty("coding")]
-        public POSTDiagnosticReportResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PostDiagnosticReportResponseCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTDiagnosticReportResponseCodeTypeCodingTypeItem
+    public class PostDiagnosticReportResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5715,7 +5715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTDiagnosticReportResponseSubjectType
+    public class PostDiagnosticReportResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5724,7 +5724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTDiagnosticReportResponsePerformerTypeItem
+    public class PostDiagnosticReportResponsePerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5733,13 +5733,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTDiagnosticReportResponseResultTypeItem
+    public class PostDiagnosticReportResponseResultTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTDiagnosticReportBodyInput
+    public class PostDiagnosticReportBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5748,7 +5748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("identifier")]
         public BodyInputIdentifierTypeItem[] Identifier { get; set; }
@@ -5760,19 +5760,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
+        public DeleteAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
+        public DeleteDiagnosticReportIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
+        public DeleteCarePlanIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("issued")]
         public string Issued { get; set; }
 
         [JsonProperty("performer")]
-        public DELETEDiagnosticReportIdBodyInputPerformerTypeItem[] Performer { get; set; }
+        public DeleteDiagnosticReportIdBodyInputPerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("result")]
         public BodyInputResultTypeItem[] Result { get; set; }
@@ -5799,7 +5799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class DELETEDiagnosticReportIdBodyInputPerformerTypeItem
+    public class DeleteDiagnosticReportIdBodyInputPerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5814,7 +5814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class GETDiagnosticReportIdResponse
+    public class GetDiagnosticReportIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5823,43 +5823,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETDiagnosticReportIdResponseMetaType Meta { get; set; }
+        public GetDiagnosticReportIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETDiagnosticReportIdResponseTextType Text { get; set; }
+        public GetDiagnosticReportIdResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public GETDiagnosticReportIdResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GetDiagnosticReportIdResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("basedOn")]
-        public GETDiagnosticReportIdResponseBasedOnTypeItem[] BasedOn { get; set; }
+        public GetDiagnosticReportIdResponseBasedOnTypeItem[] BasedOn { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public GETDiagnosticReportIdResponseCategoryTypeItem[] Category { get; set; }
+        public GetDiagnosticReportIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public GETDiagnosticReportIdResponseCodeType Code { get; set; }
+        public GetDiagnosticReportIdResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public GETDiagnosticReportIdResponseSubjectType Subject { get; set; }
+        public GetDiagnosticReportIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("issued")]
         public string Issued { get; set; }
 
         [JsonProperty("performer")]
-        public GETDiagnosticReportIdResponsePerformerTypeItem[] Performer { get; set; }
+        public GetDiagnosticReportIdResponsePerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("result")]
-        public GETDiagnosticReportIdResponseResultTypeItem[] Result { get; set; }
+        public GetDiagnosticReportIdResponseResultTypeItem[] Result { get; set; }
 
         [JsonProperty("conclusion")]
         public string Conclusion { get; set; }
     }
 
-    public class GETDiagnosticReportIdResponseMetaType
+    public class GetDiagnosticReportIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5868,13 +5868,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETDiagnosticReportIdResponseTextType
+    public class GetDiagnosticReportIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class GETDiagnosticReportIdResponseIdentifierTypeItem
+    public class GetDiagnosticReportIdResponseIdentifierTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -5886,19 +5886,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class GETDiagnosticReportIdResponseBasedOnTypeItem
+    public class GetDiagnosticReportIdResponseBasedOnTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETDiagnosticReportIdResponseCategoryTypeItem
+    public class GetDiagnosticReportIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public GETDiagnosticReportIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetDiagnosticReportIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETDiagnosticReportIdResponseCategoryTypeItemCodingTypeItem
+    public class GetDiagnosticReportIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5910,13 +5910,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETDiagnosticReportIdResponseCodeType
+    public class GetDiagnosticReportIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public GETDiagnosticReportIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GetDiagnosticReportIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETDiagnosticReportIdResponseCodeTypeCodingTypeItem
+    public class GetDiagnosticReportIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5928,7 +5928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETDiagnosticReportIdResponseSubjectType
+    public class GetDiagnosticReportIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5937,7 +5937,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETDiagnosticReportIdResponsePerformerTypeItem
+    public class GetDiagnosticReportIdResponsePerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5946,13 +5946,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETDiagnosticReportIdResponseResultTypeItem
+    public class GetDiagnosticReportIdResponseResultTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEDiagnosticReportIdResponse
+    public class DeleteDiagnosticReportIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5961,43 +5961,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEDiagnosticReportIdResponseMetaType Meta { get; set; }
+        public DeleteDiagnosticReportIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEDiagnosticReportIdResponseTextType Text { get; set; }
+        public DeleteDiagnosticReportIdResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public DELETEDiagnosticReportIdResponseIdentifierTypeItem[] Identifier { get; set; }
+        public DeleteDiagnosticReportIdResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("basedOn")]
-        public DELETEDiagnosticReportIdResponseBasedOnTypeItem[] BasedOn { get; set; }
+        public DeleteDiagnosticReportIdResponseBasedOnTypeItem[] BasedOn { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public DELETEDiagnosticReportIdResponseCategoryTypeItem[] Category { get; set; }
+        public DeleteDiagnosticReportIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public DELETEDiagnosticReportIdResponseCodeType Code { get; set; }
+        public DeleteDiagnosticReportIdResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEDiagnosticReportIdResponseSubjectType Subject { get; set; }
+        public DeleteDiagnosticReportIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("issued")]
         public string Issued { get; set; }
 
         [JsonProperty("performer")]
-        public DELETEDiagnosticReportIdResponsePerformerTypeItem[] Performer { get; set; }
+        public DeleteDiagnosticReportIdResponsePerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("result")]
-        public DELETEDiagnosticReportIdResponseResultTypeItem[] Result { get; set; }
+        public DeleteDiagnosticReportIdResponseResultTypeItem[] Result { get; set; }
 
         [JsonProperty("conclusion")]
         public string Conclusion { get; set; }
     }
 
-    public class DELETEDiagnosticReportIdResponseMetaType
+    public class DeleteDiagnosticReportIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -6006,13 +6006,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEDiagnosticReportIdResponseTextType
+    public class DeleteDiagnosticReportIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class DELETEDiagnosticReportIdResponseIdentifierTypeItem
+    public class DeleteDiagnosticReportIdResponseIdentifierTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -6024,19 +6024,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class DELETEDiagnosticReportIdResponseBasedOnTypeItem
+    public class DeleteDiagnosticReportIdResponseBasedOnTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEDiagnosticReportIdResponseCategoryTypeItem
+    public class DeleteDiagnosticReportIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public DELETEDiagnosticReportIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public DeleteDiagnosticReportIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEDiagnosticReportIdResponseCategoryTypeItemCodingTypeItem
+    public class DeleteDiagnosticReportIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6048,13 +6048,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEDiagnosticReportIdResponseCodeType
+    public class DeleteDiagnosticReportIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public DELETEDiagnosticReportIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteDiagnosticReportIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEDiagnosticReportIdResponseCodeTypeCodingTypeItem
+    public class DeleteDiagnosticReportIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6066,7 +6066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEDiagnosticReportIdResponseSubjectType
+    public class DeleteDiagnosticReportIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6075,7 +6075,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEDiagnosticReportIdResponsePerformerTypeItem
+    public class DeleteDiagnosticReportIdResponsePerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6084,13 +6084,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEDiagnosticReportIdResponseResultTypeItem
+    public class DeleteDiagnosticReportIdResponseResultTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEDiagnosticReportIdBodyInput
+    public class DeleteDiagnosticReportIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6102,7 +6102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("identifier")]
         public BodyInputIdentifierTypeItem[] Identifier { get; set; }
@@ -6114,19 +6114,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
+        public DeleteAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
+        public DeleteDiagnosticReportIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
+        public DeleteCarePlanIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("issued")]
         public string Issued { get; set; }
 
         [JsonProperty("performer")]
-        public DELETEDiagnosticReportIdBodyInputPerformerTypeItem[] Performer { get; set; }
+        public DeleteDiagnosticReportIdBodyInputPerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("result")]
         public BodyInputResultTypeItem[] Result { get; set; }
@@ -6135,7 +6135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Conclusion { get; set; }
     }
 
-    public class PUTDiagnosticReportIdResponse
+    public class PutDiagnosticReportIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6144,43 +6144,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTDiagnosticReportIdResponseMetaType Meta { get; set; }
+        public PutDiagnosticReportIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public PUTDiagnosticReportIdResponseTextType Text { get; set; }
+        public PutDiagnosticReportIdResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public PUTDiagnosticReportIdResponseIdentifierTypeItem[] Identifier { get; set; }
+        public PutDiagnosticReportIdResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("basedOn")]
-        public PUTDiagnosticReportIdResponseBasedOnTypeItem[] BasedOn { get; set; }
+        public PutDiagnosticReportIdResponseBasedOnTypeItem[] BasedOn { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public PUTDiagnosticReportIdResponseCategoryTypeItem[] Category { get; set; }
+        public PutDiagnosticReportIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public PUTDiagnosticReportIdResponseCodeType Code { get; set; }
+        public PutDiagnosticReportIdResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public PUTDiagnosticReportIdResponseSubjectType Subject { get; set; }
+        public PutDiagnosticReportIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("issued")]
         public string Issued { get; set; }
 
         [JsonProperty("performer")]
-        public PUTDiagnosticReportIdResponsePerformerTypeItem[] Performer { get; set; }
+        public PutDiagnosticReportIdResponsePerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("result")]
-        public PUTDiagnosticReportIdResponseResultTypeItem[] Result { get; set; }
+        public PutDiagnosticReportIdResponseResultTypeItem[] Result { get; set; }
 
         [JsonProperty("conclusion")]
         public string Conclusion { get; set; }
     }
 
-    public class PUTDiagnosticReportIdResponseMetaType
+    public class PutDiagnosticReportIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -6189,13 +6189,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class PUTDiagnosticReportIdResponseTextType
+    public class PutDiagnosticReportIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class PUTDiagnosticReportIdResponseIdentifierTypeItem
+    public class PutDiagnosticReportIdResponseIdentifierTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -6207,19 +6207,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class PUTDiagnosticReportIdResponseBasedOnTypeItem
+    public class PutDiagnosticReportIdResponseBasedOnTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTDiagnosticReportIdResponseCategoryTypeItem
+    public class PutDiagnosticReportIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public PUTDiagnosticReportIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public PutDiagnosticReportIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTDiagnosticReportIdResponseCategoryTypeItemCodingTypeItem
+    public class PutDiagnosticReportIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6231,13 +6231,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTDiagnosticReportIdResponseCodeType
+    public class PutDiagnosticReportIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public PUTDiagnosticReportIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PutDiagnosticReportIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTDiagnosticReportIdResponseCodeTypeCodingTypeItem
+    public class PutDiagnosticReportIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6249,7 +6249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTDiagnosticReportIdResponseSubjectType
+    public class PutDiagnosticReportIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6258,7 +6258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTDiagnosticReportIdResponsePerformerTypeItem
+    public class PutDiagnosticReportIdResponsePerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6267,13 +6267,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTDiagnosticReportIdResponseResultTypeItem
+    public class PutDiagnosticReportIdResponseResultTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETMedicationResponse
+    public class GetMedicationResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6282,25 +6282,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETMedicationResponseMetaType Meta { get; set; }
+        public GetMedicationResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETMedicationResponseLinkTypeItem[] Link { get; set; }
+        public GetMedicationResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETMedicationResponseEntryTypeItem[] Entry { get; set; }
+        public GetMedicationResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETMedicationResponseMetaType
+    public class GetMedicationResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETMedicationResponseLinkTypeItem
+    public class GetMedicationResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -6309,19 +6309,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class GETMedicationResponseEntryTypeItem
+    public class GetMedicationResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETMedicationResponseEntryTypeItemResourceType Resource { get; set; }
+        public GetMedicationResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETMedicationResponseEntryTypeItemSearchType Search { get; set; }
+        public GetMedicationResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETMedicationResponseEntryTypeItemResourceType
+    public class GetMedicationResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6330,22 +6330,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETMedicationResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GetMedicationResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETMedicationResponseEntryTypeItemResourceTypeTextType Text { get; set; }
+        public GetMedicationResponseEntryTypeItemResourceTypeTextType Text { get; set; }
 
         [JsonProperty("code")]
-        public GETMedicationResponseEntryTypeItemResourceTypeCodeType Code { get; set; }
+        public GetMedicationResponseEntryTypeItemResourceTypeCodeType Code { get; set; }
 
         [JsonProperty("form")]
-        public GETMedicationResponseEntryTypeItemResourceTypeFormType Form { get; set; }
+        public GetMedicationResponseEntryTypeItemResourceTypeFormType Form { get; set; }
 
         [JsonProperty("ingredient")]
-        public GETMedicationResponseEntryTypeItemResourceTypeIngredientTypeItem[] Ingredient { get; set; }
+        public GetMedicationResponseEntryTypeItemResourceTypeIngredientTypeItem[] Ingredient { get; set; }
     }
 
-    public class GETMedicationResponseEntryTypeItemResourceTypeMetaType
+    public class GetMedicationResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -6354,7 +6354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETMedicationResponseEntryTypeItemResourceTypeTextType
+    public class GetMedicationResponseEntryTypeItemResourceTypeTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -6363,22 +6363,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Div { get; set; }
     }
 
-    public class GETMedicationResponseEntryTypeItemResourceTypeCodeType
+    public class GetMedicationResponseEntryTypeItemResourceTypeCodeType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETMedicationResponseEntryTypeItemResourceTypeFormType
+    public class GetMedicationResponseEntryTypeItemResourceTypeFormType
     {
         [JsonProperty("coding")]
-        public GETMedicationResponseEntryTypeItemResourceTypeFormTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationResponseEntryTypeItemResourceTypeFormTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETMedicationResponseEntryTypeItemResourceTypeFormTypeCodingTypeItem
+    public class GetMedicationResponseEntryTypeItemResourceTypeFormTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6390,22 +6390,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationResponseEntryTypeItemResourceTypeIngredientTypeItem
+    public class GetMedicationResponseEntryTypeItemResourceTypeIngredientTypeItem
     {
         [JsonProperty("itemCodeableConcept")]
-        public GETMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
+        public GetMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
 
         [JsonProperty("strength")]
-        public GETMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemStrengthType Strength { get; set; }
+        public GetMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemStrengthType Strength { get; set; }
     }
 
-    public class GETMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemItemCodeableConceptType
+    public class GetMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemItemCodeableConceptType
     {
         [JsonProperty("coding")]
-        public GETMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
+    public class GetMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6417,16 +6417,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemStrengthType
+    public class GetMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemStrengthType
     {
         [JsonProperty("numerator")]
-        public GETMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
+        public GetMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public GETMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
+        public GetMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
     }
 
-    public class GETMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemStrengthTypeNumeratorType
+    public class GetMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemStrengthTypeNumeratorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -6438,7 +6438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemStrengthTypeDenominatorType
+    public class GetMedicationResponseEntryTypeItemResourceTypeIngredientTypeItemStrengthTypeDenominatorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -6450,13 +6450,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationResponseEntryTypeItemSearchType
+    public class GetMedicationResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class POSTMedicationResponse
+    public class PostMedicationResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6465,34 +6465,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public POSTMedicationResponseMetaType Meta { get; set; }
+        public PostMedicationResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public POSTMedicationResponseTextType Text { get; set; }
+        public PostMedicationResponseTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public POSTMedicationResponseContainedTypeItem[] Contained { get; set; }
+        public PostMedicationResponseContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("code")]
-        public POSTMedicationResponseCodeType Code { get; set; }
+        public PostMedicationResponseCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("manufacturer")]
-        public POSTMedicationResponseManufacturerType Manufacturer { get; set; }
+        public PostMedicationResponseManufacturerType Manufacturer { get; set; }
 
         [JsonProperty("form")]
-        public POSTMedicationResponseFormType Form { get; set; }
+        public PostMedicationResponseFormType Form { get; set; }
 
         [JsonProperty("ingredient")]
-        public POSTMedicationResponseIngredientTypeItem[] Ingredient { get; set; }
+        public PostMedicationResponseIngredientTypeItem[] Ingredient { get; set; }
 
         [JsonProperty("batch")]
-        public POSTMedicationResponseBatchType Batch { get; set; }
+        public PostMedicationResponseBatchType Batch { get; set; }
     }
 
-    public class POSTMedicationResponseMetaType
+    public class PostMedicationResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -6501,13 +6501,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class POSTMedicationResponseTextType
+    public class PostMedicationResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class POSTMedicationResponseContainedTypeItem
+    public class PostMedicationResponseContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6519,13 +6519,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Name { get; set; }
     }
 
-    public class POSTMedicationResponseCodeType
+    public class PostMedicationResponseCodeType
     {
         [JsonProperty("coding")]
-        public POSTMedicationResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationResponseCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationResponseCodeTypeCodingTypeItem
+    public class PostMedicationResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6537,19 +6537,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationResponseManufacturerType
+    public class PostMedicationResponseManufacturerType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTMedicationResponseFormType
+    public class PostMedicationResponseFormType
     {
         [JsonProperty("coding")]
-        public POSTMedicationResponseFormTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationResponseFormTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationResponseFormTypeCodingTypeItem
+    public class PostMedicationResponseFormTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6561,25 +6561,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationResponseIngredientTypeItem
+    public class PostMedicationResponseIngredientTypeItem
     {
         [JsonProperty("itemCodeableConcept")]
-        public POSTMedicationResponseIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
+        public PostMedicationResponseIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
 
         [JsonProperty("isActive")]
         public bool IsActive { get; set; }
 
         [JsonProperty("strength")]
-        public POSTMedicationResponseIngredientTypeItemStrengthType Strength { get; set; }
+        public PostMedicationResponseIngredientTypeItemStrengthType Strength { get; set; }
     }
 
-    public class POSTMedicationResponseIngredientTypeItemItemCodeableConceptType
+    public class PostMedicationResponseIngredientTypeItemItemCodeableConceptType
     {
         [JsonProperty("coding")]
-        public POSTMedicationResponseIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationResponseIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationResponseIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
+    public class PostMedicationResponseIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6591,16 +6591,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationResponseIngredientTypeItemStrengthType
+    public class PostMedicationResponseIngredientTypeItemStrengthType
     {
         [JsonProperty("numerator")]
-        public POSTMedicationResponseIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
+        public PostMedicationResponseIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public POSTMedicationResponseIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
+        public PostMedicationResponseIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
     }
 
-    public class POSTMedicationResponseIngredientTypeItemStrengthTypeNumeratorType
+    public class PostMedicationResponseIngredientTypeItemStrengthTypeNumeratorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -6612,7 +6612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationResponseIngredientTypeItemStrengthTypeDenominatorType
+    public class PostMedicationResponseIngredientTypeItemStrengthTypeDenominatorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -6624,7 +6624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationResponseBatchType
+    public class PostMedicationResponseBatchType
     {
         [JsonProperty("lotNumber")]
         public string LotNumber { get; set; }
@@ -6633,7 +6633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string ExpirationDate { get; set; }
     }
 
-    public class POSTMedicationBodyInput
+    public class PostMedicationBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6642,13 +6642,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public DELETEMedicationIdBodyInputContainedTypeItem[] Contained { get; set; }
+        public DeleteMedicationIdBodyInputContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("code")]
-        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
+        public DeleteDiagnosticReportIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -6666,7 +6666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputBatchType Batch { get; set; }
     }
 
-    public class DELETEMedicationIdBodyInputContainedTypeItem
+    public class DeleteMedicationIdBodyInputContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6774,7 +6774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string ExpirationDate { get; set; }
     }
 
-    public class GETMedicationIdResponse
+    public class GetMedicationIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6783,34 +6783,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETMedicationIdResponseMetaType Meta { get; set; }
+        public GetMedicationIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETMedicationIdResponseTextType Text { get; set; }
+        public GetMedicationIdResponseTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public GETMedicationIdResponseContainedTypeItem[] Contained { get; set; }
+        public GetMedicationIdResponseContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("code")]
-        public GETMedicationIdResponseCodeType Code { get; set; }
+        public GetMedicationIdResponseCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("manufacturer")]
-        public GETMedicationIdResponseManufacturerType Manufacturer { get; set; }
+        public GetMedicationIdResponseManufacturerType Manufacturer { get; set; }
 
         [JsonProperty("form")]
-        public GETMedicationIdResponseFormType Form { get; set; }
+        public GetMedicationIdResponseFormType Form { get; set; }
 
         [JsonProperty("ingredient")]
-        public GETMedicationIdResponseIngredientTypeItem[] Ingredient { get; set; }
+        public GetMedicationIdResponseIngredientTypeItem[] Ingredient { get; set; }
 
         [JsonProperty("batch")]
-        public GETMedicationIdResponseBatchType Batch { get; set; }
+        public GetMedicationIdResponseBatchType Batch { get; set; }
     }
 
-    public class GETMedicationIdResponseMetaType
+    public class GetMedicationIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -6819,13 +6819,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETMedicationIdResponseTextType
+    public class GetMedicationIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class GETMedicationIdResponseContainedTypeItem
+    public class GetMedicationIdResponseContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6837,13 +6837,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Name { get; set; }
     }
 
-    public class GETMedicationIdResponseCodeType
+    public class GetMedicationIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public GETMedicationIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationIdResponseCodeTypeCodingTypeItem
+    public class GetMedicationIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6855,19 +6855,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationIdResponseManufacturerType
+    public class GetMedicationIdResponseManufacturerType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETMedicationIdResponseFormType
+    public class GetMedicationIdResponseFormType
     {
         [JsonProperty("coding")]
-        public GETMedicationIdResponseFormTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationIdResponseFormTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationIdResponseFormTypeCodingTypeItem
+    public class GetMedicationIdResponseFormTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6879,25 +6879,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationIdResponseIngredientTypeItem
+    public class GetMedicationIdResponseIngredientTypeItem
     {
         [JsonProperty("itemCodeableConcept")]
-        public GETMedicationIdResponseIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
+        public GetMedicationIdResponseIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
 
         [JsonProperty("isActive")]
         public bool IsActive { get; set; }
 
         [JsonProperty("strength")]
-        public GETMedicationIdResponseIngredientTypeItemStrengthType Strength { get; set; }
+        public GetMedicationIdResponseIngredientTypeItemStrengthType Strength { get; set; }
     }
 
-    public class GETMedicationIdResponseIngredientTypeItemItemCodeableConceptType
+    public class GetMedicationIdResponseIngredientTypeItemItemCodeableConceptType
     {
         [JsonProperty("coding")]
-        public GETMedicationIdResponseIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationIdResponseIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationIdResponseIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
+    public class GetMedicationIdResponseIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6909,16 +6909,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationIdResponseIngredientTypeItemStrengthType
+    public class GetMedicationIdResponseIngredientTypeItemStrengthType
     {
         [JsonProperty("numerator")]
-        public GETMedicationIdResponseIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
+        public GetMedicationIdResponseIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public GETMedicationIdResponseIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
+        public GetMedicationIdResponseIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
     }
 
-    public class GETMedicationIdResponseIngredientTypeItemStrengthTypeNumeratorType
+    public class GetMedicationIdResponseIngredientTypeItemStrengthTypeNumeratorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -6930,7 +6930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationIdResponseIngredientTypeItemStrengthTypeDenominatorType
+    public class GetMedicationIdResponseIngredientTypeItemStrengthTypeDenominatorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -6942,7 +6942,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationIdResponseBatchType
+    public class GetMedicationIdResponseBatchType
     {
         [JsonProperty("lotNumber")]
         public string LotNumber { get; set; }
@@ -6951,7 +6951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string ExpirationDate { get; set; }
     }
 
-    public class DELETEMedicationIdResponse
+    public class DeleteMedicationIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6960,34 +6960,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEMedicationIdResponseMetaType Meta { get; set; }
+        public DeleteMedicationIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEMedicationIdResponseTextType Text { get; set; }
+        public DeleteMedicationIdResponseTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public DELETEMedicationIdResponseContainedTypeItem[] Contained { get; set; }
+        public DeleteMedicationIdResponseContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("code")]
-        public DELETEMedicationIdResponseCodeType Code { get; set; }
+        public DeleteMedicationIdResponseCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("manufacturer")]
-        public DELETEMedicationIdResponseManufacturerType Manufacturer { get; set; }
+        public DeleteMedicationIdResponseManufacturerType Manufacturer { get; set; }
 
         [JsonProperty("form")]
-        public DELETEMedicationIdResponseFormType Form { get; set; }
+        public DeleteMedicationIdResponseFormType Form { get; set; }
 
         [JsonProperty("ingredient")]
-        public DELETEMedicationIdResponseIngredientTypeItem[] Ingredient { get; set; }
+        public DeleteMedicationIdResponseIngredientTypeItem[] Ingredient { get; set; }
 
         [JsonProperty("batch")]
-        public DELETEMedicationIdResponseBatchType Batch { get; set; }
+        public DeleteMedicationIdResponseBatchType Batch { get; set; }
     }
 
-    public class DELETEMedicationIdResponseMetaType
+    public class DeleteMedicationIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -6996,13 +6996,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEMedicationIdResponseTextType
+    public class DeleteMedicationIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class DELETEMedicationIdResponseContainedTypeItem
+    public class DeleteMedicationIdResponseContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7014,13 +7014,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Name { get; set; }
     }
 
-    public class DELETEMedicationIdResponseCodeType
+    public class DeleteMedicationIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public DELETEMedicationIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteMedicationIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEMedicationIdResponseCodeTypeCodingTypeItem
+    public class DeleteMedicationIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7032,19 +7032,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEMedicationIdResponseManufacturerType
+    public class DeleteMedicationIdResponseManufacturerType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEMedicationIdResponseFormType
+    public class DeleteMedicationIdResponseFormType
     {
         [JsonProperty("coding")]
-        public DELETEMedicationIdResponseFormTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteMedicationIdResponseFormTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEMedicationIdResponseFormTypeCodingTypeItem
+    public class DeleteMedicationIdResponseFormTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7056,25 +7056,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEMedicationIdResponseIngredientTypeItem
+    public class DeleteMedicationIdResponseIngredientTypeItem
     {
         [JsonProperty("itemCodeableConcept")]
-        public DELETEMedicationIdResponseIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
+        public DeleteMedicationIdResponseIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
 
         [JsonProperty("isActive")]
         public bool IsActive { get; set; }
 
         [JsonProperty("strength")]
-        public DELETEMedicationIdResponseIngredientTypeItemStrengthType Strength { get; set; }
+        public DeleteMedicationIdResponseIngredientTypeItemStrengthType Strength { get; set; }
     }
 
-    public class DELETEMedicationIdResponseIngredientTypeItemItemCodeableConceptType
+    public class DeleteMedicationIdResponseIngredientTypeItemItemCodeableConceptType
     {
         [JsonProperty("coding")]
-        public DELETEMedicationIdResponseIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteMedicationIdResponseIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEMedicationIdResponseIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
+    public class DeleteMedicationIdResponseIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7086,16 +7086,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEMedicationIdResponseIngredientTypeItemStrengthType
+    public class DeleteMedicationIdResponseIngredientTypeItemStrengthType
     {
         [JsonProperty("numerator")]
-        public DELETEMedicationIdResponseIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
+        public DeleteMedicationIdResponseIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public DELETEMedicationIdResponseIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
+        public DeleteMedicationIdResponseIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
     }
 
-    public class DELETEMedicationIdResponseIngredientTypeItemStrengthTypeNumeratorType
+    public class DeleteMedicationIdResponseIngredientTypeItemStrengthTypeNumeratorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -7107,7 +7107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETEMedicationIdResponseIngredientTypeItemStrengthTypeDenominatorType
+    public class DeleteMedicationIdResponseIngredientTypeItemStrengthTypeDenominatorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -7119,7 +7119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETEMedicationIdResponseBatchType
+    public class DeleteMedicationIdResponseBatchType
     {
         [JsonProperty("lotNumber")]
         public string LotNumber { get; set; }
@@ -7128,7 +7128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string ExpirationDate { get; set; }
     }
 
-    public class DELETEMedicationIdBodyInput
+    public class DeleteMedicationIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7140,13 +7140,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public DELETEMedicationIdBodyInputContainedTypeItem[] Contained { get; set; }
+        public DeleteMedicationIdBodyInputContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("code")]
-        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
+        public DeleteDiagnosticReportIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7164,7 +7164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputBatchType Batch { get; set; }
     }
 
-    public class PUTMedicationIdResponse
+    public class PutMedicationIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7173,34 +7173,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTMedicationIdResponseMetaType Meta { get; set; }
+        public PutMedicationIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public PUTMedicationIdResponseTextType Text { get; set; }
+        public PutMedicationIdResponseTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public PUTMedicationIdResponseContainedTypeItem[] Contained { get; set; }
+        public PutMedicationIdResponseContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("code")]
-        public PUTMedicationIdResponseCodeType Code { get; set; }
+        public PutMedicationIdResponseCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("manufacturer")]
-        public PUTMedicationIdResponseManufacturerType Manufacturer { get; set; }
+        public PutMedicationIdResponseManufacturerType Manufacturer { get; set; }
 
         [JsonProperty("form")]
-        public PUTMedicationIdResponseFormType Form { get; set; }
+        public PutMedicationIdResponseFormType Form { get; set; }
 
         [JsonProperty("ingredient")]
-        public PUTMedicationIdResponseIngredientTypeItem[] Ingredient { get; set; }
+        public PutMedicationIdResponseIngredientTypeItem[] Ingredient { get; set; }
 
         [JsonProperty("batch")]
-        public PUTMedicationIdResponseBatchType Batch { get; set; }
+        public PutMedicationIdResponseBatchType Batch { get; set; }
     }
 
-    public class PUTMedicationIdResponseMetaType
+    public class PutMedicationIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -7209,13 +7209,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class PUTMedicationIdResponseTextType
+    public class PutMedicationIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class PUTMedicationIdResponseContainedTypeItem
+    public class PutMedicationIdResponseContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7227,13 +7227,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Name { get; set; }
     }
 
-    public class PUTMedicationIdResponseCodeType
+    public class PutMedicationIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public PUTMedicationIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PutMedicationIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTMedicationIdResponseCodeTypeCodingTypeItem
+    public class PutMedicationIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7245,19 +7245,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTMedicationIdResponseManufacturerType
+    public class PutMedicationIdResponseManufacturerType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTMedicationIdResponseFormType
+    public class PutMedicationIdResponseFormType
     {
         [JsonProperty("coding")]
-        public PUTMedicationIdResponseFormTypeCodingTypeItem[] Coding { get; set; }
+        public PutMedicationIdResponseFormTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTMedicationIdResponseFormTypeCodingTypeItem
+    public class PutMedicationIdResponseFormTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7269,25 +7269,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTMedicationIdResponseIngredientTypeItem
+    public class PutMedicationIdResponseIngredientTypeItem
     {
         [JsonProperty("itemCodeableConcept")]
-        public PUTMedicationIdResponseIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
+        public PutMedicationIdResponseIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
 
         [JsonProperty("isActive")]
         public bool IsActive { get; set; }
 
         [JsonProperty("strength")]
-        public PUTMedicationIdResponseIngredientTypeItemStrengthType Strength { get; set; }
+        public PutMedicationIdResponseIngredientTypeItemStrengthType Strength { get; set; }
     }
 
-    public class PUTMedicationIdResponseIngredientTypeItemItemCodeableConceptType
+    public class PutMedicationIdResponseIngredientTypeItemItemCodeableConceptType
     {
         [JsonProperty("coding")]
-        public PUTMedicationIdResponseIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public PutMedicationIdResponseIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTMedicationIdResponseIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
+    public class PutMedicationIdResponseIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7299,16 +7299,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTMedicationIdResponseIngredientTypeItemStrengthType
+    public class PutMedicationIdResponseIngredientTypeItemStrengthType
     {
         [JsonProperty("numerator")]
-        public PUTMedicationIdResponseIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
+        public PutMedicationIdResponseIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public PUTMedicationIdResponseIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
+        public PutMedicationIdResponseIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
     }
 
-    public class PUTMedicationIdResponseIngredientTypeItemStrengthTypeNumeratorType
+    public class PutMedicationIdResponseIngredientTypeItemStrengthTypeNumeratorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -7320,7 +7320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTMedicationIdResponseIngredientTypeItemStrengthTypeDenominatorType
+    public class PutMedicationIdResponseIngredientTypeItemStrengthTypeDenominatorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -7332,7 +7332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTMedicationIdResponseBatchType
+    public class PutMedicationIdResponseBatchType
     {
         [JsonProperty("lotNumber")]
         public string LotNumber { get; set; }
@@ -7341,7 +7341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string ExpirationDate { get; set; }
     }
 
-    public class PUTMedicationIdBodyInput
+    public class PutMedicationIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7350,13 +7350,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public PUTMedicationIdBodyInputTextType Text { get; set; }
+        public PutMedicationIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public DELETEMedicationIdBodyInputContainedTypeItem[] Contained { get; set; }
+        public DeleteMedicationIdBodyInputContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("code")]
-        public DELETEDiagnosticReportIdBodyInputCodeType Code { get; set; }
+        public DeleteDiagnosticReportIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7374,7 +7374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputBatchType Batch { get; set; }
     }
 
-    public class PUTMedicationIdBodyInputTextType
+    public class PutMedicationIdBodyInputTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7383,7 +7383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Div { get; set; }
     }
 
-    public class GETMedicationRequestResponse
+    public class GetMedicationRequestResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7392,25 +7392,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETMedicationRequestResponseMetaType Meta { get; set; }
+        public GetMedicationRequestResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETMedicationRequestResponseLinkTypeItem[] Link { get; set; }
+        public GetMedicationRequestResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETMedicationRequestResponseEntryTypeItem[] Entry { get; set; }
+        public GetMedicationRequestResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETMedicationRequestResponseMetaType
+    public class GetMedicationRequestResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETMedicationRequestResponseLinkTypeItem
+    public class GetMedicationRequestResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -7419,19 +7419,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItem
+    public class GetMedicationRequestResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETMedicationRequestResponseEntryTypeItemResourceType Resource { get; set; }
+        public GetMedicationRequestResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETMedicationRequestResponseEntryTypeItemSearchType Search { get; set; }
+        public GetMedicationRequestResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItemResourceType
+    public class GetMedicationRequestResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7440,7 +7440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETMedicationRequestResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GetMedicationRequestResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7449,28 +7449,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("medicationCodeableConcept")]
-        public GETMedicationRequestResponseEntryTypeItemResourceTypeMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
+        public GetMedicationRequestResponseEntryTypeItemResourceTypeMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
 
         [JsonProperty("subject")]
-        public GETMedicationRequestResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
+        public GetMedicationRequestResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public GETMedicationRequestResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
+        public GetMedicationRequestResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
 
         [JsonProperty("authoredOn")]
         public string AuthoredOn { get; set; }
 
         [JsonProperty("requester")]
-        public GETMedicationRequestResponseEntryTypeItemResourceTypeRequesterType Requester { get; set; }
+        public GetMedicationRequestResponseEntryTypeItemResourceTypeRequesterType Requester { get; set; }
 
         [JsonProperty("dosageInstruction")]
-        public GETMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItem[] DosageInstruction { get; set; }
+        public GetMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItem[] DosageInstruction { get; set; }
 
         [JsonProperty("reasonReference")]
-        public GETMedicationRequestResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
+        public GetMedicationRequestResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItemResourceTypeMetaType
+    public class GetMedicationRequestResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -7479,16 +7479,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItemResourceTypeMedicationCodeableConceptType
+    public class GetMedicationRequestResponseEntryTypeItemResourceTypeMedicationCodeableConceptType
     {
         [JsonProperty("coding")]
-        public GETMedicationRequestResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationRequestResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem
+    public class GetMedicationRequestResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7500,19 +7500,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItemResourceTypeSubjectType
+    public class GetMedicationRequestResponseEntryTypeItemResourceTypeSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItemResourceTypeEncounterType
+    public class GetMedicationRequestResponseEntryTypeItemResourceTypeEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItemResourceTypeRequesterType
+    public class GetMedicationRequestResponseEntryTypeItemResourceTypeRequesterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7521,7 +7521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItem
+    public class GetMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItem
     {
         [JsonProperty("sequence")]
         public int Sequence { get; set; }
@@ -7530,19 +7530,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public bool AsNeededBoolean { get; set; }
 
         [JsonProperty("timing")]
-        public GETMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingType Timing { get; set; }
+        public GetMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingType Timing { get; set; }
 
         [JsonProperty("doseAndRate")]
-        public GETMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
+        public GetMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingType
+    public class GetMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingType
     {
         [JsonProperty("repeat")]
-        public GETMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingTypeRepeatType Repeat { get; set; }
+        public GetMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingTypeRepeatType Repeat { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingTypeRepeatType
+    public class GetMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingTypeRepeatType
     {
         [JsonProperty("frequency")]
         public int Frequency { get; set; }
@@ -7554,22 +7554,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string PeriodUnit { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItem
+    public class GetMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItem
     {
         [JsonProperty("type")]
-        public GETMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
+        public GetMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
 
         [JsonProperty("doseQuantity")]
-        public GETMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
+        public GetMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeType
+    public class GetMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeType
     {
         [JsonProperty("coding")]
-        public GETMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
+    public class GetMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7581,25 +7581,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType
+    public class GetMedicationRequestResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
+    public class GetMedicationRequestResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETMedicationRequestResponseEntryTypeItemSearchType
+    public class GetMedicationRequestResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class POSTMedicationRequestResponse
+    public class PostMedicationRequestResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7608,16 +7608,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public POSTMedicationRequestResponseMetaType Meta { get; set; }
+        public PostMedicationRequestResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public POSTMedicationRequestResponseTextType Text { get; set; }
+        public PostMedicationRequestResponseTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public POSTMedicationRequestResponseContainedTypeItem[] Contained { get; set; }
+        public PostMedicationRequestResponseContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("identifier")]
-        public POSTMedicationRequestResponseIdentifierTypeItem[] Identifier { get; set; }
+        public PostMedicationRequestResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7626,40 +7626,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("medicationCodeableConcept")]
-        public POSTMedicationRequestResponseMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
+        public PostMedicationRequestResponseMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
 
         [JsonProperty("subject")]
-        public POSTMedicationRequestResponseSubjectType Subject { get; set; }
+        public PostMedicationRequestResponseSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public POSTMedicationRequestResponseEncounterType Encounter { get; set; }
+        public PostMedicationRequestResponseEncounterType Encounter { get; set; }
 
         [JsonProperty("supportingInformation")]
-        public POSTMedicationRequestResponseSupportingInformationTypeItem[] SupportingInformation { get; set; }
+        public PostMedicationRequestResponseSupportingInformationTypeItem[] SupportingInformation { get; set; }
 
         [JsonProperty("authoredOn")]
         public string AuthoredOn { get; set; }
 
         [JsonProperty("requester")]
-        public POSTMedicationRequestResponseRequesterType Requester { get; set; }
+        public PostMedicationRequestResponseRequesterType Requester { get; set; }
 
         [JsonProperty("reasonCode")]
-        public POSTMedicationRequestResponseReasonCodeTypeItem[] ReasonCode { get; set; }
+        public PostMedicationRequestResponseReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("note")]
-        public POSTMedicationRequestResponseNoteTypeItem[] Note { get; set; }
+        public PostMedicationRequestResponseNoteTypeItem[] Note { get; set; }
 
         [JsonProperty("dosageInstruction")]
-        public POSTMedicationRequestResponseDosageInstructionTypeItem[] DosageInstruction { get; set; }
+        public PostMedicationRequestResponseDosageInstructionTypeItem[] DosageInstruction { get; set; }
 
         [JsonProperty("dispenseRequest")]
-        public POSTMedicationRequestResponseDispenseRequestType DispenseRequest { get; set; }
+        public PostMedicationRequestResponseDispenseRequestType DispenseRequest { get; set; }
 
         [JsonProperty("substitution")]
-        public POSTMedicationRequestResponseSubstitutionType Substitution { get; set; }
+        public PostMedicationRequestResponseSubstitutionType Substitution { get; set; }
     }
 
-    public class POSTMedicationRequestResponseMetaType
+    public class PostMedicationRequestResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -7668,13 +7668,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class POSTMedicationRequestResponseTextType
+    public class PostMedicationRequestResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class POSTMedicationRequestResponseContainedTypeItem
+    public class PostMedicationRequestResponseContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7683,16 +7683,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("code")]
-        public POSTMedicationRequestResponseContainedTypeItemCodeType Code { get; set; }
+        public PostMedicationRequestResponseContainedTypeItemCodeType Code { get; set; }
     }
 
-    public class POSTMedicationRequestResponseContainedTypeItemCodeType
+    public class PostMedicationRequestResponseContainedTypeItemCodeType
     {
         [JsonProperty("coding")]
-        public POSTMedicationRequestResponseContainedTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationRequestResponseContainedTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationRequestResponseContainedTypeItemCodeTypeCodingTypeItem
+    public class PostMedicationRequestResponseContainedTypeItemCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7704,7 +7704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestResponseIdentifierTypeItem
+    public class PostMedicationRequestResponseIdentifierTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -7716,13 +7716,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class POSTMedicationRequestResponseMedicationCodeableConceptType
+    public class PostMedicationRequestResponseMedicationCodeableConceptType
     {
         [JsonProperty("coding")]
-        public POSTMedicationRequestResponseMedicationCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationRequestResponseMedicationCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationRequestResponseMedicationCodeableConceptTypeCodingTypeItem
+    public class PostMedicationRequestResponseMedicationCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7734,7 +7734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestResponseSubjectType
+    public class PostMedicationRequestResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7743,7 +7743,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestResponseEncounterType
+    public class PostMedicationRequestResponseEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7752,13 +7752,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestResponseSupportingInformationTypeItem
+    public class PostMedicationRequestResponseSupportingInformationTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTMedicationRequestResponseRequesterType
+    public class PostMedicationRequestResponseRequesterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7767,13 +7767,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestResponseReasonCodeTypeItem
+    public class PostMedicationRequestResponseReasonCodeTypeItem
     {
         [JsonProperty("coding")]
-        public POSTMedicationRequestResponseReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
+        public PostMedicationRequestResponseReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationRequestResponseReasonCodeTypeItemCodingTypeItem
+    public class PostMedicationRequestResponseReasonCodeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7785,13 +7785,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestResponseNoteTypeItem
+    public class PostMedicationRequestResponseNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDosageInstructionTypeItem
+    public class PostMedicationRequestResponseDosageInstructionTypeItem
     {
         [JsonProperty("sequence")]
         public int Sequence { get; set; }
@@ -7800,28 +7800,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Text { get; set; }
 
         [JsonProperty("additionalInstruction")]
-        public POSTMedicationRequestResponseDosageInstructionTypeItemAdditionalInstructionTypeItem[] AdditionalInstruction { get; set; }
+        public PostMedicationRequestResponseDosageInstructionTypeItemAdditionalInstructionTypeItem[] AdditionalInstruction { get; set; }
 
         [JsonProperty("timing")]
-        public POSTMedicationRequestResponseDosageInstructionTypeItemTimingType Timing { get; set; }
+        public PostMedicationRequestResponseDosageInstructionTypeItemTimingType Timing { get; set; }
 
         [JsonProperty("route")]
-        public POSTMedicationRequestResponseDosageInstructionTypeItemRouteType Route { get; set; }
+        public PostMedicationRequestResponseDosageInstructionTypeItemRouteType Route { get; set; }
 
         [JsonProperty("method")]
-        public POSTMedicationRequestResponseDosageInstructionTypeItemMethodType Method { get; set; }
+        public PostMedicationRequestResponseDosageInstructionTypeItemMethodType Method { get; set; }
 
         [JsonProperty("doseAndRate")]
-        public POSTMedicationRequestResponseDosageInstructionTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
+        public PostMedicationRequestResponseDosageInstructionTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDosageInstructionTypeItemAdditionalInstructionTypeItem
+    public class PostMedicationRequestResponseDosageInstructionTypeItemAdditionalInstructionTypeItem
     {
         [JsonProperty("coding")]
-        public POSTMedicationRequestResponseDosageInstructionTypeItemAdditionalInstructionTypeItemCodingTypeItem[] Coding { get; set; }
+        public PostMedicationRequestResponseDosageInstructionTypeItemAdditionalInstructionTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDosageInstructionTypeItemAdditionalInstructionTypeItemCodingTypeItem
+    public class PostMedicationRequestResponseDosageInstructionTypeItemAdditionalInstructionTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7833,13 +7833,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDosageInstructionTypeItemTimingType
+    public class PostMedicationRequestResponseDosageInstructionTypeItemTimingType
     {
         [JsonProperty("repeat")]
-        public POSTMedicationRequestResponseDosageInstructionTypeItemTimingTypeRepeatType Repeat { get; set; }
+        public PostMedicationRequestResponseDosageInstructionTypeItemTimingTypeRepeatType Repeat { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDosageInstructionTypeItemTimingTypeRepeatType
+    public class PostMedicationRequestResponseDosageInstructionTypeItemTimingTypeRepeatType
     {
         [JsonProperty("frequency")]
         public int Frequency { get; set; }
@@ -7851,13 +7851,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string PeriodUnit { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDosageInstructionTypeItemRouteType
+    public class PostMedicationRequestResponseDosageInstructionTypeItemRouteType
     {
         [JsonProperty("coding")]
-        public POSTMedicationRequestResponseDosageInstructionTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationRequestResponseDosageInstructionTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDosageInstructionTypeItemRouteTypeCodingTypeItem
+    public class PostMedicationRequestResponseDosageInstructionTypeItemRouteTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7869,13 +7869,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDosageInstructionTypeItemMethodType
+    public class PostMedicationRequestResponseDosageInstructionTypeItemMethodType
     {
         [JsonProperty("coding")]
-        public POSTMedicationRequestResponseDosageInstructionTypeItemMethodTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationRequestResponseDosageInstructionTypeItemMethodTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDosageInstructionTypeItemMethodTypeCodingTypeItem
+    public class PostMedicationRequestResponseDosageInstructionTypeItemMethodTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7887,22 +7887,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDosageInstructionTypeItemDoseAndRateTypeItem
+    public class PostMedicationRequestResponseDosageInstructionTypeItemDoseAndRateTypeItem
     {
         [JsonProperty("type")]
-        public POSTMedicationRequestResponseDosageInstructionTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
+        public PostMedicationRequestResponseDosageInstructionTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
 
         [JsonProperty("doseQuantity")]
-        public POSTMedicationRequestResponseDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
+        public PostMedicationRequestResponseDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDosageInstructionTypeItemDoseAndRateTypeItemTypeType
+    public class PostMedicationRequestResponseDosageInstructionTypeItemDoseAndRateTypeItemTypeType
     {
         [JsonProperty("coding")]
-        public POSTMedicationRequestResponseDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationRequestResponseDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
+    public class PostMedicationRequestResponseDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7914,7 +7914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType
+    public class PostMedicationRequestResponseDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -7929,22 +7929,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDispenseRequestType
+    public class PostMedicationRequestResponseDispenseRequestType
     {
         [JsonProperty("validityPeriod")]
-        public POSTMedicationRequestResponseDispenseRequestTypeValidityPeriodType ValidityPeriod { get; set; }
+        public PostMedicationRequestResponseDispenseRequestTypeValidityPeriodType ValidityPeriod { get; set; }
 
         [JsonProperty("numberOfRepeatsAllowed")]
         public int NumberOfRepeatsAllowed { get; set; }
 
         [JsonProperty("quantity")]
-        public POSTMedicationRequestResponseDispenseRequestTypeQuantityType Quantity { get; set; }
+        public PostMedicationRequestResponseDispenseRequestTypeQuantityType Quantity { get; set; }
 
         [JsonProperty("expectedSupplyDuration")]
-        public POSTMedicationRequestResponseDispenseRequestTypeExpectedSupplyDurationType ExpectedSupplyDuration { get; set; }
+        public PostMedicationRequestResponseDispenseRequestTypeExpectedSupplyDurationType ExpectedSupplyDuration { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDispenseRequestTypeValidityPeriodType
+    public class PostMedicationRequestResponseDispenseRequestTypeValidityPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -7953,7 +7953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string End { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDispenseRequestTypeQuantityType
+    public class PostMedicationRequestResponseDispenseRequestTypeQuantityType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -7968,7 +7968,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationRequestResponseDispenseRequestTypeExpectedSupplyDurationType
+    public class PostMedicationRequestResponseDispenseRequestTypeExpectedSupplyDurationType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -7983,22 +7983,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationRequestResponseSubstitutionType
+    public class PostMedicationRequestResponseSubstitutionType
     {
         [JsonProperty("allowedBoolean")]
         public bool AllowedBoolean { get; set; }
 
         [JsonProperty("reason")]
-        public POSTMedicationRequestResponseSubstitutionTypeReasonType Reason { get; set; }
+        public PostMedicationRequestResponseSubstitutionTypeReasonType Reason { get; set; }
     }
 
-    public class POSTMedicationRequestResponseSubstitutionTypeReasonType
+    public class PostMedicationRequestResponseSubstitutionTypeReasonType
     {
         [JsonProperty("coding")]
-        public POSTMedicationRequestResponseSubstitutionTypeReasonTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationRequestResponseSubstitutionTypeReasonTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationRequestResponseSubstitutionTypeReasonTypeCodingTypeItem
+    public class PostMedicationRequestResponseSubstitutionTypeReasonTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8010,7 +8010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestBodyInput
+    public class PostMedicationRequestBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8019,10 +8019,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public DELETEMedicationRequestIdBodyInputContainedTypeItem[] Contained { get; set; }
+        public DeleteMedicationRequestIdBodyInputContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("identifier")]
         public BodyInputIdentifierTypeItem[] Identifier { get; set; }
@@ -8034,13 +8034,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("medicationCodeableConcept")]
-        public POSTMedicationRequestBodyInputMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
+        public PostMedicationRequestBodyInputMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
 
         [JsonProperty("subject")]
-        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
+        public DeleteCarePlanIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public DELETEMedicationRequestIdBodyInputEncounterType Encounter { get; set; }
+        public DeleteMedicationRequestIdBodyInputEncounterType Encounter { get; set; }
 
         [JsonProperty("supportingInformation")]
         public BodyInputSupportingInformationTypeItem[] SupportingInformation { get; set; }
@@ -8052,7 +8052,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputRequesterType Requester { get; set; }
 
         [JsonProperty("reasonCode")]
-        public DELETEMedicationRequestIdBodyInputReasonCodeTypeItem[] ReasonCode { get; set; }
+        public DeleteMedicationRequestIdBodyInputReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("note")]
         public BodyInputNoteTypeItem[] Note { get; set; }
@@ -8067,7 +8067,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputSubstitutionType Substitution { get; set; }
     }
 
-    public class DELETEMedicationRequestIdBodyInputContainedTypeItem
+    public class DeleteMedicationRequestIdBodyInputContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8076,10 +8076,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("code")]
-        public DELETEMedicationRequestIdBodyInputContainedTypeItemCodeType Code { get; set; }
+        public DeleteMedicationRequestIdBodyInputContainedTypeItemCodeType Code { get; set; }
     }
 
-    public class DELETEMedicationRequestIdBodyInputContainedTypeItemCodeType
+    public class DeleteMedicationRequestIdBodyInputContainedTypeItemCodeType
     {
         [JsonProperty("coding")]
         public BodyInputContainedTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
@@ -8097,7 +8097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationRequestBodyInputMedicationCodeableConceptType
+    public class PostMedicationRequestBodyInputMedicationCodeableConceptType
     {
         [JsonProperty("coding")]
         public BodyInputMedicationCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
@@ -8115,7 +8115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEMedicationRequestIdBodyInputEncounterType
+    public class DeleteMedicationRequestIdBodyInputEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -8139,7 +8139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEMedicationRequestIdBodyInputReasonCodeTypeItem
+    public class DeleteMedicationRequestIdBodyInputReasonCodeTypeItem
     {
         [JsonProperty("coding")]
         public BodyInputReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
@@ -8382,7 +8382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationRequestIdResponse
+    public class GetMedicationRequestIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8391,25 +8391,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETMedicationRequestIdResponseMetaType Meta { get; set; }
+        public GetMedicationRequestIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETMedicationRequestIdResponseLinkTypeItem[] Link { get; set; }
+        public GetMedicationRequestIdResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETMedicationRequestIdResponseEntryTypeItem[] Entry { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseMetaType
+    public class GetMedicationRequestIdResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseLinkTypeItem
+    public class GetMedicationRequestIdResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -8418,19 +8418,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItem
+    public class GetMedicationRequestIdResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETMedicationRequestIdResponseEntryTypeItemResourceType Resource { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETMedicationRequestIdResponseEntryTypeItemSearchType Search { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItemResourceType
+    public class GetMedicationRequestIdResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8439,7 +8439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETMedicationRequestIdResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -8448,28 +8448,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("medicationCodeableConcept")]
-        public GETMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
 
         [JsonProperty("subject")]
-        public GETMedicationRequestIdResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public GETMedicationRequestIdResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
 
         [JsonProperty("authoredOn")]
         public string AuthoredOn { get; set; }
 
         [JsonProperty("requester")]
-        public GETMedicationRequestIdResponseEntryTypeItemResourceTypeRequesterType Requester { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItemResourceTypeRequesterType Requester { get; set; }
 
         [JsonProperty("dosageInstruction")]
-        public GETMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItem[] DosageInstruction { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItem[] DosageInstruction { get; set; }
 
         [JsonProperty("reasonReference")]
-        public GETMedicationRequestIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItemResourceTypeMetaType
+    public class GetMedicationRequestIdResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -8478,16 +8478,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType
+    public class GetMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType
     {
         [JsonProperty("coding")]
-        public GETMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem
+    public class GetMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8499,19 +8499,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItemResourceTypeSubjectType
+    public class GetMedicationRequestIdResponseEntryTypeItemResourceTypeSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItemResourceTypeEncounterType
+    public class GetMedicationRequestIdResponseEntryTypeItemResourceTypeEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItemResourceTypeRequesterType
+    public class GetMedicationRequestIdResponseEntryTypeItemResourceTypeRequesterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -8520,7 +8520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItem
+    public class GetMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItem
     {
         [JsonProperty("sequence")]
         public int Sequence { get; set; }
@@ -8529,19 +8529,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public bool AsNeededBoolean { get; set; }
 
         [JsonProperty("timing")]
-        public GETMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingType Timing { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingType Timing { get; set; }
 
         [JsonProperty("doseAndRate")]
-        public GETMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingType
+    public class GetMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingType
     {
         [JsonProperty("repeat")]
-        public GETMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingTypeRepeatType Repeat { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingTypeRepeatType Repeat { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingTypeRepeatType
+    public class GetMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingTypeRepeatType
     {
         [JsonProperty("frequency")]
         public int Frequency { get; set; }
@@ -8553,22 +8553,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string PeriodUnit { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItem
+    public class GetMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItem
     {
         [JsonProperty("type")]
-        public GETMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
 
         [JsonProperty("doseQuantity")]
-        public GETMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeType
+    public class GetMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeType
     {
         [JsonProperty("coding")]
-        public GETMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
+    public class GetMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8580,25 +8580,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType
+    public class GetMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
+    public class GetMedicationRequestIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETMedicationRequestIdResponseEntryTypeItemSearchType
+    public class GetMedicationRequestIdResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponse
+    public class DeleteMedicationRequestIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8607,25 +8607,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEMedicationRequestIdResponseMetaType Meta { get; set; }
+        public DeleteMedicationRequestIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public DELETEMedicationRequestIdResponseLinkTypeItem[] Link { get; set; }
+        public DeleteMedicationRequestIdResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public DELETEMedicationRequestIdResponseEntryTypeItem[] Entry { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseMetaType
+    public class DeleteMedicationRequestIdResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseLinkTypeItem
+    public class DeleteMedicationRequestIdResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -8634,19 +8634,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItem
+    public class DeleteMedicationRequestIdResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public DELETEMedicationRequestIdResponseEntryTypeItemResourceType Resource { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public DELETEMedicationRequestIdResponseEntryTypeItemSearchType Search { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItemResourceType
+    public class DeleteMedicationRequestIdResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8655,7 +8655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -8664,28 +8664,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("medicationCodeableConcept")]
-        public DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
 
         [JsonProperty("authoredOn")]
         public string AuthoredOn { get; set; }
 
         [JsonProperty("requester")]
-        public DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeRequesterType Requester { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeRequesterType Requester { get; set; }
 
         [JsonProperty("dosageInstruction")]
-        public DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItem[] DosageInstruction { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItem[] DosageInstruction { get; set; }
 
         [JsonProperty("reasonReference")]
-        public DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeMetaType
+    public class DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -8694,16 +8694,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType
+    public class DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType
     {
         [JsonProperty("coding")]
-        public DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem
+    public class DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8715,19 +8715,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeSubjectType
+    public class DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeEncounterType
+    public class DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeRequesterType
+    public class DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeRequesterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -8736,7 +8736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItem
+    public class DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItem
     {
         [JsonProperty("sequence")]
         public int Sequence { get; set; }
@@ -8745,19 +8745,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public bool AsNeededBoolean { get; set; }
 
         [JsonProperty("timing")]
-        public DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingType Timing { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingType Timing { get; set; }
 
         [JsonProperty("doseAndRate")]
-        public DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingType
+    public class DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingType
     {
         [JsonProperty("repeat")]
-        public DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingTypeRepeatType Repeat { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingTypeRepeatType Repeat { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingTypeRepeatType
+    public class DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingTypeRepeatType
     {
         [JsonProperty("frequency")]
         public int Frequency { get; set; }
@@ -8769,22 +8769,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string PeriodUnit { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItem
+    public class DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItem
     {
         [JsonProperty("type")]
-        public DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
 
         [JsonProperty("doseQuantity")]
-        public DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeType
+    public class DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeType
     {
         [JsonProperty("coding")]
-        public DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
+    public class DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8796,25 +8796,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType
+    public class DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
+    public class DeleteMedicationRequestIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEMedicationRequestIdResponseEntryTypeItemSearchType
+    public class DeleteMedicationRequestIdResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class DELETEMedicationRequestIdBodyInput
+    public class DeleteMedicationRequestIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8823,10 +8823,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public DELETEMedicationRequestIdBodyInputContainedTypeItem[] Contained { get; set; }
+        public DeleteMedicationRequestIdBodyInputContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("identifier")]
         public BodyInputIdentifierTypeItem[] Identifier { get; set; }
@@ -8841,10 +8841,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputMedicationReferenceType MedicationReference { get; set; }
 
         [JsonProperty("subject")]
-        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
+        public DeleteCarePlanIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public DELETEMedicationRequestIdBodyInputEncounterType Encounter { get; set; }
+        public DeleteMedicationRequestIdBodyInputEncounterType Encounter { get; set; }
 
         [JsonProperty("supportingInformation")]
         public BodyInputSupportingInformationTypeItem[] SupportingInformation { get; set; }
@@ -8856,7 +8856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputRequesterType Requester { get; set; }
 
         [JsonProperty("reasonCode")]
-        public DELETEMedicationRequestIdBodyInputReasonCodeTypeItem[] ReasonCode { get; set; }
+        public DeleteMedicationRequestIdBodyInputReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("note")]
         public BodyInputNoteTypeItem[] Note { get; set; }
@@ -8877,7 +8877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Reference { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponse
+    public class PutMedicationRequestIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8886,25 +8886,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTMedicationRequestIdResponseMetaType Meta { get; set; }
+        public PutMedicationRequestIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public PUTMedicationRequestIdResponseLinkTypeItem[] Link { get; set; }
+        public PutMedicationRequestIdResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public PUTMedicationRequestIdResponseEntryTypeItem[] Entry { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseMetaType
+    public class PutMedicationRequestIdResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseLinkTypeItem
+    public class PutMedicationRequestIdResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -8913,19 +8913,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItem
+    public class PutMedicationRequestIdResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public PUTMedicationRequestIdResponseEntryTypeItemResourceType Resource { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public PUTMedicationRequestIdResponseEntryTypeItemSearchType Search { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItemResourceType
+    public class PutMedicationRequestIdResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8934,7 +8934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTMedicationRequestIdResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -8943,28 +8943,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Intent { get; set; }
 
         [JsonProperty("medicationCodeableConcept")]
-        public PUTMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
 
         [JsonProperty("subject")]
-        public PUTMedicationRequestIdResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public PUTMedicationRequestIdResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
 
         [JsonProperty("authoredOn")]
         public string AuthoredOn { get; set; }
 
         [JsonProperty("requester")]
-        public PUTMedicationRequestIdResponseEntryTypeItemResourceTypeRequesterType Requester { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItemResourceTypeRequesterType Requester { get; set; }
 
         [JsonProperty("dosageInstruction")]
-        public PUTMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItem[] DosageInstruction { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItem[] DosageInstruction { get; set; }
 
         [JsonProperty("reasonReference")]
-        public PUTMedicationRequestIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItemResourceTypeMetaType
+    public class PutMedicationRequestIdResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -8973,16 +8973,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType
+    public class PutMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType
     {
         [JsonProperty("coding")]
-        public PUTMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem
+    public class PutMedicationRequestIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8994,19 +8994,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItemResourceTypeSubjectType
+    public class PutMedicationRequestIdResponseEntryTypeItemResourceTypeSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItemResourceTypeEncounterType
+    public class PutMedicationRequestIdResponseEntryTypeItemResourceTypeEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItemResourceTypeRequesterType
+    public class PutMedicationRequestIdResponseEntryTypeItemResourceTypeRequesterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9015,7 +9015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItem
+    public class PutMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItem
     {
         [JsonProperty("sequence")]
         public int Sequence { get; set; }
@@ -9024,19 +9024,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public bool AsNeededBoolean { get; set; }
 
         [JsonProperty("timing")]
-        public PUTMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingType Timing { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingType Timing { get; set; }
 
         [JsonProperty("doseAndRate")]
-        public PUTMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingType
+    public class PutMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingType
     {
         [JsonProperty("repeat")]
-        public PUTMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingTypeRepeatType Repeat { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingTypeRepeatType Repeat { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingTypeRepeatType
+    public class PutMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemTimingTypeRepeatType
     {
         [JsonProperty("frequency")]
         public int Frequency { get; set; }
@@ -9048,22 +9048,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string PeriodUnit { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItem
+    public class PutMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItem
     {
         [JsonProperty("type")]
-        public PUTMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
 
         [JsonProperty("doseQuantity")]
-        public PUTMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeType
+    public class PutMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeType
     {
         [JsonProperty("coding")]
-        public PUTMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
+        public PutMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
+    public class PutMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9075,25 +9075,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType
+    public class PutMedicationRequestIdResponseEntryTypeItemResourceTypeDosageInstructionTypeItemDoseAndRateTypeItemDoseQuantityType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
+    public class PutMedicationRequestIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTMedicationRequestIdResponseEntryTypeItemSearchType
+    public class PutMedicationRequestIdResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class GETMedicationStatementResponse
+    public class GetMedicationStatementResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9102,25 +9102,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETMedicationStatementResponseMetaType Meta { get; set; }
+        public GetMedicationStatementResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETMedicationStatementResponseLinkTypeItem[] Link { get; set; }
+        public GetMedicationStatementResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETMedicationStatementResponseEntryTypeItem[] Entry { get; set; }
+        public GetMedicationStatementResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETMedicationStatementResponseMetaType
+    public class GetMedicationStatementResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETMedicationStatementResponseLinkTypeItem
+    public class GetMedicationStatementResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -9129,19 +9129,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItem
+    public class GetMedicationStatementResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETMedicationStatementResponseEntryTypeItemResourceType Resource { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETMedicationStatementResponseEntryTypeItemSearchType Search { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceType
+    public class GetMedicationStatementResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9150,28 +9150,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeTextType Text { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItem[] Contained { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("identifier")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeCategoryType Category { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeCategoryType Category { get; set; }
 
         [JsonProperty("medicationReference")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeMedicationReferenceType MedicationReference { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeMedicationReferenceType MedicationReference { get; set; }
 
         [JsonProperty("subject")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
 
         [JsonProperty("effectiveDateTime")]
         public string EffectiveDateTime { get; set; }
@@ -9180,28 +9180,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string DateAsserted { get; set; }
 
         [JsonProperty("informationSource")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeInformationSourceType InformationSource { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeInformationSourceType InformationSource { get; set; }
 
         [JsonProperty("derivedFrom")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDerivedFromTypeItem[] DerivedFrom { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDerivedFromTypeItem[] DerivedFrom { get; set; }
 
         [JsonProperty("reasonCode")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeReasonCodeTypeItem[] ReasonCode { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("note")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeNoteTypeItem[] Note { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeNoteTypeItem[] Note { get; set; }
 
         [JsonProperty("dosage")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItem[] Dosage { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItem[] Dosage { get; set; }
 
         [JsonProperty("medicationCodeableConcept")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
 
         [JsonProperty("reasonReference")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeMetaType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -9210,13 +9210,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeTextType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9225,25 +9225,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("code")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemCodeType Code { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemCodeType Code { get; set; }
 
         [JsonProperty("form")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemFormType Form { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemFormType Form { get; set; }
 
         [JsonProperty("ingredient")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItem[] Ingredient { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItem[] Ingredient { get; set; }
 
         [JsonProperty("batch")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemBatchType Batch { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemBatchType Batch { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemCodeType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemCodeType
     {
         [JsonProperty("coding")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemCodeTypeCodingTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9255,13 +9255,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemFormType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemFormType
     {
         [JsonProperty("coding")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemFormTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemFormTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemFormTypeCodingTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemFormTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9273,22 +9273,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItem
     {
         [JsonProperty("itemCodeableConcept")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
 
         [JsonProperty("strength")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthType Strength { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthType Strength { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptType
     {
         [JsonProperty("coding")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9300,16 +9300,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthType
     {
         [JsonProperty("numerator")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeNumeratorType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeNumeratorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -9321,7 +9321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeDenominatorType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeDenominatorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -9333,7 +9333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemBatchType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemBatchType
     {
         [JsonProperty("lotNumber")]
         public string LotNumber { get; set; }
@@ -9342,7 +9342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string ExpirationDate { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeIdentifierTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeIdentifierTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9354,13 +9354,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeCategoryType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeCategoryType
     {
         [JsonProperty("coding")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeCategoryTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeCategoryTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeCategoryTypeCodingTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeCategoryTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9372,22 +9372,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeMedicationReferenceType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeMedicationReferenceType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeInformationSourceType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9396,19 +9387,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDerivedFromTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeInformationSourceType
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDerivedFromTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeReasonCodeTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeReasonCodeTypeItem
     {
         [JsonProperty("coding")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9420,13 +9420,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeNoteTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItem
     {
         [JsonProperty("sequence")]
         public int Sequence { get; set; }
@@ -9435,40 +9435,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Text { get; set; }
 
         [JsonProperty("additionalInstruction")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAdditionalInstructionTypeItem[] AdditionalInstruction { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAdditionalInstructionTypeItem[] AdditionalInstruction { get; set; }
 
         [JsonProperty("timing")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemTimingType Timing { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemTimingType Timing { get; set; }
 
         [JsonProperty("asNeededCodeableConcept")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptType AsNeededCodeableConcept { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptType AsNeededCodeableConcept { get; set; }
 
         [JsonProperty("route")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemRouteType Route { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemRouteType Route { get; set; }
 
         [JsonProperty("doseAndRate")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
 
         [JsonProperty("asNeededBoolean")]
         public bool AsNeededBoolean { get; set; }
 
         [JsonProperty("maxDosePerPeriod")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodType MaxDosePerPeriod { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodType MaxDosePerPeriod { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAdditionalInstructionTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAdditionalInstructionTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemTimingType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemTimingType
     {
         [JsonProperty("repeat")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemTimingTypeRepeatType Repeat { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemTimingTypeRepeatType Repeat { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemTimingTypeRepeatType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemTimingTypeRepeatType
     {
         [JsonProperty("frequency")]
         public int Frequency { get; set; }
@@ -9480,13 +9480,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string PeriodUnit { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptType
     {
         [JsonProperty("coding")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptTypeCodingTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9498,13 +9498,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemRouteType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemRouteType
     {
         [JsonProperty("coding")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemRouteTypeCodingTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemRouteTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9516,25 +9516,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItem
     {
         [JsonProperty("type")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
 
         [JsonProperty("doseRange")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeType DoseRange { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeType DoseRange { get; set; }
 
         [JsonProperty("doseQuantity")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeType
     {
         [JsonProperty("coding")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9546,16 +9546,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeType
     {
         [JsonProperty("low")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeLowType Low { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeLowType Low { get; set; }
 
         [JsonProperty("high")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeHighType High { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeHighType High { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeLowType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeLowType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -9570,7 +9570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeHighType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeHighType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -9585,7 +9585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseQuantityType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseQuantityType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -9600,22 +9600,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodType
     {
         [JsonProperty("numerator")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeNumeratorType Numerator { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeDenominatorType Denominator { get; set; }
+        public GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeDenominatorType Denominator { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeNumeratorType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeNumeratorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeDenominatorType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeDenominatorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -9627,25 +9627,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeMedicationCodeableConceptType
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeMedicationCodeableConceptType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
+    public class GetMedicationStatementResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETMedicationStatementResponseEntryTypeItemSearchType
+    public class GetMedicationStatementResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class POSTMedicationStatementResponse
+    public class PostMedicationStatementResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9654,25 +9654,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public POSTMedicationStatementResponseMetaType Meta { get; set; }
+        public PostMedicationStatementResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public POSTMedicationStatementResponseLinkTypeItem[] Link { get; set; }
+        public PostMedicationStatementResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public POSTMedicationStatementResponseEntryTypeItem[] Entry { get; set; }
+        public PostMedicationStatementResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class POSTMedicationStatementResponseMetaType
+    public class PostMedicationStatementResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class POSTMedicationStatementResponseLinkTypeItem
+    public class PostMedicationStatementResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -9681,19 +9681,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItem
+    public class PostMedicationStatementResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceType Resource { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public POSTMedicationStatementResponseEntryTypeItemSearchType Search { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceType
+    public class PostMedicationStatementResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9702,28 +9702,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeTextType Text { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItem[] Contained { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("identifier")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeCategoryType Category { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeCategoryType Category { get; set; }
 
         [JsonProperty("medicationReference")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeMedicationReferenceType MedicationReference { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeMedicationReferenceType MedicationReference { get; set; }
 
         [JsonProperty("subject")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
 
         [JsonProperty("effectiveDateTime")]
         public string EffectiveDateTime { get; set; }
@@ -9732,28 +9732,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string DateAsserted { get; set; }
 
         [JsonProperty("informationSource")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeInformationSourceType InformationSource { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeInformationSourceType InformationSource { get; set; }
 
         [JsonProperty("derivedFrom")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDerivedFromTypeItem[] DerivedFrom { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDerivedFromTypeItem[] DerivedFrom { get; set; }
 
         [JsonProperty("reasonCode")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeReasonCodeTypeItem[] ReasonCode { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("note")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeNoteTypeItem[] Note { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeNoteTypeItem[] Note { get; set; }
 
         [JsonProperty("dosage")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItem[] Dosage { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItem[] Dosage { get; set; }
 
         [JsonProperty("medicationCodeableConcept")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
 
         [JsonProperty("reasonReference")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeMetaType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -9762,13 +9762,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeTextType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9777,25 +9777,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("code")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemCodeType Code { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemCodeType Code { get; set; }
 
         [JsonProperty("form")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemFormType Form { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemFormType Form { get; set; }
 
         [JsonProperty("ingredient")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItem[] Ingredient { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItem[] Ingredient { get; set; }
 
         [JsonProperty("batch")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemBatchType Batch { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemBatchType Batch { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemCodeType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemCodeType
     {
         [JsonProperty("coding")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemCodeTypeCodingTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9807,13 +9807,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemFormType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemFormType
     {
         [JsonProperty("coding")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemFormTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemFormTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemFormTypeCodingTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemFormTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9825,22 +9825,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItem
     {
         [JsonProperty("itemCodeableConcept")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
 
         [JsonProperty("strength")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthType Strength { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthType Strength { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptType
     {
         [JsonProperty("coding")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9852,16 +9852,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthType
     {
         [JsonProperty("numerator")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeNumeratorType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeNumeratorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -9873,7 +9873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeDenominatorType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeDenominatorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -9885,7 +9885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemBatchType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeContainedTypeItemBatchType
     {
         [JsonProperty("lotNumber")]
         public string LotNumber { get; set; }
@@ -9894,7 +9894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string ExpirationDate { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeIdentifierTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeIdentifierTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9906,13 +9906,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeCategoryType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeCategoryType
     {
         [JsonProperty("coding")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeCategoryTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeCategoryTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeCategoryTypeCodingTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeCategoryTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9924,22 +9924,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeMedicationReferenceType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeMedicationReferenceType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeInformationSourceType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9948,19 +9939,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDerivedFromTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeInformationSourceType
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDerivedFromTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeReasonCodeTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeReasonCodeTypeItem
     {
         [JsonProperty("coding")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9972,13 +9972,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeNoteTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItem
     {
         [JsonProperty("sequence")]
         public int Sequence { get; set; }
@@ -9987,40 +9987,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Text { get; set; }
 
         [JsonProperty("additionalInstruction")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAdditionalInstructionTypeItem[] AdditionalInstruction { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAdditionalInstructionTypeItem[] AdditionalInstruction { get; set; }
 
         [JsonProperty("timing")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemTimingType Timing { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemTimingType Timing { get; set; }
 
         [JsonProperty("asNeededCodeableConcept")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptType AsNeededCodeableConcept { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptType AsNeededCodeableConcept { get; set; }
 
         [JsonProperty("route")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemRouteType Route { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemRouteType Route { get; set; }
 
         [JsonProperty("doseAndRate")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
 
         [JsonProperty("asNeededBoolean")]
         public bool AsNeededBoolean { get; set; }
 
         [JsonProperty("maxDosePerPeriod")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodType MaxDosePerPeriod { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodType MaxDosePerPeriod { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAdditionalInstructionTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAdditionalInstructionTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemTimingType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemTimingType
     {
         [JsonProperty("repeat")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemTimingTypeRepeatType Repeat { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemTimingTypeRepeatType Repeat { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemTimingTypeRepeatType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemTimingTypeRepeatType
     {
         [JsonProperty("frequency")]
         public int Frequency { get; set; }
@@ -10032,13 +10032,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string PeriodUnit { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptType
     {
         [JsonProperty("coding")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptTypeCodingTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10050,13 +10050,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemRouteType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemRouteType
     {
         [JsonProperty("coding")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemRouteTypeCodingTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemRouteTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10068,25 +10068,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItem
     {
         [JsonProperty("type")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
 
         [JsonProperty("doseRange")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeType DoseRange { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeType DoseRange { get; set; }
 
         [JsonProperty("doseQuantity")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeType
     {
         [JsonProperty("coding")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10098,16 +10098,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeType
     {
         [JsonProperty("low")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeLowType Low { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeLowType Low { get; set; }
 
         [JsonProperty("high")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeHighType High { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeHighType High { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeLowType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeLowType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -10122,7 +10122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeHighType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeHighType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -10137,7 +10137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseQuantityType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseQuantityType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -10152,22 +10152,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodType
     {
         [JsonProperty("numerator")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeNumeratorType Numerator { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeDenominatorType Denominator { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeDenominatorType Denominator { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeNumeratorType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeNumeratorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeDenominatorType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeDenominatorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -10179,16 +10179,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeMedicationCodeableConceptType
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeMedicationCodeableConceptType
     {
         [JsonProperty("coding")]
-        public POSTMedicationStatementResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public PostMedicationStatementResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeMedicationCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10200,19 +10200,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
+    public class PostMedicationStatementResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTMedicationStatementResponseEntryTypeItemSearchType
+    public class PostMedicationStatementResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class DELETEMedicationStatementIdBodyInput
+    public class DeleteMedicationStatementIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10221,16 +10221,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("medicationCodeableConcept")]
-        public DELETEMedicationStatementIdBodyInputMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
+        public DeleteMedicationStatementIdBodyInputMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
 
         [JsonProperty("subject")]
-        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
+        public DeleteCarePlanIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("effectiveDateTime")]
         public string EffectiveDateTime { get; set; }
@@ -10251,7 +10251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputDosageTypeItem[] Dosage { get; set; }
     }
 
-    public class DELETEMedicationStatementIdBodyInputMedicationCodeableConceptType
+    public class DeleteMedicationStatementIdBodyInputMedicationCodeableConceptType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -10380,7 +10380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationStatementIdResponse
+    public class GetMedicationStatementIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10389,25 +10389,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETMedicationStatementIdResponseMetaType Meta { get; set; }
+        public GetMedicationStatementIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETMedicationStatementIdResponseLinkTypeItem[] Link { get; set; }
+        public GetMedicationStatementIdResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETMedicationStatementIdResponseEntryTypeItem[] Entry { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseMetaType
+    public class GetMedicationStatementIdResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseLinkTypeItem
+    public class GetMedicationStatementIdResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -10416,19 +10416,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceType Resource { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETMedicationStatementIdResponseEntryTypeItemSearchType Search { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10437,28 +10437,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeTextType Text { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItem[] Contained { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("identifier")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeCategoryType Category { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeCategoryType Category { get; set; }
 
         [JsonProperty("medicationReference")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeMedicationReferenceType MedicationReference { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeMedicationReferenceType MedicationReference { get; set; }
 
         [JsonProperty("subject")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
 
         [JsonProperty("effectiveDateTime")]
         public string EffectiveDateTime { get; set; }
@@ -10467,28 +10467,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string DateAsserted { get; set; }
 
         [JsonProperty("informationSource")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeInformationSourceType InformationSource { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeInformationSourceType InformationSource { get; set; }
 
         [JsonProperty("derivedFrom")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDerivedFromTypeItem[] DerivedFrom { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDerivedFromTypeItem[] DerivedFrom { get; set; }
 
         [JsonProperty("reasonCode")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeReasonCodeTypeItem[] ReasonCode { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("note")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeNoteTypeItem[] Note { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeNoteTypeItem[] Note { get; set; }
 
         [JsonProperty("dosage")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItem[] Dosage { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItem[] Dosage { get; set; }
 
         [JsonProperty("medicationCodeableConcept")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
 
         [JsonProperty("reasonReference")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeMetaType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -10497,13 +10497,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeTextType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10512,25 +10512,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("code")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemCodeType Code { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemCodeType Code { get; set; }
 
         [JsonProperty("form")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemFormType Form { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemFormType Form { get; set; }
 
         [JsonProperty("ingredient")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItem[] Ingredient { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItem[] Ingredient { get; set; }
 
         [JsonProperty("batch")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemBatchType Batch { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemBatchType Batch { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemCodeType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemCodeType
     {
         [JsonProperty("coding")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemCodeTypeCodingTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10542,13 +10542,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemFormType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemFormType
     {
         [JsonProperty("coding")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemFormTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemFormTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemFormTypeCodingTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemFormTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10560,22 +10560,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItem
     {
         [JsonProperty("itemCodeableConcept")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
 
         [JsonProperty("strength")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthType Strength { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthType Strength { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptType
     {
         [JsonProperty("coding")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10587,16 +10587,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthType
     {
         [JsonProperty("numerator")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeNumeratorType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeNumeratorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -10608,7 +10608,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeDenominatorType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeDenominatorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -10620,7 +10620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemBatchType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemBatchType
     {
         [JsonProperty("lotNumber")]
         public string LotNumber { get; set; }
@@ -10629,7 +10629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string ExpirationDate { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeIdentifierTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeIdentifierTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -10641,13 +10641,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeCategoryType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeCategoryType
     {
         [JsonProperty("coding")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeCategoryTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeCategoryTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeCategoryTypeCodingTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeCategoryTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10659,22 +10659,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeMedicationReferenceType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeMedicationReferenceType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeInformationSourceType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -10683,19 +10674,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDerivedFromTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeInformationSourceType
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDerivedFromTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeReasonCodeTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeReasonCodeTypeItem
     {
         [JsonProperty("coding")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10707,13 +10707,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeNoteTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItem
     {
         [JsonProperty("sequence")]
         public int Sequence { get; set; }
@@ -10722,40 +10722,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Text { get; set; }
 
         [JsonProperty("additionalInstruction")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAdditionalInstructionTypeItem[] AdditionalInstruction { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAdditionalInstructionTypeItem[] AdditionalInstruction { get; set; }
 
         [JsonProperty("timing")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemTimingType Timing { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemTimingType Timing { get; set; }
 
         [JsonProperty("asNeededCodeableConcept")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptType AsNeededCodeableConcept { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptType AsNeededCodeableConcept { get; set; }
 
         [JsonProperty("route")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemRouteType Route { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemRouteType Route { get; set; }
 
         [JsonProperty("doseAndRate")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
 
         [JsonProperty("asNeededBoolean")]
         public bool AsNeededBoolean { get; set; }
 
         [JsonProperty("maxDosePerPeriod")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodType MaxDosePerPeriod { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodType MaxDosePerPeriod { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAdditionalInstructionTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAdditionalInstructionTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemTimingType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemTimingType
     {
         [JsonProperty("repeat")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemTimingTypeRepeatType Repeat { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemTimingTypeRepeatType Repeat { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemTimingTypeRepeatType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemTimingTypeRepeatType
     {
         [JsonProperty("frequency")]
         public int Frequency { get; set; }
@@ -10767,13 +10767,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string PeriodUnit { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptType
     {
         [JsonProperty("coding")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptTypeCodingTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10785,13 +10785,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemRouteType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemRouteType
     {
         [JsonProperty("coding")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemRouteTypeCodingTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemRouteTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10803,25 +10803,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItem
     {
         [JsonProperty("type")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
 
         [JsonProperty("doseRange")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeType DoseRange { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeType DoseRange { get; set; }
 
         [JsonProperty("doseQuantity")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeType
     {
         [JsonProperty("coding")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10833,16 +10833,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeType
     {
         [JsonProperty("low")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeLowType Low { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeLowType Low { get; set; }
 
         [JsonProperty("high")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeHighType High { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeHighType High { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeLowType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeLowType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -10857,7 +10857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeHighType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeHighType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -10872,7 +10872,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseQuantityType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseQuantityType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -10887,22 +10887,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodType
     {
         [JsonProperty("numerator")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeNumeratorType Numerator { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeDenominatorType Denominator { get; set; }
+        public GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeDenominatorType Denominator { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeNumeratorType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeNumeratorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeDenominatorType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeDenominatorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -10914,25 +10914,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
+    public class GetMedicationStatementIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETMedicationStatementIdResponseEntryTypeItemSearchType
+    public class GetMedicationStatementIdResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponse
+    public class PutMedicationStatementIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10941,25 +10941,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTMedicationStatementIdResponseMetaType Meta { get; set; }
+        public PutMedicationStatementIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public PUTMedicationStatementIdResponseLinkTypeItem[] Link { get; set; }
+        public PutMedicationStatementIdResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public PUTMedicationStatementIdResponseEntryTypeItem[] Entry { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseMetaType
+    public class PutMedicationStatementIdResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseLinkTypeItem
+    public class PutMedicationStatementIdResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -10968,19 +10968,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceType Resource { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public PUTMedicationStatementIdResponseEntryTypeItemSearchType Search { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10989,28 +10989,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeTextType Text { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeTextType Text { get; set; }
 
         [JsonProperty("contained")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItem[] Contained { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItem[] Contained { get; set; }
 
         [JsonProperty("identifier")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeCategoryType Category { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeCategoryType Category { get; set; }
 
         [JsonProperty("medicationReference")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeMedicationReferenceType MedicationReference { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeMedicationReferenceType MedicationReference { get; set; }
 
         [JsonProperty("subject")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
 
         [JsonProperty("effectiveDateTime")]
         public string EffectiveDateTime { get; set; }
@@ -11019,28 +11019,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string DateAsserted { get; set; }
 
         [JsonProperty("informationSource")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeInformationSourceType InformationSource { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeInformationSourceType InformationSource { get; set; }
 
         [JsonProperty("derivedFrom")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDerivedFromTypeItem[] DerivedFrom { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDerivedFromTypeItem[] DerivedFrom { get; set; }
 
         [JsonProperty("reasonCode")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeReasonCodeTypeItem[] ReasonCode { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("note")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeNoteTypeItem[] Note { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeNoteTypeItem[] Note { get; set; }
 
         [JsonProperty("dosage")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItem[] Dosage { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItem[] Dosage { get; set; }
 
         [JsonProperty("medicationCodeableConcept")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType MedicationCodeableConcept { get; set; }
 
         [JsonProperty("reasonReference")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeMetaType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -11049,13 +11049,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeTextType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItem
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -11064,25 +11064,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("code")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemCodeType Code { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemCodeType Code { get; set; }
 
         [JsonProperty("form")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemFormType Form { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemFormType Form { get; set; }
 
         [JsonProperty("ingredient")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItem[] Ingredient { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItem[] Ingredient { get; set; }
 
         [JsonProperty("batch")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemBatchType Batch { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemBatchType Batch { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemCodeType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemCodeType
     {
         [JsonProperty("coding")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemCodeTypeCodingTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11094,13 +11094,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemFormType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemFormType
     {
         [JsonProperty("coding")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemFormTypeCodingTypeItem[] Coding { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemFormTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemFormTypeCodingTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemFormTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11112,22 +11112,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItem
     {
         [JsonProperty("itemCodeableConcept")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptType ItemCodeableConcept { get; set; }
 
         [JsonProperty("strength")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthType Strength { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthType Strength { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptType
     {
         [JsonProperty("coding")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemItemCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11139,16 +11139,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthType
     {
         [JsonProperty("numerator")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeDenominatorType Denominator { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeNumeratorType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeNumeratorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -11160,7 +11160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeDenominatorType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemIngredientTypeItemStrengthTypeDenominatorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -11172,7 +11172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemBatchType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeContainedTypeItemBatchType
     {
         [JsonProperty("lotNumber")]
         public string LotNumber { get; set; }
@@ -11181,7 +11181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string ExpirationDate { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeIdentifierTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeIdentifierTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -11193,13 +11193,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Value { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeCategoryType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeCategoryType
     {
         [JsonProperty("coding")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeCategoryTypeCodingTypeItem[] Coding { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeCategoryTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeCategoryTypeCodingTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeCategoryTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11211,22 +11211,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeMedicationReferenceType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeMedicationReferenceType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeSubjectType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeInformationSourceType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -11235,19 +11226,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDerivedFromTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeInformationSourceType
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDerivedFromTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeReasonCodeTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeReasonCodeTypeItem
     {
         [JsonProperty("coding")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11259,13 +11259,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeNoteTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItem
     {
         [JsonProperty("sequence")]
         public int Sequence { get; set; }
@@ -11274,40 +11274,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Text { get; set; }
 
         [JsonProperty("additionalInstruction")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAdditionalInstructionTypeItem[] AdditionalInstruction { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAdditionalInstructionTypeItem[] AdditionalInstruction { get; set; }
 
         [JsonProperty("timing")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemTimingType Timing { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemTimingType Timing { get; set; }
 
         [JsonProperty("asNeededCodeableConcept")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptType AsNeededCodeableConcept { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptType AsNeededCodeableConcept { get; set; }
 
         [JsonProperty("route")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemRouteType Route { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemRouteType Route { get; set; }
 
         [JsonProperty("doseAndRate")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItem[] DoseAndRate { get; set; }
 
         [JsonProperty("asNeededBoolean")]
         public bool AsNeededBoolean { get; set; }
 
         [JsonProperty("maxDosePerPeriod")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodType MaxDosePerPeriod { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodType MaxDosePerPeriod { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAdditionalInstructionTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAdditionalInstructionTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemTimingType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemTimingType
     {
         [JsonProperty("repeat")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemTimingTypeRepeatType Repeat { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemTimingTypeRepeatType Repeat { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemTimingTypeRepeatType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemTimingTypeRepeatType
     {
         [JsonProperty("frequency")]
         public int Frequency { get; set; }
@@ -11319,13 +11319,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string PeriodUnit { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptType
     {
         [JsonProperty("coding")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptTypeCodingTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemAsNeededCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11337,13 +11337,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemRouteType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemRouteType
     {
         [JsonProperty("coding")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemRouteTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemRouteTypeCodingTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemRouteTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11355,25 +11355,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItem
     {
         [JsonProperty("type")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeType Type { get; set; }
 
         [JsonProperty("doseRange")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeType DoseRange { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeType DoseRange { get; set; }
 
         [JsonProperty("doseQuantity")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseQuantityType DoseQuantity { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeType
     {
         [JsonProperty("coding")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11385,16 +11385,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeType
     {
         [JsonProperty("low")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeLowType Low { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeLowType Low { get; set; }
 
         [JsonProperty("high")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeHighType High { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeHighType High { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeLowType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeLowType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -11409,7 +11409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeHighType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseRangeTypeHighType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -11424,7 +11424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseQuantityType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemDoseAndRateTypeItemDoseQuantityType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -11439,22 +11439,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodType
     {
         [JsonProperty("numerator")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeNumeratorType Numerator { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeNumeratorType Numerator { get; set; }
 
         [JsonProperty("denominator")]
-        public PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeDenominatorType Denominator { get; set; }
+        public PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeDenominatorType Denominator { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeNumeratorType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeNumeratorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeDenominatorType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeDosageTypeItemMaxDosePerPeriodTypeDenominatorType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -11466,25 +11466,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeMedicationCodeableConceptType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
+    public class PutMedicationStatementIdResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTMedicationStatementIdResponseEntryTypeItemSearchType
+    public class PutMedicationStatementIdResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class GETObservationResponse
+    public class GetObservationResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -11493,25 +11493,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETObservationResponseMetaType Meta { get; set; }
+        public GetObservationResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETObservationResponseLinkTypeItem[] Link { get; set; }
+        public GetObservationResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETObservationResponseEntryTypeItem[] Entry { get; set; }
+        public GetObservationResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETObservationResponseMetaType
+    public class GetObservationResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETObservationResponseLinkTypeItem
+    public class GetObservationResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -11520,19 +11520,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class GETObservationResponseEntryTypeItem
+    public class GetObservationResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETObservationResponseEntryTypeItemResourceType Resource { get; set; }
+        public GetObservationResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETObservationResponseEntryTypeItemSearchType Search { get; set; }
+        public GetObservationResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETObservationResponseEntryTypeItemResourceType
+    public class GetObservationResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -11541,22 +11541,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETObservationResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GetObservationResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public GETObservationResponseEntryTypeItemResourceTypeCategoryTypeItem[] Category { get; set; }
+        public GetObservationResponseEntryTypeItemResourceTypeCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public GETObservationResponseEntryTypeItemResourceTypeCodeType Code { get; set; }
+        public GetObservationResponseEntryTypeItemResourceTypeCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public GETObservationResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
+        public GetObservationResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public GETObservationResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
+        public GetObservationResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
 
         [JsonProperty("effectiveDateTime")]
         public string EffectiveDateTime { get; set; }
@@ -11565,10 +11565,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Issued { get; set; }
 
         [JsonProperty("valueQuantity")]
-        public GETObservationResponseEntryTypeItemResourceTypeValueQuantityType ValueQuantity { get; set; }
+        public GetObservationResponseEntryTypeItemResourceTypeValueQuantityType ValueQuantity { get; set; }
     }
 
-    public class GETObservationResponseEntryTypeItemResourceTypeMetaType
+    public class GetObservationResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -11577,13 +11577,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETObservationResponseEntryTypeItemResourceTypeCategoryTypeItem
+    public class GetObservationResponseEntryTypeItemResourceTypeCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public GETObservationResponseEntryTypeItemResourceTypeCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetObservationResponseEntryTypeItemResourceTypeCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETObservationResponseEntryTypeItemResourceTypeCategoryTypeItemCodingTypeItem
+    public class GetObservationResponseEntryTypeItemResourceTypeCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11595,16 +11595,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETObservationResponseEntryTypeItemResourceTypeCodeType
+    public class GetObservationResponseEntryTypeItemResourceTypeCodeType
     {
         [JsonProperty("coding")]
-        public GETObservationResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GetObservationResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETObservationResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem
+    public class GetObservationResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11616,19 +11616,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETObservationResponseEntryTypeItemResourceTypeSubjectType
+    public class GetObservationResponseEntryTypeItemResourceTypeSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETObservationResponseEntryTypeItemResourceTypeEncounterType
+    public class GetObservationResponseEntryTypeItemResourceTypeEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETObservationResponseEntryTypeItemResourceTypeValueQuantityType
+    public class GetObservationResponseEntryTypeItemResourceTypeValueQuantityType
     {
         [JsonProperty("value")]
         public double Value { get; set; }
@@ -11643,13 +11643,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETObservationResponseEntryTypeItemSearchType
+    public class GetObservationResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class POSTObservationResponse
+    public class PostObservationResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -11658,49 +11658,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public POSTObservationResponseMetaType Meta { get; set; }
+        public PostObservationResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public POSTObservationResponseTextType Text { get; set; }
+        public PostObservationResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public POSTObservationResponseCategoryTypeItem[] Category { get; set; }
+        public PostObservationResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public POSTObservationResponseCodeType Code { get; set; }
+        public PostObservationResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public POSTObservationResponseSubjectType Subject { get; set; }
+        public PostObservationResponseSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public POSTObservationResponseEncounterType Encounter { get; set; }
+        public PostObservationResponseEncounterType Encounter { get; set; }
 
         [JsonProperty("issued")]
         public string Issued { get; set; }
 
         [JsonProperty("performer")]
-        public POSTObservationResponsePerformerTypeItem[] Performer { get; set; }
+        public PostObservationResponsePerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("valueQuantity")]
-        public POSTObservationResponseValueQuantityType ValueQuantity { get; set; }
+        public PostObservationResponseValueQuantityType ValueQuantity { get; set; }
 
         [JsonProperty("interpretation")]
-        public POSTObservationResponseInterpretationTypeItem[] Interpretation { get; set; }
+        public PostObservationResponseInterpretationTypeItem[] Interpretation { get; set; }
 
         [JsonProperty("bodySite")]
-        public POSTObservationResponseBodySiteType BodySite { get; set; }
+        public PostObservationResponseBodySiteType BodySite { get; set; }
 
         [JsonProperty("method")]
-        public POSTObservationResponseMethodType Method { get; set; }
+        public PostObservationResponseMethodType Method { get; set; }
 
         [JsonProperty("referenceRange")]
-        public POSTObservationResponseReferenceRangeTypeItem[] ReferenceRange { get; set; }
+        public PostObservationResponseReferenceRangeTypeItem[] ReferenceRange { get; set; }
     }
 
-    public class POSTObservationResponseMetaType
+    public class PostObservationResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -11709,19 +11709,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class POSTObservationResponseTextType
+    public class PostObservationResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class POSTObservationResponseCategoryTypeItem
+    public class PostObservationResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public POSTObservationResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public PostObservationResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTObservationResponseCategoryTypeItemCodingTypeItem
+    public class PostObservationResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11733,16 +11733,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTObservationResponseCodeType
+    public class PostObservationResponseCodeType
     {
         [JsonProperty("coding")]
-        public POSTObservationResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PostObservationResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTObservationResponseCodeTypeCodingTypeItem
+    public class PostObservationResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11754,7 +11754,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTObservationResponseSubjectType
+    public class PostObservationResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -11763,19 +11763,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTObservationResponseEncounterType
+    public class PostObservationResponseEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTObservationResponsePerformerTypeItem
+    public class PostObservationResponsePerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTObservationResponseValueQuantityType
+    public class PostObservationResponseValueQuantityType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -11790,13 +11790,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTObservationResponseInterpretationTypeItem
+    public class PostObservationResponseInterpretationTypeItem
     {
         [JsonProperty("coding")]
-        public POSTObservationResponseInterpretationTypeItemCodingTypeItem[] Coding { get; set; }
+        public PostObservationResponseInterpretationTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTObservationResponseInterpretationTypeItemCodingTypeItem
+    public class PostObservationResponseInterpretationTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11805,31 +11805,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTObservationResponseBodySiteType
+    public class PostObservationResponseBodySiteType
     {
         [JsonProperty("coding")]
-        public POSTObservationResponseBodySiteTypeCodingTypeItem[] Coding { get; set; }
+        public PostObservationResponseBodySiteTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTObservationResponseBodySiteTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTObservationResponseMethodType
-    {
-        [JsonProperty("coding")]
-        public POSTObservationResponseMethodTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class POSTObservationResponseMethodTypeCodingTypeItem
+    public class PostObservationResponseBodySiteTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11841,13 +11823,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTObservationResponseReferenceRangeTypeItem
+    public class PostObservationResponseMethodType
+    {
+        [JsonProperty("coding")]
+        public PostObservationResponseMethodTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class PostObservationResponseMethodTypeCodingTypeItem
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class PostObservationResponseReferenceRangeTypeItem
     {
         [JsonProperty("high")]
-        public POSTObservationResponseReferenceRangeTypeItemHighType High { get; set; }
+        public PostObservationResponseReferenceRangeTypeItemHighType High { get; set; }
     }
 
-    public class POSTObservationResponseReferenceRangeTypeItemHighType
+    public class PostObservationResponseReferenceRangeTypeItemHighType
     {
         [JsonProperty("value")]
         public double Value { get; set; }
@@ -11856,7 +11856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Unit { get; set; }
     }
 
-    public class POSTObservationBodyInput
+    public class PostObservationBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -11865,28 +11865,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
+        public DeleteAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
+        public DeleteAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
+        public DeleteCarePlanIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public POSTCarePlanBodyInputEncounterType Encounter { get; set; }
+        public PostCarePlanBodyInputEncounterType Encounter { get; set; }
 
         [JsonProperty("issued")]
         public string Issued { get; set; }
 
         [JsonProperty("performer")]
-        public DELETEObservationIdBodyInputPerformerTypeItem[] Performer { get; set; }
+        public DeleteObservationIdBodyInputPerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("valueQuantity")]
         public BodyInputValueQuantityType ValueQuantity { get; set; }
@@ -11898,13 +11898,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputBodySiteType BodySite { get; set; }
 
         [JsonProperty("method")]
-        public DELETEObservationIdBodyInputMethodType Method { get; set; }
+        public DeleteObservationIdBodyInputMethodType Method { get; set; }
 
         [JsonProperty("referenceRange")]
         public BodyInputReferenceRangeTypeItem[] ReferenceRange { get; set; }
     }
 
-    public class DELETEObservationIdBodyInputPerformerTypeItem
+    public class DeleteObservationIdBodyInputPerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -11958,13 +11958,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEObservationIdBodyInputMethodType
+    public class DeleteObservationIdBodyInputMethodType
     {
         [JsonProperty("coding")]
-        public DELETEObservationIdBodyInputMethodTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteObservationIdBodyInputMethodTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEObservationIdBodyInputMethodTypeCodingTypeItem
+    public class DeleteObservationIdBodyInputMethodTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -11991,7 +11991,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Unit { get; set; }
     }
 
-    public class GETObservationIdResponse
+    public class GetObservationIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -12000,46 +12000,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETObservationIdResponseMetaType Meta { get; set; }
+        public GetObservationIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETObservationIdResponseTextType Text { get; set; }
+        public GetObservationIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public GETObservationIdResponseCategoryTypeItem[] Category { get; set; }
+        public GetObservationIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public GETObservationIdResponseCodeType Code { get; set; }
+        public GetObservationIdResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public GETObservationIdResponseSubjectType Subject { get; set; }
+        public GetObservationIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("issued")]
         public string Issued { get; set; }
 
         [JsonProperty("performer")]
-        public GETObservationIdResponsePerformerTypeItem[] Performer { get; set; }
+        public GetObservationIdResponsePerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("valueQuantity")]
-        public GETObservationIdResponseValueQuantityType ValueQuantity { get; set; }
+        public GetObservationIdResponseValueQuantityType ValueQuantity { get; set; }
 
         [JsonProperty("interpretation")]
-        public GETObservationIdResponseInterpretationTypeItem[] Interpretation { get; set; }
+        public GetObservationIdResponseInterpretationTypeItem[] Interpretation { get; set; }
 
         [JsonProperty("bodySite")]
-        public GETObservationIdResponseBodySiteType BodySite { get; set; }
+        public GetObservationIdResponseBodySiteType BodySite { get; set; }
 
         [JsonProperty("method")]
-        public GETObservationIdResponseMethodType Method { get; set; }
+        public GetObservationIdResponseMethodType Method { get; set; }
 
         [JsonProperty("referenceRange")]
-        public GETObservationIdResponseReferenceRangeTypeItem[] ReferenceRange { get; set; }
+        public GetObservationIdResponseReferenceRangeTypeItem[] ReferenceRange { get; set; }
     }
 
-    public class GETObservationIdResponseMetaType
+    public class GetObservationIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -12048,19 +12048,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETObservationIdResponseTextType
+    public class GetObservationIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class GETObservationIdResponseCategoryTypeItem
+    public class GetObservationIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public GETObservationIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetObservationIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETObservationIdResponseCategoryTypeItemCodingTypeItem
+    public class GetObservationIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12072,16 +12072,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETObservationIdResponseCodeType
+    public class GetObservationIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public GETObservationIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GetObservationIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETObservationIdResponseCodeTypeCodingTypeItem
+    public class GetObservationIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12093,7 +12093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETObservationIdResponseSubjectType
+    public class GetObservationIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -12102,13 +12102,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETObservationIdResponsePerformerTypeItem
+    public class GetObservationIdResponsePerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETObservationIdResponseValueQuantityType
+    public class GetObservationIdResponseValueQuantityType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -12123,13 +12123,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETObservationIdResponseInterpretationTypeItem
+    public class GetObservationIdResponseInterpretationTypeItem
     {
         [JsonProperty("coding")]
-        public GETObservationIdResponseInterpretationTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetObservationIdResponseInterpretationTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETObservationIdResponseInterpretationTypeItemCodingTypeItem
+    public class GetObservationIdResponseInterpretationTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12138,31 +12138,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETObservationIdResponseBodySiteType
+    public class GetObservationIdResponseBodySiteType
     {
         [JsonProperty("coding")]
-        public GETObservationIdResponseBodySiteTypeCodingTypeItem[] Coding { get; set; }
+        public GetObservationIdResponseBodySiteTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETObservationIdResponseBodySiteTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class GETObservationIdResponseMethodType
-    {
-        [JsonProperty("coding")]
-        public GETObservationIdResponseMethodTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class GETObservationIdResponseMethodTypeCodingTypeItem
+    public class GetObservationIdResponseBodySiteTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12174,13 +12156,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETObservationIdResponseReferenceRangeTypeItem
+    public class GetObservationIdResponseMethodType
+    {
+        [JsonProperty("coding")]
+        public GetObservationIdResponseMethodTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class GetObservationIdResponseMethodTypeCodingTypeItem
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class GetObservationIdResponseReferenceRangeTypeItem
     {
         [JsonProperty("high")]
-        public GETObservationIdResponseReferenceRangeTypeItemHighType High { get; set; }
+        public GetObservationIdResponseReferenceRangeTypeItemHighType High { get; set; }
     }
 
-    public class GETObservationIdResponseReferenceRangeTypeItemHighType
+    public class GetObservationIdResponseReferenceRangeTypeItemHighType
     {
         [JsonProperty("value")]
         public double Value { get; set; }
@@ -12189,7 +12189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Unit { get; set; }
     }
 
-    public class DELETEObservationIdResponse
+    public class DeleteObservationIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -12198,46 +12198,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEObservationIdResponseMetaType Meta { get; set; }
+        public DeleteObservationIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEObservationIdResponseTextType Text { get; set; }
+        public DeleteObservationIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public DELETEObservationIdResponseCategoryTypeItem[] Category { get; set; }
+        public DeleteObservationIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public DELETEObservationIdResponseCodeType Code { get; set; }
+        public DeleteObservationIdResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEObservationIdResponseSubjectType Subject { get; set; }
+        public DeleteObservationIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("issued")]
         public string Issued { get; set; }
 
         [JsonProperty("performer")]
-        public DELETEObservationIdResponsePerformerTypeItem[] Performer { get; set; }
+        public DeleteObservationIdResponsePerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("valueQuantity")]
-        public DELETEObservationIdResponseValueQuantityType ValueQuantity { get; set; }
+        public DeleteObservationIdResponseValueQuantityType ValueQuantity { get; set; }
 
         [JsonProperty("interpretation")]
-        public DELETEObservationIdResponseInterpretationTypeItem[] Interpretation { get; set; }
+        public DeleteObservationIdResponseInterpretationTypeItem[] Interpretation { get; set; }
 
         [JsonProperty("bodySite")]
-        public DELETEObservationIdResponseBodySiteType BodySite { get; set; }
+        public DeleteObservationIdResponseBodySiteType BodySite { get; set; }
 
         [JsonProperty("method")]
-        public DELETEObservationIdResponseMethodType Method { get; set; }
+        public DeleteObservationIdResponseMethodType Method { get; set; }
 
         [JsonProperty("referenceRange")]
-        public DELETEObservationIdResponseReferenceRangeTypeItem[] ReferenceRange { get; set; }
+        public DeleteObservationIdResponseReferenceRangeTypeItem[] ReferenceRange { get; set; }
     }
 
-    public class DELETEObservationIdResponseMetaType
+    public class DeleteObservationIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -12246,19 +12246,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEObservationIdResponseTextType
+    public class DeleteObservationIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class DELETEObservationIdResponseCategoryTypeItem
+    public class DeleteObservationIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public DELETEObservationIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public DeleteObservationIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEObservationIdResponseCategoryTypeItemCodingTypeItem
+    public class DeleteObservationIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12270,16 +12270,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEObservationIdResponseCodeType
+    public class DeleteObservationIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public DELETEObservationIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteObservationIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEObservationIdResponseCodeTypeCodingTypeItem
+    public class DeleteObservationIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12291,7 +12291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEObservationIdResponseSubjectType
+    public class DeleteObservationIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -12300,13 +12300,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEObservationIdResponsePerformerTypeItem
+    public class DeleteObservationIdResponsePerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEObservationIdResponseValueQuantityType
+    public class DeleteObservationIdResponseValueQuantityType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -12321,13 +12321,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETEObservationIdResponseInterpretationTypeItem
+    public class DeleteObservationIdResponseInterpretationTypeItem
     {
         [JsonProperty("coding")]
-        public DELETEObservationIdResponseInterpretationTypeItemCodingTypeItem[] Coding { get; set; }
+        public DeleteObservationIdResponseInterpretationTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEObservationIdResponseInterpretationTypeItemCodingTypeItem
+    public class DeleteObservationIdResponseInterpretationTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12336,31 +12336,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETEObservationIdResponseBodySiteType
+    public class DeleteObservationIdResponseBodySiteType
     {
         [JsonProperty("coding")]
-        public DELETEObservationIdResponseBodySiteTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteObservationIdResponseBodySiteTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEObservationIdResponseBodySiteTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEObservationIdResponseMethodType
-    {
-        [JsonProperty("coding")]
-        public DELETEObservationIdResponseMethodTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class DELETEObservationIdResponseMethodTypeCodingTypeItem
+    public class DeleteObservationIdResponseBodySiteTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12372,13 +12354,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEObservationIdResponseReferenceRangeTypeItem
+    public class DeleteObservationIdResponseMethodType
+    {
+        [JsonProperty("coding")]
+        public DeleteObservationIdResponseMethodTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class DeleteObservationIdResponseMethodTypeCodingTypeItem
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class DeleteObservationIdResponseReferenceRangeTypeItem
     {
         [JsonProperty("high")]
-        public DELETEObservationIdResponseReferenceRangeTypeItemHighType High { get; set; }
+        public DeleteObservationIdResponseReferenceRangeTypeItemHighType High { get; set; }
     }
 
-    public class DELETEObservationIdResponseReferenceRangeTypeItemHighType
+    public class DeleteObservationIdResponseReferenceRangeTypeItemHighType
     {
         [JsonProperty("value")]
         public double Value { get; set; }
@@ -12387,7 +12387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Unit { get; set; }
     }
 
-    public class DELETEObservationIdBodyInput
+    public class DeleteObservationIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -12396,25 +12396,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public DELETEAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
+        public DeleteAdverseEventIdBodyInputCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
+        public DeleteAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public DELETECarePlanIdBodyInputSubjectType Subject { get; set; }
+        public DeleteCarePlanIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("issued")]
         public string Issued { get; set; }
 
         [JsonProperty("performer")]
-        public DELETEObservationIdBodyInputPerformerTypeItem[] Performer { get; set; }
+        public DeleteObservationIdBodyInputPerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("valueQuantity")]
         public BodyInputValueQuantityType ValueQuantity { get; set; }
@@ -12426,13 +12426,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputBodySiteType BodySite { get; set; }
 
         [JsonProperty("method")]
-        public DELETEObservationIdBodyInputMethodType Method { get; set; }
+        public DeleteObservationIdBodyInputMethodType Method { get; set; }
 
         [JsonProperty("referenceRange")]
         public BodyInputReferenceRangeTypeItem[] ReferenceRange { get; set; }
     }
 
-    public class PUTObservationIdResponse
+    public class PutObservationIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -12441,46 +12441,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTObservationIdResponseMetaType Meta { get; set; }
+        public PutObservationIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public PUTObservationIdResponseTextType Text { get; set; }
+        public PutObservationIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public PUTObservationIdResponseCategoryTypeItem[] Category { get; set; }
+        public PutObservationIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public PUTObservationIdResponseCodeType Code { get; set; }
+        public PutObservationIdResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public PUTObservationIdResponseSubjectType Subject { get; set; }
+        public PutObservationIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("issued")]
         public string Issued { get; set; }
 
         [JsonProperty("performer")]
-        public PUTObservationIdResponsePerformerTypeItem[] Performer { get; set; }
+        public PutObservationIdResponsePerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("valueQuantity")]
-        public PUTObservationIdResponseValueQuantityType ValueQuantity { get; set; }
+        public PutObservationIdResponseValueQuantityType ValueQuantity { get; set; }
 
         [JsonProperty("interpretation")]
-        public PUTObservationIdResponseInterpretationTypeItem[] Interpretation { get; set; }
+        public PutObservationIdResponseInterpretationTypeItem[] Interpretation { get; set; }
 
         [JsonProperty("bodySite")]
-        public PUTObservationIdResponseBodySiteType BodySite { get; set; }
+        public PutObservationIdResponseBodySiteType BodySite { get; set; }
 
         [JsonProperty("method")]
-        public PUTObservationIdResponseMethodType Method { get; set; }
+        public PutObservationIdResponseMethodType Method { get; set; }
 
         [JsonProperty("referenceRange")]
-        public PUTObservationIdResponseReferenceRangeTypeItem[] ReferenceRange { get; set; }
+        public PutObservationIdResponseReferenceRangeTypeItem[] ReferenceRange { get; set; }
     }
 
-    public class PUTObservationIdResponseMetaType
+    public class PutObservationIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -12489,19 +12489,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class PUTObservationIdResponseTextType
+    public class PutObservationIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class PUTObservationIdResponseCategoryTypeItem
+    public class PutObservationIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public PUTObservationIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public PutObservationIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTObservationIdResponseCategoryTypeItemCodingTypeItem
+    public class PutObservationIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12513,16 +12513,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTObservationIdResponseCodeType
+    public class PutObservationIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public PUTObservationIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PutObservationIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTObservationIdResponseCodeTypeCodingTypeItem
+    public class PutObservationIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12534,7 +12534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTObservationIdResponseSubjectType
+    public class PutObservationIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -12543,13 +12543,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTObservationIdResponsePerformerTypeItem
+    public class PutObservationIdResponsePerformerTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTObservationIdResponseValueQuantityType
+    public class PutObservationIdResponseValueQuantityType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -12564,13 +12564,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTObservationIdResponseInterpretationTypeItem
+    public class PutObservationIdResponseInterpretationTypeItem
     {
         [JsonProperty("coding")]
-        public PUTObservationIdResponseInterpretationTypeItemCodingTypeItem[] Coding { get; set; }
+        public PutObservationIdResponseInterpretationTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTObservationIdResponseInterpretationTypeItemCodingTypeItem
+    public class PutObservationIdResponseInterpretationTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12579,31 +12579,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTObservationIdResponseBodySiteType
+    public class PutObservationIdResponseBodySiteType
     {
         [JsonProperty("coding")]
-        public PUTObservationIdResponseBodySiteTypeCodingTypeItem[] Coding { get; set; }
+        public PutObservationIdResponseBodySiteTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTObservationIdResponseBodySiteTypeCodingTypeItem
-    {
-        [JsonProperty("system")]
-        public string System { get; set; }
-
-        [JsonProperty("code")]
-        public string Code { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTObservationIdResponseMethodType
-    {
-        [JsonProperty("coding")]
-        public PUTObservationIdResponseMethodTypeCodingTypeItem[] Coding { get; set; }
-    }
-
-    public class PUTObservationIdResponseMethodTypeCodingTypeItem
+    public class PutObservationIdResponseBodySiteTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12615,13 +12597,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTObservationIdResponseReferenceRangeTypeItem
+    public class PutObservationIdResponseMethodType
+    {
+        [JsonProperty("coding")]
+        public PutObservationIdResponseMethodTypeCodingTypeItem[] Coding { get; set; }
+    }
+
+    public class PutObservationIdResponseMethodTypeCodingTypeItem
+    {
+        [JsonProperty("system")]
+        public string System { get; set; }
+
+        [JsonProperty("code")]
+        public string Code { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class PutObservationIdResponseReferenceRangeTypeItem
     {
         [JsonProperty("high")]
-        public PUTObservationIdResponseReferenceRangeTypeItemHighType High { get; set; }
+        public PutObservationIdResponseReferenceRangeTypeItemHighType High { get; set; }
     }
 
-    public class PUTObservationIdResponseReferenceRangeTypeItemHighType
+    public class PutObservationIdResponseReferenceRangeTypeItemHighType
     {
         [JsonProperty("value")]
         public double Value { get; set; }
@@ -12630,7 +12630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Unit { get; set; }
     }
 
-    public class GETProcedureResponse
+    public class GetProcedureResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -12639,25 +12639,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETProcedureResponseMetaType Meta { get; set; }
+        public GetProcedureResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETProcedureResponseLinkTypeItem[] Link { get; set; }
+        public GetProcedureResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETProcedureResponseEntryTypeItem[] Entry { get; set; }
+        public GetProcedureResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETProcedureResponseMetaType
+    public class GetProcedureResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETProcedureResponseLinkTypeItem
+    public class GetProcedureResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -12666,19 +12666,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class GETProcedureResponseEntryTypeItem
+    public class GetProcedureResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETProcedureResponseEntryTypeItemResourceType Resource { get; set; }
+        public GetProcedureResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETProcedureResponseEntryTypeItemSearchType Search { get; set; }
+        public GetProcedureResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETProcedureResponseEntryTypeItemResourceType
+    public class GetProcedureResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -12687,28 +12687,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETProcedureResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GetProcedureResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("code")]
-        public GETProcedureResponseEntryTypeItemResourceTypeCodeType Code { get; set; }
+        public GetProcedureResponseEntryTypeItemResourceTypeCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public GETProcedureResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
+        public GetProcedureResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public GETProcedureResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
+        public GetProcedureResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
 
         [JsonProperty("performedPeriod")]
-        public GETProcedureResponseEntryTypeItemResourceTypePerformedPeriodType PerformedPeriod { get; set; }
+        public GetProcedureResponseEntryTypeItemResourceTypePerformedPeriodType PerformedPeriod { get; set; }
 
         [JsonProperty("reasonReference")]
-        public GETProcedureResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
+        public GetProcedureResponseEntryTypeItemResourceTypeReasonReferenceTypeItem[] ReasonReference { get; set; }
     }
 
-    public class GETProcedureResponseEntryTypeItemResourceTypeMetaType
+    public class GetProcedureResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -12717,16 +12717,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETProcedureResponseEntryTypeItemResourceTypeCodeType
+    public class GetProcedureResponseEntryTypeItemResourceTypeCodeType
     {
         [JsonProperty("coding")]
-        public GETProcedureResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GetProcedureResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETProcedureResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem
+    public class GetProcedureResponseEntryTypeItemResourceTypeCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12738,19 +12738,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETProcedureResponseEntryTypeItemResourceTypeSubjectType
+    public class GetProcedureResponseEntryTypeItemResourceTypeSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETProcedureResponseEntryTypeItemResourceTypeEncounterType
+    public class GetProcedureResponseEntryTypeItemResourceTypeEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETProcedureResponseEntryTypeItemResourceTypePerformedPeriodType
+    public class GetProcedureResponseEntryTypeItemResourceTypePerformedPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -12759,7 +12759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string End { get; set; }
     }
 
-    public class GETProcedureResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
+    public class GetProcedureResponseEntryTypeItemResourceTypeReasonReferenceTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -12768,13 +12768,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETProcedureResponseEntryTypeItemSearchType
+    public class GetProcedureResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class POSTProcedureResponse
+    public class PostProcedureResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -12783,43 +12783,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public POSTProcedureResponseMetaType Meta { get; set; }
+        public PostProcedureResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public POSTProcedureResponseTextType Text { get; set; }
+        public PostProcedureResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("code")]
-        public POSTProcedureResponseCodeType Code { get; set; }
+        public PostProcedureResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public POSTProcedureResponseSubjectType Subject { get; set; }
+        public PostProcedureResponseSubjectType Subject { get; set; }
 
         [JsonProperty("performedDateTime")]
         public string PerformedDateTime { get; set; }
 
         [JsonProperty("recorder")]
-        public POSTProcedureResponseRecorderType Recorder { get; set; }
+        public PostProcedureResponseRecorderType Recorder { get; set; }
 
         [JsonProperty("asserter")]
-        public POSTProcedureResponseAsserterType Asserter { get; set; }
+        public PostProcedureResponseAsserterType Asserter { get; set; }
 
         [JsonProperty("performer")]
-        public POSTProcedureResponsePerformerTypeItem[] Performer { get; set; }
+        public PostProcedureResponsePerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("reasonCode")]
-        public POSTProcedureResponseReasonCodeTypeItem[] ReasonCode { get; set; }
+        public PostProcedureResponseReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("followUp")]
-        public POSTProcedureResponseFollowUpTypeItem[] FollowUp { get; set; }
+        public PostProcedureResponseFollowUpTypeItem[] FollowUp { get; set; }
 
         [JsonProperty("note")]
-        public POSTProcedureResponseNoteTypeItem[] Note { get; set; }
+        public PostProcedureResponseNoteTypeItem[] Note { get; set; }
     }
 
-    public class POSTProcedureResponseMetaType
+    public class PostProcedureResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -12828,22 +12828,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class POSTProcedureResponseTextType
+    public class PostProcedureResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class POSTProcedureResponseCodeType
+    public class PostProcedureResponseCodeType
     {
         [JsonProperty("coding")]
-        public POSTProcedureResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PostProcedureResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTProcedureResponseCodeTypeCodingTypeItem
+    public class PostProcedureResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -12855,22 +12855,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTProcedureResponseSubjectType
+    public class PostProcedureResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTProcedureResponseRecorderType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class POSTProcedureResponseAsserterType
+    public class PostProcedureResponseRecorderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -12879,13 +12870,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTProcedureResponsePerformerTypeItem
+    public class PostProcedureResponseAsserterType
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class PostProcedureResponsePerformerTypeItem
     {
         [JsonProperty("actor")]
-        public POSTProcedureResponsePerformerTypeItemActorType Actor { get; set; }
+        public PostProcedureResponsePerformerTypeItemActorType Actor { get; set; }
     }
 
-    public class POSTProcedureResponsePerformerTypeItemActorType
+    public class PostProcedureResponsePerformerTypeItemActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -12894,25 +12894,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class POSTProcedureResponseReasonCodeTypeItem
+    public class PostProcedureResponseReasonCodeTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTProcedureResponseFollowUpTypeItem
+    public class PostProcedureResponseFollowUpTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTProcedureResponseNoteTypeItem
+    public class PostProcedureResponseNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTProcedureBodyInput
+    public class PostProcedureBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -12921,31 +12921,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("code")]
-        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
+        public DeleteAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
+        public DeleteAdverseEventIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("performedDateTime")]
         public string PerformedDateTime { get; set; }
 
         [JsonProperty("recorder")]
-        public DELETEProcedureIdBodyInputRecorderType Recorder { get; set; }
+        public DeleteProcedureIdBodyInputRecorderType Recorder { get; set; }
 
         [JsonProperty("asserter")]
         public BodyInputAsserterType Asserter { get; set; }
 
         [JsonProperty("performer")]
-        public DELETEProcedureIdBodyInputPerformerTypeItem[] Performer { get; set; }
+        public DeleteProcedureIdBodyInputPerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("reasonCode")]
-        public DELETEProcedureIdBodyInputReasonCodeTypeItem[] ReasonCode { get; set; }
+        public DeleteProcedureIdBodyInputReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("followUp")]
         public BodyInputFollowUpTypeItem[] FollowUp { get; set; }
@@ -12954,7 +12954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputNoteTypeItem[] Note { get; set; }
     }
 
-    public class DELETEProcedureIdBodyInputRecorderType
+    public class DeleteProcedureIdBodyInputRecorderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -12972,7 +12972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEProcedureIdBodyInputPerformerTypeItem
+    public class DeleteProcedureIdBodyInputPerformerTypeItem
     {
         [JsonProperty("actor")]
         public BodyInputPerformerTypeItemActorType Actor { get; set; }
@@ -12987,7 +12987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEProcedureIdBodyInputReasonCodeTypeItem
+    public class DeleteProcedureIdBodyInputReasonCodeTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
@@ -12999,7 +12999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Text { get; set; }
     }
 
-    public class GETProcedureIdResponse
+    public class GetProcedureIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -13008,25 +13008,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETProcedureIdResponseMetaType Meta { get; set; }
+        public GetProcedureIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("code")]
-        public GETProcedureIdResponseCodeType Code { get; set; }
+        public GetProcedureIdResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public GETProcedureIdResponseSubjectType Subject { get; set; }
+        public GetProcedureIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public GETProcedureIdResponseEncounterType Encounter { get; set; }
+        public GetProcedureIdResponseEncounterType Encounter { get; set; }
 
         [JsonProperty("performedPeriod")]
-        public GETProcedureIdResponsePerformedPeriodType PerformedPeriod { get; set; }
+        public GetProcedureIdResponsePerformedPeriodType PerformedPeriod { get; set; }
     }
 
-    public class GETProcedureIdResponseMetaType
+    public class GetProcedureIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -13035,16 +13035,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETProcedureIdResponseCodeType
+    public class GetProcedureIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public GETProcedureIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GetProcedureIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETProcedureIdResponseCodeTypeCodingTypeItem
+    public class GetProcedureIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -13056,19 +13056,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETProcedureIdResponseSubjectType
+    public class GetProcedureIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETProcedureIdResponseEncounterType
+    public class GetProcedureIdResponseEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETProcedureIdResponsePerformedPeriodType
+    public class GetProcedureIdResponsePerformedPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -13077,7 +13077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string End { get; set; }
     }
 
-    public class DELETEProcedureIdResponse
+    public class DeleteProcedureIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -13086,43 +13086,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEProcedureIdResponseMetaType Meta { get; set; }
+        public DeleteProcedureIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEProcedureIdResponseTextType Text { get; set; }
+        public DeleteProcedureIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("code")]
-        public DELETEProcedureIdResponseCodeType Code { get; set; }
+        public DeleteProcedureIdResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEProcedureIdResponseSubjectType Subject { get; set; }
+        public DeleteProcedureIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("performedDateTime")]
         public string PerformedDateTime { get; set; }
 
         [JsonProperty("recorder")]
-        public DELETEProcedureIdResponseRecorderType Recorder { get; set; }
+        public DeleteProcedureIdResponseRecorderType Recorder { get; set; }
 
         [JsonProperty("asserter")]
-        public DELETEProcedureIdResponseAsserterType Asserter { get; set; }
+        public DeleteProcedureIdResponseAsserterType Asserter { get; set; }
 
         [JsonProperty("performer")]
-        public DELETEProcedureIdResponsePerformerTypeItem[] Performer { get; set; }
+        public DeleteProcedureIdResponsePerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("reasonCode")]
-        public DELETEProcedureIdResponseReasonCodeTypeItem[] ReasonCode { get; set; }
+        public DeleteProcedureIdResponseReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("followUp")]
-        public DELETEProcedureIdResponseFollowUpTypeItem[] FollowUp { get; set; }
+        public DeleteProcedureIdResponseFollowUpTypeItem[] FollowUp { get; set; }
 
         [JsonProperty("note")]
-        public DELETEProcedureIdResponseNoteTypeItem[] Note { get; set; }
+        public DeleteProcedureIdResponseNoteTypeItem[] Note { get; set; }
     }
 
-    public class DELETEProcedureIdResponseMetaType
+    public class DeleteProcedureIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -13131,22 +13131,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEProcedureIdResponseTextType
+    public class DeleteProcedureIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class DELETEProcedureIdResponseCodeType
+    public class DeleteProcedureIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public DELETEProcedureIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteProcedureIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEProcedureIdResponseCodeTypeCodingTypeItem
+    public class DeleteProcedureIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -13158,22 +13158,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEProcedureIdResponseSubjectType
+    public class DeleteProcedureIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEProcedureIdResponseRecorderType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class DELETEProcedureIdResponseAsserterType
+    public class DeleteProcedureIdResponseRecorderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -13182,13 +13173,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEProcedureIdResponsePerformerTypeItem
+    public class DeleteProcedureIdResponseAsserterType
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class DeleteProcedureIdResponsePerformerTypeItem
     {
         [JsonProperty("actor")]
-        public DELETEProcedureIdResponsePerformerTypeItemActorType Actor { get; set; }
+        public DeleteProcedureIdResponsePerformerTypeItemActorType Actor { get; set; }
     }
 
-    public class DELETEProcedureIdResponsePerformerTypeItemActorType
+    public class DeleteProcedureIdResponsePerformerTypeItemActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -13197,25 +13197,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class DELETEProcedureIdResponseReasonCodeTypeItem
+    public class DeleteProcedureIdResponseReasonCodeTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEProcedureIdResponseFollowUpTypeItem
+    public class DeleteProcedureIdResponseFollowUpTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEProcedureIdResponseNoteTypeItem
+    public class DeleteProcedureIdResponseNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEProcedureIdBodyInput
+    public class DeleteProcedureIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -13227,31 +13227,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("code")]
-        public DELETEAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
+        public DeleteAllergyIntoleranceIdBodyInputCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
+        public DeleteAdverseEventIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("performedDateTime")]
         public string PerformedDateTime { get; set; }
 
         [JsonProperty("recorder")]
-        public DELETEProcedureIdBodyInputRecorderType Recorder { get; set; }
+        public DeleteProcedureIdBodyInputRecorderType Recorder { get; set; }
 
         [JsonProperty("asserter")]
         public BodyInputAsserterType Asserter { get; set; }
 
         [JsonProperty("performer")]
-        public DELETEProcedureIdBodyInputPerformerTypeItem[] Performer { get; set; }
+        public DeleteProcedureIdBodyInputPerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("reasonCode")]
-        public DELETEProcedureIdBodyInputReasonCodeTypeItem[] ReasonCode { get; set; }
+        public DeleteProcedureIdBodyInputReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("followUp")]
         public BodyInputFollowUpTypeItem[] FollowUp { get; set; }
@@ -13260,7 +13260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputNoteTypeItem[] Note { get; set; }
     }
 
-    public class PUTProcedureIdResponse
+    public class PutProcedureIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -13269,43 +13269,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTProcedureIdResponseMetaType Meta { get; set; }
+        public PutProcedureIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public PUTProcedureIdResponseTextType Text { get; set; }
+        public PutProcedureIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("code")]
-        public PUTProcedureIdResponseCodeType Code { get; set; }
+        public PutProcedureIdResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public PUTProcedureIdResponseSubjectType Subject { get; set; }
+        public PutProcedureIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("performedDateTime")]
         public string PerformedDateTime { get; set; }
 
         [JsonProperty("recorder")]
-        public PUTProcedureIdResponseRecorderType Recorder { get; set; }
+        public PutProcedureIdResponseRecorderType Recorder { get; set; }
 
         [JsonProperty("asserter")]
-        public PUTProcedureIdResponseAsserterType Asserter { get; set; }
+        public PutProcedureIdResponseAsserterType Asserter { get; set; }
 
         [JsonProperty("performer")]
-        public PUTProcedureIdResponsePerformerTypeItem[] Performer { get; set; }
+        public PutProcedureIdResponsePerformerTypeItem[] Performer { get; set; }
 
         [JsonProperty("reasonCode")]
-        public PUTProcedureIdResponseReasonCodeTypeItem[] ReasonCode { get; set; }
+        public PutProcedureIdResponseReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("followUp")]
-        public PUTProcedureIdResponseFollowUpTypeItem[] FollowUp { get; set; }
+        public PutProcedureIdResponseFollowUpTypeItem[] FollowUp { get; set; }
 
         [JsonProperty("note")]
-        public PUTProcedureIdResponseNoteTypeItem[] Note { get; set; }
+        public PutProcedureIdResponseNoteTypeItem[] Note { get; set; }
     }
 
-    public class PUTProcedureIdResponseMetaType
+    public class PutProcedureIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -13314,22 +13314,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class PUTProcedureIdResponseTextType
+    public class PutProcedureIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class PUTProcedureIdResponseCodeType
+    public class PutProcedureIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public PUTProcedureIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PutProcedureIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTProcedureIdResponseCodeTypeCodingTypeItem
+    public class PutProcedureIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -13341,22 +13341,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTProcedureIdResponseSubjectType
+    public class PutProcedureIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTProcedureIdResponseRecorderType
-    {
-        [JsonProperty("reference")]
-        public string Reference { get; set; }
-
-        [JsonProperty("display")]
-        public string Display { get; set; }
-    }
-
-    public class PUTProcedureIdResponseAsserterType
+    public class PutProcedureIdResponseRecorderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -13365,13 +13356,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTProcedureIdResponsePerformerTypeItem
+    public class PutProcedureIdResponseAsserterType
+    {
+        [JsonProperty("reference")]
+        public string Reference { get; set; }
+
+        [JsonProperty("display")]
+        public string Display { get; set; }
+    }
+
+    public class PutProcedureIdResponsePerformerTypeItem
     {
         [JsonProperty("actor")]
-        public PUTProcedureIdResponsePerformerTypeItemActorType Actor { get; set; }
+        public PutProcedureIdResponsePerformerTypeItemActorType Actor { get; set; }
     }
 
-    public class PUTProcedureIdResponsePerformerTypeItemActorType
+    public class PutProcedureIdResponsePerformerTypeItemActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -13380,25 +13380,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class PUTProcedureIdResponseReasonCodeTypeItem
+    public class PutProcedureIdResponseReasonCodeTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTProcedureIdResponseFollowUpTypeItem
+    public class PutProcedureIdResponseFollowUpTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTProcedureIdResponseNoteTypeItem
+    public class PutProcedureIdResponseNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETRiskAssessmentResponse
+    public class GetRiskAssessmentResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -13407,34 +13407,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETRiskAssessmentResponseMetaType Meta { get; set; }
+        public GetRiskAssessmentResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETRiskAssessmentResponseTextType Text { get; set; }
+        public GetRiskAssessmentResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("method")]
-        public GETRiskAssessmentResponseMethodType Method { get; set; }
+        public GetRiskAssessmentResponseMethodType Method { get; set; }
 
         [JsonProperty("subject")]
-        public GETRiskAssessmentResponseSubjectType Subject { get; set; }
+        public GetRiskAssessmentResponseSubjectType Subject { get; set; }
 
         [JsonProperty("occurrenceDateTime")]
         public string OccurrenceDateTime { get; set; }
 
         [JsonProperty("basis")]
-        public GETRiskAssessmentResponseBasisTypeItem[] Basis { get; set; }
+        public GetRiskAssessmentResponseBasisTypeItem[] Basis { get; set; }
 
         [JsonProperty("prediction")]
-        public GETRiskAssessmentResponsePredictionTypeItem[] Prediction { get; set; }
+        public GetRiskAssessmentResponsePredictionTypeItem[] Prediction { get; set; }
 
         [JsonProperty("note")]
-        public GETRiskAssessmentResponseNoteTypeItem[] Note { get; set; }
+        public GetRiskAssessmentResponseNoteTypeItem[] Note { get; set; }
     }
 
-    public class GETRiskAssessmentResponseMetaType
+    public class GetRiskAssessmentResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -13443,64 +13443,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETRiskAssessmentResponseTextType
+    public class GetRiskAssessmentResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class GETRiskAssessmentResponseMethodType
+    public class GetRiskAssessmentResponseMethodType
     {
         [JsonProperty("coding")]
-        public GETRiskAssessmentResponseMethodTypeCodingTypeItem[] Coding { get; set; }
+        public GetRiskAssessmentResponseMethodTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETRiskAssessmentResponseMethodTypeCodingTypeItem
+    public class GetRiskAssessmentResponseMethodTypeCodingTypeItem
     {
         [JsonProperty("code")]
         public string Code { get; set; }
     }
 
-    public class GETRiskAssessmentResponseSubjectType
+    public class GetRiskAssessmentResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETRiskAssessmentResponseBasisTypeItem
+    public class GetRiskAssessmentResponseBasisTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETRiskAssessmentResponsePredictionTypeItem
+    public class GetRiskAssessmentResponsePredictionTypeItem
     {
         [JsonProperty("outcome")]
-        public GETRiskAssessmentResponsePredictionTypeItemOutcomeType Outcome { get; set; }
+        public GetRiskAssessmentResponsePredictionTypeItemOutcomeType Outcome { get; set; }
 
         [JsonProperty("probabilityDecimal")]
         public double ProbabilityDecimal { get; set; }
 
         [JsonProperty("whenRange")]
-        public GETRiskAssessmentResponsePredictionTypeItemWhenRangeType WhenRange { get; set; }
+        public GetRiskAssessmentResponsePredictionTypeItemWhenRangeType WhenRange { get; set; }
     }
 
-    public class GETRiskAssessmentResponsePredictionTypeItemOutcomeType
+    public class GetRiskAssessmentResponsePredictionTypeItemOutcomeType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETRiskAssessmentResponsePredictionTypeItemWhenRangeType
+    public class GetRiskAssessmentResponsePredictionTypeItemWhenRangeType
     {
         [JsonProperty("high")]
-        public GETRiskAssessmentResponsePredictionTypeItemWhenRangeTypeHighType High { get; set; }
+        public GetRiskAssessmentResponsePredictionTypeItemWhenRangeTypeHighType High { get; set; }
 
         [JsonProperty("low")]
-        public GETRiskAssessmentResponsePredictionTypeItemWhenRangeTypeLowType Low { get; set; }
+        public GetRiskAssessmentResponsePredictionTypeItemWhenRangeTypeLowType Low { get; set; }
     }
 
-    public class GETRiskAssessmentResponsePredictionTypeItemWhenRangeTypeHighType
+    public class GetRiskAssessmentResponsePredictionTypeItemWhenRangeTypeHighType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -13515,7 +13515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETRiskAssessmentResponsePredictionTypeItemWhenRangeTypeLowType
+    public class GetRiskAssessmentResponsePredictionTypeItemWhenRangeTypeLowType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -13530,13 +13530,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETRiskAssessmentResponseNoteTypeItem
+    public class GetRiskAssessmentResponseNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTRiskAssessmentResponse
+    public class PostRiskAssessmentResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -13545,34 +13545,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public POSTRiskAssessmentResponseMetaType Meta { get; set; }
+        public PostRiskAssessmentResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public POSTRiskAssessmentResponseTextType Text { get; set; }
+        public PostRiskAssessmentResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("method")]
-        public POSTRiskAssessmentResponseMethodType Method { get; set; }
+        public PostRiskAssessmentResponseMethodType Method { get; set; }
 
         [JsonProperty("subject")]
-        public POSTRiskAssessmentResponseSubjectType Subject { get; set; }
+        public PostRiskAssessmentResponseSubjectType Subject { get; set; }
 
         [JsonProperty("occurrenceDateTime")]
         public string OccurrenceDateTime { get; set; }
 
         [JsonProperty("basis")]
-        public POSTRiskAssessmentResponseBasisTypeItem[] Basis { get; set; }
+        public PostRiskAssessmentResponseBasisTypeItem[] Basis { get; set; }
 
         [JsonProperty("prediction")]
-        public POSTRiskAssessmentResponsePredictionTypeItem[] Prediction { get; set; }
+        public PostRiskAssessmentResponsePredictionTypeItem[] Prediction { get; set; }
 
         [JsonProperty("note")]
-        public POSTRiskAssessmentResponseNoteTypeItem[] Note { get; set; }
+        public PostRiskAssessmentResponseNoteTypeItem[] Note { get; set; }
     }
 
-    public class POSTRiskAssessmentResponseMetaType
+    public class PostRiskAssessmentResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -13581,64 +13581,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class POSTRiskAssessmentResponseTextType
+    public class PostRiskAssessmentResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class POSTRiskAssessmentResponseMethodType
+    public class PostRiskAssessmentResponseMethodType
     {
         [JsonProperty("coding")]
-        public POSTRiskAssessmentResponseMethodTypeCodingTypeItem[] Coding { get; set; }
+        public PostRiskAssessmentResponseMethodTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class POSTRiskAssessmentResponseMethodTypeCodingTypeItem
+    public class PostRiskAssessmentResponseMethodTypeCodingTypeItem
     {
         [JsonProperty("code")]
         public string Code { get; set; }
     }
 
-    public class POSTRiskAssessmentResponseSubjectType
+    public class PostRiskAssessmentResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTRiskAssessmentResponseBasisTypeItem
+    public class PostRiskAssessmentResponseBasisTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class POSTRiskAssessmentResponsePredictionTypeItem
+    public class PostRiskAssessmentResponsePredictionTypeItem
     {
         [JsonProperty("outcome")]
-        public POSTRiskAssessmentResponsePredictionTypeItemOutcomeType Outcome { get; set; }
+        public PostRiskAssessmentResponsePredictionTypeItemOutcomeType Outcome { get; set; }
 
         [JsonProperty("probabilityDecimal")]
         public double ProbabilityDecimal { get; set; }
 
         [JsonProperty("whenRange")]
-        public POSTRiskAssessmentResponsePredictionTypeItemWhenRangeType WhenRange { get; set; }
+        public PostRiskAssessmentResponsePredictionTypeItemWhenRangeType WhenRange { get; set; }
     }
 
-    public class POSTRiskAssessmentResponsePredictionTypeItemOutcomeType
+    public class PostRiskAssessmentResponsePredictionTypeItemOutcomeType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class POSTRiskAssessmentResponsePredictionTypeItemWhenRangeType
+    public class PostRiskAssessmentResponsePredictionTypeItemWhenRangeType
     {
         [JsonProperty("high")]
-        public POSTRiskAssessmentResponsePredictionTypeItemWhenRangeTypeHighType High { get; set; }
+        public PostRiskAssessmentResponsePredictionTypeItemWhenRangeTypeHighType High { get; set; }
 
         [JsonProperty("low")]
-        public POSTRiskAssessmentResponsePredictionTypeItemWhenRangeTypeLowType Low { get; set; }
+        public PostRiskAssessmentResponsePredictionTypeItemWhenRangeTypeLowType Low { get; set; }
     }
 
-    public class POSTRiskAssessmentResponsePredictionTypeItemWhenRangeTypeHighType
+    public class PostRiskAssessmentResponsePredictionTypeItemWhenRangeTypeHighType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -13653,7 +13653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTRiskAssessmentResponsePredictionTypeItemWhenRangeTypeLowType
+    public class PostRiskAssessmentResponsePredictionTypeItemWhenRangeTypeLowType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -13668,13 +13668,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class POSTRiskAssessmentResponseNoteTypeItem
+    public class PostRiskAssessmentResponseNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETERiskAssessmentIdBodyInput
+    public class DeleteRiskAssessmentIdBodyInput
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -13683,16 +13683,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETECarePlanIdBodyInputTextType Text { get; set; }
+        public DeleteCarePlanIdBodyInputTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("method")]
-        public DELETERiskAssessmentIdBodyInputMethodType Method { get; set; }
+        public DeleteRiskAssessmentIdBodyInputMethodType Method { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEAdverseEventIdBodyInputSubjectType Subject { get; set; }
+        public DeleteAdverseEventIdBodyInputSubjectType Subject { get; set; }
 
         [JsonProperty("occurrenceDateTime")]
         public string OccurrenceDateTime { get; set; }
@@ -13707,13 +13707,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public BodyInputNoteTypeItem[] Note { get; set; }
     }
 
-    public class DELETERiskAssessmentIdBodyInputMethodType
+    public class DeleteRiskAssessmentIdBodyInputMethodType
     {
         [JsonProperty("coding")]
-        public DELETERiskAssessmentIdBodyInputMethodTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteRiskAssessmentIdBodyInputMethodTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETERiskAssessmentIdBodyInputMethodTypeCodingTypeItem
+    public class DeleteRiskAssessmentIdBodyInputMethodTypeCodingTypeItem
     {
         [JsonProperty("code")]
         public string Code { get; set; }
@@ -13782,7 +13782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETRiskAssessmentIdResponse
+    public class GetRiskAssessmentIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -13791,34 +13791,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETRiskAssessmentIdResponseMetaType Meta { get; set; }
+        public GetRiskAssessmentIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETRiskAssessmentIdResponseTextType Text { get; set; }
+        public GetRiskAssessmentIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("method")]
-        public GETRiskAssessmentIdResponseMethodType Method { get; set; }
+        public GetRiskAssessmentIdResponseMethodType Method { get; set; }
 
         [JsonProperty("subject")]
-        public GETRiskAssessmentIdResponseSubjectType Subject { get; set; }
+        public GetRiskAssessmentIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("occurrenceDateTime")]
         public string OccurrenceDateTime { get; set; }
 
         [JsonProperty("basis")]
-        public GETRiskAssessmentIdResponseBasisTypeItem[] Basis { get; set; }
+        public GetRiskAssessmentIdResponseBasisTypeItem[] Basis { get; set; }
 
         [JsonProperty("prediction")]
-        public GETRiskAssessmentIdResponsePredictionTypeItem[] Prediction { get; set; }
+        public GetRiskAssessmentIdResponsePredictionTypeItem[] Prediction { get; set; }
 
         [JsonProperty("note")]
-        public GETRiskAssessmentIdResponseNoteTypeItem[] Note { get; set; }
+        public GetRiskAssessmentIdResponseNoteTypeItem[] Note { get; set; }
     }
 
-    public class GETRiskAssessmentIdResponseMetaType
+    public class GetRiskAssessmentIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -13827,64 +13827,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETRiskAssessmentIdResponseTextType
+    public class GetRiskAssessmentIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class GETRiskAssessmentIdResponseMethodType
+    public class GetRiskAssessmentIdResponseMethodType
     {
         [JsonProperty("coding")]
-        public GETRiskAssessmentIdResponseMethodTypeCodingTypeItem[] Coding { get; set; }
+        public GetRiskAssessmentIdResponseMethodTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETRiskAssessmentIdResponseMethodTypeCodingTypeItem
+    public class GetRiskAssessmentIdResponseMethodTypeCodingTypeItem
     {
         [JsonProperty("code")]
         public string Code { get; set; }
     }
 
-    public class GETRiskAssessmentIdResponseSubjectType
+    public class GetRiskAssessmentIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETRiskAssessmentIdResponseBasisTypeItem
+    public class GetRiskAssessmentIdResponseBasisTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETRiskAssessmentIdResponsePredictionTypeItem
+    public class GetRiskAssessmentIdResponsePredictionTypeItem
     {
         [JsonProperty("outcome")]
-        public GETRiskAssessmentIdResponsePredictionTypeItemOutcomeType Outcome { get; set; }
+        public GetRiskAssessmentIdResponsePredictionTypeItemOutcomeType Outcome { get; set; }
 
         [JsonProperty("probabilityDecimal")]
         public double ProbabilityDecimal { get; set; }
 
         [JsonProperty("whenRange")]
-        public GETRiskAssessmentIdResponsePredictionTypeItemWhenRangeType WhenRange { get; set; }
+        public GetRiskAssessmentIdResponsePredictionTypeItemWhenRangeType WhenRange { get; set; }
     }
 
-    public class GETRiskAssessmentIdResponsePredictionTypeItemOutcomeType
+    public class GetRiskAssessmentIdResponsePredictionTypeItemOutcomeType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETRiskAssessmentIdResponsePredictionTypeItemWhenRangeType
+    public class GetRiskAssessmentIdResponsePredictionTypeItemWhenRangeType
     {
         [JsonProperty("high")]
-        public GETRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeHighType High { get; set; }
+        public GetRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeHighType High { get; set; }
 
         [JsonProperty("low")]
-        public GETRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeLowType Low { get; set; }
+        public GetRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeLowType Low { get; set; }
     }
 
-    public class GETRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeHighType
+    public class GetRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeHighType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -13899,7 +13899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeLowType
+    public class GetRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeLowType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -13914,13 +13914,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class GETRiskAssessmentIdResponseNoteTypeItem
+    public class GetRiskAssessmentIdResponseNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETERiskAssessmentIdResponse
+    public class DeleteRiskAssessmentIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -13929,34 +13929,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETERiskAssessmentIdResponseMetaType Meta { get; set; }
+        public DeleteRiskAssessmentIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETERiskAssessmentIdResponseTextType Text { get; set; }
+        public DeleteRiskAssessmentIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("method")]
-        public DELETERiskAssessmentIdResponseMethodType Method { get; set; }
+        public DeleteRiskAssessmentIdResponseMethodType Method { get; set; }
 
         [JsonProperty("subject")]
-        public DELETERiskAssessmentIdResponseSubjectType Subject { get; set; }
+        public DeleteRiskAssessmentIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("occurrenceDateTime")]
         public string OccurrenceDateTime { get; set; }
 
         [JsonProperty("basis")]
-        public DELETERiskAssessmentIdResponseBasisTypeItem[] Basis { get; set; }
+        public DeleteRiskAssessmentIdResponseBasisTypeItem[] Basis { get; set; }
 
         [JsonProperty("prediction")]
-        public DELETERiskAssessmentIdResponsePredictionTypeItem[] Prediction { get; set; }
+        public DeleteRiskAssessmentIdResponsePredictionTypeItem[] Prediction { get; set; }
 
         [JsonProperty("note")]
-        public DELETERiskAssessmentIdResponseNoteTypeItem[] Note { get; set; }
+        public DeleteRiskAssessmentIdResponseNoteTypeItem[] Note { get; set; }
     }
 
-    public class DELETERiskAssessmentIdResponseMetaType
+    public class DeleteRiskAssessmentIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -13965,64 +13965,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class DELETERiskAssessmentIdResponseTextType
+    public class DeleteRiskAssessmentIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class DELETERiskAssessmentIdResponseMethodType
+    public class DeleteRiskAssessmentIdResponseMethodType
     {
         [JsonProperty("coding")]
-        public DELETERiskAssessmentIdResponseMethodTypeCodingTypeItem[] Coding { get; set; }
+        public DeleteRiskAssessmentIdResponseMethodTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETERiskAssessmentIdResponseMethodTypeCodingTypeItem
+    public class DeleteRiskAssessmentIdResponseMethodTypeCodingTypeItem
     {
         [JsonProperty("code")]
         public string Code { get; set; }
     }
 
-    public class DELETERiskAssessmentIdResponseSubjectType
+    public class DeleteRiskAssessmentIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETERiskAssessmentIdResponseBasisTypeItem
+    public class DeleteRiskAssessmentIdResponseBasisTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETERiskAssessmentIdResponsePredictionTypeItem
+    public class DeleteRiskAssessmentIdResponsePredictionTypeItem
     {
         [JsonProperty("outcome")]
-        public DELETERiskAssessmentIdResponsePredictionTypeItemOutcomeType Outcome { get; set; }
+        public DeleteRiskAssessmentIdResponsePredictionTypeItemOutcomeType Outcome { get; set; }
 
         [JsonProperty("probabilityDecimal")]
         public double ProbabilityDecimal { get; set; }
 
         [JsonProperty("whenRange")]
-        public DELETERiskAssessmentIdResponsePredictionTypeItemWhenRangeType WhenRange { get; set; }
+        public DeleteRiskAssessmentIdResponsePredictionTypeItemWhenRangeType WhenRange { get; set; }
     }
 
-    public class DELETERiskAssessmentIdResponsePredictionTypeItemOutcomeType
+    public class DeleteRiskAssessmentIdResponsePredictionTypeItemOutcomeType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETERiskAssessmentIdResponsePredictionTypeItemWhenRangeType
+    public class DeleteRiskAssessmentIdResponsePredictionTypeItemWhenRangeType
     {
         [JsonProperty("high")]
-        public DELETERiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeHighType High { get; set; }
+        public DeleteRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeHighType High { get; set; }
 
         [JsonProperty("low")]
-        public DELETERiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeLowType Low { get; set; }
+        public DeleteRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeLowType Low { get; set; }
     }
 
-    public class DELETERiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeHighType
+    public class DeleteRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeHighType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -14037,7 +14037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETERiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeLowType
+    public class DeleteRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeLowType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -14052,13 +14052,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class DELETERiskAssessmentIdResponseNoteTypeItem
+    public class DeleteRiskAssessmentIdResponseNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTRiskAssessmentIdResponse
+    public class PutRiskAssessmentIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -14067,34 +14067,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTRiskAssessmentIdResponseMetaType Meta { get; set; }
+        public PutRiskAssessmentIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public PUTRiskAssessmentIdResponseTextType Text { get; set; }
+        public PutRiskAssessmentIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("method")]
-        public PUTRiskAssessmentIdResponseMethodType Method { get; set; }
+        public PutRiskAssessmentIdResponseMethodType Method { get; set; }
 
         [JsonProperty("subject")]
-        public PUTRiskAssessmentIdResponseSubjectType Subject { get; set; }
+        public PutRiskAssessmentIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("occurrenceDateTime")]
         public string OccurrenceDateTime { get; set; }
 
         [JsonProperty("basis")]
-        public PUTRiskAssessmentIdResponseBasisTypeItem[] Basis { get; set; }
+        public PutRiskAssessmentIdResponseBasisTypeItem[] Basis { get; set; }
 
         [JsonProperty("prediction")]
-        public PUTRiskAssessmentIdResponsePredictionTypeItem[] Prediction { get; set; }
+        public PutRiskAssessmentIdResponsePredictionTypeItem[] Prediction { get; set; }
 
         [JsonProperty("note")]
-        public PUTRiskAssessmentIdResponseNoteTypeItem[] Note { get; set; }
+        public PutRiskAssessmentIdResponseNoteTypeItem[] Note { get; set; }
     }
 
-    public class PUTRiskAssessmentIdResponseMetaType
+    public class PutRiskAssessmentIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -14103,64 +14103,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class PUTRiskAssessmentIdResponseTextType
+    public class PutRiskAssessmentIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
     }
 
-    public class PUTRiskAssessmentIdResponseMethodType
+    public class PutRiskAssessmentIdResponseMethodType
     {
         [JsonProperty("coding")]
-        public PUTRiskAssessmentIdResponseMethodTypeCodingTypeItem[] Coding { get; set; }
+        public PutRiskAssessmentIdResponseMethodTypeCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTRiskAssessmentIdResponseMethodTypeCodingTypeItem
+    public class PutRiskAssessmentIdResponseMethodTypeCodingTypeItem
     {
         [JsonProperty("code")]
         public string Code { get; set; }
     }
 
-    public class PUTRiskAssessmentIdResponseSubjectType
+    public class PutRiskAssessmentIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTRiskAssessmentIdResponseBasisTypeItem
+    public class PutRiskAssessmentIdResponseBasisTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class PUTRiskAssessmentIdResponsePredictionTypeItem
+    public class PutRiskAssessmentIdResponsePredictionTypeItem
     {
         [JsonProperty("outcome")]
-        public PUTRiskAssessmentIdResponsePredictionTypeItemOutcomeType Outcome { get; set; }
+        public PutRiskAssessmentIdResponsePredictionTypeItemOutcomeType Outcome { get; set; }
 
         [JsonProperty("probabilityDecimal")]
         public double ProbabilityDecimal { get; set; }
 
         [JsonProperty("whenRange")]
-        public PUTRiskAssessmentIdResponsePredictionTypeItemWhenRangeType WhenRange { get; set; }
+        public PutRiskAssessmentIdResponsePredictionTypeItemWhenRangeType WhenRange { get; set; }
     }
 
-    public class PUTRiskAssessmentIdResponsePredictionTypeItemOutcomeType
+    public class PutRiskAssessmentIdResponsePredictionTypeItemOutcomeType
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTRiskAssessmentIdResponsePredictionTypeItemWhenRangeType
+    public class PutRiskAssessmentIdResponsePredictionTypeItemWhenRangeType
     {
         [JsonProperty("high")]
-        public PUTRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeHighType High { get; set; }
+        public PutRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeHighType High { get; set; }
 
         [JsonProperty("low")]
-        public PUTRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeLowType Low { get; set; }
+        public PutRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeLowType Low { get; set; }
     }
 
-    public class PUTRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeHighType
+    public class PutRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeHighType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -14175,7 +14175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeLowType
+    public class PutRiskAssessmentIdResponsePredictionTypeItemWhenRangeTypeLowType
     {
         [JsonProperty("value")]
         public int Value { get; set; }
@@ -14190,13 +14190,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Code { get; set; }
     }
 
-    public class PUTRiskAssessmentIdResponseNoteTypeItem
+    public class PutRiskAssessmentIdResponseNoteTypeItem
     {
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETCareTeamResponse
+    public class GetCareTeamResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -14205,25 +14205,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETCareTeamResponseMetaType Meta { get; set; }
+        public GetCareTeamResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETCareTeamResponseLinkTypeItem[] Link { get; set; }
+        public GetCareTeamResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETCareTeamResponseEntryTypeItem[] Entry { get; set; }
+        public GetCareTeamResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETCareTeamResponseMetaType
+    public class GetCareTeamResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETCareTeamResponseLinkTypeItem
+    public class GetCareTeamResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -14232,19 +14232,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Url { get; set; }
     }
 
-    public class GETCareTeamResponseEntryTypeItem
+    public class GetCareTeamResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETCareTeamResponseEntryTypeItemResourceType Resource { get; set; }
+        public GetCareTeamResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETCareTeamResponseEntryTypeItemSearchType Search { get; set; }
+        public GetCareTeamResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETCareTeamResponseEntryTypeItemResourceType
+    public class GetCareTeamResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -14253,31 +14253,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETCareTeamResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GetCareTeamResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("subject")]
-        public GETCareTeamResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
+        public GetCareTeamResponseEntryTypeItemResourceTypeSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public GETCareTeamResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
+        public GetCareTeamResponseEntryTypeItemResourceTypeEncounterType Encounter { get; set; }
 
         [JsonProperty("period")]
-        public GETCareTeamResponseEntryTypeItemResourceTypePeriodType Period { get; set; }
+        public GetCareTeamResponseEntryTypeItemResourceTypePeriodType Period { get; set; }
 
         [JsonProperty("participant")]
-        public GETCareTeamResponseEntryTypeItemResourceTypeParticipantTypeItem[] Participant { get; set; }
+        public GetCareTeamResponseEntryTypeItemResourceTypeParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("reasonCode")]
-        public GETCareTeamResponseEntryTypeItemResourceTypeReasonCodeTypeItem[] ReasonCode { get; set; }
+        public GetCareTeamResponseEntryTypeItemResourceTypeReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("managingOrganization")]
-        public GETCareTeamResponseEntryTypeItemResourceTypeManagingOrganizationTypeItem[] ManagingOrganization { get; set; }
+        public GetCareTeamResponseEntryTypeItemResourceTypeManagingOrganizationTypeItem[] ManagingOrganization { get; set; }
     }
 
-    public class GETCareTeamResponseEntryTypeItemResourceTypeMetaType
+    public class GetCareTeamResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -14286,19 +14286,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETCareTeamResponseEntryTypeItemResourceTypeSubjectType
+    public class GetCareTeamResponseEntryTypeItemResourceTypeSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETCareTeamResponseEntryTypeItemResourceTypeEncounterType
+    public class GetCareTeamResponseEntryTypeItemResourceTypeEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETCareTeamResponseEntryTypeItemResourceTypePeriodType
+    public class GetCareTeamResponseEntryTypeItemResourceTypePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -14307,25 +14307,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string End { get; set; }
     }
 
-    public class GETCareTeamResponseEntryTypeItemResourceTypeParticipantTypeItem
+    public class GetCareTeamResponseEntryTypeItemResourceTypeParticipantTypeItem
     {
         [JsonProperty("role")]
-        public GETCareTeamResponseEntryTypeItemResourceTypeParticipantTypeItemRoleTypeItem[] Role { get; set; }
+        public GetCareTeamResponseEntryTypeItemResourceTypeParticipantTypeItemRoleTypeItem[] Role { get; set; }
 
         [JsonProperty("member")]
-        public GETCareTeamResponseEntryTypeItemResourceTypeParticipantTypeItemMemberType Member { get; set; }
+        public GetCareTeamResponseEntryTypeItemResourceTypeParticipantTypeItemMemberType Member { get; set; }
     }
 
-    public class GETCareTeamResponseEntryTypeItemResourceTypeParticipantTypeItemRoleTypeItem
+    public class GetCareTeamResponseEntryTypeItemResourceTypeParticipantTypeItemRoleTypeItem
     {
         [JsonProperty("coding")]
-        public GETCareTeamResponseEntryTypeItemResourceTypeParticipantTypeItemRoleTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetCareTeamResponseEntryTypeItemResourceTypeParticipantTypeItemRoleTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETCareTeamResponseEntryTypeItemResourceTypeParticipantTypeItemRoleTypeItemCodingTypeItem
+    public class GetCareTeamResponseEntryTypeItemResourceTypeParticipantTypeItemRoleTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -14337,7 +14337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETCareTeamResponseEntryTypeItemResourceTypeParticipantTypeItemMemberType
+    public class GetCareTeamResponseEntryTypeItemResourceTypeParticipantTypeItemMemberType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -14346,16 +14346,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETCareTeamResponseEntryTypeItemResourceTypeReasonCodeTypeItem
+    public class GetCareTeamResponseEntryTypeItemResourceTypeReasonCodeTypeItem
     {
         [JsonProperty("coding")]
-        public GETCareTeamResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetCareTeamResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETCareTeamResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem
+    public class GetCareTeamResponseEntryTypeItemResourceTypeReasonCodeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -14367,7 +14367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETCareTeamResponseEntryTypeItemResourceTypeManagingOrganizationTypeItem
+    public class GetCareTeamResponseEntryTypeItemResourceTypeManagingOrganizationTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -14376,13 +14376,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETCareTeamResponseEntryTypeItemSearchType
+    public class GetCareTeamResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class GETCareTeamIdResponse
+    public class GetCareTeamIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -14391,31 +14391,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETCareTeamIdResponseMetaType Meta { get; set; }
+        public GetCareTeamIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("subject")]
-        public GETCareTeamIdResponseSubjectType Subject { get; set; }
+        public GetCareTeamIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("encounter")]
-        public GETCareTeamIdResponseEncounterType Encounter { get; set; }
+        public GetCareTeamIdResponseEncounterType Encounter { get; set; }
 
         [JsonProperty("period")]
-        public GETCareTeamIdResponsePeriodType Period { get; set; }
+        public GetCareTeamIdResponsePeriodType Period { get; set; }
 
         [JsonProperty("participant")]
-        public GETCareTeamIdResponseParticipantTypeItem[] Participant { get; set; }
+        public GetCareTeamIdResponseParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("reasonCode")]
-        public GETCareTeamIdResponseReasonCodeTypeItem[] ReasonCode { get; set; }
+        public GetCareTeamIdResponseReasonCodeTypeItem[] ReasonCode { get; set; }
 
         [JsonProperty("managingOrganization")]
-        public GETCareTeamIdResponseManagingOrganizationTypeItem[] ManagingOrganization { get; set; }
+        public GetCareTeamIdResponseManagingOrganizationTypeItem[] ManagingOrganization { get; set; }
     }
 
-    public class GETCareTeamIdResponseMetaType
+    public class GetCareTeamIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -14424,43 +14424,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string LastUpdated { get; set; }
     }
 
-    public class GETCareTeamIdResponseSubjectType
+    public class GetCareTeamIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETCareTeamIdResponseEncounterType
+    public class GetCareTeamIdResponseEncounterType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class GETCareTeamIdResponsePeriodType
+    public class GetCareTeamIdResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
     }
 
-    public class GETCareTeamIdResponseParticipantTypeItem
+    public class GetCareTeamIdResponseParticipantTypeItem
     {
         [JsonProperty("role")]
-        public GETCareTeamIdResponseParticipantTypeItemRoleTypeItem[] Role { get; set; }
+        public GetCareTeamIdResponseParticipantTypeItemRoleTypeItem[] Role { get; set; }
 
         [JsonProperty("member")]
-        public GETCareTeamIdResponseParticipantTypeItemMemberType Member { get; set; }
+        public GetCareTeamIdResponseParticipantTypeItemMemberType Member { get; set; }
     }
 
-    public class GETCareTeamIdResponseParticipantTypeItemRoleTypeItem
+    public class GetCareTeamIdResponseParticipantTypeItemRoleTypeItem
     {
         [JsonProperty("coding")]
-        public GETCareTeamIdResponseParticipantTypeItemRoleTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetCareTeamIdResponseParticipantTypeItemRoleTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETCareTeamIdResponseParticipantTypeItemRoleTypeItemCodingTypeItem
+    public class GetCareTeamIdResponseParticipantTypeItemRoleTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -14472,7 +14472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETCareTeamIdResponseParticipantTypeItemMemberType
+    public class GetCareTeamIdResponseParticipantTypeItemMemberType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -14481,16 +14481,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETCareTeamIdResponseReasonCodeTypeItem
+    public class GetCareTeamIdResponseReasonCodeTypeItem
     {
         [JsonProperty("coding")]
-        public GETCareTeamIdResponseReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
+        public GetCareTeamIdResponseReasonCodeTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETCareTeamIdResponseReasonCodeTypeItemCodingTypeItem
+    public class GetCareTeamIdResponseReasonCodeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -14502,7 +14502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirclinical
         public string Display { get; set; }
     }
 
-    public class GETCareTeamIdResponseManagingOrganizationTypeItem
+    public class GetCareTeamIdResponseManagingOrganizationTypeItem
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }

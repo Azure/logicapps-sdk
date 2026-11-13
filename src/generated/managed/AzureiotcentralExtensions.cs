@@ -1922,7 +1922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public string Rule { get; set; }
 
         [JsonProperty("url")]
-        public string WorkflowTriggerURL { get; set; }
+        public string WorkflowTriggerUrl { get; set; }
     }
 
     public class WorkflowCreateTriggerBodyInput
@@ -1939,7 +1939,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureiotcentral
         public string Rule { get; set; }
 
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string WorkflowTriggerURL { get; set; } = "#{listCallbackUrl()}";
+        internal string WorkflowTriggerUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

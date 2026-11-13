@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infusionsoft
         public bool Completed { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("due_date")]
         public string DueDate { get; set; }
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infusionsoft
         public int? Priority { get; set; }
 
         [JsonProperty("due_date")]
-        public string DueDateFormatYYYYMMDdThhMmSsFffZ { get; set; }
+        public string DueDateFormatYyyyMMDdThhMmSsFffZ { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]

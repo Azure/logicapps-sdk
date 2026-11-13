@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         public string RecipientEmailField { get; set; }
 
         [JsonProperty("recipientListUrl")]
-        public string RecipientListURL { get; set; }
+        public string RecipientListUrl { get; set; }
 
         [JsonProperty("recipientListView")]
         public string RecipientFilterView { get; set; }
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         public string EmailSubject { get; set; }
 
         [JsonProperty("emailbody")]
-        public string EmailHTML { get; set; }
+        public string EmailHtml { get; set; }
 
         [JsonProperty("id")]
         public string NewsletterId { get; set; }
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         public string ModifiedTime { get; set; }
 
         [JsonProperty("previewUrl")]
-        public string PreviewURL { get; set; }
+        public string PreviewUrl { get; set; }
 
         [JsonProperty("scheduledTime")]
         public string ScheduledTime { get; set; }
@@ -403,8 +403,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [JsonProperty("sendFailedCount")]
         public int SendFailedCount { get; set; }
 
+        [JsonProperty("sendPercent")]
+        public double SendPercent { get; set; }
+
         [JsonProperty("sendPercentFormatted")]
-        public string SendPercent { get; set; }
+        public string SendPercent2 { get; set; }
 
         [JsonProperty("sendSkippedCount")]
         public int SendSkippedCount { get; set; }
@@ -457,14 +460,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [JsonProperty("bounces")]
         public int Bounces { get; set; }
 
+        [JsonProperty("bouncesRate")]
+        public double BouncesRate { get; set; }
+
         [JsonProperty("bouncesRateFormatted")]
-        public string BouncesRate { get; set; }
+        public string BouncesRate2 { get; set; }
 
         [JsonProperty("devicesDesktopCount")]
         public int DevicesDesktop { get; set; }
 
+        [JsonProperty("devicesDesktopRate")]
+        public double DevicesDesktopRate { get; set; }
+
         [JsonProperty("devicesDesktopRateFormatted")]
-        public string DevicesDesktopRate { get; set; }
+        public string DevicesDesktopRate2 { get; set; }
 
         [JsonProperty("devicesOtherCount")]
         public int DevicesOther { get; set; }
@@ -472,17 +481,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [JsonProperty("devicesPhoneCount")]
         public int DevicesPhone { get; set; }
 
+        [JsonProperty("devicesPhoneRate")]
+        public double DevicesPhoneRate { get; set; }
+
         [JsonProperty("devicesPhoneRateFormatted")]
-        public string DevicesPhoneRate { get; set; }
+        public string DevicesPhoneRate2 { get; set; }
 
         [JsonProperty("devicesTabletCount")]
         public int DevicesTablet { get; set; }
 
+        [JsonProperty("devicesTabletRate")]
+        public double DevicesTabletRate { get; set; }
+
         [JsonProperty("devicesTabletRateFormatted")]
-        public string DevicesTabletRate { get; set; }
+        public string DevicesTabletRate2 { get; set; }
+
+        [JsonProperty("emailOpensRate")]
+        public double EmailOpensRate { get; set; }
 
         [JsonProperty("emailOpensRateFormatted")]
-        public string EmailOpensRate { get; set; }
+        public string EmailOpensRate2 { get; set; }
 
         [JsonProperty("emailOpensTotal")]
         public int TotalEmailOpens { get; set; }
@@ -514,8 +532,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [JsonProperty("jobTitle")]
         public string NewsletterTitle { get; set; }
 
+        [JsonProperty("linkClicksRate")]
+        public double LinkClicksRate { get; set; }
+
         [JsonProperty("linkClicksRateFormatted")]
-        public string LinkClicksRate { get; set; }
+        public string LinkClicksRate2 { get; set; }
 
         [JsonProperty("linkClicksTotal")]
         public int TotalLinkClicks { get; set; }
@@ -527,7 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         public int LinksNotClicked { get; set; }
 
         [JsonProperty("reportHtml")]
-        public string ReportInHTML { get; set; }
+        public string ReportInHtml { get; set; }
 
         [JsonProperty("sendTime")]
         public string SendTime { get; set; }
@@ -547,8 +568,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [JsonProperty("unsubscribes")]
         public int TotalUnsubscribes { get; set; }
 
+        [JsonProperty("unsubscribesRate")]
+        public double UnsubscribesRate { get; set; }
+
         [JsonProperty("unsubscribesRateFormatted")]
-        public string UnsubscribesRate { get; set; }
+        public string UnsubscribesRate2 { get; set; }
     }
 
     public class JsTopLink
@@ -563,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         public int Index { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
     }
 
     public class JsTrackerLogResponse
@@ -605,7 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         public string IPAddress { get; set; }
 
         [JsonProperty("linkUrl")]
-        public string LinkURL { get; set; }
+        public string LinkUrl { get; set; }
 
         [JsonProperty("openCount")]
         public int OpenCount { get; set; }

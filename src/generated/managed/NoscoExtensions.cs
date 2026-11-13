@@ -390,16 +390,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
     public enum SortFieldInput
     {
         [EnumMember(Value = "PUBLISHED_AT")]
-        PUBLISHEDAT,
+        PublishedAt,
         [EnumMember(Value = "LAST_STAGE_CHANGE_AT")]
-        LASTSTAGECHANGEAT
+        LastStageChangeAt
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SortOrderInput
     {
-        ASC,
-        DESC
+        [EnumMember(Value = "ASC")]
+        Asc,
+        [EnumMember(Value = "DESC")]
+        Desc
     }
 
     public class IdeaReachedStageTriggerResponse

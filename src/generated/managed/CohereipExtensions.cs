@@ -164,9 +164,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputTruncateType
     {
-        NONE,
-        START,
-        END
+        [EnumMember(Value = "NONE")]
+        None,
+        [EnumMember(Value = "START")]
+        Start,
+        [EnumMember(Value = "END")]
+        End
     }
 
     public class ClassifyResponse
@@ -645,18 +648,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputChatHistoryTypeItemRoleType
     {
-        CHATBOT,
-        SYSTEM,
-        USER
+        [EnumMember(Value = "CHATBOT")]
+        Chatbot,
+        [EnumMember(Value = "SYSTEM")]
+        System,
+        [EnumMember(Value = "USER")]
+        User
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputPromptTruncationType
     {
-        AUTO,
+        [EnumMember(Value = "AUTO")]
+        Auto,
         [EnumMember(Value = "AUTO_PRESERVE_ORDER")]
-        AUTOPRESERVEORDER,
-        OFF
+        AutoPreserveOrder,
+        [EnumMember(Value = "OFF")]
+        Off
     }
 
     public class BodyInputConnectorsTypeItem

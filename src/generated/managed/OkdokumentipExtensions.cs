@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Okdokumentip
     public class BodyInput
     {
         [JsonProperty("sendInfoURL", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string SendInfoURL { get; set; } = "#{listCallbackUrl()}";
+        internal string SendInfoUrl { get; set; } = "#{listCallbackUrl()}";
     }
 }
 

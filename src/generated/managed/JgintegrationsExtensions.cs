@@ -13,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
     public class JgintegrationsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        public IBodyWorkflowAction<HASHHMACResponse, ApiConnectionActionConfiguration> HASHHMAC(Expression<Func<HASHHMACBodyInput>> body)
+        public IBodyWorkflowAction<HashHmacResponse, ApiConnectionActionConfiguration> HashHmac(Expression<Func<HashHmacBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<HASHHMACResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<HashHmacResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/crypto/hash_hmac";
                 var apiCallHttpMethod = "post";
@@ -24,15 +24,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<HASHHMACResponse>(callPayload);
+                return new ApiConnectionAction<HashHmacResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        public IBodyWorkflowAction<PREGREPLACEResponse, ApiConnectionActionConfiguration> PREGREPLACE(Expression<Func<PREGREPLACEBodyInput>> body)
+        public IBodyWorkflowAction<PregReplaceResponse, ApiConnectionActionConfiguration> PregReplace(Expression<Func<PregReplaceBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<PREGREPLACEResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PregReplaceResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/text/preg_replace";
                 var apiCallHttpMethod = "post";
@@ -40,15 +40,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PREGREPLACEResponse>(callPayload);
+                return new ApiConnectionAction<PregReplaceResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        public IBodyWorkflowAction<MANUALResponse, ApiConnectionActionConfiguration> MANUAL(Expression<Func<MANUALBodyInput>> body)
+        public IBodyWorkflowAction<ManualResponse, ApiConnectionActionConfiguration> Manual(Expression<Func<ManualBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<MANUALResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ManualResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/manual_func";
                 var apiCallHttpMethod = "post";
@@ -56,12 +56,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<MANUALResponse>(callPayload);
+                return new ApiConnectionAction<ManualResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HTMLTOPDF(Expression<Func<HTMLTOPDFBodyInput>> body)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> HtmlToPdf(Expression<Func<HtmlToPdfBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
-        public IBodyWorkflowAction<FILESTRINGResponse, ApiConnectionActionConfiguration> FILESTRING(Expression<Func<FILESTRINGBodyInput>> body)
+        public IBodyWorkflowAction<FileStringResponse, ApiConnectionActionConfiguration> FileString(Expression<Func<FileStringBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<FILESTRINGResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<FileStringResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/text/file_string";
                 var apiCallHttpMethod = "post";
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<FILESTRINGResponse>(callPayload);
+                return new ApiConnectionAction<FileStringResponse>(callPayload);
             });
         }
     }
@@ -97,15 +97,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
     {
     }
 
-    public class HASHHMACResponse
+    public class HashHmacResponse
     {
         [JsonProperty("hash")]
         public string Hash { get; set; }
     }
 
-    public class HASHHMACBodyInput
+    public class HashHmacBodyInput
     {
-        public HASHHMACBodyInput(string content, string key)
+        public HashHmacBodyInput(string content, string key)
         {
             this.Content = content;
             this.Key = key;
@@ -172,15 +172,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         GostCrypto
     }
 
-    public class PREGREPLACEResponse
+    public class PregReplaceResponse
     {
         [JsonProperty("output")]
         public string Output { get; set; }
     }
 
-    public class PREGREPLACEBodyInput
+    public class PregReplaceBodyInput
     {
-        public PREGREPLACEBodyInput(string pattern, string subject)
+        public PregReplaceBodyInput(string pattern, string subject)
         {
             this.Pattern = pattern;
             this.Subject = subject;
@@ -196,15 +196,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         public string Subject { get; set; }
     }
 
-    public class MANUALResponse
+    public class ManualResponse
     {
         [JsonProperty("output")]
         public string Output { get; set; }
     }
 
-    public class MANUALBodyInput
+    public class ManualBodyInput
     {
-        public MANUALBodyInput(string function, string data)
+        public ManualBodyInput(string function, string data)
         {
             this.Function = function;
             this.Data = data;
@@ -217,9 +217,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         public string Data { get; set; }
     }
 
-    public class HTMLTOPDFBodyInput
+    public class HtmlToPdfBodyInput
     {
-        public HTMLTOPDFBodyInput(string html, string name)
+        public HtmlToPdfBodyInput(string html, string name)
         {
             this.Html = html;
             this.Name = name;
@@ -359,15 +359,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         Unnamed
     }
 
-    public class FILESTRINGResponse
+    public class FileStringResponse
     {
         [JsonProperty("output")]
         public string Output { get; set; }
     }
 
-    public class FILESTRINGBodyInput
+    public class FileStringBodyInput
     {
-        public FILESTRINGBodyInput(string subject)
+        public FileStringBodyInput(string subject)
         {
             this.Subject = subject;
         }

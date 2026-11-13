@@ -13,324 +13,324 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
     public class IaconnectmainframeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPISetHLLAPIdLL(Expression<Func<HLLAPISetHLLAPIdLLInput>> hLLAPISetHLLAPIdLL)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HllapiSetHllapidll(Expression<Func<HllapiSetHllapidllInput>> hllapiSetHllapidll)
         {
-            var __workflow_hLLAPISetHLLAPIdLL = WorkflowExpression.Compile(hLLAPISetHLLAPIdLL, nameof(hLLAPISetHLLAPIdLL), required: true);
+            var __workflow_hllapiSetHllapidll = WorkflowExpression.Compile(hllapiSetHllapidll, nameof(hllapiSetHllapidll), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISetHLLAPIDLL";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPISetHLLAPIdLL);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiSetHllapidll);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPIDispose(Expression<Func<HLLAPIDisposeInput>> hLLAPIDispose)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HllapiDispose(Expression<Func<HllapiDisposeInput>> hllapiDispose)
         {
-            var __workflow_hLLAPIDispose = WorkflowExpression.Compile(hLLAPIDispose, nameof(hLLAPIDispose), required: true);
+            var __workflow_hllapiDispose = WorkflowExpression.Compile(hllapiDispose, nameof(hllapiDispose), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIDispose";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPIDispose);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiDispose);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPIConnect(Expression<Func<HLLAPIConnectInput>> hLLAPIConnect)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HllapiConnect(Expression<Func<HllapiConnectInput>> hllapiConnect)
         {
-            var __workflow_hLLAPIConnect = WorkflowExpression.Compile(hLLAPIConnect, nameof(hLLAPIConnect), required: true);
+            var __workflow_hllapiConnect = WorkflowExpression.Compile(hllapiConnect, nameof(hllapiConnect), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIConnect";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPIConnect);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiConnect);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIGetConnectStatusResponse, ApiConnectionActionConfiguration> HLLAPIGetConnectStatus(Expression<Func<HLLAPIGetConnectStatusInput>> hLLAPIGetConnectStatus)
+        public IBodyWorkflowAction<HllapiGetConnectStatusResponse, ApiConnectionActionConfiguration> HllapiGetConnectStatus(Expression<Func<HllapiGetConnectStatusInput>> hllapiGetConnectStatus)
         {
-            var __workflow_hLLAPIGetConnectStatus = WorkflowExpression.Compile(hLLAPIGetConnectStatus, nameof(hLLAPIGetConnectStatus), required: true);
-            return new DeferredBodyAction<HLLAPIGetConnectStatusResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_hllapiGetConnectStatus = WorkflowExpression.Compile(hllapiGetConnectStatus, nameof(hllapiGetConnectStatus), required: true);
+            return new DeferredBodyAction<HllapiGetConnectStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIGetConnectStatus";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPIGetConnectStatus);
-                return new ApiConnectionAction<HLLAPIGetConnectStatusResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiGetConnectStatus);
+                return new ApiConnectionAction<HllapiGetConnectStatusResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPIDisconnect(Expression<Func<HLLAPIDisconnectInput>> hLLAPIDisconnect)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HllapiDisconnect(Expression<Func<HllapiDisconnectInput>> hllapiDisconnect)
         {
-            var __workflow_hLLAPIDisconnect = WorkflowExpression.Compile(hLLAPIDisconnect, nameof(hLLAPIDisconnect), required: true);
+            var __workflow_hllapiDisconnect = WorkflowExpression.Compile(hllapiDisconnect, nameof(hllapiDisconnect), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIDisconnect";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPIDisconnect);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiDisconnect);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPISetCursorPos(Expression<Func<HLLAPISetCursorPosInput>> hLLAPISetCursorPos)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HllapiSetCursorPos(Expression<Func<HllapiSetCursorPosInput>> hllapiSetCursorPos)
         {
-            var __workflow_hLLAPISetCursorPos = WorkflowExpression.Compile(hLLAPISetCursorPos, nameof(hLLAPISetCursorPos), required: true);
+            var __workflow_hllapiSetCursorPos = WorkflowExpression.Compile(hllapiSetCursorPos, nameof(hllapiSetCursorPos), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISetCursorPos";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPISetCursorPos);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiSetCursorPos);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIGetCursorPosResponse, ApiConnectionActionConfiguration> HLLAPIGetCursorPos(Expression<Func<HLLAPIGetCursorPosInput>> hLLAPIGetCursorPos)
+        public IBodyWorkflowAction<HllapiGetCursorPosResponse, ApiConnectionActionConfiguration> HllapiGetCursorPos(Expression<Func<HllapiGetCursorPosInput>> hllapiGetCursorPos)
         {
-            var __workflow_hLLAPIGetCursorPos = WorkflowExpression.Compile(hLLAPIGetCursorPos, nameof(hLLAPIGetCursorPos), required: true);
-            return new DeferredBodyAction<HLLAPIGetCursorPosResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_hllapiGetCursorPos = WorkflowExpression.Compile(hllapiGetCursorPos, nameof(hllapiGetCursorPos), required: true);
+            return new DeferredBodyAction<HllapiGetCursorPosResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIGetCursorPos";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPIGetCursorPos);
-                return new ApiConnectionAction<HLLAPIGetCursorPosResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiGetCursorPos);
+                return new ApiConnectionAction<HllapiGetCursorPosResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPISendString(Expression<Func<HLLAPISendStringInput>> hLLAPISendString)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HllapiSendString(Expression<Func<HllapiSendStringInput>> hllapiSendString)
         {
-            var __workflow_hLLAPISendString = WorkflowExpression.Compile(hLLAPISendString, nameof(hLLAPISendString), required: true);
+            var __workflow_hllapiSendString = WorkflowExpression.Compile(hllapiSendString, nameof(hllapiSendString), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISendString";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPISendString);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiSendString);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPISendPassword(Expression<Func<HLLAPISendPasswordInput>> hLLAPISendPassword)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HllapiSendPassword(Expression<Func<HllapiSendPasswordInput>> hllapiSendPassword)
         {
-            var __workflow_hLLAPISendPassword = WorkflowExpression.Compile(hLLAPISendPassword, nameof(hLLAPISendPassword), required: true);
+            var __workflow_hllapiSendPassword = WorkflowExpression.Compile(hllapiSendPassword, nameof(hllapiSendPassword), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISendPassword";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPISendPassword);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiSendPassword);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPISendStringAtCursorPos(Expression<Func<HLLAPISendStringAtCursorPosInput>> hLLAPISendStringAtCursorPos)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HllapiSendStringAtCursorPos(Expression<Func<HllapiSendStringAtCursorPosInput>> hllapiSendStringAtCursorPos)
         {
-            var __workflow_hLLAPISendStringAtCursorPos = WorkflowExpression.Compile(hLLAPISendStringAtCursorPos, nameof(hLLAPISendStringAtCursorPos), required: true);
+            var __workflow_hllapiSendStringAtCursorPos = WorkflowExpression.Compile(hllapiSendStringAtCursorPos, nameof(hllapiSendStringAtCursorPos), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISendStringAtCursorPos";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPISendStringAtCursorPos);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiSendStringAtCursorPos);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPISendPasswordAtCursorPos(Expression<Func<HLLAPISendPasswordAtCursorPosInput>> hLLAPISendPasswordAtCursorPos)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HllapiSendPasswordAtCursorPos(Expression<Func<HllapiSendPasswordAtCursorPosInput>> hllapiSendPasswordAtCursorPos)
         {
-            var __workflow_hLLAPISendPasswordAtCursorPos = WorkflowExpression.Compile(hLLAPISendPasswordAtCursorPos, nameof(hLLAPISendPasswordAtCursorPos), required: true);
+            var __workflow_hllapiSendPasswordAtCursorPos = WorkflowExpression.Compile(hllapiSendPasswordAtCursorPos, nameof(hllapiSendPasswordAtCursorPos), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISendPasswordAtCursorPos";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPISendPasswordAtCursorPos);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiSendPasswordAtCursorPos);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIReadScreenAtCursorPosResponse, ApiConnectionActionConfiguration> HLLAPIReadScreenAtCursorPos(Expression<Func<HLLAPIReadScreenAtCursorPosInput>> hLLAPIReadScreenAtCursorPos)
+        public IBodyWorkflowAction<HllapiReadScreenAtCursorPosResponse, ApiConnectionActionConfiguration> HllapiReadScreenAtCursorPos(Expression<Func<HllapiReadScreenAtCursorPosInput>> hllapiReadScreenAtCursorPos)
         {
-            var __workflow_hLLAPIReadScreenAtCursorPos = WorkflowExpression.Compile(hLLAPIReadScreenAtCursorPos, nameof(hLLAPIReadScreenAtCursorPos), required: true);
-            return new DeferredBodyAction<HLLAPIReadScreenAtCursorPosResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_hllapiReadScreenAtCursorPos = WorkflowExpression.Compile(hllapiReadScreenAtCursorPos, nameof(hllapiReadScreenAtCursorPos), required: true);
+            return new DeferredBodyAction<HllapiReadScreenAtCursorPosResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIReadScreenAtCursorPos";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenAtCursorPos);
-                return new ApiConnectionAction<HLLAPIReadScreenAtCursorPosResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiReadScreenAtCursorPos);
+                return new ApiConnectionAction<HllapiReadScreenAtCursorPosResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIQuerySessionStatusResponse, ApiConnectionActionConfiguration> HLLAPIQuerySessionStatus(Expression<Func<HLLAPIQuerySessionStatusInput>> hLLAPIQuerySessionStatus)
+        public IBodyWorkflowAction<HllapiQuerySessionStatusResponse, ApiConnectionActionConfiguration> HllapiQuerySessionStatus(Expression<Func<HllapiQuerySessionStatusInput>> hllapiQuerySessionStatus)
         {
-            var __workflow_hLLAPIQuerySessionStatus = WorkflowExpression.Compile(hLLAPIQuerySessionStatus, nameof(hLLAPIQuerySessionStatus), required: true);
-            return new DeferredBodyAction<HLLAPIQuerySessionStatusResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_hllapiQuerySessionStatus = WorkflowExpression.Compile(hllapiQuerySessionStatus, nameof(hllapiQuerySessionStatus), required: true);
+            return new DeferredBodyAction<HllapiQuerySessionStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIQuerySessionStatus";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPIQuerySessionStatus);
-                return new ApiConnectionAction<HLLAPIQuerySessionStatusResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiQuerySessionStatus);
+                return new ApiConnectionAction<HllapiQuerySessionStatusResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIReadScreenRowsResponse, ApiConnectionActionConfiguration> HLLAPIReadScreenRows(Expression<Func<HLLAPIReadScreenRowsInput>> hLLAPIReadScreenRows)
+        public IBodyWorkflowAction<HllapiReadScreenRowsResponse, ApiConnectionActionConfiguration> HllapiReadScreenRows(Expression<Func<HllapiReadScreenRowsInput>> hllapiReadScreenRows)
         {
-            var __workflow_hLLAPIReadScreenRows = WorkflowExpression.Compile(hLLAPIReadScreenRows, nameof(hLLAPIReadScreenRows), required: true);
-            return new DeferredBodyAction<HLLAPIReadScreenRowsResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_hllapiReadScreenRows = WorkflowExpression.Compile(hllapiReadScreenRows, nameof(hllapiReadScreenRows), required: true);
+            return new DeferredBodyAction<HllapiReadScreenRowsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIReadScreenRows";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPIReadScreenRows);
-                return new ApiConnectionAction<HLLAPIReadScreenRowsResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiReadScreenRows);
+                return new ApiConnectionAction<HllapiReadScreenRowsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIIsKeyboardUnlockedResponse, ApiConnectionActionConfiguration> HLLAPIIsKeyboardUnlocked(Expression<Func<HLLAPIIsKeyboardUnlockedInput>> hLLAPIIsKeyboardUnlocked)
+        public IBodyWorkflowAction<HllapiisKeyboardUnlockedResponse, ApiConnectionActionConfiguration> HllapiisKeyboardUnlocked(Expression<Func<HllapiisKeyboardUnlockedInput>> hllapiisKeyboardUnlocked)
         {
-            var __workflow_hLLAPIIsKeyboardUnlocked = WorkflowExpression.Compile(hLLAPIIsKeyboardUnlocked, nameof(hLLAPIIsKeyboardUnlocked), required: true);
-            return new DeferredBodyAction<HLLAPIIsKeyboardUnlockedResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_hllapiisKeyboardUnlocked = WorkflowExpression.Compile(hllapiisKeyboardUnlocked, nameof(hllapiisKeyboardUnlocked), required: true);
+            return new DeferredBodyAction<HllapiisKeyboardUnlockedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIIsKeyboardUnlocked";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPIIsKeyboardUnlocked);
-                return new ApiConnectionAction<HLLAPIIsKeyboardUnlockedResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiisKeyboardUnlocked);
+                return new ApiConnectionAction<HllapiisKeyboardUnlockedResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIWaitForKeyboardUnlockedResponse, ApiConnectionActionConfiguration> HLLAPIWaitForKeyboardUnlocked(Expression<Func<HLLAPIWaitForKeyboardUnlockedInput>> hLLAPIWaitForKeyboardUnlocked)
+        public IBodyWorkflowAction<HllapiWaitForKeyboardUnlockedResponse, ApiConnectionActionConfiguration> HllapiWaitForKeyboardUnlocked(Expression<Func<HllapiWaitForKeyboardUnlockedInput>> hllapiWaitForKeyboardUnlocked)
         {
-            var __workflow_hLLAPIWaitForKeyboardUnlocked = WorkflowExpression.Compile(hLLAPIWaitForKeyboardUnlocked, nameof(hLLAPIWaitForKeyboardUnlocked), required: true);
-            return new DeferredBodyAction<HLLAPIWaitForKeyboardUnlockedResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_hllapiWaitForKeyboardUnlocked = WorkflowExpression.Compile(hllapiWaitForKeyboardUnlocked, nameof(hllapiWaitForKeyboardUnlocked), required: true);
+            return new DeferredBodyAction<HllapiWaitForKeyboardUnlockedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIWaitForKeyboardUnlocked";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForKeyboardUnlocked);
-                return new ApiConnectionAction<HLLAPIWaitForKeyboardUnlockedResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiWaitForKeyboardUnlocked);
+                return new ApiConnectionAction<HllapiWaitForKeyboardUnlockedResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIWaitForSystemReadyResponse, ApiConnectionActionConfiguration> HLLAPIWaitForSystemReady(Expression<Func<HLLAPIWaitForSystemReadyInput>> hLLAPIWaitForSystemReady)
+        public IBodyWorkflowAction<HllapiWaitForSystemReadyResponse, ApiConnectionActionConfiguration> HllapiWaitForSystemReady(Expression<Func<HllapiWaitForSystemReadyInput>> hllapiWaitForSystemReady)
         {
-            var __workflow_hLLAPIWaitForSystemReady = WorkflowExpression.Compile(hLLAPIWaitForSystemReady, nameof(hLLAPIWaitForSystemReady), required: true);
-            return new DeferredBodyAction<HLLAPIWaitForSystemReadyResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_hllapiWaitForSystemReady = WorkflowExpression.Compile(hllapiWaitForSystemReady, nameof(hllapiWaitForSystemReady), required: true);
+            return new DeferredBodyAction<HllapiWaitForSystemReadyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIWaitForSystemReady";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForSystemReady);
-                return new ApiConnectionAction<HLLAPIWaitForSystemReadyResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiWaitForSystemReady);
+                return new ApiConnectionAction<HllapiWaitForSystemReadyResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPIPressReset(Expression<Func<HLLAPIPressResetInput>> hLLAPIPressReset)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HllapiPressReset(Expression<Func<HllapiPressResetInput>> hllapiPressReset)
         {
-            var __workflow_hLLAPIPressReset = WorkflowExpression.Compile(hLLAPIPressReset, nameof(hLLAPIPressReset), required: true);
+            var __workflow_hllapiPressReset = WorkflowExpression.Compile(hllapiPressReset, nameof(hllapiPressReset), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIPressReset";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPIPressReset);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiPressReset);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPISearchForStringResponse, ApiConnectionActionConfiguration> HLLAPISearchForString(Expression<Func<HLLAPISearchForStringInput>> hLLAPISearchForString)
+        public IBodyWorkflowAction<HllapiSearchForStringResponse, ApiConnectionActionConfiguration> HllapiSearchForString(Expression<Func<HllapiSearchForStringInput>> hllapiSearchForString)
         {
-            var __workflow_hLLAPISearchForString = WorkflowExpression.Compile(hLLAPISearchForString, nameof(hLLAPISearchForString), required: true);
-            return new DeferredBodyAction<HLLAPISearchForStringResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_hllapiSearchForString = WorkflowExpression.Compile(hllapiSearchForString, nameof(hllapiSearchForString), required: true);
+            return new DeferredBodyAction<HllapiSearchForStringResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISearchForString";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPISearchForString);
-                return new ApiConnectionAction<HLLAPISearchForStringResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiSearchForString);
+                return new ApiConnectionAction<HllapiSearchForStringResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIWaitForStringResponse, ApiConnectionActionConfiguration> HLLAPIWaitForString(Expression<Func<HLLAPIWaitForStringInput>> hLLAPIWaitForString)
+        public IBodyWorkflowAction<HllapiWaitForStringResponse, ApiConnectionActionConfiguration> HllapiWaitForString(Expression<Func<HllapiWaitForStringInput>> hllapiWaitForString)
         {
-            var __workflow_hLLAPIWaitForString = WorkflowExpression.Compile(hLLAPIWaitForString, nameof(hLLAPIWaitForString), required: true);
-            return new DeferredBodyAction<HLLAPIWaitForStringResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_hllapiWaitForString = WorkflowExpression.Compile(hllapiWaitForString, nameof(hllapiWaitForString), required: true);
+            return new DeferredBodyAction<HllapiWaitForStringResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIWaitForString";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPIWaitForString);
-                return new ApiConnectionAction<HLLAPIWaitForStringResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiWaitForString);
+                return new ApiConnectionAction<HllapiWaitForStringResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPISetSessionParameter(Expression<Func<HLLAPISetSessionParameterInput>> hLLAPISetSessionParameter)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HllapiSetSessionParameter(Expression<Func<HllapiSetSessionParameterInput>> hllapiSetSessionParameter)
         {
-            var __workflow_hLLAPISetSessionParameter = WorkflowExpression.Compile(hLLAPISetSessionParameter, nameof(hLLAPISetSessionParameter), required: true);
+            var __workflow_hllapiSetSessionParameter = WorkflowExpression.Compile(hllapiSetSessionParameter, nameof(hllapiSetSessionParameter), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPISetSessionParameter";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPISetSessionParameter);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiSetSessionParameter);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> HLLAPIResetSystem(Expression<Func<HLLAPIResetSystemInput>> hLLAPIResetSystem)
+        public IWorkflowAction<ApiConnectionActionConfiguration> HllapiResetSystem(Expression<Func<HllapiResetSystemInput>> hllapiResetSystem)
         {
-            var __workflow_hLLAPIResetSystem = WorkflowExpression.Compile(hLLAPIResetSystem, nameof(hLLAPIResetSystem), required: true);
+            var __workflow_hllapiResetSystem = WorkflowExpression.Compile(hllapiResetSystem, nameof(hllapiResetSystem), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPIResetSystem";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPIResetSystem);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiResetSystem);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPICopyOperatorInformationAreaResponse, ApiConnectionActionConfiguration> HLLAPICopyOperatorInformationArea(Expression<Func<HLLAPICopyOperatorInformationAreaInput>> hLLAPICopyOperatorInformationArea)
+        public IBodyWorkflowAction<HllapiCopyOperatorInformationAreaResponse, ApiConnectionActionConfiguration> HllapiCopyOperatorInformationArea(Expression<Func<HllapiCopyOperatorInformationAreaInput>> hllapiCopyOperatorInformationArea)
         {
-            var __workflow_hLLAPICopyOperatorInformationArea = WorkflowExpression.Compile(hLLAPICopyOperatorInformationArea, nameof(hLLAPICopyOperatorInformationArea), required: true);
-            return new DeferredBodyAction<HLLAPICopyOperatorInformationAreaResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_hllapiCopyOperatorInformationArea = WorkflowExpression.Compile(hllapiCopyOperatorInformationArea, nameof(hllapiCopyOperatorInformationArea), required: true);
+            return new DeferredBodyAction<HllapiCopyOperatorInformationAreaResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/HLLAPI/HLLAPICopyOperatorInformationArea";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hLLAPICopyOperatorInformationArea);
-                return new ApiConnectionAction<HLLAPICopyOperatorInformationAreaResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_hllapiCopyOperatorInformationArea);
+                return new ApiConnectionAction<HllapiCopyOperatorInformationAreaResponse>(callPayload);
             });
         }
     }
@@ -339,40 +339,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
     {
     }
 
-    public class HLLAPISetHLLAPIdLLInput
+    public class HllapiSetHllapidllInput
     {
-        public HLLAPISetHLLAPIdLLInput(string dLLFilename)
+        public HllapiSetHllapidllInput(string dllFileName)
         {
-            this.DLLFilename = dLLFilename;
+            this.DllFileName = dllFileName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DLLFilename { get; set; }
-        public string IAHLLAPIPath { get; set; }
+        [JsonProperty("DLLFilename", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string DllFileName { get; set; }
+
+        [JsonProperty("IAHLLAPIPath")]
+        public string IahllapiPath { get; set; }
         public string EntryPointName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? IsEnhancedInterface { get; set; } = false;
 
         [JsonProperty("Is64BitHLLAPIDLL", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? Is64BitHLLAPIdLL { get; set; } = false;
+        public bool? Is64BitHllapidll { get; set; } = false;
 
         [JsonProperty("UseCOMFor64BitHLLAPIDLL", DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? UseCOMFor64BitHLLAPIdLL { get; set; } = false;
+        public bool? UseComFor64BitHllapidll { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPIDisposeInput
+    public class HllapiDisposeInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPIConnectInput
+    public class HllapiConnectInput
     {
-        public HLLAPIConnectInput(string sessionId)
+        public HllapiConnectInput(string sessionId)
         {
             this.SessionId = sessionId;
         }
@@ -384,24 +386,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPIGetConnectStatusResponse
+    public class HllapiGetConnectStatusResponse
     {
         public bool ConnectedToSession { get; set; }
         public bool SystemBusy { get; set; }
         public bool KeyboardLocked { get; set; }
-        public bool SessionInUseByAnotherHLLAPIApplication { get; set; }
+
+        [JsonProperty("SessionInUseByAnotherHLLAPIApplication")]
+        public bool SessionInUseByAnotherHllapiApplication { get; set; }
 
         [JsonProperty("HLLAPIThreadID")]
-        public int HLLAPIThreadId { get; set; }
+        public int HllapiThreadId { get; set; }
 
         [JsonProperty("COMThreadID")]
-        public int COMThreadId { get; set; }
+        public int ComThreadId { get; set; }
         public int CallCount { get; set; }
     }
 
-    public class HLLAPIGetConnectStatusInput
+    public class HllapiGetConnectStatusInput
     {
-        public HLLAPIGetConnectStatusInput(string sessionId)
+        public HllapiGetConnectStatusInput(string sessionId)
         {
             this.SessionId = sessionId;
         }
@@ -413,9 +417,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPIDisconnectInput
+    public class HllapiDisconnectInput
     {
-        public HLLAPIDisconnectInput(string sessionId)
+        public HllapiDisconnectInput(string sessionId)
         {
             this.SessionId = sessionId;
         }
@@ -427,9 +431,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPISetCursorPosInput
+    public class HllapiSetCursorPosInput
     {
-        public HLLAPISetCursorPosInput(string sessionId, int cursorRowIndex, int cursorColIndex)
+        public HllapiSetCursorPosInput(string sessionId, int cursorRowIndex, int cursorColIndex)
         {
             this.SessionId = sessionId;
             this.CursorRowIndex = cursorRowIndex;
@@ -449,16 +453,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPIGetCursorPosResponse
+    public class HllapiGetCursorPosResponse
     {
         public int CursorRowIndex { get; set; }
         public int CursorColIndex { get; set; }
         public int CursorPos { get; set; }
     }
 
-    public class HLLAPIGetCursorPosInput
+    public class HllapiGetCursorPosInput
     {
-        public HLLAPIGetCursorPosInput(string sessionId)
+        public HllapiGetCursorPosInput(string sessionId)
         {
             this.SessionId = sessionId;
         }
@@ -470,9 +474,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPISendStringInput
+    public class HllapiSendStringInput
     {
-        public HLLAPISendStringInput(string inputString)
+        public HllapiSendStringInput(string inputString)
         {
             this.InputString = inputString;
         }
@@ -484,9 +488,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPISendPasswordInput
+    public class HllapiSendPasswordInput
     {
-        public HLLAPISendPasswordInput(string inputPassword)
+        public HllapiSendPasswordInput(string inputPassword)
         {
             this.InputPassword = inputPassword;
         }
@@ -498,9 +502,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPISendStringAtCursorPosInput
+    public class HllapiSendStringAtCursorPosInput
     {
-        public HLLAPISendStringAtCursorPosInput(string sessionId, int cursorRowIndex, int cursorColIndex, string inputString)
+        public HllapiSendStringAtCursorPosInput(string sessionId, int cursorRowIndex, int cursorColIndex, string inputString)
         {
             this.SessionId = sessionId;
             this.CursorRowIndex = cursorRowIndex;
@@ -524,9 +528,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPISendPasswordAtCursorPosInput
+    public class HllapiSendPasswordAtCursorPosInput
     {
-        public HLLAPISendPasswordAtCursorPosInput(string sessionId, int cursorRowIndex, int cursorColIndex, string inputPassword)
+        public HllapiSendPasswordAtCursorPosInput(string sessionId, int cursorRowIndex, int cursorColIndex, string inputPassword)
         {
             this.SessionId = sessionId;
             this.CursorRowIndex = cursorRowIndex;
@@ -550,14 +554,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPIReadScreenAtCursorPosResponse
+    public class HllapiReadScreenAtCursorPosResponse
     {
         public string ScreenContents { get; set; }
     }
 
-    public class HLLAPIReadScreenAtCursorPosInput
+    public class HllapiReadScreenAtCursorPosInput
     {
-        public HLLAPIReadScreenAtCursorPosInput(string sessionId, int cursorRowIndex, int cursorColIndex, int readScreenLength)
+        public HllapiReadScreenAtCursorPosInput(string sessionId, int cursorRowIndex, int cursorColIndex, int readScreenLength)
         {
             this.SessionId = sessionId;
             this.CursorRowIndex = cursorRowIndex;
@@ -581,7 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPIQuerySessionStatusResponse
+    public class HllapiQuerySessionStatusResponse
     {
         public string SessionLongName { get; set; }
         public string SessionType { get; set; }
@@ -590,20 +594,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public int CodePage { get; set; }
     }
 
-    public class HLLAPIQuerySessionStatusInput
+    public class HllapiQuerySessionStatusInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPIReadScreenRowsResponse
+    public class HllapiReadScreenRowsResponse
     {
-        public string ScreenRowsJSON { get; set; }
+        [JsonProperty("ScreenRowsJSON")]
+        public string ScreenRowsJson { get; set; }
     }
 
-    public class HLLAPIReadScreenRowsInput
+    public class HllapiReadScreenRowsInput
     {
-        public HLLAPIReadScreenRowsInput(string sessionId, int startRowIndex, int endRowIndex)
+        public HllapiReadScreenRowsInput(string sessionId, int startRowIndex, int endRowIndex)
         {
             this.SessionId = sessionId;
             this.StartRowIndex = startRowIndex;
@@ -625,23 +630,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPIIsKeyboardUnlockedResponse
+    public class HllapiisKeyboardUnlockedResponse
     {
         public bool KeyBoardIsUnlocked { get; set; }
     }
 
-    public class HLLAPIIsKeyboardUnlockedInput
+    public class HllapiisKeyboardUnlockedInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPIWaitForKeyboardUnlockedResponse
+    public class HllapiWaitForKeyboardUnlockedResponse
     {
         public bool KeyBoardIsUnlocked { get; set; }
     }
 
-    public class HLLAPIWaitForKeyboardUnlockedInput
+    public class HllapiWaitForKeyboardUnlockedInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double SecondsToWait { get; set; } = 5;
@@ -653,12 +658,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPIWaitForSystemReadyResponse
+    public class HllapiWaitForSystemReadyResponse
     {
         public bool SystemReady { get; set; }
     }
 
-    public class HLLAPIWaitForSystemReadyInput
+    public class HllapiWaitForSystemReadyInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double SecondsToWait { get; set; } = 5;
@@ -670,13 +675,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPIPressResetInput
+    public class HllapiPressResetInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPISearchForStringResponse
+    public class HllapiSearchForStringResponse
     {
         public bool StringFound { get; set; }
         public int StringFoundPosition { get; set; }
@@ -684,9 +689,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public int StringFoundColIndex { get; set; }
     }
 
-    public class HLLAPISearchForStringInput
+    public class HllapiSearchForStringInput
     {
-        public HLLAPISearchForStringInput(string sessionId, string searchString)
+        public HllapiSearchForStringInput(string sessionId, string searchString)
         {
             this.SessionId = sessionId;
             this.SearchString = searchString;
@@ -707,7 +712,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPIWaitForStringResponse
+    public class HllapiWaitForStringResponse
     {
         public bool StringFound { get; set; }
         public int StringFoundPosition { get; set; }
@@ -715,9 +720,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public int StringFoundColIndex { get; set; }
     }
 
-    public class HLLAPIWaitForStringInput
+    public class HllapiWaitForStringInput
     {
-        public HLLAPIWaitForStringInput(string sessionId, string searchString)
+        public HllapiWaitForStringInput(string sessionId, string searchString)
         {
             this.SessionId = sessionId;
             this.SearchString = searchString;
@@ -744,9 +749,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPISetSessionParameterInput
+    public class HllapiSetSessionParameterInput
     {
-        public HLLAPISetSessionParameterInput(string parameter)
+        public HllapiSetSessionParameterInput(string parameter)
         {
             this.Parameter = parameter;
         }
@@ -758,17 +763,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPIResetSystemInput
+    public class HllapiResetSystemInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class HLLAPICopyOperatorInformationAreaResponse
+    public class HllapiCopyOperatorInformationAreaResponse
     {
-        public string OIAFormat { get; set; }
+        [JsonProperty("OIAFormat")]
+        public string OiaFormat { get; set; }
         public bool SystemWait { get; set; }
-        public bool CAPS { get; set; }
+
+        [JsonProperty("CAPS")]
+        public bool Caps { get; set; }
         public bool ShiftKey { get; set; }
         public bool SubsystemReady { get; set; }
         public bool InsertMode { get; set; }
@@ -776,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
         public string InputType { get; set; }
     }
 
-    public class HLLAPICopyOperatorInformationAreaInput
+    public class HllapiCopyOperatorInformationAreaInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";

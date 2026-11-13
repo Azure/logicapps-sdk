@@ -152,9 +152,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
         public bool ContainedXxeThreat { get; set; }
         public bool ContainedSqlInjectionThreat { get; set; }
         public bool ContainedSsrfThreat { get; set; }
-        public bool IsXML { get; set; }
-        public bool IsJSON { get; set; }
-        public bool IsURL { get; set; }
+
+        [JsonProperty("IsXML")]
+        public bool IsXml { get; set; }
+
+        [JsonProperty("IsJSON")]
+        public bool IsJson { get; set; }
+
+        [JsonProperty("IsURL")]
+        public bool IsUrl { get; set; }
         public string OriginalInput { get; set; }
     }
 
@@ -188,13 +194,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
 
     public class UrlSsrfThreatDetectionResponseFull
     {
-        public bool CleanURL { get; set; }
+        [JsonProperty("CleanURL")]
+        public bool CleanUrl { get; set; }
         public string ThreatLevel { get; set; }
     }
 
     public class RequestInput
     {
-        public string URL { get; set; }
+        [JsonProperty("URL")]
+        public string Url { get; set; }
         public string[] BlockedDomains { get; set; }
     }
 

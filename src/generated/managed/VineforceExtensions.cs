@@ -675,7 +675,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         Word,
         Excel,
         PowerPoint,
-        PDF,
+        [EnumMember(Value = "PDF")]
+        Pdf,
         Photo,
         OneNote,
         Visio,
@@ -1214,13 +1215,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string ContactType { get; set; }
 
         [JsonProperty("companyID1")]
-        public string CompanyID1 { get; set; }
+        public string CompanyId1 { get; set; }
 
         [JsonProperty("companyID2")]
-        public string CompanyID2 { get; set; }
+        public string CompanyId2 { get; set; }
 
         [JsonProperty("companyID3")]
-        public string CompanyID3 { get; set; }
+        public string CompanyId3 { get; set; }
 
         [JsonProperty("accountNumber")]
         public string AccountNumber { get; set; }
@@ -1512,7 +1513,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         CompanyId,
         [EnumMember(Value = "Company Name")]
         CompanyName,
-        URL
+        [EnumMember(Value = "URL")]
+        Url
     }
 
     public class GetTaskByResourceExtResponse
@@ -2123,7 +2125,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         Word,
         Excel,
         PowerPoint,
-        PDF,
+        [EnumMember(Value = "PDF")]
+        Pdf,
         Photo,
         OneNote,
         Visio,

@@ -770,21 +770,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     public class WebUrlResponse
     {
         [JsonProperty("url")]
-        public string WebURL { get; set; }
+        public string WebUrl { get; set; }
     }
 
     public class FlowV1SharePointFlowJobsCreateSiteFromTemplateRequestInput
     {
-        public FlowV1SharePointFlowJobsCreateSiteFromTemplateRequestInput(string sharePointSiteURL, string title, string template, string leafURL)
+        public FlowV1SharePointFlowJobsCreateSiteFromTemplateRequestInput(string sharePointSiteUrl, string title, string template, string leafUrl)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.Title = title;
             this.Template = template;
-            this.LeafURL = leafURL;
+            this.LeafUrl = leafUrl;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -793,7 +793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string Template { get; set; }
 
         [JsonProperty("leafUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LeafURL { get; set; }
+        public string LeafUrl { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -835,14 +835,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsActivateFeatureRequestInput
     {
-        public FlowV1SharePointFlowJobsActivateFeatureRequestInput(string sharePointSiteURL, string featureId)
+        public FlowV1SharePointFlowJobsActivateFeatureRequestInput(string sharePointSiteUrl, string featureId)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.FeatureId = featureId;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("featureId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string FeatureId { get; set; }
@@ -853,15 +853,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsCreateListOrLibraryRequestInput
     {
-        public FlowV1SharePointFlowJobsCreateListOrLibraryRequestInput(string sharePointSiteURL, string title, string template)
+        public FlowV1SharePointFlowJobsCreateListOrLibraryRequestInput(string sharePointSiteUrl, string title, string template)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.Title = title;
             this.Template = template;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Title { get; set; }
@@ -870,7 +870,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string Template { get; set; }
 
         [JsonProperty("partialUrl")]
-        public string PartialURL { get; set; }
+        public string PartialUrl { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -881,15 +881,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsSetDefaultSiteGroupRequestInput
     {
-        public FlowV1SharePointFlowJobsSetDefaultSiteGroupRequestInput(string sharePointSiteURL, RequestInputGroupTypeType groupType, string groupName)
+        public FlowV1SharePointFlowJobsSetDefaultSiteGroupRequestInput(string sharePointSiteUrl, RequestInputGroupTypeType groupType, string groupName)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.GroupType = groupType;
             this.GroupName = groupName;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("groupType", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestInputGroupTypeType GroupType { get; set; }
@@ -912,41 +912,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public int DocumentId { get; set; }
 
         [JsonProperty("url")]
-        public string DocumentURL { get; set; }
+        public string DocumentUrl { get; set; }
     }
 
     public class FlowV1SharePointFlowJobsCopyDocumentFromLibraryRequestInput
     {
-        public FlowV1SharePointFlowJobsCopyDocumentFromLibraryRequestInput(string sharePointSiteURL, string sourceURL, string destinationURL)
+        public FlowV1SharePointFlowJobsCopyDocumentFromLibraryRequestInput(string sharePointSiteUrl, string sourceUrl, string destinationUrl)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
-            this.SourceURL = sourceURL;
-            this.DestinationURL = destinationURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
+            this.SourceUrl = sourceUrl;
+            this.DestinationUrl = destinationUrl;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("sourceUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SourceURL { get; set; }
+        public string SourceUrl { get; set; }
 
         [JsonProperty("destinationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DestinationURL { get; set; }
+        public string DestinationUrl { get; set; }
     }
 
     public class FlowV1SharePointFlowJobsRemoveDocumentByUrlRequestInput
     {
-        public FlowV1SharePointFlowJobsRemoveDocumentByUrlRequestInput(string sharePointSiteURL, string documentURL)
+        public FlowV1SharePointFlowJobsRemoveDocumentByUrlRequestInput(string sharePointSiteUrl, string documentUrl)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
-            this.DocumentURL = documentURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
+            this.DocumentUrl = documentUrl;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("sourceUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentURL { get; set; }
+        public string DocumentUrl { get; set; }
     }
 
     public class DocumentSetInfoResponse
@@ -955,20 +955,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public int DocumentSetId { get; set; }
 
         [JsonProperty("url")]
-        public string DocumentSetURL { get; set; }
+        public string DocumentSetUrl { get; set; }
     }
 
     public class FlowV1SharePointFlowJobsCreateDocumentSetRequestInput
     {
-        public FlowV1SharePointFlowJobsCreateDocumentSetRequestInput(string sharePointSiteURL, string documentSetName, string targetList)
+        public FlowV1SharePointFlowJobsCreateDocumentSetRequestInput(string sharePointSiteUrl, string documentSetName, string targetList)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.DocumentSetName = documentSetName;
             this.TargetList = targetList;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("documentSetName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string DocumentSetName { get; set; }
@@ -986,35 +986,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public int FolderId { get; set; }
 
         [JsonProperty("url")]
-        public string FolderURL { get; set; }
+        public string FolderUrl { get; set; }
     }
 
     public class FlowV1SharePointFlowJobsCreateFolderByUrlRequestInput
     {
-        public FlowV1SharePointFlowJobsCreateFolderByUrlRequestInput(string sharePointSiteURL, string folderURL)
+        public FlowV1SharePointFlowJobsCreateFolderByUrlRequestInput(string sharePointSiteUrl, string folderUrl)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
-            this.FolderURL = folderURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
+            this.FolderUrl = folderUrl;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("folderUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FolderURL { get; set; }
+        public string FolderUrl { get; set; }
     }
 
     public class FlowV1SharePointFlowJobsCreateFolderInListRequestInput
     {
-        public FlowV1SharePointFlowJobsCreateFolderInListRequestInput(string sharePointSiteURL, string targetList, string folderPath)
+        public FlowV1SharePointFlowJobsCreateFolderInListRequestInput(string sharePointSiteUrl, string targetList, string folderPath)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.TargetList = targetList;
             this.FolderPath = folderPath;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("targetListUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         public string TargetList { get; set; }
@@ -1025,32 +1025,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsRemoveFolderByUrlRequestInput
     {
-        public FlowV1SharePointFlowJobsRemoveFolderByUrlRequestInput(string sharePointSiteURL, string folderURL)
+        public FlowV1SharePointFlowJobsRemoveFolderByUrlRequestInput(string sharePointSiteUrl, string folderUrl)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
-            this.FolderURL = folderURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
+            this.FolderUrl = folderUrl;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("sourceUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string FolderURL { get; set; }
+        public string FolderUrl { get; set; }
     }
 
     public class FlowV1SharePointFlowJobsCheckInDocumentRequestInput
     {
-        public FlowV1SharePointFlowJobsCheckInDocumentRequestInput(string sharePointSiteURL, string documentURL)
+        public FlowV1SharePointFlowJobsCheckInDocumentRequestInput(string sharePointSiteUrl, string documentUrl)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
-            this.DocumentURL = documentURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
+            this.DocumentUrl = documentUrl;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("documentUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentURL { get; set; }
+        public string DocumentUrl { get; set; }
 
         [JsonProperty("comment")]
         public string Comment { get; set; }
@@ -1058,17 +1058,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsCheckOutDocumentRequestInput
     {
-        public FlowV1SharePointFlowJobsCheckOutDocumentRequestInput(string sharePointSiteURL, string documentURL)
+        public FlowV1SharePointFlowJobsCheckOutDocumentRequestInput(string sharePointSiteUrl, string documentUrl)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
-            this.DocumentURL = documentURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
+            this.DocumentUrl = documentUrl;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("documentUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DocumentURL { get; set; }
+        public string DocumentUrl { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1081,14 +1081,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsApplySiteDesignRequestInput
     {
-        public FlowV1SharePointFlowJobsApplySiteDesignRequestInput(string sharePointSiteURL, string siteDesign)
+        public FlowV1SharePointFlowJobsApplySiteDesignRequestInput(string sharePointSiteUrl, string siteDesign)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.SiteDesign = siteDesign;
         }
 
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("siteDesign", DefaultValueHandling = DefaultValueHandling.Include)]
         public string SiteDesign { get; set; }
@@ -1096,14 +1096,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsCreateSharePointGroupRequestInput
     {
-        public FlowV1SharePointFlowJobsCreateSharePointGroupRequestInput(string sharePointSiteURL, string groupName)
+        public FlowV1SharePointFlowJobsCreateSharePointGroupRequestInput(string sharePointSiteUrl, string groupName)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.GroupName = groupName;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("groupName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupName { get; set; }
@@ -1117,14 +1117,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsCheckSharePointGroupExistsRequestInput
     {
-        public FlowV1SharePointFlowJobsCheckSharePointGroupExistsRequestInput(string sharePointSiteURL, string groupName)
+        public FlowV1SharePointFlowJobsCheckSharePointGroupExistsRequestInput(string sharePointSiteUrl, string groupName)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.GroupName = groupName;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("groupName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupName { get; set; }
@@ -1132,15 +1132,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsUpdateSharePointGroupPropertiesRequestInput
     {
-        public FlowV1SharePointFlowJobsUpdateSharePointGroupPropertiesRequestInput(string sharePointSiteURL, string groupName, SPGroupProperties properties)
+        public FlowV1SharePointFlowJobsUpdateSharePointGroupPropertiesRequestInput(string sharePointSiteUrl, string groupName, SPGroupProperties properties)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.GroupName = groupName;
             this.Properties = properties;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("groupName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupName { get; set; }
@@ -1184,15 +1184,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsAddUserToSharePointGroupRequestInput
     {
-        public FlowV1SharePointFlowJobsAddUserToSharePointGroupRequestInput(string sharePointSiteURL, string groupName, string user)
+        public FlowV1SharePointFlowJobsAddUserToSharePointGroupRequestInput(string sharePointSiteUrl, string groupName, string user)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.GroupName = groupName;
             this.User = user;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("groupName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupName { get; set; }
@@ -1206,15 +1206,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsRemoveUserFromSharePointGroupRequestInput
     {
-        public FlowV1SharePointFlowJobsRemoveUserFromSharePointGroupRequestInput(string sharePointSiteURL, string groupName, string user)
+        public FlowV1SharePointFlowJobsRemoveUserFromSharePointGroupRequestInput(string sharePointSiteUrl, string groupName, string user)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.GroupName = groupName;
             this.User = user;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("groupName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string GroupName { get; set; }
@@ -1252,14 +1252,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsUpdateSharePointSitePropertiesRequestInput
     {
-        public FlowV1SharePointFlowJobsUpdateSharePointSitePropertiesRequestInput(string sharePointSiteURL, SPWebProperties properties)
+        public FlowV1SharePointFlowJobsUpdateSharePointSitePropertiesRequestInput(string sharePointSiteUrl, SPWebProperties properties)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.Properties = properties;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("properties", DefaultValueHandling = DefaultValueHandling.Include)]
         public SPWebProperties Properties { get; set; }
@@ -1280,10 +1280,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public bool? TreeViewEnabled { get; set; }
 
         [JsonProperty("siteLogoUrl")]
-        public string SiteLogoURL { get; set; }
+        public string SiteLogoUrl { get; set; }
 
         [JsonProperty("alternateCssUrl")]
-        public string AlternateCssURL { get; set; }
+        public string AlternateCssUrl { get; set; }
 
         [JsonProperty("associatedMemberGroup")]
         public string AssociatedMemberGroup { get; set; }
@@ -1298,7 +1298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public bool? ContainsConfidentialInfo { get; set; }
 
         [JsonProperty("customMasterUrl")]
-        public string CustomMasterURL { get; set; }
+        public string CustomMasterUrl { get; set; }
 
         [JsonProperty("enableMinimalDownload")]
         public bool? EnableMinimalDownload { get; set; }
@@ -1307,7 +1307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public bool? IsMultilingual { get; set; }
 
         [JsonProperty("masterUrl")]
-        public string MasterURL { get; set; }
+        public string MasterUrl { get; set; }
 
         [JsonProperty("membersCanShare")]
         public bool? MembersCanShare { get; set; }
@@ -1325,7 +1325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public bool? SaveSiteAsTemplateEnabled { get; set; }
 
         [JsonProperty("serverRelativeUrl")]
-        public string ServerRelativeURL { get; set; }
+        public string ServerRelativeUrl { get; set; }
 
         [JsonProperty("syndicationEnabled")]
         public bool? SyndicationEnabled { get; set; }
@@ -1336,13 +1336,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsDeleteSharePointSiteRequestInput
     {
-        public FlowV1SharePointFlowJobsDeleteSharePointSiteRequestInput(string sharePointSiteURL)
+        public FlowV1SharePointFlowJobsDeleteSharePointSiteRequestInput(string sharePointSiteUrl)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
     }
 
     public class SPSiteOptionValueResponse
@@ -1353,14 +1353,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsGetSharePointSiteOptionValueAsStringRequestInput
     {
-        public FlowV1SharePointFlowJobsGetSharePointSiteOptionValueAsStringRequestInput(string sharePointSiteURL, string optionName)
+        public FlowV1SharePointFlowJobsGetSharePointSiteOptionValueAsStringRequestInput(string sharePointSiteUrl, string optionName)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.OptionName = optionName;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("optionName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string OptionName { get; set; }
@@ -1377,30 +1377,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     public class ListFileUrlsResponse
     {
         [JsonProperty("fileUrls")]
-        public string[] FileURLs { get; set; }
+        public string[] FileUrls { get; set; }
     }
 
     public class FlowV1SharePointFlowJobsCopyAttachmentsToUrlRequestInput
     {
-        public FlowV1SharePointFlowJobsCopyAttachmentsToUrlRequestInput(string sharePointSiteURL, string listURL, int itemId, string destinationFolderURL)
+        public FlowV1SharePointFlowJobsCopyAttachmentsToUrlRequestInput(string sharePointSiteUrl, string listUrl, int itemId, string destinationFolderUrl)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
-            this.ListURL = listURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
+            this.ListUrl = listUrl;
             this.ItemId = itemId;
-            this.DestinationFolderURL = destinationFolderURL;
+            this.DestinationFolderUrl = destinationFolderUrl;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("listUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ListURL { get; set; }
+        public string ListUrl { get; set; }
 
         [JsonProperty("itemId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ItemId { get; set; }
 
         [JsonProperty("destinationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DestinationFolderURL { get; set; }
+        public string DestinationFolderUrl { get; set; }
 
         [JsonProperty("overwrite")]
         public bool? Overwrite { get; set; }
@@ -1408,18 +1408,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsAddContentTypeToSharePointListRequestInput
     {
-        public FlowV1SharePointFlowJobsAddContentTypeToSharePointListRequestInput(string sharePointSiteURL, string listURL, string contentTypeName)
+        public FlowV1SharePointFlowJobsAddContentTypeToSharePointListRequestInput(string sharePointSiteUrl, string listUrl, string contentTypeName)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
-            this.ListURL = listURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
+            this.ListUrl = listUrl;
             this.ContentTypeName = contentTypeName;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("listUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ListURL { get; set; }
+        public string ListUrl { get; set; }
 
         [JsonProperty("contentTypeName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ContentTypeName { get; set; }
@@ -1436,25 +1436,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsCopyListItemToSharePointListRequestInput
     {
-        public FlowV1SharePointFlowJobsCopyListItemToSharePointListRequestInput(string sharePointSiteURL, string listURL, string itemId, string destinationListURL)
+        public FlowV1SharePointFlowJobsCopyListItemToSharePointListRequestInput(string sharePointSiteUrl, string listUrl, string itemId, string destinationListUrl)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
-            this.ListURL = listURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
+            this.ListUrl = listUrl;
             this.ItemId = itemId;
-            this.DestinationListURL = destinationListURL;
+            this.DestinationListUrl = destinationListUrl;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("listUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ListURL { get; set; }
+        public string ListUrl { get; set; }
 
         [JsonProperty("itemId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ItemId { get; set; }
 
         [JsonProperty("destinationListUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DestinationListURL { get; set; }
+        public string DestinationListUrl { get; set; }
 
         [JsonProperty("copyAttachments")]
         public bool? CopyAttachments { get; set; }
@@ -1462,25 +1462,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsMoveListItemToSharePointListRequestInput
     {
-        public FlowV1SharePointFlowJobsMoveListItemToSharePointListRequestInput(string sharePointSiteURL, string listURL, string itemId, string destinationListURL)
+        public FlowV1SharePointFlowJobsMoveListItemToSharePointListRequestInput(string sharePointSiteUrl, string listUrl, string itemId, string destinationListUrl)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
-            this.ListURL = listURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
+            this.ListUrl = listUrl;
             this.ItemId = itemId;
-            this.DestinationListURL = destinationListURL;
+            this.DestinationListUrl = destinationListUrl;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("listUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ListURL { get; set; }
+        public string ListUrl { get; set; }
 
         [JsonProperty("itemId", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ItemId { get; set; }
 
         [JsonProperty("destinationListUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string DestinationListURL { get; set; }
+        public string DestinationListUrl { get; set; }
 
         [JsonProperty("copyAttachments")]
         public bool? MoveAttachments { get; set; }
@@ -1489,21 +1489,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     public class WorkflowGuidResponse
     {
         [JsonProperty("workflowGuid")]
-        public string WorkflowGUID { get; set; }
+        public string WorkflowGuid { get; set; }
     }
 
     public class FlowV1SharePointFlowJobsStartListWorkflowRequestInput
     {
-        public FlowV1SharePointFlowJobsStartListWorkflowRequestInput(string sharePointSiteURL, string workflowName, string listURL, int itemId)
+        public FlowV1SharePointFlowJobsStartListWorkflowRequestInput(string sharePointSiteUrl, string workflowName, string listUrl, int itemId)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.WorkflowName = workflowName;
-            this.ListURL = listURL;
+            this.ListUrl = listUrl;
             this.ItemId = itemId;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("workflowName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkflowName { get; set; }
@@ -1512,7 +1512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public JToken InputParameters { get; set; }
 
         [JsonProperty("listUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ListURL { get; set; }
+        public string ListUrl { get; set; }
 
         [JsonProperty("itemId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ItemId { get; set; }
@@ -1520,14 +1520,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsStartSiteWorkflowRequestInput
     {
-        public FlowV1SharePointFlowJobsStartSiteWorkflowRequestInput(string sharePointSiteURL, string workflowName)
+        public FlowV1SharePointFlowJobsStartSiteWorkflowRequestInput(string sharePointSiteUrl, string workflowName)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.WorkflowName = workflowName;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("workflowName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string WorkflowName { get; set; }
@@ -1538,24 +1538,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsGetItemsByCamlQueryRequestInput
     {
-        public FlowV1SharePointFlowJobsGetItemsByCamlQueryRequestInput(string sharePointSiteURL, string listURL, string cAMLQuery)
+        public FlowV1SharePointFlowJobsGetItemsByCamlQueryRequestInput(string sharePointSiteUrl, string listUrl, string camlQuery)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
-            this.ListURL = listURL;
-            this.CAMLQuery = cAMLQuery;
+            this.SharePointSiteUrl = sharePointSiteUrl;
+            this.ListUrl = listUrl;
+            this.CamlQuery = camlQuery;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("listUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ListURL { get; set; }
+        public string ListUrl { get; set; }
 
         [JsonProperty("folderUrl")]
-        public string FolderURL { get; set; }
+        public string FolderUrl { get; set; }
 
         [JsonProperty("camlQuery", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string CAMLQuery { get; set; }
+        public string CamlQuery { get; set; }
     }
 
     public class VersionsHistoryResponse
@@ -1581,19 +1581,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsGetVersionsHistoryRequestInput
     {
-        public FlowV1SharePointFlowJobsGetVersionsHistoryRequestInput(string sharePointSiteURL, string listURL, int itemId, string fieldName)
+        public FlowV1SharePointFlowJobsGetVersionsHistoryRequestInput(string sharePointSiteUrl, string listUrl, int itemId, string fieldName)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
-            this.ListURL = listURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
+            this.ListUrl = listUrl;
             this.ItemId = itemId;
             this.FieldName = fieldName;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("listUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ListURL { get; set; }
+        public string ListUrl { get; set; }
 
         [JsonProperty("itemId", DefaultValueHandling = DefaultValueHandling.Include)]
         public int ItemId { get; set; }
@@ -1604,14 +1604,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsProvisionPnPTemplateRequestInput
     {
-        public FlowV1SharePointFlowJobsProvisionPnPTemplateRequestInput(string sharePointSiteURL, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent templateContent)
+        public FlowV1SharePointFlowJobsProvisionPnPTemplateRequestInput(string sharePointSiteUrl, global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent templateContent)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.TemplateContent = templateContent;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("xmlTemplateContent", DefaultValueHandling = DefaultValueHandling.Include)]
         public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent TemplateContent { get; set; }
@@ -1643,15 +1643,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsAddSiteNavigationRequestInput
     {
-        public FlowV1SharePointFlowJobsAddSiteNavigationRequestInput(string sharePointSiteURL, RequestInputLocationType location, string title)
+        public FlowV1SharePointFlowJobsAddSiteNavigationRequestInput(string sharePointSiteUrl, RequestInputLocationType location, string title)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.Location = location;
             this.Title = title;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestInputLocationType Location { get; set; }
@@ -1678,15 +1678,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsRemoveSiteNavigationRequestInput
     {
-        public FlowV1SharePointFlowJobsRemoveSiteNavigationRequestInput(string sharePointSiteURL, RequestInputLocationType location, string title)
+        public FlowV1SharePointFlowJobsRemoveSiteNavigationRequestInput(string sharePointSiteUrl, RequestInputLocationType location, string title)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.Location = location;
             this.Title = title;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("location", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestInputLocationType Location { get; set; }
@@ -1700,22 +1700,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsUpdateListItemRequestInput
     {
-        public FlowV1SharePointFlowJobsUpdateListItemRequestInput(string sharePointSiteURL, string listName, string itemIdOrURL, JToken fieldValues)
+        public FlowV1SharePointFlowJobsUpdateListItemRequestInput(string sharePointSiteUrl, string listName, string itemIdOrUrl, JToken fieldValues)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.ListName = listName;
-            this.ItemIdOrURL = itemIdOrURL;
+            this.ItemIdOrUrl = itemIdOrUrl;
             this.FieldValues = fieldValues;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("listName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListName { get; set; }
 
         [JsonProperty("itemId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ItemIdOrURL { get; set; }
+        public string ItemIdOrUrl { get; set; }
 
         [JsonProperty("data", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken FieldValues { get; set; }
@@ -1723,33 +1723,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
 
     public class FlowV1SharePointFlowJobsDeclareDocumentAsRecordRequestInput
     {
-        public FlowV1SharePointFlowJobsDeclareDocumentAsRecordRequestInput(string sharePointSiteURL, string listName, string itemIdOrURL)
+        public FlowV1SharePointFlowJobsDeclareDocumentAsRecordRequestInput(string sharePointSiteUrl, string listName, string itemIdOrUrl)
         {
-            this.SharePointSiteURL = sharePointSiteURL;
+            this.SharePointSiteUrl = sharePointSiteUrl;
             this.ListName = listName;
-            this.ItemIdOrURL = itemIdOrURL;
+            this.ItemIdOrUrl = itemIdOrUrl;
         }
 
         [JsonProperty("spUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SharePointSiteURL { get; set; }
+        public string SharePointSiteUrl { get; set; }
 
         [JsonProperty("listName", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ListName { get; set; }
 
         [JsonProperty("itemId", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ItemIdOrURL { get; set; }
+        public string ItemIdOrUrl { get; set; }
     }
 
     public class FlowV1SharePointFlowJobsParseCsvRequestInput
     {
-        public FlowV1SharePointFlowJobsParseCsvRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent contentOfCSVDocument, string headers)
+        public FlowV1SharePointFlowJobsParseCsvRequestInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent contentOfCsvDocument, string headers)
         {
-            this.ContentOfCSVDocument = contentOfCSVDocument;
+            this.ContentOfCsvDocument = contentOfCsvDocument;
             this.Headers = headers;
         }
 
         [JsonProperty("content", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ContentOfCSVDocument { get; set; }
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent ContentOfCsvDocument { get; set; }
 
         [JsonProperty("delimiter")]
         public RequestInputDelimiterType? Delimiter { get; set; }
@@ -2160,7 +2160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [EnumMember(Value = "en-US")]
         EnUS,
         [EnumMember(Value = "en-US-POSIX")]
-        EnUSPOSIX,
+        EnUSPosix,
         [EnumMember(Value = "en-VC")]
         EnVC,
         [EnumMember(Value = "en-VG")]

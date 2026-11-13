@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
     public class SoftonewebcrmActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesCallsCallDTO[], ApiConnectionActionConfiguration> CallGetAll(Expression<Func<string>> id = null, Expression<Func<CallGetAllStatusInput>> status = null, Expression<Func<string>> priorityId = null, Expression<Func<string>> createdBy = null, Expression<Func<string>> lastModifiedBy = null, Expression<Func<string>> dueDate = null, Expression<Func<string>> sortDate = null, Expression<Func<string>> assignedToId = null, Expression<Func<string>> relatedToId = null, Expression<Func<string>> callResultId = null, Expression<Func<string>> search = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<TaskApiFeaturesCallsCallDto[], ApiConnectionActionConfiguration> CallGetAll(Expression<Func<string>> id = null, Expression<Func<CallGetAllStatusInput>> status = null, Expression<Func<string>> priorityId = null, Expression<Func<string>> createdBy = null, Expression<Func<string>> lastModifiedBy = null, Expression<Func<string>> dueDate = null, Expression<Func<string>> sortDate = null, Expression<Func<string>> assignedToId = null, Expression<Func<string>> relatedToId = null, Expression<Func<string>> callResultId = null, Expression<Func<string>> search = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<TaskApiFeaturesCallsCallDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TaskApiFeaturesCallsCallDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/task/Call";
                 var apiCallHttpMethod = "get";
@@ -62,35 +62,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<TaskApiFeaturesCallsCallDTO[]>(callPayload);
+                return new ApiConnectionAction<TaskApiFeaturesCallsCallDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesCallsCallDTO, ApiConnectionActionConfiguration> CallCreate(Expression<Func<CallCreateBodyInput>> body = null)
+        public IBodyWorkflowAction<TaskApiFeaturesCallsCallDto, ApiConnectionActionConfiguration> CallCreate(Expression<Func<CallCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TaskApiFeaturesCallsCallDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TaskApiFeaturesCallsCallDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/task/Call";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TaskApiFeaturesCallsCallDTO>(callPayload);
+                return new ApiConnectionAction<TaskApiFeaturesCallsCallDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesCallsCallDTO, ApiConnectionActionConfiguration> CallGetById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<TaskApiFeaturesCallsCallDto, ApiConnectionActionConfiguration> CallGetById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<TaskApiFeaturesCallsCallDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TaskApiFeaturesCallsCallDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/task/Call/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<TaskApiFeaturesCallsCallDTO>(callPayload);
+                return new ApiConnectionAction<TaskApiFeaturesCallsCallDto>(callPayload);
             });
         }
 
@@ -108,23 +108,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesCallsCallDTO, ApiConnectionActionConfiguration> CallUpdate(Expression<Func<string>> id, Expression<Func<CallUpdateBodyInput>> body = null)
+        public IBodyWorkflowAction<TaskApiFeaturesCallsCallDto, ApiConnectionActionConfiguration> CallUpdate(Expression<Func<string>> id, Expression<Func<CallUpdateBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TaskApiFeaturesCallsCallDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TaskApiFeaturesCallsCallDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/task/Call/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TaskApiFeaturesCallsCallDTO>(callPayload);
+                return new ApiConnectionAction<TaskApiFeaturesCallsCallDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesEventsEventDTO[], ApiConnectionActionConfiguration> EventGetAll(Expression<Func<string>> id = null, Expression<Func<EventGetAllStatusInput>> status = null, Expression<Func<EventStatusInput>> eventStatus = null, Expression<Func<string>> startDate = null, Expression<Func<string>> assignedToId = null, Expression<Func<string>> relatedToId = null, Expression<Func<string>> sortDate = null, Expression<Func<string>> parentId = null, Expression<Func<string>> eventResultId = null, Expression<Func<string>> priorityId = null, Expression<Func<string>> search = null, Expression<Func<string>> lastModifiedBy = null, Expression<Func<string>> createdBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<TaskApiFeaturesEventsEventDto[], ApiConnectionActionConfiguration> EventGetAll(Expression<Func<string>> id = null, Expression<Func<EventGetAllStatusInput>> status = null, Expression<Func<EventStatusInput>> eventStatus = null, Expression<Func<string>> startDate = null, Expression<Func<string>> assignedToId = null, Expression<Func<string>> relatedToId = null, Expression<Func<string>> sortDate = null, Expression<Func<string>> parentId = null, Expression<Func<string>> eventResultId = null, Expression<Func<string>> priorityId = null, Expression<Func<string>> search = null, Expression<Func<string>> lastModifiedBy = null, Expression<Func<string>> createdBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<TaskApiFeaturesEventsEventDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TaskApiFeaturesEventsEventDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/task/Event";
                 var apiCallHttpMethod = "get";
@@ -179,35 +179,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<TaskApiFeaturesEventsEventDTO[]>(callPayload);
+                return new ApiConnectionAction<TaskApiFeaturesEventsEventDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesEventsEventDTO, ApiConnectionActionConfiguration> EventCreate(Expression<Func<EventCreateBodyInput>> body = null)
+        public IBodyWorkflowAction<TaskApiFeaturesEventsEventDto, ApiConnectionActionConfiguration> EventCreate(Expression<Func<EventCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TaskApiFeaturesEventsEventDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TaskApiFeaturesEventsEventDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/task/Event";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TaskApiFeaturesEventsEventDTO>(callPayload);
+                return new ApiConnectionAction<TaskApiFeaturesEventsEventDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesEventsEventDTO, ApiConnectionActionConfiguration> EventGetById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<TaskApiFeaturesEventsEventDto, ApiConnectionActionConfiguration> EventGetById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<TaskApiFeaturesEventsEventDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TaskApiFeaturesEventsEventDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/task/Event/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<TaskApiFeaturesEventsEventDTO>(callPayload);
+                return new ApiConnectionAction<TaskApiFeaturesEventsEventDto>(callPayload);
             });
         }
 
@@ -225,23 +225,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesEventsEventDTO, ApiConnectionActionConfiguration> EventUpdate(Expression<Func<string>> id, Expression<Func<EventCreateBodyInput>> body = null)
+        public IBodyWorkflowAction<TaskApiFeaturesEventsEventDto, ApiConnectionActionConfiguration> EventUpdate(Expression<Func<string>> id, Expression<Func<EventCreateBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TaskApiFeaturesEventsEventDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TaskApiFeaturesEventsEventDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/task/Event/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TaskApiFeaturesEventsEventDTO>(callPayload);
+                return new ApiConnectionAction<TaskApiFeaturesEventsEventDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDTO[], ApiConnectionActionConfiguration> NoteGetAll(Expression<Func<string>> id = null, Expression<Func<string>> search = null, Expression<Func<string>> relatedToId = null, Expression<Func<RelatedToTypeInput>> relatedToType = null, Expression<Func<string>> createdBy = null, Expression<Func<string>> lastModifiedBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDto[], ApiConnectionActionConfiguration> NoteGetAll(Expression<Func<string>> id = null, Expression<Func<string>> search = null, Expression<Func<string>> relatedToId = null, Expression<Func<RelatedToTypeInput>> relatedToType = null, Expression<Func<string>> createdBy = null, Expression<Func<string>> lastModifiedBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<TaskApiFeaturesNotesNoteDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TaskApiFeaturesNotesNoteDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/task/Note";
                 var apiCallHttpMethod = "get";
@@ -275,34 +275,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<TaskApiFeaturesNotesNoteDTO[]>(callPayload);
+                return new ApiConnectionAction<TaskApiFeaturesNotesNoteDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDTO, ApiConnectionActionConfiguration> NoteCreate(Expression<Func<NoteCreateBodyInput>> body)
+        public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDto, ApiConnectionActionConfiguration> NoteCreate(Expression<Func<NoteCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<TaskApiFeaturesNotesNoteDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TaskApiFeaturesNotesNoteDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/task/Note";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TaskApiFeaturesNotesNoteDTO>(callPayload);
+                return new ApiConnectionAction<TaskApiFeaturesNotesNoteDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDTO, ApiConnectionActionConfiguration> NoteGetById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDto, ApiConnectionActionConfiguration> NoteGetById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<TaskApiFeaturesNotesNoteDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TaskApiFeaturesNotesNoteDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/task/Note/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<TaskApiFeaturesNotesNoteDTO>(callPayload);
+                return new ApiConnectionAction<TaskApiFeaturesNotesNoteDto>(callPayload);
             });
         }
 
@@ -320,23 +320,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDTO, ApiConnectionActionConfiguration> NoteUpdate(Expression<Func<string>> id, Expression<Func<NoteUpdateBodyInput>> body = null)
+        public IBodyWorkflowAction<TaskApiFeaturesNotesNoteDto, ApiConnectionActionConfiguration> NoteUpdate(Expression<Func<string>> id, Expression<Func<NoteUpdateBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TaskApiFeaturesNotesNoteDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TaskApiFeaturesNotesNoteDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/task/Note/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TaskApiFeaturesNotesNoteDTO>(callPayload);
+                return new ApiConnectionAction<TaskApiFeaturesNotesNoteDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDTO[], ApiConnectionActionConfiguration> TaskGetAll(Expression<Func<string>> id = null, Expression<Func<CallGetAllStatusInput>> status = null, Expression<Func<string>> relatedTo = null, Expression<Func<string>> relatedToId = null, Expression<Func<string>> priorityId = null, Expression<Func<TypeInput>> type = null, Expression<Func<string>> dueDate = null, Expression<Func<string>> sortDate = null, Expression<Func<string>> parentId = null, Expression<Func<string>> lastModifiedBy = null, Expression<Func<string>> createdBy = null, Expression<Func<string>> assignedToId = null, Expression<Func<string>> search = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDto[], ApiConnectionActionConfiguration> TaskGetAll(Expression<Func<string>> id = null, Expression<Func<CallGetAllStatusInput>> status = null, Expression<Func<string>> relatedTo = null, Expression<Func<string>> relatedToId = null, Expression<Func<string>> priorityId = null, Expression<Func<TypeInput>> type = null, Expression<Func<string>> dueDate = null, Expression<Func<string>> sortDate = null, Expression<Func<string>> parentId = null, Expression<Func<string>> lastModifiedBy = null, Expression<Func<string>> createdBy = null, Expression<Func<string>> assignedToId = null, Expression<Func<string>> search = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<TaskApiFeaturesTasksTaskDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TaskApiFeaturesTasksTaskDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Task";
                 var apiCallHttpMethod = "get";
@@ -391,35 +391,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<TaskApiFeaturesTasksTaskDTO[]>(callPayload);
+                return new ApiConnectionAction<TaskApiFeaturesTasksTaskDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDTO, ApiConnectionActionConfiguration> TaskCreate(Expression<Func<TaskCreateBodyInput>> body = null)
+        public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDto, ApiConnectionActionConfiguration> TaskCreate(Expression<Func<TaskCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TaskApiFeaturesTasksTaskDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TaskApiFeaturesTasksTaskDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Task";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TaskApiFeaturesTasksTaskDTO>(callPayload);
+                return new ApiConnectionAction<TaskApiFeaturesTasksTaskDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDTO, ApiConnectionActionConfiguration> TaskGetById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDto, ApiConnectionActionConfiguration> TaskGetById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<TaskApiFeaturesTasksTaskDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TaskApiFeaturesTasksTaskDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Task/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<TaskApiFeaturesTasksTaskDTO>(callPayload);
+                return new ApiConnectionAction<TaskApiFeaturesTasksTaskDto>(callPayload);
             });
         }
 
@@ -437,18 +437,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDTO, ApiConnectionActionConfiguration> TaskUpdate(Expression<Func<string>> id, Expression<Func<TaskUpdateBodyInput>> body = null)
+        public IBodyWorkflowAction<TaskApiFeaturesTasksTaskDto, ApiConnectionActionConfiguration> TaskUpdate(Expression<Func<string>> id, Expression<Func<TaskUpdateBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<TaskApiFeaturesTasksTaskDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<TaskApiFeaturesTasksTaskDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Task/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<TaskApiFeaturesTasksTaskDTO>(callPayload);
+                return new ApiConnectionAction<TaskApiFeaturesTasksTaskDto>(callPayload);
             });
         }
 
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO[], ApiConnectionActionConfiguration> OpportunityGetAll(Expression<Func<string>> id = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> name = null, Expression<Func<double>> amount = null, Expression<Func<string>> closeDate = null, Expression<Func<string>> updateDate = null, Expression<Func<string>> insertDate = null, Expression<Func<string>> accountId = null, Expression<Func<string>> forecastCategoryId = null, Expression<Func<string>> accountSourceTypeId = null, Expression<Func<string>> opportunityStatusId = null, Expression<Func<string>> quoteId = null, Expression<Func<string>> lossReasonId = null, Expression<Func<string>> typeId = null, Expression<Func<string>> lastModifiedBy = null, Expression<Func<string>> createdBy = null, Expression<Func<string>> search = null, Expression<Func<string>> salesPipelineId = null, Expression<Func<string>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDto[], ApiConnectionActionConfiguration> OpportunityGetAll(Expression<Func<string>> id = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> name = null, Expression<Func<double>> amount = null, Expression<Func<string>> closeDate = null, Expression<Func<string>> updateDate = null, Expression<Func<string>> insertDate = null, Expression<Func<string>> accountId = null, Expression<Func<string>> forecastCategoryId = null, Expression<Func<string>> accountSourceTypeId = null, Expression<Func<string>> opportunityStatusId = null, Expression<Func<string>> quoteId = null, Expression<Func<string>> lossReasonId = null, Expression<Func<string>> typeId = null, Expression<Func<string>> lastModifiedBy = null, Expression<Func<string>> createdBy = null, Expression<Func<string>> search = null, Expression<Func<string>> salesPipelineId = null, Expression<Func<string>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             var __workflow_ownerId = WorkflowExpression.Compile(ownerId, nameof(ownerId), required: false);
@@ -600,7 +600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SalesPipelineApiFeaturesOpportunityOpportunityDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Opportunity";
                 var apiCallHttpMethod = "get";
@@ -649,34 +649,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO[]>(callPayload);
+                return new ApiConnectionAction<SalesPipelineApiFeaturesOpportunityOpportunityDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO, ApiConnectionActionConfiguration> OpportunityCreate(Expression<Func<OpportunityCreateBodyInput>> body)
+        public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDto, ApiConnectionActionConfiguration> OpportunityCreate(Expression<Func<OpportunityCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SalesPipelineApiFeaturesOpportunityOpportunityDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Opportunity";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO>(callPayload);
+                return new ApiConnectionAction<SalesPipelineApiFeaturesOpportunityOpportunityDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO, ApiConnectionActionConfiguration> OpportunityGetById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDto, ApiConnectionActionConfiguration> OpportunityGetById(Expression<Func<string>> id)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SalesPipelineApiFeaturesOpportunityOpportunityDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Opportunity/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO>(callPayload);
+                return new ApiConnectionAction<SalesPipelineApiFeaturesOpportunityOpportunityDto>(callPayload);
             });
         }
 
@@ -694,18 +694,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO, ApiConnectionActionConfiguration> OpportunityUpdate(Expression<Func<string>> id, Expression<Func<OpportunityUpdateBodyInput>> body = null)
+        public IBodyWorkflowAction<SalesPipelineApiFeaturesOpportunityOpportunityDto, ApiConnectionActionConfiguration> OpportunityUpdate(Expression<Func<string>> id, Expression<Func<OpportunityUpdateBodyInput>> body = null)
         {
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SalesPipelineApiFeaturesOpportunityOpportunityDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Opportunity/{0}", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<SalesPipelineApiFeaturesOpportunityOpportunityDTO>(callPayload);
+                return new ApiConnectionAction<SalesPipelineApiFeaturesOpportunityOpportunityDto>(callPayload);
             });
         }
 
@@ -736,15 +736,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDTO, ApiConnectionActionConfiguration> AccountGetById(Expression<Func<string>> accountId)
+        public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDto, ApiConnectionActionConfiguration> AccountGetById(Expression<Func<string>> accountId)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
-            return new DeferredBodyAction<CustomerApiFeaturesAccountsAccountDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CustomerApiFeaturesAccountsAccountDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Account/{0}", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<CustomerApiFeaturesAccountsAccountDTO>(callPayload);
+                return new ApiConnectionAction<CustomerApiFeaturesAccountsAccountDto>(callPayload);
             });
         }
 
@@ -762,23 +762,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDTO, ApiConnectionActionConfiguration> AccountUpdate(Expression<Func<string>> accountId, Expression<Func<AccountUpdateBodyInput>> body = null)
+        public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDto, ApiConnectionActionConfiguration> AccountUpdate(Expression<Func<string>> accountId, Expression<Func<AccountUpdateBodyInput>> body = null)
         {
             var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<CustomerApiFeaturesAccountsAccountDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CustomerApiFeaturesAccountsAccountDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Account/{0}", __workflow_accountId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CustomerApiFeaturesAccountsAccountDTO>(callPayload);
+                return new ApiConnectionAction<CustomerApiFeaturesAccountsAccountDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDTO[], ApiConnectionActionConfiguration> AccountGetAll(Expression<Func<string>> parentAccount = null, Expression<Func<string>> phone = null, Expression<Func<string>> suggestions = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> ownershipId = null, Expression<Func<string>> ratingId = null, Expression<Func<string>> classificationId = null, Expression<Func<string>> industryId = null, Expression<Func<string>> accountSourceTypeId = null, Expression<Func<string>> primaryContactId = null, Expression<Func<string>> assignedTeams = null, Expression<Func<string>> search = null, Expression<Func<string>> name = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDto[], ApiConnectionActionConfiguration> AccountGetAll(Expression<Func<string>> parentAccount = null, Expression<Func<string>> phone = null, Expression<Func<string>> suggestions = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> ownershipId = null, Expression<Func<string>> ratingId = null, Expression<Func<string>> classificationId = null, Expression<Func<string>> industryId = null, Expression<Func<string>> accountSourceTypeId = null, Expression<Func<string>> primaryContactId = null, Expression<Func<string>> assignedTeams = null, Expression<Func<string>> search = null, Expression<Func<string>> name = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_parentAccount = WorkflowExpression.Compile(parentAccount, nameof(parentAccount), required: false);
             var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: false);
@@ -797,7 +797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<CustomerApiFeaturesAccountsAccountDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CustomerApiFeaturesAccountsAccountDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Account";
                 var apiCallHttpMethod = "get";
@@ -836,21 +836,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<CustomerApiFeaturesAccountsAccountDTO[]>(callPayload);
+                return new ApiConnectionAction<CustomerApiFeaturesAccountsAccountDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDTO, ApiConnectionActionConfiguration> AccountCreate(Expression<Func<AccountCreateBodyInput>> body)
+        public IBodyWorkflowAction<CustomerApiFeaturesAccountsAccountDto, ApiConnectionActionConfiguration> AccountCreate(Expression<Func<AccountCreateBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<CustomerApiFeaturesAccountsAccountDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CustomerApiFeaturesAccountsAccountDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Account";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CustomerApiFeaturesAccountsAccountDTO>(callPayload);
+                return new ApiConnectionAction<CustomerApiFeaturesAccountsAccountDto>(callPayload);
             });
         }
 
@@ -881,23 +881,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<CustomerApiFeaturesContactsContactDTO, ApiConnectionActionConfiguration> ContactUpdate(Expression<Func<string>> contactId, Expression<Func<ContactUpdateBodyInput>> body = null)
+        public IBodyWorkflowAction<CustomerApiFeaturesContactsContactDto, ApiConnectionActionConfiguration> ContactUpdate(Expression<Func<string>> contactId, Expression<Func<ContactUpdateBodyInput>> body = null)
         {
             var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<CustomerApiFeaturesContactsContactDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CustomerApiFeaturesContactsContactDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Contact/{0}", __workflow_contactId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "put";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CustomerApiFeaturesContactsContactDTO>(callPayload);
+                return new ApiConnectionAction<CustomerApiFeaturesContactsContactDto>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<CustomerApiFeaturesContactsContactDTO[], ApiConnectionActionConfiguration> ContactGetAll(Expression<Func<string>> name = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> suggestions = null, Expression<Func<string>> accountSourceTypeId = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> phone = null, Expression<Func<string>> mobilePhone = null, Expression<Func<string>> accountIds = null, Expression<Func<string>> email = null, Expression<Func<string>> id = null, Expression<Func<string>> assignedTeams = null, Expression<Func<string>> search = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<CustomerApiFeaturesContactsContactDto[], ApiConnectionActionConfiguration> ContactGetAll(Expression<Func<string>> name = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> suggestions = null, Expression<Func<string>> accountSourceTypeId = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> phone = null, Expression<Func<string>> mobilePhone = null, Expression<Func<string>> accountIds = null, Expression<Func<string>> email = null, Expression<Func<string>> id = null, Expression<Func<string>> assignedTeams = null, Expression<Func<string>> search = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_ownerId = WorkflowExpression.Compile(ownerId, nameof(ownerId), required: false);
@@ -915,7 +915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
-            return new DeferredBodyAction<CustomerApiFeaturesContactsContactDTO[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CustomerApiFeaturesContactsContactDto[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Contact";
                 var apiCallHttpMethod = "get";
@@ -952,22 +952,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Queries["PageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
                 if (__workflow_sort != null)
                     callPayload.Queries["Sort"] = ExpressionConverter.Convert(__workflow_sort);
-                return new ApiConnectionAction<CustomerApiFeaturesContactsContactDTO[]>(callPayload);
+                return new ApiConnectionAction<CustomerApiFeaturesContactsContactDto[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "softonewebcrm")]
-        public IBodyWorkflowAction<CustomerApiFeaturesContactsContactDTO, ApiConnectionActionConfiguration> ContactCreate(Expression<Func<ContactCreateBodyInput>> body = null)
+        public IBodyWorkflowAction<CustomerApiFeaturesContactsContactDto, ApiConnectionActionConfiguration> ContactCreate(Expression<Func<ContactCreateBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<CustomerApiFeaturesContactsContactDTO, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<CustomerApiFeaturesContactsContactDto, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Contact";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<CustomerApiFeaturesContactsContactDTO>(callPayload);
+                return new ApiConnectionAction<CustomerApiFeaturesContactsContactDto>(callPayload);
             });
         }
     }
@@ -1170,7 +1170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         }
     }
 
-    public class TaskApiFeaturesCallsCallDTO
+    public class TaskApiFeaturesCallsCallDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1520,7 +1520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Note
     }
 
-    public class TaskApiFeaturesEventsEventDTO
+    public class TaskApiFeaturesEventsEventDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1568,7 +1568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string PriorityId { get; set; }
 
         [JsonProperty("location")]
-        public EventCreateTaskApiFeaturesEventsLocationDTOResponse Location { get; set; }
+        public EventCreateTaskApiFeaturesEventsLocationDtoResponse Location { get; set; }
 
         [JsonProperty("startDate")]
         public string StartDate { get; set; }
@@ -1619,7 +1619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string[] TeamMembers { get; set; }
     }
 
-    public class EventCreateTaskApiFeaturesEventsLocationDTOResponse
+    public class EventCreateTaskApiFeaturesEventsLocationDtoResponse
     {
         [JsonProperty("longitude")]
         public string Longitude { get; set; }
@@ -1694,7 +1694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string PriorityId { get; set; }
 
         [JsonProperty("location")]
-        public EventCreateTaskApiFeaturesEventsLocationDTO Location { get; set; }
+        public EventCreateTaskApiFeaturesEventsLocationDto Location { get; set; }
 
         [JsonProperty("startDate")]
         public string StartDate { get; set; }
@@ -1745,7 +1745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string[] TeamMembers { get; set; }
     }
 
-    public class EventCreateTaskApiFeaturesEventsLocationDTO
+    public class EventCreateTaskApiFeaturesEventsLocationDto
     {
         [JsonProperty("longitude")]
         public string Longitude { get; set; }
@@ -1763,7 +1763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Canceled
     }
 
-    public class TaskApiFeaturesNotesNoteDTO
+    public class TaskApiFeaturesNotesNoteDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1878,7 +1878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public CallCreateTaskApiModelsEnumsContactType? ContactType { get; set; }
     }
 
-    public class TaskApiFeaturesTasksTaskDTO
+    public class TaskApiFeaturesTasksTaskDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2095,7 +2095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string LeadStatusId { get; set; }
 
         [JsonProperty("name")]
-        public LeadCreateSalesPipelineApiDTOsNameDTOResponse Name { get; set; }
+        public LeadCreateSalesPipelineApiDtosNameDtoResponse Name { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -2107,10 +2107,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string MobilePhone { get; set; }
 
         [JsonProperty("otherEmail")]
-        public LeadCreateSalesPipelineApiDTOsEmailDTOResponse[] OtherEmail { get; set; }
+        public LeadCreateSalesPipelineApiDtosEmailDtoResponse[] OtherEmail { get; set; }
 
         [JsonProperty("otherPhone")]
-        public LeadCreateSalesPipelineApiDTOsPhoneDTOResponse[] OtherPhone { get; set; }
+        public LeadCreateSalesPipelineApiDtosPhoneDtoResponse[] OtherPhone { get; set; }
 
         [JsonProperty("callOptOut")]
         public bool CallOptOut { get; set; }
@@ -2149,7 +2149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string AccountSourceTypeId { get; set; }
 
         [JsonProperty("address")]
-        public LeadCreateSalesPipelineApiDTOsAddressDtoResponse Address { get; set; }
+        public LeadCreateSalesPipelineApiDtosAddressDtoResponse Address { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -2194,7 +2194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string AiGenerationDate { get; set; }
     }
 
-    public class LeadCreateSalesPipelineApiDTOsNameDTOResponse
+    public class LeadCreateSalesPipelineApiDtosNameDtoResponse
     {
         [JsonProperty("firstName")]
         public string FirstName { get; set; }
@@ -2212,7 +2212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string Suffix { get; set; }
     }
 
-    public class LeadCreateSalesPipelineApiDTOsEmailDTOResponse
+    public class LeadCreateSalesPipelineApiDtosEmailDtoResponse
     {
         [JsonProperty("emailAddress")]
         public string EmailAddress { get; set; }
@@ -2234,7 +2234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Ignore
     }
 
-    public class LeadCreateSalesPipelineApiDTOsPhoneDTOResponse
+    public class LeadCreateSalesPipelineApiDtosPhoneDtoResponse
     {
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; }
@@ -2263,7 +2263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Queues
     }
 
-    public class LeadCreateSalesPipelineApiDTOsAddressDtoResponse
+    public class LeadCreateSalesPipelineApiDtosAddressDtoResponse
     {
         [JsonProperty("address1")]
         public string Address1 { get; set; }
@@ -2318,7 +2318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string LeadStatusId { get; set; }
 
         [JsonProperty("name")]
-        public LeadCreateSalesPipelineApiDTOsNameDTO Name { get; set; }
+        public LeadCreateSalesPipelineApiDtosNameDto Name { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -2330,10 +2330,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string MobilePhone { get; set; }
 
         [JsonProperty("otherEmail")]
-        public LeadCreateSalesPipelineApiDTOsEmailDTO[] OtherEmail { get; set; }
+        public LeadCreateSalesPipelineApiDtosEmailDto[] OtherEmail { get; set; }
 
         [JsonProperty("otherPhone")]
-        public LeadCreateSalesPipelineApiDTOsPhoneDTO[] OtherPhone { get; set; }
+        public LeadCreateSalesPipelineApiDtosPhoneDto[] OtherPhone { get; set; }
 
         [JsonProperty("callOptOut")]
         public bool? CallOptOut { get; set; }
@@ -2366,7 +2366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string AccountSourceTypeId { get; set; }
 
         [JsonProperty("address")]
-        public LeadCreateSalesPipelineApiDTOsAddressDto Address { get; set; }
+        public LeadCreateSalesPipelineApiDtosAddressDto Address { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -2390,9 +2390,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public JToken ExtraFields { get; set; }
     }
 
-    public class LeadCreateSalesPipelineApiDTOsNameDTO
+    public class LeadCreateSalesPipelineApiDtosNameDto
     {
-        public LeadCreateSalesPipelineApiDTOsNameDTO(string firstName)
+        public LeadCreateSalesPipelineApiDtosNameDto(string firstName)
         {
             this.FirstName = firstName;
         }
@@ -2413,7 +2413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string Suffix { get; set; }
     }
 
-    public class LeadCreateSalesPipelineApiDTOsEmailDTO
+    public class LeadCreateSalesPipelineApiDtosEmailDto
     {
         [JsonProperty("emailAddress")]
         public string EmailAddress { get; set; }
@@ -2435,7 +2435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Ignore
     }
 
-    public class LeadCreateSalesPipelineApiDTOsPhoneDTO
+    public class LeadCreateSalesPipelineApiDtosPhoneDto
     {
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; }
@@ -2464,7 +2464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Queues
     }
 
-    public class LeadCreateSalesPipelineApiDTOsAddressDto
+    public class LeadCreateSalesPipelineApiDtosAddressDto
     {
         [JsonProperty("address1")]
         public string Address1 { get; set; }
@@ -2502,7 +2502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string LeadStatusId { get; set; }
 
         [JsonProperty("name")]
-        public LeadCreateSalesPipelineApiDTOsNameDTO Name { get; set; }
+        public LeadCreateSalesPipelineApiDtosNameDto Name { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -2514,10 +2514,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string MobilePhone { get; set; }
 
         [JsonProperty("otherEmail")]
-        public LeadCreateSalesPipelineApiDTOsEmailDTO[] OtherEmail { get; set; }
+        public LeadCreateSalesPipelineApiDtosEmailDto[] OtherEmail { get; set; }
 
         [JsonProperty("otherPhone")]
-        public LeadCreateSalesPipelineApiDTOsPhoneDTO[] OtherPhone { get; set; }
+        public LeadCreateSalesPipelineApiDtosPhoneDto[] OtherPhone { get; set; }
 
         [JsonProperty("callOptOut")]
         public bool? CallOptOut { get; set; }
@@ -2550,7 +2550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string AccountSourceTypeId { get; set; }
 
         [JsonProperty("address")]
-        public LeadCreateSalesPipelineApiDTOsAddressDto Address { get; set; }
+        public LeadCreateSalesPipelineApiDtosAddressDto Address { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -2577,7 +2577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public JToken ExtraFields { get; set; }
     }
 
-    public class SalesPipelineApiFeaturesOpportunityOpportunityDTO
+    public class SalesPipelineApiFeaturesOpportunityOpportunityDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2943,7 +2943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string Id { get; set; }
     }
 
-    public class CustomerApiFeaturesAccountsAccountDTO
+    public class CustomerApiFeaturesAccountsAccountDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2985,7 +2985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string OwnerId { get; set; }
 
         [JsonProperty("address")]
-        public AccountCreateCustomerApiDTOsAddressDTOResponse Address { get; set; }
+        public AccountCreateCustomerApiDtosAddressDtoResponse Address { get; set; }
 
         [JsonProperty("updateDate")]
         public string UpdateDate { get; set; }
@@ -3048,13 +3048,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string AiScoreReasoning { get; set; }
 
         [JsonProperty("aiSentiment")]
-        public CustomerApiFeaturesAccountsAccountDTOAiSentimentType AiSentiment { get; set; }
+        public CustomerApiFeaturesAccountsAccountDtoAiSentimentType AiSentiment { get; set; }
 
         [JsonProperty("aiGenerationDate")]
         public string AiGenerationDate { get; set; }
     }
 
-    public class AccountCreateCustomerApiDTOsAddressDTOResponse
+    public class AccountCreateCustomerApiDtosAddressDtoResponse
     {
         [JsonProperty("address1")]
         public string Address1 { get; set; }
@@ -3096,7 +3096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string Email { get; set; }
     }
 
-    public enum CustomerApiFeaturesAccountsAccountDTOAiSentimentType
+    public enum CustomerApiFeaturesAccountsAccountDtoAiSentimentType
     {
         _0 = 0,
         _1 = 1,
@@ -3141,7 +3141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string OwnerId { get; set; }
 
         [JsonProperty("address")]
-        public AccountCreateCustomerApiDTOsAddressDTO Address { get; set; }
+        public AccountCreateCustomerApiDtosAddressDto Address { get; set; }
 
         [JsonProperty("accountSourceTypeId")]
         public string AccountSourceTypeId { get; set; }
@@ -3189,7 +3189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string[] AssignedTeams { get; set; }
     }
 
-    public class AccountCreateCustomerApiDTOsAddressDTO
+    public class AccountCreateCustomerApiDtosAddressDto
     {
         [JsonProperty("address1")]
         public string Address1 { get; set; }
@@ -3278,7 +3278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string OwnerId { get; set; }
 
         [JsonProperty("address")]
-        public AccountCreateCustomerApiDTOsAddressDTO Address { get; set; }
+        public AccountCreateCustomerApiDtosAddressDto Address { get; set; }
 
         [JsonProperty("updateDate")]
         public string UpdateDate { get; set; }
@@ -3574,7 +3574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string CountryCode { get; set; }
     }
 
-    public class CustomerApiFeaturesContactsContactDTO
+    public class CustomerApiFeaturesContactsContactDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -3598,7 +3598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string[] SourceAccountIds { get; set; }
 
         [JsonProperty("name")]
-        public ContactCreateCustomerApiFeaturesContactsNameDTOResponse Name { get; set; }
+        public ContactCreateCustomerApiFeaturesContactsNameDtoResponse Name { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -3619,10 +3619,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public bool EmailOptOut { get; set; }
 
         [JsonProperty("otherEmail")]
-        public ContactCreateCustomerApiFeaturesContactsEmailDTOResponse[] OtherEmail { get; set; }
+        public ContactCreateCustomerApiFeaturesContactsEmailDtoResponse[] OtherEmail { get; set; }
 
         [JsonProperty("otherPhone")]
-        public ContactCreateCustomerApiFeaturesContactsPhoneDTOResponse[] OtherPhone { get; set; }
+        public ContactCreateCustomerApiFeaturesContactsPhoneDtoResponse[] OtherPhone { get; set; }
 
         [JsonProperty("jobTitle")]
         public string JobTitle { get; set; }
@@ -3634,7 +3634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string PronounceId { get; set; }
 
         [JsonProperty("address")]
-        public AccountCreateCustomerApiDTOsAddressDTOResponse Address { get; set; }
+        public AccountCreateCustomerApiDtosAddressDtoResponse Address { get; set; }
 
         [JsonProperty("insertDate")]
         public string InsertDate { get; set; }
@@ -3685,7 +3685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string[] AssignedTeams { get; set; }
     }
 
-    public class ContactCreateCustomerApiFeaturesContactsNameDTOResponse
+    public class ContactCreateCustomerApiFeaturesContactsNameDtoResponse
     {
         [JsonProperty("firstName")]
         public string FirstName { get; set; }
@@ -3703,20 +3703,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string Suffix { get; set; }
     }
 
-    public class ContactCreateCustomerApiFeaturesContactsEmailDTOResponse
+    public class ContactCreateCustomerApiFeaturesContactsEmailDtoResponse
     {
         [JsonProperty("emailAddress")]
         public string EmailAddress { get; set; }
 
         [JsonProperty("type")]
-        public ContactCreateCustomerApiFeaturesContactsEmailDTOTypeTypeResponse Type { get; set; }
+        public ContactCreateCustomerApiFeaturesContactsEmailDtoTypeTypeResponse Type { get; set; }
 
         [JsonProperty("optOut")]
         public bool OptOut { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContactCreateCustomerApiFeaturesContactsEmailDTOTypeTypeResponse
+    public enum ContactCreateCustomerApiFeaturesContactsEmailDtoTypeTypeResponse
     {
         Work,
         Home,
@@ -3725,20 +3725,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Ignore
     }
 
-    public class ContactCreateCustomerApiFeaturesContactsPhoneDTOResponse
+    public class ContactCreateCustomerApiFeaturesContactsPhoneDtoResponse
     {
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; }
 
         [JsonProperty("type")]
-        public ContactCreateCustomerApiFeaturesContactsPhoneDTOTypeTypeResponse Type { get; set; }
+        public ContactCreateCustomerApiFeaturesContactsPhoneDtoTypeTypeResponse Type { get; set; }
 
         [JsonProperty("optOut")]
         public bool OptOut { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContactCreateCustomerApiFeaturesContactsPhoneDTOTypeTypeResponse
+    public enum ContactCreateCustomerApiFeaturesContactsPhoneDtoTypeTypeResponse
     {
         Work,
         Home,
@@ -3765,7 +3765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string[] SourceAccountIds { get; set; }
 
         [JsonProperty("name")]
-        public ContactCreateCustomerApiFeaturesContactsNameDTO Name { get; set; }
+        public ContactCreateCustomerApiFeaturesContactsNameDto Name { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -3786,10 +3786,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public bool? EmailOptOut { get; set; }
 
         [JsonProperty("otherEmail")]
-        public ContactCreateCustomerApiFeaturesContactsEmailDTO[] OtherEmail { get; set; }
+        public ContactCreateCustomerApiFeaturesContactsEmailDto[] OtherEmail { get; set; }
 
         [JsonProperty("otherPhone")]
-        public ContactCreateCustomerApiFeaturesContactsPhoneDTO[] OtherPhone { get; set; }
+        public ContactCreateCustomerApiFeaturesContactsPhoneDto[] OtherPhone { get; set; }
 
         [JsonProperty("jobTitle")]
         public string JobTitle { get; set; }
@@ -3801,7 +3801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string PronounceId { get; set; }
 
         [JsonProperty("address")]
-        public AccountCreateCustomerApiDTOsAddressDTO Address { get; set; }
+        public AccountCreateCustomerApiDtosAddressDto Address { get; set; }
 
         [JsonProperty("createdBy")]
         public string CreatedBy { get; set; }
@@ -3843,7 +3843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string[] AssignedTeams { get; set; }
     }
 
-    public class ContactCreateCustomerApiFeaturesContactsNameDTO
+    public class ContactCreateCustomerApiFeaturesContactsNameDto
     {
         [JsonProperty("firstName")]
         public string FirstName { get; set; }
@@ -3861,20 +3861,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string Suffix { get; set; }
     }
 
-    public class ContactCreateCustomerApiFeaturesContactsEmailDTO
+    public class ContactCreateCustomerApiFeaturesContactsEmailDto
     {
         [JsonProperty("emailAddress")]
         public string EmailAddress { get; set; }
 
         [JsonProperty("type")]
-        public ContactCreateCustomerApiFeaturesContactsEmailDTOTypeType? Type { get; set; }
+        public ContactCreateCustomerApiFeaturesContactsEmailDtoTypeType? Type { get; set; }
 
         [JsonProperty("optOut")]
         public bool? OptOut { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContactCreateCustomerApiFeaturesContactsEmailDTOTypeType
+    public enum ContactCreateCustomerApiFeaturesContactsEmailDtoTypeType
     {
         Work,
         Home,
@@ -3883,20 +3883,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Ignore
     }
 
-    public class ContactCreateCustomerApiFeaturesContactsPhoneDTO
+    public class ContactCreateCustomerApiFeaturesContactsPhoneDto
     {
         [JsonProperty("phoneNumber")]
         public string PhoneNumber { get; set; }
 
         [JsonProperty("type")]
-        public ContactCreateCustomerApiFeaturesContactsPhoneDTOTypeType? Type { get; set; }
+        public ContactCreateCustomerApiFeaturesContactsPhoneDtoTypeType? Type { get; set; }
 
         [JsonProperty("optOut")]
         public bool? OptOut { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum ContactCreateCustomerApiFeaturesContactsPhoneDTOTypeType
+    public enum ContactCreateCustomerApiFeaturesContactsPhoneDtoTypeType
     {
         Work,
         Home,
@@ -3929,7 +3929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string[] SourceAccountIds { get; set; }
 
         [JsonProperty("name")]
-        public ContactCreateCustomerApiFeaturesContactsNameDTO Name { get; set; }
+        public ContactCreateCustomerApiFeaturesContactsNameDto Name { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -3950,10 +3950,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public bool? EmailOptOut { get; set; }
 
         [JsonProperty("otherEmail")]
-        public ContactCreateCustomerApiFeaturesContactsEmailDTO[] OtherEmail { get; set; }
+        public ContactCreateCustomerApiFeaturesContactsEmailDto[] OtherEmail { get; set; }
 
         [JsonProperty("otherPhone")]
-        public ContactCreateCustomerApiFeaturesContactsPhoneDTO[] OtherPhone { get; set; }
+        public ContactCreateCustomerApiFeaturesContactsPhoneDto[] OtherPhone { get; set; }
 
         [JsonProperty("jobTitle")]
         public string JobTitle { get; set; }
@@ -3965,7 +3965,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string PronounceId { get; set; }
 
         [JsonProperty("address")]
-        public AccountCreateCustomerApiDTOsAddressDTO Address { get; set; }
+        public AccountCreateCustomerApiDtosAddressDto Address { get; set; }
 
         [JsonProperty("insertDate")]
         public string InsertDate { get; set; }

@@ -13,10 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medallia
     public class MedalliaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> TriggerInvitation(Expression<Func<string>> service, Expression<Func<string>> instanceURL, Expression<Func<object>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> TriggerInvitation(Expression<Func<string>> service, Expression<Func<string>> instanceUrl, Expression<Func<object>> body)
         {
             var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
-            var __workflow_instanceURL = WorkflowExpression.Compile(instanceURL, nameof(instanceURL), required: true);
+            var __workflow_instanceUrl = WorkflowExpression.Compile(instanceUrl, nameof(instanceUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -25,17 +25,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medallia
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                callPayload.Headers["Instance-URL"] = ExpressionConverter.Convert(__workflow_instanceURL);
+                callPayload.Headers["Instance-URL"] = ExpressionConverter.Convert(__workflow_instanceUrl);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> SendExperienceSignals(Expression<Func<string>> service, Expression<Func<string>> instanceURL, Expression<Func<object>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> SendExperienceSignals(Expression<Func<string>> service, Expression<Func<string>> instanceUrl, Expression<Func<object>> body)
         {
             var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
-            var __workflow_instanceURL = WorkflowExpression.Compile(instanceURL, nameof(instanceURL), required: true);
+            var __workflow_instanceUrl = WorkflowExpression.Compile(instanceUrl, nameof(instanceUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medallia
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                callPayload.Headers["Instance-URL"] = ExpressionConverter.Convert(__workflow_instanceURL);
+                callPayload.Headers["Instance-URL"] = ExpressionConverter.Convert(__workflow_instanceUrl);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction(callPayload);
             });

@@ -834,7 +834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiforged")]
-        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel[], ApiConnectionActionConfiguration> DocumentGetExtended(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<UsageInput>> usage = null, Expression<Func<StatusInput>> status = null, Expression<Func<string>> classname = null, Expression<Func<string>> filename = null, Expression<Func<string>> filetype = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> masterid = null, Expression<Func<int>> pageNo = null, Expression<Func<int>> pageSize = null, Expression<Func<SortFieldInput>> sortField = null, Expression<Func<SortDirectionInput>> sortDirection = null, Expression<Func<string>> comment = null, Expression<Func<string>> result = null, Expression<Func<string>> resultId = null, Expression<Func<int>> resultIndex = null, Expression<Func<string>> externalId = null, Expression<Func<string>> docGuid = null)
+        public IBodyWorkflowAction<AIForgedViewModelsDocumentViewModel[], ApiConnectionActionConfiguration> DocumentGetExtended(Expression<Func<string>> xApiVersion, Expression<Func<string>> userId = null, Expression<Func<int>> projectId = null, Expression<Func<int>> stpdId = null, Expression<Func<UsageInput>> usage = null, Expression<Func<StatusInput>> status = null, Expression<Func<string>> classname = null, Expression<Func<string>> fileName = null, Expression<Func<string>> filetype = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> masterid = null, Expression<Func<int>> pageNo = null, Expression<Func<int>> pageSize = null, Expression<Func<SortFieldInput>> sortField = null, Expression<Func<SortDirectionInput>> sortDirection = null, Expression<Func<string>> comment = null, Expression<Func<string>> result = null, Expression<Func<string>> resultId = null, Expression<Func<int>> resultIndex = null, Expression<Func<string>> externalId = null, Expression<Func<string>> docGuid = null)
         {
             var __workflow_xApiVersion = WorkflowExpression.Compile(xApiVersion, nameof(xApiVersion), required: true);
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
@@ -843,7 +843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
             var __workflow_usage = WorkflowExpression.Compile(usage, nameof(usage), required: false);
             var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             var __workflow_classname = WorkflowExpression.Compile(classname, nameof(classname), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_filetype = WorkflowExpression.Compile(filetype, nameof(filetype), required: false);
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
             var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
@@ -875,8 +875,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
                     callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
                 if (__workflow_classname != null)
                     callPayload.Queries["classname"] = ExpressionConverter.Convert(__workflow_classname);
-                if (__workflow_filename != null)
-                    callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 if (__workflow_filetype != null)
                     callPayload.Queries["filetype"] = ExpressionConverter.Convert(__workflow_filetype);
                 if (__workflow_start != null)
@@ -990,13 +990,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string Dtm { get; set; }
 
         [JsonProperty("type")]
-        public AIForgedDALClassType Type { get; set; }
+        public AIForgedDalClassType Type { get; set; }
 
         [JsonProperty("related")]
         public int Related { get; set; }
     }
 
-    public enum AIForgedDALClassType
+    public enum AIForgedDalClassType
     {
         _0 = 0,
         _1 = 1,
@@ -1018,10 +1018,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public int ServiceId { get; set; }
 
         [JsonProperty("status")]
-        public AIForgedDALDocumentStatus Status { get; set; }
+        public AIForgedDalDocumentStatus Status { get; set; }
 
         [JsonProperty("usage")]
-        public AIForgedDALUsageType Usage { get; set; }
+        public AIForgedDalUsageType Usage { get; set; }
 
         [JsonProperty("classId")]
         public int ClassId { get; set; }
@@ -1030,7 +1030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string ContentType { get; set; }
 
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("fileType")]
         public string FileType { get; set; }
@@ -1063,7 +1063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string Comment { get; set; }
 
         [JsonProperty("availability")]
-        public AIForgedDALAvailability Availability { get; set; }
+        public AIForgedDalAvailability Availability { get; set; }
 
         [JsonProperty("resultParameters")]
         public AIForgedViewModelsDocumentParameterViewModel[] ResultParameters { get; set; }
@@ -1099,7 +1099,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public int TrainedParametersCount { get; set; }
     }
 
-    public enum AIForgedDALDocumentStatus
+    public enum AIForgedDalDocumentStatus
     {
         _0 = 0,
         _3 = 3,
@@ -1119,7 +1119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _190 = 190
     }
 
-    public enum AIForgedDALUsageType
+    public enum AIForgedDalUsageType
     {
         _0 = 0,
         _1 = 1,
@@ -1132,7 +1132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _99 = 99
     }
 
-    public enum AIForgedDALAvailability
+    public enum AIForgedDalAvailability
     {
         _0 = 0,
         _1 = 1,
@@ -1185,7 +1185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public int RowSpan { get; set; }
 
         [JsonProperty("availability")]
-        public AIForgedDALAvailability Availability { get; set; }
+        public AIForgedDalAvailability Availability { get; set; }
 
         [JsonProperty("paramDef")]
         public JToken ParamDef { get; set; }
@@ -1221,10 +1221,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string SymbolsConfidence { get; set; }
 
         [JsonProperty("type")]
-        public AIForgedDALVerificationType Type { get; set; }
+        public AIForgedDalVerificationType Type { get; set; }
 
         [JsonProperty("status")]
-        public AIForgedDALVerificationStatus Status { get; set; }
+        public AIForgedDalVerificationStatus Status { get; set; }
 
         [JsonProperty("result")]
         public string Result { get; set; }
@@ -1263,7 +1263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public double Charge { get; set; }
     }
 
-    public enum AIForgedDALVerificationType
+    public enum AIForgedDalVerificationType
     {
         _0 = 0,
         _1 = 1,
@@ -1276,7 +1276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _8 = 8
     }
 
-    public enum AIForgedDALVerificationStatus
+    public enum AIForgedDalVerificationStatus
     {
         _1 = 1,
         _2 = 2,
@@ -1307,7 +1307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public int BlobId { get; set; }
 
         [JsonProperty("type")]
-        public AIForgedDALDocumentDataType Type { get; set; }
+        public AIForgedDalDocumentDataType Type { get; set; }
 
         [JsonProperty("data")]
         public string Data { get; set; }
@@ -1340,10 +1340,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public double Resolution { get; set; }
 
         [JsonProperty("availability")]
-        public AIForgedDALAvailability Availability { get; set; }
+        public AIForgedDalAvailability Availability { get; set; }
     }
 
-    public enum AIForgedDALDocumentDataType
+    public enum AIForgedDalDocumentDataType
     {
         _0 = 0,
         _1 = 1,
@@ -1391,16 +1391,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string Dtm { get; set; }
 
         [JsonProperty("status")]
-        public AIForgedDALParameterDefinitionStatus Status { get; set; }
+        public AIForgedDalParameterDefinitionStatus Status { get; set; }
 
         [JsonProperty("category")]
-        public AIForgedDALParameterDefinitionCategory Category { get; set; }
+        public AIForgedDalParameterDefinitionCategory Category { get; set; }
 
         [JsonProperty("grouping")]
-        public AIForgedDALGroupingType Grouping { get; set; }
+        public AIForgedDalGroupingType Grouping { get; set; }
 
         [JsonProperty("valueType")]
-        public AIForgedDALValueType ValueType { get; set; }
+        public AIForgedDalValueType ValueType { get; set; }
 
         [JsonProperty("valueTypeName")]
         public string ValueTypeName { get; set; }
@@ -1409,7 +1409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string DefaultValue { get; set; }
 
         [JsonProperty("required")]
-        public AIForgedDALRequiredOption Required { get; set; }
+        public AIForgedDalRequiredOption Required { get; set; }
 
         [JsonProperty("index")]
         public int Index { get; set; }
@@ -1424,13 +1424,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public double Rating { get; set; }
 
         [JsonProperty("availability")]
-        public AIForgedDALAvailability Availability { get; set; }
+        public AIForgedDalAvailability Availability { get; set; }
 
         [JsonProperty("children")]
         public AIForgedViewModelsParameterDefViewModel[] Children { get; set; }
 
         [JsonProperty("settings")]
-        public AIForgedDALModelsParameterDefSettingViewModel[] Settings { get; set; }
+        public AIForgedDalModelsParameterDefSettingViewModel[] Settings { get; set; }
 
         [JsonProperty("totalCharge")]
         public double TotalCharge { get; set; }
@@ -1448,13 +1448,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string Validation { get; set; }
     }
 
-    public enum AIForgedDALParameterDefinitionStatus
+    public enum AIForgedDalParameterDefinitionStatus
     {
         _0 = 0,
         _99 = 99
     }
 
-    public enum AIForgedDALParameterDefinitionCategory
+    public enum AIForgedDalParameterDefinitionCategory
     {
         _0 = 0,
         _1 = 1,
@@ -1470,7 +1470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _40 = 40
     }
 
-    public enum AIForgedDALGroupingType
+    public enum AIForgedDalGroupingType
     {
         _0 = 0,
         _1 = 1,
@@ -1488,7 +1488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _99 = 99
     }
 
-    public enum AIForgedDALValueType
+    public enum AIForgedDalValueType
     {
         _0 = 0,
         _1 = 1,
@@ -1516,7 +1516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _99 = 99
     }
 
-    public enum AIForgedDALRequiredOption
+    public enum AIForgedDalRequiredOption
     {
         _1 = 1,
         _2 = 2,
@@ -1529,7 +1529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _256 = 256
     }
 
-    public class AIForgedDALModelsParameterDefSettingViewModel
+    public class AIForgedDalModelsParameterDefSettingViewModel
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -1538,10 +1538,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public int ParameterDefId { get; set; }
 
         [JsonProperty("type")]
-        public AIForgedDALSettingType Type { get; set; }
+        public AIForgedDalSettingType Type { get; set; }
 
         [JsonProperty("status")]
-        public AIForgedDALSettingStatus Status { get; set; }
+        public AIForgedDalSettingStatus Status { get; set; }
 
         [JsonProperty("dtc")]
         public string Dtc { get; set; }
@@ -1589,19 +1589,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public bool IsHandwriting { get; set; }
 
         [JsonProperty("orientation")]
-        public AIForgedDALOrientation Orientation { get; set; }
+        public AIForgedDalOrientation Orientation { get; set; }
 
         [JsonProperty("marking")]
-        public AIForgedDALMarkingType Marking { get; set; }
+        public AIForgedDalMarkingType Marking { get; set; }
 
         [JsonProperty("cells")]
         public int Cells { get; set; }
 
         [JsonProperty("clearBefore")]
-        public AIForgedDALOptionStatusFlags ClearBefore { get; set; }
+        public AIForgedDalOptionStatusFlags ClearBefore { get; set; }
 
         [JsonProperty("clearAfter")]
-        public AIForgedDALOptionStatusFlags ClearAfter { get; set; }
+        public AIForgedDalOptionStatusFlags ClearAfter { get; set; }
 
         [JsonProperty("cleanupValuesBefore")]
         public bool CleanupValuesBefore { get; set; }
@@ -1634,7 +1634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string UserId { get; set; }
     }
 
-    public enum AIForgedDALSettingType
+    public enum AIForgedDalSettingType
     {
         _0 = 0,
         _1 = 1,
@@ -1644,14 +1644,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _10 = 10
     }
 
-    public enum AIForgedDALSettingStatus
+    public enum AIForgedDalSettingStatus
     {
         _0 = 0,
         _1 = 1,
         _99 = 99
     }
 
-    public enum AIForgedDALOrientation
+    public enum AIForgedDalOrientation
     {
         _0 = 0,
         _1 = 1,
@@ -1659,7 +1659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _3 = 3
     }
 
-    public enum AIForgedDALMarkingType
+    public enum AIForgedDalMarkingType
     {
         _0 = 0,
         _1 = 1,
@@ -1672,7 +1672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _8 = 8
     }
 
-    public enum AIForgedDALOptionStatusFlags
+    public enum AIForgedDalOptionStatusFlags
     {
         _1 = 1,
         _2 = 2,
@@ -1733,10 +1733,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public int ServiceId { get; set; }
 
         [JsonProperty("usage")]
-        public AIForgedDALUsageType Usage { get; set; }
+        public AIForgedDalUsageType Usage { get; set; }
 
         [JsonProperty("status")]
-        public AIForgedDALDocumentStatus Status { get; set; }
+        public AIForgedDalDocumentStatus Status { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1769,13 +1769,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string ParamDefName { get; set; }
 
         [JsonProperty("category")]
-        public AIForgedDALParameterDefinitionCategory Category { get; set; }
+        public AIForgedDalParameterDefinitionCategory Category { get; set; }
 
         [JsonProperty("grouping")]
-        public AIForgedDALGroupingType Grouping { get; set; }
+        public AIForgedDalGroupingType Grouping { get; set; }
 
         [JsonProperty("valueType")]
-        public AIForgedDALValueType ValueType { get; set; }
+        public AIForgedDalValueType ValueType { get; set; }
 
         [JsonProperty("value")]
         public string Value { get; set; }
@@ -1799,13 +1799,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string Label { get; set; }
 
         [JsonProperty("category")]
-        public AIForgedDALParameterDefinitionCategory Category { get; set; }
+        public AIForgedDalParameterDefinitionCategory Category { get; set; }
 
         [JsonProperty("grouping")]
-        public AIForgedDALGroupingType Grouping { get; set; }
+        public AIForgedDalGroupingType Grouping { get; set; }
 
         [JsonProperty("valueType")]
-        public AIForgedDALValueType ValueType { get; set; }
+        public AIForgedDalValueType ValueType { get; set; }
 
         [JsonProperty("index")]
         public int Index { get; set; }
@@ -1841,10 +1841,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public double Confidence { get; set; }
 
         [JsonProperty("type")]
-        public AIForgedDALVerificationType Type { get; set; }
+        public AIForgedDalVerificationType Type { get; set; }
 
         [JsonProperty("status")]
-        public AIForgedDALVerificationStatus Status { get; set; }
+        public AIForgedDalVerificationStatus Status { get; set; }
 
         [JsonProperty("charge")]
         public double Charge { get; set; }
@@ -1865,7 +1865,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string UserId { get; set; }
 
         [JsonProperty("status")]
-        public AIForgedDALProjectStatus Status { get; set; }
+        public AIForgedDalProjectStatus Status { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1892,7 +1892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public AIForgedViewModelsParameterDefViewModel[] Services { get; set; }
     }
 
-    public enum AIForgedDALProjectStatus
+    public enum AIForgedDalProjectStatus
     {
         _0 = 0,
         _1 = 1,
@@ -1907,7 +1907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
     public class AIForgedViewModelsDataTypeViewModel
     {
         [JsonProperty("id")]
-        public AIForgedDALValueType Id { get; set; }
+        public AIForgedDalValueType Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1916,7 +1916,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string Description { get; set; }
 
         [JsonProperty("category")]
-        public AIForgedDALDataTypeCategory Category { get; set; }
+        public AIForgedDalDataTypeCategory Category { get; set; }
 
         [JsonProperty("valueTypeName")]
         public string ValueTypeName { get; set; }
@@ -1928,7 +1928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string Data { get; set; }
     }
 
-    public enum AIForgedDALDataTypeCategory
+    public enum AIForgedDalDataTypeCategory
     {
         _1 = 1,
         _2 = 2,
@@ -1948,7 +1948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public int Id { get; set; }
 
         [JsonProperty("type")]
-        public AIForgedDALEnumType Type { get; set; }
+        public AIForgedDalEnumType Type { get; set; }
 
         [JsonProperty("typeName")]
         public string TypeName { get; set; }
@@ -1972,7 +1972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string Color { get; set; }
     }
 
-    public enum AIForgedDALEnumType
+    public enum AIForgedDalEnumType
     {
         _0 = 0,
         _1 = 1,
@@ -2049,10 +2049,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string SymbolsConfidence { get; set; }
 
         [JsonProperty("type")]
-        public AIForgedDALVerificationType Type { get; set; }
+        public AIForgedDalVerificationType Type { get; set; }
 
         [JsonProperty("status")]
-        public AIForgedDALVerificationStatus Status { get; set; }
+        public AIForgedDalVerificationStatus Status { get; set; }
 
         [JsonProperty("result")]
         public string Result { get; set; }
@@ -2112,10 +2112,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string DocContentType { get; set; }
 
         [JsonProperty("docUsage")]
-        public AIForgedDALUsageType DocUsage { get; set; }
+        public AIForgedDalUsageType DocUsage { get; set; }
 
         [JsonProperty("docStatus")]
-        public AIForgedDALDocumentStatus DocStatus { get; set; }
+        public AIForgedDalDocumentStatus DocStatus { get; set; }
 
         [JsonProperty("classId")]
         public int ClassId { get; set; }

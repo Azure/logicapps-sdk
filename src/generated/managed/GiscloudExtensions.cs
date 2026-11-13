@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giscloud
     public class GiscloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giscloud")]
-        public IBodyWorkflowAction<Error, ApiConnectionActionConfiguration> DeleteFileAtPath(Expression<Func<string>> aPIKey, Expression<Func<string>> fileName, Expression<Func<string>> pathToAFile)
+        public IBodyWorkflowAction<Error, ApiConnectionActionConfiguration> DeleteFileAtPath(Expression<Func<string>> apiKey, Expression<Func<string>> fileName, Expression<Func<string>> pathToAFile)
         {
-            var __workflow_aPIKey = WorkflowExpression.Compile(aPIKey, nameof(aPIKey), required: true);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
             var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
             var __workflow_pathToAFile = WorkflowExpression.Compile(pathToAFile, nameof(pathToAFile), required: true);
             return new DeferredBodyAction<Error, ApiConnectionActionConfiguration>(() =>
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giscloud
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/storage/fs/{0}/{1}", __workflow_pathToAFile.WithUrlEncoding(1), __workflow_fileName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Headers["API-Key"] = ExpressionConverter.Convert(__workflow_aPIKey);
+                callPayload.Headers["API-Key"] = ExpressionConverter.Convert(__workflow_apiKey);
                 return new ApiConnectionAction<Error>(callPayload);
             });
         }

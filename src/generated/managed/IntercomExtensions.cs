@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
     public class UserResponseAvatarType
     {
         [JsonProperty("image_url")]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
     }
 
     public class UserResponseLocationDataType
@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
     public class LeadResponseAvatarType
     {
         [JsonProperty("image_url")]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
     }
 
     public class LeadResponseLocationDataType
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
     public class BodyInputAvatarType
     {
         [JsonProperty("image_url")]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
     }
 
     public class TrigLeadResponse
@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
     public class TrigLeadResponseAvatarType
     {
         [JsonProperty("image_url")]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
     }
 
     public class TrigLeadResponseLocationDataType
@@ -436,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
     public class TrigUserResponseAvatarType
     {
         [JsonProperty("image_url")]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
     }
 
     public class TrigUserResponseLocationDataType
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         public string Subject { get; set; }
 
         [JsonProperty("url")]
-        public string MessageURL { get; set; }
+        public string MessageUrl { get; set; }
     }
 
     public class TrigConversationResponseConversationMessageTypeAuthorType

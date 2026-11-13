@@ -517,10 +517,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
     public class EdifactDecodeResponse
     {
         [JsonProperty("UNA_Segment")]
-        public string UNASegment { get; set; }
-        public EdifactInterchangeHeaders UNB { get; set; }
-        public EdifactGroupHeaders UNG { get; set; }
-        public EdifactMessageHeaders UNH { get; set; }
+        public string UnaSegment { get; set; }
+
+        [JsonProperty("UNB")]
+        public EdifactInterchangeHeaders Unb { get; set; }
+
+        [JsonProperty("UNG")]
+        public EdifactGroupHeaders Ung { get; set; }
+
+        [JsonProperty("UNH")]
+        public EdifactMessageHeaders Unh { get; set; }
         public int DecimalPointIndicator { get; set; }
         public int RepetitionSeparator { get; set; }
         public int EscapeCharacter { get; set; }
@@ -549,94 +555,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
     public class EdifactInterchangeHeaders
     {
         [JsonProperty("UNB_Segment")]
-        public string UNBSegment { get; set; }
+        public string UnbSegment { get; set; }
 
         [JsonProperty("UNB2.1")]
-        public string UNB21 { get; set; }
+        public string Unb21 { get; set; }
 
         [JsonProperty("UNB2.2")]
-        public string UNB22 { get; set; }
+        public string Unb22 { get; set; }
 
         [JsonProperty("UNB2.3")]
-        public string UNB23 { get; set; }
+        public string Unb23 { get; set; }
 
         [JsonProperty("UNB2.4")]
-        public string UNB24 { get; set; }
+        public string Unb24 { get; set; }
 
         [JsonProperty("UNB3.1")]
-        public string UNB31 { get; set; }
+        public string Unb31 { get; set; }
 
         [JsonProperty("UNB3.2")]
-        public string UNB32 { get; set; }
+        public string Unb32 { get; set; }
 
         [JsonProperty("UNB3.3")]
-        public string UNB33 { get; set; }
+        public string Unb33 { get; set; }
 
         [JsonProperty("UNB3.4")]
-        public string UNB34 { get; set; }
-        public string UNB11 { get; set; }
+        public string Unb34 { get; set; }
+
+        [JsonProperty("UNB11")]
+        public string Unb11 { get; set; }
     }
 
     public class EdifactGroupHeaders
     {
         [JsonProperty("UNG_Segment")]
-        public string UNGSegment { get; set; }
-        public string UNG1 { get; set; }
+        public string UngSegment { get; set; }
+
+        [JsonProperty("UNG1")]
+        public string Ung1 { get; set; }
 
         [JsonProperty("UNG2.1")]
-        public string UNG21 { get; set; }
+        public string Ung21 { get; set; }
 
         [JsonProperty("UNG2.2")]
-        public string UNG22 { get; set; }
+        public string Ung22 { get; set; }
 
         [JsonProperty("UNG3.1")]
-        public string UNG31 { get; set; }
+        public string Ung31 { get; set; }
 
         [JsonProperty("UNG3.2")]
-        public string UNG32 { get; set; }
+        public string Ung32 { get; set; }
 
         [JsonProperty("UNG4.1")]
-        public string UNG41 { get; set; }
+        public string Ung41 { get; set; }
 
         [JsonProperty("UNG4.2")]
-        public string UNG42 { get; set; }
-        public string UNG5 { get; set; }
-        public string UNG6 { get; set; }
+        public string Ung42 { get; set; }
+
+        [JsonProperty("UNG5")]
+        public string Ung5 { get; set; }
+
+        [JsonProperty("UNG6")]
+        public string Ung6 { get; set; }
 
         [JsonProperty("UNG7.1")]
-        public string UNG71 { get; set; }
+        public string Ung71 { get; set; }
 
         [JsonProperty("UNG7.2")]
-        public string UNG72 { get; set; }
+        public string Ung72 { get; set; }
 
         [JsonProperty("UNG7.3")]
-        public string UNG73 { get; set; }
+        public string Ung73 { get; set; }
     }
 
     public class EdifactMessageHeaders
     {
-        public string UNH1 { get; set; }
+        [JsonProperty("UNH1")]
+        public string Unh1 { get; set; }
 
         [JsonProperty("UNH2.1")]
-        public string UNH21 { get; set; }
+        public string Unh21 { get; set; }
 
         [JsonProperty("UNH2.2")]
-        public string UNH22 { get; set; }
+        public string Unh22 { get; set; }
 
         [JsonProperty("UNH2.3")]
-        public string UNH23 { get; set; }
+        public string Unh23 { get; set; }
 
         [JsonProperty("UNH2.4")]
-        public string UNH24 { get; set; }
+        public string Unh24 { get; set; }
 
         [JsonProperty("UNH2.5")]
-        public string UNH25 { get; set; }
+        public string Unh25 { get; set; }
 
         [JsonProperty("UNH2.6")]
-        public string UNH26 { get; set; }
+        public string Unh26 { get; set; }
 
         [JsonProperty("UNH2.7")]
-        public string UNH27 { get; set; }
+        public string Unh27 { get; set; }
     }
 
     public class EdifactAcknowledgement
@@ -654,48 +669,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
     {
         public SG1Loop SG1Loop { get; set; }
         public SG3Loop[] SG3Loop { get; set; }
-        public string UNH1 { get; set; }
+
+        [JsonProperty("UNH1")]
+        public string Unh1 { get; set; }
 
         [JsonProperty("UNH2.1")]
-        public string UNH21 { get; set; }
+        public string Unh21 { get; set; }
 
         [JsonProperty("UNH2.2")]
-        public string UNH22 { get; set; }
+        public string Unh22 { get; set; }
 
         [JsonProperty("UNH2.3")]
-        public string UNH23 { get; set; }
+        public string Unh23 { get; set; }
 
         [JsonProperty("UNH2.4")]
-        public string UNH24 { get; set; }
-        public UCISegment UCI { get; set; }
-        public string UNT1 { get; set; }
-        public string UNT2 { get; set; }
+        public string Unh24 { get; set; }
+
+        [JsonProperty("UCI")]
+        public UciSegment Uci { get; set; }
+
+        [JsonProperty("UNT1")]
+        public string Unt1 { get; set; }
+
+        [JsonProperty("UNT2")]
+        public string Unt2 { get; set; }
     }
 
     public class SG1Loop
     {
-        public string UCM1 { get; set; }
-        public EdifactMessageIdentification UCM2 { get; set; }
-        public string UCM3 { get; set; }
-        public string UCM4 { get; set; }
-        public string UCM5 { get; set; }
-        public EdifactDataElementIdentification UCM6 { get; set; }
+        [JsonProperty("UCM1")]
+        public string Ucm1 { get; set; }
+
+        [JsonProperty("UCM2")]
+        public EdifactMessageIdentification Ucm2 { get; set; }
+
+        [JsonProperty("UCM3")]
+        public string Ucm3 { get; set; }
+
+        [JsonProperty("UCM4")]
+        public string Ucm4 { get; set; }
+
+        [JsonProperty("UCM5")]
+        public string Ucm5 { get; set; }
+
+        [JsonProperty("UCM6")]
+        public EdifactDataElementIdentification Ucm6 { get; set; }
         public EdifactTransactionSetErrorDetails[] SG2Loop { get; set; }
     }
 
     public class EdifactMessageIdentification
     {
         [JsonProperty("UCM2.1")]
-        public string UCM21 { get; set; }
+        public string Ucm21 { get; set; }
 
         [JsonProperty("UCM2.2")]
-        public string UCM22 { get; set; }
+        public string Ucm22 { get; set; }
 
         [JsonProperty("UCM2.3")]
-        public string UCM23 { get; set; }
+        public string Ucm23 { get; set; }
 
         [JsonProperty("UCM2.4")]
-        public string UCM24 { get; set; }
+        public string Ucm24 { get; set; }
     }
 
     public class EdifactDataElementIdentification
@@ -707,21 +741,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
 
     public class EdifactTransactionSetErrorDetails
     {
-        public string UCS1 { get; set; }
-        public string UCS2 { get; set; }
-        public string UCD1 { get; set; }
-        public EdifactDataElementIdentification UCD2 { get; set; }
+        [JsonProperty("UCS1")]
+        public string Ucs1 { get; set; }
+
+        [JsonProperty("UCS2")]
+        public string Ucs2 { get; set; }
+
+        [JsonProperty("UCD1")]
+        public string Ucd1 { get; set; }
+
+        [JsonProperty("UCD2")]
+        public EdifactDataElementIdentification Ucd2 { get; set; }
     }
 
     public class SG3Loop
     {
-        public string UCF1 { get; set; }
-        public EdifactApplicationIdentification UCF2 { get; set; }
-        public EdifactApplicationIdentification UCF3 { get; set; }
-        public int UCF4 { get; set; }
-        public string UCF5 { get; set; }
-        public string UCF6 { get; set; }
-        public EdifactDataElementIdentification UCF7 { get; set; }
+        [JsonProperty("UCF1")]
+        public string Ucf1 { get; set; }
+
+        [JsonProperty("UCF2")]
+        public EdifactApplicationIdentification Ucf2 { get; set; }
+
+        [JsonProperty("UCF3")]
+        public EdifactApplicationIdentification Ucf3 { get; set; }
+
+        [JsonProperty("UCF4")]
+        public int Ucf4 { get; set; }
+
+        [JsonProperty("UCF5")]
+        public string Ucf5 { get; set; }
+
+        [JsonProperty("UCF6")]
+        public string Ucf6 { get; set; }
+
+        [JsonProperty("UCF7")]
+        public EdifactDataElementIdentification Ucf7 { get; set; }
         public SG4Loop[] SG4Loop { get; set; }
     }
 
@@ -733,37 +787,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
 
     public class SG4Loop
     {
-        public string UCM1 { get; set; }
-        public EdifactMessageIdentification UCM2 { get; set; }
-        public int UCM3 { get; set; }
-        public string UCM4 { get; set; }
-        public string UCM5 { get; set; }
-        public EdifactDataElementIdentification UCM6 { get; set; }
+        [JsonProperty("UCM1")]
+        public string Ucm1 { get; set; }
+
+        [JsonProperty("UCM2")]
+        public EdifactMessageIdentification Ucm2 { get; set; }
+
+        [JsonProperty("UCM3")]
+        public int Ucm3 { get; set; }
+
+        [JsonProperty("UCM4")]
+        public string Ucm4 { get; set; }
+
+        [JsonProperty("UCM5")]
+        public string Ucm5 { get; set; }
+
+        [JsonProperty("UCM6")]
+        public EdifactDataElementIdentification Ucm6 { get; set; }
         public EdifactTransactionSetErrorDetails[] SG5Loop { get; set; }
     }
 
-    public class UCISegment
+    public class UciSegment
     {
-        public string UCI1 { get; set; }
+        [JsonProperty("UCI1")]
+        public string Uci1 { get; set; }
 
         [JsonProperty("UCI2.1")]
-        public string UCI21 { get; set; }
+        public string Uci21 { get; set; }
 
         [JsonProperty("UCI2.2")]
-        public string UCI22 { get; set; }
+        public string Uci22 { get; set; }
 
         [JsonProperty("UCI2.3")]
-        public string UCI23 { get; set; }
+        public string Uci23 { get; set; }
 
         [JsonProperty("UCI3.1")]
-        public string UCI31 { get; set; }
+        public string Uci31 { get; set; }
 
         [JsonProperty("UCI3.2")]
-        public string UCI32 { get; set; }
-        public string UCI4 { get; set; }
-        public string UCI5 { get; set; }
-        public string UCI6 { get; set; }
-        public EdifactDataElementIdentification UCI7 { get; set; }
+        public string Uci32 { get; set; }
+
+        [JsonProperty("UCI4")]
+        public string Uci4 { get; set; }
+
+        [JsonProperty("UCI5")]
+        public string Uci5 { get; set; }
+
+        [JsonProperty("UCI6")]
+        public string Uci6 { get; set; }
+
+        [JsonProperty("UCI7")]
+        public EdifactDataElementIdentification Uci7 { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -773,7 +847,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         None,
         CR,
         LF,
-        CRLF
+        [EnumMember(Value = "CRLF")]
+        Crlf
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -788,7 +863,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
     public enum PayloadCharacterSetInput
     {
         Legacy,
-        UTF8,
+        [EnumMember(Value = "UTF8")]
+        Utf8,
         Spec
     }
 
@@ -806,9 +882,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
     public class EdifactEncodeResponse
     {
         public EdifactTechnicalAcknowledgement Acknowledgement { get; set; }
-        public EdifactInterchangeHeaders UNB { get; set; }
-        public EdifactGroupHeaders UNG { get; set; }
-        public EdifactMessageHeaders UNH { get; set; }
+
+        [JsonProperty("UNB")]
+        public EdifactInterchangeHeaders Unb { get; set; }
+
+        [JsonProperty("UNG")]
+        public EdifactGroupHeaders Ung { get; set; }
+
+        [JsonProperty("UNH")]
+        public EdifactMessageHeaders Unh { get; set; }
         public int DecimalPointIndicator { get; set; }
         public bool IsFunctionalAck { get; set; }
         public bool IsTechnicalAck { get; set; }
@@ -835,22 +917,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
 
     public class EdifactTechnicalAcknowledgement
     {
-        public string UNH1 { get; set; }
+        [JsonProperty("UNH1")]
+        public string Unh1 { get; set; }
 
         [JsonProperty("UNH2.1")]
-        public string UNH21 { get; set; }
+        public string Unh21 { get; set; }
 
         [JsonProperty("UNH2.2")]
-        public string UNH22 { get; set; }
+        public string Unh22 { get; set; }
 
         [JsonProperty("UNH2.3")]
-        public string UNH23 { get; set; }
+        public string Unh23 { get; set; }
 
         [JsonProperty("UNH2.4")]
-        public string UNH24 { get; set; }
-        public UCISegment UCI { get; set; }
-        public string UNT1 { get; set; }
-        public string UNT2 { get; set; }
+        public string Unh24 { get; set; }
+
+        [JsonProperty("UCI")]
+        public UciSegment Uci { get; set; }
+
+        [JsonProperty("UNT1")]
+        public string Unt1 { get; set; }
+
+        [JsonProperty("UNT2")]
+        public string Unt2 { get; set; }
     }
 
     public class EdifactEncodeV2Response
@@ -868,32 +957,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         public EdifactTransactionSetBatchEnvelope[] TransactionSets { get; set; }
 
         [JsonProperty("UNB_Segment")]
-        public string UNBSegment { get; set; }
+        public string UnbSegment { get; set; }
 
         [JsonProperty("UNB2_1")]
-        public string UNB21 { get; set; }
+        public string Unb21 { get; set; }
 
         [JsonProperty("UNB2_2")]
-        public string UNB22 { get; set; }
+        public string Unb22 { get; set; }
 
         [JsonProperty("UNB2_3")]
-        public string UNB23 { get; set; }
+        public string Unb23 { get; set; }
 
         [JsonProperty("UNB2_4")]
-        public string UNB24 { get; set; }
+        public string Unb24 { get; set; }
 
         [JsonProperty("UNB3_1")]
-        public string UNB31 { get; set; }
+        public string Unb31 { get; set; }
 
         [JsonProperty("UNB3_2")]
-        public string UNB32 { get; set; }
+        public string Unb32 { get; set; }
 
         [JsonProperty("UNB3_3")]
-        public string UNB33 { get; set; }
+        public string Unb33 { get; set; }
 
         [JsonProperty("UNB3_4")]
-        public string UNB34 { get; set; }
-        public string UNB11 { get; set; }
+        public string Unb34 { get; set; }
+
+        [JsonProperty("UNB11")]
+        public string Unb11 { get; set; }
     }
 
     public class EdifactFunctionalGroupBatchEnvelope
@@ -902,65 +993,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         public EdifactTransactionSetBatchEnvelope[] TransactionSets { get; set; }
 
         [JsonProperty("UNG_Segment")]
-        public string UNGSegment { get; set; }
-        public string UNG1 { get; set; }
+        public string UngSegment { get; set; }
+
+        [JsonProperty("UNG1")]
+        public string Ung1 { get; set; }
 
         [JsonProperty("UNG2_1")]
-        public string UNG21 { get; set; }
+        public string Ung21 { get; set; }
 
         [JsonProperty("UNG2_2")]
-        public string UNG22 { get; set; }
+        public string Ung22 { get; set; }
 
         [JsonProperty("UNG3_1")]
-        public string UNG31 { get; set; }
+        public string Ung31 { get; set; }
 
         [JsonProperty("UNG3_2")]
-        public string UNG32 { get; set; }
+        public string Ung32 { get; set; }
 
         [JsonProperty("UNG4_1")]
-        public string UNG41 { get; set; }
+        public string Ung41 { get; set; }
 
         [JsonProperty("UNG4_2")]
-        public string UNG42 { get; set; }
-        public string UNG5 { get; set; }
-        public string UNG6 { get; set; }
+        public string Ung42 { get; set; }
+
+        [JsonProperty("UNG5")]
+        public string Ung5 { get; set; }
+
+        [JsonProperty("UNG6")]
+        public string Ung6 { get; set; }
 
         [JsonProperty("UNG7_1")]
-        public string UNG71 { get; set; }
+        public string Ung71 { get; set; }
 
         [JsonProperty("UNG7_2")]
-        public string UNG72 { get; set; }
+        public string Ung72 { get; set; }
 
         [JsonProperty("UNG7_3")]
-        public string UNG73 { get; set; }
+        public string Ung73 { get; set; }
     }
 
     public class EdifactTransactionSetBatchEnvelope
     {
         public string TransactionSetControlNumber { get; set; }
         public string MessageId { get; set; }
-        public string UNH1 { get; set; }
+
+        [JsonProperty("UNH1")]
+        public string Unh1 { get; set; }
 
         [JsonProperty("UNH2_1")]
-        public string UNH21 { get; set; }
+        public string Unh21 { get; set; }
 
         [JsonProperty("UNH2_2")]
-        public string UNH22 { get; set; }
+        public string Unh22 { get; set; }
 
         [JsonProperty("UNH2_3")]
-        public string UNH23 { get; set; }
+        public string Unh23 { get; set; }
 
         [JsonProperty("UNH2_4")]
-        public string UNH24 { get; set; }
+        public string Unh24 { get; set; }
 
         [JsonProperty("UNH2_5")]
-        public string UNH25 { get; set; }
+        public string Unh25 { get; set; }
 
         [JsonProperty("UNH2_6")]
-        public string UNH26 { get; set; }
+        public string Unh26 { get; set; }
 
         [JsonProperty("UNH2_7")]
-        public string UNH27 { get; set; }
+        public string Unh27 { get; set; }
     }
 
     public class Delimiters

@@ -13,14 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powellteams
     public class PowellteamsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powellteams")]
-        public IBodyWorkflowAction<PowellTeamsCommonCoreOperationResultSystemCollectionsGenericListPowellTeamsAPIModelsApprovalApiApprovalModel, ApiConnectionActionConfiguration> GetBetaApprovalsPending()
+        public IBodyWorkflowAction<PowellTeamsCommonCoreOperationResultSystemCollectionsGenericListPowellTeamsApiModelsApprovalApiApprovalModel, ApiConnectionActionConfiguration> GetBetaApprovalsPending()
         {
-            return new DeferredBodyAction<PowellTeamsCommonCoreOperationResultSystemCollectionsGenericListPowellTeamsAPIModelsApprovalApiApprovalModel, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PowellTeamsCommonCoreOperationResultSystemCollectionsGenericListPowellTeamsApiModelsApprovalApiApprovalModel, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/beta/approvals/pending";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<PowellTeamsCommonCoreOperationResultSystemCollectionsGenericListPowellTeamsAPIModelsApprovalApiApprovalModel>(callPayload);
+                return new ApiConnectionAction<PowellTeamsCommonCoreOperationResultSystemCollectionsGenericListPowellTeamsApiModelsApprovalApiApprovalModel>(callPayload);
             });
         }
     }
@@ -29,35 +29,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powellteams
     {
     }
 
-    public class PowellTeamsCommonCoreOperationResultSystemCollectionsGenericListPowellTeamsAPIModelsApprovalApiApprovalModel
+    public class PowellTeamsCommonCoreOperationResultSystemCollectionsGenericListPowellTeamsApiModelsApprovalApiApprovalModel
     {
         public string CorrelationId { get; set; }
         public int ErrorCode { get; set; }
         public string ErrorMessage { get; set; }
         public bool IsSucceed { get; set; }
-        public PowellTeamsAPIModelsApprovalApiApprovalModel[] Result { get; set; }
+        public PowellTeamsApiModelsApprovalApiApprovalModel[] Result { get; set; }
     }
 
-    public class PowellTeamsAPIModelsApprovalApiApprovalModel
+    public class PowellTeamsApiModelsApprovalApiApprovalModel
     {
         public string Id { get; set; }
-        public PowellTeamsAPIModelsApprovalApiApprovalHistoryModel[] Histories { get; set; }
-        public PowellTeamsAPIModelsTeamApiTeamExtendModel Team { get; set; }
+        public PowellTeamsApiModelsApprovalApiApprovalHistoryModel[] Histories { get; set; }
+        public PowellTeamsApiModelsTeamApiTeamExtendModel Team { get; set; }
         public string TenantId { get; set; }
         public string Created { get; set; }
         public string[] Approvers { get; set; }
     }
 
-    public class PowellTeamsAPIModelsApprovalApiApprovalHistoryModel
+    public class PowellTeamsApiModelsApprovalApiApprovalHistoryModel
     {
         public string Id { get; set; }
         public int Status { get; set; }
         public string Comment { get; set; }
-        public PowellTeamsAPIModelsUserApiUserModel Creator { get; set; }
+        public PowellTeamsApiModelsUserApiUserModel Creator { get; set; }
         public string Created { get; set; }
     }
 
-    public class PowellTeamsAPIModelsUserApiUserModel
+    public class PowellTeamsApiModelsUserApiUserModel
     {
         public string Id { get; set; }
         public string Name { get; set; }
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powellteams
         public string TenantId { get; set; }
     }
 
-    public class PowellTeamsAPIModelsTeamApiTeamExtendModel
+    public class PowellTeamsApiModelsTeamApiTeamExtendModel
     {
         public string Id { get; set; }
         public string OfficeGroupId { get; set; }
@@ -79,8 +79,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powellteams
         public int OriginalIncrementOfNamingRule { get; set; }
         public string TeamTemplateId { get; set; }
         public string Photo { get; set; }
-        public PowellTeamsAPIModelsTagApiTagSettingModel[] TagSettings { get; set; }
-        public PowellTeamsAPIModelsTeamApiTeamExtendModelVisibilityType Visibility { get; set; }
+        public PowellTeamsApiModelsTagApiTagSettingModel[] TagSettings { get; set; }
+        public PowellTeamsApiModelsTeamApiTeamExtendModelVisibilityType Visibility { get; set; }
         public string[] AdditionalMembers { get; set; }
         public string[] AdditionalGroupOwners { get; set; }
         public string[] AdditionalGroupMembers { get; set; }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powellteams
         public string WebUrl { get; set; }
     }
 
-    public class PowellTeamsAPIModelsTagApiTagSettingModel
+    public class PowellTeamsApiModelsTagApiTagSettingModel
     {
         public string Id { get; set; }
         public string DefaultValue { get; set; }
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powellteams
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum PowellTeamsAPIModelsTeamApiTeamExtendModelVisibilityType
+    public enum PowellTeamsApiModelsTeamApiTeamExtendModelVisibilityType
     {
         UserChoice,
         Private,

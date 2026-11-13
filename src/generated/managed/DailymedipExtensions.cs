@@ -102,11 +102,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<NDCResponse, ApiConnectionActionConfiguration> NDC(Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<NdcResponse, ApiConnectionActionConfiguration> Ndc(Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
             var __workflow_pagesize = WorkflowExpression.Compile(pagesize, nameof(pagesize), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<NDCResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NdcResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/ndcs.json";
                 var apiCallHttpMethod = "get";
@@ -115,19 +115,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
                     callPayload.Queries["pagesize"] = ExpressionConverter.Convert(__workflow_pagesize);
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
-                return new ApiConnectionAction<NDCResponse>(callPayload);
+                return new ApiConnectionAction<NdcResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<RxCUIResponse, ApiConnectionActionConfiguration> RxCUI(Expression<Func<RxttyInput>> rxtty = null, Expression<Func<string>> rxstring = null, Expression<Func<int>> rxcui = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<RxCuiResponse, ApiConnectionActionConfiguration> RxCui(Expression<Func<RxttyInput>> rxtty = null, Expression<Func<string>> rxstring = null, Expression<Func<int>> rxcui = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
             var __workflow_rxtty = WorkflowExpression.Compile(rxtty, nameof(rxtty), required: false);
             var __workflow_rxstring = WorkflowExpression.Compile(rxstring, nameof(rxstring), required: false);
             var __workflow_rxcui = WorkflowExpression.Compile(rxcui, nameof(rxcui), required: false);
             var __workflow_pagesize = WorkflowExpression.Compile(pagesize, nameof(pagesize), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<RxCUIResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<RxCuiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/rxcuis.json";
                 var apiCallHttpMethod = "get";
@@ -143,12 +143,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
                     callPayload.Queries["pagesize"] = ExpressionConverter.Convert(__workflow_pagesize);
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
-                return new ApiConnectionAction<RxCUIResponse>(callPayload);
+                return new ApiConnectionAction<RxCuiResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLAllResponse, ApiConnectionActionConfiguration> SPLAll(Expression<Func<string>> applicationNumber = null, Expression<Func<bool>> boxedWarning = null, Expression<Func<DeaScheduleCodeInput>> deaScheduleCode = null, Expression<Func<string>> doctype = null, Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<string>> drugName = null, Expression<Func<NameTypeInput>> nameType = null, Expression<Func<string>> labeler = null, Expression<Func<string>> manufacturer = null, Expression<Func<string>> marketingCategoryCode = null, Expression<Func<string>> ndc = null, Expression<Func<string>> publishedDate = null, Expression<Func<PublishedDateComparisonInput>> publishedDateComparison = null, Expression<Func<string>> rxcui = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<SplAllResponse, ApiConnectionActionConfiguration> SplAll(Expression<Func<string>> applicationNumber = null, Expression<Func<bool>> boxedWarning = null, Expression<Func<DeaScheduleCodeInput>> deaScheduleCode = null, Expression<Func<string>> doctype = null, Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<string>> drugName = null, Expression<Func<NameTypeInput>> nameType = null, Expression<Func<string>> labeler = null, Expression<Func<string>> manufacturer = null, Expression<Func<string>> marketingCategoryCode = null, Expression<Func<string>> ndc = null, Expression<Func<string>> publishedDate = null, Expression<Func<PublishedDateComparisonInput>> publishedDateComparison = null, Expression<Func<string>> rxcui = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
             var __workflow_applicationNumber = WorkflowExpression.Compile(applicationNumber, nameof(applicationNumber), required: false);
             var __workflow_boxedWarning = WorkflowExpression.Compile(boxedWarning, nameof(boxedWarning), required: false);
@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             var __workflow_uniiCode = WorkflowExpression.Compile(uniiCode, nameof(uniiCode), required: false);
             var __workflow_pagesize = WorkflowExpression.Compile(pagesize, nameof(pagesize), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<SPLAllResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SplAllResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/spls.json";
                 var apiCallHttpMethod = "get";
@@ -212,64 +212,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
                     callPayload.Queries["pagesize"] = ExpressionConverter.Convert(__workflow_pagesize);
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
-                return new ApiConnectionAction<SPLAllResponse>(callPayload);
+                return new ApiConnectionAction<SplAllResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLHistoryResponse, ApiConnectionActionConfiguration> SPLHistory(Expression<Func<string>> sETId)
+        public IBodyWorkflowAction<SplHistoryResponse, ApiConnectionActionConfiguration> SplHistory(Expression<Func<string>> setid)
         {
-            var __workflow_sETId = WorkflowExpression.Compile(sETId, nameof(sETId), required: true);
-            return new DeferredBodyAction<SPLHistoryResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_setid = WorkflowExpression.Compile(setid, nameof(setid), required: true);
+            return new DeferredBodyAction<SplHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/history.json", __workflow_sETId.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/history.json", __workflow_setid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<SPLHistoryResponse>(callPayload);
+                return new ApiConnectionAction<SplHistoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLMediaResponse, ApiConnectionActionConfiguration> SPLMedia(Expression<Func<string>> sETId)
+        public IBodyWorkflowAction<SplMediaResponse, ApiConnectionActionConfiguration> SplMedia(Expression<Func<string>> setid)
         {
-            var __workflow_sETId = WorkflowExpression.Compile(sETId, nameof(sETId), required: true);
-            return new DeferredBodyAction<SPLMediaResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_setid = WorkflowExpression.Compile(setid, nameof(setid), required: true);
+            return new DeferredBodyAction<SplMediaResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/media.json", __workflow_sETId.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/media.json", __workflow_setid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<SPLMediaResponse>(callPayload);
+                return new ApiConnectionAction<SplMediaResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLNDCResponse, ApiConnectionActionConfiguration> SPLNDC(Expression<Func<string>> sETId)
+        public IBodyWorkflowAction<SplndcResponse, ApiConnectionActionConfiguration> Splndc(Expression<Func<string>> setid)
         {
-            var __workflow_sETId = WorkflowExpression.Compile(sETId, nameof(sETId), required: true);
-            return new DeferredBodyAction<SPLNDCResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_setid = WorkflowExpression.Compile(setid, nameof(setid), required: true);
+            return new DeferredBodyAction<SplndcResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/ndcs.json", __workflow_sETId.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/ndcs.json", __workflow_setid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<SPLNDCResponse>(callPayload);
+                return new ApiConnectionAction<SplndcResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<SPLPackagingResponse, ApiConnectionActionConfiguration> SPLPackaging(Expression<Func<string>> sETId)
+        public IBodyWorkflowAction<SplPackagingResponse, ApiConnectionActionConfiguration> SplPackaging(Expression<Func<string>> setid)
         {
-            var __workflow_sETId = WorkflowExpression.Compile(sETId, nameof(sETId), required: true);
-            return new DeferredBodyAction<SPLPackagingResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_setid = WorkflowExpression.Compile(setid, nameof(setid), required: true);
+            return new DeferredBodyAction<SplPackagingResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/packaging.json", __workflow_sETId.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/v2/spls/{0}/packaging.json", __workflow_setid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<SPLPackagingResponse>(callPayload);
+                return new ApiConnectionAction<SplPackagingResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dailymedip")]
-        public IBodyWorkflowAction<UNIIResponse, ApiConnectionActionConfiguration> UNII(Expression<Func<string>> activeMoiety = null, Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<string>> rxcui = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<UniiResponse, ApiConnectionActionConfiguration> Unii(Expression<Func<string>> activeMoiety = null, Expression<Func<string>> drugClassCode = null, Expression<Func<string>> drugClassCodingSystem = null, Expression<Func<string>> rxcui = null, Expression<Func<string>> uniiCode = null, Expression<Func<int>> pagesize = null, Expression<Func<int>> page = null)
         {
             var __workflow_activeMoiety = WorkflowExpression.Compile(activeMoiety, nameof(activeMoiety), required: false);
             var __workflow_drugClassCode = WorkflowExpression.Compile(drugClassCode, nameof(drugClassCode), required: false);
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
             var __workflow_uniiCode = WorkflowExpression.Compile(uniiCode, nameof(uniiCode), required: false);
             var __workflow_pagesize = WorkflowExpression.Compile(pagesize, nameof(pagesize), required: false);
             var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
-            return new DeferredBodyAction<UNIIResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UniiResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/uniis.json";
                 var apiCallHttpMethod = "get";
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
                     callPayload.Queries["pagesize"] = ExpressionConverter.Convert(__workflow_pagesize);
                 if (__workflow_page != null)
                     callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
-                return new ApiConnectionAction<UNIIResponse>(callPayload);
+                return new ApiConnectionAction<UniiResponse>(callPayload);
             });
         }
     }
@@ -455,16 +455,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         Brand
     }
 
-    public class NDCResponse
+    public class NdcResponse
     {
         [JsonProperty("metadata")]
-        public NDCResponseMetadataType Metadata { get; set; }
+        public NdcResponseMetadataType Metadata { get; set; }
 
         [JsonProperty("data")]
-        public NDCResponseDataTypeItem[] Data { get; set; }
+        public NdcResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class NDCResponseMetadataType
+    public class NdcResponseMetadataType
     {
         [JsonProperty("elements_per_page")]
         public int ElementsPerPage { get; set; }
@@ -485,22 +485,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public int CurrentPage { get; set; }
     }
 
-    public class NDCResponseDataTypeItem
+    public class NdcResponseDataTypeItem
     {
         [JsonProperty("ndc")]
         public string Ndc { get; set; }
     }
 
-    public class RxCUIResponse
+    public class RxCuiResponse
     {
         [JsonProperty("metadata")]
-        public RxCUIResponseMetadataType Metadata { get; set; }
+        public RxCuiResponseMetadataType Metadata { get; set; }
 
         [JsonProperty("data")]
-        public RxCUIResponseDataTypeItem[] Data { get; set; }
+        public RxCuiResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class RxCUIResponseMetadataType
+    public class RxCuiResponseMetadataType
     {
         [JsonProperty("elements_per_page")]
         public int ElementsPerPage { get; set; }
@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public int CurrentPage { get; set; }
     }
 
-    public class RxCUIResponseDataTypeItem
+    public class RxCuiResponseDataTypeItem
     {
         [JsonProperty("rxcui")]
         public string Rxcui { get; set; }
@@ -536,24 +536,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RxttyInput
     {
-        PSN,
-        SBD,
-        SCD,
-        BPCK,
-        GPCK,
+        [EnumMember(Value = "PSN")]
+        Psn,
+        [EnumMember(Value = "SBD")]
+        Sbd,
+        [EnumMember(Value = "SCD")]
+        Scd,
+        [EnumMember(Value = "BPCK")]
+        Bpck,
+        [EnumMember(Value = "GPCK")]
+        Gpck,
         SY
     }
 
-    public class SPLAllResponse
+    public class SplAllResponse
     {
         [JsonProperty("metadata")]
-        public SPLAllResponseMetadataType Metadata { get; set; }
+        public SplAllResponseMetadataType Metadata { get; set; }
 
         [JsonProperty("data")]
-        public SPLAllResponseDataTypeItem[] Data { get; set; }
+        public SplAllResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class SPLAllResponseMetadataType
+    public class SplAllResponseMetadataType
     {
         [JsonProperty("elements_per_page")]
         public int ElementsPerPage { get; set; }
@@ -574,7 +579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public int CurrentPage { get; set; }
     }
 
-    public class SPLAllResponseDataTypeItem
+    public class SplAllResponseDataTypeItem
     {
         [JsonProperty("spl_version")]
         public string SplVersion { get; set; }
@@ -616,16 +621,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         Eq
     }
 
-    public class SPLHistoryResponse
+    public class SplHistoryResponse
     {
         [JsonProperty("metadata")]
-        public SPLHistoryResponseMetadataType Metadata { get; set; }
+        public SplHistoryResponseMetadataType Metadata { get; set; }
 
         [JsonProperty("data")]
-        public SPLHistoryResponseDataType Data { get; set; }
+        public SplHistoryResponseDataType Data { get; set; }
     }
 
-    public class SPLHistoryResponseMetadataType
+    public class SplHistoryResponseMetadataType
     {
         [JsonProperty("elements_per_page")]
         public int ElementsPerPage { get; set; }
@@ -649,16 +654,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public int CurrentPage { get; set; }
     }
 
-    public class SPLHistoryResponseDataType
+    public class SplHistoryResponseDataType
     {
         [JsonProperty("history")]
-        public SPLHistoryResponseDataTypeHistoryTypeItem[] History { get; set; }
+        public SplHistoryResponseDataTypeHistoryTypeItem[] History { get; set; }
 
         [JsonProperty("spl")]
-        public SPLHistoryResponseDataTypeSplType Spl { get; set; }
+        public SplHistoryResponseDataTypeSplType Spl { get; set; }
     }
 
-    public class SPLHistoryResponseDataTypeHistoryTypeItem
+    public class SplHistoryResponseDataTypeHistoryTypeItem
     {
         [JsonProperty("spl_version")]
         public string SplVersion { get; set; }
@@ -667,7 +672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string PublishedDate { get; set; }
     }
 
-    public class SPLHistoryResponseDataTypeSplType
+    public class SplHistoryResponseDataTypeSplType
     {
         [JsonProperty("setid")]
         public string Setid { get; set; }
@@ -676,16 +681,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string Title { get; set; }
     }
 
-    public class SPLMediaResponse
+    public class SplMediaResponse
     {
         [JsonProperty("metadata")]
-        public SPLMediaResponseMetadataType Metadata { get; set; }
+        public SplMediaResponseMetadataType Metadata { get; set; }
 
         [JsonProperty("data")]
-        public SPLMediaResponseDataType Data { get; set; }
+        public SplMediaResponseDataType Data { get; set; }
     }
 
-    public class SPLMediaResponseMetadataType
+    public class SplMediaResponseMetadataType
     {
         [JsonProperty("elements_per_page")]
         public int ElementsPerPage { get; set; }
@@ -706,13 +711,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public int CurrentPage { get; set; }
     }
 
-    public class SPLMediaResponseDataType
+    public class SplMediaResponseDataType
     {
         [JsonProperty("spl_version")]
         public string SplVersion { get; set; }
 
         [JsonProperty("media")]
-        public SPLMediaResponseDataTypeMediaTypeItem[] Media { get; set; }
+        public SplMediaResponseDataTypeMediaTypeItem[] Media { get; set; }
 
         [JsonProperty("published_date")]
         public string PublishedDate { get; set; }
@@ -724,7 +729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string Title { get; set; }
     }
 
-    public class SPLMediaResponseDataTypeMediaTypeItem
+    public class SplMediaResponseDataTypeMediaTypeItem
     {
         [JsonProperty("mime_type")]
         public string MimeType { get; set; }
@@ -736,16 +741,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string Url { get; set; }
     }
 
-    public class SPLNDCResponse
+    public class SplndcResponse
     {
         [JsonProperty("metadata")]
-        public SPLNDCResponseMetadataType Metadata { get; set; }
+        public SplndcResponseMetadataType Metadata { get; set; }
 
         [JsonProperty("data")]
-        public SPLNDCResponseDataType Data { get; set; }
+        public SplndcResponseDataType Data { get; set; }
     }
 
-    public class SPLNDCResponseMetadataType
+    public class SplndcResponseMetadataType
     {
         [JsonProperty("elements_per_page")]
         public int ElementsPerPage { get; set; }
@@ -769,10 +774,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public int CurrentPage { get; set; }
     }
 
-    public class SPLNDCResponseDataType
+    public class SplndcResponseDataType
     {
         [JsonProperty("ndcs")]
-        public SPLNDCResponseDataTypeNdcsTypeItem[] Ndcs { get; set; }
+        public SplndcResponseDataTypeNdcsTypeItem[] Ndcs { get; set; }
 
         [JsonProperty("spl_version")]
         public string SplVersion { get; set; }
@@ -787,22 +792,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string Title { get; set; }
     }
 
-    public class SPLNDCResponseDataTypeNdcsTypeItem
+    public class SplndcResponseDataTypeNdcsTypeItem
     {
         [JsonProperty("ndc")]
         public string Ndc { get; set; }
     }
 
-    public class SPLPackagingResponse
+    public class SplPackagingResponse
     {
         [JsonProperty("metadata")]
-        public SPLPackagingResponseMetadataType Metadata { get; set; }
+        public SplPackagingResponseMetadataType Metadata { get; set; }
 
         [JsonProperty("data")]
-        public SPLPackagingResponseDataType Data { get; set; }
+        public SplPackagingResponseDataType Data { get; set; }
     }
 
-    public class SPLPackagingResponseMetadataType
+    public class SplPackagingResponseMetadataType
     {
         [JsonProperty("current_url")]
         public string CurrentUrl { get; set; }
@@ -811,13 +816,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string DbPublishedDate { get; set; }
     }
 
-    public class SPLPackagingResponseDataType
+    public class SplPackagingResponseDataType
     {
         [JsonProperty("spl_version")]
         public string SplVersion { get; set; }
 
         [JsonProperty("products")]
-        public SPLPackagingResponseDataTypeProductsTypeItem[] Products { get; set; }
+        public SplPackagingResponseDataTypeProductsTypeItem[] Products { get; set; }
 
         [JsonProperty("published_date")]
         public string PublishedDate { get; set; }
@@ -829,19 +834,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string Title { get; set; }
     }
 
-    public class SPLPackagingResponseDataTypeProductsTypeItem
+    public class SplPackagingResponseDataTypeProductsTypeItem
     {
         [JsonProperty("parts")]
-        public SPLPackagingResponseDataTypeProductsTypeItemPartsType Parts { get; set; }
+        public SplPackagingResponseDataTypeProductsTypeItemPartsType Parts { get; set; }
 
         [JsonProperty("active_ingredients")]
-        public SPLPackagingResponseDataTypeProductsTypeItemActiveIngredientsTypeItem[] ActiveIngredients { get; set; }
+        public SplPackagingResponseDataTypeProductsTypeItemActiveIngredientsTypeItem[] ActiveIngredients { get; set; }
 
         [JsonProperty("product_name")]
         public string ProductName { get; set; }
 
         [JsonProperty("packaging")]
-        public SPLPackagingResponseDataTypeProductsTypeItemPackagingTypeItem[] Packaging { get; set; }
+        public SplPackagingResponseDataTypeProductsTypeItemPackagingTypeItem[] Packaging { get; set; }
 
         [JsonProperty("product_code")]
         public string ProductCode { get; set; }
@@ -850,25 +855,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string ProductNameGeneric { get; set; }
     }
 
-    public class SPLPackagingResponseDataTypeProductsTypeItemPartsType
+    public class SplPackagingResponseDataTypeProductsTypeItemPartsType
     {
         [JsonProperty("item")]
-        public SPLPackagingResponseDataTypeProductsTypeItemPartsTypeItemType Item { get; set; }
+        public SplPackagingResponseDataTypeProductsTypeItemPartsTypeItemType Item { get; set; }
     }
 
-    public class SPLPackagingResponseDataTypeProductsTypeItemPartsTypeItemType
+    public class SplPackagingResponseDataTypeProductsTypeItemPartsTypeItemType
     {
         [JsonProperty("part_number")]
         public string PartNumber { get; set; }
 
         [JsonProperty("active_ingredients")]
-        public SPLPackagingResponseDataTypeProductsTypeItemPartsTypeItemTypeActiveIngredientsTypeItem[] ActiveIngredients { get; set; }
+        public SplPackagingResponseDataTypeProductsTypeItemPartsTypeItemTypeActiveIngredientsTypeItem[] ActiveIngredients { get; set; }
 
         [JsonProperty("total_product_quantity")]
         public string TotalProductQuantity { get; set; }
 
         [JsonProperty("packaging")]
-        public SPLPackagingResponseDataTypeProductsTypeItemPartsTypeItemTypePackagingTypeItem[] Packaging { get; set; }
+        public SplPackagingResponseDataTypeProductsTypeItemPartsTypeItemTypePackagingTypeItem[] Packaging { get; set; }
 
         [JsonProperty("part_name")]
         public string PartName { get; set; }
@@ -883,7 +888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string PartNameGeneric { get; set; }
     }
 
-    public class SPLPackagingResponseDataTypeProductsTypeItemPartsTypeItemTypeActiveIngredientsTypeItem
+    public class SplPackagingResponseDataTypeProductsTypeItemPartsTypeItemTypeActiveIngredientsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -892,7 +897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string Strength { get; set; }
     }
 
-    public class SPLPackagingResponseDataTypeProductsTypeItemPartsTypeItemTypePackagingTypeItem
+    public class SplPackagingResponseDataTypeProductsTypeItemPartsTypeItemTypePackagingTypeItem
     {
         [JsonProperty("ndc")]
         public string Ndc { get; set; }
@@ -901,7 +906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string[] PackageDescriptions { get; set; }
     }
 
-    public class SPLPackagingResponseDataTypeProductsTypeItemActiveIngredientsTypeItem
+    public class SplPackagingResponseDataTypeProductsTypeItemActiveIngredientsTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -910,7 +915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string Strength { get; set; }
     }
 
-    public class SPLPackagingResponseDataTypeProductsTypeItemPackagingTypeItem
+    public class SplPackagingResponseDataTypeProductsTypeItemPackagingTypeItem
     {
         [JsonProperty("ndc")]
         public string Ndc { get; set; }
@@ -919,16 +924,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string[] PackageDescriptions { get; set; }
     }
 
-    public class UNIIResponse
+    public class UniiResponse
     {
         [JsonProperty("metadata")]
-        public UNIIResponseMetadataType Metadata { get; set; }
+        public UniiResponseMetadataType Metadata { get; set; }
 
         [JsonProperty("data")]
-        public UNIIResponseDataTypeItem[] Data { get; set; }
+        public UniiResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class UNIIResponseMetadataType
+    public class UniiResponseMetadataType
     {
         [JsonProperty("elements_per_page")]
         public int ElementsPerPage { get; set; }
@@ -949,7 +954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public int CurrentPage { get; set; }
     }
 
-    public class UNIIResponseDataTypeItem
+    public class UniiResponseDataTypeItem
     {
         [JsonProperty("unii_code")]
         public string UniiCode { get; set; }

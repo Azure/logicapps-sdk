@@ -13,744 +13,744 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
     public class IaconnectjavaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABConnectToJavaAccessBridgeResponse, ApiConnectionActionConfiguration> JABConnectToJavaAccessBridge(Expression<Func<JABConnectToJavaAccessBridgeInput>> jABConnectToJavaAccessBridge)
+        public IBodyWorkflowAction<JabConnectToJavaAccessBridgeResponse, ApiConnectionActionConfiguration> JabConnectToJavaAccessBridge(Expression<Func<JabConnectToJavaAccessBridgeInput>> jabConnectToJavaAccessBridge)
         {
-            var __workflow_jABConnectToJavaAccessBridge = WorkflowExpression.Compile(jABConnectToJavaAccessBridge, nameof(jABConnectToJavaAccessBridge), required: true);
-            return new DeferredBodyAction<JABConnectToJavaAccessBridgeResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabConnectToJavaAccessBridge = WorkflowExpression.Compile(jabConnectToJavaAccessBridge, nameof(jabConnectToJavaAccessBridge), required: true);
+            return new DeferredBodyAction<JabConnectToJavaAccessBridgeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABConnectToJavaAccessBridge";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABConnectToJavaAccessBridge);
-                return new ApiConnectionAction<JABConnectToJavaAccessBridgeResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabConnectToJavaAccessBridge);
+                return new ApiConnectionAction<JabConnectToJavaAccessBridgeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABDisconnectFromJavaAccessBridge(Expression<Func<JABDisconnectFromJavaAccessBridgeInput>> jABDisconnectFromJavaAccessBridge)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabDisconnectFromJavaAccessBridge(Expression<Func<JabDisconnectFromJavaAccessBridgeInput>> jabDisconnectFromJavaAccessBridge)
         {
-            var __workflow_jABDisconnectFromJavaAccessBridge = WorkflowExpression.Compile(jABDisconnectFromJavaAccessBridge, nameof(jABDisconnectFromJavaAccessBridge), required: true);
+            var __workflow_jabDisconnectFromJavaAccessBridge = WorkflowExpression.Compile(jabDisconnectFromJavaAccessBridge, nameof(jabDisconnectFromJavaAccessBridge), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABDisconnectFromJavaAccessBridge";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABDisconnectFromJavaAccessBridge);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabDisconnectFromJavaAccessBridge);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetConnectionStatusResponse, ApiConnectionActionConfiguration> JABGetConnectionStatus(Expression<Func<JABGetConnectionStatusInput>> jABGetConnectionStatus)
+        public IBodyWorkflowAction<JabGetConnectionStatusResponse, ApiConnectionActionConfiguration> JabGetConnectionStatus(Expression<Func<JabGetConnectionStatusInput>> jabGetConnectionStatus)
         {
-            var __workflow_jABGetConnectionStatus = WorkflowExpression.Compile(jABGetConnectionStatus, nameof(jABGetConnectionStatus), required: true);
-            return new DeferredBodyAction<JABGetConnectionStatusResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetConnectionStatus = WorkflowExpression.Compile(jabGetConnectionStatus, nameof(jabGetConnectionStatus), required: true);
+            return new DeferredBodyAction<JabGetConnectionStatusResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetConnectionStatus";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetConnectionStatus);
-                return new ApiConnectionAction<JABGetConnectionStatusResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetConnectionStatus);
+                return new ApiConnectionAction<JabGetConnectionStatusResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABIsJavaWindowResponse, ApiConnectionActionConfiguration> JABIsJavaWindow(Expression<Func<JABIsJavaWindowInput>> jABIsJavaWindow)
+        public IBodyWorkflowAction<JabisJavaWindowResponse, ApiConnectionActionConfiguration> JabisJavaWindow(Expression<Func<JabisJavaWindowInput>> jabisJavaWindow)
         {
-            var __workflow_jABIsJavaWindow = WorkflowExpression.Compile(jABIsJavaWindow, nameof(jABIsJavaWindow), required: true);
-            return new DeferredBodyAction<JABIsJavaWindowResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabisJavaWindow = WorkflowExpression.Compile(jabisJavaWindow, nameof(jabisJavaWindow), required: true);
+            return new DeferredBodyAction<JabisJavaWindowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABIsJavaWindow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABIsJavaWindow);
-                return new ApiConnectionAction<JABIsJavaWindowResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabisJavaWindow);
+                return new ApiConnectionAction<JabisJavaWindowResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetWindowsAccessBridgeInfoResponse, ApiConnectionActionConfiguration> JABGetWindowsAccessBridgeInfo(Expression<Func<JABGetWindowsAccessBridgeInfoInput>> jABGetWindowsAccessBridgeInfo)
+        public IBodyWorkflowAction<JabGetWindowsAccessBridgeInfoResponse, ApiConnectionActionConfiguration> JabGetWindowsAccessBridgeInfo(Expression<Func<JabGetWindowsAccessBridgeInfoInput>> jabGetWindowsAccessBridgeInfo)
         {
-            var __workflow_jABGetWindowsAccessBridgeInfo = WorkflowExpression.Compile(jABGetWindowsAccessBridgeInfo, nameof(jABGetWindowsAccessBridgeInfo), required: true);
-            return new DeferredBodyAction<JABGetWindowsAccessBridgeInfoResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetWindowsAccessBridgeInfo = WorkflowExpression.Compile(jabGetWindowsAccessBridgeInfo, nameof(jabGetWindowsAccessBridgeInfo), required: true);
+            return new DeferredBodyAction<JabGetWindowsAccessBridgeInfoResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetWindowsAccessBridgeInfo";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetWindowsAccessBridgeInfo);
-                return new ApiConnectionAction<JABGetWindowsAccessBridgeInfoResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetWindowsAccessBridgeInfo);
+                return new ApiConnectionAction<JabGetWindowsAccessBridgeInfoResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetUIAElementPropertiesResponse, ApiConnectionActionConfiguration> JABGetUIAElementProperties(Expression<Func<JABGetUIAElementPropertiesInput>> jABGetUIAElementProperties)
+        public IBodyWorkflowAction<JabGetUiaElementPropertiesResponse, ApiConnectionActionConfiguration> JabGetUiaElementProperties(Expression<Func<JabGetUiaElementPropertiesInput>> jabGetUiaElementProperties)
         {
-            var __workflow_jABGetUIAElementProperties = WorkflowExpression.Compile(jABGetUIAElementProperties, nameof(jABGetUIAElementProperties), required: true);
-            return new DeferredBodyAction<JABGetUIAElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetUiaElementProperties = WorkflowExpression.Compile(jabGetUiaElementProperties, nameof(jabGetUiaElementProperties), required: true);
+            return new DeferredBodyAction<JabGetUiaElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetUIAElementProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetUIAElementProperties);
-                return new ApiConnectionAction<JABGetUIAElementPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetUiaElementProperties);
+                return new ApiConnectionAction<JabGetUiaElementPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetJABElementPropertiesResponse, ApiConnectionActionConfiguration> JABGetJABElementProperties(Expression<Func<JABGetJABElementPropertiesInput>> jABGetJABElementProperties)
+        public IBodyWorkflowAction<JabGetJabElementPropertiesResponse, ApiConnectionActionConfiguration> JabGetJabElementProperties(Expression<Func<JabGetJabElementPropertiesInput>> jabGetJabElementProperties)
         {
-            var __workflow_jABGetJABElementProperties = WorkflowExpression.Compile(jABGetJABElementProperties, nameof(jABGetJABElementProperties), required: true);
-            return new DeferredBodyAction<JABGetJABElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetJabElementProperties = WorkflowExpression.Compile(jabGetJabElementProperties, nameof(jabGetJabElementProperties), required: true);
+            return new DeferredBodyAction<JabGetJabElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetJABElementProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetJABElementProperties);
-                return new ApiConnectionAction<JABGetJABElementPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetJabElementProperties);
+                return new ApiConnectionAction<JabGetJabElementPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABDrawRectangleAroundJABElement(Expression<Func<JABDrawRectangleAroundJABElementInput>> jABDrawRectangleAroundJABElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabDrawRectangleAroundJabElement(Expression<Func<JabDrawRectangleAroundJabElementInput>> jabDrawRectangleAroundJabElement)
         {
-            var __workflow_jABDrawRectangleAroundJABElement = WorkflowExpression.Compile(jABDrawRectangleAroundJABElement, nameof(jABDrawRectangleAroundJABElement), required: true);
+            var __workflow_jabDrawRectangleAroundJabElement = WorkflowExpression.Compile(jabDrawRectangleAroundJabElement, nameof(jabDrawRectangleAroundJabElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABDrawRectangleAroundJABElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABDrawRectangleAroundJABElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabDrawRectangleAroundJabElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABDoesElementExistResponse, ApiConnectionActionConfiguration> JABDoesElementExist(Expression<Func<JABDoesElementExistInput>> jABDoesElementExist)
+        public IBodyWorkflowAction<JabDoesElementExistResponse, ApiConnectionActionConfiguration> JabDoesElementExist(Expression<Func<JabDoesElementExistInput>> jabDoesElementExist)
         {
-            var __workflow_jABDoesElementExist = WorkflowExpression.Compile(jABDoesElementExist, nameof(jABDoesElementExist), required: true);
-            return new DeferredBodyAction<JABDoesElementExistResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabDoesElementExist = WorkflowExpression.Compile(jabDoesElementExist, nameof(jabDoesElementExist), required: true);
+            return new DeferredBodyAction<JabDoesElementExistResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABDoesElementExist";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABDoesElementExist);
-                return new ApiConnectionAction<JABDoesElementExistResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabDoesElementExist);
+                return new ApiConnectionAction<JabDoesElementExistResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABWaitForElementResponse, ApiConnectionActionConfiguration> JABWaitForElement(Expression<Func<JABWaitForElementInput>> jABWaitForElement)
+        public IBodyWorkflowAction<JabWaitForElementResponse, ApiConnectionActionConfiguration> JabWaitForElement(Expression<Func<JabWaitForElementInput>> jabWaitForElement)
         {
-            var __workflow_jABWaitForElement = WorkflowExpression.Compile(jABWaitForElement, nameof(jABWaitForElement), required: true);
-            return new DeferredBodyAction<JABWaitForElementResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabWaitForElement = WorkflowExpression.Compile(jabWaitForElement, nameof(jabWaitForElement), required: true);
+            return new DeferredBodyAction<JabWaitForElementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABWaitForElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABWaitForElement);
-                return new ApiConnectionAction<JABWaitForElementResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabWaitForElement);
+                return new ApiConnectionAction<JabWaitForElementResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABWaitForElementToNotExistResponse, ApiConnectionActionConfiguration> JABWaitForElementToNotExist(Expression<Func<JABWaitForElementToNotExistInput>> jABWaitForElementToNotExist)
+        public IBodyWorkflowAction<JabWaitForElementToNotExistResponse, ApiConnectionActionConfiguration> JabWaitForElementToNotExist(Expression<Func<JabWaitForElementToNotExistInput>> jabWaitForElementToNotExist)
         {
-            var __workflow_jABWaitForElementToNotExist = WorkflowExpression.Compile(jABWaitForElementToNotExist, nameof(jABWaitForElementToNotExist), required: true);
-            return new DeferredBodyAction<JABWaitForElementToNotExistResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabWaitForElementToNotExist = WorkflowExpression.Compile(jabWaitForElementToNotExist, nameof(jabWaitForElementToNotExist), required: true);
+            return new DeferredBodyAction<JabWaitForElementToNotExistResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABWaitForElementToNotExist";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABWaitForElementToNotExist);
-                return new ApiConnectionAction<JABWaitForElementToNotExistResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabWaitForElementToNotExist);
+                return new ApiConnectionAction<JabWaitForElementToNotExistResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetDesktopElementsResponse, ApiConnectionActionConfiguration> JABGetDesktopElements(Expression<Func<JABGetDesktopElementsInput>> jABGetDesktopElements)
+        public IBodyWorkflowAction<JabGetDesktopElementsResponse, ApiConnectionActionConfiguration> JabGetDesktopElements(Expression<Func<JabGetDesktopElementsInput>> jabGetDesktopElements)
         {
-            var __workflow_jABGetDesktopElements = WorkflowExpression.Compile(jABGetDesktopElements, nameof(jABGetDesktopElements), required: true);
-            return new DeferredBodyAction<JABGetDesktopElementsResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetDesktopElements = WorkflowExpression.Compile(jabGetDesktopElements, nameof(jabGetDesktopElements), required: true);
+            return new DeferredBodyAction<JabGetDesktopElementsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetDesktopElements";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetDesktopElements);
-                return new ApiConnectionAction<JABGetDesktopElementsResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetDesktopElements);
+                return new ApiConnectionAction<JabGetDesktopElementsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABDoesDesktopElementExistResponse, ApiConnectionActionConfiguration> JABDoesDesktopElementExist(Expression<Func<JABDoesDesktopElementExistInput>> jABDoesDesktopElementExist)
+        public IBodyWorkflowAction<JabDoesDesktopElementExistResponse, ApiConnectionActionConfiguration> JabDoesDesktopElementExist(Expression<Func<JabDoesDesktopElementExistInput>> jabDoesDesktopElementExist)
         {
-            var __workflow_jABDoesDesktopElementExist = WorkflowExpression.Compile(jABDoesDesktopElementExist, nameof(jABDoesDesktopElementExist), required: true);
-            return new DeferredBodyAction<JABDoesDesktopElementExistResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabDoesDesktopElementExist = WorkflowExpression.Compile(jabDoesDesktopElementExist, nameof(jabDoesDesktopElementExist), required: true);
+            return new DeferredBodyAction<JabDoesDesktopElementExistResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABDoesDesktopElementExist";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABDoesDesktopElementExist);
-                return new ApiConnectionAction<JABDoesDesktopElementExistResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabDoesDesktopElementExist);
+                return new ApiConnectionAction<JabDoesDesktopElementExistResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABWaitForDesktopElementResponse, ApiConnectionActionConfiguration> JABWaitForDesktopElement(Expression<Func<JABWaitForDesktopElementInput>> jABWaitForDesktopElement)
+        public IBodyWorkflowAction<JabWaitForDesktopElementResponse, ApiConnectionActionConfiguration> JabWaitForDesktopElement(Expression<Func<JabWaitForDesktopElementInput>> jabWaitForDesktopElement)
         {
-            var __workflow_jABWaitForDesktopElement = WorkflowExpression.Compile(jABWaitForDesktopElement, nameof(jABWaitForDesktopElement), required: true);
-            return new DeferredBodyAction<JABWaitForDesktopElementResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabWaitForDesktopElement = WorkflowExpression.Compile(jabWaitForDesktopElement, nameof(jabWaitForDesktopElement), required: true);
+            return new DeferredBodyAction<JabWaitForDesktopElementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABWaitForDesktopElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABWaitForDesktopElement);
-                return new ApiConnectionAction<JABWaitForDesktopElementResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabWaitForDesktopElement);
+                return new ApiConnectionAction<JabWaitForDesktopElementResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABWaitForDesktopElementToNotExistResponse, ApiConnectionActionConfiguration> JABWaitForDesktopElementToNotExist(Expression<Func<JABWaitForDesktopElementToNotExistInput>> jABWaitForDesktopElementToNotExist)
+        public IBodyWorkflowAction<JabWaitForDesktopElementToNotExistResponse, ApiConnectionActionConfiguration> JabWaitForDesktopElementToNotExist(Expression<Func<JabWaitForDesktopElementToNotExistInput>> jabWaitForDesktopElementToNotExist)
         {
-            var __workflow_jABWaitForDesktopElementToNotExist = WorkflowExpression.Compile(jABWaitForDesktopElementToNotExist, nameof(jABWaitForDesktopElementToNotExist), required: true);
-            return new DeferredBodyAction<JABWaitForDesktopElementToNotExistResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabWaitForDesktopElementToNotExist = WorkflowExpression.Compile(jabWaitForDesktopElementToNotExist, nameof(jabWaitForDesktopElementToNotExist), required: true);
+            return new DeferredBodyAction<JabWaitForDesktopElementToNotExistResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABWaitForDesktopElementToNotExist";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABWaitForDesktopElementToNotExist);
-                return new ApiConnectionAction<JABWaitForDesktopElementToNotExistResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabWaitForDesktopElementToNotExist);
+                return new ApiConnectionAction<JabWaitForDesktopElementToNotExistResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABFreeAllJABHandles(Expression<Func<JABFreeAllJABHandlesInput>> jABFreeAllJABHandles)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabFreeAllJabHandles(Expression<Func<JabFreeAllJabHandlesInput>> jabFreeAllJabHandles)
         {
-            var __workflow_jABFreeAllJABHandles = WorkflowExpression.Compile(jABFreeAllJABHandles, nameof(jABFreeAllJABHandles), required: true);
+            var __workflow_jabFreeAllJabHandles = WorkflowExpression.Compile(jabFreeAllJabHandles, nameof(jabFreeAllJabHandles), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABFreeAllJABHandles";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABFreeAllJABHandles);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabFreeAllJabHandles);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetChildJABElementPropertiesResponse, ApiConnectionActionConfiguration> JABGetChildJABElementProperties(Expression<Func<JABGetChildJABElementPropertiesInput>> jABGetChildJABElementProperties)
+        public IBodyWorkflowAction<JabGetChildJabElementPropertiesResponse, ApiConnectionActionConfiguration> JabGetChildJabElementProperties(Expression<Func<JabGetChildJabElementPropertiesInput>> jabGetChildJabElementProperties)
         {
-            var __workflow_jABGetChildJABElementProperties = WorkflowExpression.Compile(jABGetChildJABElementProperties, nameof(jABGetChildJABElementProperties), required: true);
-            return new DeferredBodyAction<JABGetChildJABElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetChildJabElementProperties = WorkflowExpression.Compile(jabGetChildJabElementProperties, nameof(jabGetChildJabElementProperties), required: true);
+            return new DeferredBodyAction<JabGetChildJabElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetChildJABElementProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetChildJABElementProperties);
-                return new ApiConnectionAction<JABGetChildJABElementPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetChildJabElementProperties);
+                return new ApiConnectionAction<JabGetChildJabElementPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetAllChildJABElementPropertiesResponse, ApiConnectionActionConfiguration> JABGetAllChildJABElementProperties(Expression<Func<JABGetAllChildJABElementPropertiesInput>> jABGetAllChildJABElementProperties)
+        public IBodyWorkflowAction<JabGetAllChildJabElementPropertiesResponse, ApiConnectionActionConfiguration> JabGetAllChildJabElementProperties(Expression<Func<JabGetAllChildJabElementPropertiesInput>> jabGetAllChildJabElementProperties)
         {
-            var __workflow_jABGetAllChildJABElementProperties = WorkflowExpression.Compile(jABGetAllChildJABElementProperties, nameof(jABGetAllChildJABElementProperties), required: true);
-            return new DeferredBodyAction<JABGetAllChildJABElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetAllChildJabElementProperties = WorkflowExpression.Compile(jabGetAllChildJabElementProperties, nameof(jabGetAllChildJabElementProperties), required: true);
+            return new DeferredBodyAction<JabGetAllChildJabElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetAllChildJABElementProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetAllChildJABElementProperties);
-                return new ApiConnectionAction<JABGetAllChildJABElementPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetAllChildJabElementProperties);
+                return new ApiConnectionAction<JabGetAllChildJabElementPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetParentJABElementPropertiesResponse, ApiConnectionActionConfiguration> JABGetParentJABElementProperties(Expression<Func<JABGetParentJABElementPropertiesInput>> jABGetParentJABElementProperties)
+        public IBodyWorkflowAction<JabGetParentJabElementPropertiesResponse, ApiConnectionActionConfiguration> JabGetParentJabElementProperties(Expression<Func<JabGetParentJabElementPropertiesInput>> jabGetParentJabElementProperties)
         {
-            var __workflow_jABGetParentJABElementProperties = WorkflowExpression.Compile(jABGetParentJABElementProperties, nameof(jABGetParentJABElementProperties), required: true);
-            return new DeferredBodyAction<JABGetParentJABElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetParentJabElementProperties = WorkflowExpression.Compile(jabGetParentJabElementProperties, nameof(jabGetParentJabElementProperties), required: true);
+            return new DeferredBodyAction<JabGetParentJabElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetParentJABElementProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetParentJABElementProperties);
-                return new ApiConnectionAction<JABGetParentJABElementPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetParentJabElementProperties);
+                return new ApiConnectionAction<JabGetParentJabElementPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABPressElement(Expression<Func<JABPressElementInput>> jABPressElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabPressElement(Expression<Func<JabPressElementInput>> jabPressElement)
         {
-            var __workflow_jABPressElement = WorkflowExpression.Compile(jABPressElement, nameof(jABPressElement), required: true);
+            var __workflow_jabPressElement = WorkflowExpression.Compile(jabPressElement, nameof(jabPressElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABPressElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABPressElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabPressElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABPerformActionOnElement(Expression<Func<JABPerformActionOnElementInput>> jABPerformActionOnElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabPerformActionOnElement(Expression<Func<JabPerformActionOnElementInput>> jabPerformActionOnElement)
         {
-            var __workflow_jABPerformActionOnElement = WorkflowExpression.Compile(jABPerformActionOnElement, nameof(jABPerformActionOnElement), required: true);
+            var __workflow_jabPerformActionOnElement = WorkflowExpression.Compile(jabPerformActionOnElement, nameof(jabPerformActionOnElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABPerformActionOnElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABPerformActionOnElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabPerformActionOnElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABGlobalLeftMouseClickOnElement(Expression<Func<JABGlobalLeftMouseClickOnElementInput>> jABGlobalLeftMouseClickOnElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabGlobalLeftMouseClickOnElement(Expression<Func<JabGlobalLeftMouseClickOnElementInput>> jabGlobalLeftMouseClickOnElement)
         {
-            var __workflow_jABGlobalLeftMouseClickOnElement = WorkflowExpression.Compile(jABGlobalLeftMouseClickOnElement, nameof(jABGlobalLeftMouseClickOnElement), required: true);
+            var __workflow_jabGlobalLeftMouseClickOnElement = WorkflowExpression.Compile(jabGlobalLeftMouseClickOnElement, nameof(jabGlobalLeftMouseClickOnElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGlobalLeftMouseClickOnElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGlobalLeftMouseClickOnElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGlobalLeftMouseClickOnElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABGlobalRightMouseClickOnElement(Expression<Func<JABGlobalRightMouseClickOnElementInput>> jABGlobalRightMouseClickOnElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabGlobalRightMouseClickOnElement(Expression<Func<JabGlobalRightMouseClickOnElementInput>> jabGlobalRightMouseClickOnElement)
         {
-            var __workflow_jABGlobalRightMouseClickOnElement = WorkflowExpression.Compile(jABGlobalRightMouseClickOnElement, nameof(jABGlobalRightMouseClickOnElement), required: true);
+            var __workflow_jabGlobalRightMouseClickOnElement = WorkflowExpression.Compile(jabGlobalRightMouseClickOnElement, nameof(jabGlobalRightMouseClickOnElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGlobalRightMouseClickOnElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGlobalRightMouseClickOnElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGlobalRightMouseClickOnElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABGlobalMiddleMouseClickOnElement(Expression<Func<JABGlobalMiddleMouseClickOnElementInput>> jABGlobalMiddleMouseClickOnElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabGlobalMiddleMouseClickOnElement(Expression<Func<JabGlobalMiddleMouseClickOnElementInput>> jabGlobalMiddleMouseClickOnElement)
         {
-            var __workflow_jABGlobalMiddleMouseClickOnElement = WorkflowExpression.Compile(jABGlobalMiddleMouseClickOnElement, nameof(jABGlobalMiddleMouseClickOnElement), required: true);
+            var __workflow_jabGlobalMiddleMouseClickOnElement = WorkflowExpression.Compile(jabGlobalMiddleMouseClickOnElement, nameof(jabGlobalMiddleMouseClickOnElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGlobalMiddleMouseClickOnElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGlobalMiddleMouseClickOnElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGlobalMiddleMouseClickOnElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABGlobalDoubleLeftMouseClickOnElement(Expression<Func<JABGlobalDoubleLeftMouseClickOnElementInput>> jABGlobalDoubleLeftMouseClickOnElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabGlobalDoubleLeftMouseClickOnElement(Expression<Func<JabGlobalDoubleLeftMouseClickOnElementInput>> jabGlobalDoubleLeftMouseClickOnElement)
         {
-            var __workflow_jABGlobalDoubleLeftMouseClickOnElement = WorkflowExpression.Compile(jABGlobalDoubleLeftMouseClickOnElement, nameof(jABGlobalDoubleLeftMouseClickOnElement), required: true);
+            var __workflow_jabGlobalDoubleLeftMouseClickOnElement = WorkflowExpression.Compile(jabGlobalDoubleLeftMouseClickOnElement, nameof(jabGlobalDoubleLeftMouseClickOnElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGlobalDoubleLeftMouseClickOnElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGlobalDoubleLeftMouseClickOnElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGlobalDoubleLeftMouseClickOnElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetActionsForElementResponse, ApiConnectionActionConfiguration> JABGetActionsForElement(Expression<Func<JABGetActionsForElementInput>> jABGetActionsForElement)
+        public IBodyWorkflowAction<JabGetActionsForElementResponse, ApiConnectionActionConfiguration> JabGetActionsForElement(Expression<Func<JabGetActionsForElementInput>> jabGetActionsForElement)
         {
-            var __workflow_jABGetActionsForElement = WorkflowExpression.Compile(jABGetActionsForElement, nameof(jABGetActionsForElement), required: true);
-            return new DeferredBodyAction<JABGetActionsForElementResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetActionsForElement = WorkflowExpression.Compile(jabGetActionsForElement, nameof(jabGetActionsForElement), required: true);
+            return new DeferredBodyAction<JabGetActionsForElementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetActionsForElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetActionsForElement);
-                return new ApiConnectionAction<JABGetActionsForElementResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetActionsForElement);
+                return new ApiConnectionAction<JabGetActionsForElementResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABFocusElement(Expression<Func<JABFocusElementInput>> jABFocusElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabFocusElement(Expression<Func<JabFocusElementInput>> jabFocusElement)
         {
-            var __workflow_jABFocusElement = WorkflowExpression.Compile(jABFocusElement, nameof(jABFocusElement), required: true);
+            var __workflow_jabFocusElement = WorkflowExpression.Compile(jabFocusElement, nameof(jabFocusElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABFocusElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABFocusElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabFocusElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABInputPasswordIntoElement(Expression<Func<JABInputPasswordIntoElementInput>> jABInputPasswordIntoElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabInputPasswordIntoElement(Expression<Func<JabInputPasswordIntoElementInput>> jabInputPasswordIntoElement)
         {
-            var __workflow_jABInputPasswordIntoElement = WorkflowExpression.Compile(jABInputPasswordIntoElement, nameof(jABInputPasswordIntoElement), required: true);
+            var __workflow_jabInputPasswordIntoElement = WorkflowExpression.Compile(jabInputPasswordIntoElement, nameof(jabInputPasswordIntoElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABInputPasswordIntoElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABInputPasswordIntoElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabInputPasswordIntoElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABInputTextIntoElement(Expression<Func<JABInputTextIntoElementInput>> jABInputTextIntoElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabInputTextIntoElement(Expression<Func<JabInputTextIntoElementInput>> jabInputTextIntoElement)
         {
-            var __workflow_jABInputTextIntoElement = WorkflowExpression.Compile(jABInputTextIntoElement, nameof(jABInputTextIntoElement), required: true);
+            var __workflow_jabInputTextIntoElement = WorkflowExpression.Compile(jabInputTextIntoElement, nameof(jabInputTextIntoElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABInputTextIntoElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABInputTextIntoElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabInputTextIntoElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetElementTextValueResponse, ApiConnectionActionConfiguration> JABGetElementTextValue(Expression<Func<JABGetElementTextValueInput>> jABGetElementTextValue)
+        public IBodyWorkflowAction<JabGetElementTextValueResponse, ApiConnectionActionConfiguration> JabGetElementTextValue(Expression<Func<JabGetElementTextValueInput>> jabGetElementTextValue)
         {
-            var __workflow_jABGetElementTextValue = WorkflowExpression.Compile(jABGetElementTextValue, nameof(jABGetElementTextValue), required: true);
-            return new DeferredBodyAction<JABGetElementTextValueResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetElementTextValue = WorkflowExpression.Compile(jabGetElementTextValue, nameof(jabGetElementTextValue), required: true);
+            return new DeferredBodyAction<JabGetElementTextValueResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetElementTextValue";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetElementTextValue);
-                return new ApiConnectionAction<JABGetElementTextValueResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetElementTextValue);
+                return new ApiConnectionAction<JabGetElementTextValueResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetElementValueResponse, ApiConnectionActionConfiguration> JABGetElementValue(Expression<Func<JABGetElementValueInput>> jABGetElementValue)
+        public IBodyWorkflowAction<JabGetElementValueResponse, ApiConnectionActionConfiguration> JabGetElementValue(Expression<Func<JabGetElementValueInput>> jabGetElementValue)
         {
-            var __workflow_jABGetElementValue = WorkflowExpression.Compile(jABGetElementValue, nameof(jABGetElementValue), required: true);
-            return new DeferredBodyAction<JABGetElementValueResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetElementValue = WorkflowExpression.Compile(jabGetElementValue, nameof(jabGetElementValue), required: true);
+            return new DeferredBodyAction<JabGetElementValueResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetElementValue";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetElementValue);
-                return new ApiConnectionAction<JABGetElementValueResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetElementValue);
+                return new ApiConnectionAction<JabGetElementValueResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABCheckElement(Expression<Func<JABCheckElementInput>> jABCheckElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabCheckElement(Expression<Func<JabCheckElementInput>> jabCheckElement)
         {
-            var __workflow_jABCheckElement = WorkflowExpression.Compile(jABCheckElement, nameof(jABCheckElement), required: true);
+            var __workflow_jabCheckElement = WorkflowExpression.Compile(jabCheckElement, nameof(jabCheckElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABCheckElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABCheckElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabCheckElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetElementPropertiesAsListResponse, ApiConnectionActionConfiguration> JABGetElementPropertiesAsList(Expression<Func<JABGetElementPropertiesAsListInput>> jABGetElementPropertiesAsList)
+        public IBodyWorkflowAction<JabGetElementPropertiesAsListResponse, ApiConnectionActionConfiguration> JabGetElementPropertiesAsList(Expression<Func<JabGetElementPropertiesAsListInput>> jabGetElementPropertiesAsList)
         {
-            var __workflow_jABGetElementPropertiesAsList = WorkflowExpression.Compile(jABGetElementPropertiesAsList, nameof(jABGetElementPropertiesAsList), required: true);
-            return new DeferredBodyAction<JABGetElementPropertiesAsListResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetElementPropertiesAsList = WorkflowExpression.Compile(jabGetElementPropertiesAsList, nameof(jabGetElementPropertiesAsList), required: true);
+            return new DeferredBodyAction<JabGetElementPropertiesAsListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetElementPropertiesAsList";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetElementPropertiesAsList);
-                return new ApiConnectionAction<JABGetElementPropertiesAsListResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetElementPropertiesAsList);
+                return new ApiConnectionAction<JabGetElementPropertiesAsListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABGlobalInputPasswordIntoElement(Expression<Func<JABGlobalInputPasswordIntoElementInput>> jABGlobalInputPasswordIntoElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabGlobalInputPasswordIntoElement(Expression<Func<JabGlobalInputPasswordIntoElementInput>> jabGlobalInputPasswordIntoElement)
         {
-            var __workflow_jABGlobalInputPasswordIntoElement = WorkflowExpression.Compile(jABGlobalInputPasswordIntoElement, nameof(jABGlobalInputPasswordIntoElement), required: true);
+            var __workflow_jabGlobalInputPasswordIntoElement = WorkflowExpression.Compile(jabGlobalInputPasswordIntoElement, nameof(jabGlobalInputPasswordIntoElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGlobalInputPasswordIntoElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGlobalInputPasswordIntoElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGlobalInputPasswordIntoElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABGlobalInputTextIntoElement(Expression<Func<JABGlobalInputTextIntoElementInput>> jABGlobalInputTextIntoElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabGlobalInputTextIntoElement(Expression<Func<JabGlobalInputTextIntoElementInput>> jabGlobalInputTextIntoElement)
         {
-            var __workflow_jABGlobalInputTextIntoElement = WorkflowExpression.Compile(jABGlobalInputTextIntoElement, nameof(jABGlobalInputTextIntoElement), required: true);
+            var __workflow_jabGlobalInputTextIntoElement = WorkflowExpression.Compile(jabGlobalInputTextIntoElement, nameof(jabGlobalInputTextIntoElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGlobalInputTextIntoElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGlobalInputTextIntoElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGlobalInputTextIntoElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetSelectionElementItemsResponse, ApiConnectionActionConfiguration> JABGetSelectionElementItems(Expression<Func<JABGetSelectionElementItemsInput>> jABGetSelectionElementItems)
+        public IBodyWorkflowAction<JabGetSelectionElementItemsResponse, ApiConnectionActionConfiguration> JabGetSelectionElementItems(Expression<Func<JabGetSelectionElementItemsInput>> jabGetSelectionElementItems)
         {
-            var __workflow_jABGetSelectionElementItems = WorkflowExpression.Compile(jABGetSelectionElementItems, nameof(jABGetSelectionElementItems), required: true);
-            return new DeferredBodyAction<JABGetSelectionElementItemsResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetSelectionElementItems = WorkflowExpression.Compile(jabGetSelectionElementItems, nameof(jabGetSelectionElementItems), required: true);
+            return new DeferredBodyAction<JabGetSelectionElementItemsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetSelectionElementItems";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetSelectionElementItems);
-                return new ApiConnectionAction<JABGetSelectionElementItemsResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetSelectionElementItems);
+                return new ApiConnectionAction<JabGetSelectionElementItemsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABSetSelectionByIndex(Expression<Func<JABSetSelectionByIndexInput>> jABSetSelectionByIndex)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabSetSelectionByIndex(Expression<Func<JabSetSelectionByIndexInput>> jabSetSelectionByIndex)
         {
-            var __workflow_jABSetSelectionByIndex = WorkflowExpression.Compile(jABSetSelectionByIndex, nameof(jABSetSelectionByIndex), required: true);
+            var __workflow_jabSetSelectionByIndex = WorkflowExpression.Compile(jabSetSelectionByIndex, nameof(jabSetSelectionByIndex), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABSetSelectionByIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABSetSelectionByIndex);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabSetSelectionByIndex);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABSetSelectionByName(Expression<Func<JABSetSelectionByNameInput>> jABSetSelectionByName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabSetSelectionByName(Expression<Func<JabSetSelectionByNameInput>> jabSetSelectionByName)
         {
-            var __workflow_jABSetSelectionByName = WorkflowExpression.Compile(jABSetSelectionByName, nameof(jABSetSelectionByName), required: true);
+            var __workflow_jabSetSelectionByName = WorkflowExpression.Compile(jabSetSelectionByName, nameof(jabSetSelectionByName), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABSetSelectionByName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABSetSelectionByName);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabSetSelectionByName);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABExpandSelection(Expression<Func<JABExpandSelectionInput>> jABExpandSelection)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabExpandSelection(Expression<Func<JabExpandSelectionInput>> jabExpandSelection)
         {
-            var __workflow_jABExpandSelection = WorkflowExpression.Compile(jABExpandSelection, nameof(jABExpandSelection), required: true);
+            var __workflow_jabExpandSelection = WorkflowExpression.Compile(jabExpandSelection, nameof(jabExpandSelection), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABExpandSelection";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABExpandSelection);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabExpandSelection);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetSelectionStateByIndexResponse, ApiConnectionActionConfiguration> JABGetSelectionStateByIndex(Expression<Func<JABGetSelectionStateByIndexInput>> jABGetSelectionStateByIndex)
+        public IBodyWorkflowAction<JabGetSelectionStateByIndexResponse, ApiConnectionActionConfiguration> JabGetSelectionStateByIndex(Expression<Func<JabGetSelectionStateByIndexInput>> jabGetSelectionStateByIndex)
         {
-            var __workflow_jABGetSelectionStateByIndex = WorkflowExpression.Compile(jABGetSelectionStateByIndex, nameof(jABGetSelectionStateByIndex), required: true);
-            return new DeferredBodyAction<JABGetSelectionStateByIndexResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetSelectionStateByIndex = WorkflowExpression.Compile(jabGetSelectionStateByIndex, nameof(jabGetSelectionStateByIndex), required: true);
+            return new DeferredBodyAction<JabGetSelectionStateByIndexResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetSelectionStateByIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetSelectionStateByIndex);
-                return new ApiConnectionAction<JABGetSelectionStateByIndexResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetSelectionStateByIndex);
+                return new ApiConnectionAction<JabGetSelectionStateByIndexResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetSelectionStateByNameResponse, ApiConnectionActionConfiguration> JABGetSelectionStateByName(Expression<Func<JABGetSelectionStateByNameInput>> jABGetSelectionStateByName)
+        public IBodyWorkflowAction<JabGetSelectionStateByNameResponse, ApiConnectionActionConfiguration> JabGetSelectionStateByName(Expression<Func<JabGetSelectionStateByNameInput>> jabGetSelectionStateByName)
         {
-            var __workflow_jABGetSelectionStateByName = WorkflowExpression.Compile(jABGetSelectionStateByName, nameof(jABGetSelectionStateByName), required: true);
-            return new DeferredBodyAction<JABGetSelectionStateByNameResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetSelectionStateByName = WorkflowExpression.Compile(jabGetSelectionStateByName, nameof(jabGetSelectionStateByName), required: true);
+            return new DeferredBodyAction<JabGetSelectionStateByNameResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetSelectionStateByName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetSelectionStateByName);
-                return new ApiConnectionAction<JABGetSelectionStateByNameResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetSelectionStateByName);
+                return new ApiConnectionAction<JabGetSelectionStateByNameResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetTablePropertiesResponse, ApiConnectionActionConfiguration> JABGetTableProperties(Expression<Func<JABGetTablePropertiesInput>> jABGetTableProperties)
+        public IBodyWorkflowAction<JabGetTablePropertiesResponse, ApiConnectionActionConfiguration> JabGetTableProperties(Expression<Func<JabGetTablePropertiesInput>> jabGetTableProperties)
         {
-            var __workflow_jABGetTableProperties = WorkflowExpression.Compile(jABGetTableProperties, nameof(jABGetTableProperties), required: true);
-            return new DeferredBodyAction<JABGetTablePropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetTableProperties = WorkflowExpression.Compile(jabGetTableProperties, nameof(jabGetTableProperties), required: true);
+            return new DeferredBodyAction<JabGetTablePropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetTableProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetTableProperties);
-                return new ApiConnectionAction<JABGetTablePropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetTableProperties);
+                return new ApiConnectionAction<JabGetTablePropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetTableCellPropertiesResponse, ApiConnectionActionConfiguration> JABGetTableCellProperties(Expression<Func<JABGetTableCellPropertiesInput>> jABGetTableCellProperties)
+        public IBodyWorkflowAction<JabGetTableCellPropertiesResponse, ApiConnectionActionConfiguration> JabGetTableCellProperties(Expression<Func<JabGetTableCellPropertiesInput>> jabGetTableCellProperties)
         {
-            var __workflow_jABGetTableCellProperties = WorkflowExpression.Compile(jABGetTableCellProperties, nameof(jABGetTableCellProperties), required: true);
-            return new DeferredBodyAction<JABGetTableCellPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetTableCellProperties = WorkflowExpression.Compile(jabGetTableCellProperties, nameof(jabGetTableCellProperties), required: true);
+            return new DeferredBodyAction<JabGetTableCellPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetTableCellProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetTableCellProperties);
-                return new ApiConnectionAction<JABGetTableCellPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetTableCellProperties);
+                return new ApiConnectionAction<JabGetTableCellPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetTableContentsResponse, ApiConnectionActionConfiguration> JABGetTableContents(Expression<Func<JABGetTableContentsInput>> jABGetTableContents)
+        public IBodyWorkflowAction<JabGetTableContentsResponse, ApiConnectionActionConfiguration> JabGetTableContents(Expression<Func<JabGetTableContentsInput>> jabGetTableContents)
         {
-            var __workflow_jABGetTableContents = WorkflowExpression.Compile(jABGetTableContents, nameof(jABGetTableContents), required: true);
-            return new DeferredBodyAction<JABGetTableContentsResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetTableContents = WorkflowExpression.Compile(jabGetTableContents, nameof(jabGetTableContents), required: true);
+            return new DeferredBodyAction<JabGetTableContentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetTableContents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetTableContents);
-                return new ApiConnectionAction<JABGetTableContentsResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetTableContents);
+                return new ApiConnectionAction<JabGetTableContentsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABIsTableCellVisibleOnscreenResponse, ApiConnectionActionConfiguration> JABIsTableCellVisibleOnscreen(Expression<Func<JABIsTableCellVisibleOnscreenInput>> jABIsTableCellVisibleOnscreen)
+        public IBodyWorkflowAction<JabisTableCellVisibleOnscreenResponse, ApiConnectionActionConfiguration> JabisTableCellVisibleOnscreen(Expression<Func<JabisTableCellVisibleOnscreenInput>> jabisTableCellVisibleOnscreen)
         {
-            var __workflow_jABIsTableCellVisibleOnscreen = WorkflowExpression.Compile(jABIsTableCellVisibleOnscreen, nameof(jABIsTableCellVisibleOnscreen), required: true);
-            return new DeferredBodyAction<JABIsTableCellVisibleOnscreenResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabisTableCellVisibleOnscreen = WorkflowExpression.Compile(jabisTableCellVisibleOnscreen, nameof(jabisTableCellVisibleOnscreen), required: true);
+            return new DeferredBodyAction<JabisTableCellVisibleOnscreenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABIsTableCellVisibleOnscreen";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABIsTableCellVisibleOnscreen);
-                return new ApiConnectionAction<JABIsTableCellVisibleOnscreenResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabisTableCellVisibleOnscreen);
+                return new ApiConnectionAction<JabisTableCellVisibleOnscreenResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABIsJABHandleSameObjectResponse, ApiConnectionActionConfiguration> JABIsJABHandleSameObject(Expression<Func<JABIsJABHandleSameObjectInput>> jABIsJABHandleSameObject)
+        public IBodyWorkflowAction<JabIsJabHandleSameObjectResponse, ApiConnectionActionConfiguration> JabIsJabHandleSameObject(Expression<Func<JabIsJabHandleSameObjectInput>> jabIsJabHandleSameObject)
         {
-            var __workflow_jABIsJABHandleSameObject = WorkflowExpression.Compile(jABIsJABHandleSameObject, nameof(jABIsJABHandleSameObject), required: true);
-            return new DeferredBodyAction<JABIsJABHandleSameObjectResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabIsJabHandleSameObject = WorkflowExpression.Compile(jabIsJabHandleSameObject, nameof(jabIsJabHandleSameObject), required: true);
+            return new DeferredBodyAction<JabIsJabHandleSameObjectResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABIsJABHandleSameObject";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABIsJABHandleSameObject);
-                return new ApiConnectionAction<JABIsJABHandleSameObjectResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabIsJabHandleSameObject);
+                return new ApiConnectionAction<JabIsJabHandleSameObjectResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetVisibleBoundingRectangleOfElementOnscreenResponse, ApiConnectionActionConfiguration> JABGetVisibleBoundingRectangleOfElementOnscreen(Expression<Func<JABGetVisibleBoundingRectangleOfElementOnscreenInput>> jABGetVisibleBoundingRectangleOfElementOnscreen)
+        public IBodyWorkflowAction<JabGetVisibleBoundingRectangleOfElementOnscreenResponse, ApiConnectionActionConfiguration> JabGetVisibleBoundingRectangleOfElementOnscreen(Expression<Func<JabGetVisibleBoundingRectangleOfElementOnscreenInput>> jabGetVisibleBoundingRectangleOfElementOnscreen)
         {
-            var __workflow_jABGetVisibleBoundingRectangleOfElementOnscreen = WorkflowExpression.Compile(jABGetVisibleBoundingRectangleOfElementOnscreen, nameof(jABGetVisibleBoundingRectangleOfElementOnscreen), required: true);
-            return new DeferredBodyAction<JABGetVisibleBoundingRectangleOfElementOnscreenResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetVisibleBoundingRectangleOfElementOnscreen = WorkflowExpression.Compile(jabGetVisibleBoundingRectangleOfElementOnscreen, nameof(jabGetVisibleBoundingRectangleOfElementOnscreen), required: true);
+            return new DeferredBodyAction<JabGetVisibleBoundingRectangleOfElementOnscreenResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetVisibleBoundingRectangleOfElementOnscreen";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetVisibleBoundingRectangleOfElementOnscreen);
-                return new ApiConnectionAction<JABGetVisibleBoundingRectangleOfElementOnscreenResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetVisibleBoundingRectangleOfElementOnscreen);
+                return new ApiConnectionAction<JabGetVisibleBoundingRectangleOfElementOnscreenResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABCreateHandleForJABElementAtScreenCoordinateResponse, ApiConnectionActionConfiguration> JABCreateHandleForJABElementAtScreenCoordinate(Expression<Func<JABCreateHandleForJABElementAtScreenCoordinateInput>> jABCreateHandleForJABElementAtScreenCoordinate)
+        public IBodyWorkflowAction<JabCreateHandleForJabElementAtScreenCoordinateResponse, ApiConnectionActionConfiguration> JabCreateHandleForJabElementAtScreenCoordinate(Expression<Func<JabCreateHandleForJabElementAtScreenCoordinateInput>> jabCreateHandleForJabElementAtScreenCoordinate)
         {
-            var __workflow_jABCreateHandleForJABElementAtScreenCoordinate = WorkflowExpression.Compile(jABCreateHandleForJABElementAtScreenCoordinate, nameof(jABCreateHandleForJABElementAtScreenCoordinate), required: true);
-            return new DeferredBodyAction<JABCreateHandleForJABElementAtScreenCoordinateResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabCreateHandleForJabElementAtScreenCoordinate = WorkflowExpression.Compile(jabCreateHandleForJabElementAtScreenCoordinate, nameof(jabCreateHandleForJabElementAtScreenCoordinate), required: true);
+            return new DeferredBodyAction<JabCreateHandleForJabElementAtScreenCoordinateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABCreateHandleForJABElementAtScreenCoordinate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABCreateHandleForJABElementAtScreenCoordinate);
-                return new ApiConnectionAction<JABCreateHandleForJABElementAtScreenCoordinateResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabCreateHandleForJabElementAtScreenCoordinate);
+                return new ApiConnectionAction<JabCreateHandleForJabElementAtScreenCoordinateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetTableCellAtScreenCoordinateResponse, ApiConnectionActionConfiguration> JABGetTableCellAtScreenCoordinate(Expression<Func<JABGetTableCellAtScreenCoordinateInput>> jABGetTableCellAtScreenCoordinate)
+        public IBodyWorkflowAction<JabGetTableCellAtScreenCoordinateResponse, ApiConnectionActionConfiguration> JabGetTableCellAtScreenCoordinate(Expression<Func<JabGetTableCellAtScreenCoordinateInput>> jabGetTableCellAtScreenCoordinate)
         {
-            var __workflow_jABGetTableCellAtScreenCoordinate = WorkflowExpression.Compile(jABGetTableCellAtScreenCoordinate, nameof(jABGetTableCellAtScreenCoordinate), required: true);
-            return new DeferredBodyAction<JABGetTableCellAtScreenCoordinateResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetTableCellAtScreenCoordinate = WorkflowExpression.Compile(jabGetTableCellAtScreenCoordinate, nameof(jabGetTableCellAtScreenCoordinate), required: true);
+            return new DeferredBodyAction<JabGetTableCellAtScreenCoordinateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetTableCellAtScreenCoordinate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetTableCellAtScreenCoordinate);
-                return new ApiConnectionAction<JABGetTableCellAtScreenCoordinateResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetTableCellAtScreenCoordinate);
+                return new ApiConnectionAction<JabGetTableCellAtScreenCoordinateResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetMultipleParentJABElementPropertiesResponse, ApiConnectionActionConfiguration> JABGetMultipleParentJABElementProperties(Expression<Func<JABGetMultipleParentJABElementPropertiesInput>> jABGetMultipleParentJABElementProperties)
+        public IBodyWorkflowAction<JabGetMultipleParentJabElementPropertiesResponse, ApiConnectionActionConfiguration> JabGetMultipleParentJabElementProperties(Expression<Func<JabGetMultipleParentJabElementPropertiesInput>> jabGetMultipleParentJabElementProperties)
         {
-            var __workflow_jABGetMultipleParentJABElementProperties = WorkflowExpression.Compile(jABGetMultipleParentJABElementProperties, nameof(jABGetMultipleParentJABElementProperties), required: true);
-            return new DeferredBodyAction<JABGetMultipleParentJABElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetMultipleParentJabElementProperties = WorkflowExpression.Compile(jabGetMultipleParentJabElementProperties, nameof(jabGetMultipleParentJabElementProperties), required: true);
+            return new DeferredBodyAction<JabGetMultipleParentJabElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetMultipleParentJABElementProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetMultipleParentJABElementProperties);
-                return new ApiConnectionAction<JABGetMultipleParentJABElementPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetMultipleParentJabElementProperties);
+                return new ApiConnectionAction<JabGetMultipleParentJabElementPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> JABGlobalMouseClickOnTableCell(Expression<Func<JABGlobalMouseClickOnTableCellInput>> jABGlobalMouseClickOnTableCell)
+        public IWorkflowAction<ApiConnectionActionConfiguration> JabGlobalMouseClickOnTableCell(Expression<Func<JabGlobalMouseClickOnTableCellInput>> jabGlobalMouseClickOnTableCell)
         {
-            var __workflow_jABGlobalMouseClickOnTableCell = WorkflowExpression.Compile(jABGlobalMouseClickOnTableCell, nameof(jABGlobalMouseClickOnTableCell), required: true);
+            var __workflow_jabGlobalMouseClickOnTableCell = WorkflowExpression.Compile(jabGlobalMouseClickOnTableCell, nameof(jabGlobalMouseClickOnTableCell), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGlobalMouseClickOnTableCell";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGlobalMouseClickOnTableCell);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGlobalMouseClickOnTableCell);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetRoleCSVFromElementSearchResponse, ApiConnectionActionConfiguration> JABGetRoleCSVFromElementSearch(Expression<Func<JABGetRoleCSVFromElementSearchInput>> jABGetRoleCSVFromElementSearch)
+        public IBodyWorkflowAction<JabGetRoleCsvFromElementSearchResponse, ApiConnectionActionConfiguration> JabGetRoleCsvFromElementSearch(Expression<Func<JabGetRoleCsvFromElementSearchInput>> jabGetRoleCsvFromElementSearch)
         {
-            var __workflow_jABGetRoleCSVFromElementSearch = WorkflowExpression.Compile(jABGetRoleCSVFromElementSearch, nameof(jABGetRoleCSVFromElementSearch), required: true);
-            return new DeferredBodyAction<JABGetRoleCSVFromElementSearchResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetRoleCsvFromElementSearch = WorkflowExpression.Compile(jabGetRoleCsvFromElementSearch, nameof(jabGetRoleCsvFromElementSearch), required: true);
+            return new DeferredBodyAction<JabGetRoleCsvFromElementSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetRoleCSVFromElementSearch";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetRoleCSVFromElementSearch);
-                return new ApiConnectionAction<JABGetRoleCSVFromElementSearchResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetRoleCsvFromElementSearch);
+                return new ApiConnectionAction<JabGetRoleCsvFromElementSearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjava")]
-        public IBodyWorkflowAction<JABGetRoleCSVFromElementHandleResponse, ApiConnectionActionConfiguration> JABGetRoleCSVFromElementHandle(Expression<Func<JABGetRoleCSVFromElementHandleInput>> jABGetRoleCSVFromElementHandle)
+        public IBodyWorkflowAction<JabGetRoleCsvFromElementHandleResponse, ApiConnectionActionConfiguration> JabGetRoleCsvFromElementHandle(Expression<Func<JabGetRoleCsvFromElementHandleInput>> jabGetRoleCsvFromElementHandle)
         {
-            var __workflow_jABGetRoleCSVFromElementHandle = WorkflowExpression.Compile(jABGetRoleCSVFromElementHandle, nameof(jABGetRoleCSVFromElementHandle), required: true);
-            return new DeferredBodyAction<JABGetRoleCSVFromElementHandleResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_jabGetRoleCsvFromElementHandle = WorkflowExpression.Compile(jabGetRoleCsvFromElementHandle, nameof(jabGetRoleCsvFromElementHandle), required: true);
+            return new DeferredBodyAction<JabGetRoleCsvFromElementHandleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/JavaAccessBridge/JABGetRoleCSVFromElementHandle";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jABGetRoleCSVFromElementHandle);
-                return new ApiConnectionAction<JABGetRoleCSVFromElementHandleResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_jabGetRoleCsvFromElementHandle);
+                return new ApiConnectionAction<JabGetRoleCsvFromElementHandleResponse>(callPayload);
             });
         }
     }
@@ -759,21 +759,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
     {
     }
 
-    public class JABConnectToJavaAccessBridgeResponse
+    public class JabConnectToJavaAccessBridgeResponse
     {
-        public string LoadedWindowsAccessBridgeDLL { get; set; }
+        [JsonProperty("LoadedWindowsAccessBridgeDLL")]
+        public string LoadedWindowsAccessBridgeDll { get; set; }
     }
 
-    public class JABConnectToJavaAccessBridgeInput
+    public class JabConnectToJavaAccessBridgeInput
     {
-        public string WindowsAccessBridgeDLLSearchFolder { get; set; }
+        [JsonProperty("WindowsAccessBridgeDLLSearchFolder")]
+        public string WindowsAccessBridgeDllSearchFolder { get; set; }
         public string IAJavaAccessBridgePath { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? Is64BitJABDLL { get; set; } = false;
+        [JsonProperty("Is64BitJABDLL", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? Is64BitJabdll { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? UseCOMFor64BitJABDLL { get; set; } = true;
+        [JsonProperty("UseCOMFor64BitJABDLL", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? UseComFor64BitJabdll { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? EnableJavaAccessBridge { get; set; } = true;
@@ -788,7 +790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABDisconnectFromJavaAccessBridgeInput
+    public class JabDisconnectFromJavaAccessBridgeInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? DisableJavaAccessBridge { get; set; } = true;
@@ -800,31 +802,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetConnectionStatusResponse
+    public class JabGetConnectionStatusResponse
     {
         public bool Connected { get; set; }
         public string ConnectionType { get; set; }
-        public bool IsWAB64bit { get; set; }
+
+        [JsonProperty("IsWAB64bit")]
+        public bool IsWab64bit { get; set; }
         public string ConnectionError { get; set; }
-        public string LoadedIAJABDLL { get; set; }
-        public string LoadedWABDLL { get; set; }
-        public string WABVersion { get; set; }
+
+        [JsonProperty("LoadedIAJABDLL")]
+        public string LoadedIajabdll { get; set; }
+
+        [JsonProperty("LoadedWABDLL")]
+        public string LoadedWabdll { get; set; }
+
+        [JsonProperty("WABVersion")]
+        public string WabVersion { get; set; }
     }
 
-    public class JABGetConnectionStatusInput
+    public class JabGetConnectionStatusInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABIsJavaWindowResponse
+    public class JabisJavaWindowResponse
     {
         public bool IsJavaWindow { get; set; }
     }
 
-    public class JABIsJavaWindowInput
+    public class JabisJavaWindowInput
     {
-        public JABIsJavaWindowInput(int parentWindowHandle)
+        public JabisJavaWindowInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -851,34 +861,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetWindowsAccessBridgeInfoResponse
+    public class JabGetWindowsAccessBridgeInfoResponse
     {
         public string JavaClassVersion { get; set; }
-        public string JavaDLLVersion { get; set; }
-        public string WinDLLVersion { get; set; }
+
+        [JsonProperty("JavaDLLVersion")]
+        public string JavaDllVersion { get; set; }
+
+        [JsonProperty("WinDLLVersion")]
+        public string WinDllVersion { get; set; }
         public string VMVersion { get; set; }
     }
 
-    public class JABGetWindowsAccessBridgeInfoInput
+    public class JabGetWindowsAccessBridgeInfoInput
     {
-        public JABGetWindowsAccessBridgeInfoInput(int vMId)
+        public JabGetWindowsAccessBridgeInfoInput(int vmid)
         {
-            this.VMId = vMId;
+            this.Vmid = vmid;
         }
 
         [JsonProperty("VMID", DefaultValueHandling = DefaultValueHandling.Include)]
-        public int VMId { get; set; }
+        public int Vmid { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetUIAElementPropertiesResponse
+    public class JabGetUiaElementPropertiesResponse
     {
-        public int ElementJABHandle { get; set; }
+        [JsonProperty("ElementJABHandle")]
+        public int ElementJabHandle { get; set; }
 
         [JsonProperty("ElementVMID")]
-        public int ElementVMId { get; set; }
+        public int ElementVmid { get; set; }
         public string ElementName { get; set; }
         public string ElementDescription { get; set; }
         public string ElementRole { get; set; }
@@ -922,9 +937,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public int ElementDepth { get; set; }
     }
 
-    public class JABGetUIAElementPropertiesInput
+    public class JabGetUiaElementPropertiesInput
     {
-        public JABGetUIAElementPropertiesInput(int parentWindowHandle)
+        public JabGetUiaElementPropertiesInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -954,12 +969,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetJABElementPropertiesResponse
+    public class JabGetJabElementPropertiesResponse
     {
-        public int ElementJABHandle { get; set; }
+        [JsonProperty("ElementJABHandle")]
+        public int ElementJabHandle { get; set; }
 
         [JsonProperty("ElementVMID")]
-        public int ElementVMId { get; set; }
+        public int ElementVmid { get; set; }
         public string ElementName { get; set; }
         public string ElementDescription { get; set; }
         public string ElementRole { get; set; }
@@ -1003,18 +1019,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public int ElementDepth { get; set; }
     }
 
-    public class JABGetJABElementPropertiesInput
+    public class JabGetJabElementPropertiesInput
     {
-        public JABGetJABElementPropertiesInput(int searchParentElementJABHandle)
+        public JabGetJabElementPropertiesInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -1053,18 +1075,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABDrawRectangleAroundJABElementInput
+    public class JabDrawRectangleAroundJabElementInput
     {
-        public JABDrawRectangleAroundJABElementInput(int searchParentElementJABHandle)
+        public JabDrawRectangleAroundJabElementInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -1106,27 +1134,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABDoesElementExistResponse
+    public class JabDoesElementExistResponse
     {
         public bool ElementExists { get; set; }
-        public int ElementJABHandle { get; set; }
+
+        [JsonProperty("ElementJABHandle")]
+        public int ElementJabHandle { get; set; }
         public string ElementName { get; set; }
         public string ElementDescription { get; set; }
         public string ElementRole { get; set; }
     }
 
-    public class JABDoesElementExistInput
+    public class JabDoesElementExistInput
     {
-        public JABDoesElementExistInput(int searchParentElementJABHandle)
+        public JabDoesElementExistInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -1162,27 +1198,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABWaitForElementResponse
+    public class JabWaitForElementResponse
     {
         public bool ElementExists { get; set; }
-        public int ElementJABHandle { get; set; }
+
+        [JsonProperty("ElementJABHandle")]
+        public int ElementJabHandle { get; set; }
         public string ElementName { get; set; }
         public string ElementDescription { get; set; }
         public string ElementRole { get; set; }
     }
 
-    public class JABWaitForElementInput
+    public class JabWaitForElementInput
     {
-        public JABWaitForElementInput(int searchParentElementJABHandle)
+        public JabWaitForElementInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -1224,24 +1268,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABWaitForElementToNotExistResponse
+    public class JabWaitForElementToNotExistResponse
     {
         public bool ElementExistsBeforeWait { get; set; }
         public bool ElementExistsAfterWait { get; set; }
     }
 
-    public class JABWaitForElementToNotExistInput
+    public class JabWaitForElementToNotExistInput
     {
-        public JABWaitForElementToNotExistInput(int searchParentElementJABHandle)
+        public JabWaitForElementToNotExistInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -1283,14 +1333,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetDesktopElementsResponse
+    public class JabGetDesktopElementsResponse
     {
         public int NumberOfElementsFound { get; set; }
         public int NumberOfElementsReturned { get; set; }
-        public string JavaDesktopElementsJSON { get; set; }
+
+        [JsonProperty("JavaDesktopElementsJSON")]
+        public string JavaDesktopElementsJson { get; set; }
     }
 
-    public class JABGetDesktopElementsInput
+    public class JabGetDesktopElementsInput
     {
         public string SearchElementLocalizedControlType { get; set; }
 
@@ -1316,20 +1368,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABDoesDesktopElementExistResponse
+    public class JabDoesDesktopElementExistResponse
     {
         public bool ElementExists { get; set; }
-        public int ElementJABHandle { get; set; }
+
+        [JsonProperty("ElementJABHandle")]
+        public int ElementJabHandle { get; set; }
         public string ElementName { get; set; }
         public string ElementDescription { get; set; }
         public string ElementRole { get; set; }
     }
 
-    public class JABDoesDesktopElementExistInput
+    public class JabDoesDesktopElementExistInput
     {
-        public string SearchUIAElementName { get; set; }
-        public string SearchUIAElementClassName { get; set; }
-        public string SearchUIAElementLocalizedControlType { get; set; }
+        [JsonProperty("SearchUIAElementName")]
+        public string SearchUiaElementName { get; set; }
+
+        [JsonProperty("SearchUIAElementClassName")]
+        public string SearchUiaElementClassName { get; set; }
+
+        [JsonProperty("SearchUIAElementLocalizedControlType")]
+        public string SearchUiaElementLocalizedControlType { get; set; }
 
         [JsonProperty("SearchProcessID", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? SearchProcessId { get; set; } = 0;
@@ -1352,20 +1411,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABWaitForDesktopElementResponse
+    public class JabWaitForDesktopElementResponse
     {
         public bool ElementExists { get; set; }
-        public int ElementJABHandle { get; set; }
+
+        [JsonProperty("ElementJABHandle")]
+        public int ElementJabHandle { get; set; }
         public string ElementName { get; set; }
         public string ElementDescription { get; set; }
         public string ElementRole { get; set; }
     }
 
-    public class JABWaitForDesktopElementInput
+    public class JabWaitForDesktopElementInput
     {
-        public string SearchUIAElementName { get; set; }
-        public string SearchUIAElementClassName { get; set; }
-        public string SearchUIAElementLocalizedControlType { get; set; }
+        [JsonProperty("SearchUIAElementName")]
+        public string SearchUiaElementName { get; set; }
+
+        [JsonProperty("SearchUIAElementClassName")]
+        public string SearchUiaElementClassName { get; set; }
+
+        [JsonProperty("SearchUIAElementLocalizedControlType")]
+        public string SearchUiaElementLocalizedControlType { get; set; }
 
         [JsonProperty("SearchProcessID", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? SearchProcessId { get; set; } = 0;
@@ -1394,17 +1460,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABWaitForDesktopElementToNotExistResponse
+    public class JabWaitForDesktopElementToNotExistResponse
     {
         public bool ElementExistsBeforeWait { get; set; }
         public bool ElementExistsAfterWait { get; set; }
     }
 
-    public class JABWaitForDesktopElementToNotExistInput
+    public class JabWaitForDesktopElementToNotExistInput
     {
-        public string SearchUIAElementName { get; set; }
-        public string SearchUIAElementClassName { get; set; }
-        public string SearchUIAElementLocalizedControlType { get; set; }
+        [JsonProperty("SearchUIAElementName")]
+        public string SearchUiaElementName { get; set; }
+
+        [JsonProperty("SearchUIAElementClassName")]
+        public string SearchUiaElementClassName { get; set; }
+
+        [JsonProperty("SearchUIAElementLocalizedControlType")]
+        public string SearchUiaElementLocalizedControlType { get; set; }
 
         [JsonProperty("SearchProcessID", DefaultValueHandling = DefaultValueHandling.Include)]
         public int? SearchProcessId { get; set; } = 0;
@@ -1433,18 +1504,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABFreeAllJABHandlesInput
+    public class JabFreeAllJabHandlesInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetChildJABElementPropertiesResponse
+    public class JabGetChildJabElementPropertiesResponse
     {
-        public int ElementJABHandle { get; set; }
+        [JsonProperty("ElementJABHandle")]
+        public int ElementJabHandle { get; set; }
 
         [JsonProperty("ElementVMID")]
-        public int ElementVMId { get; set; }
+        public int ElementVmid { get; set; }
         public string ElementName { get; set; }
         public string ElementDescription { get; set; }
         public string ElementRole { get; set; }
@@ -1488,15 +1560,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public int ElementDepth { get; set; }
     }
 
-    public class JABGetChildJABElementPropertiesInput
+    public class JabGetChildJabElementPropertiesInput
     {
-        public JABGetChildJABElementPropertiesInput(int searchElementJABHandle)
+        public JabGetChildJabElementPropertiesInput(int searchElementJabHandle)
         {
-            this.SearchElementJABHandle = searchElementJABHandle;
+            this.SearchElementJabHandle = searchElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchElementJABHandle { get; set; }
+        [JsonProperty("SearchElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchElementJabHandle { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int SearchChildIndex { get; set; } = 1;
@@ -1508,24 +1580,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetAllChildJABElementPropertiesResponse
+    public class JabGetAllChildJabElementPropertiesResponse
     {
         public int NumberOfChildElementsReturned { get; set; }
         public bool MoreElementsAvailableAtCurrentDepth { get; set; }
         public bool MoreElementsAvailableAtLowerDepths { get; set; }
         public bool MoreElementsDeeperThanMaxDepth { get; set; }
-        public string JavaChildElementsJSON { get; set; }
+
+        [JsonProperty("JavaChildElementsJSON")]
+        public string JavaChildElementsJson { get; set; }
     }
 
-    public class JABGetAllChildJABElementPropertiesInput
+    public class JabGetAllChildJabElementPropertiesInput
     {
-        public JABGetAllChildJABElementPropertiesInput(int searchElementJABHandle)
+        public JabGetAllChildJabElementPropertiesInput(int searchElementJabHandle)
         {
-            this.SearchElementJABHandle = searchElementJABHandle;
+            this.SearchElementJabHandle = searchElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchElementJABHandle { get; set; }
+        [JsonProperty("SearchElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchElementJabHandle { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? FirstItemToReturn { get; set; } = 1;
@@ -1547,12 +1621,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetParentJABElementPropertiesResponse
+    public class JabGetParentJabElementPropertiesResponse
     {
-        public int ElementJABHandle { get; set; }
+        [JsonProperty("ElementJABHandle")]
+        public int ElementJabHandle { get; set; }
 
         [JsonProperty("ElementVMID")]
-        public int ElementVMId { get; set; }
+        public int ElementVmid { get; set; }
         public string ElementName { get; set; }
         public string ElementDescription { get; set; }
         public string ElementRole { get; set; }
@@ -1596,15 +1671,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public int ElementDepth { get; set; }
     }
 
-    public class JABGetParentJABElementPropertiesInput
+    public class JabGetParentJabElementPropertiesInput
     {
-        public JABGetParentJABElementPropertiesInput(int searchElementJABHandle)
+        public JabGetParentJabElementPropertiesInput(int searchElementJabHandle)
         {
-            this.SearchElementJABHandle = searchElementJABHandle;
+            this.SearchElementJabHandle = searchElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchElementJABHandle { get; set; }
+        [JsonProperty("SearchElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchElementJabHandle { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxStringLength { get; set; } = 0;
@@ -1613,18 +1688,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABPressElementInput
+    public class JabPressElementInput
     {
-        public JABPressElementInput(int searchParentElementJABHandle)
+        public JabPressElementInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -1670,19 +1751,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABPerformActionOnElementInput
+    public class JabPerformActionOnElementInput
     {
-        public JABPerformActionOnElementInput(int searchParentElementJABHandle, string action)
+        public JabPerformActionOnElementInput(int searchParentElementJabHandle, string action)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
             this.Action = action;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -1721,18 +1808,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGlobalLeftMouseClickOnElementInput
+    public class JabGlobalLeftMouseClickOnElementInput
     {
-        public JABGlobalLeftMouseClickOnElementInput(int searchParentElementJABHandle)
+        public JabGlobalLeftMouseClickOnElementInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -1769,7 +1862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetY { get; set; } = 0;
-        public JABGlobalLeftMouseClickOnElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
+        public JabGlobalLeftMouseClickOnElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? NumberOfTimesToClickElement { get; set; } = 1;
@@ -1782,7 +1875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum JABGlobalLeftMouseClickOnElementInputOffsetRelativeToType
+    public enum JabGlobalLeftMouseClickOnElementInputOffsetRelativeToType
     {
         Center,
         Left,
@@ -1799,18 +1892,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         BottomRight
     }
 
-    public class JABGlobalRightMouseClickOnElementInput
+    public class JabGlobalRightMouseClickOnElementInput
     {
-        public JABGlobalRightMouseClickOnElementInput(int searchParentElementJABHandle)
+        public JabGlobalRightMouseClickOnElementInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -1847,14 +1946,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetY { get; set; } = 0;
-        public JABGlobalRightMouseClickOnElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
+        public JabGlobalRightMouseClickOnElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum JABGlobalRightMouseClickOnElementInputOffsetRelativeToType
+    public enum JabGlobalRightMouseClickOnElementInputOffsetRelativeToType
     {
         Center,
         Left,
@@ -1871,18 +1970,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         BottomRight
     }
 
-    public class JABGlobalMiddleMouseClickOnElementInput
+    public class JabGlobalMiddleMouseClickOnElementInput
     {
-        public JABGlobalMiddleMouseClickOnElementInput(int searchParentElementJABHandle)
+        public JabGlobalMiddleMouseClickOnElementInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -1919,14 +2024,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetY { get; set; } = 0;
-        public JABGlobalMiddleMouseClickOnElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
+        public JabGlobalMiddleMouseClickOnElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum JABGlobalMiddleMouseClickOnElementInputOffsetRelativeToType
+    public enum JabGlobalMiddleMouseClickOnElementInputOffsetRelativeToType
     {
         Center,
         Left,
@@ -1943,18 +2048,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         BottomRight
     }
 
-    public class JABGlobalDoubleLeftMouseClickOnElementInput
+    public class JabGlobalDoubleLeftMouseClickOnElementInput
     {
-        public JABGlobalDoubleLeftMouseClickOnElementInput(int searchParentElementJABHandle)
+        public JabGlobalDoubleLeftMouseClickOnElementInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -1991,7 +2102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetY { get; set; } = 0;
-        public JABGlobalDoubleLeftMouseClickOnElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
+        public JabGlobalDoubleLeftMouseClickOnElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? DelayInMilliseconds { get; set; } = 10;
@@ -2001,7 +2112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum JABGlobalDoubleLeftMouseClickOnElementInputOffsetRelativeToType
+    public enum JabGlobalDoubleLeftMouseClickOnElementInputOffsetRelativeToType
     {
         Center,
         Left,
@@ -2018,23 +2129,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         BottomRight
     }
 
-    public class JABGetActionsForElementResponse
+    public class JabGetActionsForElementResponse
     {
         public string AccessibleActions { get; set; }
     }
 
-    public class JABGetActionsForElementInput
+    public class JabGetActionsForElementInput
     {
-        public JABGetActionsForElementInput(int searchParentElementJABHandle)
+        public JabGetActionsForElementInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -2070,18 +2187,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABFocusElementInput
+    public class JabFocusElementInput
     {
-        public JABFocusElementInput(int searchParentElementJABHandle)
+        public JabFocusElementInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -2117,19 +2240,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABInputPasswordIntoElementInput
+    public class JabInputPasswordIntoElementInput
     {
-        public JABInputPasswordIntoElementInput(int searchParentElementJABHandle, string passwordToInput)
+        public JabInputPasswordIntoElementInput(int searchParentElementJabHandle, string passwordToInput)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
             this.PasswordToInput = passwordToInput;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -2168,18 +2297,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABInputTextIntoElementInput
+    public class JabInputTextIntoElementInput
     {
-        public JABInputTextIntoElementInput(int searchParentElementJABHandle)
+        public JabInputTextIntoElementInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -2222,23 +2357,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetElementTextValueResponse
+    public class JabGetElementTextValueResponse
     {
         public string ElementTextValue { get; set; }
     }
 
-    public class JABGetElementTextValueInput
+    public class JabGetElementTextValueInput
     {
-        public JABGetElementTextValueInput(int searchParentElementJABHandle)
+        public JabGetElementTextValueInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -2274,25 +2415,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetElementValueResponse
+    public class JabGetElementValueResponse
     {
         public string ElementCurrentValue { get; set; }
         public string ElementMaximumValue { get; set; }
         public string ElementMinimumValue { get; set; }
     }
 
-    public class JABGetElementValueInput
+    public class JabGetElementValueInput
     {
-        public JABGetElementValueInput(int searchParentElementJABHandle)
+        public JabGetElementValueInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -2328,18 +2475,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABCheckElementInput
+    public class JabCheckElementInput
     {
-        public JABCheckElementInput(int searchParentElementJABHandle)
+        public JabCheckElementInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -2382,25 +2535,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetElementPropertiesAsListResponse
+    public class JabGetElementPropertiesAsListResponse
     {
         public int NumberOfElementsFound { get; set; }
         public int NumberOfElementsReturned { get; set; }
-        public string JABElementPropertiesJSON { get; set; }
+
+        [JsonProperty("JABElementPropertiesJSON")]
+        public string JabElementPropertiesJson { get; set; }
     }
 
-    public class JABGetElementPropertiesAsListInput
+    public class JabGetElementPropertiesAsListInput
     {
-        public JABGetElementPropertiesAsListInput(int searchParentElementJABHandle)
+        public JabGetElementPropertiesAsListInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -2439,19 +2600,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGlobalInputPasswordIntoElementInput
+    public class JabGlobalInputPasswordIntoElementInput
     {
-        public JABGlobalInputPasswordIntoElementInput(int searchParentElementJABHandle, string passwordToInput)
+        public JabGlobalInputPasswordIntoElementInput(int searchParentElementJabHandle, string passwordToInput)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
             this.PasswordToInput = passwordToInput;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -2492,8 +2659,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReplaceExistingValueUsingDoubleClickDelete { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? ReplaceExistingValueUsingCTRLADelete { get; set; } = false;
+        [JsonProperty("ReplaceExistingValueUsingCTRLADelete", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ReplaceExistingValueUsingCtrlaDelete { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string PasswordToInput { get; set; }
@@ -2514,18 +2681,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGlobalInputTextIntoElementInput
+    public class JabGlobalInputTextIntoElementInput
     {
-        public JABGlobalInputTextIntoElementInput(int searchParentElementJABHandle)
+        public JabGlobalInputTextIntoElementInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -2566,8 +2739,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReplaceExistingValueUsingDoubleClickDelete { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? ReplaceExistingValueUsingCTRLADelete { get; set; } = false;
+        [JsonProperty("ReplaceExistingValueUsingCTRLADelete", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ReplaceExistingValueUsingCtrlaDelete { get; set; } = false;
         public string TextToInput { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -2586,27 +2759,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetSelectionElementItemsResponse
+    public class JabGetSelectionElementItemsResponse
     {
         public int NumberOfSelectedItems { get; set; }
         public string AccessibleSelection1Name { get; set; }
         public int AccessibleSelection1IndexInParent { get; set; }
-        public string JABSelectionSelectedItemsJSON { get; set; }
-        public string JABSelectionListItemsJSON { get; set; }
+
+        [JsonProperty("JABSelectionSelectedItemsJSON")]
+        public string JabSelectionSelectedItemsJson { get; set; }
+
+        [JsonProperty("JABSelectionListItemsJSON")]
+        public string JabSelectionListItemsJson { get; set; }
     }
 
-    public class JABGetSelectionElementItemsInput
+    public class JabGetSelectionElementItemsInput
     {
-        public JABGetSelectionElementItemsInput(int searchParentElementJABHandle)
+        public JabGetSelectionElementItemsInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -2660,18 +2843,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABSetSelectionByIndexInput
+    public class JabSetSelectionByIndexInput
     {
-        public JABSetSelectionByIndexInput(int searchParentElementJABHandle)
+        public JabSetSelectionByIndexInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -2719,19 +2908,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABSetSelectionByNameInput
+    public class JabSetSelectionByNameInput
     {
-        public JABSetSelectionByNameInput(int searchParentElementJABHandle, string itemName)
+        public JabSetSelectionByNameInput(int searchParentElementJabHandle, string itemName)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
             this.ItemName = itemName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -2800,18 +2995,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABExpandSelectionInput
+    public class JabExpandSelectionInput
     {
-        public JABExpandSelectionInput(int searchParentElementJABHandle)
+        public JabExpandSelectionInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -2856,23 +3057,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetSelectionStateByIndexResponse
+    public class JabGetSelectionStateByIndexResponse
     {
         public bool IndexIsSelected { get; set; }
     }
 
-    public class JABGetSelectionStateByIndexInput
+    public class JabGetSelectionStateByIndexInput
     {
-        public JABGetSelectionStateByIndexInput(int searchParentElementJABHandle)
+        public JabGetSelectionStateByIndexInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -2911,24 +3118,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetSelectionStateByNameResponse
+    public class JabGetSelectionStateByNameResponse
     {
         public bool NameIsSelected { get; set; }
     }
 
-    public class JABGetSelectionStateByNameInput
+    public class JabGetSelectionStateByNameInput
     {
-        public JABGetSelectionStateByNameInput(int searchParentElementJABHandle, string itemName)
+        public JabGetSelectionStateByNameInput(int searchParentElementJabHandle, string itemName)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
             this.ItemName = itemName;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -2970,7 +3183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetTablePropertiesResponse
+    public class JabGetTablePropertiesResponse
     {
         public int NumberOfRows { get; set; }
         public int NumberOfColumns { get; set; }
@@ -3003,18 +3216,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public int BottommostVisibleRowIndex { get; set; }
     }
 
-    public class JABGetTablePropertiesInput
+    public class JabGetTablePropertiesInput
     {
-        public JABGetTablePropertiesInput(int searchParentElementJABHandle)
+        public JabGetTablePropertiesInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -3074,7 +3293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetTableCellPropertiesResponse
+    public class JabGetTableCellPropertiesResponse
     {
         public int CellIndex { get; set; }
         public int RowExtent { get; set; }
@@ -3089,21 +3308,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public int CellHeight { get; set; }
         public bool CellOnscreen { get; set; }
         public bool CellVisibleResultIsCertain { get; set; }
-        public int CellJABHandle { get; set; }
+
+        [JsonProperty("CellJABHandle")]
+        public int CellJabHandle { get; set; }
     }
 
-    public class JABGetTableCellPropertiesInput
+    public class JabGetTableCellPropertiesInput
     {
-        public JABGetTableCellPropertiesInput(int searchParentElementJABHandle)
+        public JabGetTableCellPropertiesInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -3141,8 +3368,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ColumnIndex { get; set; } = 1;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? ReturnJABHandle { get; set; } = false;
+        [JsonProperty("ReturnJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ReturnJabHandle { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? EnumerateViewport { get; set; } = true;
@@ -3172,7 +3399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetTableContentsResponse
+    public class JabGetTableContentsResponse
     {
         public int NumberOfRowsInTable { get; set; }
         public int NumberOfColumnsInTable { get; set; }
@@ -3180,21 +3407,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public int NumberOfSelectedColumns { get; set; }
         public int NumberOfRowsReturned { get; set; }
         public int NumberOfColumnsReturned { get; set; }
-        public string TableContentsJSON { get; set; }
+
+        [JsonProperty("TableContentsJSON")]
+        public string TableContentsJson { get; set; }
     }
 
-    public class JABGetTableContentsInput
+    public class JabGetTableContentsInput
     {
-        public JABGetTableContentsInput(int searchParentElementJABHandle)
+        public JabGetTableContentsInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -3249,27 +3484,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABIsTableCellVisibleOnscreenResponse
+    public class JabisTableCellVisibleOnscreenResponse
     {
         public bool CellOnScreen { get; set; }
         public bool ResultIsCertain { get; set; }
         public string OffscreenDirection { get; set; }
     }
 
-    public class JABIsTableCellVisibleOnscreenInput
+    public class JabisTableCellVisibleOnscreenInput
     {
-        public JABIsTableCellVisibleOnscreenInput(int searchParentElementJABHandle, int cellRowIndex, int cellColumnIndex)
+        public JabisTableCellVisibleOnscreenInput(int searchParentElementJabHandle, int cellRowIndex, int cellColumnIndex)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
             this.CellRowIndex = cellRowIndex;
             this.CellColumnIndex = cellColumnIndex;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -3332,30 +3573,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABIsJABHandleSameObjectResponse
+    public class JabIsJabHandleSameObjectResponse
     {
         public bool SameObject { get; set; }
     }
 
-    public class JABIsJABHandleSameObjectInput
+    public class JabIsJabHandleSameObjectInput
     {
-        public JABIsJABHandleSameObjectInput(int element1JABHandle, int element2JABHandle)
+        public JabIsJabHandleSameObjectInput(int element1JabHandle, int element2JabHandle)
         {
-            this.Element1JABHandle = element1JABHandle;
-            this.Element2JABHandle = element2JABHandle;
+            this.Element1JabHandle = element1JabHandle;
+            this.Element2JabHandle = element2JabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int Element1JABHandle { get; set; }
+        [JsonProperty("Element1JABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Element1JabHandle { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int Element2JABHandle { get; set; }
+        [JsonProperty("Element2JABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int Element2JabHandle { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetVisibleBoundingRectangleOfElementOnscreenResponse
+    public class JabGetVisibleBoundingRectangleOfElementOnscreenResponse
     {
         public int ElementVisibleRectangleLeft { get; set; }
         public int ElementVisibleRectangleTop { get; set; }
@@ -3365,15 +3606,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public int ElementVisibleRectangleHeight { get; set; }
     }
 
-    public class JABGetVisibleBoundingRectangleOfElementOnscreenInput
+    public class JabGetVisibleBoundingRectangleOfElementOnscreenInput
     {
-        public JABGetVisibleBoundingRectangleOfElementOnscreenInput(int elementJABHandle)
+        public JabGetVisibleBoundingRectangleOfElementOnscreenInput(int elementJabHandle)
         {
-            this.ElementJABHandle = elementJABHandle;
+            this.ElementJabHandle = elementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int ElementJABHandle { get; set; }
+        [JsonProperty("ElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ElementJabHandle { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxParentsToProcess { get; set; } = 0;
@@ -3388,22 +3629,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABCreateHandleForJABElementAtScreenCoordinateResponse
+    public class JabCreateHandleForJabElementAtScreenCoordinateResponse
     {
-        public int LocatedElementJABHandle { get; set; }
+        [JsonProperty("LocatedElementJABHandle")]
+        public int LocatedElementJabHandle { get; set; }
     }
 
-    public class JABCreateHandleForJABElementAtScreenCoordinateInput
+    public class JabCreateHandleForJabElementAtScreenCoordinateInput
     {
-        public JABCreateHandleForJABElementAtScreenCoordinateInput(int parentElementJABHandle, int screenX, int screenY)
+        public JabCreateHandleForJabElementAtScreenCoordinateInput(int parentElementJabHandle, int screenX, int screenY)
         {
-            this.ParentElementJABHandle = parentElementJABHandle;
+            this.ParentElementJabHandle = parentElementJabHandle;
             this.ScreenX = screenX;
             this.ScreenY = screenY;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int ParentElementJABHandle { get; set; }
+        [JsonProperty("ParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int ParentElementJabHandle { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ScreenX { get; set; }
@@ -3415,25 +3657,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetTableCellAtScreenCoordinateResponse
+    public class JabGetTableCellAtScreenCoordinateResponse
     {
         public int CellIndexInParent { get; set; }
         public int CellRowIndex { get; set; }
         public int CellColumnIndex { get; set; }
-        public int CellJABHandle { get; set; }
+
+        [JsonProperty("CellJABHandle")]
+        public int CellJabHandle { get; set; }
     }
 
-    public class JABGetTableCellAtScreenCoordinateInput
+    public class JabGetTableCellAtScreenCoordinateInput
     {
-        public JABGetTableCellAtScreenCoordinateInput(int tableElementJABHandle, int screenX, int screenY)
+        public JabGetTableCellAtScreenCoordinateInput(int tableElementJabHandle, int screenX, int screenY)
         {
-            this.TableElementJABHandle = tableElementJABHandle;
+            this.TableElementJabHandle = tableElementJabHandle;
             this.ScreenX = screenX;
             this.ScreenY = screenY;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int TableElementJABHandle { get; set; }
+        [JsonProperty("TableElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int TableElementJabHandle { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ScreenX { get; set; }
@@ -3441,28 +3685,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int ScreenY { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? ReturnJABHandle { get; set; } = false;
+        [JsonProperty("ReturnJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ReturnJabHandle { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetMultipleParentJABElementPropertiesResponse
+    public class JabGetMultipleParentJabElementPropertiesResponse
     {
-        public string JavaParentElementsJSON { get; set; }
+        [JsonProperty("JavaParentElementsJSON")]
+        public string JavaParentElementsJson { get; set; }
         public int NumberOfParentElementsReturned { get; set; }
     }
 
-    public class JABGetMultipleParentJABElementPropertiesInput
+    public class JabGetMultipleParentJabElementPropertiesInput
     {
-        public JABGetMultipleParentJABElementPropertiesInput(int searchElementJABHandle)
+        public JabGetMultipleParentJabElementPropertiesInput(int searchElementJabHandle)
         {
-            this.SearchElementJABHandle = searchElementJABHandle;
+            this.SearchElementJabHandle = searchElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchElementJABHandle { get; set; }
+        [JsonProperty("SearchElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchElementJabHandle { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxStringLength { get; set; } = 0;
@@ -3474,18 +3719,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGlobalMouseClickOnTableCellInput
+    public class JabGlobalMouseClickOnTableCellInput
     {
-        public JABGlobalMouseClickOnTableCellInput(int searchParentElementJABHandle)
+        public JabGlobalMouseClickOnTableCellInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -3555,7 +3806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetY { get; set; } = 0;
-        public JABGlobalMouseClickOnTableCellInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
+        public JabGlobalMouseClickOnTableCellInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? DelayInMilliseconds { get; set; } = 10;
@@ -3565,7 +3816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum JABGlobalMouseClickOnTableCellInputOffsetRelativeToType
+    public enum JabGlobalMouseClickOnTableCellInputOffsetRelativeToType
     {
         Center,
         Left,
@@ -3582,25 +3833,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         BottomRight
     }
 
-    public class JABGetRoleCSVFromElementSearchResponse
+    public class JabGetRoleCsvFromElementSearchResponse
     {
         public bool ElementFound { get; set; }
         public int ElementsSearched { get; set; }
-        public string RoleCSV { get; set; }
+
+        [JsonProperty("RoleCSV")]
+        public string RoleCsv { get; set; }
     }
 
-    public class JABGetRoleCSVFromElementSearchInput
+    public class JabGetRoleCsvFromElementSearchInput
     {
-        public JABGetRoleCSVFromElementSearchInput(int searchParentElementJABHandle)
+        public JabGetRoleCsvFromElementSearchInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
-        public string SearchElementJABName { get; set; }
-        public string SearchElementJABDescription { get; set; }
-        public string SearchElementJABRole { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
+
+        [JsonProperty("SearchElementJABName")]
+        public string SearchElementJabName { get; set; }
+
+        [JsonProperty("SearchElementJABDescription")]
+        public string SearchElementJabDescription { get; set; }
+
+        [JsonProperty("SearchElementJABRole")]
+        public string SearchElementJabRole { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -3632,35 +3891,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaximumChildElementsToSearchPerNode { get; set; } = 200;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? IndentRoleInCSV { get; set; } = true;
+        [JsonProperty("IndentRoleInCSV", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IndentRoleInCsv { get; set; } = true;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? IncludeDescriptionInCSV { get; set; } = true;
+        [JsonProperty("IncludeDescriptionInCSV", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncludeDescriptionInCsv { get; set; } = true;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? IncludeDimensionsInCSV { get; set; } = true;
+        [JsonProperty("IncludeDimensionsInCSV", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncludeDimensionsInCsv { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class JABGetRoleCSVFromElementHandleResponse
+    public class JabGetRoleCsvFromElementHandleResponse
     {
         public bool ElementFound { get; set; }
         public int ElementsSearched { get; set; }
-        public string RoleCSV { get; set; }
+
+        [JsonProperty("RoleCSV")]
+        public string RoleCsv { get; set; }
     }
 
-    public class JABGetRoleCSVFromElementHandleInput
+    public class JabGetRoleCsvFromElementHandleInput
     {
-        public JABGetRoleCSVFromElementHandleInput(int searchParentElementJABHandle)
+        public JabGetRoleCsvFromElementHandleInput(int searchParentElementJabHandle)
         {
-            this.SearchParentElementJABHandle = searchParentElementJABHandle;
+            this.SearchParentElementJabHandle = searchParentElementJabHandle;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public int SearchParentElementJABHandle { get; set; }
+        [JsonProperty("SearchParentElementJABHandle", DefaultValueHandling = DefaultValueHandling.Include)]
+        public int SearchParentElementJabHandle { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
@@ -3681,14 +3942,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaximumChildElementsToSearchPerNode { get; set; } = 200;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? IndentRoleInCSV { get; set; } = true;
+        [JsonProperty("IndentRoleInCSV", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IndentRoleInCsv { get; set; } = true;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? IncludeDescriptionInCSV { get; set; } = true;
+        [JsonProperty("IncludeDescriptionInCSV", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncludeDescriptionInCsv { get; set; } = true;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? IncludeDimensionsInCSV { get; set; } = true;
+        [JsonProperty("IncludeDimensionsInCSV", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? IncludeDimensionsInCsv { get; set; } = true;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";

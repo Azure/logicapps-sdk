@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openchargemapip
     public class OpenchargemapipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openchargemapip")]
-        public IBodyWorkflowAction<POI[], ApiConnectionActionConfiguration> POIGet(Expression<Func<string>> client = null, Expression<Func<int>> maxresults = null, Expression<Func<string>> countrycode = null, Expression<Func<string[]>> countryid = null, Expression<Func<double>> latitude = null, Expression<Func<double>> longitude = null, Expression<Func<double>> distance = null, Expression<Func<string>> distanceunit = null, Expression<Func<string[]>> operatorid = null, Expression<Func<string[]>> connectiontypeid = null, Expression<Func<string[]>> levelid = null, Expression<Func<string[]>> usagetypeid = null, Expression<Func<string[]>> statustypeid = null, Expression<Func<string[]>> dataproviderid = null, Expression<Func<bool>> opendata = null, Expression<Func<bool>> includecomments = null, Expression<Func<bool>> verbose = null, Expression<Func<bool>> compact = null, Expression<Func<bool>> camelcase = null, Expression<Func<string>> chargepointid = null, Expression<Func<string[]>> boundingbox = null, Expression<Func<string>> polygon = null, Expression<Func<string>> polyline = null)
+        public IBodyWorkflowAction<Poi[], ApiConnectionActionConfiguration> PoiGet(Expression<Func<string>> client = null, Expression<Func<int>> maxresults = null, Expression<Func<string>> countrycode = null, Expression<Func<string[]>> countryid = null, Expression<Func<double>> latitude = null, Expression<Func<double>> longitude = null, Expression<Func<double>> distance = null, Expression<Func<string>> distanceunit = null, Expression<Func<string[]>> operatorid = null, Expression<Func<string[]>> connectiontypeid = null, Expression<Func<string[]>> levelid = null, Expression<Func<string[]>> usagetypeid = null, Expression<Func<string[]>> statustypeid = null, Expression<Func<string[]>> dataproviderid = null, Expression<Func<bool>> opendata = null, Expression<Func<bool>> includecomments = null, Expression<Func<bool>> verbose = null, Expression<Func<bool>> compact = null, Expression<Func<bool>> camelcase = null, Expression<Func<string>> chargepointid = null, Expression<Func<string[]>> boundingbox = null, Expression<Func<string>> polygon = null, Expression<Func<string>> polyline = null)
         {
             var __workflow_client = WorkflowExpression.Compile(client, nameof(client), required: false);
             var __workflow_maxresults = WorkflowExpression.Compile(maxresults, nameof(maxresults), required: false);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openchargemapip
             var __workflow_boundingbox = WorkflowExpression.Compile(boundingbox, nameof(boundingbox), required: false);
             var __workflow_polygon = WorkflowExpression.Compile(polygon, nameof(polygon), required: false);
             var __workflow_polyline = WorkflowExpression.Compile(polyline, nameof(polyline), required: false);
-            return new DeferredBodyAction<POI[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<Poi[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/poi";
                 var apiCallHttpMethod = "get";
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openchargemapip
                     callPayload.Queries["polygon"] = ExpressionConverter.Convert(__workflow_polygon);
                 if (__workflow_polyline != null)
                     callPayload.Queries["polyline"] = ExpressionConverter.Convert(__workflow_polyline);
-                return new ApiConnectionAction<POI[]>(callPayload);
+                return new ApiConnectionAction<Poi[]>(callPayload);
             });
         }
 
@@ -120,11 +120,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openchargemapip
     {
     }
 
-    public class POI
+    public class Poi
     {
         [JsonProperty("ID")]
         public int Id { get; set; }
-        public string UUID { get; set; }
+
+        [JsonProperty("UUID")]
+        public string Uuid { get; set; }
         public UserComment[] UserComments { get; set; }
         public MediaItem[] MediaItems { get; set; }
         public bool IsRecentlyVerified { get; set; }
@@ -180,7 +182,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openchargemapip
         public UserCommentType CommentType { get; set; }
         public string UserName { get; set; }
         public string Comment { get; set; }
-        public string RelatedURL { get; set; }
+
+        [JsonProperty("RelatedURL")]
+        public string RelatedUrl { get; set; }
         public string DateCreated { get; set; }
         public UserInfo User { get; set; }
 
@@ -200,9 +204,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openchargemapip
     {
         [JsonProperty("ID")]
         public int Id { get; set; }
-        public string Username { get; set; }
+
+        [JsonProperty("Username")]
+        public string UserName { get; set; }
         public int ReputationPoints { get; set; }
-        public string ProfileImageURL { get; set; }
+
+        [JsonProperty("ProfileImageURL")]
+        public string ProfileImageUrl { get; set; }
     }
 
     public class CheckinStatusType
@@ -221,8 +229,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openchargemapip
 
         [JsonProperty("ChargePointID")]
         public int ChargePointId { get; set; }
-        public string ItemURL { get; set; }
-        public string ItemThumbnailURL { get; set; }
+
+        [JsonProperty("ItemURL")]
+        public string ItemUrl { get; set; }
+
+        [JsonProperty("ItemThumbnailURL")]
+        public string ItemThumbnailUrl { get; set; }
         public string Comment { get; set; }
         public bool IsEnabled { get; set; }
         public bool IsVideo { get; set; }
@@ -251,7 +263,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openchargemapip
         public string ContactTelephone2 { get; set; }
         public string ContactEmail { get; set; }
         public string AccessComments { get; set; }
-        public string RelatedURL { get; set; }
+
+        [JsonProperty("RelatedURL")]
+        public string RelatedUrl { get; set; }
         public double Distance { get; set; }
         public int DistanceUnit { get; set; }
         public string Title { get; set; }
@@ -261,7 +275,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openchargemapip
     {
         [JsonProperty("ID")]
         public int Id { get; set; }
-        public string ISOCode { get; set; }
+
+        [JsonProperty("ISOCode")]
+        public string IsoCode { get; set; }
         public string ContinentCode { get; set; }
         public string Title { get; set; }
     }
@@ -333,7 +349,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openchargemapip
 
     public class DataProvider
     {
-        public string WebsiteURL { get; set; }
+        [JsonProperty("WebsiteURL")]
+        public string WebsiteUrl { get; set; }
         public string Comments { get; set; }
         public DataProviderStatusType DataProviderStatusType { get; set; }
         public bool IsRestrictedEdit { get; set; }
@@ -360,13 +377,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openchargemapip
 
     public class OperatorInfo
     {
-        public string WebsiteURL { get; set; }
+        [JsonProperty("WebsiteURL")]
+        public string WebsiteUrl { get; set; }
         public string Comments { get; set; }
         public string PhonePrimaryContact { get; set; }
         public string PhoneSecondaryContact { get; set; }
         public bool IsPrivateIndividual { get; set; }
         public AddressInfo AddressInfo { get; set; }
-        public string BookingURL { get; set; }
+
+        [JsonProperty("BookingURL")]
+        public string BookingUrl { get; set; }
         public string ContactEmail { get; set; }
         public string FaultReportEmail { get; set; }
         public bool IsRestrictedEdit { get; set; }

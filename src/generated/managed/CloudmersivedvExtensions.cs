@@ -252,7 +252,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
 
     public class ValidateUrlResponseFull
     {
-        public bool ValidURL { get; set; }
+        [JsonProperty("ValidURL")]
+        public bool ValidUrl { get; set; }
 
         [JsonProperty("Valid_Domain")]
         public bool ValidDomain { get; set; }
@@ -262,18 +263,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
 
         [JsonProperty("Valid_Syntax")]
         public bool ValidSyntax { get; set; }
-        public string WellFormedURL { get; set; }
+
+        [JsonProperty("WellFormedURL")]
+        public string WellFormedUrl { get; set; }
     }
 
     public class DomainUrlFullRequestInput
     {
-        public string URL { get; set; }
+        [JsonProperty("URL")]
+        public string Url { get; set; }
     }
 
     public class ValidateUrlResponseSyntaxOnly
     {
-        public bool ValidURL { get; set; }
-        public string WellFormedURL { get; set; }
+        [JsonProperty("ValidURL")]
+        public bool ValidUrl { get; set; }
+
+        [JsonProperty("WellFormedURL")]
+        public string WellFormedUrl { get; set; }
     }
 
     public class WhoisResponse
@@ -297,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public bool ValidDomain { get; set; }
 
         [JsonProperty("Valid_SMTP")]
-        public bool ValidSMTP { get; set; }
+        public bool ValidSmtp { get; set; }
 
         [JsonProperty("Valid_Syntax")]
         public bool ValidSyntax { get; set; }
@@ -374,7 +381,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public bool? AllowNumbers { get; set; }
         public bool? AllowPeriods { get; set; }
         public bool? AllowUnderscore { get; set; }
-        public bool? AllowWhitespace { get; set; }
+
+        [JsonProperty("AllowWhitespace")]
+        public bool? AllowWhiteSpace { get; set; }
         public string Input { get; set; }
         public int? MaxLength { get; set; }
         public int? MinLength { get; set; }
@@ -412,7 +421,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
     public class UserAgentValidateResponse
     {
         public string BotName { get; set; }
-        public string BotURL { get; set; }
+
+        [JsonProperty("BotURL")]
+        public string BotUrl { get; set; }
         public string BrowserEngineName { get; set; }
         public string BrowserEngineVersion { get; set; }
         public string BrowserName { get; set; }
@@ -422,7 +433,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         public string DeviceType { get; set; }
         public bool IsBot { get; set; }
         public string OperatingSystem { get; set; }
-        public string OperatingSystemCPUPlatform { get; set; }
+
+        [JsonProperty("OperatingSystemCPUPlatform")]
+        public string OperatingSystemCpuPlatform { get; set; }
         public string OperatingSystemVersion { get; set; }
         public bool Successful { get; set; }
     }

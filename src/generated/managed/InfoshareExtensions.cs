@@ -261,16 +261,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<MergePDFDocumentsToVersionResponse, ApiConnectionActionConfiguration> MergePDFDocumentsToVersion(Expression<Func<MergePDFDocumentsToVersionBodyInput>> body)
+        public IBodyWorkflowAction<MergePdfDocumentsToVersionResponse, ApiConnectionActionConfiguration> MergePdfDocumentsToVersion(Expression<Func<MergePdfDocumentsToVersionBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<MergePDFDocumentsToVersionResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<MergePdfDocumentsToVersionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/MergePDFDocumentsToVersion";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<MergePDFDocumentsToVersionResponse>(callPayload);
+                return new ApiConnectionAction<MergePdfDocumentsToVersionResponse>(callPayload);
             });
         }
 
@@ -406,18 +406,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 
     public class LogonBodyInput
     {
-        public LogonBodyInput(string archiveUrl, string username, string password)
+        public LogonBodyInput(string archiveUrl, string userName, string password)
         {
             this.ArchiveUrl = archiveUrl;
-            this.Username = username;
+            this.UserName = userName;
             this.Password = password;
         }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string ArchiveUrl { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        [JsonProperty("Username", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string UserName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Password { get; set; }
@@ -797,7 +797,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public bool IsConcurrentLicence { get; set; }
         public bool IsNamedLicence { get; set; }
         public bool IsVerificationCodeNeeded { get; set; }
-        public string JWTToken { get; set; }
+
+        [JsonProperty("JWTToken")]
+        public string JwtToken { get; set; }
         public string PossibleTwoWayAuthenticationType { get; set; }
         public string TwoWayAuthenticationTargetMail { get; set; }
     }
@@ -1638,7 +1640,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string WhereClause { get; set; }
     }
 
-    public class MergePDFDocumentsToVersionResponse
+    public class MergePdfDocumentsToVersionResponse
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1665,13 +1667,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string CheckOutUserId { get; set; }
 
         [JsonProperty("properties")]
-        public MergePDFDocumentsToVersionResponsePropertiesTypeItem[] Properties { get; set; }
+        public MergePdfDocumentsToVersionResponsePropertiesTypeItem[] Properties { get; set; }
 
         [JsonProperty("importTemplateId")]
         public string ImportTemplateId { get; set; }
 
         [JsonProperty("blogs")]
-        public MergePDFDocumentsToVersionResponseBlogsTypeItem[] Blogs { get; set; }
+        public MergePdfDocumentsToVersionResponseBlogsTypeItem[] Blogs { get; set; }
 
         [JsonProperty("accessRightsEnumList")]
         public string[] AccessRightsEnumList { get; set; }
@@ -1689,16 +1691,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public JToken[] Abonnements { get; set; }
 
         [JsonProperty("annotationManager")]
-        public MergePDFDocumentsToVersionResponseAnnotationManagerType AnnotationManager { get; set; }
+        public MergePdfDocumentsToVersionResponseAnnotationManagerType AnnotationManager { get; set; }
 
         [JsonProperty("documentData")]
-        public MergePDFDocumentsToVersionResponseDocumentDataTypeItem[] DocumentData { get; set; }
+        public MergePdfDocumentsToVersionResponseDocumentDataTypeItem[] DocumentData { get; set; }
 
         [JsonProperty("signingProfileId")]
         public string SigningProfileId { get; set; }
 
         [JsonProperty("lifeCycleManager")]
-        public MergePDFDocumentsToVersionResponseLifeCycleManagerType LifeCycleManager { get; set; }
+        public MergePdfDocumentsToVersionResponseLifeCycleManagerType LifeCycleManager { get; set; }
 
         [JsonProperty("hasOverlay")]
         public bool HasOverlay { get; set; }
@@ -1728,7 +1730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public bool HasAbonnement { get; set; }
     }
 
-    public class MergePDFDocumentsToVersionResponsePropertiesTypeItem
+    public class MergePdfDocumentsToVersionResponsePropertiesTypeItem
     {
         [JsonProperty("propertyTypeId")]
         public string PropertyTypeId { get; set; }
@@ -1737,7 +1739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string[] Values { get; set; }
 
         [JsonProperty("globalValues")]
-        public MergePDFDocumentsToVersionResponsePropertiesTypeItemGlobalValuesTypeItem[] GlobalValues { get; set; }
+        public MergePdfDocumentsToVersionResponsePropertiesTypeItemGlobalValuesTypeItem[] GlobalValues { get; set; }
 
         [JsonProperty("propertyTypeName")]
         public string PropertyTypeName { get; set; }
@@ -1746,13 +1748,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string PropertyName { get; set; }
     }
 
-    public class MergePDFDocumentsToVersionResponsePropertiesTypeItemGlobalValuesTypeItem
+    public class MergePdfDocumentsToVersionResponsePropertiesTypeItemGlobalValuesTypeItem
     {
         [JsonProperty("values")]
-        public MergePDFDocumentsToVersionResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem[] Values { get; set; }
+        public MergePdfDocumentsToVersionResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem[] Values { get; set; }
     }
 
-    public class MergePDFDocumentsToVersionResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem
+    public class MergePdfDocumentsToVersionResponsePropertiesTypeItemGlobalValuesTypeItemValuesTypeItem
     {
         [JsonProperty("culture")]
         public string Culture { get; set; }
@@ -1761,7 +1763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
-    public class MergePDFDocumentsToVersionResponseBlogsTypeItem
+    public class MergePdfDocumentsToVersionResponseBlogsTypeItem
     {
         [JsonProperty("createdDate")]
         public string CreatedDate { get; set; }
@@ -1776,7 +1778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Id { get; set; }
     }
 
-    public class MergePDFDocumentsToVersionResponseAnnotationManagerType
+    public class MergePdfDocumentsToVersionResponseAnnotationManagerType
     {
         [JsonProperty("textAnnotations")]
         public JToken[] TextAnnotations { get; set; }
@@ -1791,7 +1793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public JToken[] StampAnnotations { get; set; }
     }
 
-    public class MergePDFDocumentsToVersionResponseDocumentDataTypeItem
+    public class MergePdfDocumentsToVersionResponseDocumentDataTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1800,10 +1802,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Name { get; set; }
 
         [JsonProperty("renditions")]
-        public MergePDFDocumentsToVersionResponseDocumentDataTypeItemRenditionsTypeItem[] Renditions { get; set; }
+        public MergePdfDocumentsToVersionResponseDocumentDataTypeItemRenditionsTypeItem[] Renditions { get; set; }
     }
 
-    public class MergePDFDocumentsToVersionResponseDocumentDataTypeItemRenditionsTypeItem
+    public class MergePdfDocumentsToVersionResponseDocumentDataTypeItemRenditionsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1812,7 +1814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Size { get; set; }
 
         [JsonProperty("files")]
-        public MergePDFDocumentsToVersionResponseDocumentDataTypeItemRenditionsTypeItemFilesTypeItem[] Files { get; set; }
+        public MergePdfDocumentsToVersionResponseDocumentDataTypeItemRenditionsTypeItemFilesTypeItem[] Files { get; set; }
 
         [JsonProperty("pageCount")]
         public string PageCount { get; set; }
@@ -1827,7 +1829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public JToken[] ContentProtections { get; set; }
     }
 
-    public class MergePDFDocumentsToVersionResponseDocumentDataTypeItemRenditionsTypeItemFilesTypeItem
+    public class MergePdfDocumentsToVersionResponseDocumentDataTypeItemRenditionsTypeItemFilesTypeItem
     {
         [JsonProperty("blobStoreId")]
         public string BlobStoreId { get; set; }
@@ -1836,7 +1838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string BlobPath { get; set; }
     }
 
-    public class MergePDFDocumentsToVersionResponseLifeCycleManagerType
+    public class MergePdfDocumentsToVersionResponseLifeCycleManagerType
     {
         [JsonProperty("lifeCycleId")]
         public string LifeCycleId { get; set; }
@@ -1860,10 +1862,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string NextAutomaticLifeCycleStateId { get; set; }
 
         [JsonProperty("lifeCycleProtections")]
-        public MergePDFDocumentsToVersionResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem[] LifeCycleProtections { get; set; }
+        public MergePdfDocumentsToVersionResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem[] LifeCycleProtections { get; set; }
     }
 
-    public class MergePDFDocumentsToVersionResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem
+    public class MergePdfDocumentsToVersionResponseLifeCycleManagerTypeLifeCycleProtectionsTypeItem
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -1893,9 +1895,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public bool DeleteAfterExpiration { get; set; }
     }
 
-    public class MergePDFDocumentsToVersionBodyInput
+    public class MergePdfDocumentsToVersionBodyInput
     {
-        public MergePDFDocumentsToVersionBodyInput(string archiveUrl, string connectionId, string documentId, string documentIdToAppend)
+        public MergePdfDocumentsToVersionBodyInput(string archiveUrl, string connectionId, string documentId, string documentIdToAppend)
         {
             this.ArchiveUrl = archiveUrl;
             this.ConnectionId = connectionId;

@@ -1102,7 +1102,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Name { get; set; }
         public string Subject { get; set; }
         public string WebLocation { get; set; }
-        public string HTMLContent { get; set; }
+
+        [JsonProperty("HTMLContent")]
+        public string HtmlContent { get; set; }
         public string PlainContent { get; set; }
         public CampaignGetDetailsResponseContextTypeSenderType Sender { get; set; }
         public string DeliveredOn { get; set; }
@@ -1208,7 +1210,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public string Name { get; set; }
         public string Subject { get; set; }
         public string WebLocation { get; set; }
-        public string HTMLContent { get; set; }
+
+        [JsonProperty("HTMLContent")]
+        public string HtmlContent { get; set; }
         public string PlainContent { get; set; }
         public CampaignCloneResponseContextTypeSenderType Sender { get; set; }
         public string DeliveredOn { get; set; }
@@ -1257,7 +1261,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Moosendip
         public int Id { get; set; }
         public string SubjectB { get; set; }
         public string PlainContentB { get; set; }
-        public string HTMLContentB { get; set; }
+
+        [JsonProperty("HTMLContentB")]
+        public string HtmlContentB { get; set; }
         public string WebLocationB { get; set; }
         public string SenderB { get; set; }
         public int HoursToTest { get; set; }

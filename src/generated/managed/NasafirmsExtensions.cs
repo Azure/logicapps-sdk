@@ -43,15 +43,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
-        public IBodyWorkflowAction<CheckMapKeyResponse, ApiConnectionActionConfiguration> CheckMapKey(Expression<Func<string>> mAPKEY)
+        public IBodyWorkflowAction<CheckMapKeyResponse, ApiConnectionActionConfiguration> CheckMapKey(Expression<Func<string>> mapKey)
         {
-            var __workflow_mAPKEY = WorkflowExpression.Compile(mAPKEY, nameof(mAPKEY), required: true);
+            var __workflow_mapKey = WorkflowExpression.Compile(mapKey, nameof(mapKey), required: true);
             return new DeferredBodyAction<CheckMapKeyResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/mapserver/mapkey_status/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["MAP_KEY"] = ExpressionConverter.Convert(__workflow_mAPKEY);
+                callPayload.Queries["MAP_KEY"] = ExpressionConverter.Convert(__workflow_mapKey);
                 return new ApiConnectionAction<CheckMapKeyResponse>(callPayload);
             });
         }

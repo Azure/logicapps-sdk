@@ -712,11 +712,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
     public enum DecryptDataWithKeyInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP")]
-        RSAOAEP,
+        RsaOaep,
         [EnumMember(Value = "RSA-OAEP-256")]
-        RSAOAEP256,
+        RsaOaep256,
         [EnumMember(Value = "RSA1_5")]
-        RSA15
+        Rsa15
     }
 
     public class DecryptDataWithKeyVersionOutput
@@ -729,11 +729,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
     public enum DecryptDataWithKeyVersionInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP")]
-        RSAOAEP,
+        RsaOaep,
         [EnumMember(Value = "RSA-OAEP-256")]
-        RSAOAEP256,
+        RsaOaep256,
         [EnumMember(Value = "RSA1_5")]
-        RSA15
+        Rsa15
     }
 
     public class EncryptDataWithKeyOutput
@@ -746,11 +746,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
     public enum EncryptDataWithKeyInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP")]
-        RSAOAEP,
+        RsaOaep,
         [EnumMember(Value = "RSA-OAEP-256")]
-        RSAOAEP256,
+        RsaOaep256,
         [EnumMember(Value = "RSA1_5")]
-        RSA15
+        Rsa15
     }
 
     public class EncryptDataWithKeyVersionOutput
@@ -763,11 +763,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
     public enum EncryptDataWithKeyVersionInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP")]
-        RSAOAEP,
+        RsaOaep,
         [EnumMember(Value = "RSA-OAEP-256")]
-        RSAOAEP256,
+        RsaOaep256,
         [EnumMember(Value = "RSA1_5")]
-        RSA15
+        Rsa15
     }
 }
 

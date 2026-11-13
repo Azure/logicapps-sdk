@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseDATE(Expression<Func<WebHookRegistrationsInputResponseDATEWebHookInput>> webHook)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseDate(Expression<Func<WebHookRegistrationsInputResponseDateWebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseCHOICE(Expression<Func<WebHookRegistrationsInputResponseCHOICEWebHookInput>> webHook)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseChoice(Expression<Func<WebHookRegistrationsInputResponseChoiceWebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseCHOICELIST(Expression<Func<WebHookRegistrationsInputResponseCHOICELISTWebHookInput>> webHook)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseChoicelist(Expression<Func<WebHookRegistrationsInputResponseChoicelistWebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponsePEOPLE(Expression<Func<WebHookRegistrationsInputResponsePEOPLEWebHookInput>> webHook)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponsePeople(Expression<Func<WebHookRegistrationsInputResponsePeopleWebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseINTENTVECTOR(Expression<Func<WebHookRegistrationsInputResponseINTENTVECTORWebHookInput>> webHook)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseIntentvector(Expression<Func<WebHookRegistrationsInputResponseIntentvectorWebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseMEMORY(Expression<Func<WebHookRegistrationsInputResponseMEMORYWebHookInput>> webHook)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseMemory(Expression<Func<WebHookRegistrationsInputResponseMemoryWebHookInput>> webHook)
         {
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: true);
             return new DeferredBodyAction<WebHook, ApiConnectionActionConfiguration>(() =>
@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseADAPTIVECARD(Expression<Func<string>> selectedCard, Expression<Func<object>> webHook = null)
+        public IBodyWorkflowAction<WebHook, ApiConnectionActionConfiguration> WebHookRegistrationsInputResponseAdaptivecard(Expression<Func<string>> selectedCard, Expression<Func<object>> webHook = null)
         {
             var __workflow_selectedCard = WorkflowExpression.Compile(selectedCard, nameof(selectedCard), required: true);
             var __workflow_webHook = WorkflowExpression.Compile(webHook, nameof(webHook), required: false);
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string CustomChannelData { get; set; }
 
         [JsonProperty("signalResponse")]
-        public string SignalResponseJSON { get; set; }
+        public string SignalResponseJson { get; set; }
 
         [JsonProperty("messageId")]
         public string MessageId { get; set; }
@@ -473,17 +473,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
 
     public class SendBridgeEventContentInput
     {
-        public SendBridgeEventContentInput(string replyActivity, JToken eventJSON)
+        public SendBridgeEventContentInput(string replyActivity, JToken eventJson)
         {
             this.ReplyActivity = replyActivity;
-            this.EventJSON = eventJSON;
+            this.EventJson = eventJson;
         }
 
         [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReplyActivity { get; set; }
 
         [JsonProperty("eventObject", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken EventJSON { get; set; }
+        public JToken EventJson { get; set; }
     }
 
     public class WebHook
@@ -555,9 +555,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         AnyUser
     }
 
-    public class WebHookRegistrationsInputResponseDATEWebHookInput
+    public class WebHookRegistrationsInputResponseDateWebHookInput
     {
-        public WebHookRegistrationsInputResponseDATEWebHookInput(string message, string replyActivity)
+        public WebHookRegistrationsInputResponseDateWebHookInput(string message, string replyActivity)
         {
             this.Message = message;
             this.ReplyActivity = replyActivity;
@@ -612,9 +612,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         Yes
     }
 
-    public class WebHookRegistrationsInputResponseCHOICEWebHookInput
+    public class WebHookRegistrationsInputResponseChoiceWebHookInput
     {
-        public WebHookRegistrationsInputResponseCHOICEWebHookInput(string message, string choiceValues, string replyActivity)
+        public WebHookRegistrationsInputResponseChoiceWebHookInput(string message, string choiceValues, string replyActivity)
         {
             this.Message = message;
             this.ChoiceValues = choiceValues;
@@ -655,9 +655,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public bool? ListenForVoiceResponse { get; set; } = false;
     }
 
-    public class WebHookRegistrationsInputResponseCHOICELISTWebHookInput
+    public class WebHookRegistrationsInputResponseChoicelistWebHookInput
     {
-        public WebHookRegistrationsInputResponseCHOICELISTWebHookInput(string message, JToken choiceValues, string replyActivity)
+        public WebHookRegistrationsInputResponseChoicelistWebHookInput(string message, JToken choiceValues, string replyActivity)
         {
             this.Message = message;
             this.ChoiceValues = choiceValues;
@@ -677,7 +677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public JToken Properties { get; set; }
 
         [JsonProperty("icon")]
-        public string IconURL { get; set; }
+        public string IconUrl { get; set; }
 
         [JsonProperty("message", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Message { get; set; }
@@ -701,9 +701,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public bool? ListenForVoiceResponse { get; set; } = false;
     }
 
-    public class WebHookRegistrationsInputResponsePEOPLEWebHookInput
+    public class WebHookRegistrationsInputResponsePeopleWebHookInput
     {
-        public WebHookRegistrationsInputResponsePEOPLEWebHookInput(string message, string replyActivity)
+        public WebHookRegistrationsInputResponsePeopleWebHookInput(string message, string replyActivity)
         {
             this.Message = message;
             this.ReplyActivity = replyActivity;
@@ -753,12 +753,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         Multiple
     }
 
-    public class WebHookRegistrationsInputResponseINTENTVECTORWebHookInput
+    public class WebHookRegistrationsInputResponseIntentvectorWebHookInput
     {
-        public WebHookRegistrationsInputResponseINTENTVECTORWebHookInput(string message, string lUISIntentVector, string replyActivity)
+        public WebHookRegistrationsInputResponseIntentvectorWebHookInput(string message, string luisIntentVector, string replyActivity)
         {
             this.Message = message;
-            this.LUISIntentVector = lUISIntentVector;
+            this.LuisIntentVector = luisIntentVector;
             this.ReplyActivity = replyActivity;
         }
 
@@ -778,7 +778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string Message { get; set; }
 
         [JsonProperty("intentVector", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string LUISIntentVector { get; set; }
+        public string LuisIntentVector { get; set; }
 
         [JsonProperty("activityJson", DefaultValueHandling = DefaultValueHandling.Include)]
         public string ReplyActivity { get; set; }
@@ -793,9 +793,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public bool? ShowInChat { get; set; } = true;
     }
 
-    public class WebHookRegistrationsInputResponseMEMORYWebHookInput
+    public class WebHookRegistrationsInputResponseMemoryWebHookInput
     {
-        public WebHookRegistrationsInputResponseMEMORYWebHookInput(string message, string memoryType, string replyActivity)
+        public WebHookRegistrationsInputResponseMemoryWebHookInput(string message, string memoryType, string replyActivity)
         {
             this.Message = message;
             this.MemoryType = memoryType;
@@ -824,7 +824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string ReplyActivity { get; set; }
 
         [JsonProperty("icon")]
-        public string IconURL { get; set; }
+        public string IconUrl { get; set; }
 
         [JsonProperty("acceptResponseFrom", DefaultValueHandling = DefaultValueHandling.Include)]
         public WebHookInputAcceptResponseFromType? AcceptResponseFrom { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAcceptResponseFromType.OriginalUser;
@@ -993,13 +993,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string Keywords { get; set; }
 
         [JsonProperty("luisApiKey")]
-        public string DeprecatedLUISAPIKey { get; set; }
+        public string DeprecatedLuisApiKey { get; set; }
 
         [JsonProperty("luisAppId")]
-        public string DeprecatedLUISApp { get; set; }
+        public string DeprecatedLuisApp { get; set; }
 
         [JsonProperty("luisIntent")]
-        public string DeprecatedLUISIntent { get; set; }
+        public string DeprecatedLuisIntent { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -1035,7 +1035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public WebHookInputBotTriggerTypeType BotTriggerType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputBotTriggerTypeType.Shared;
 
         [JsonProperty("intentVector")]
-        public string LUISIntentVector { get; set; }
+        public string LuisIntentVector { get; set; }
 
         [JsonProperty("allowBranching", DefaultValueHandling = DefaultValueHandling.Include)]
         public WebHookInputAllowBranchingType? AllowBranching { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy.WebHookInputAllowBranchingType.No;

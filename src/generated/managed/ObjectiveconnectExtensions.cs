@@ -211,28 +211,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
         public string ShareUuid { get; set; }
 
         [JsonProperty("type", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputTypeType? Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect.BodyInputTypeType.STANDARD;
+        public BodyInputTypeType? Type { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect.BodyInputTypeType.Standard;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputRolesTypeItem
     {
-        READER,
-        DOWNLOADER,
+        [EnumMember(Value = "READER")]
+        Reader,
+        [EnumMember(Value = "DOWNLOADER")]
+        Downloader,
         [EnumMember(Value = "DOCUMENT_CREATOR")]
-        DOCUMENTCREATOR,
+        DocumentCreator,
         [EnumMember(Value = "CONTAINER_CREATOR")]
-        CONTAINERCREATOR,
-        EDITOR,
-        INVITER,
-        COMMENTER
+        ContainerCreator,
+        [EnumMember(Value = "EDITOR")]
+        Editor,
+        [EnumMember(Value = "INVITER")]
+        Inviter,
+        [EnumMember(Value = "COMMENTER")]
+        Commenter
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputTypeType
     {
-        STANDARD,
-        BCC
+        [EnumMember(Value = "STANDARD")]
+        Standard,
+        [EnumMember(Value = "BCC")]
+        Bcc
     }
 
     public class ShareResponse
@@ -283,9 +290,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Access
     {
-        READ,
+        [EnumMember(Value = "READ")]
+        Read,
         [EnumMember(Value = "READ_ADD")]
-        READADD
+        ReadAdd
     }
 
     public class EndOnDateOptionalValue
@@ -300,42 +308,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ShareStatus
     {
-        ACTIVE,
-        TRANSFERRING
+        [EnumMember(Value = "ACTIVE")]
+        Active,
+        [EnumMember(Value = "TRANSFERRING")]
+        Transferring
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AssetStatus
     {
-        COMPLETE,
-        ERROR,
-        SAVED,
-        SAVING,
-        SCANNED,
-        SCANNING,
-        UNDEFINED,
-        UPLOADING,
+        [EnumMember(Value = "COMPLETE")]
+        Complete,
+        [EnumMember(Value = "ERROR")]
+        Error,
+        [EnumMember(Value = "SAVED")]
+        Saved,
+        [EnumMember(Value = "SAVING")]
+        Saving,
+        [EnumMember(Value = "SCANNED")]
+        Scanned,
+        [EnumMember(Value = "SCANNING")]
+        Scanning,
+        [EnumMember(Value = "UNDEFINED")]
+        Undefined,
+        [EnumMember(Value = "UPLOADING")]
+        Uploading,
         [EnumMember(Value = "VIRUS_DETECTED")]
-        VIRUSDETECTED,
+        VirusDetected,
         [EnumMember(Value = "WAITING_FOR_UPLOAD")]
-        WAITINGFORUPLOAD
+        WaitingForUpload
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SynchStatus
     {
-        COMPLETE,
-        ERROR,
-        SAVED,
-        SAVING,
-        SCANNED,
-        SCANNING,
-        UNDEFINED,
-        UPLOADING,
+        [EnumMember(Value = "COMPLETE")]
+        Complete,
+        [EnumMember(Value = "ERROR")]
+        Error,
+        [EnumMember(Value = "SAVED")]
+        Saved,
+        [EnumMember(Value = "SAVING")]
+        Saving,
+        [EnumMember(Value = "SCANNED")]
+        Scanned,
+        [EnumMember(Value = "SCANNING")]
+        Scanning,
+        [EnumMember(Value = "UNDEFINED")]
+        Undefined,
+        [EnumMember(Value = "UPLOADING")]
+        Uploading,
         [EnumMember(Value = "VIRUS_DETECTED")]
-        VIRUSDETECTED,
+        VirusDetected,
         [EnumMember(Value = "WAITING_FOR_UPLOAD")]
-        WAITINGFORUPLOAD
+        WaitingForUpload
     }
 
     public class UserResponse
@@ -381,24 +407,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Objectiveconnect
     public enum NotificationPreference
     {
         [EnumMember(Value = "DAILY_EMAIL")]
-        DAILYEMAIL,
+        DailyEmail,
         [EnumMember(Value = "DAILY_SMS")]
-        DAILYSMS,
+        DailySms,
         [EnumMember(Value = "IMMEDIATE_EMAIL")]
-        IMMEDIATEEMAIL,
+        ImmediateEmail,
         [EnumMember(Value = "IMMEDIATE_SMS")]
-        IMMEDIATESMS,
+        ImmediateSms,
         [EnumMember(Value = "WEEKLY_EMAIL")]
-        WEEKLYEMAIL,
+        WeeklyEmail,
         [EnumMember(Value = "WEEKLY_SMS")]
-        WEEKLYSMS
+        WeeklySms
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserStatus
     {
-        ACTIVE,
-        INVITED
+        [EnumMember(Value = "ACTIVE")]
+        Active,
+        [EnumMember(Value = "INVITED")]
+        Invited
     }
 }
 

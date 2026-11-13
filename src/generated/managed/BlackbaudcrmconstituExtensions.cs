@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudcrmconstitu")]
-        public IBodyWorkflowAction<ConmgAlternateLookupIdCollection, ApiConnectionActionConfiguration> ListConstituentAlternateLookupIDs(Expression<Func<string>> constituentId)
+        public IBodyWorkflowAction<ConmgAlternateLookupIdCollection, ApiConnectionActionConfiguration> ListConstituentAlternateLookupIds(Expression<Func<string>> constituentId)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             return new DeferredBodyAction<ConmgAlternateLookupIdCollection, ApiConnectionActionConfiguration>(() =>
@@ -1009,13 +1009,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string Region { get; set; }
 
         [JsonProperty("dpc")]
-        public string DPC { get; set; }
+        public string Dpc { get; set; }
 
         [JsonProperty("cart")]
-        public string CART { get; set; }
+        public string Cart { get; set; }
 
         [JsonProperty("lot")]
-        public string LOT { get; set; }
+        public string Lot { get; set; }
 
         [JsonProperty("congressional_district")]
         public string CongressionalDistrict { get; set; }
@@ -1132,13 +1132,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string Region { get; set; }
 
         [JsonProperty("dpc")]
-        public string DPC { get; set; }
+        public string Dpc { get; set; }
 
         [JsonProperty("cart")]
-        public string CART { get; set; }
+        public string Cart { get; set; }
 
         [JsonProperty("lot")]
-        public string LOT { get; set; }
+        public string Lot { get; set; }
 
         [JsonProperty("congressional_district")]
         public string CongressionalDistrict { get; set; }
@@ -1433,7 +1433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string Note { get; set; }
 
         [JsonProperty("html_note")]
-        public string HTML { get; set; }
+        public string Html { get; set; }
     }
 
     public class EditConstituentNoteBodyInput
@@ -1454,7 +1454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string Note { get; set; }
 
         [JsonProperty("html_note")]
-        public string HTML { get; set; }
+        public string Html { get; set; }
     }
 
     public class ConmgConstituentSearchResultCollection
@@ -1918,7 +1918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         [JsonProperty("job_title")]
         public string JobTitle { get; set; }
 
-        [JsonProperty("job_schedule")]
+        [JsonProperty("career_level")]
         public string CareerLevel { get; set; }
 
         [JsonProperty("job_category")]
@@ -1935,6 +1935,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
 
         [JsonProperty("job_division")]
         public string Division { get; set; }
+
+        [JsonProperty("job_schedule")]
+        public string CareerLevel2 { get; set; }
 
         [JsonProperty("job_responsibility")]
         public string Responsibilities { get; set; }
@@ -2175,10 +2178,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string CurrentEnrollmentId { get; set; }
 
         [JsonProperty("current_enrollment_id_2")]
-        public string CurrentEnrollmentID2 { get; set; }
+        public string CurrentEnrollmentId2 { get; set; }
 
         [JsonProperty("current_enrollment_id_3")]
-        public string CurrentEnrollmentID3 { get; set; }
+        public string CurrentEnrollmentId3 { get; set; }
 
         [JsonProperty("student_enrollment_id")]
         public string StudentEnrollmentId { get; set; }
@@ -2268,7 +2271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string MemberConstituencyText { get; set; }
 
         [JsonProperty("nfg_constituency_text")]
-        public string NFGConstituencyText { get; set; }
+        public string NfgConstituencyText { get; set; }
 
         [JsonProperty("patron_constituency_text")]
         public string PatronConstituencyText { get; set; }
@@ -2747,13 +2750,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string DoNotMailReason { get; set; }
 
         [JsonProperty("address_dpc")]
-        public string DPC { get; set; }
+        public string Dpc { get; set; }
 
         [JsonProperty("address_cart")]
-        public string CART { get; set; }
+        public string Cart { get; set; }
 
         [JsonProperty("address_lot")]
-        public string LOT { get; set; }
+        public string Lot { get; set; }
 
         [JsonProperty("address_county")]
         public string County { get; set; }
@@ -3341,13 +3344,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmconstitu
         public string DoNotMailReason { get; set; }
 
         [JsonProperty("dpc")]
-        public string DPC { get; set; }
+        public string Dpc { get; set; }
 
         [JsonProperty("cart")]
-        public string CART { get; set; }
+        public string Cart { get; set; }
 
         [JsonProperty("lot")]
-        public string LOT { get; set; }
+        public string Lot { get; set; }
 
         [JsonProperty("county")]
         public string County { get; set; }

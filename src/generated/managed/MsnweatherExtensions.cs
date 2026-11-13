@@ -137,10 +137,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         public double Humidity { get; set; }
 
         [JsonProperty("wx")]
-        public string METARWeatherConditions { get; set; }
+        public string MetarWeatherConditions { get; set; }
 
         [JsonProperty("sky")]
-        public string METARSkyConditions { get; set; }
+        public string MetarSkyConditions { get; set; }
 
         [JsonProperty("temp")]
         public double Temperature { get; set; }
@@ -287,10 +287,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         public double RainChance { get; set; }
 
         [JsonProperty("wx")]
-        public string METARWeatherConditions { get; set; }
+        public string MetarWeatherConditions { get; set; }
 
         [JsonProperty("sky")]
-        public string METARSkyConditions { get; set; }
+        public string MetarSkyConditions { get; set; }
 
         [JsonProperty("windDir")]
         public int WindDirection { get; set; }
@@ -311,10 +311,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         public double RainChance { get; set; }
 
         [JsonProperty("wx")]
-        public string METARWeatherConditions { get; set; }
+        public string MetarWeatherConditions { get; set; }
 
         [JsonProperty("sky")]
-        public string METARSkyConditions { get; set; }
+        public string MetarSkyConditions { get; set; }
 
         [JsonProperty("windDir")]
         public int WindDirection { get; set; }

@@ -325,7 +325,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string ExternalPackageData { get; set; }
         public string Initiator { get; set; }
         public Stakeholder[] Stakeholders { get; set; }
-        public string CallBackUrl { get; set; }
+
+        [JsonProperty("CallBackUrl")]
+        public string CallbackUrl { get; set; }
         public string CorrelationId { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -338,7 +340,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string ExternalDocumentReference { get; set; }
         public string ExternalPackageReference { get; set; }
         public string F2FRedirectUrl { get; set; }
-        public string NotificationCallBackUrl { get; set; }
+
+        [JsonProperty("NotificationCallBackUrl")]
+        public string NotificationCallbackUrl { get; set; }
         public string PdfErrorHandling { get; set; }
         public string Representation { get; set; }
         public string RepresentationType { get; set; }
@@ -430,7 +434,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
     {
         public string Initiator { get; set; }
         public string PackageName { get; set; }
-        public string CallBackUrl { get; set; }
+
+        [JsonProperty("CallBackUrl")]
+        public string CallbackUrl { get; set; }
         public string CorrelationId { get; set; }
         public string DocumentGroupCode { get; set; }
         public string ThemeCode { get; set; }
@@ -441,7 +447,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string ExternalPackageReference { get; set; }
         public string ExternalPackageData { get; set; }
         public string F2FRedirectUrl { get; set; }
-        public string NotificationCallBackUrl { get; set; }
+
+        [JsonProperty("NotificationCallBackUrl")]
+        public string NotificationCallbackUrl { get; set; }
     }
 
     public class AddDocumentToPackageResponse
@@ -588,7 +596,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string[] LocationIds { get; set; }
         public SigningTypeInfo[] SigningTypes { get; set; }
         public string Phonenumber { get; set; }
-        public string RedirectURL { get; set; }
+
+        [JsonProperty("RedirectURL")]
+        public string RedirectUrl { get; set; }
         public bool? SendNotifications { get; set; }
         public BodyInputStakeholdersTypeItemActorsTypeItemUserRolesTypeItem[] UserRoles { get; set; }
         public string LegalNoticeCode { get; set; }
@@ -605,9 +615,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputStakeholdersTypeItemActorsTypeItemUserRolesTypeItem
     {
-        LEGALNOTICE1,
-        LEGALNOTICE2,
-        LEGALNOTICE3
+        [EnumMember(Value = "LEGALNOTICE1")]
+        Legalnotice1,
+        [EnumMember(Value = "LEGALNOTICE2")]
+        Legalnotice2,
+        [EnumMember(Value = "LEGALNOTICE3")]
+        Legalnotice3
     }
 
     public class Content

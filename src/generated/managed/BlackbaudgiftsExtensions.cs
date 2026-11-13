@@ -417,12 +417,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiTaxDeclarationCollection, ApiConnectionActionConfiguration> ListConstituentTaxDeclarations(Expression<Func<int>> constituentId, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<NxtDataIntegrationApiTaxDeclarationCollection, ApiConnectionActionConfiguration> ListConstituentTaxDeclarations(Expression<Func<int>> constituentId, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_constituentId = WorkflowExpression.Compile(constituentId, nameof(constituentId), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<NXTDataIntegrationApiTaxDeclarationCollection, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiTaxDeclarationCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/nxt-data-integration/v1/re/giftaid/constituents/{0}/taxdeclarations", __workflow_constituentId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -431,21 +431,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
-                return new ApiConnectionAction<NXTDataIntegrationApiTaxDeclarationCollection>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiTaxDeclarationCollection>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedTaxDeclaration, ApiConnectionActionConfiguration> CreateTaxDeclaration(Expression<Func<CreateTaxDeclarationBodyInput>> body)
+        public IBodyWorkflowAction<NxtDataIntegrationApiCreatedTaxDeclaration, ApiConnectionActionConfiguration> CreateTaxDeclaration(Expression<Func<CreateTaxDeclarationBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<NXTDataIntegrationApiCreatedTaxDeclaration, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiCreatedTaxDeclaration, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/giftaid/taxdeclarations";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<NXTDataIntegrationApiCreatedTaxDeclaration>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiCreatedTaxDeclaration>(callPayload);
             });
         }
 
@@ -465,29 +465,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiGiftIdMap, ApiConnectionActionConfiguration> GetGiftIdFromLookupId(Expression<Func<string>> giftlookupid)
+        public IBodyWorkflowAction<NxtDataIntegrationApiGiftIdMap, ApiConnectionActionConfiguration> GetGiftIdFromLookupId(Expression<Func<string>> giftlookupid)
         {
             var __workflow_giftlookupid = WorkflowExpression.Compile(giftlookupid, nameof(giftlookupid), required: true);
-            return new DeferredBodyAction<NXTDataIntegrationApiGiftIdMap, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiGiftIdMap, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/nxt-data-integration/v1/re/giftidmap/{0}", __workflow_giftlookupid.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<NXTDataIntegrationApiGiftIdMap>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiGiftIdMap>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedGiftNote, ApiConnectionActionConfiguration> CreateGiftNote(Expression<Func<CreateGiftNoteBodyInput>> body)
+        public IBodyWorkflowAction<NxtDataIntegrationApiCreatedGiftNote, ApiConnectionActionConfiguration> CreateGiftNote(Expression<Func<CreateGiftNoteBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<NXTDataIntegrationApiCreatedGiftNote, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiCreatedGiftNote, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/gifts/notes";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<NXTDataIntegrationApiCreatedGiftNote>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiCreatedGiftNote>(callPayload);
             });
         }
 
@@ -507,12 +507,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiGiftNoteCollection, ApiConnectionActionConfiguration> ListGiftNotes(Expression<Func<int>> giftId, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<NxtDataIntegrationApiGiftNoteCollection, ApiConnectionActionConfiguration> ListGiftNotes(Expression<Func<int>> giftId, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
             var __workflow_giftId = WorkflowExpression.Compile(giftId, nameof(giftId), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
-            return new DeferredBodyAction<NXTDataIntegrationApiGiftNoteCollection, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiGiftNoteCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/nxt-data-integration/v1/re/gifts/{0}/notes", __workflow_giftId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
@@ -521,21 +521,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
                 if (__workflow_offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
-                return new ApiConnectionAction<NXTDataIntegrationApiGiftNoteCollection>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiGiftNoteCollection>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiCreatedGiftTribute, ApiConnectionActionConfiguration> CreateGiftTribute(Expression<Func<CreateGiftTributeBodyInput>> body)
+        public IBodyWorkflowAction<NxtDataIntegrationApiCreatedGiftTribute, ApiConnectionActionConfiguration> CreateGiftTribute(Expression<Func<CreateGiftTributeBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
-            return new DeferredBodyAction<NXTDataIntegrationApiCreatedGiftTribute, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiCreatedGiftTribute, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/nxt-data-integration/v1/re/gifttribute";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<NXTDataIntegrationApiCreatedGiftTribute>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiCreatedGiftTribute>(callPayload);
             });
         }
 
@@ -555,28 +555,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiGiftTributeAcknowledgeeCollection, ApiConnectionActionConfiguration> ListGiftTributeAcknowledgees(Expression<Func<int>> giftTributeId)
+        public IBodyWorkflowAction<NxtDataIntegrationApiGiftTributeAcknowledgeeCollection, ApiConnectionActionConfiguration> ListGiftTributeAcknowledgees(Expression<Func<int>> giftTributeId)
         {
             var __workflow_giftTributeId = WorkflowExpression.Compile(giftTributeId, nameof(giftTributeId), required: true);
-            return new DeferredBodyAction<NXTDataIntegrationApiGiftTributeAcknowledgeeCollection, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiGiftTributeAcknowledgeeCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/nxt-data-integration/v1/re/gifttribute/{0}/acknowledgees", __workflow_giftTributeId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<NXTDataIntegrationApiGiftTributeAcknowledgeeCollection>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiGiftTributeAcknowledgeeCollection>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudgifts")]
-        public IBodyWorkflowAction<NXTDataIntegrationApiGiftTributeCollection, ApiConnectionActionConfiguration> ListGiftTributes(Expression<Func<int>> giftId)
+        public IBodyWorkflowAction<NxtDataIntegrationApiGiftTributeCollection, ApiConnectionActionConfiguration> ListGiftTributes(Expression<Func<int>> giftId)
         {
             var __workflow_giftId = WorkflowExpression.Compile(giftId, nameof(giftId), required: true);
-            return new DeferredBodyAction<NXTDataIntegrationApiGiftTributeCollection, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<NxtDataIntegrationApiGiftTributeCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/nxt-data-integration/v1/re/gifttribute/gift/{0}", __workflow_giftId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<NXTDataIntegrationApiGiftTributeCollection>(callPayload);
+                return new ApiConnectionAction<NxtDataIntegrationApiGiftTributeCollection>(callPayload);
             });
         }
 
@@ -1027,10 +1027,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string AccountToken { get; set; }
 
         [JsonProperty("bbps_configuration_id")]
-        public string BBPSConfigurationId { get; set; }
+        public string BbpsConfigurationId { get; set; }
 
         [JsonProperty("bbps_transaction_id")]
-        public string BBPSTransactionId { get; set; }
+        public string BbpsTransactionId { get; set; }
 
         [JsonProperty("check_date")]
         public GiftApiPaymentReadCheckDateType CheckDate { get; set; }
@@ -1324,7 +1324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -1336,7 +1336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string ThumbnailId { get; set; }
 
         [JsonProperty("thumbnail_url")]
-        public string ThumbnailURL { get; set; }
+        public string ThumbnailUrl { get; set; }
 
         [JsonProperty("content_type")]
         public string ContentType { get; set; }
@@ -1470,7 +1470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("file_name")]
         public string FileName { get; set; }
@@ -1501,7 +1501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Date { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("tags")]
         public string[] Tags { get; set; }
@@ -2033,13 +2033,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     {
         Annually,
         [EnumMember(Value = "EVERY_SIX_MONTHS")]
-        EVERYSIXMONTHS,
+        EverySixMonths,
         Quarterly,
         Monthly,
         [EnumMember(Value = "EVERY_FOUR_WEEKS")]
-        EVERYFOURWEEKS,
+        EveryFourWeeks,
         [EnumMember(Value = "EVERY_TWO_WEEKS")]
-        EVERYTWOWEEKS,
+        EveryTwoWeeks,
         Weekly,
         Irregular,
         Single
@@ -2658,16 +2658,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public double? MedianPricePerUnit { get; set; }
     }
 
-    public class NXTDataIntegrationApiTaxDeclarationCollection
+    public class NxtDataIntegrationApiTaxDeclarationCollection
     {
         [JsonProperty("count")]
         public int Count { get; set; }
 
         [JsonProperty("value")]
-        public NXTDataIntegrationApiTaxDeclaration[] Value { get; set; }
+        public NxtDataIntegrationApiTaxDeclaration[] Value { get; set; }
     }
 
-    public class NXTDataIntegrationApiTaxDeclaration
+    public class NxtDataIntegrationApiTaxDeclaration
     {
         [JsonProperty("declaration_id")]
         public int Id { get; set; }
@@ -2700,7 +2700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string ConfirmationReturned { get; set; }
 
         [JsonProperty("constituent_pays_tax")]
-        public NXTDataIntegrationApiTaxDeclarationPaysTaxType PaysTax { get; set; }
+        public NxtDataIntegrationApiTaxDeclarationPaysTaxType PaysTax { get; set; }
 
         [JsonProperty("tax_payer_status_id")]
         public int StatusId { get; set; }
@@ -2716,14 +2716,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NXTDataIntegrationApiTaxDeclarationPaysTaxType
+    public enum NxtDataIntegrationApiTaxDeclarationPaysTaxType
     {
         No,
         Yes,
         Unknown
     }
 
-    public class NXTDataIntegrationApiCreatedTaxDeclaration
+    public class NxtDataIntegrationApiCreatedTaxDeclaration
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2818,13 +2818,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public int? Sequence { get; set; }
     }
 
-    public class NXTDataIntegrationApiGiftIdMap
+    public class NxtDataIntegrationApiGiftIdMap
     {
         [JsonProperty("system_record_id")]
         public int Id { get; set; }
     }
 
-    public class NXTDataIntegrationApiCreatedGiftNote
+    public class NxtDataIntegrationApiCreatedGiftNote
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2888,16 +2888,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Author { get; set; }
     }
 
-    public class NXTDataIntegrationApiGiftNoteCollection
+    public class NxtDataIntegrationApiGiftNoteCollection
     {
         [JsonProperty("count")]
         public int Count { get; set; }
 
         [JsonProperty("value")]
-        public NXTDataIntegrationApiGiftNote[] Value { get; set; }
+        public NxtDataIntegrationApiGiftNote[] Value { get; set; }
     }
 
-    public class NXTDataIntegrationApiGiftNote
+    public class NxtDataIntegrationApiGiftNote
     {
         [JsonProperty("gift_id")]
         public int GiftId { get; set; }
@@ -2906,7 +2906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Type { get; set; }
 
         [JsonProperty("date")]
-        public NXTDataIntegrationApiGiftNoteDateType Date { get; set; }
+        public NxtDataIntegrationApiGiftNoteDateType Date { get; set; }
 
         [JsonProperty("summary")]
         public string Summary { get; set; }
@@ -2918,7 +2918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string Author { get; set; }
     }
 
-    public class NXTDataIntegrationApiGiftNoteDateType
+    public class NxtDataIntegrationApiGiftNoteDateType
     {
         [JsonProperty("d")]
         public int Day { get; set; }
@@ -2930,7 +2930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public int Year { get; set; }
     }
 
-    public class NXTDataIntegrationApiCreatedGiftTribute
+    public class NxtDataIntegrationApiCreatedGiftTribute
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -2968,16 +2968,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         DoNotAcknowledge
     }
 
-    public class NXTDataIntegrationApiGiftTributeAcknowledgeeCollection
+    public class NxtDataIntegrationApiGiftTributeAcknowledgeeCollection
     {
         [JsonProperty("count")]
         public int Count { get; set; }
 
         [JsonProperty("value")]
-        public NXTDataIntegrationApiGiftTributeAcknowledgee[] Value { get; set; }
+        public NxtDataIntegrationApiGiftTributeAcknowledgee[] Value { get; set; }
     }
 
-    public class NXTDataIntegrationApiGiftTributeAcknowledgee
+    public class NxtDataIntegrationApiGiftTributeAcknowledgee
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -2998,16 +2998,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public string LetterDate { get; set; }
     }
 
-    public class NXTDataIntegrationApiGiftTributeCollection
+    public class NxtDataIntegrationApiGiftTributeCollection
     {
         [JsonProperty("count")]
         public int Count { get; set; }
 
         [JsonProperty("value")]
-        public NXTDataIntegrationApiGiftTribute[] Value { get; set; }
+        public NxtDataIntegrationApiGiftTribute[] Value { get; set; }
     }
 
-    public class NXTDataIntegrationApiGiftTribute
+    public class NxtDataIntegrationApiGiftTribute
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -3022,14 +3022,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudgifts
         public int TributeType { get; set; }
 
         [JsonProperty("acknowledge")]
-        public NXTDataIntegrationApiGiftTributeAcknowledgeStatusType AcknowledgeStatus { get; set; }
+        public NxtDataIntegrationApiGiftTributeAcknowledgeStatusType AcknowledgeStatus { get; set; }
 
         [JsonProperty("sequence")]
         public int Sequence { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum NXTDataIntegrationApiGiftTributeAcknowledgeStatusType
+    public enum NxtDataIntegrationApiGiftTributeAcknowledgeStatusType
     {
         Acknowledged,
         NotAcknowledged,

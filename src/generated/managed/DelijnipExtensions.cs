@@ -185,8 +185,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LijnrichtingRichtingType
     {
-        HEEN,
-        TERUG
+        [EnumMember(Value = "HEEN")]
+        Heen,
+        [EnumMember(Value = "TERUG")]
+        Terug
     }
 
     public class LocatiesHits

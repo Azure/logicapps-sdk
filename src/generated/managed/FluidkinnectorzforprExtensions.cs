@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluidkinnectorzforpr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluidkinnectorzforpr")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> RepliesDeleteAnRFIResponse(Expression<Func<int>> companyId, Expression<Func<int>> projectId, Expression<Func<int>> rfiId, Expression<Func<int>> id)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> RepliesDeleteAnRfiResponse(Expression<Func<int>> companyId, Expression<Func<int>> projectId, Expression<Func<int>> rfiId, Expression<Func<int>> id)
         {
             var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);

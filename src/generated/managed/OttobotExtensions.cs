@@ -27,16 +27,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ottobot")]
-        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> ReturnResultsToBot(Expression<Func<string>> returnResultURL, Expression<Func<ReturnResultsToBotBodyInput>> body)
+        public IBodyWorkflowAction<Response, ApiConnectionActionConfiguration> ReturnResultsToBot(Expression<Func<string>> returnResultUrl, Expression<Func<ReturnResultsToBotBodyInput>> body)
         {
-            var __workflow_returnResultURL = WorkflowExpression.Compile(returnResultURL, nameof(returnResultURL), required: true);
+            var __workflow_returnResultUrl = WorkflowExpression.Compile(returnResultUrl, nameof(returnResultUrl), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<Response, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/skills/results";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["returnResultURL"] = ExpressionConverter.Convert(__workflow_returnResultURL);
+                callPayload.Queries["returnResultURL"] = ExpressionConverter.Convert(__workflow_returnResultUrl);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<Response>(callPayload);
             });
@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
 
     public class SendAttachmentsToUrlBodyInput
     {
-        public SendAttachmentsToUrlBodyInput(string aPIURL, string attachmentURL, string attachmentFileName)
+        public SendAttachmentsToUrlBodyInput(string apiUrl, string attachmentUrl, string attachmentFileName)
         {
-            this.APIURL = aPIURL;
-            this.AttachmentURL = attachmentURL;
+            this.ApiUrl = apiUrl;
+            this.AttachmentUrl = attachmentUrl;
             this.AttachmentFileName = attachmentFileName;
         }
 
@@ -63,10 +63,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
         public JToken ApiRequestHeaders { get; set; } = JToken.Parse("{}");
 
         [JsonProperty("apiUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string APIURL { get; set; }
+        public string ApiUrl { get; set; }
 
         [JsonProperty("attachmentUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AttachmentURL { get; set; }
+        public string AttachmentUrl { get; set; }
 
         [JsonProperty("filename", DefaultValueHandling = DefaultValueHandling.Include)]
         public string AttachmentFileName { get; set; }

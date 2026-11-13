@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         public string AccountId { get; set; }
 
         [JsonProperty("accountUri")]
-        public string AccountURI { get; set; }
+        public string AccountUri { get; set; }
 
         [JsonProperty("accountName")]
         public string AccountName { get; set; }
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         public string ProjectName { get; set; }
 
         [JsonProperty("url")]
-        public string ProjectURL { get; set; }
+        public string ProjectUrl { get; set; }
     }
 
     public class VstsListQueryHierarchyItem
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         public JToken Links { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
     }
 
     public class VstsListWorkItemType

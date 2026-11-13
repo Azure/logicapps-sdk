@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascalert
 
     public class AscalertTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ASCAlertTriggerSubscribe()
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> AscAlertTriggerSubscribe()
         {
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {

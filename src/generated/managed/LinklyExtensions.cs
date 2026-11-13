@@ -419,7 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public string LinkedInPartnerId { get; set; }
 
         [JsonProperty("microsoft_uet_tag_id")]
-        public string MicrosoftUETTagId { get; set; }
+        public string MicrosoftUetTagId { get; set; }
 
         [JsonProperty("reddit_pixel_id")]
         public string RedditPixelId { get; set; }
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public string LinkifyWords { get; set; }
 
         [JsonProperty("full_url")]
-        public string ShortURL { get; set; }
+        public string ShortUrl { get; set; }
 
         [JsonProperty("og_description")]
         public string OpenGraphDescription { get; set; }
@@ -485,13 +485,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public string SnapchatPixelId { get; set; }
 
         [JsonProperty("utm_content")]
-        public string UTMContent { get; set; }
+        public string UtmContent { get; set; }
 
         [JsonProperty("enabled")]
         public bool Enabled { get; set; }
 
         [JsonProperty("url")]
-        public string DestinationURL { get; set; }
+        public string DestinationUrl { get; set; }
 
         [JsonProperty("replacements")]
         public string Replacements { get; set; }
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public bool NotifySlack { get; set; }
 
         [JsonProperty("notify_user_ids")]
-        public int[] NotifyUserIDs { get; set; }
+        public int[] NotifyUserIds { get; set; }
 
         [JsonProperty("workspace_id")]
         public int WorkspaceId { get; set; }
@@ -527,7 +527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public string Password { get; set; }
 
         [JsonProperty("utm_source")]
-        public string UTMSource { get; set; }
+        public string UtmSource { get; set; }
 
         [JsonProperty("slug")]
         public string Slug { get; set; }
@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public bool ForwardParameters { get; set; }
 
         [JsonProperty("utm_medium")]
-        public string UTMMedium { get; set; }
+        public string UtmMedium { get; set; }
 
         [JsonProperty("head_tags")]
         public string HeadTags { get; set; }
@@ -548,10 +548,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public string GoogleAnalytics4TagId { get; set; }
 
         [JsonProperty("utm_term")]
-        public string UTMTerm { get; set; }
+        public string UtmTerm { get; set; }
 
         [JsonProperty("utm_campaign")]
-        public string UTMCampaign { get; set; }
+        public string UtmCampaign { get; set; }
     }
 
     public class CreateOrUpdateLinkResponseRulesTypeItem
@@ -563,7 +563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public int Percentage { get; set; }
 
         [JsonProperty("url")]
-        public string RuleURL { get; set; }
+        public string RuleUrl { get; set; }
 
         [JsonProperty("what")]
         public string What { get; set; }
@@ -572,7 +572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
     public class CreateOrUpdateLinkBodyInput
     {
         [JsonProperty("url")]
-        public string DestinationURL { get; set; }
+        public string DestinationUrl { get; set; }
 
         [JsonProperty("id")]
         public int? LinkId { get; set; }
@@ -593,19 +593,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public string Note { get; set; }
 
         [JsonProperty("utm_source")]
-        public string UTMSource { get; set; }
+        public string UtmSource { get; set; }
 
         [JsonProperty("utm_medium")]
-        public string UTMMedium { get; set; }
+        public string UtmMedium { get; set; }
 
         [JsonProperty("utm_campaign")]
-        public string UTMCampaign { get; set; }
+        public string UtmCampaign { get; set; }
 
         [JsonProperty("utm_content")]
-        public string UTMContent { get; set; }
+        public string UtmContent { get; set; }
 
         [JsonProperty("utm_term")]
-        public string UTMTerm { get; set; }
+        public string UtmTerm { get; set; }
 
         [JsonProperty("fb_pixel_id")]
         public string MetaPixelId { get; set; }
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public string LinkedInPartnerId { get; set; }
 
         [JsonProperty("microsoft_uet_tag_id")]
-        public string MicrosoftUETTagId { get; set; }
+        public string MicrosoftUetTagId { get; set; }
 
         [JsonProperty("reddit_pixel_id")]
         public string RedditPixelId { get; set; }
@@ -686,7 +686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public string LinkifyWords { get; set; }
 
         [JsonProperty("full_url")]
-        public string ShortURL { get; set; }
+        public string ShortUrl { get; set; }
 
         [JsonProperty("og_description")]
         public string OpenGraphDescription { get; set; }
@@ -722,13 +722,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public string SnapchatPixelId { get; set; }
 
         [JsonProperty("utm_content")]
-        public string UTMContent { get; set; }
+        public string UtmContent { get; set; }
 
         [JsonProperty("enabled")]
         public bool Enabled { get; set; }
 
         [JsonProperty("url")]
-        public string DestinationURL { get; set; }
+        public string DestinationUrl { get; set; }
 
         [JsonProperty("replacements")]
         public string Replacements { get; set; }
@@ -749,7 +749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public bool NotifySlack { get; set; }
 
         [JsonProperty("notify_user_ids")]
-        public int[] NotifyUserIDs { get; set; }
+        public int[] NotifyUserIds { get; set; }
 
         [JsonProperty("workspace_id")]
         public int WorkspaceId { get; set; }
@@ -764,7 +764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public string Password { get; set; }
 
         [JsonProperty("utm_source")]
-        public string UTMSource { get; set; }
+        public string UtmSource { get; set; }
 
         [JsonProperty("slug")]
         public string Slug { get; set; }
@@ -776,7 +776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public bool ForwardParameters { get; set; }
 
         [JsonProperty("utm_medium")]
-        public string UTMMedium { get; set; }
+        public string UtmMedium { get; set; }
 
         [JsonProperty("head_tags")]
         public string HeadTags { get; set; }
@@ -785,10 +785,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public string GoogleAnalytics4TagId { get; set; }
 
         [JsonProperty("utm_term")]
-        public string UTMTerm { get; set; }
+        public string UtmTerm { get; set; }
 
         [JsonProperty("utm_campaign")]
-        public string UTMCampaign { get; set; }
+        public string UtmCampaign { get; set; }
     }
 
     public class GetLinkResponseRulesTypeItem
@@ -800,7 +800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public int Percentage { get; set; }
 
         [JsonProperty("url")]
-        public string RuleURL { get; set; }
+        public string RuleUrl { get; set; }
 
         [JsonProperty("what")]
         public string What { get; set; }
@@ -951,7 +951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public string LinkifyWords { get; set; }
 
         [JsonProperty("full_url")]
-        public string ShortURL { get; set; }
+        public string ShortUrl { get; set; }
 
         [JsonProperty("clicks_today")]
         public int ClicksToday { get; set; }
@@ -990,7 +990,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public int HumanClicks30Days { get; set; }
 
         [JsonProperty("utm_content")]
-        public string UTMContent { get; set; }
+        public string UtmContent { get; set; }
 
         [JsonProperty("human_clicks_today")]
         public int HumanClicksToday { get; set; }
@@ -999,7 +999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public bool Enabled { get; set; }
 
         [JsonProperty("url")]
-        public string DestinationURL { get; set; }
+        public string DestinationUrl { get; set; }
 
         [JsonProperty("replacements")]
         public string Replacements { get; set; }
@@ -1014,7 +1014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public bool PublicAnalytics { get; set; }
 
         [JsonProperty("utm_source")]
-        public string UTMSource { get; set; }
+        public string UtmSource { get; set; }
 
         [JsonProperty("slug")]
         public string Slug { get; set; }
@@ -1026,7 +1026,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public bool ForwardParameters { get; set; }
 
         [JsonProperty("utm_medium")]
-        public string UTMMedium { get; set; }
+        public string UtmMedium { get; set; }
 
         [JsonProperty("head_tags")]
         public string HeadTags { get; set; }
@@ -1035,10 +1035,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public string GoogleAnalytics4TagId { get; set; }
 
         [JsonProperty("utm_term")]
-        public string UTMTerm { get; set; }
+        public string UtmTerm { get; set; }
 
         [JsonProperty("utm_campaign")]
-        public string UTMCampaign { get; set; }
+        public string UtmCampaign { get; set; }
 
         [JsonProperty("human_clicks_previous_day")]
         public int HumanClicksYesterday { get; set; }
@@ -1053,7 +1053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkly
         public int Percentage { get; set; }
 
         [JsonProperty("url")]
-        public string RuleURL { get; set; }
+        public string RuleUrl { get; set; }
 
         [JsonProperty("what")]
         public string What { get; set; }

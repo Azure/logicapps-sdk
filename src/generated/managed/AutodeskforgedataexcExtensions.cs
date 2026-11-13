@@ -29,46 +29,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
-        public IBodyWorkflowAction<URLExchangeData, ApiConnectionActionConfiguration> GetExchangesUsinglink(Expression<Func<string>> fileId)
+        public IBodyWorkflowAction<UrlExchangeData, ApiConnectionActionConfiguration> GetExchangesUsinglink(Expression<Func<string>> fileId)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
-            return new DeferredBodyAction<URLExchangeData, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UrlExchangeData, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/exchange/fake/exchanges";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fileId"] = ExpressionConverter.Convert(__workflow_fileId);
-                return new ApiConnectionAction<URLExchangeData>(callPayload);
+                return new ApiConnectionAction<UrlExchangeData>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
-        public IBodyWorkflowAction<AECData, ApiConnectionActionConfiguration> GetAECDesigns(Expression<Func<RegionInput>> region, Expression<Func<string>> fileId)
+        public IBodyWorkflowAction<AecData, ApiConnectionActionConfiguration> GetAecDesigns(Expression<Func<RegionInput>> region, Expression<Func<string>> fileId)
         {
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
-            return new DeferredBodyAction<AECData, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AecData, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/design/v1/designs";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["region"] = ExpressionConverter.Convert(__workflow_region);
                 callPayload.Queries["fileId"] = ExpressionConverter.Convert(__workflow_fileId);
-                return new ApiConnectionAction<AECData>(callPayload);
+                return new ApiConnectionAction<AecData>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
-        public IBodyWorkflowAction<AECData, ApiConnectionActionConfiguration> GetAECDesignsUsinglink(Expression<Func<string>> fileId)
+        public IBodyWorkflowAction<AecData, ApiConnectionActionConfiguration> GetAecDesignsUsinglink(Expression<Func<string>> fileId)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
-            return new DeferredBodyAction<AECData, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AecData, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/design/v2/designs";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["fileId"] = ExpressionConverter.Convert(__workflow_fileId);
-                return new ApiConnectionAction<AECData>(callPayload);
+                return new ApiConnectionAction<AecData>(callPayload);
             });
         }
 
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
-        public IBodyWorkflowAction<GraphQLParametersResponseAEC, ApiConnectionActionConfiguration> GetFilteredPropertiesCodeBehindAEC(Expression<Func<RegionInput>> region, Expression<Func<string>> fileId, Expression<Func<FilterByInput>> filterBy, Expression<Func<string>> filterValue = null, Expression<Func<string>> parameterfilterValue = null, Expression<Func<SelectedUnitTypeInput>> selectedUnitType = null, Expression<Func<string>> selectedUnit = null)
+        public IBodyWorkflowAction<GraphQLParametersResponseAec, ApiConnectionActionConfiguration> GetFilteredPropertiesCodeBehindAec(Expression<Func<RegionInput>> region, Expression<Func<string>> fileId, Expression<Func<FilterByInput>> filterBy, Expression<Func<string>> filterValue = null, Expression<Func<string>> parameterfilterValue = null, Expression<Func<SelectedUnitTypeInput>> selectedUnitType = null, Expression<Func<string>> selectedUnit = null)
         {
             var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             var __workflow_parameterfilterValue = WorkflowExpression.Compile(parameterfilterValue, nameof(parameterfilterValue), required: false);
             var __workflow_selectedUnitType = WorkflowExpression.Compile(selectedUnitType, nameof(selectedUnitType), required: false);
             var __workflow_selectedUnit = WorkflowExpression.Compile(selectedUnit, nameof(selectedUnit), required: false);
-            return new DeferredBodyAction<GraphQLParametersResponseAEC, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GraphQLParametersResponseAec, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fakeGraphQL/GetFilteredParametersAEC";
                 var apiCallHttpMethod = "get";
@@ -161,12 +161,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
                     callPayload.Queries["selectedUnitType"] = ExpressionConverter.Convert(__workflow_selectedUnitType);
                 if (__workflow_selectedUnit != null)
                     callPayload.Queries["selectedUnit"] = ExpressionConverter.Convert(__workflow_selectedUnit);
-                return new ApiConnectionAction<GraphQLParametersResponseAEC>(callPayload);
+                return new ApiConnectionAction<GraphQLParametersResponseAec>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
-        public IBodyWorkflowAction<GraphQLParametersResponseAEC, ApiConnectionActionConfiguration> GetFilteredPropertiesAECUsingLink(Expression<Func<string>> fileId, Expression<Func<FilterByInput>> filterBy, Expression<Func<string>> filterValue = null, Expression<Func<string>> parameterfilterValue = null, Expression<Func<SelectedUnitTypeInput>> selectedUnitType = null, Expression<Func<string>> selectedUnit = null)
+        public IBodyWorkflowAction<GraphQLParametersResponseAec, ApiConnectionActionConfiguration> GetFilteredPropertiesAecUsingLink(Expression<Func<string>> fileId, Expression<Func<FilterByInput>> filterBy, Expression<Func<string>> filterValue = null, Expression<Func<string>> parameterfilterValue = null, Expression<Func<SelectedUnitTypeInput>> selectedUnitType = null, Expression<Func<string>> selectedUnit = null)
         {
             var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             var __workflow_filterBy = WorkflowExpression.Compile(filterBy, nameof(filterBy), required: true);
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
             var __workflow_parameterfilterValue = WorkflowExpression.Compile(parameterfilterValue, nameof(parameterfilterValue), required: false);
             var __workflow_selectedUnitType = WorkflowExpression.Compile(selectedUnitType, nameof(selectedUnitType), required: false);
             var __workflow_selectedUnit = WorkflowExpression.Compile(selectedUnit, nameof(selectedUnit), required: false);
-            return new DeferredBodyAction<GraphQLParametersResponseAEC, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GraphQLParametersResponseAec, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/fakeGraphQL/URL/GetFilteredParametersAEC";
                 var apiCallHttpMethod = "get";
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
                     callPayload.Queries["selectedUnitType"] = ExpressionConverter.Convert(__workflow_selectedUnitType);
                 if (__workflow_selectedUnit != null)
                     callPayload.Queries["selectedUnit"] = ExpressionConverter.Convert(__workflow_selectedUnit);
-                return new ApiConnectionAction<GraphQLParametersResponseAEC>(callPayload);
+                return new ApiConnectionAction<GraphQLParametersResponseAec>(callPayload);
             });
         }
 
@@ -323,11 +323,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
     public enum RegionInput
     {
         US,
-        EMEA,
-        AUS
+        [EnumMember(Value = "EMEA")]
+        Emea,
+        [EnumMember(Value = "AUS")]
+        Aus
     }
 
-    public class URLExchangeData
+    public class UrlExchangeData
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -357,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         public string LastModified { get; set; }
     }
 
-    public class AECData
+    public class AecData
     {
         [JsonProperty("hubName")]
         public string HubName { get; set; }
@@ -439,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         Metric
     }
 
-    public class GraphQLParametersResponseAEC
+    public class GraphQLParametersResponseAec
     {
         [JsonProperty("value")]
         public JToken[] Value { get; set; }

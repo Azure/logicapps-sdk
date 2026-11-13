@@ -788,8 +788,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudcrmprospect
         [JsonProperty("use")]
         public string UseCode { get; set; }
 
-        [JsonProperty("constituent_name")]
+        [JsonProperty("constituent")]
         public string Constituent { get; set; }
+
+        [JsonProperty("constituent_name")]
+        public string Constituent2 { get; set; }
 
         [JsonProperty("transaction_currency_id")]
         public string TransactionCurrencyId { get; set; }

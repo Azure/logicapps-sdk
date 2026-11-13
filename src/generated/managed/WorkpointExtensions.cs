@@ -29,32 +29,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workpoint")]
-        public IBodyWorkflowAction<WorkPoint365WebAPIModelAction[], ApiConnectionActionConfiguration> ActionManagementActions(Expression<Func<string>> workPoint365Url, Expression<Func<string>> id)
+        public IBodyWorkflowAction<WorkPoint365WebApiModelAction[], ApiConnectionActionConfiguration> ActionManagementActions(Expression<Func<string>> workPoint365Url, Expression<Func<string>> id)
         {
             var __workflow_workPoint365Url = WorkflowExpression.Compile(workPoint365Url, nameof(workPoint365Url), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<WorkPoint365WebAPIModelAction[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<WorkPoint365WebApiModelAction[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/BusinessModules/{0}/Actions", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["WorkPoint365Url"] = ExpressionConverter.Convert(__workflow_workPoint365Url);
-                return new ApiConnectionAction<WorkPoint365WebAPIModelAction[]>(callPayload);
+                return new ApiConnectionAction<WorkPoint365WebApiModelAction[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workpoint")]
-        public IBodyWorkflowAction<WorkPoint365WebAPIModelTrigger[], ApiConnectionActionConfiguration> ActionManagementTriggers(Expression<Func<string>> workPoint365Url, Expression<Func<string>> id)
+        public IBodyWorkflowAction<WorkPoint365WebApiModelTrigger[], ApiConnectionActionConfiguration> ActionManagementTriggers(Expression<Func<string>> workPoint365Url, Expression<Func<string>> id)
         {
             var __workflow_workPoint365Url = WorkflowExpression.Compile(workPoint365Url, nameof(workPoint365Url), required: true);
             var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
-            return new DeferredBodyAction<WorkPoint365WebAPIModelTrigger[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<WorkPoint365WebApiModelTrigger[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/BusinessModules/{0}/Triggers", __workflow_id.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["WorkPoint365Url"] = ExpressionConverter.Convert(__workflow_workPoint365Url);
-                return new ApiConnectionAction<WorkPoint365WebAPIModelTrigger[]>(callPayload);
+                return new ApiConnectionAction<WorkPoint365WebApiModelTrigger[]>(callPayload);
             });
         }
 
@@ -77,16 +77,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workpoint")]
-        public IBodyWorkflowAction<WorkPoint365WebAPIModelBusinessModuleOnline[], ApiConnectionActionConfiguration> BusinessModulesGet(Expression<Func<string>> workPoint365Url)
+        public IBodyWorkflowAction<WorkPoint365WebApiModelBusinessModuleOnline[], ApiConnectionActionConfiguration> BusinessModulesGet(Expression<Func<string>> workPoint365Url)
         {
             var __workflow_workPoint365Url = WorkflowExpression.Compile(workPoint365Url, nameof(workPoint365Url), required: true);
-            return new DeferredBodyAction<WorkPoint365WebAPIModelBusinessModuleOnline[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<WorkPoint365WebApiModelBusinessModuleOnline[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/BusinessModules";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["WorkPoint365Url"] = ExpressionConverter.Convert(__workflow_workPoint365Url);
-                return new ApiConnectionAction<WorkPoint365WebAPIModelBusinessModuleOnline[]>(callPayload);
+                return new ApiConnectionAction<WorkPoint365WebApiModelBusinessModuleOnline[]>(callPayload);
             });
         }
 
@@ -123,50 +123,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workpoint")]
-        public IBodyWorkflowAction<WorkPoint365WebAPIModelDocumentDigitalSignatureAddDocumentToTransactionReturnValue, ApiConnectionActionConfiguration> DocumentDigitalSignatureAddDocumentToTransaction(Expression<Func<string>> workPoint365Url, Expression<Func<DocumentDigitalSignatureAddDocumentToTransactionParameterInput>> parameter)
+        public IBodyWorkflowAction<WorkPoint365WebApiModelDocumentDigitalSignatureAddDocumentToTransactionReturnValue, ApiConnectionActionConfiguration> DocumentDigitalSignatureAddDocumentToTransaction(Expression<Func<string>> workPoint365Url, Expression<Func<DocumentDigitalSignatureAddDocumentToTransactionParameterInput>> parameter)
         {
             var __workflow_workPoint365Url = WorkflowExpression.Compile(workPoint365Url, nameof(workPoint365Url), required: true);
             var __workflow_parameter = WorkflowExpression.Compile(parameter, nameof(parameter), required: true);
-            return new DeferredBodyAction<WorkPoint365WebAPIModelDocumentDigitalSignatureAddDocumentToTransactionReturnValue, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<WorkPoint365WebApiModelDocumentDigitalSignatureAddDocumentToTransactionReturnValue, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Document/DigitalSignatureAddDocumentToTransaction";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["WorkPoint365Url"] = ExpressionConverter.Convert(__workflow_workPoint365Url);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameter);
-                return new ApiConnectionAction<WorkPoint365WebAPIModelDocumentDigitalSignatureAddDocumentToTransactionReturnValue>(callPayload);
+                return new ApiConnectionAction<WorkPoint365WebApiModelDocumentDigitalSignatureAddDocumentToTransactionReturnValue>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workpoint")]
-        public IBodyWorkflowAction<WorkPoint365WebAPIModelDocumentDigitalSignatureError[], ApiConnectionActionConfiguration> DocumentDigitalSignatureCompleteDocumentInTransaction(Expression<Func<string>> workPoint365Url, Expression<Func<DocumentDigitalSignatureCompleteDocumentInTransactionParameterInput>> parameter)
+        public IBodyWorkflowAction<WorkPoint365WebApiModelDocumentDigitalSignatureError[], ApiConnectionActionConfiguration> DocumentDigitalSignatureCompleteDocumentInTransaction(Expression<Func<string>> workPoint365Url, Expression<Func<DocumentDigitalSignatureCompleteDocumentInTransactionParameterInput>> parameter)
         {
             var __workflow_workPoint365Url = WorkflowExpression.Compile(workPoint365Url, nameof(workPoint365Url), required: true);
             var __workflow_parameter = WorkflowExpression.Compile(parameter, nameof(parameter), required: true);
-            return new DeferredBodyAction<WorkPoint365WebAPIModelDocumentDigitalSignatureError[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<WorkPoint365WebApiModelDocumentDigitalSignatureError[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Document/DigitalSignatureCompleteDocumentInTransaction";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["WorkPoint365Url"] = ExpressionConverter.Convert(__workflow_workPoint365Url);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameter);
-                return new ApiConnectionAction<WorkPoint365WebAPIModelDocumentDigitalSignatureError[]>(callPayload);
+                return new ApiConnectionAction<WorkPoint365WebApiModelDocumentDigitalSignatureError[]>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workpoint")]
-        public IBodyWorkflowAction<WorkPoint365WebAPIModelDocumentDigitalSignatureError[], ApiConnectionActionConfiguration> DocumentDigitalSignatureBase64CompleteDocumentInTransaction(Expression<Func<string>> workPoint365Url, Expression<Func<DocumentDigitalSignatureBase64CompleteDocumentInTransactionParameterInput>> parameter)
+        public IBodyWorkflowAction<WorkPoint365WebApiModelDocumentDigitalSignatureError[], ApiConnectionActionConfiguration> DocumentDigitalSignatureBase64CompleteDocumentInTransaction(Expression<Func<string>> workPoint365Url, Expression<Func<DocumentDigitalSignatureBase64CompleteDocumentInTransactionParameterInput>> parameter)
         {
             var __workflow_workPoint365Url = WorkflowExpression.Compile(workPoint365Url, nameof(workPoint365Url), required: true);
             var __workflow_parameter = WorkflowExpression.Compile(parameter, nameof(parameter), required: true);
-            return new DeferredBodyAction<WorkPoint365WebAPIModelDocumentDigitalSignatureError[], ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<WorkPoint365WebApiModelDocumentDigitalSignatureError[], ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Document/DigitalSignatureBase64CompleteDocumentInTransaction";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["WorkPoint365Url"] = ExpressionConverter.Convert(__workflow_workPoint365Url);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameter);
-                return new ApiConnectionAction<WorkPoint365WebAPIModelDocumentDigitalSignatureError[]>(callPayload);
+                return new ApiConnectionAction<WorkPoint365WebApiModelDocumentDigitalSignatureError[]>(callPayload);
             });
         }
 
@@ -201,33 +201,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workpoint")]
-        public IBodyWorkflowAction<WorkPoint365WebAPIModelDocumentLogEntry, ApiConnectionActionConfiguration> DocumentDigitalSignatureLogEntry(Expression<Func<string>> workPoint365Url, Expression<Func<string>> transactionId)
+        public IBodyWorkflowAction<WorkPoint365WebApiModelDocumentLogEntry, ApiConnectionActionConfiguration> DocumentDigitalSignatureLogEntry(Expression<Func<string>> workPoint365Url, Expression<Func<string>> transactionId)
         {
             var __workflow_workPoint365Url = WorkflowExpression.Compile(workPoint365Url, nameof(workPoint365Url), required: true);
             var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
-            return new DeferredBodyAction<WorkPoint365WebAPIModelDocumentLogEntry, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<WorkPoint365WebApiModelDocumentLogEntry, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Document/DigitalSignatureLogEntry/{0}", __workflow_transactionId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["WorkPoint365Url"] = ExpressionConverter.Convert(__workflow_workPoint365Url);
-                return new ApiConnectionAction<WorkPoint365WebAPIModelDocumentLogEntry>(callPayload);
+                return new ApiConnectionAction<WorkPoint365WebApiModelDocumentLogEntry>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workpoint")]
-        public IBodyWorkflowAction<WorkPoint365WebAPIModelMoveEntityResult, ApiConnectionActionConfiguration> EntityMove(Expression<Func<string>> workPoint365Url, Expression<Func<EntityMoveParameterInput>> parameter)
+        public IBodyWorkflowAction<WorkPoint365WebApiModelMoveEntityResult, ApiConnectionActionConfiguration> EntityMove(Expression<Func<string>> workPoint365Url, Expression<Func<EntityMoveParameterInput>> parameter)
         {
             var __workflow_workPoint365Url = WorkflowExpression.Compile(workPoint365Url, nameof(workPoint365Url), required: true);
             var __workflow_parameter = WorkflowExpression.Compile(parameter, nameof(parameter), required: true);
-            return new DeferredBodyAction<WorkPoint365WebAPIModelMoveEntityResult, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<WorkPoint365WebApiModelMoveEntityResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/Entity/Move";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["WorkPoint365Url"] = ExpressionConverter.Convert(__workflow_workPoint365Url);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_parameter);
-                return new ApiConnectionAction<WorkPoint365WebAPIModelMoveEntityResult>(callPayload);
+                return new ApiConnectionAction<WorkPoint365WebApiModelMoveEntityResult>(callPayload);
             });
         }
 
@@ -248,13 +248,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workpoint")]
-        public IBodyWorkflowAction<WorkPoint365WebAPIModelMailMergeHtmlResult, ApiConnectionActionConfiguration> MailMergeGetMailMergedWordDocumentAsHtml(Expression<Func<string>> workPoint365Url, Expression<Func<string>> businessModuleId, Expression<Func<int>> entityId, Expression<Func<int>> templateId)
+        public IBodyWorkflowAction<WorkPoint365WebApiModelMailMergeHtmlResult, ApiConnectionActionConfiguration> MailMergeGetMailMergedWordDocumentAsHtml(Expression<Func<string>> workPoint365Url, Expression<Func<string>> businessModuleId, Expression<Func<int>> entityId, Expression<Func<int>> templateId)
         {
             var __workflow_workPoint365Url = WorkflowExpression.Compile(workPoint365Url, nameof(workPoint365Url), required: true);
             var __workflow_businessModuleId = WorkflowExpression.Compile(businessModuleId, nameof(businessModuleId), required: true);
             var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
-            return new DeferredBodyAction<WorkPoint365WebAPIModelMailMergeHtmlResult, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<WorkPoint365WebApiModelMailMergeHtmlResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/MailMerge/GetMailMergedWordDocumentAsHtml";
                 var apiCallHttpMethod = "get";
@@ -263,12 +263,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
                 callPayload.Queries["entityID"] = ExpressionConverter.Convert(__workflow_entityId);
                 callPayload.Queries["templateID"] = ExpressionConverter.Convert(__workflow_templateId);
                 callPayload.Headers["WorkPoint365Url"] = ExpressionConverter.Convert(__workflow_workPoint365Url);
-                return new ApiConnectionAction<WorkPoint365WebAPIModelMailMergeHtmlResult>(callPayload);
+                return new ApiConnectionAction<WorkPoint365WebApiModelMailMergeHtmlResult>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workpoint")]
-        public IBodyWorkflowAction<WorkPoint365WebAPIModelMailMergeDocumentResult, ApiConnectionActionConfiguration> MailMergeGetMailMergedWordDocument(Expression<Func<string>> workPoint365Url, Expression<Func<string>> businessModuleId, Expression<Func<int>> entityId, Expression<Func<int>> templateId, Expression<Func<bool>> includeHtml, Expression<Func<bool>> includeBytes, Expression<Func<string>> commonFieldsBusinessModuleId = null, Expression<Func<int>> commonFieldsEntityId = null)
+        public IBodyWorkflowAction<WorkPoint365WebApiModelMailMergeDocumentResult, ApiConnectionActionConfiguration> MailMergeGetMailMergedWordDocument(Expression<Func<string>> workPoint365Url, Expression<Func<string>> businessModuleId, Expression<Func<int>> entityId, Expression<Func<int>> templateId, Expression<Func<bool>> includeHtml, Expression<Func<bool>> includeBytes, Expression<Func<string>> commonFieldsBusinessModuleId = null, Expression<Func<int>> commonFieldsEntityId = null)
         {
             var __workflow_workPoint365Url = WorkflowExpression.Compile(workPoint365Url, nameof(workPoint365Url), required: true);
             var __workflow_businessModuleId = WorkflowExpression.Compile(businessModuleId, nameof(businessModuleId), required: true);
@@ -278,7 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
             var __workflow_includeBytes = WorkflowExpression.Compile(includeBytes, nameof(includeBytes), required: true);
             var __workflow_commonFieldsBusinessModuleId = WorkflowExpression.Compile(commonFieldsBusinessModuleId, nameof(commonFieldsBusinessModuleId), required: false);
             var __workflow_commonFieldsEntityId = WorkflowExpression.Compile(commonFieldsEntityId, nameof(commonFieldsEntityId), required: false);
-            return new DeferredBodyAction<WorkPoint365WebAPIModelMailMergeDocumentResult, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<WorkPoint365WebApiModelMailMergeDocumentResult, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/MailMerge/GetMailMergedWordDocument";
                 var apiCallHttpMethod = "get";
@@ -293,22 +293,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
                 if (__workflow_commonFieldsEntityId != null)
                     callPayload.Queries["commonFieldsEntityID"] = ExpressionConverter.Convert(__workflow_commonFieldsEntityId);
                 callPayload.Headers["WorkPoint365Url"] = ExpressionConverter.Convert(__workflow_workPoint365Url);
-                return new ApiConnectionAction<WorkPoint365WebAPIModelMailMergeDocumentResult>(callPayload);
+                return new ApiConnectionAction<WorkPoint365WebApiModelMailMergeDocumentResult>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workpoint")]
-        public IBodyWorkflowAction<WorkPoint365WebAPIModelPowerAppAndFlowParameter, ApiConnectionActionConfiguration> ParameterGetPowerAppAndFlowParameter(Expression<Func<string>> workPoint365Url, Expression<Func<string>> identifier)
+        public IBodyWorkflowAction<WorkPoint365WebApiModelPowerAppAndFlowParameter, ApiConnectionActionConfiguration> ParameterGetPowerAppAndFlowParameter(Expression<Func<string>> workPoint365Url, Expression<Func<string>> identifier)
         {
             var __workflow_workPoint365Url = WorkflowExpression.Compile(workPoint365Url, nameof(workPoint365Url), required: true);
             var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: true);
-            return new DeferredBodyAction<WorkPoint365WebAPIModelPowerAppAndFlowParameter, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<WorkPoint365WebApiModelPowerAppAndFlowParameter, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/Parameter/GetPowerAppAndFlowParameter/{0}", __workflow_identifier.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Headers["WorkPoint365Url"] = ExpressionConverter.Convert(__workflow_workPoint365Url);
-                return new ApiConnectionAction<WorkPoint365WebAPIModelPowerAppAndFlowParameter>(callPayload);
+                return new ApiConnectionAction<WorkPoint365WebApiModelPowerAppAndFlowParameter>(callPayload);
             });
         }
 
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         Entity
     }
 
-    public class WorkPoint365WebAPIModelAction
+    public class WorkPoint365WebApiModelAction
     {
         [JsonProperty("Title")]
         public string ActionTitle { get; set; }
@@ -475,7 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         public string UniqueActionId { get; set; }
     }
 
-    public class WorkPoint365WebAPIModelTrigger
+    public class WorkPoint365WebApiModelTrigger
     {
         [JsonProperty("Title")]
         public string TriggerTitle { get; set; }
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         public string UniqueTriggerId { get; set; }
     }
 
-    public class WorkPoint365WebAPIModelBusinessModuleOnline
+    public class WorkPoint365WebApiModelBusinessModuleOnline
     {
         public string Title { get; set; }
         public string EntityName { get; set; }
@@ -494,32 +494,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         public string ParentRelationName { get; set; }
         public bool SitesEnabled { get; set; }
         public string IconUrl { get; set; }
-        public bool EnableEMMIntegration { get; set; }
+
+        [JsonProperty("EnableEMMIntegration")]
+        public bool EnableEmmIntegration { get; set; }
         public string Id { get; set; }
     }
 
     public class DocumentConvertToPdfAndSaveOutputParameterInput
     {
-        public DocumentConvertToPdfAndSaveOutputParameterInput(string absoluteDocumentSiteURL, string absoluteDocumentURL, string absoluteOutputSiteURL, string absoluteOutputURL, ParameterInputOverrideBehaviourType overrideBehaviour)
+        public DocumentConvertToPdfAndSaveOutputParameterInput(string absoluteDocumentSiteUrl, string absoluteDocumentUrl, string absoluteOutputSiteUrl, string absoluteOutputUrl, ParameterInputOverrideBehaviourType overrideBehaviour)
         {
-            this.AbsoluteDocumentSiteURL = absoluteDocumentSiteURL;
-            this.AbsoluteDocumentURL = absoluteDocumentURL;
-            this.AbsoluteOutputSiteURL = absoluteOutputSiteURL;
-            this.AbsoluteOutputURL = absoluteOutputURL;
+            this.AbsoluteDocumentSiteUrl = absoluteDocumentSiteUrl;
+            this.AbsoluteDocumentUrl = absoluteDocumentUrl;
+            this.AbsoluteOutputSiteUrl = absoluteOutputSiteUrl;
+            this.AbsoluteOutputUrl = absoluteOutputUrl;
             this.OverrideBehaviour = overrideBehaviour;
         }
 
         [JsonProperty("DocumentSiteUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbsoluteDocumentSiteURL { get; set; }
+        public string AbsoluteDocumentSiteUrl { get; set; }
 
         [JsonProperty("DocumentUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbsoluteDocumentURL { get; set; }
+        public string AbsoluteDocumentUrl { get; set; }
 
         [JsonProperty("OutputSiteUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbsoluteOutputSiteURL { get; set; }
+        public string AbsoluteOutputSiteUrl { get; set; }
 
         [JsonProperty("OutputUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string AbsoluteOutputURL { get; set; }
+        public string AbsoluteOutputUrl { get; set; }
 
         [JsonProperty("OutputExistsBehaviour", DefaultValueHandling = DefaultValueHandling.Include)]
         public ParameterInputOverrideBehaviourType OverrideBehaviour { get; set; }
@@ -538,37 +540,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
     public enum ParameterInputPdfFormatType
     {
         [EnumMember(Value = "PDF_A_1A")]
-        PDFA1A,
+        PdfA1A,
         [EnumMember(Value = "PDF_A_1B")]
-        PDFA1B,
+        PdfA1B,
         [EnumMember(Value = "PDF_A_2A")]
-        PDFA2A,
+        PdfA2A,
         [EnumMember(Value = "PDF_A_3A")]
-        PDFA3A,
+        PdfA3A,
         [EnumMember(Value = "PDF_A_2B")]
-        PDFA2B,
+        PdfA2B,
         [EnumMember(Value = "PDF_A_2U")]
-        PDFA2U,
+        PdfA2U,
         [EnumMember(Value = "PDF_A_3B")]
-        PDFA3B,
+        PdfA3B,
         [EnumMember(Value = "PDF_A_3U")]
-        PDFA3U,
+        PdfA3U,
         [EnumMember(Value = "PDF_v_1_3")]
-        PDFV13,
+        PdfV13,
         [EnumMember(Value = "PDF_v_1_4")]
-        PDFV14,
+        PdfV14,
         [EnumMember(Value = "PDF_v_1_5")]
-        PDFV15,
+        PdfV15,
         [EnumMember(Value = "PDF_v_1_6")]
-        PDFV16,
+        PdfV16,
         [EnumMember(Value = "PDF_v_1_7")]
-        PDFV17,
+        PdfV17,
         [EnumMember(Value = "PDF_UA_1")]
-        PDFUA1,
+        PdfUa1,
         [EnumMember(Value = "PDF_X_1A")]
-        PDFX1A,
+        PdfX1A,
         [EnumMember(Value = "PDF_X_3")]
-        PDFX3
+        PdfX3
     }
 
     public class DocumentDigitalSignatureCreateLogEntryForTransactionParameterInput
@@ -609,28 +611,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
     {
         Penneo,
         Visma,
-        DocuSign,
+        [EnumMember(Value = "DocuSign")]
+        Docusign,
         AdobeSign,
         Other
     }
 
-    public class WorkPoint365WebAPIModelDocumentDigitalSignatureAddDocumentToTransactionReturnValue
+    public class WorkPoint365WebApiModelDocumentDigitalSignatureAddDocumentToTransactionReturnValue
     {
         public string PdfUrl { get; set; }
         public string PdfServerRelativeUrl { get; set; }
 
         [JsonProperty("Errors")]
-        public WorkPoint365WebAPIModelDocumentDigitalSignatureError[] ACollectionOfErrors { get; set; }
+        public WorkPoint365WebApiModelDocumentDigitalSignatureError[] ACollectionOfErrors { get; set; }
     }
 
-    public class WorkPoint365WebAPIModelDocumentDigitalSignatureError
+    public class WorkPoint365WebApiModelDocumentDigitalSignatureError
     {
-        public WorkPoint365WebAPIModelDocumentDigitalSignatureErrorErrorTypeType ErrorType { get; set; }
+        public WorkPoint365WebApiModelDocumentDigitalSignatureErrorErrorTypeType ErrorType { get; set; }
         public string Text { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WorkPoint365WebAPIModelDocumentDigitalSignatureErrorErrorTypeType
+    public enum WorkPoint365WebApiModelDocumentDigitalSignatureErrorErrorTypeType
     {
         LogEntryNotFound,
         SetPropertyError,
@@ -707,11 +710,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
 
     public class DocumentDigitalSignatureCompleteDocumentInTransactionParameterInput
     {
-        public DocumentDigitalSignatureCompleteDocumentInTransactionParameterInput(string transactionId, string fileName, string signedPDFBytes, ParameterInputSigningStatusType signingStatus, bool documentUndeclarationBehaviour)
+        public DocumentDigitalSignatureCompleteDocumentInTransactionParameterInput(string transactionId, string fileName, string signedPdfBytes, ParameterInputSigningStatusType signingStatus, bool documentUndeclarationBehaviour)
         {
             this.TransactionId = transactionId;
             this.FileName = fileName;
-            this.SignedPDFBytes = signedPDFBytes;
+            this.SignedPdfBytes = signedPdfBytes;
             this.SigningStatus = signingStatus;
             this.DocumentUndeclarationBehaviour = documentUndeclarationBehaviour;
         }
@@ -722,8 +725,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string FileName { get; set; }
 
-        [JsonProperty("SignedPdfBytes", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string SignedPDFBytes { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public string SignedPdfBytes { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public ParameterInputSigningStatusType SigningStatus { get; set; }
@@ -746,11 +749,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
 
     public class DocumentDigitalSignatureBase64CompleteDocumentInTransactionParameterInput
     {
-        public DocumentDigitalSignatureBase64CompleteDocumentInTransactionParameterInput(string transactionId, string fileName, string base64PDFDocument, ParameterInputSigningStatusType signingStatus, bool documentUndeclarationBehaviour)
+        public DocumentDigitalSignatureBase64CompleteDocumentInTransactionParameterInput(string transactionId, string fileName, string base64PdfDocument, ParameterInputSigningStatusType signingStatus, bool documentUndeclarationBehaviour)
         {
             this.TransactionId = transactionId;
             this.FileName = fileName;
-            this.Base64PDFDocument = base64PDFDocument;
+            this.Base64PdfDocument = base64PdfDocument;
             this.SigningStatus = signingStatus;
             this.DocumentUndeclarationBehaviour = documentUndeclarationBehaviour;
         }
@@ -762,7 +765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         public string FileName { get; set; }
 
         [JsonProperty("SignedPdfBase64String", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Base64PDFDocument { get; set; }
+        public string Base64PdfDocument { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public ParameterInputSigningStatusType SigningStatus { get; set; }
@@ -787,7 +790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         public string Password { get; set; }
     }
 
-    public class WorkPoint365WebAPIModelDocumentLogEntry
+    public class WorkPoint365WebApiModelDocumentLogEntry
     {
         [JsonProperty("TransactionID")]
         public string TransactionId { get; set; }
@@ -802,11 +805,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         public int EntityId { get; set; }
         public string EntityTitle { get; set; }
         public string Links { get; set; }
-        public WorkPoint365WebAPIModelDocumentLogEntryDetails LogEntryDetails { get; set; }
-        public WorkPoint365WebAPIModelDocumentLogEntrySigningStatusType SigningStatus { get; set; }
+        public WorkPoint365WebApiModelDocumentLogEntryDetails LogEntryDetails { get; set; }
+        public WorkPoint365WebApiModelDocumentLogEntrySigningStatusType SigningStatus { get; set; }
     }
 
-    public class WorkPoint365WebAPIModelDocumentLogEntryDetails
+    public class WorkPoint365WebApiModelDocumentLogEntryDetails
     {
         public int TotalSigningCount { get; set; }
         public int TotalAppendixCount { get; set; }
@@ -816,21 +819,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         public int CancelledCount { get; set; }
         public int RejectedCount { get; set; }
         public int FailedCount { get; set; }
-        public WorkPoint365WebAPIModelDocumentLogEntryDetailsSigningProviderType SigningProvider { get; set; }
-        public WorkPoint365WebAPIModelDocumentLogEntryDetailsDocumentInfo[] DocumentInfos { get; set; }
+        public WorkPoint365WebApiModelDocumentLogEntryDetailsSigningProviderType SigningProvider { get; set; }
+        public WorkPoint365WebApiModelDocumentLogEntryDetailsDocumentInfo[] DocumentInfos { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WorkPoint365WebAPIModelDocumentLogEntryDetailsSigningProviderType
+    public enum WorkPoint365WebApiModelDocumentLogEntryDetailsSigningProviderType
     {
         Penneo,
         Visma,
-        DocuSign,
+        [EnumMember(Value = "DocuSign")]
+        Docusign,
         AdobeSign,
         Other
     }
 
-    public class WorkPoint365WebAPIModelDocumentLogEntryDetailsDocumentInfo
+    public class WorkPoint365WebApiModelDocumentLogEntryDetailsDocumentInfo
     {
         public string DocumentSiteUrl { get; set; }
         public string DocumentUrl { get; set; }
@@ -838,8 +842,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         public string DocumentVersion { get; set; }
         public string PdfUrl { get; set; }
         public string PdfServerRelativeUrl { get; set; }
-        public WorkPoint365WebAPIModelDocumentLogEntryDetailsDocumentInfoSigningStatusType SigningStatus { get; set; }
-        public WorkPoint365WebAPIModelDocumentLogEntryDetailsDocumentInfoSigningTypeType SigningType { get; set; }
+        public WorkPoint365WebApiModelDocumentLogEntryDetailsDocumentInfoSigningStatusType SigningStatus { get; set; }
+        public WorkPoint365WebApiModelDocumentLogEntryDetailsDocumentInfoSigningTypeType SigningType { get; set; }
         public string SetPropertiesInfo { get; set; }
         public bool DeclarePdfFileAsRecordRequired { get; set; }
         public bool DeclareOriginalDocumentAsRecordRequired { get; set; }
@@ -851,7 +855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WorkPoint365WebAPIModelDocumentLogEntryDetailsDocumentInfoSigningStatusType
+    public enum WorkPoint365WebApiModelDocumentLogEntryDetailsDocumentInfoSigningStatusType
     {
         InProgress,
         Signed,
@@ -862,14 +866,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WorkPoint365WebAPIModelDocumentLogEntryDetailsDocumentInfoSigningTypeType
+    public enum WorkPoint365WebApiModelDocumentLogEntryDetailsDocumentInfoSigningTypeType
     {
         StandardSigning,
         Appendix
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum WorkPoint365WebAPIModelDocumentLogEntrySigningStatusType
+    public enum WorkPoint365WebApiModelDocumentLogEntrySigningStatusType
     {
         InProgress,
         Signed,
@@ -882,7 +886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         PartialFailed
     }
 
-    public class WorkPoint365WebAPIModelMoveEntityResult
+    public class WorkPoint365WebApiModelMoveEntityResult
     {
         [JsonProperty("Ok")]
         public bool MoveEntityResultOk { get; set; }
@@ -962,10 +966,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         OverrideWarningsAndErrors
     }
 
-    public class WorkPoint365WebAPIModelMailMergeHtmlResult
+    public class WorkPoint365WebApiModelMailMergeHtmlResult
     {
-        [JsonProperty("Html")]
-        public string HTML { get; set; }
+        public string Html { get; set; }
         public string Subject { get; set; }
         public string[] ErrorMessages { get; set; }
 
@@ -973,14 +976,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         public bool MailMergeHtmlResultOk { get; set; }
     }
 
-    public class WorkPoint365WebAPIModelMailMergeDocumentResult
+    public class WorkPoint365WebApiModelMailMergeDocumentResult
     {
-        [JsonProperty("Html")]
-        public string HTML { get; set; }
+        public string Html { get; set; }
         public string Bytes { get; set; }
-
-        [JsonProperty("FileName")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
         public string Subject { get; set; }
         public string[] ErrorMessages { get; set; }
 
@@ -988,14 +988,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         public bool MailMergeDocumentResultOk { get; set; }
     }
 
-    public class WorkPoint365WebAPIModelPowerAppAndFlowParameter
+    public class WorkPoint365WebApiModelPowerAppAndFlowParameter
     {
-        public WorkPoint365WebAPIModelPowerAppAndFlowParameterEntityInfo Entity { get; set; }
-        public WorkPoint365WebAPIModelPowerAppAndFlowParameterLibraryInfo Library { get; set; }
-        public WorkPoint365WebAPIModelPowerAppAndFlowParameterDocumentInfo[] Documents { get; set; }
+        public WorkPoint365WebApiModelPowerAppAndFlowParameterEntityInfo Entity { get; set; }
+        public WorkPoint365WebApiModelPowerAppAndFlowParameterLibraryInfo Library { get; set; }
+        public WorkPoint365WebApiModelPowerAppAndFlowParameterDocumentInfo[] Documents { get; set; }
     }
 
-    public class WorkPoint365WebAPIModelPowerAppAndFlowParameterEntityInfo
+    public class WorkPoint365WebApiModelPowerAppAndFlowParameterEntityInfo
     {
         [JsonProperty("ListId")]
         public string EntityListId { get; set; }
@@ -1011,7 +1011,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         public JToken Properties { get; set; }
     }
 
-    public class WorkPoint365WebAPIModelPowerAppAndFlowParameterLibraryInfo
+    public class WorkPoint365WebApiModelPowerAppAndFlowParameterLibraryInfo
     {
         [JsonProperty("Id")]
         public string LibraryId { get; set; }
@@ -1023,7 +1023,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         public string LibraryName { get; set; }
     }
 
-    public class WorkPoint365WebAPIModelPowerAppAndFlowParameterDocumentInfo
+    public class WorkPoint365WebApiModelPowerAppAndFlowParameterDocumentInfo
     {
         [JsonProperty("Id")]
         public int DocumentId { get; set; }
@@ -1058,7 +1058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
     public class MicrosoftAspNetWebHooksWebHookPropertiesType
     {
         [JsonProperty("WorkPointUrl")]
-        public string WorkPoint365URL { get; set; }
+        public string WorkPoint365Url { get; set; }
         public string BusinessModuleId { get; set; }
 
         [JsonProperty("WorkPointTrigger")]
@@ -1073,7 +1073,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
         }
 
         [JsonProperty("WebHookUri", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackURI { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUri { get; set; } = "#{listCallbackUrl()}";
         public string Description { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -1082,15 +1082,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workpoint
 
     public class WebHookInputPropertiesType
     {
-        public WebHookInputPropertiesType(string workPoint365URL, string businessModuleId, string triggerId)
+        public WebHookInputPropertiesType(string workPoint365Url, string businessModuleId, string triggerId)
         {
-            this.WorkPoint365URL = workPoint365URL;
+            this.WorkPoint365Url = workPoint365Url;
             this.BusinessModuleId = businessModuleId;
             this.TriggerId = triggerId;
         }
 
         [JsonProperty("WorkPointUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string WorkPoint365URL { get; set; }
+        public string WorkPoint365Url { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string BusinessModuleId { get; set; }

@@ -462,7 +462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
         public PadocumenttypesAddRepositoryTypeResponse RepositoryType { get; set; }
 
         [JsonProperty("repositoryURI")]
-        public string RepositoryURI { get; set; }
+        public string RepositoryUri { get; set; }
     }
 
     public class PadocumenttypesAddRepositoryTypeResponse

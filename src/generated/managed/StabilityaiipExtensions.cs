@@ -417,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public string InitImage { get; set; }
 
         [JsonProperty("mask_source", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputMaskSourceType MaskSource { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip.BodyInputMaskSourceType.MASKIMAGEWHITE;
+        public BodyInputMaskSourceType MaskSource { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip.BodyInputMaskSourceType.MaskImageWhite;
 
         [JsonProperty("mask_image", DefaultValueHandling = DefaultValueHandling.Include)]
         public string MaskImage { get; set; }
@@ -451,11 +451,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
     public enum BodyInputMaskSourceType
     {
         [EnumMember(Value = "MASK_IMAGE_WHITE")]
-        MASKIMAGEWHITE,
+        MaskImageWhite,
         [EnumMember(Value = "MASK_IMAGE_BLACK")]
-        MASKIMAGEBLACK,
+        MaskImageBlack,
         [EnumMember(Value = "INIT_IMAGE_ALPHA")]
-        INITIMAGEALPHA
+        InitImageAlpha
     }
 
     public class StableImageCoreResponse

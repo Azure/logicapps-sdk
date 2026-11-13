@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string Content { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public RequestBodyInputProtocolType Protocol { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog.RequestBodyInputProtocolType.SMS;
+        public RequestBodyInputProtocolType Protocol { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog.RequestBodyInputProtocolType.Sms;
         public string SendDateTime { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -243,7 +243,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RequestBodyInputProtocolType
     {
-        SMS
+        [EnumMember(Value = "SMS")]
+        Sms
     }
 
     public class SendMessageRequestBodyInputRecipientsTypeItem

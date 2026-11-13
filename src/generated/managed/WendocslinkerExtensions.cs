@@ -27,16 +27,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
-        public IBodyWorkflowAction<PublishPDFResponse, ApiConnectionActionConfiguration> PublishPDF(Expression<Func<RequestBodyInput>> requestBody)
+        public IBodyWorkflowAction<PublishPdfResponse, ApiConnectionActionConfiguration> PublishPdf(Expression<Func<RequestBodyInput>> requestBody)
         {
             var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: true);
-            return new DeferredBodyAction<PublishPDFResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PublishPdfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/dynamicdoc/pdf";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_requestBody);
-                return new ApiConnectionAction<PublishPDFResponse>(callPayload);
+                return new ApiConnectionAction<PublishPdfResponse>(callPayload);
             });
         }
 
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
         public string ClientType { get; set; }
     }
 
-    public class PublishPDFResponse
+    public class PublishPdfResponse
     {
         [JsonProperty("documentName")]
         public string DocumentName { get; set; }
@@ -134,10 +134,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
         public string ErrorCode { get; set; }
 
         [JsonProperty("messages")]
-        public PublishPDFResponseMessagesTypeItem[] Messages { get; set; }
+        public PublishPdfResponseMessagesTypeItem[] Messages { get; set; }
     }
 
-    public class PublishPDFResponseMessagesTypeItem
+    public class PublishPdfResponseMessagesTypeItem
     {
         [JsonProperty("level")]
         public string Level { get; set; }

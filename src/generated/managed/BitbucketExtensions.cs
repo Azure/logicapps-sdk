@@ -281,13 +281,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         public string FullName { get; set; }
 
         [JsonProperty("uuid")]
-        public string UUID { get; set; }
+        public string Uuid { get; set; }
     }
 
     public class IssueResponseReporterType
     {
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         public string Type { get; set; }
 
         [JsonProperty("uuid")]
-        public string UUID { get; set; }
+        public string Uuid { get; set; }
     }
 
     public class IssueResponseComponentType
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
     public class ApprovePullRequestResponseApproverType
     {
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("display_name")]
         public string Name { get; set; }
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         public string Type { get; set; }
 
         [JsonProperty("uuid")]
-        public string UUID { get; set; }
+        public string Uuid { get; set; }
     }
 
     public class DeclineOrMergePullRequestResponse
@@ -542,7 +542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         public string Name { get; set; }
 
         [JsonProperty("uuid")]
-        public string UUID { get; set; }
+        public string Uuid { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -551,7 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
     public class DeclineOrMergePullRequestResponseClosedByType
     {
         [JsonProperty("username")]
-        public string ClosedByUsername { get; set; }
+        public string ClosedByUserName { get; set; }
 
         [JsonProperty("display_name")]
         public string ClosedByName { get; set; }
@@ -560,7 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         public string UserType { get; set; }
 
         [JsonProperty("uuid")]
-        public string UUID { get; set; }
+        public string Uuid { get; set; }
     }
 
     public class DeclineOrMergePullRequestResponseSourceType
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         public string Name { get; set; }
 
         [JsonProperty("uuid")]
-        public string UUID { get; set; }
+        public string Uuid { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -608,16 +608,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         public string Type { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("uuid")]
-        public string UUID { get; set; }
+        public string Uuid { get; set; }
     }
 
     public class UserResponse
     {
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -626,7 +626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         public string DisplayName { get; set; }
 
         [JsonProperty("uuid")]
-        public string UUID { get; set; }
+        public string Uuid { get; set; }
     }
 
     public class ListRepositoriesResponse
@@ -638,7 +638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
     public class ListRepositoriesResponseValuesTypeItem
     {
         [JsonProperty("scm")]
-        public string SCM { get; set; }
+        public string Scm { get; set; }
 
         [JsonProperty("website")]
         public string Website { get; set; }
@@ -653,7 +653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         public string ForkPolicy { get; set; }
 
         [JsonProperty("uuid")]
-        public string UUID { get; set; }
+        public string Uuid { get; set; }
 
         [JsonProperty("language")]
         public string Language { get; set; }
@@ -689,13 +689,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
     public class ListRepositoriesResponseValuesTypeItemOwnerType
     {
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("display_name")]
         public string Name { get; set; }
 
         [JsonProperty("uuid")]
-        public string UUID { get; set; }
+        public string Uuid { get; set; }
     }
 
     public class CreateHookIssueCreatedBodyInput

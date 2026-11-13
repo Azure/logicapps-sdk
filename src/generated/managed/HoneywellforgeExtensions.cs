@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
         internal string Status { get; set; } = "Closed";
 
         [JsonProperty("workOrderIDs")]
-        public string WorkOrderIDs { get; set; }
+        public string WorkOrderIds { get; set; }
 
         [JsonProperty("priority", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Priority { get; set; } = "Medium";

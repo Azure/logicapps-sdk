@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<DynamicDnsResponse, ApiConnectionActionConfiguration> GetDynamicDNSStatus(Expression<Func<string>> query)
+        public IBodyWorkflowAction<DynamicDnsResponse, ApiConnectionActionConfiguration> GetDynamicDnsStatus(Expression<Func<string>> query)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             return new DeferredBodyAction<DynamicDnsResponse, ApiConnectionActionConfiguration>(() =>
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<DynamicDnsResponse, ApiConnectionActionConfiguration> SetDynamicDNSStatus(Expression<Func<object>> request)
+        public IBodyWorkflowAction<DynamicDnsResponse, ApiConnectionActionConfiguration> SetDynamicDnsStatus(Expression<Func<object>> request)
         {
             var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredBodyAction<DynamicDnsResponse, ApiConnectionActionConfiguration>(() =>
@@ -591,7 +591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<EnrichmentOsintResponse, ApiConnectionActionConfiguration> GetOSINT(Expression<Func<string>> query)
+        public IBodyWorkflowAction<EnrichmentOsintResponse, ApiConnectionActionConfiguration> GetOsint(Expression<Func<string>> query)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             return new DeferredBodyAction<EnrichmentOsintResponse, ApiConnectionActionConfiguration>(() =>
@@ -779,60 +779,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<SSLResponse, ApiConnectionActionConfiguration> GetSSLCertificate(Expression<Func<string>> query)
+        public IBodyWorkflowAction<SslResponse, ApiConnectionActionConfiguration> GetSslCertificate(Expression<Func<string>> query)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
-            return new DeferredBodyAction<SSLResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SslResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ssl-certificate";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
-                return new ApiConnectionAction<SSLResponse>(callPayload);
+                return new ApiConnectionAction<SslResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<SSLHistoryResponse, ApiConnectionActionConfiguration> GetSSLCertificateHistory(Expression<Func<string>> query)
+        public IBodyWorkflowAction<SslHistoryResponse, ApiConnectionActionConfiguration> GetSslCertificateHistory(Expression<Func<string>> query)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
-            return new DeferredBodyAction<SSLHistoryResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SslHistoryResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ssl-certificate/history";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
-                return new ApiConnectionAction<SSLHistoryResponse>(callPayload);
+                return new ApiConnectionAction<SslHistoryResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<SSLSearchResponse, ApiConnectionActionConfiguration> SearchSSLCertificates(Expression<Func<SearchSSLCertificatesFieldInput>> field, Expression<Func<string>> query)
+        public IBodyWorkflowAction<SslSearchResponse, ApiConnectionActionConfiguration> SearchSslCertificates(Expression<Func<SearchSslCertificatesFieldInput>> field, Expression<Func<string>> query)
         {
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: true);
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
-            return new DeferredBodyAction<SSLSearchResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SslSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ssl-certificate/search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["field"] = ExpressionConverter.Convert(__workflow_field);
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
-                return new ApiConnectionAction<SSLSearchResponse>(callPayload);
+                return new ApiConnectionAction<SslSearchResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<SSLSearchKeywordResponse, ApiConnectionActionConfiguration> SearchSSLCertificatesByKeyword(Expression<Func<string>> query)
+        public IBodyWorkflowAction<SslSearchKeywordResponse, ApiConnectionActionConfiguration> SearchSslCertificatesByKeyword(Expression<Func<string>> query)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
-            return new DeferredBodyAction<SSLSearchKeywordResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SslSearchKeywordResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/ssl-certificate/search/keyword";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
-                return new ApiConnectionAction<SSLSearchKeywordResponse>(callPayload);
+                return new ApiConnectionAction<SslSearchKeywordResponse>(callPayload);
             });
         }
 
@@ -1169,7 +1169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<PassiveDnsSearchResponse, ApiConnectionActionConfiguration> GetPassiveDNS(Expression<Func<string>> query, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> timeout = null)
+        public IBodyWorkflowAction<PassiveDnsSearchResponse, ApiConnectionActionConfiguration> GetPassiveDns(Expression<Func<string>> query, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> timeout = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
@@ -1193,7 +1193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<PassiveUniqueDnsSearchResponse, ApiConnectionActionConfiguration> GetUniquePassiveDNS(Expression<Func<string>> query, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> timeout = null)
+        public IBodyWorkflowAction<PassiveUniqueDnsSearchResponse, ApiConnectionActionConfiguration> GetUniquePassiveDns(Expression<Func<string>> query, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<int>> timeout = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
@@ -1231,7 +1231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetWHOIS(Expression<Func<string>> query, Expression<Func<bool>> compactRecord = null, Expression<Func<bool>> history = null)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> GetWhois(Expression<Func<string>> query, Expression<Func<bool>> compactRecord = null, Expression<Func<bool>> history = null)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_compactRecord = WorkflowExpression.Compile(compactRecord, nameof(compactRecord), required: false);
@@ -1251,7 +1251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<WhoisKeywordSearchResponse, ApiConnectionActionConfiguration> SearchWHOISKeyword(Expression<Func<string>> query)
+        public IBodyWorkflowAction<WhoisKeywordSearchResponse, ApiConnectionActionConfiguration> SearchWhoisKeyword(Expression<Func<string>> query)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             return new DeferredBodyAction<WhoisKeywordSearchResponse, ApiConnectionActionConfiguration>(() =>
@@ -1265,7 +1265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<ResultListResponse, ApiConnectionActionConfiguration> SearchWHOIS(Expression<Func<string>> query, Expression<Func<SearchWHOISFieldInput>> field)
+        public IBodyWorkflowAction<ResultListResponse, ApiConnectionActionConfiguration> SearchWhois(Expression<Func<string>> query, Expression<Func<SearchWhoisFieldInput>> field)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             var __workflow_field = WorkflowExpression.Compile(field, nameof(field), required: true);
@@ -1309,7 +1309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqpassivetotal")]
-        public IBodyWorkflowAction<OsintBulkResponse, ApiConnectionActionConfiguration> GetOSINTBulk(Expression<Func<string>> query)
+        public IBodyWorkflowAction<OsintBulkResponse, ApiConnectionActionConfiguration> GetOsintBulk(Expression<Func<string>> query)
         {
             var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             return new DeferredBodyAction<OsintBulkResponse, ApiConnectionActionConfiguration>(() =>
@@ -1688,7 +1688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public AccountResponseFeaturesType Features { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("guest")]
         public bool Guest { get; set; }
@@ -1955,13 +1955,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public int Context { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("dt")]
         public string Dt { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [JsonProperty("source")]
         public string Source { get; set; }
@@ -2135,7 +2135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string Organization { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [JsonProperty("counts")]
         public UserCountsType Counts { get; set; }
@@ -2168,7 +2168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string LastReset { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("event_code")]
         public JToken EventCode { get; set; }
@@ -2276,7 +2276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string Organization { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [JsonProperty("counts")]
         public OrganizationInfoCountsType Counts { get; set; }
@@ -2309,7 +2309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string LastReset { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("event_code")]
         public JToken EventCode { get; set; }
@@ -2549,7 +2549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string Password { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("token")]
         public string Token { get; set; }
@@ -2564,7 +2564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string Password { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("token")]
         public string Token { get; set; }
@@ -2597,7 +2597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string Source { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -2606,7 +2606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public int Context { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [JsonProperty("dt")]
         public string Dt { get; set; }
@@ -2699,7 +2699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public JToken TagMeta { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
     }
 
     public class SingleArtifactResponse
@@ -2720,7 +2720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string Creator { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [JsonProperty("project")]
         public string Project { get; set; }
@@ -2789,7 +2789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string Type { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [JsonProperty("link")]
         public string Link { get; set; }
@@ -2816,7 +2816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     public class ArticlesResponse
     {
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -3415,7 +3415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string Creator { get; set; }
 
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [JsonProperty("featured")]
         public bool Featured { get; set; }
@@ -3460,7 +3460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string Artifact { get; set; }
     }
 
-    public class SSLResponse
+    public class SslResponse
     {
         [JsonProperty("success")]
         public bool Success { get; set; }
@@ -3469,10 +3469,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public int OverallTotalRecords { get; set; }
 
         [JsonProperty("results")]
-        public SSLResponseResult[] Results { get; set; }
+        public SslResponseResult[] Results { get; set; }
     }
 
-    public class SSLResponseResult
+    public class SslResponseResult
     {
         [JsonProperty("firstSeen")]
         public int FirstSeen { get; set; }
@@ -3574,16 +3574,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string[] SubjectAlternativeNames { get; set; }
     }
 
-    public class SSLHistoryResponse
+    public class SslHistoryResponse
     {
         [JsonProperty("results")]
-        public SSLHistoryResult[] Results { get; set; }
+        public SslHistoryResult[] Results { get; set; }
 
         [JsonProperty("success")]
         public bool Success { get; set; }
     }
 
-    public class SSLHistoryResult
+    public class SslHistoryResult
     {
         [JsonProperty("sha1")]
         public string Sha1 { get; set; }
@@ -3598,13 +3598,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         public string LastSeen { get; set; }
     }
 
-    public class SSLSearchResponse
+    public class SslSearchResponse
     {
         [JsonProperty("queryValue")]
         public string QueryValue { get; set; }
 
         [JsonProperty("results")]
-        public SSLResponseResult[] Results { get; set; }
+        public SslResponseResult[] Results { get; set; }
 
         [JsonProperty("success")]
         public bool Success { get; set; }
@@ -3614,7 +3614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SearchSSLCertificatesFieldInput
+    public enum SearchSslCertificatesFieldInput
     {
         [EnumMember(Value = "issuerSurname")]
         IssuerSurname,
@@ -3678,19 +3678,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         SubjectAlternativeName
     }
 
-    public class SSLSearchKeywordResponse
+    public class SslSearchKeywordResponse
     {
         [JsonProperty("queryValue")]
         public string QueryValue { get; set; }
 
         [JsonProperty("results")]
-        public SSLSearchKeywordResult[] Results { get; set; }
+        public SslSearchKeywordResult[] Results { get; set; }
 
         [JsonProperty("success")]
         public bool Success { get; set; }
     }
 
-    public class SSLSearchKeywordResult
+    public class SslSearchKeywordResult
     {
         [JsonProperty("matchType")]
         public string MatchType { get; set; }
@@ -3751,7 +3751,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
         _51laId,
         AboutmeId,
         AddThisPubId,
-        AddThisUsername,
+        [EnumMember(Value = "AddThisUsername")]
+        AddThisUserName,
         AuthorstreamId,
         BitbucketcomId,
         BitlyId,
@@ -4269,7 +4270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqpassivetotal
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SearchWHOISFieldInput
+    public enum SearchWhoisFieldInput
     {
         [EnumMember(Value = "email")]
         Email,

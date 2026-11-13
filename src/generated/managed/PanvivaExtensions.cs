@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         public Category Category { get; set; }
 
         [JsonProperty("metaData")]
-        public JToken MetaData { get; set; }
+        public JToken Metadata { get; set; }
 
         [JsonProperty("searchScore")]
         public double SearchScore { get; set; }
@@ -478,7 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
     public class PostLiveCshRequestInput
     {
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("userId")]
         public string UserId { get; set; }
@@ -496,7 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
     public class PostLiveDocumentRequestInput
     {
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("userId")]
         public string UserId { get; set; }
@@ -514,7 +514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
     public class PostLiveSearchRequestInput
     {
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("userId")]
         public string UserId { get; set; }
@@ -676,7 +676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Panviva
         public int PanvivaDocumentVersion { get; set; }
 
         [JsonProperty("metaData")]
-        public JToken MetaData { get; set; }
+        public JToken Metadata { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }

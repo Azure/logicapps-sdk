@@ -76,7 +76,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
         public string CreatedBy { get; set; }
         public string Modified { get; set; }
         public string ModifiedBy { get; set; }
-        public string Username { get; set; }
+
+        [JsonProperty("Username")]
+        public string UserName { get; set; }
         public bool UserActive { get; set; }
     }
 

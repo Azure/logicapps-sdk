@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         public string DocumentTitle { get; set; }
 
         [JsonProperty("filename")]
-        public string DocumentFilename { get; set; }
+        public string DocumentFileName { get; set; }
 
         [JsonProperty("outline")]
         public AiTemplateBuilderResponseOutlineTypeItem[] Outline { get; set; }
@@ -361,23 +361,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ConversionConvertRequestInputConfigurationTypeDocumentFormatType
     {
-        PDF,
-        HTML
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "HTML")]
+        Html
     }
 
     public class DocumentJsonTemplateRequestInput
     {
-        public DocumentJsonTemplateRequestInput(RequestInputTemplateType template, JToken jSONObject)
+        public DocumentJsonTemplateRequestInput(RequestInputTemplateType template, JToken jsonObject)
         {
             this.Template = template;
-            this.JSONObject = jSONObject;
+            this.JsonObject = jsonObject;
         }
 
         [JsonProperty("template", DefaultValueHandling = DefaultValueHandling.Include)]
         public RequestInputTemplateType Template { get; set; }
 
         [JsonProperty("json", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken JSONObject { get; set; }
+        public JToken JsonObject { get; set; }
 
         [JsonProperty("configuration")]
         public DocumentJsonTemplateRequestInputConfigurationType Configuration { get; set; }
@@ -407,8 +409,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
     public enum DocumentJsonTemplateRequestInputConfigurationTypeDocumentFormatType
     {
         Original,
-        PDF,
-        HTML
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "HTML")]
+        Html
     }
 
     public class DocumentTemplateRequestInput
@@ -583,13 +587,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
 
     public class EnvelopesInstancesRequestInputDocumentType
     {
-        public EnvelopesInstancesRequestInputDocumentType(string pDFDocument)
+        public EnvelopesInstancesRequestInputDocumentType(string pdfDocument)
         {
-            this.PDFDocument = pDFDocument;
+            this.PdfDocument = pdfDocument;
         }
 
         [JsonProperty("file", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string PDFDocument { get; set; }
+        public string PdfDocument { get; set; }
     }
 }
 

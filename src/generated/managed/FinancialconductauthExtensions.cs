@@ -29,235 +29,235 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<IndividualsDetailsByIRNResponse, ApiConnectionActionConfiguration> IndividualsDetailsByIRN(Expression<Func<string>> iRN)
+        public IBodyWorkflowAction<IndividualsDetailsByIrnResponse, ApiConnectionActionConfiguration> IndividualsDetailsByIrn(Expression<Func<string>> irn)
         {
-            var __workflow_iRN = WorkflowExpression.Compile(iRN, nameof(iRN), required: true);
-            return new DeferredBodyAction<IndividualsDetailsByIRNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_irn = WorkflowExpression.Compile(irn, nameof(irn), required: true);
+            return new DeferredBodyAction<IndividualsDetailsByIrnResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Individuals/{0}", __workflow_iRN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Individuals/{0}", __workflow_irn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<IndividualsDetailsByIRNResponse>(callPayload);
+                return new ApiConnectionAction<IndividualsDetailsByIrnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmDetailsByFRNResponse, ApiConnectionActionConfiguration> FirmDetailsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmDetailsByFrnResponse, ApiConnectionActionConfiguration> FirmDetailsByFrn(Expression<Func<string>> frn)
         {
-            var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
-            return new DeferredBodyAction<FirmDetailsByFRNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_frn = WorkflowExpression.Compile(frn, nameof(frn), required: true);
+            return new DeferredBodyAction<FirmDetailsByFrnResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}", __workflow_fRN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}", __workflow_frn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<FirmDetailsByFRNResponse>(callPayload);
+                return new ApiConnectionAction<FirmDetailsByFrnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<ProductDetailsByPRNResponse, ApiConnectionActionConfiguration> ProductDetailsByPRN(Expression<Func<string>> pRN)
+        public IBodyWorkflowAction<ProductDetailsByPrnResponse, ApiConnectionActionConfiguration> ProductDetailsByPrn(Expression<Func<string>> prn)
         {
-            var __workflow_pRN = WorkflowExpression.Compile(pRN, nameof(pRN), required: true);
-            return new DeferredBodyAction<ProductDetailsByPRNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_prn = WorkflowExpression.Compile(prn, nameof(prn), required: true);
+            return new DeferredBodyAction<ProductDetailsByPrnResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/CIS/{0}", __workflow_pRN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/CIS/{0}", __workflow_prn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<ProductDetailsByPRNResponse>(callPayload);
+                return new ApiConnectionAction<ProductDetailsByPrnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<SubfundDetailsByPRNResponse, ApiConnectionActionConfiguration> SubfundDetailsByPRN(Expression<Func<string>> pRN)
+        public IBodyWorkflowAction<SubfundDetailsByPrnResponse, ApiConnectionActionConfiguration> SubfundDetailsByPrn(Expression<Func<string>> prn)
         {
-            var __workflow_pRN = WorkflowExpression.Compile(pRN, nameof(pRN), required: true);
-            return new DeferredBodyAction<SubfundDetailsByPRNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_prn = WorkflowExpression.Compile(prn, nameof(prn), required: true);
+            return new DeferredBodyAction<SubfundDetailsByPrnResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/CIS/{0}/Subfund", __workflow_pRN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/CIS/{0}/Subfund", __workflow_prn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<SubfundDetailsByPRNResponse>(callPayload);
+                return new ApiConnectionAction<SubfundDetailsByPrnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<ProductOtherNameDetailsByPRNResponse, ApiConnectionActionConfiguration> ProductOtherNameDetailsByPRN(Expression<Func<string>> pRN)
+        public IBodyWorkflowAction<ProductOtherNameDetailsByPrnResponse, ApiConnectionActionConfiguration> ProductOtherNameDetailsByPrn(Expression<Func<string>> prn)
         {
-            var __workflow_pRN = WorkflowExpression.Compile(pRN, nameof(pRN), required: true);
-            return new DeferredBodyAction<ProductOtherNameDetailsByPRNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_prn = WorkflowExpression.Compile(prn, nameof(prn), required: true);
+            return new DeferredBodyAction<ProductOtherNameDetailsByPrnResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/CIS/{0}/Names", __workflow_pRN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/CIS/{0}/Names", __workflow_prn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<ProductOtherNameDetailsByPRNResponse>(callPayload);
+                return new ApiConnectionAction<ProductOtherNameDetailsByPrnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<IndividualDisciplinaryHistoryByIRNResponse, ApiConnectionActionConfiguration> IndividualDisciplinaryHistoryByIRN(Expression<Func<string>> iRN)
+        public IBodyWorkflowAction<IndividualDisciplinaryHistoryByIrnResponse, ApiConnectionActionConfiguration> IndividualDisciplinaryHistoryByIrn(Expression<Func<string>> irn)
         {
-            var __workflow_iRN = WorkflowExpression.Compile(iRN, nameof(iRN), required: true);
-            return new DeferredBodyAction<IndividualDisciplinaryHistoryByIRNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_irn = WorkflowExpression.Compile(irn, nameof(irn), required: true);
+            return new DeferredBodyAction<IndividualDisciplinaryHistoryByIrnResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Individuals/{0}/DisciplinaryHistory", __workflow_iRN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Individuals/{0}/DisciplinaryHistory", __workflow_irn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<IndividualDisciplinaryHistoryByIRNResponse>(callPayload);
+                return new ApiConnectionAction<IndividualDisciplinaryHistoryByIrnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmOtherNamesByFRNResponse, ApiConnectionActionConfiguration> FirmOtherNamesByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmOtherNamesByFrnResponse, ApiConnectionActionConfiguration> FirmOtherNamesByFrn(Expression<Func<string>> frn)
         {
-            var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
-            return new DeferredBodyAction<FirmOtherNamesByFRNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_frn = WorkflowExpression.Compile(frn, nameof(frn), required: true);
+            return new DeferredBodyAction<FirmOtherNamesByFrnResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Names", __workflow_fRN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Names", __workflow_frn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<FirmOtherNamesByFRNResponse>(callPayload);
+                return new ApiConnectionAction<FirmOtherNamesByFrnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmAddressByFRNResponse, ApiConnectionActionConfiguration> FirmAddressByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmAddressByFrnResponse, ApiConnectionActionConfiguration> FirmAddressByFrn(Expression<Func<string>> frn)
         {
-            var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
-            return new DeferredBodyAction<FirmAddressByFRNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_frn = WorkflowExpression.Compile(frn, nameof(frn), required: true);
+            return new DeferredBodyAction<FirmAddressByFrnResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Address", __workflow_fRN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Address", __workflow_frn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<FirmAddressByFRNResponse>(callPayload);
+                return new ApiConnectionAction<FirmAddressByFrnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmIndividualsByFRNResponse, ApiConnectionActionConfiguration> FirmIndividualsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmIndividualsByFrnResponse, ApiConnectionActionConfiguration> FirmIndividualsByFrn(Expression<Func<string>> frn)
         {
-            var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
-            return new DeferredBodyAction<FirmIndividualsByFRNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_frn = WorkflowExpression.Compile(frn, nameof(frn), required: true);
+            return new DeferredBodyAction<FirmIndividualsByFrnResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Individuals", __workflow_fRN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Individuals", __workflow_frn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<FirmIndividualsByFRNResponse>(callPayload);
+                return new ApiConnectionAction<FirmIndividualsByFrnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmActivitiesAndPermissionsByFRNResponse, ApiConnectionActionConfiguration> FirmActivitiesAndPermissionsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmActivitiesAndPermissionsByFrnResponse, ApiConnectionActionConfiguration> FirmActivitiesAndPermissionsByFrn(Expression<Func<string>> frn)
         {
-            var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
-            return new DeferredBodyAction<FirmActivitiesAndPermissionsByFRNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_frn = WorkflowExpression.Compile(frn, nameof(frn), required: true);
+            return new DeferredBodyAction<FirmActivitiesAndPermissionsByFrnResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Permissions", __workflow_fRN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Permissions", __workflow_frn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<FirmActivitiesAndPermissionsByFRNResponse>(callPayload);
+                return new ApiConnectionAction<FirmActivitiesAndPermissionsByFrnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse, ApiConnectionActionConfiguration> FirmRequirementsInvestmentTypesByFRNandREQREF(Expression<Func<string>> fRN, Expression<Func<string>> rEQREF)
+        public IBodyWorkflowAction<FirmRequirementsInvestmentTypesByFRNandReqrefResponse, ApiConnectionActionConfiguration> FirmRequirementsInvestmentTypesByFRNandReqref(Expression<Func<string>> frn, Expression<Func<string>> reqref)
         {
-            var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
-            var __workflow_rEQREF = WorkflowExpression.Compile(rEQREF, nameof(rEQREF), required: true);
-            return new DeferredBodyAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_frn = WorkflowExpression.Compile(frn, nameof(frn), required: true);
+            var __workflow_reqref = WorkflowExpression.Compile(reqref, nameof(reqref), required: true);
+            return new DeferredBodyAction<FirmRequirementsInvestmentTypesByFRNandReqrefResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Requirements/{1}/InvestmentTypes", __workflow_fRN.WithUrlEncoding(1), __workflow_rEQREF.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Requirements/{1}/InvestmentTypes", __workflow_frn.WithUrlEncoding(1), __workflow_reqref.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse>(callPayload);
+                return new ApiConnectionAction<FirmRequirementsInvestmentTypesByFRNandReqrefResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmRegulatorsByFRNResponse, ApiConnectionActionConfiguration> FirmRegulatorsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmRegulatorsByFrnResponse, ApiConnectionActionConfiguration> FirmRegulatorsByFrn(Expression<Func<string>> frn)
         {
-            var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
-            return new DeferredBodyAction<FirmRegulatorsByFRNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_frn = WorkflowExpression.Compile(frn, nameof(frn), required: true);
+            return new DeferredBodyAction<FirmRegulatorsByFrnResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Regulators/", __workflow_fRN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Regulators/", __workflow_frn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<FirmRegulatorsByFRNResponse>(callPayload);
+                return new ApiConnectionAction<FirmRegulatorsByFrnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmPassportByFRNResponse, ApiConnectionActionConfiguration> FirmPassportByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmPassportByFrnResponse, ApiConnectionActionConfiguration> FirmPassportByFrn(Expression<Func<string>> frn)
         {
-            var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
-            return new DeferredBodyAction<FirmPassportByFRNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_frn = WorkflowExpression.Compile(frn, nameof(frn), required: true);
+            return new DeferredBodyAction<FirmPassportByFrnResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Passports/", __workflow_fRN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Passports/", __workflow_frn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<FirmPassportByFRNResponse>(callPayload);
+                return new ApiConnectionAction<FirmPassportByFrnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmExclusionsByFRNResponse, ApiConnectionActionConfiguration> FirmExclusionsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmExclusionsByFrnResponse, ApiConnectionActionConfiguration> FirmExclusionsByFrn(Expression<Func<string>> frn)
         {
-            var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
-            return new DeferredBodyAction<FirmExclusionsByFRNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_frn = WorkflowExpression.Compile(frn, nameof(frn), required: true);
+            return new DeferredBodyAction<FirmExclusionsByFrnResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Exclusions", __workflow_fRN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Exclusions", __workflow_frn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<FirmExclusionsByFRNResponse>(callPayload);
+                return new ApiConnectionAction<FirmExclusionsByFrnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmDisciplinaryHistoryByFRNResponse, ApiConnectionActionConfiguration> FirmDisciplinaryHistoryByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmDisciplinaryHistoryByFrnResponse, ApiConnectionActionConfiguration> FirmDisciplinaryHistoryByFrn(Expression<Func<string>> frn)
         {
-            var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
-            return new DeferredBodyAction<FirmDisciplinaryHistoryByFRNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_frn = WorkflowExpression.Compile(frn, nameof(frn), required: true);
+            return new DeferredBodyAction<FirmDisciplinaryHistoryByFrnResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/DisciplinaryHistory", __workflow_fRN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/DisciplinaryHistory", __workflow_frn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<FirmDisciplinaryHistoryByFRNResponse>(callPayload);
+                return new ApiConnectionAction<FirmDisciplinaryHistoryByFrnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmRequirementsByFRNResponse, ApiConnectionActionConfiguration> FirmRequirementsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmRequirementsByFrnResponse, ApiConnectionActionConfiguration> FirmRequirementsByFrn(Expression<Func<string>> frn)
         {
-            var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
-            return new DeferredBodyAction<FirmRequirementsByFRNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_frn = WorkflowExpression.Compile(frn, nameof(frn), required: true);
+            return new DeferredBodyAction<FirmRequirementsByFrnResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Requirements", __workflow_fRN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Requirements", __workflow_frn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<FirmRequirementsByFRNResponse>(callPayload);
+                return new ApiConnectionAction<FirmRequirementsByFrnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmWaiverByFRNResponse, ApiConnectionActionConfiguration> FirmWaiverByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmWaiverByFrnResponse, ApiConnectionActionConfiguration> FirmWaiverByFrn(Expression<Func<string>> frn)
         {
-            var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
-            return new DeferredBodyAction<FirmWaiverByFRNResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_frn = WorkflowExpression.Compile(frn, nameof(frn), required: true);
+            return new DeferredBodyAction<FirmWaiverByFrnResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Waivers", __workflow_fRN.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Waivers", __workflow_frn.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<FirmWaiverByFRNResponse>(callPayload);
+                return new ApiConnectionAction<FirmWaiverByFrnResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmPassportPermissionByFRNandCountryResponse, ApiConnectionActionConfiguration> FirmPassportPermissionByFRNandCountry(Expression<Func<string>> fRN, Expression<Func<string>> country)
+        public IBodyWorkflowAction<FirmPassportPermissionByFRNandCountryResponse, ApiConnectionActionConfiguration> FirmPassportPermissionByFRNandCountry(Expression<Func<string>> frn, Expression<Func<string>> country)
         {
-            var __workflow_fRN = WorkflowExpression.Compile(fRN, nameof(fRN), required: true);
+            var __workflow_frn = WorkflowExpression.Compile(frn, nameof(frn), required: true);
             var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
             return new DeferredBodyAction<FirmPassportPermissionByFRNandCountryResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Passports/{1}/Permission/", __workflow_fRN.WithUrlEncoding(1), __workflow_country.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/services/V0.1/Firm/{0}/Passports/{1}/Permission/", __workflow_frn.WithUrlEncoding(1), __workflow_country.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<FirmPassportPermissionByFRNandCountryResponse>(callPayload);
@@ -291,7 +291,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
 
     public class CommonSearchResponseDataTypeItem
     {
-        public string URL { get; set; }
+        [JsonProperty("URL")]
+        public string Url { get; set; }
         public string Status { get; set; }
 
         [JsonProperty("Reference Number")]
@@ -313,15 +314,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         Fund
     }
 
-    public class IndividualsDetailsByIRNResponse
+    public class IndividualsDetailsByIrnResponse
     {
         public string Status { get; set; }
-        public IndividualsDetailsByIRNResponseResultInfoType ResultInfo { get; set; }
+        public IndividualsDetailsByIrnResponseResultInfoType ResultInfo { get; set; }
         public string Message { get; set; }
-        public IndividualsDetailsByIRNResponseDataTypeItem[] Data { get; set; }
+        public IndividualsDetailsByIrnResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class IndividualsDetailsByIRNResponseResultInfoType
+    public class IndividualsDetailsByIrnResponseResultInfoType
     {
         [JsonProperty("page")]
         public string Page { get; set; }
@@ -333,15 +334,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class IndividualsDetailsByIRNResponseDataTypeItem
+    public class IndividualsDetailsByIrnResponseDataTypeItem
     {
-        public IndividualsDetailsByIRNResponseDataTypeItemDetailsType Details { get; set; }
+        public IndividualsDetailsByIrnResponseDataTypeItemDetailsType Details { get; set; }
 
         [JsonProperty("Workplace Location 1")]
-        public IndividualsDetailsByIRNResponseDataTypeItemWorkplaceLocation1Type WorkplaceLocation1 { get; set; }
+        public IndividualsDetailsByIrnResponseDataTypeItemWorkplaceLocation1Type WorkplaceLocation1 { get; set; }
     }
 
-    public class IndividualsDetailsByIRNResponseDataTypeItemDetailsType
+    public class IndividualsDetailsByIrnResponseDataTypeItemDetailsType
     {
         public string Status { get; set; }
 
@@ -350,7 +351,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
 
         [JsonProperty("Roles & Activities")]
         public string RolesActivities { get; set; }
-        public string IRN { get; set; }
+
+        [JsonProperty("IRN")]
+        public string Irn { get; set; }
 
         [JsonProperty("Commonly Used Name")]
         public string CommonlyUsedName { get; set; }
@@ -359,7 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string FullName { get; set; }
     }
 
-    public class IndividualsDetailsByIRNResponseDataTypeItemWorkplaceLocation1Type
+    public class IndividualsDetailsByIrnResponseDataTypeItemWorkplaceLocation1Type
     {
         [JsonProperty("Firm Name")]
         public string FirmName { get; set; }
@@ -368,15 +371,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string Location1 { get; set; }
     }
 
-    public class FirmDetailsByFRNResponse
+    public class FirmDetailsByFrnResponse
     {
         public string Status { get; set; }
-        public FirmDetailsByFRNResponseResultInfoType ResultInfo { get; set; }
+        public FirmDetailsByFrnResponseResultInfoType ResultInfo { get; set; }
         public string Message { get; set; }
-        public FirmDetailsByFRNResponseDataTypeItem[] Data { get; set; }
+        public FirmDetailsByFrnResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class FirmDetailsByFRNResponseResultInfoType
+    public class FirmDetailsByFrnResponseResultInfoType
     {
         [JsonProperty("page")]
         public string Page { get; set; }
@@ -388,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class FirmDetailsByFRNResponseDataTypeItem
+    public class FirmDetailsByFrnResponseDataTypeItem
     {
         public string Name { get; set; }
         public string Individuals { get; set; }
@@ -408,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string SystemTimestamp { get; set; }
 
         [JsonProperty("Exceptional Info Details")]
-        public FirmDetailsByFRNResponseDataTypeItemExceptionalInfoDetailsTypeItem[] ExceptionalInfoDetails { get; set; }
+        public FirmDetailsByFrnResponseDataTypeItemExceptionalInfoDetailsTypeItem[] ExceptionalInfoDetails { get; set; }
 
         [JsonProperty("Status Effective Date")]
         public string StatusEffectiveDate { get; set; }
@@ -417,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string EMoneyAgentStatus { get; set; }
 
         [JsonProperty("PSD / EMD Effective Date")]
-        public string PSDEMDEffectiveDate { get; set; }
+        public string PsdEmdEffectiveDate { get; set; }
 
         [JsonProperty("Client Money Permission")]
         public string ClientMoneyPermission { get; set; }
@@ -435,22 +438,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string CompaniesHouseNumber { get; set; }
 
         [JsonProperty("MLRs Status Effective Date")]
-        public string MLRsStatusEffectiveDate { get; set; }
+        public string MlrsStatusEffectiveDate { get; set; }
 
         [JsonProperty("MLRs Status")]
-        public string MLRsStatus { get; set; }
+        public string MlrsStatus { get; set; }
 
         [JsonProperty("E-Money Agent Effective Date")]
         public string EMoneyAgentEffectiveDate { get; set; }
 
         [JsonProperty("PSD Agent Effective date")]
-        public string PSDAgentEffectiveDate { get; set; }
+        public string PsdAgentEffectiveDate { get; set; }
 
         [JsonProperty("PSD Agent Status")]
-        public string PSDAgentStatus { get; set; }
+        public string PsdAgentStatus { get; set; }
 
         [JsonProperty("PSD / EMD Status")]
-        public string PSDEMDStatus { get; set; }
+        public string PsdEmdStatus { get; set; }
         public string Status { get; set; }
 
         [JsonProperty("Business Type")]
@@ -458,10 +461,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
 
         [JsonProperty("Organisation Name")]
         public string OrganisationName { get; set; }
-        public string FRN { get; set; }
+
+        [JsonProperty("FRN")]
+        public string Frn { get; set; }
     }
 
-    public class FirmDetailsByFRNResponseDataTypeItemExceptionalInfoDetailsTypeItem
+    public class FirmDetailsByFrnResponseDataTypeItemExceptionalInfoDetailsTypeItem
     {
         [JsonProperty("Exceptional Info Title")]
         public string ExceptionalInfoTitle { get; set; }
@@ -470,15 +475,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string ExceptionalInfoBody { get; set; }
     }
 
-    public class ProductDetailsByPRNResponse
+    public class ProductDetailsByPrnResponse
     {
         public string Status { get; set; }
-        public ProductDetailsByPRNResponseResultInfoType ResultInfo { get; set; }
+        public ProductDetailsByPrnResponseResultInfoType ResultInfo { get; set; }
         public string Message { get; set; }
-        public ProductDetailsByPRNResponseDataTypeItem[] Data { get; set; }
+        public ProductDetailsByPrnResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class ProductDetailsByPRNResponseResultInfoType
+    public class ProductDetailsByPrnResponseResultInfoType
     {
         [JsonProperty("page")]
         public string Page { get; set; }
@@ -490,7 +495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class ProductDetailsByPRNResponseDataTypeItem
+    public class ProductDetailsByPrnResponseDataTypeItem
     {
         [JsonProperty("Sub-funds")]
         public string SubFunds { get; set; }
@@ -499,20 +504,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string OtherName { get; set; }
 
         [JsonProperty("CIS Depositary")]
-        public string CISDepositary { get; set; }
+        public string CisDepositary { get; set; }
 
         [JsonProperty("CIS Depositary Name")]
-        public string CISDepositaryName { get; set; }
+        public string CisDepositaryName { get; set; }
 
         [JsonProperty("Operator Name")]
         public string OperatorName { get; set; }
         public string Operator { get; set; }
 
         [JsonProperty("MMF Term Type")]
-        public string MMFTermType { get; set; }
+        public string MmfTermType { get; set; }
 
         [JsonProperty("MMF NAV Type")]
-        public string MMFNAVType { get; set; }
+        public string MmfNavType { get; set; }
 
         [JsonProperty("Effective Date")]
         public string EffectiveDate { get; set; }
@@ -524,19 +529,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string ProductType { get; set; }
 
         [JsonProperty("ICVC Registration No")]
-        public string ICVCRegistrationNo { get; set; }
+        public string IcvcRegistrationNo { get; set; }
         public string Status { get; set; }
     }
 
-    public class SubfundDetailsByPRNResponse
+    public class SubfundDetailsByPrnResponse
     {
         public string Status { get; set; }
-        public SubfundDetailsByPRNResponseResultInfoType ResultInfo { get; set; }
+        public SubfundDetailsByPrnResponseResultInfoType ResultInfo { get; set; }
         public string Message { get; set; }
-        public SubfundDetailsByPRNResponseDataTypeItem[] Data { get; set; }
+        public SubfundDetailsByPrnResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class SubfundDetailsByPRNResponseResultInfoType
+    public class SubfundDetailsByPrnResponseResultInfoType
     {
         [JsonProperty("page")]
         public string Page { get; set; }
@@ -548,24 +553,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class SubfundDetailsByPRNResponseDataTypeItem
+    public class SubfundDetailsByPrnResponseDataTypeItem
     {
-        public string URL { get; set; }
+        [JsonProperty("URL")]
+        public string Url { get; set; }
 
         [JsonProperty("Sub-Fund Type")]
         public string SubFundType { get; set; }
         public string Name { get; set; }
     }
 
-    public class ProductOtherNameDetailsByPRNResponse
+    public class ProductOtherNameDetailsByPrnResponse
     {
         public string Status { get; set; }
-        public ProductOtherNameDetailsByPRNResponseResultInfoType ResultInfo { get; set; }
+        public ProductOtherNameDetailsByPrnResponseResultInfoType ResultInfo { get; set; }
         public string Message { get; set; }
-        public ProductOtherNameDetailsByPRNResponseDataTypeItem[] Data { get; set; }
+        public ProductOtherNameDetailsByPrnResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class ProductOtherNameDetailsByPRNResponseResultInfoType
+    public class ProductOtherNameDetailsByPrnResponseResultInfoType
     {
         [JsonProperty("page")]
         public string Page { get; set; }
@@ -577,7 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class ProductOtherNameDetailsByPRNResponseDataTypeItem
+    public class ProductOtherNameDetailsByPrnResponseDataTypeItem
     {
         [JsonProperty("Effective To")]
         public string EffectiveTo { get; set; }
@@ -589,15 +595,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string ProductOtherName { get; set; }
     }
 
-    public class IndividualDisciplinaryHistoryByIRNResponse
+    public class IndividualDisciplinaryHistoryByIrnResponse
     {
         public string Status { get; set; }
-        public IndividualDisciplinaryHistoryByIRNResponseResultInfoType ResultInfo { get; set; }
+        public IndividualDisciplinaryHistoryByIrnResponseResultInfoType ResultInfo { get; set; }
         public string Message { get; set; }
-        public IndividualDisciplinaryHistoryByIRNResponseDataTypeItem[] Data { get; set; }
+        public IndividualDisciplinaryHistoryByIrnResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class IndividualDisciplinaryHistoryByIRNResponseResultInfoType
+    public class IndividualDisciplinaryHistoryByIrnResponseResultInfoType
     {
         [JsonProperty("page")]
         public string Page { get; set; }
@@ -609,7 +615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class IndividualDisciplinaryHistoryByIRNResponseDataTypeItem
+    public class IndividualDisciplinaryHistoryByIrnResponseDataTypeItem
     {
         public string TypeofDescription { get; set; }
         public string TypeofAction { get; set; }
@@ -617,15 +623,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string ActionEffectiveFrom { get; set; }
     }
 
-    public class FirmOtherNamesByFRNResponse
+    public class FirmOtherNamesByFrnResponse
     {
         public string Status { get; set; }
-        public FirmOtherNamesByFRNResponseResultInfoType ResultInfo { get; set; }
+        public FirmOtherNamesByFrnResponseResultInfoType ResultInfo { get; set; }
         public string Message { get; set; }
-        public FirmOtherNamesByFRNResponseDataTypeItem[] Data { get; set; }
+        public FirmOtherNamesByFrnResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class FirmOtherNamesByFRNResponseResultInfoType
+    public class FirmOtherNamesByFrnResponseResultInfoType
     {
         public string Next { get; set; }
 
@@ -639,16 +645,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class FirmOtherNamesByFRNResponseDataTypeItem
+    public class FirmOtherNamesByFrnResponseDataTypeItem
     {
         [JsonProperty("Current Names")]
-        public FirmOtherNamesByFRNResponseDataTypeItemCurrentNamesTypeItem[] CurrentNames { get; set; }
+        public FirmOtherNamesByFrnResponseDataTypeItemCurrentNamesTypeItem[] CurrentNames { get; set; }
 
         [JsonProperty("Previous Names")]
-        public FirmOtherNamesByFRNResponseDataTypeItemPreviousNamesTypeItem[] PreviousNames { get; set; }
+        public FirmOtherNamesByFrnResponseDataTypeItemPreviousNamesTypeItem[] PreviousNames { get; set; }
     }
 
-    public class FirmOtherNamesByFRNResponseDataTypeItemCurrentNamesTypeItem
+    public class FirmOtherNamesByFrnResponseDataTypeItemCurrentNamesTypeItem
     {
         [JsonProperty("Effective From")]
         public string EffectiveFrom { get; set; }
@@ -656,7 +662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string Name { get; set; }
     }
 
-    public class FirmOtherNamesByFRNResponseDataTypeItemPreviousNamesTypeItem
+    public class FirmOtherNamesByFrnResponseDataTypeItemPreviousNamesTypeItem
     {
         [JsonProperty("Effective To")]
         public string EffectiveTo { get; set; }
@@ -667,15 +673,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string Name { get; set; }
     }
 
-    public class FirmAddressByFRNResponse
+    public class FirmAddressByFrnResponse
     {
         public string Status { get; set; }
-        public FirmAddressByFRNResponseResultInfoType ResultInfo { get; set; }
+        public FirmAddressByFrnResponseResultInfoType ResultInfo { get; set; }
         public string Message { get; set; }
-        public FirmAddressByFRNResponseDataTypeItem[] Data { get; set; }
+        public FirmAddressByFrnResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class FirmAddressByFRNResponseResultInfoType
+    public class FirmAddressByFrnResponseResultInfoType
     {
         [JsonProperty("page")]
         public string Page { get; set; }
@@ -687,9 +693,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class FirmAddressByFRNResponseDataTypeItem
+    public class FirmAddressByFrnResponseDataTypeItem
     {
-        public string URL { get; set; }
+        [JsonProperty("URL")]
+        public string Url { get; set; }
 
         [JsonProperty("Website Address")]
         public string WebsiteAddress { get; set; }
@@ -717,15 +724,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string AddressType { get; set; }
     }
 
-    public class FirmIndividualsByFRNResponse
+    public class FirmIndividualsByFrnResponse
     {
         public string Status { get; set; }
-        public FirmIndividualsByFRNResponseResultInfoType ResultInfo { get; set; }
+        public FirmIndividualsByFrnResponseResultInfoType ResultInfo { get; set; }
         public string Message { get; set; }
-        public FirmIndividualsByFRNResponseDataTypeItem[] Data { get; set; }
+        public FirmIndividualsByFrnResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class FirmIndividualsByFRNResponseResultInfoType
+    public class FirmIndividualsByFrnResponseResultInfoType
     {
         public string Next { get; set; }
 
@@ -739,23 +746,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class FirmIndividualsByFRNResponseDataTypeItem
+    public class FirmIndividualsByFrnResponseDataTypeItem
     {
         public string Status { get; set; }
-        public string URL { get; set; }
-        public string IRN { get; set; }
+
+        [JsonProperty("URL")]
+        public string Url { get; set; }
+
+        [JsonProperty("IRN")]
+        public string Irn { get; set; }
         public string Name { get; set; }
     }
 
-    public class FirmActivitiesAndPermissionsByFRNResponse
+    public class FirmActivitiesAndPermissionsByFrnResponse
     {
         public string Status { get; set; }
-        public FirmActivitiesAndPermissionsByFRNResponseResultInfoType ResultInfo { get; set; }
+        public FirmActivitiesAndPermissionsByFrnResponseResultInfoType ResultInfo { get; set; }
         public string Message { get; set; }
-        public FirmActivitiesAndPermissionsByFRNResponseDataType Data { get; set; }
+        public FirmActivitiesAndPermissionsByFrnResponseDataType Data { get; set; }
     }
 
-    public class FirmActivitiesAndPermissionsByFRNResponseResultInfoType
+    public class FirmActivitiesAndPermissionsByFrnResponseResultInfoType
     {
         [JsonProperty("page")]
         public string Page { get; set; }
@@ -767,71 +778,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class FirmActivitiesAndPermissionsByFRNResponseDataType
+    public class FirmActivitiesAndPermissionsByFrnResponseDataType
     {
         [JsonProperty("Acting as a CBTL advisor")]
-        public FirmActivitiesAndPermissionsByFRNResponseDataTypeActingAsACBTLAdvisorTypeItem[] ActingAsACBTLAdvisor { get; set; }
+        public FirmActivitiesAndPermissionsByFrnResponseDataTypeActingAsACbtlAdvisorTypeItem[] ActingAsACbtlAdvisor { get; set; }
 
-        [JsonProperty("Acting as a CBTL Administrator")]
-        public FirmActivitiesAndPermissionsByFRNFirmActivitiesAndPermissionsByFRNResponseDataTypeActingAsACBTLAdministratorTypeItemResponse[] ActingAsACBTLAdministrator { get; set; }
+        [JsonProperty("Acting as a CBTL administrator")]
+        public FirmActivitiesAndPermissionsByFrnResponseDataTypeActingAsACbtlAdministratorTypeItem[] ActingAsACbtlAdministrator { get; set; }
 
         [JsonProperty("CBTL Status")]
-        public FirmActivitiesAndPermissionsByFRNResponseDataTypeCBTLStatusTypeItem[] CBTLStatus { get; set; }
+        public FirmActivitiesAndPermissionsByFrnResponseDataTypeCbtlStatusTypeItem[] CbtlStatus { get; set; }
 
         [JsonProperty("CBTL Effective Date")]
-        public FirmActivitiesAndPermissionsByFRNResponseDataTypeCBTLEffectiveDateTypeItem[] CBTLEffectiveDate { get; set; }
+        public FirmActivitiesAndPermissionsByFrnResponseDataTypeCbtlEffectiveDateTypeItem[] CbtlEffectiveDate { get; set; }
 
         [JsonProperty("Entering into Regulated Consumer Hire Agreements as owner")]
-        public FirmActivitiesAndPermissionsByFRNResponseDataTypeEnteringIntoRegulatedConsumerHireAgreementsAsOwnerTypeItem[] EnteringIntoRegulatedConsumerHireAgreementsAsOwner { get; set; }
+        public FirmActivitiesAndPermissionsByFrnResponseDataTypeEnteringIntoRegulatedConsumerHireAgreementsAsOwnerTypeItem[] EnteringIntoRegulatedConsumerHireAgreementsAsOwner { get; set; }
 
         [JsonProperty("Agreeing to carry on a regulated activity")]
-        public FirmActivitiesAndPermissionsByFRNResponseDataTypeAgreeingToCarryOnARegulatedActivityTypeItem[] AgreeingToCarryOnARegulatedActivity { get; set; }
+        public FirmActivitiesAndPermissionsByFrnResponseDataTypeAgreeingToCarryOnARegulatedActivityTypeItem[] AgreeingToCarryOnARegulatedActivity { get; set; }
+
+        [JsonProperty("Acting as a CBTL Administrator")]
+        public FirmActivitiesAndPermissionsByFrnResponseDataTypeActingAsACbtlAdministrator2TypeItem[] ActingAsACbtlAdministrator2 { get; set; }
     }
 
-    public class FirmActivitiesAndPermissionsByFRNResponseDataTypeActingAsACBTLAdvisorTypeItem
+    public class FirmActivitiesAndPermissionsByFrnResponseDataTypeActingAsACbtlAdvisorTypeItem
     {
         [JsonProperty("Acting as a CBTL advisor")]
-        public string[] ActingAsACBTLAdvisor { get; set; }
+        public string[] ActingAsACbtlAdvisor { get; set; }
     }
 
-    public class FirmActivitiesAndPermissionsByFRNFirmActivitiesAndPermissionsByFRNResponseDataTypeActingAsACBTLAdministratorTypeItemResponse
+    public class FirmActivitiesAndPermissionsByFrnResponseDataTypeActingAsACbtlAdministratorTypeItem
     {
-        [JsonProperty("Limitation Not Found")]
-        public string[] LimitationNotFound { get; set; }
+        [JsonProperty("Acting as a CBTL administrator")]
+        public string[] ActingAsACbtlAdministrator { get; set; }
     }
 
-    public class FirmActivitiesAndPermissionsByFRNResponseDataTypeCBTLStatusTypeItem
+    public class FirmActivitiesAndPermissionsByFrnResponseDataTypeCbtlStatusTypeItem
     {
         [JsonProperty("CBTL Status")]
-        public string[] CBTLStatus { get; set; }
+        public string[] CbtlStatus { get; set; }
     }
 
-    public class FirmActivitiesAndPermissionsByFRNResponseDataTypeCBTLEffectiveDateTypeItem
+    public class FirmActivitiesAndPermissionsByFrnResponseDataTypeCbtlEffectiveDateTypeItem
     {
         [JsonProperty("CBTL Effective Date")]
-        public string[] CBTLEffectiveDate { get; set; }
+        public string[] CbtlEffectiveDate { get; set; }
     }
 
-    public class FirmActivitiesAndPermissionsByFRNResponseDataTypeEnteringIntoRegulatedConsumerHireAgreementsAsOwnerTypeItem
+    public class FirmActivitiesAndPermissionsByFrnResponseDataTypeEnteringIntoRegulatedConsumerHireAgreementsAsOwnerTypeItem
     {
         public string[] Limitation { get; set; }
     }
 
-    public class FirmActivitiesAndPermissionsByFRNResponseDataTypeAgreeingToCarryOnARegulatedActivityTypeItem
+    public class FirmActivitiesAndPermissionsByFrnResponseDataTypeAgreeingToCarryOnARegulatedActivityTypeItem
     {
         [JsonProperty("Limitation Not Found")]
         public string[] LimitationNotFound { get; set; }
     }
 
-    public class FirmRequirementsInvestmentTypesByFRNandREQREFResponse
+    public class FirmActivitiesAndPermissionsByFrnResponseDataTypeActingAsACbtlAdministrator2TypeItem
     {
-        public string Status { get; set; }
-        public FirmRequirementsInvestmentTypesByFRNandREQREFResponseResultInfoType ResultInfo { get; set; }
-        public string Message { get; set; }
-        public FirmRequirementsInvestmentTypesByFRNandREQREFResponseDataTypeItem[] Data { get; set; }
+        [JsonProperty("Limitation Not Found")]
+        public string[] LimitationNotFound { get; set; }
     }
 
-    public class FirmRequirementsInvestmentTypesByFRNandREQREFResponseResultInfoType
+    public class FirmRequirementsInvestmentTypesByFRNandReqrefResponse
+    {
+        public string Status { get; set; }
+        public FirmRequirementsInvestmentTypesByFRNandReqrefResponseResultInfoType ResultInfo { get; set; }
+        public string Message { get; set; }
+        public FirmRequirementsInvestmentTypesByFRNandReqrefResponseDataTypeItem[] Data { get; set; }
+    }
+
+    public class FirmRequirementsInvestmentTypesByFRNandReqrefResponseResultInfoType
     {
         [JsonProperty("page")]
         public string Page { get; set; }
@@ -843,21 +863,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class FirmRequirementsInvestmentTypesByFRNandREQREFResponseDataTypeItem
+    public class FirmRequirementsInvestmentTypesByFRNandReqrefResponseDataTypeItem
     {
         [JsonProperty("Investment Type Name")]
         public string InvestmentTypeName { get; set; }
     }
 
-    public class FirmRegulatorsByFRNResponse
+    public class FirmRegulatorsByFrnResponse
     {
         public string Status { get; set; }
-        public FirmRegulatorsByFRNResponseResultInfoType ResultInfo { get; set; }
+        public FirmRegulatorsByFrnResponseResultInfoType ResultInfo { get; set; }
         public string Message { get; set; }
-        public FirmRegulatorsByFRNResponseDataTypeItem[] Data { get; set; }
+        public FirmRegulatorsByFrnResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class FirmRegulatorsByFRNResponseResultInfoType
+    public class FirmRegulatorsByFrnResponseResultInfoType
     {
         [JsonProperty("page")]
         public string Page { get; set; }
@@ -869,7 +889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class FirmRegulatorsByFRNResponseDataTypeItem
+    public class FirmRegulatorsByFrnResponseDataTypeItem
     {
         [JsonProperty("Termination Date")]
         public string TerminationDate { get; set; }
@@ -881,15 +901,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string RegulatorName { get; set; }
     }
 
-    public class FirmPassportByFRNResponse
+    public class FirmPassportByFrnResponse
     {
         public string Status { get; set; }
-        public FirmPassportByFRNResponseResultInfoType ResultInfo { get; set; }
+        public FirmPassportByFrnResponseResultInfoType ResultInfo { get; set; }
         public string Message { get; set; }
-        public FirmPassportByFRNResponseDataTypeItem[] Data { get; set; }
+        public FirmPassportByFrnResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class FirmPassportByFRNResponseResultInfoType
+    public class FirmPassportByFrnResponseResultInfoType
     {
         public string Next { get; set; }
 
@@ -903,28 +923,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class FirmPassportByFRNResponseDataTypeItem
+    public class FirmPassportByFrnResponseDataTypeItem
     {
-        public FirmPassportByFRNResponseDataTypeItemPassportsTypeItem[] Passports { get; set; }
+        public FirmPassportByFrnResponseDataTypeItemPassportsTypeItem[] Passports { get; set; }
     }
 
-    public class FirmPassportByFRNResponseDataTypeItemPassportsTypeItem
+    public class FirmPassportByFrnResponseDataTypeItemPassportsTypeItem
     {
         public string PassportDirection { get; set; }
         public string Permissions { get; set; }
         public string Country { get; set; }
     }
 
-    public class FirmExclusionsByFRNResponse
+    public class FirmExclusionsByFrnResponse
     {
         [JsonProperty(";Status")]
         public string Status { get; set; }
-        public FirmExclusionsByFRNResponseResultInfoType ResultInfo { get; set; }
+        public FirmExclusionsByFrnResponseResultInfoType ResultInfo { get; set; }
         public string Message { get; set; }
-        public FirmExclusionsByFRNResponseDataTypeItem[] Data { get; set; }
+        public FirmExclusionsByFrnResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class FirmExclusionsByFRNResponseResultInfoType
+    public class FirmExclusionsByFrnResponseResultInfoType
     {
         [JsonProperty("page")]
         public string Page { get; set; }
@@ -936,10 +956,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class FirmExclusionsByFRNResponseDataTypeItem
+    public class FirmExclusionsByFrnResponseDataTypeItem
     {
         [JsonProperty("PSD2_Exclusion_Type")]
-        public string PSD2ExclusionType { get; set; }
+        public string Psd2ExclusionType { get; set; }
 
         [JsonProperty("Particular_Exclusion_relied_upon")]
         public string ParticularExclusionReliedUpon { get; set; }
@@ -948,15 +968,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string DescriptionOfServices { get; set; }
     }
 
-    public class FirmDisciplinaryHistoryByFRNResponse
+    public class FirmDisciplinaryHistoryByFrnResponse
     {
         public string Status { get; set; }
-        public FirmDisciplinaryHistoryByFRNResponseResultInfoType ResultInfo { get; set; }
+        public FirmDisciplinaryHistoryByFrnResponseResultInfoType ResultInfo { get; set; }
         public string Message { get; set; }
-        public FirmDisciplinaryHistoryByFRNResponseDataTypeItem[] Data { get; set; }
+        public FirmDisciplinaryHistoryByFrnResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class FirmDisciplinaryHistoryByFRNResponseResultInfoType
+    public class FirmDisciplinaryHistoryByFrnResponseResultInfoType
     {
         [JsonProperty("page")]
         public string Page { get; set; }
@@ -968,7 +988,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class FirmDisciplinaryHistoryByFRNResponseDataTypeItem
+    public class FirmDisciplinaryHistoryByFrnResponseDataTypeItem
     {
         public string TypeofDescription { get; set; }
         public string TypeofAction { get; set; }
@@ -976,15 +996,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string ActionEffectiveFrom { get; set; }
     }
 
-    public class FirmRequirementsByFRNResponse
+    public class FirmRequirementsByFrnResponse
     {
         public string Status { get; set; }
-        public FirmRequirementsByFRNResponseResultInfoType ResultInfo { get; set; }
+        public FirmRequirementsByFrnResponseResultInfoType ResultInfo { get; set; }
         public string Message { get; set; }
-        public FirmRequirementsByFRNResponseDataTypeItem[] Data { get; set; }
+        public FirmRequirementsByFrnResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class FirmRequirementsByFRNResponseResultInfoType
+    public class FirmRequirementsByFrnResponseResultInfoType
     {
         [JsonProperty("page")]
         public string Page { get; set; }
@@ -996,7 +1016,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class FirmRequirementsByFRNResponseDataTypeItem
+    public class FirmRequirementsByFrnResponseDataTypeItem
     {
         [JsonProperty("Effective Date")]
         public string EffectiveDate { get; set; }
@@ -1014,15 +1034,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string FinancialPromotionsInvestmentTypes { get; set; }
     }
 
-    public class FirmWaiverByFRNResponse
+    public class FirmWaiverByFrnResponse
     {
         public string Status { get; set; }
-        public FirmWaiverByFRNResponseResultInfoType ResultInfo { get; set; }
+        public FirmWaiverByFrnResponseResultInfoType ResultInfo { get; set; }
         public string Message { get; set; }
-        public FirmWaiverByFRNResponseDataTypeItem[] Data { get; set; }
+        public FirmWaiverByFrnResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class FirmWaiverByFRNResponseResultInfoType
+    public class FirmWaiverByFrnResponseResultInfoType
     {
         [JsonProperty("page")]
         public string Page { get; set; }
@@ -1034,10 +1054,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string TotalCount { get; set; }
     }
 
-    public class FirmWaiverByFRNResponseDataTypeItem
+    public class FirmWaiverByFrnResponseDataTypeItem
     {
         [JsonProperty("Waivers_Discretions_URL")]
-        public string WaiversDiscretionsURL { get; set; }
+        public string WaiversDiscretionsUrl { get; set; }
 
         [JsonProperty("Waivers_Discretions")]
         public string WaiversDiscretions { get; set; }

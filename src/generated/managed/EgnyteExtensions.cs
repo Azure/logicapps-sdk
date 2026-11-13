@@ -1501,7 +1501,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     public class CreateGroupResponseMembersTypeItem
     {
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("value")]
         public double Value { get; set; }
@@ -1545,7 +1545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     public class GroupInfoByIdResponseMembersTypeItem
     {
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("value")]
         public double Value { get; set; }
@@ -2257,7 +2257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     public class FullGroupUpdateResponseMembersTypeItem
     {
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("value")]
         public double Value { get; set; }
@@ -2305,7 +2305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     public class PartialGroupUpdateResponseMembersTypeItem
     {
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("value")]
         public double Value { get; set; }
@@ -2929,9 +2929,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NamespaceItemMetadataScopeTypeType
     {
-        GLOBAL,
+        [EnumMember(Value = "GLOBAL")]
+        Global,
         [EnumMember(Value = "FOLDER_SCOPE")]
-        FOLDERSCOPE
+        FolderScope
     }
 
     public class CreateNamespaceBodyInput
@@ -3514,9 +3515,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SearchBodyInputTypeType
     {
-        FOLDER,
-        FILE,
-        ALL
+        [EnumMember(Value = "FOLDER")]
+        Folder,
+        [EnumMember(Value = "FILE")]
+        File,
+        [EnumMember(Value = "ALL")]
+        All
     }
 
     public class BodyInputHasKeyTypeItem
@@ -3573,17 +3577,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
     public class GetEffectivePermissionsBodyInput
     {
-        public GetEffectivePermissionsBodyInput(string path, string username)
+        public GetEffectivePermissionsBodyInput(string path, string userName)
         {
             this.Path = path;
-            this.Username = username;
+            this.UserName = userName;
         }
 
         [JsonProperty("path", DefaultValueHandling = DefaultValueHandling.Include)]
         public string Path { get; set; }
 
         [JsonProperty("username", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string Username { get; set; }
+        public string UserName { get; set; }
     }
 
     public class SetFolderPermissionsBodyInput
@@ -3844,8 +3848,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputProtectionType
     {
-        PREVIEW,
-        NONE
+        [EnumMember(Value = "PREVIEW")]
+        Preview,
+        [EnumMember(Value = "NONE")]
+        None
     }
 
     public class AIQuestionResponse
@@ -3866,7 +3872,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     public class AICitation
     {
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("entryId")]
         public string EntryId { get; set; }
@@ -4147,10 +4153,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public ListAgentsBodyInputSortByType SortBy { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte.ListAgentsBodyInputSortByType.CreatedOn;
 
         [JsonProperty("sortDirection", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListKnowledgeBasesBodyInputSortDirectionType SortDirection { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte.ListKnowledgeBasesBodyInputSortDirectionType.ASC;
+        public ListKnowledgeBasesBodyInputSortDirectionType SortDirection { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte.ListKnowledgeBasesBodyInputSortDirectionType.Asc;
 
         [JsonProperty("status", DefaultValueHandling = DefaultValueHandling.Include)]
-        public ListKnowledgeBasesBodyInputStatusType Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte.ListKnowledgeBasesBodyInputStatusType.ACTIVE;
+        public ListKnowledgeBasesBodyInputStatusType Status { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte.ListKnowledgeBasesBodyInputStatusType.Active;
 
         [JsonProperty("page")]
         public int? Page { get; set; }
@@ -4189,16 +4195,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListKnowledgeBasesBodyInputSortDirectionType
     {
-        ASC,
-        DESC
+        [EnumMember(Value = "ASC")]
+        Asc,
+        [EnumMember(Value = "DESC")]
+        Desc
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListKnowledgeBasesBodyInputStatusType
     {
-        ACTIVE,
-        DELETED,
-        CREATED
+        [EnumMember(Value = "ACTIVE")]
+        Active,
+        [EnumMember(Value = "DELETED")]
+        Deleted,
+        [EnumMember(Value = "CREATED")]
+        Created
     }
 
     public class HybridSearchResponse
@@ -4210,7 +4221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     public class HybridSearchResponseResultsTypeItem
     {
         [JsonProperty("filename")]
-        public string Filename { get; set; }
+        public string FileName { get; set; }
 
         [JsonProperty("entryId")]
         public string EntryId { get; set; }
@@ -4387,10 +4398,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AgentExecutionStatusResponseStatusType
     {
-        PENDING,
-        RUNNING,
-        COMPLETED,
-        FAILED
+        [EnumMember(Value = "PENDING")]
+        Pending,
+        [EnumMember(Value = "RUNNING")]
+        Running,
+        [EnumMember(Value = "COMPLETED")]
+        Completed,
+        [EnumMember(Value = "FAILED")]
+        Failed
     }
 
     public class AgentExecutionStatusResponseCitationsTypeItem
@@ -4480,7 +4495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Path { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("createdBefore")]
         public string CreatedBefore { get; set; }
@@ -4562,7 +4577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string UploadedBy { get; set; }
 
         [JsonProperty("uploaded_by_username")]
-        public string UploadedByUsername { get; set; }
+        public string UploadedByUserName { get; set; }
 
         [JsonProperty("num_versions")]
         public int NumVersions { get; set; }
@@ -4679,25 +4694,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputFileQueryFieldsTypeItem
     {
-        ALL,
-        FILENAME,
-        COMMENTS,
-        CONTENT
+        [EnumMember(Value = "ALL")]
+        All,
+        [EnumMember(Value = "FILENAME")]
+        FileName,
+        [EnumMember(Value = "COMMENTS")]
+        Comments,
+        [EnumMember(Value = "CONTENT")]
+        Content
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputFolderQueryFieldsTypeItem
     {
-        ALL,
-        FOLDERNAME,
-        DESCRIPTION
+        [EnumMember(Value = "ALL")]
+        All,
+        [EnumMember(Value = "FOLDERNAME")]
+        Foldername,
+        [EnumMember(Value = "DESCRIPTION")]
+        Description
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputQueryOperatorType
     {
-        ANY,
-        ALL
+        [EnumMember(Value = "ANY")]
+        Any,
+        [EnumMember(Value = "ALL")]
+        All
     }
 
     public class FileCreatedBodyInput

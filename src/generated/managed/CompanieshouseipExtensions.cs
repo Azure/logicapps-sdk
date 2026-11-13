@@ -52,13 +52,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<IndividualPscResponse, ApiConnectionActionConfiguration> IndividualPsc(Expression<Func<string>> companyNumber, Expression<Func<string>> pCSId)
+        public IBodyWorkflowAction<IndividualPscResponse, ApiConnectionActionConfiguration> IndividualPsc(Expression<Func<string>> companyNumber, Expression<Func<string>> pcsId)
         {
             var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
-            var __workflow_pCSId = WorkflowExpression.Compile(pCSId, nameof(pCSId), required: true);
+            var __workflow_pcsId = WorkflowExpression.Compile(pcsId, nameof(pcsId), required: true);
             return new DeferredBodyAction<IndividualPscResponse, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/persons-with-significant-control/individual/{1}", __workflow_companyNumber.WithUrlEncoding(1), __workflow_pCSId.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/company/{0}/persons-with-significant-control/individual/{1}", __workflow_companyNumber.WithUrlEncoding(1), __workflow_pcsId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 return new ApiConnectionAction<IndividualPscResponse>(callPayload);

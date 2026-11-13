@@ -148,11 +148,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Etsy
         [JsonProperty("reason_code")]
         public string ReasonCode { get; set; }
 
-        [JsonProperty("buyer_total_adjustment_amount")]
+        [JsonProperty("total_adjustment_amount")]
         public int TotalAdjustmentAmount { get; set; }
 
         [JsonProperty("shop_total_adjustment_amount")]
         public int ShopTotalAdjustmentAmount { get; set; }
+
+        [JsonProperty("buyer_total_adjustment_amount")]
+        public int TotalAdjustmentAmount2 { get; set; }
 
         [JsonProperty("total_fee_adjustment_amount")]
         public int TotalFeeAdjustmentAmount { get; set; }

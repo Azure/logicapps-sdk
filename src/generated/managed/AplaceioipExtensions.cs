@@ -48,11 +48,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aplaceioip")]
-        public IBodyWorkflowAction<PIPGetResponse, ApiConnectionActionConfiguration> PIPGet(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null)
+        public IBodyWorkflowAction<PipGetResponse, ApiConnectionActionConfiguration> PipGet(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null)
         {
             var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
-            return new DeferredBodyAction<PIPGetResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PipGetResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/pip";
                 var apiCallHttpMethod = "get";
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
                     callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
                 if (__workflow_lon != null)
                     callPayload.Queries["lon"] = ExpressionConverter.Convert(__workflow_lon);
-                return new ApiConnectionAction<PIPGetResponse>(callPayload);
+                return new ApiConnectionAction<PipGetResponse>(callPayload);
             });
         }
     }
@@ -175,16 +175,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
         Country
     }
 
-    public class PIPGetResponse
+    public class PipGetResponse
     {
         [JsonProperty("session_id")]
         public string SessionId { get; set; }
 
         [JsonProperty("data")]
-        public PIPGetResponseDataTypeItem[] Data { get; set; }
+        public PipGetResponseDataTypeItem[] Data { get; set; }
     }
 
-    public class PIPGetResponseDataTypeItem
+    public class PipGetResponseDataTypeItem
     {
         [JsonProperty("score")]
         public int Score { get; set; }
@@ -205,10 +205,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
         public string Type { get; set; }
 
         [JsonProperty("address")]
-        public PIPGetResponseDataTypeItemAddressType Address { get; set; }
+        public PipGetResponseDataTypeItemAddressType Address { get; set; }
     }
 
-    public class PIPGetResponseDataTypeItemAddressType
+    public class PipGetResponseDataTypeItemAddressType
     {
         [JsonProperty("house_number")]
         public string HouseNumber { get; set; }

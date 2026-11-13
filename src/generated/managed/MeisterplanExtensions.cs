@@ -1717,10 +1717,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TaskResponseStatusType
     {
-        OPEN,
-        CLOSED,
+        [EnumMember(Value = "OPEN")]
+        Open,
+        [EnumMember(Value = "CLOSED")]
+        Closed,
         [EnumMember(Value = "IN_PROGRESS")]
-        INPROGRESS
+        InProgress
     }
 
     public class TaskEffortResponse
@@ -1759,11 +1761,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TaskAssigmentEntityResponseTypeType
     {
-        ROLE,
-        RESOURCE,
-        TEAM,
+        [EnumMember(Value = "ROLE")]
+        Role,
+        [EnumMember(Value = "RESOURCE")]
+        Resource,
+        [EnumMember(Value = "TEAM")]
+        Team,
         [EnumMember(Value = "RESOLVE_BY_KEY_OR_NAME")]
-        RESOLVEBYKEYORNAME
+        ResolveByKeyOrName
     }
 
     public class EffortValueResponse
@@ -1781,9 +1786,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EffortValueResponseUnitType
     {
-        HOURS,
+        [EnumMember(Value = "HOURS")]
+        Hours,
         [EnumMember(Value = "STORY_POINTS")]
-        STORYPOINTS
+        StoryPoints
     }
 
     public class SprintReferenceResponse
@@ -1818,7 +1824,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     {
         [EnumMember(Value = "TASK")]
         TaskObject,
-        MILESTONE
+        [EnumMember(Value = "MILESTONE")]
+        Milestone
     }
 
     public class Pagination
@@ -1877,10 +1884,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PayloadInputStatusType
     {
-        OPEN,
+        [EnumMember(Value = "OPEN")]
+        Open,
         [EnumMember(Value = "IN_PROGRESS")]
-        INPROGRESS,
-        CLOSED
+        InProgress,
+        [EnumMember(Value = "CLOSED")]
+        Closed
     }
 
     public class Effort
@@ -1924,11 +1933,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AssignmentEntityTypeType
     {
-        ROLE,
-        RESOURCE,
-        TEAM,
+        [EnumMember(Value = "ROLE")]
+        Role,
+        [EnumMember(Value = "RESOURCE")]
+        Resource,
+        [EnumMember(Value = "TEAM")]
+        Team,
         [EnumMember(Value = "RESOLVE_BY_KEY_OR_NAME")]
-        RESOLVEBYKEYORNAME
+        ResolveByKeyOrName
     }
 
     public class EffortValue
@@ -1989,7 +2001,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     {
         [EnumMember(Value = "TASK")]
         TaskObject,
-        MILESTONE
+        [EnumMember(Value = "MILESTONE")]
+        Milestone
     }
 
     public class TasksReplaceRequestInput
@@ -2049,10 +2062,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TaskReplaceRequestItemStatusType
     {
-        OPEN,
+        [EnumMember(Value = "OPEN")]
+        Open,
         [EnumMember(Value = "IN_PROGRESS")]
-        INPROGRESS,
-        CLOSED
+        InProgress,
+        [EnumMember(Value = "CLOSED")]
+        Closed
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -2060,7 +2075,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     {
         [EnumMember(Value = "TASK")]
         TaskObject,
-        MILESTONE
+        [EnumMember(Value = "MILESTONE")]
+        Milestone
     }
 
     public class ListResponseMilestoneResponse
@@ -2106,12 +2122,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     public enum StatusResponseValueType
     {
         [EnumMember(Value = "ON_TRACK")]
-        ONTRACK,
+        OnTrack,
         [EnumMember(Value = "NEEDS_ATTENTION")]
-        NEEDSATTENTION,
+        NeedsAttention,
         [EnumMember(Value = "OFF_TRACK")]
-        OFFTRACK,
-        DONE
+        OffTrack,
+        [EnumMember(Value = "DONE")]
+        Done
     }
 
     public class CreateMilestonePayloadInput
@@ -2151,12 +2168,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     public enum MilestoneStatusValueType
     {
         [EnumMember(Value = "ON_TRACK")]
-        ONTRACK,
+        OnTrack,
         [EnumMember(Value = "NEEDS_ATTENTION")]
-        NEEDSATTENTION,
+        NeedsAttention,
         [EnumMember(Value = "OFF_TRACK")]
-        OFFTRACK,
-        DONE
+        OffTrack,
+        [EnumMember(Value = "DONE")]
+        Done
     }
 
     public class ReplaceMilestonesPayloadInput
@@ -2221,9 +2239,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FinancialsResponseTypeType
     {
-        CAPEX,
-        OPEX,
-        BENEFIT
+        [EnumMember(Value = "CAPEX")]
+        Capex,
+        [EnumMember(Value = "OPEX")]
+        Opex,
+        [EnumMember(Value = "BENEFIT")]
+        Benefit
     }
 
     public class FinancialsTimingResponse
@@ -2281,9 +2302,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateFinancialActualsPayloadInputTypeType
     {
-        CAPEX,
-        OPEX,
-        BENEFIT
+        [EnumMember(Value = "CAPEX")]
+        Capex,
+        [EnumMember(Value = "OPEX")]
+        Opex,
+        [EnumMember(Value = "BENEFIT")]
+        Benefit
     }
 
     public class Timing
@@ -2357,9 +2381,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FinancialEventTypeType
     {
-        CAPEX,
-        OPEX,
-        BENEFIT
+        [EnumMember(Value = "CAPEX")]
+        Capex,
+        [EnumMember(Value = "OPEX")]
+        Opex,
+        [EnumMember(Value = "BENEFIT")]
+        Benefit
     }
 
     public class ListResponseFinancialActualsResponse
@@ -2392,9 +2419,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FinancialActualsResponseTypeType
     {
-        CAPEX,
-        OPEX,
-        BENEFIT
+        [EnumMember(Value = "CAPEX")]
+        Capex,
+        [EnumMember(Value = "OPEX")]
+        Opex,
+        [EnumMember(Value = "BENEFIT")]
+        Benefit
     }
 
     public class CreateFinancialActualsPayloadInput
@@ -2461,9 +2491,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FinancialActualsCreateOrReplaceRequestTypeType
     {
-        CAPEX,
-        OPEX,
-        BENEFIT
+        [EnumMember(Value = "CAPEX")]
+        Capex,
+        [EnumMember(Value = "OPEX")]
+        Opex,
+        [EnumMember(Value = "BENEFIT")]
+        Benefit
     }
 
     public class ListResponseAllocationResponse
@@ -2499,11 +2532,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AllocatedEntityResponseTypeType
     {
-        ROLE,
-        RESOURCE,
-        TEAM,
+        [EnumMember(Value = "ROLE")]
+        Role,
+        [EnumMember(Value = "RESOURCE")]
+        Resource,
+        [EnumMember(Value = "TEAM")]
+        Team,
         [EnumMember(Value = "RESOLVE_BY_KEY_OR_NAME")]
-        RESOLVEBYKEYORNAME
+        ResolveByKeyOrName
     }
 
     public class AllocationSegmentResponse
@@ -2552,11 +2588,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AllocatedEntityTypeType
     {
-        ROLE,
-        RESOURCE,
-        TEAM,
+        [EnumMember(Value = "ROLE")]
+        Role,
+        [EnumMember(Value = "RESOURCE")]
+        Resource,
+        [EnumMember(Value = "TEAM")]
+        Team,
         [EnumMember(Value = "RESOLVE_BY_KEY_OR_NAME")]
-        RESOLVEBYKEYORNAME
+        ResolveByKeyOrName
     }
 
     public class AllocationSegment
@@ -2636,18 +2675,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     public enum AbsenceResponseStartAbsenceDayTypeType
     {
         [EnumMember(Value = "FULL_DAY")]
-        FULLDAY,
+        FullDay,
         [EnumMember(Value = "HALF_DAY")]
-        HALFDAY
+        HalfDay
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AbsenceResponseFinishAbsenceDayTypeType
     {
         [EnumMember(Value = "FULL_DAY")]
-        FULLDAY,
+        FullDay,
         [EnumMember(Value = "HALF_DAY")]
-        HALFDAY
+        HalfDay
     }
 
     public class CreateAbsencesPayloadInput
@@ -2675,18 +2714,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     public enum PayloadInputStartDayTypeType
     {
         [EnumMember(Value = "FULL_DAY")]
-        FULLDAY,
+        FullDay,
         [EnumMember(Value = "HALF_DAY")]
-        HALFDAY
+        HalfDay
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PayloadInputFinishDayTypeType
     {
         [EnumMember(Value = "FULL_DAY")]
-        FULLDAY,
+        FullDay,
         [EnumMember(Value = "HALF_DAY")]
-        HALFDAY
+        HalfDay
     }
 
     public class AbsencesInput
@@ -2725,18 +2764,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     public enum CreateAbsenceRequestStartDayTypeType
     {
         [EnumMember(Value = "FULL_DAY")]
-        FULLDAY,
+        FullDay,
         [EnumMember(Value = "HALF_DAY")]
-        HALFDAY
+        HalfDay
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateAbsenceRequestFinishDayTypeType
     {
         [EnumMember(Value = "FULL_DAY")]
-        FULLDAY,
+        FullDay,
         [EnumMember(Value = "HALF_DAY")]
-        HALFDAY
+        HalfDay
     }
 
     public class PaginatedResponseTeamResponse
@@ -2820,9 +2859,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TeamResponseStatusType
     {
-        ACTIVE,
-        INACTIVE,
-        FUTURE
+        [EnumMember(Value = "ACTIVE")]
+        Active,
+        [EnumMember(Value = "INACTIVE")]
+        Inactive,
+        [EnumMember(Value = "FUTURE")]
+        Future
     }
 
     public class VelocityResponse
@@ -3065,8 +3107,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AllProjectsResponseCostTypeType
     {
-        CAPEX,
-        OPEX
+        [EnumMember(Value = "CAPEX")]
+        Capex,
+        [EnumMember(Value = "OPEX")]
+        Opex
     }
 
     public class StatusFieldResponse
@@ -3109,10 +3153,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     public enum AllProjectsPriorityResponseRankCategoryType
     {
         [EnumMember(Value = "ABOVE_MUST_HAVE")]
-        ABOVEMUSTHAVE,
+        AboveMustHave,
         [EnumMember(Value = "BELOW_CUT_OFF")]
-        BELOWCUTOFF,
-        REGULAR
+        BelowCutOff,
+        [EnumMember(Value = "REGULAR")]
+        Regular
     }
 
     public class ProjectResponse
@@ -3187,8 +3232,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ProjectResponseCostTypeType
     {
-        CAPEX,
-        OPEX
+        [EnumMember(Value = "CAPEX")]
+        Capex,
+        [EnumMember(Value = "OPEX")]
+        Opex
     }
 
     public class PriorityResponse
@@ -3201,10 +3248,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     public enum PriorityResponseRankCategoryType
     {
         [EnumMember(Value = "ABOVE_MUST_HAVE")]
-        ABOVEMUSTHAVE,
+        AboveMustHave,
         [EnumMember(Value = "BELOW_CUT_OFF")]
-        BELOWCUTOFF,
-        REGULAR
+        BelowCutOff,
+        [EnumMember(Value = "REGULAR")]
+        Regular
     }
 
     public class CreateProjectPayloadInput
@@ -3263,7 +3311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public JToken CustomFields { get; set; }
 
         [JsonProperty("obsUnits")]
-        public JToken OBSUnits { get; set; }
+        public JToken ObsUnits { get; set; }
 
         [JsonProperty("program")]
         public Program Program { get; set; }
@@ -3281,8 +3329,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PayloadInputCostTypeType
     {
-        CAPEX,
-        OPEX
+        [EnumMember(Value = "CAPEX")]
+        Capex,
+        [EnumMember(Value = "OPEX")]
+        Opex
     }
 
     public class Manager
@@ -3354,17 +3404,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     public enum RankCategoryCategoryType
     {
         [EnumMember(Value = "ABOVE_MUST_HAVE")]
-        ABOVEMUSTHAVE,
-        REGULAR,
+        AboveMustHave,
+        [EnumMember(Value = "REGULAR")]
+        Regular,
         [EnumMember(Value = "BELOW_CUT_OFF")]
-        BELOWCUTOFF
+        BelowCutOff
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RankCategoryPositionType
     {
-        LAST,
-        FIRST
+        [EnumMember(Value = "LAST")]
+        Last,
+        [EnumMember(Value = "FIRST")]
+        First
     }
 
     public class TaskManagementLinkResponse
@@ -3373,7 +3426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string ToolKey { get; set; }
 
         [JsonProperty("externalViewUrl")]
-        public string ExternalViewURL { get; set; }
+        public string ExternalViewUrl { get; set; }
 
         [JsonProperty("projectIdOrKeyInTool")]
         public string ProjectIdOrKeyInTool { get; set; }
@@ -3393,7 +3446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string ToolKey { get; set; }
 
         [JsonProperty("externalViewUrl")]
-        public string ExternalViewURL { get; set; }
+        public string ExternalViewUrl { get; set; }
     }
 
     public class PaginatedResponseActualTimeWorkedResponse
@@ -3429,10 +3482,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ActualsEntityLinkResponseTypeType
     {
-        ROLE,
-        RESOURCE,
+        [EnumMember(Value = "ROLE")]
+        Role,
+        [EnumMember(Value = "RESOURCE")]
+        Resource,
         [EnumMember(Value = "RESOLVE_BY_KEY_OR_NAME")]
-        RESOLVEBYKEYORNAME
+        ResolveByKeyOrName
     }
 
     public class ActualsBookingResponse
@@ -3456,8 +3511,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ActualsBookingResponseCostTypeType
     {
-        CAPEX,
-        OPEX
+        [EnumMember(Value = "CAPEX")]
+        Capex,
+        [EnumMember(Value = "OPEX")]
+        Opex
     }
 
     public class CreateOrUpdateActualTimeWorkedPayloadInput
@@ -3498,10 +3555,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BookedEntityTypeType
     {
-        ROLE,
-        RESOURCE,
+        [EnumMember(Value = "ROLE")]
+        Role,
+        [EnumMember(Value = "RESOURCE")]
+        Resource,
         [EnumMember(Value = "RESOLVE_BY_KEY_OR_NAME")]
-        RESOLVEBYKEYORNAME
+        ResolveByKeyOrName
     }
 
     public class Bookings
@@ -3528,15 +3587,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BookingsCostTypeType
     {
-        CAPEX,
-        OPEX
+        [EnumMember(Value = "CAPEX")]
+        Capex,
+        [EnumMember(Value = "OPEX")]
+        Opex
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PayloadInputModeType
     {
-        ADD,
-        REPLACE
+        [EnumMember(Value = "ADD")]
+        Add,
+        [EnumMember(Value = "REPLACE")]
+        Replace
     }
 
     public class PaginatedResponseProgramGetAllResponse
@@ -3599,7 +3662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public JToken ObsUnits { get; set; }
 
         [JsonProperty("viewUrl")]
-        public string ViewURL { get; set; }
+        public string ViewUrl { get; set; }
     }
 
     public class SingleValueStringResponse
@@ -3692,8 +3755,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PrioritiesPositionType
     {
-        FIRST,
-        LAST
+        [EnumMember(Value = "FIRST")]
+        First,
+        [EnumMember(Value = "LAST")]
+        Last
     }
 
     public class PaginatedResponseMilestoneDependencyResponse
@@ -3783,8 +3848,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RoleResponseCostTypeType
     {
-        CAPEX,
-        OPEX
+        [EnumMember(Value = "CAPEX")]
+        Capex,
+        [EnumMember(Value = "OPEX")]
+        Opex
     }
 
     public class CreateRolePayloadInput
@@ -3918,14 +3985,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public double CostPerHour { get; set; }
 
         [JsonProperty("obsUnits")]
-        public JToken OBSUnits { get; set; }
+        public JToken ObsUnits { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PrimaryRoleResponseCostTypeType
     {
-        CAPEX,
-        OPEX
+        [EnumMember(Value = "CAPEX")]
+        Capex,
+        [EnumMember(Value = "OPEX")]
+        Opex
     }
 
     public class ResourceCalendarResponse
@@ -4391,7 +4460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public JToken CustomFields { get; set; }
 
         [JsonProperty("obsUnits")]
-        public JToken OBSUnits { get; set; }
+        public JToken ObsUnits { get; set; }
 
         [JsonProperty("program")]
         public Program Program { get; set; }
@@ -4612,7 +4681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string Id { get; set; }
 
         [JsonProperty("userName")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("externalId")]
         public string ExternalId { get; set; }
@@ -4795,11 +4864,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AllocationCommentEntityResponseTypeType
     {
-        ROLE,
-        RESOURCE,
-        TEAM,
+        [EnumMember(Value = "ROLE")]
+        Role,
+        [EnumMember(Value = "RESOURCE")]
+        Resource,
+        [EnumMember(Value = "TEAM")]
+        Team,
         [EnumMember(Value = "RESOLVE_BY_KEY_OR_NAME")]
-        RESOLVEBYKEYORNAME
+        ResolveByKeyOrName
     }
 
     public class ActualTimeWorkedByIdResponse
@@ -4826,8 +4898,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ActualTimeWorkedByIdResponseCostTypeType
     {
-        CAPEX,
-        OPEX
+        [EnumMember(Value = "CAPEX")]
+        Capex,
+        [EnumMember(Value = "OPEX")]
+        Opex
     }
 
     public class ListResponsePortfolioResponse
@@ -4878,7 +4952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         public string Name { get; set; }
 
         [JsonProperty("callbackUrl")]
-        public string CallbackURL { get; set; }
+        public string CallbackUrl { get; set; }
 
         [JsonProperty("eventTypes")]
         public WebhookResponseEventTypesTypeItem[] EventTypes { get; set; }
@@ -4906,18 +4980,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     public enum WebhookResponseEventTypesTypeItem
     {
         [EnumMember(Value = "PROJECT_CREATE")]
-        PROJECTCREATE,
+        ProjectCreate,
         [EnumMember(Value = "PROJECT_UPDATE")]
-        PROJECTUPDATE,
+        ProjectUpdate,
         [EnumMember(Value = "PROJECT_DELETE")]
-        PROJECTDELETE
+        ProjectDelete
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum WebhookResponseStatusType
     {
-        SUSPENDED,
-        ACTIVE
+        [EnumMember(Value = "SUSPENDED")]
+        Suspended,
+        [EnumMember(Value = "ACTIVE")]
+        Active
     }
 
     public class CreateWebhookPayloadInput
@@ -4929,7 +5005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
         }
 
         [JsonProperty("callbackUrl", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("eventTypes", DefaultValueHandling = DefaultValueHandling.Include)]
         public PayloadInputEventTypesTypeItem[] EventTypes { get; set; }
@@ -4945,11 +5021,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meisterplan
     public enum PayloadInputEventTypesTypeItem
     {
         [EnumMember(Value = "PROJECT_CREATE")]
-        PROJECTCREATE,
+        ProjectCreate,
         [EnumMember(Value = "PROJECT_UPDATE")]
-        PROJECTUPDATE,
+        ProjectUpdate,
         [EnumMember(Value = "PROJECT_DELETE")]
-        PROJECTDELETE
+        ProjectDelete
     }
 }
 

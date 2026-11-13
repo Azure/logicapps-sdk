@@ -13,20 +13,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
     public class GiphyipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giphyip")]
-        public IBodyWorkflowAction<GetGIFResponse, ApiConnectionActionConfiguration> GetGIF(Expression<Func<string>> aPIKEY, Expression<Func<string>> q, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> rating = null, Expression<Func<string>> lang = null)
+        public IBodyWorkflowAction<GetGifResponse, ApiConnectionActionConfiguration> GetGif(Expression<Func<string>> apiKey, Expression<Func<string>> q, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> rating = null, Expression<Func<string>> lang = null)
         {
-            var __workflow_aPIKEY = WorkflowExpression.Compile(aPIKEY, nameof(aPIKEY), required: true);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
             var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             var __workflow_rating = WorkflowExpression.Compile(rating, nameof(rating), required: false);
             var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
-            return new DeferredBodyAction<GetGIFResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetGifResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Queries["API_KEY"] = ExpressionConverter.Convert(__workflow_aPIKEY);
+                callPayload.Queries["API_KEY"] = ExpressionConverter.Convert(__workflow_apiKey);
                 callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
                 if (__workflow_limit != null)
                     callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
                     callPayload.Queries["rating"] = ExpressionConverter.Convert(__workflow_rating);
                 if (__workflow_lang != null)
                     callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
-                return new ApiConnectionAction<GetGIFResponse>(callPayload);
+                return new ApiConnectionAction<GetGifResponse>(callPayload);
             });
         }
     }
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
     {
     }
 
-    public class GetGIFResponse
+    public class GetGifResponse
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string EmbedUrl { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("source")]
         public string Source { get; set; }
@@ -96,91 +96,91 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string TrendingDatetime { get; set; }
 
         [JsonProperty("images")]
-        public GetGIFResponseImagesType Images { get; set; }
+        public GetGifResponseImagesType Images { get; set; }
 
         [JsonProperty("user")]
-        public GetGIFResponseUserType User { get; set; }
+        public GetGifResponseUserType User { get; set; }
 
         [JsonProperty("analytics_response_payload")]
         public string AnalyticsResponsePayload { get; set; }
 
         [JsonProperty("analytics")]
-        public GetGIFResponseAnalyticsType Analytics { get; set; }
+        public GetGifResponseAnalyticsType Analytics { get; set; }
     }
 
-    public class GetGIFResponseImagesType
+    public class GetGifResponseImagesType
     {
         [JsonProperty("original")]
-        public GetGIFResponseImagesTypeOriginalType Original { get; set; }
+        public GetGifResponseImagesTypeOriginalType Original { get; set; }
 
         [JsonProperty("downsized")]
-        public GetGIFResponseImagesTypeDownsizedType Downsized { get; set; }
+        public GetGifResponseImagesTypeDownsizedType Downsized { get; set; }
 
         [JsonProperty("downsized_large")]
-        public GetGIFResponseImagesTypeDownsizedLargeType DownsizedLarge { get; set; }
+        public GetGifResponseImagesTypeDownsizedLargeType DownsizedLarge { get; set; }
 
         [JsonProperty("downsized_medium")]
-        public GetGIFResponseImagesTypeDownsizedMediumType DownsizedMedium { get; set; }
+        public GetGifResponseImagesTypeDownsizedMediumType DownsizedMedium { get; set; }
 
         [JsonProperty("downsized_small")]
-        public GetGIFResponseImagesTypeDownsizedSmallType DownsizedSmall { get; set; }
+        public GetGifResponseImagesTypeDownsizedSmallType DownsizedSmall { get; set; }
 
         [JsonProperty("downsized_still")]
-        public GetGIFResponseImagesTypeDownsizedStillType DownsizedStill { get; set; }
+        public GetGifResponseImagesTypeDownsizedStillType DownsizedStill { get; set; }
 
         [JsonProperty("fixed_height")]
-        public GetGIFResponseImagesTypeFixedHeightType FixedHeight { get; set; }
+        public GetGifResponseImagesTypeFixedHeightType FixedHeight { get; set; }
 
         [JsonProperty("fixed_height_downsampled")]
-        public GetGIFResponseImagesTypeFixedHeightDownsampledType FixedHeightDownsampled { get; set; }
+        public GetGifResponseImagesTypeFixedHeightDownsampledType FixedHeightDownsampled { get; set; }
 
         [JsonProperty("fixed_height_small")]
-        public GetGIFResponseImagesTypeFixedHeightSmallType FixedHeightSmall { get; set; }
+        public GetGifResponseImagesTypeFixedHeightSmallType FixedHeightSmall { get; set; }
 
         [JsonProperty("fixed_height_small_still")]
-        public GetGIFResponseImagesTypeFixedHeightSmallStillType FixedHeightSmallStill { get; set; }
+        public GetGifResponseImagesTypeFixedHeightSmallStillType FixedHeightSmallStill { get; set; }
 
         [JsonProperty("fixed_height_still")]
-        public GetGIFResponseImagesTypeFixedHeightStillType FixedHeightStill { get; set; }
+        public GetGifResponseImagesTypeFixedHeightStillType FixedHeightStill { get; set; }
 
         [JsonProperty("fixed_width")]
-        public GetGIFResponseImagesTypeFixedWidthType FixedWidth { get; set; }
+        public GetGifResponseImagesTypeFixedWidthType FixedWidth { get; set; }
 
         [JsonProperty("fixed_width_downsampled")]
-        public GetGIFResponseImagesTypeFixedWidthDownsampledType FixedWidthDownsampled { get; set; }
+        public GetGifResponseImagesTypeFixedWidthDownsampledType FixedWidthDownsampled { get; set; }
 
         [JsonProperty("fixed_width_small")]
-        public GetGIFResponseImagesTypeFixedWidthSmallType FixedWidthSmall { get; set; }
+        public GetGifResponseImagesTypeFixedWidthSmallType FixedWidthSmall { get; set; }
 
         [JsonProperty("fixed_width_small_still")]
-        public GetGIFResponseImagesTypeFixedWidthSmallStillType FixedWidthSmallStill { get; set; }
+        public GetGifResponseImagesTypeFixedWidthSmallStillType FixedWidthSmallStill { get; set; }
 
         [JsonProperty("fixed_width_still")]
-        public GetGIFResponseImagesTypeFixedWidthStillType FixedWidthStill { get; set; }
+        public GetGifResponseImagesTypeFixedWidthStillType FixedWidthStill { get; set; }
 
         [JsonProperty("looping")]
-        public GetGIFResponseImagesTypeLoopingType Looping { get; set; }
+        public GetGifResponseImagesTypeLoopingType Looping { get; set; }
 
         [JsonProperty("original_still")]
-        public GetGIFResponseImagesTypeOriginalStillType OriginalStill { get; set; }
+        public GetGifResponseImagesTypeOriginalStillType OriginalStill { get; set; }
 
         [JsonProperty("original_mp4")]
-        public GetGIFResponseImagesTypeOriginalMp4Type OriginalMp4 { get; set; }
+        public GetGifResponseImagesTypeOriginalMp4Type OriginalMp4 { get; set; }
 
         [JsonProperty("preview")]
-        public GetGIFResponseImagesTypePreviewType Preview { get; set; }
+        public GetGifResponseImagesTypePreviewType Preview { get; set; }
 
         [JsonProperty("preview_gif")]
-        public GetGIFResponseImagesTypePreviewGifType PreviewGif { get; set; }
+        public GetGifResponseImagesTypePreviewGifType PreviewGif { get; set; }
 
         [JsonProperty("preview_webp")]
-        public GetGIFResponseImagesTypePreviewWebpType PreviewWebp { get; set; }
+        public GetGifResponseImagesTypePreviewWebpType PreviewWebp { get; set; }
 
         [JsonProperty("480w_still")]
-        public GetGIFResponseImagesType_480wStillType _480wStill { get; set; }
+        public GetGifResponseImagesType_480wStillType _480wStill { get; set; }
     }
 
-    public class GetGIFResponseImagesTypeOriginalType
+    public class GetGifResponseImagesTypeOriginalType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Hash { get; set; }
     }
 
-    public class GetGIFResponseImagesTypeDownsizedType
+    public class GetGifResponseImagesTypeDownsizedType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Url { get; set; }
     }
 
-    public class GetGIFResponseImagesTypeDownsizedLargeType
+    public class GetGifResponseImagesTypeDownsizedLargeType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Url { get; set; }
     }
 
-    public class GetGIFResponseImagesTypeDownsizedMediumType
+    public class GetGifResponseImagesTypeDownsizedMediumType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Url { get; set; }
     }
 
-    public class GetGIFResponseImagesTypeDownsizedSmallType
+    public class GetGifResponseImagesTypeDownsizedSmallType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Mp4 { get; set; }
     }
 
-    public class GetGIFResponseImagesTypeDownsizedStillType
+    public class GetGifResponseImagesTypeDownsizedStillType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -288,55 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Url { get; set; }
     }
 
-    public class GetGIFResponseImagesTypeFixedHeightType
-    {
-        [JsonProperty("height")]
-        public string Height { get; set; }
-
-        [JsonProperty("width")]
-        public string Width { get; set; }
-
-        [JsonProperty("size")]
-        public string Size { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("mp4_size")]
-        public string Mp4Size { get; set; }
-
-        [JsonProperty("mp4")]
-        public string Mp4 { get; set; }
-
-        [JsonProperty("webp_size")]
-        public string WebpSize { get; set; }
-
-        [JsonProperty("webp")]
-        public string Webp { get; set; }
-    }
-
-    public class GetGIFResponseImagesTypeFixedHeightDownsampledType
-    {
-        [JsonProperty("height")]
-        public string Height { get; set; }
-
-        [JsonProperty("width")]
-        public string Width { get; set; }
-
-        [JsonProperty("size")]
-        public string Size { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-
-        [JsonProperty("webp_size")]
-        public string WebpSize { get; set; }
-
-        [JsonProperty("webp")]
-        public string Webp { get; set; }
-    }
-
-    public class GetGIFResponseImagesTypeFixedHeightSmallType
+    public class GetGifResponseImagesTypeFixedHeightType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -363,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Webp { get; set; }
     }
 
-    public class GetGIFResponseImagesTypeFixedHeightSmallStillType
+    public class GetGifResponseImagesTypeFixedHeightDownsampledType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -376,24 +328,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
 
         [JsonProperty("url")]
         public string Url { get; set; }
+
+        [JsonProperty("webp_size")]
+        public string WebpSize { get; set; }
+
+        [JsonProperty("webp")]
+        public string Webp { get; set; }
     }
 
-    public class GetGIFResponseImagesTypeFixedHeightStillType
-    {
-        [JsonProperty("height")]
-        public string Height { get; set; }
-
-        [JsonProperty("width")]
-        public string Width { get; set; }
-
-        [JsonProperty("size")]
-        public string Size { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
-    }
-
-    public class GetGIFResponseImagesTypeFixedWidthType
+    public class GetGifResponseImagesTypeFixedHeightSmallType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -420,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Webp { get; set; }
     }
 
-    public class GetGIFResponseImagesTypeFixedWidthDownsampledType
+    public class GetGifResponseImagesTypeFixedHeightSmallStillType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -433,15 +376,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
 
         [JsonProperty("url")]
         public string Url { get; set; }
-
-        [JsonProperty("webp_size")]
-        public string WebpSize { get; set; }
-
-        [JsonProperty("webp")]
-        public string Webp { get; set; }
     }
 
-    public class GetGIFResponseImagesTypeFixedWidthSmallType
+    public class GetGifResponseImagesTypeFixedHeightStillType
+    {
+        [JsonProperty("height")]
+        public string Height { get; set; }
+
+        [JsonProperty("width")]
+        public string Width { get; set; }
+
+        [JsonProperty("size")]
+        public string Size { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+    }
+
+    public class GetGifResponseImagesTypeFixedWidthType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -468,7 +420,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Webp { get; set; }
     }
 
-    public class GetGIFResponseImagesTypeFixedWidthSmallStillType
+    public class GetGifResponseImagesTypeFixedWidthDownsampledType
+    {
+        [JsonProperty("height")]
+        public string Height { get; set; }
+
+        [JsonProperty("width")]
+        public string Width { get; set; }
+
+        [JsonProperty("size")]
+        public string Size { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("webp_size")]
+        public string WebpSize { get; set; }
+
+        [JsonProperty("webp")]
+        public string Webp { get; set; }
+    }
+
+    public class GetGifResponseImagesTypeFixedWidthSmallType
+    {
+        [JsonProperty("height")]
+        public string Height { get; set; }
+
+        [JsonProperty("width")]
+        public string Width { get; set; }
+
+        [JsonProperty("size")]
+        public string Size { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
+        [JsonProperty("mp4_size")]
+        public string Mp4Size { get; set; }
+
+        [JsonProperty("mp4")]
+        public string Mp4 { get; set; }
+
+        [JsonProperty("webp_size")]
+        public string WebpSize { get; set; }
+
+        [JsonProperty("webp")]
+        public string Webp { get; set; }
+    }
+
+    public class GetGifResponseImagesTypeFixedWidthSmallStillType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Url { get; set; }
     }
 
-    public class GetGIFResponseImagesTypeFixedWidthStillType
+    public class GetGifResponseImagesTypeFixedWidthStillType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Url { get; set; }
     }
 
-    public class GetGIFResponseImagesTypeLoopingType
+    public class GetGifResponseImagesTypeLoopingType
     {
         [JsonProperty("mp4_size")]
         public string Mp4Size { get; set; }
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Mp4 { get; set; }
     }
 
-    public class GetGIFResponseImagesTypeOriginalStillType
+    public class GetGifResponseImagesTypeOriginalStillType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Url { get; set; }
     }
 
-    public class GetGIFResponseImagesTypeOriginalMp4Type
+    public class GetGifResponseImagesTypeOriginalMp4Type
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Mp4 { get; set; }
     }
 
-    public class GetGIFResponseImagesTypePreviewType
+    public class GetGifResponseImagesTypePreviewType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -552,7 +552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Mp4 { get; set; }
     }
 
-    public class GetGIFResponseImagesTypePreviewGifType
+    public class GetGifResponseImagesTypePreviewGifType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -567,7 +567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Url { get; set; }
     }
 
-    public class GetGIFResponseImagesTypePreviewWebpType
+    public class GetGifResponseImagesTypePreviewWebpType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -582,7 +582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Url { get; set; }
     }
 
-    public class GetGIFResponseImagesType_480wStillType
+    public class GetGifResponseImagesType_480wStillType
     {
         [JsonProperty("height")]
         public string Height { get; set; }
@@ -597,7 +597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string Url { get; set; }
     }
 
-    public class GetGIFResponseUserType
+    public class GetGifResponseUserType
     {
         [JsonProperty("avatar_url")]
         public string AvatarUrl { get; set; }
@@ -612,7 +612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public string ProfileUrl { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
@@ -630,31 +630,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         public bool IsVerified { get; set; }
     }
 
-    public class GetGIFResponseAnalyticsType
+    public class GetGifResponseAnalyticsType
     {
         [JsonProperty("onload")]
-        public GetGIFResponseAnalyticsTypeOnloadType Onload { get; set; }
+        public GetGifResponseAnalyticsTypeOnloadType Onload { get; set; }
 
         [JsonProperty("onclick")]
-        public GetGIFResponseAnalyticsTypeOnclickType Onclick { get; set; }
+        public GetGifResponseAnalyticsTypeOnclickType Onclick { get; set; }
 
         [JsonProperty("onsent")]
-        public GetGIFResponseAnalyticsTypeOnsentType Onsent { get; set; }
+        public GetGifResponseAnalyticsTypeOnsentType Onsent { get; set; }
     }
 
-    public class GetGIFResponseAnalyticsTypeOnloadType
+    public class GetGifResponseAnalyticsTypeOnloadType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
     }
 
-    public class GetGIFResponseAnalyticsTypeOnclickType
+    public class GetGifResponseAnalyticsTypeOnclickType
     {
         [JsonProperty("url")]
         public string Url { get; set; }
     }
 
-    public class GetGIFResponseAnalyticsTypeOnsentType
+    public class GetGifResponseAnalyticsTypeOnsentType
     {
         [JsonProperty("url")]
         public string Url { get; set; }

@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippydoc
     public enum BodyInputTypeType
     {
         [EnumMember(Value = "ON_TABLE_CHANGE")]
-        ONTABLECHANGE
+        OnTableChange
     }
 }
 

@@ -31,11 +31,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubgenerateical")]
-        public IBodyWorkflowAction<URLResponse, ApiConnectionActionConfiguration> URL(Expression<Func<string>> output = null, Expression<Func<BodyInput>> body = null)
+        public IBodyWorkflowAction<UrlResponse, ApiConnectionActionConfiguration> Url(Expression<Func<string>> output = null, Expression<Func<BodyInput>> body = null)
         {
             var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<URLResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<UrlResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/url";
                 var apiCallHttpMethod = "post";
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
                     callPayload.Queries["output"] = ExpressionConverter.Convert(__workflow_output);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<URLResponse>(callPayload);
+                return new ApiConnectionAction<UrlResponse>(callPayload);
             });
         }
     }
@@ -101,13 +101,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputRecurrenceTypeFrequencyType
     {
-        DAILY,
-        WEEKLY,
-        MONTHLY,
-        YEARLY
+        [EnumMember(Value = "DAILY")]
+        Daily,
+        [EnumMember(Value = "WEEKLY")]
+        Weekly,
+        [EnumMember(Value = "MONTHLY")]
+        Monthly,
+        [EnumMember(Value = "YEARLY")]
+        Yearly
     }
 
-    public class URLResponse
+    public class UrlResponse
     {
         [JsonProperty("data")]
         public string Data { get; set; }

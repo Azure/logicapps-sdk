@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicmcp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicmcp")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> OauthProtectedResource()
+        public IWorkflowAction<ApiConnectionActionConfiguration> OAuthProtectedResource()
         {
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {

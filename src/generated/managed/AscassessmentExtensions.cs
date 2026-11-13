@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascassessment
 
     public class AscassessmentTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> ASCAssessmentTriggerSubscribe()
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> AscAssessmentTriggerSubscribe()
         {
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {

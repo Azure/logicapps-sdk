@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
     public class ApitemplateipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessPDFFile, ApiConnectionActionConfiguration> PDF(Expression<Func<string>> templateId, Expression<Func<object>> body, Expression<Func<string>> exportType = null, Expression<Func<int>> expiration = null, Expression<Func<string>> outputHtml = null, Expression<Func<string>> outputFormat = null, Expression<Func<string>> filename = null, Expression<Func<string>> imageResampleRes = null, Expression<Func<string>> isCmyk = null, Expression<Func<int>> cloudStorage = null, Expression<Func<string>> meta = null, Expression<Func<string>> async = null, Expression<Func<string>> webhookUrl = null)
+        public IBodyWorkflowAction<ResponseSuccessPdfFile, ApiConnectionActionConfiguration> Pdf(Expression<Func<string>> templateId, Expression<Func<object>> body, Expression<Func<string>> exportType = null, Expression<Func<int>> expiration = null, Expression<Func<string>> outputHtml = null, Expression<Func<string>> outputFormat = null, Expression<Func<string>> fileName = null, Expression<Func<string>> imageResampleRes = null, Expression<Func<string>> isCmyk = null, Expression<Func<int>> cloudStorage = null, Expression<Func<string>> meta = null, Expression<Func<string>> async = null, Expression<Func<string>> webhookUrl = null)
         {
             var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
             var __workflow_expiration = WorkflowExpression.Compile(expiration, nameof(expiration), required: false);
             var __workflow_outputHtml = WorkflowExpression.Compile(outputHtml, nameof(outputHtml), required: false);
             var __workflow_outputFormat = WorkflowExpression.Compile(outputFormat, nameof(outputFormat), required: false);
-            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             var __workflow_imageResampleRes = WorkflowExpression.Compile(imageResampleRes, nameof(imageResampleRes), required: false);
             var __workflow_isCmyk = WorkflowExpression.Compile(isCmyk, nameof(isCmyk), required: false);
             var __workflow_cloudStorage = WorkflowExpression.Compile(cloudStorage, nameof(cloudStorage), required: false);
             var __workflow_meta = WorkflowExpression.Compile(meta, nameof(meta), required: false);
             var __workflow_async = WorkflowExpression.Compile(async, nameof(async), required: false);
             var __workflow_webhookUrl = WorkflowExpression.Compile(webhookUrl, nameof(webhookUrl), required: false);
-            return new DeferredBodyAction<ResponseSuccessPDFFile, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ResponseSuccessPdfFile, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/v2/create-pdf";
                 var apiCallHttpMethod = "post";
@@ -42,8 +42,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                     callPayload.Queries["output_html"] = ExpressionConverter.Convert(__workflow_outputHtml);
                 if (__workflow_outputFormat != null)
                     callPayload.Queries["output_format"] = ExpressionConverter.Convert(__workflow_outputFormat);
-                if (__workflow_filename != null)
-                    callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_filename);
+                if (__workflow_fileName != null)
+                    callPayload.Queries["filename"] = ExpressionConverter.Convert(__workflow_fileName);
                 if (__workflow_imageResampleRes != null)
                     callPayload.Queries["image_resample_res"] = ExpressionConverter.Convert(__workflow_imageResampleRes);
                 if (__workflow_isCmyk != null)
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
                 if (__workflow_webhookUrl != null)
                     callPayload.Queries["webhook_url"] = ExpressionConverter.Convert(__workflow_webhookUrl);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<ResponseSuccessPDFFile>(callPayload);
+                return new ApiConnectionAction<ResponseSuccessPdfFile>(callPayload);
             });
         }
 
@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> PDFMerge(Expression<Func<PDFMergeBodyInput>> body, Expression<Func<string>> meta = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile, ApiConnectionActionConfiguration> PdfMerge(Expression<Func<PdfMergeBodyInput>> body, Expression<Func<string>> meta = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_meta = WorkflowExpression.Compile(meta, nameof(meta), required: false);
@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
     {
     }
 
-    public class ResponseSuccessPDFFile
+    public class ResponseSuccessPdfFile
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -324,9 +324,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
         public string TransactionRef { get; set; }
     }
 
-    public class PDFMergeBodyInput
+    public class PdfMergeBodyInput
     {
-        public PDFMergeBodyInput(string[] urls)
+        public PdfMergeBodyInput(string[] urls)
         {
             this.Urls = urls;
         }

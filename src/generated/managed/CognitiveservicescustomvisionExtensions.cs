@@ -131,13 +131,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
 
     public class BodyInput
     {
-        public BodyInput(string imageURL)
+        public BodyInput(string imageUrl)
         {
-            this.ImageURL = imageURL;
+            this.ImageUrl = imageUrl;
         }
 
         [JsonProperty("Url", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string ImageURL { get; set; }
+        public string ImageUrl { get; set; }
     }
 }
 

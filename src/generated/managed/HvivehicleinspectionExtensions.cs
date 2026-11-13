@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
         [JsonProperty("id")]
         public string Id { get; set; }
 
-        [JsonProperty("createdAt")]
+        [JsonProperty("__createdAt")]
         public string CreatedAt { get; set; }
 
-        [JsonProperty("updatedAt")]
+        [JsonProperty("__updatedAt")]
         public string UpdatedAt { get; set; }
 
         [JsonProperty("user_name")]
@@ -215,6 +215,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
 
         [JsonProperty("version")]
         public string Version { get; set; }
+
+        [JsonProperty("createdAt")]
+        public string CreatedAt2 { get; set; }
+
+        [JsonProperty("updatedAt")]
+        public string UpdatedAt2 { get; set; }
 
         [JsonProperty("deleted")]
         public bool Deleted { get; set; }

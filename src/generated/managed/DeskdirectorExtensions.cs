@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
 
     public class DeskdirectorTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateChatWebhook(Expression<Func<string>> type, Expression<Func<CreateChatWebhookReqInput>> req)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CreateChatWebhook(Expression<Func<string>> type, Expression<Func<AdvancedEventSubscribeReqInput>> req)
         {
             var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             var __workflow_req = WorkflowExpression.Compile(req, nameof(req), required: true);
@@ -424,18 +424,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         }
     }
 
-    public class CreateChatWebhookReqInput
+    public class AdvancedEventSubscribeReqInput
     {
-        public CreateChatWebhookReqInput(JToken parameters)
+        public AdvancedEventSubscribeReqInput(JToken parameters)
         {
             this.Parameters = parameters;
         }
 
+        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
+
         [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
         public JToken Parameters { get; set; }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string URL { get; set; } = "#{listCallbackUrl()}";
     }
 
     public class CreateTicketWorkflowReqInput
@@ -459,21 +459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deskdirector
         public JToken AdvancedFilters { get; set; }
 
         [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string URL { get; set; } = "#{listCallbackUrl()}";
-    }
-
-    public class AdvancedEventSubscribeReqInput
-    {
-        public AdvancedEventSubscribeReqInput(JToken parameters)
-        {
-            this.Parameters = parameters;
-        }
-
-        [JsonProperty("url", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Url { get; set; } = "#{listCallbackUrl()}";
-
-        [JsonProperty("parameters", DefaultValueHandling = DefaultValueHandling.Include)]
-        public JToken Parameters { get; set; }
     }
 }
 

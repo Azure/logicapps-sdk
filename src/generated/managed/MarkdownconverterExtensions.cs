@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OriginalMarkdown { get; set; }
 
         [JsonProperty("html")]
-        public string HTMLOutput { get; set; }
+        public string HtmlOutput { get; set; }
 
         [JsonProperty("format")]
         public string OutputFormat { get; set; }
@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OriginalMarkdown { get; set; }
 
         [JsonProperty("structuredData")]
-        public JToken JSONOutput { get; set; }
+        public JToken JsonOutput { get; set; }
 
         [JsonProperty("format")]
         public string OutputFormat { get; set; }
@@ -482,7 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OriginalMarkdown { get; set; }
 
         [JsonProperty("xml")]
-        public string XMLOutput { get; set; }
+        public string XmlOutput { get; set; }
 
         [JsonProperty("format")]
         public string OutputFormat { get; set; }
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OriginalMarkdown { get; set; }
 
         [JsonProperty("csv")]
-        public string CSVOutput { get; set; }
+        public string CsvOutput { get; set; }
 
         [JsonProperty("format")]
         public string OutputFormat { get; set; }
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OriginalMarkdown { get; set; }
 
         [JsonProperty("yaml")]
-        public string YAMLOutput { get; set; }
+        public string YamlOutput { get; set; }
 
         [JsonProperty("format")]
         public string OutputFormat { get; set; }
@@ -572,7 +572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OriginalMarkdown { get; set; }
 
         [JsonProperty("emailHtml")]
-        public string EmailHTMLOutput { get; set; }
+        public string EmailHtmlOutput { get; set; }
 
         [JsonProperty("format")]
         public string OutputFormat { get; set; }
@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OriginalMarkdown { get; set; }
 
         [JsonProperty("svg")]
-        public string SVGOutput { get; set; }
+        public string SvgOutput { get; set; }
 
         [JsonProperty("format")]
         public string OutputFormat { get; set; }
@@ -602,7 +602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OriginalMarkdown { get; set; }
 
         [JsonProperty("rss")]
-        public string RSSOutput { get; set; }
+        public string RssOutput { get; set; }
 
         [JsonProperty("format")]
         public string OutputFormat { get; set; }
@@ -632,13 +632,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OriginalMarkdown { get; set; }
 
         [JsonProperty("pngBase64")]
-        public string PNGBase64 { get; set; }
+        public string PngBase64 { get; set; }
 
         [JsonProperty("format")]
         public string OutputFormat { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OutputFormat { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
@@ -674,7 +674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OutputFormat { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
@@ -737,7 +737,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OutputFormat { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
@@ -749,13 +749,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OriginalMarkdown { get; set; }
 
         [JsonProperty("jpegBase64")]
-        public string JPEGBase64 { get; set; }
+        public string JpegBase64 { get; set; }
 
         [JsonProperty("format")]
         public string OutputFormat { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
@@ -773,7 +773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OutputFormat { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
@@ -791,7 +791,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OutputFormat { get; set; }
 
         [JsonProperty("mimeType")]
-        public string MIMEType { get; set; }
+        public string MimeType { get; set; }
 
         [JsonProperty("timestamp")]
         public string ConversionTime { get; set; }
@@ -863,7 +863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OriginalMarkdown { get; set; }
 
         [JsonProperty("xmlDoc")]
-        public string XMLDocumentationOutput { get; set; }
+        public string XmlDocumentationOutput { get; set; }
 
         [JsonProperty("format")]
         public string OutputFormat { get; set; }
@@ -878,7 +878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OriginalMarkdown { get; set; }
 
         [JsonProperty("readme")]
-        public string READMEOutput { get; set; }
+        public string ReadmeOutput { get; set; }
 
         [JsonProperty("format")]
         public string OutputFormat { get; set; }
@@ -923,7 +923,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         public string OriginalMarkdown { get; set; }
 
         [JsonProperty("styledHtml")]
-        public string StyledHTMLOutput { get; set; }
+        public string StyledHtmlOutput { get; set; }
 
         [JsonProperty("format")]
         public string OutputFormat { get; set; }

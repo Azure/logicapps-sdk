@@ -33,19 +33,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
 
     public class OptimizePdfResponse
     {
-        [JsonProperty("OptimizedPdf")]
-        public string OptimizedPDF { get; set; }
+        public string OptimizedPdf { get; set; }
     }
 
     public class BodyInput
     {
-        public BodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pDFFileContent)
+        public BodyInput(global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent pdfFileContent)
         {
-            this.PDFFileContent = pDFFileContent;
+            this.PdfFileContent = pdfFileContent;
         }
 
-        [JsonProperty("PdfFileContent", DefaultValueHandling = DefaultValueHandling.Include)]
-        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PDFFileContent { get; set; }
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
+        public global::Microsoft.Azure.Workflows.Sdk.WorkflowBinaryContent PdfFileContent { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public BodyInputModeType? Mode { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic.BodyInputModeType.Aggressive;

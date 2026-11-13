@@ -13,1066 +13,1066 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     public class IaconnectuiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIADoesTopLevelWindowExistResponse, ApiConnectionActionConfiguration> UIADoesTopLevelWindowExist(Expression<Func<UIADoesTopLevelWindowExistInput>> uIADoesTopLevelWindowExist)
+        public IBodyWorkflowAction<UiaDoesTopLevelWindowExistResponse, ApiConnectionActionConfiguration> UiaDoesTopLevelWindowExist(Expression<Func<UiaDoesTopLevelWindowExistInput>> uiaDoesTopLevelWindowExist)
         {
-            var __workflow_uIADoesTopLevelWindowExist = WorkflowExpression.Compile(uIADoesTopLevelWindowExist, nameof(uIADoesTopLevelWindowExist), required: true);
-            return new DeferredBodyAction<UIADoesTopLevelWindowExistResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaDoesTopLevelWindowExist = WorkflowExpression.Compile(uiaDoesTopLevelWindowExist, nameof(uiaDoesTopLevelWindowExist), required: true);
+            return new DeferredBodyAction<UiaDoesTopLevelWindowExistResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/DoesTopLevelWindowExist";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIADoesTopLevelWindowExist);
-                return new ApiConnectionAction<UIADoesTopLevelWindowExistResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaDoesTopLevelWindowExist);
+                return new ApiConnectionAction<UiaDoesTopLevelWindowExistResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetHandleForTopLevelWindowResponse, ApiConnectionActionConfiguration> UIAGetHandleForTopLevelWindow(Expression<Func<UIAGetHandleForTopLevelWindowInput>> uIAGetHandleForTopLevelWindow)
+        public IBodyWorkflowAction<UiaGetHandleForTopLevelWindowResponse, ApiConnectionActionConfiguration> UiaGetHandleForTopLevelWindow(Expression<Func<UiaGetHandleForTopLevelWindowInput>> uiaGetHandleForTopLevelWindow)
         {
-            var __workflow_uIAGetHandleForTopLevelWindow = WorkflowExpression.Compile(uIAGetHandleForTopLevelWindow, nameof(uIAGetHandleForTopLevelWindow), required: true);
-            return new DeferredBodyAction<UIAGetHandleForTopLevelWindowResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetHandleForTopLevelWindow = WorkflowExpression.Compile(uiaGetHandleForTopLevelWindow, nameof(uiaGetHandleForTopLevelWindow), required: true);
+            return new DeferredBodyAction<UiaGetHandleForTopLevelWindowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetHandleForTopLevelWindow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetHandleForTopLevelWindow);
-                return new ApiConnectionAction<UIAGetHandleForTopLevelWindowResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetHandleForTopLevelWindow);
+                return new ApiConnectionAction<UiaGetHandleForTopLevelWindowResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForTopLevelWindowResponse, ApiConnectionActionConfiguration> UIAWaitForTopLevelWindow(Expression<Func<UIAWaitForTopLevelWindowInput>> uIAWaitForTopLevelWindow)
+        public IBodyWorkflowAction<UiaWaitForTopLevelWindowResponse, ApiConnectionActionConfiguration> UiaWaitForTopLevelWindow(Expression<Func<UiaWaitForTopLevelWindowInput>> uiaWaitForTopLevelWindow)
         {
-            var __workflow_uIAWaitForTopLevelWindow = WorkflowExpression.Compile(uIAWaitForTopLevelWindow, nameof(uIAWaitForTopLevelWindow), required: true);
-            return new DeferredBodyAction<UIAWaitForTopLevelWindowResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaWaitForTopLevelWindow = WorkflowExpression.Compile(uiaWaitForTopLevelWindow, nameof(uiaWaitForTopLevelWindow), required: true);
+            return new DeferredBodyAction<UiaWaitForTopLevelWindowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/WaitForTopLevelWindow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAWaitForTopLevelWindow);
-                return new ApiConnectionAction<UIAWaitForTopLevelWindowResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaWaitForTopLevelWindow);
+                return new ApiConnectionAction<UiaWaitForTopLevelWindowResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIADoesProcessHaveWindowResponse, ApiConnectionActionConfiguration> UIADoesProcessHaveWindow(Expression<Func<UIADoesProcessHaveWindowInput>> uIADoesProcessHaveWindow)
+        public IBodyWorkflowAction<UiaDoesProcessHaveWindowResponse, ApiConnectionActionConfiguration> UiaDoesProcessHaveWindow(Expression<Func<UiaDoesProcessHaveWindowInput>> uiaDoesProcessHaveWindow)
         {
-            var __workflow_uIADoesProcessHaveWindow = WorkflowExpression.Compile(uIADoesProcessHaveWindow, nameof(uIADoesProcessHaveWindow), required: true);
-            return new DeferredBodyAction<UIADoesProcessHaveWindowResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaDoesProcessHaveWindow = WorkflowExpression.Compile(uiaDoesProcessHaveWindow, nameof(uiaDoesProcessHaveWindow), required: true);
+            return new DeferredBodyAction<UiaDoesProcessHaveWindowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/DoesProcessHaveWindow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIADoesProcessHaveWindow);
-                return new ApiConnectionAction<UIADoesProcessHaveWindowResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaDoesProcessHaveWindow);
+                return new ApiConnectionAction<UiaDoesProcessHaveWindowResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetHandleForProcessMainWindowResponse, ApiConnectionActionConfiguration> UIAGetHandleForProcessMainWindow(Expression<Func<UIAGetHandleForProcessMainWindowInput>> uIAGetHandleForProcessMainWindow)
+        public IBodyWorkflowAction<UiaGetHandleForProcessMainWindowResponse, ApiConnectionActionConfiguration> UiaGetHandleForProcessMainWindow(Expression<Func<UiaGetHandleForProcessMainWindowInput>> uiaGetHandleForProcessMainWindow)
         {
-            var __workflow_uIAGetHandleForProcessMainWindow = WorkflowExpression.Compile(uIAGetHandleForProcessMainWindow, nameof(uIAGetHandleForProcessMainWindow), required: true);
-            return new DeferredBodyAction<UIAGetHandleForProcessMainWindowResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetHandleForProcessMainWindow = WorkflowExpression.Compile(uiaGetHandleForProcessMainWindow, nameof(uiaGetHandleForProcessMainWindow), required: true);
+            return new DeferredBodyAction<UiaGetHandleForProcessMainWindowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetHandleForProcessMainWindow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetHandleForProcessMainWindow);
-                return new ApiConnectionAction<UIAGetHandleForProcessMainWindowResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetHandleForProcessMainWindow);
+                return new ApiConnectionAction<UiaGetHandleForProcessMainWindowResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForProcessMainWindowResponse, ApiConnectionActionConfiguration> UIAWaitForProcessMainWindow(Expression<Func<UIAWaitForProcessMainWindowInput>> uIAWaitForProcessMainWindow)
+        public IBodyWorkflowAction<UiaWaitForProcessMainWindowResponse, ApiConnectionActionConfiguration> UiaWaitForProcessMainWindow(Expression<Func<UiaWaitForProcessMainWindowInput>> uiaWaitForProcessMainWindow)
         {
-            var __workflow_uIAWaitForProcessMainWindow = WorkflowExpression.Compile(uIAWaitForProcessMainWindow, nameof(uIAWaitForProcessMainWindow), required: true);
-            return new DeferredBodyAction<UIAWaitForProcessMainWindowResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaWaitForProcessMainWindow = WorkflowExpression.Compile(uiaWaitForProcessMainWindow, nameof(uiaWaitForProcessMainWindow), required: true);
+            return new DeferredBodyAction<UiaWaitForProcessMainWindowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/WaitForProcessMainWindow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAWaitForProcessMainWindow);
-                return new ApiConnectionAction<UIAWaitForProcessMainWindowResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaWaitForProcessMainWindow);
+                return new ApiConnectionAction<UiaWaitForProcessMainWindowResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetHandleForProcessIdMainWindowResponse, ApiConnectionActionConfiguration> UIAGetHandleForProcessIdMainWindow(Expression<Func<UIAGetHandleForProcessIdMainWindowInput>> uIAGetHandleForProcessIdMainWindow)
+        public IBodyWorkflowAction<UiaGetHandleForProcessIdMainWindowResponse, ApiConnectionActionConfiguration> UiaGetHandleForProcessIdMainWindow(Expression<Func<UiaGetHandleForProcessIdMainWindowInput>> uiaGetHandleForProcessIdMainWindow)
         {
-            var __workflow_uIAGetHandleForProcessIdMainWindow = WorkflowExpression.Compile(uIAGetHandleForProcessIdMainWindow, nameof(uIAGetHandleForProcessIdMainWindow), required: true);
-            return new DeferredBodyAction<UIAGetHandleForProcessIdMainWindowResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetHandleForProcessIdMainWindow = WorkflowExpression.Compile(uiaGetHandleForProcessIdMainWindow, nameof(uiaGetHandleForProcessIdMainWindow), required: true);
+            return new DeferredBodyAction<UiaGetHandleForProcessIdMainWindowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetHandleForProcessIdMainWindow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetHandleForProcessIdMainWindow);
-                return new ApiConnectionAction<UIAGetHandleForProcessIdMainWindowResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetHandleForProcessIdMainWindow);
+                return new ApiConnectionAction<UiaGetHandleForProcessIdMainWindowResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForProcessIdMainWindowResponse, ApiConnectionActionConfiguration> UIAWaitForProcessIdMainWindow(Expression<Func<UIAWaitForProcessIdMainWindowInput>> uIAWaitForProcessIdMainWindow)
+        public IBodyWorkflowAction<UiaWaitForProcessIdMainWindowResponse, ApiConnectionActionConfiguration> UiaWaitForProcessIdMainWindow(Expression<Func<UiaWaitForProcessIdMainWindowInput>> uiaWaitForProcessIdMainWindow)
         {
-            var __workflow_uIAWaitForProcessIdMainWindow = WorkflowExpression.Compile(uIAWaitForProcessIdMainWindow, nameof(uIAWaitForProcessIdMainWindow), required: true);
-            return new DeferredBodyAction<UIAWaitForProcessIdMainWindowResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaWaitForProcessIdMainWindow = WorkflowExpression.Compile(uiaWaitForProcessIdMainWindow, nameof(uiaWaitForProcessIdMainWindow), required: true);
+            return new DeferredBodyAction<UiaWaitForProcessIdMainWindowResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/WaitForProcessIdMainWindow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAWaitForProcessIdMainWindow);
-                return new ApiConnectionAction<UIAWaitForProcessIdMainWindowResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaWaitForProcessIdMainWindow);
+                return new ApiConnectionAction<UiaWaitForProcessIdMainWindowResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetHandleForFocussedElementResponse, ApiConnectionActionConfiguration> UIAGetHandleForFocussedElement(Expression<Func<UIAGetHandleForFocussedElementInput>> uIAGetHandleForFocussedElement)
+        public IBodyWorkflowAction<UiaGetHandleForFocussedElementResponse, ApiConnectionActionConfiguration> UiaGetHandleForFocussedElement(Expression<Func<UiaGetHandleForFocussedElementInput>> uiaGetHandleForFocussedElement)
         {
-            var __workflow_uIAGetHandleForFocussedElement = WorkflowExpression.Compile(uIAGetHandleForFocussedElement, nameof(uIAGetHandleForFocussedElement), required: true);
-            return new DeferredBodyAction<UIAGetHandleForFocussedElementResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetHandleForFocussedElement = WorkflowExpression.Compile(uiaGetHandleForFocussedElement, nameof(uiaGetHandleForFocussedElement), required: true);
+            return new DeferredBodyAction<UiaGetHandleForFocussedElementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetHandleForFocussedElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetHandleForFocussedElement);
-                return new ApiConnectionAction<UIAGetHandleForFocussedElementResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetHandleForFocussedElement);
+                return new ApiConnectionAction<UiaGetHandleForFocussedElementResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetHandleForMainWindowOfFocussedElementResponse, ApiConnectionActionConfiguration> UIAGetHandleForMainWindowOfFocussedElement(Expression<Func<UIAGetHandleForMainWindowOfFocussedElementInput>> uIAGetHandleForMainWindowOfFocussedElement)
+        public IBodyWorkflowAction<UiaGetHandleForMainWindowOfFocussedElementResponse, ApiConnectionActionConfiguration> UiaGetHandleForMainWindowOfFocussedElement(Expression<Func<UiaGetHandleForMainWindowOfFocussedElementInput>> uiaGetHandleForMainWindowOfFocussedElement)
         {
-            var __workflow_uIAGetHandleForMainWindowOfFocussedElement = WorkflowExpression.Compile(uIAGetHandleForMainWindowOfFocussedElement, nameof(uIAGetHandleForMainWindowOfFocussedElement), required: true);
-            return new DeferredBodyAction<UIAGetHandleForMainWindowOfFocussedElementResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetHandleForMainWindowOfFocussedElement = WorkflowExpression.Compile(uiaGetHandleForMainWindowOfFocussedElement, nameof(uiaGetHandleForMainWindowOfFocussedElement), required: true);
+            return new DeferredBodyAction<UiaGetHandleForMainWindowOfFocussedElementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetHandleForMainWindowOfFocussedElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetHandleForMainWindowOfFocussedElement);
-                return new ApiConnectionAction<UIAGetHandleForMainWindowOfFocussedElementResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetHandleForMainWindowOfFocussedElement);
+                return new ApiConnectionAction<UiaGetHandleForMainWindowOfFocussedElementResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetHandleForDesktopResponse, ApiConnectionActionConfiguration> UIAGetHandleForDesktop(Expression<Func<UIAGetHandleForDesktopInput>> uIAGetHandleForDesktop)
+        public IBodyWorkflowAction<UiaGetHandleForDesktopResponse, ApiConnectionActionConfiguration> UiaGetHandleForDesktop(Expression<Func<UiaGetHandleForDesktopInput>> uiaGetHandleForDesktop)
         {
-            var __workflow_uIAGetHandleForDesktop = WorkflowExpression.Compile(uIAGetHandleForDesktop, nameof(uIAGetHandleForDesktop), required: true);
-            return new DeferredBodyAction<UIAGetHandleForDesktopResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetHandleForDesktop = WorkflowExpression.Compile(uiaGetHandleForDesktop, nameof(uiaGetHandleForDesktop), required: true);
+            return new DeferredBodyAction<UiaGetHandleForDesktopResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetHandleForDesktop";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetHandleForDesktop);
-                return new ApiConnectionAction<UIAGetHandleForDesktopResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetHandleForDesktop);
+                return new ApiConnectionAction<UiaGetHandleForDesktopResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIASetForegroundWindow(Expression<Func<UIASetForegroundWindowInput>> uIASetForegroundWindow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaSetForegroundWindow(Expression<Func<UiaSetForegroundWindowInput>> uiaSetForegroundWindow)
         {
-            var __workflow_uIASetForegroundWindow = WorkflowExpression.Compile(uIASetForegroundWindow, nameof(uIASetForegroundWindow), required: true);
+            var __workflow_uiaSetForegroundWindow = WorkflowExpression.Compile(uiaSetForegroundWindow, nameof(uiaSetForegroundWindow), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/SetForegroundWindow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIASetForegroundWindow);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaSetForegroundWindow);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAMaximiseWindow(Expression<Func<UIAMaximiseWindowInput>> uIAMaximiseWindow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaMaximiseWindow(Expression<Func<UiaMaximiseWindowInput>> uiaMaximiseWindow)
         {
-            var __workflow_uIAMaximiseWindow = WorkflowExpression.Compile(uIAMaximiseWindow, nameof(uIAMaximiseWindow), required: true);
+            var __workflow_uiaMaximiseWindow = WorkflowExpression.Compile(uiaMaximiseWindow, nameof(uiaMaximiseWindow), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/MaximiseWindow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAMaximiseWindow);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaMaximiseWindow);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAMinimiseWindow(Expression<Func<UIAMinimiseWindowInput>> uIAMinimiseWindow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaMinimiseWindow(Expression<Func<UiaMinimiseWindowInput>> uiaMinimiseWindow)
         {
-            var __workflow_uIAMinimiseWindow = WorkflowExpression.Compile(uIAMinimiseWindow, nameof(uIAMinimiseWindow), required: true);
+            var __workflow_uiaMinimiseWindow = WorkflowExpression.Compile(uiaMinimiseWindow, nameof(uiaMinimiseWindow), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/MinimiseWindow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAMinimiseWindow);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaMinimiseWindow);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIASetWindowToNormal(Expression<Func<UIASetWindowToNormalInput>> uIASetWindowToNormal)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaSetWindowToNormal(Expression<Func<UiaSetWindowToNormalInput>> uiaSetWindowToNormal)
         {
-            var __workflow_uIASetWindowToNormal = WorkflowExpression.Compile(uIASetWindowToNormal, nameof(uIASetWindowToNormal), required: true);
+            var __workflow_uiaSetWindowToNormal = WorkflowExpression.Compile(uiaSetWindowToNormal, nameof(uiaSetWindowToNormal), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/SetWindowToNormal";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIASetWindowToNormal);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaSetWindowToNormal);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIADoesElementExistResponse, ApiConnectionActionConfiguration> UIADoesElementExist(Expression<Func<UIADoesElementExistInput>> uIADoesElementExist)
+        public IBodyWorkflowAction<UiaDoesElementExistResponse, ApiConnectionActionConfiguration> UiaDoesElementExist(Expression<Func<UiaDoesElementExistInput>> uiaDoesElementExist)
         {
-            var __workflow_uIADoesElementExist = WorkflowExpression.Compile(uIADoesElementExist, nameof(uIADoesElementExist), required: true);
-            return new DeferredBodyAction<UIADoesElementExistResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaDoesElementExist = WorkflowExpression.Compile(uiaDoesElementExist, nameof(uiaDoesElementExist), required: true);
+            return new DeferredBodyAction<UiaDoesElementExistResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/DoesElementExist";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIADoesElementExist);
-                return new ApiConnectionAction<UIADoesElementExistResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaDoesElementExist);
+                return new ApiConnectionAction<UiaDoesElementExistResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIADoesDesktopElementExistResponse, ApiConnectionActionConfiguration> UIADoesDesktopElementExist(Expression<Func<UIADoesDesktopElementExistInput>> uIADoesDesktopElementExist)
+        public IBodyWorkflowAction<UiaDoesDesktopElementExistResponse, ApiConnectionActionConfiguration> UiaDoesDesktopElementExist(Expression<Func<UiaDoesDesktopElementExistInput>> uiaDoesDesktopElementExist)
         {
-            var __workflow_uIADoesDesktopElementExist = WorkflowExpression.Compile(uIADoesDesktopElementExist, nameof(uIADoesDesktopElementExist), required: true);
-            return new DeferredBodyAction<UIADoesDesktopElementExistResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaDoesDesktopElementExist = WorkflowExpression.Compile(uiaDoesDesktopElementExist, nameof(uiaDoesDesktopElementExist), required: true);
+            return new DeferredBodyAction<UiaDoesDesktopElementExistResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/DoesDesktopElementExist";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIADoesDesktopElementExist);
-                return new ApiConnectionAction<UIADoesDesktopElementExistResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaDoesDesktopElementExist);
+                return new ApiConnectionAction<UiaDoesDesktopElementExistResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForElementResponse, ApiConnectionActionConfiguration> UIAWaitForElement(Expression<Func<UIAWaitForElementInput>> uIAWaitForElement)
+        public IBodyWorkflowAction<UiaWaitForElementResponse, ApiConnectionActionConfiguration> UiaWaitForElement(Expression<Func<UiaWaitForElementInput>> uiaWaitForElement)
         {
-            var __workflow_uIAWaitForElement = WorkflowExpression.Compile(uIAWaitForElement, nameof(uIAWaitForElement), required: true);
-            return new DeferredBodyAction<UIAWaitForElementResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaWaitForElement = WorkflowExpression.Compile(uiaWaitForElement, nameof(uiaWaitForElement), required: true);
+            return new DeferredBodyAction<UiaWaitForElementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/WaitForElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAWaitForElement);
-                return new ApiConnectionAction<UIAWaitForElementResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaWaitForElement);
+                return new ApiConnectionAction<UiaWaitForElementResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForDesktopElementResponse, ApiConnectionActionConfiguration> UIAWaitForDesktopElement(Expression<Func<UIAWaitForDesktopElementInput>> uIAWaitForDesktopElement)
+        public IBodyWorkflowAction<UiaWaitForDesktopElementResponse, ApiConnectionActionConfiguration> UiaWaitForDesktopElement(Expression<Func<UiaWaitForDesktopElementInput>> uiaWaitForDesktopElement)
         {
-            var __workflow_uIAWaitForDesktopElement = WorkflowExpression.Compile(uIAWaitForDesktopElement, nameof(uIAWaitForDesktopElement), required: true);
-            return new DeferredBodyAction<UIAWaitForDesktopElementResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaWaitForDesktopElement = WorkflowExpression.Compile(uiaWaitForDesktopElement, nameof(uiaWaitForDesktopElement), required: true);
+            return new DeferredBodyAction<UiaWaitForDesktopElementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/WaitForDesktopElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAWaitForDesktopElement);
-                return new ApiConnectionAction<UIAWaitForDesktopElementResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaWaitForDesktopElement);
+                return new ApiConnectionAction<UiaWaitForDesktopElementResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForElementToNotExistResponse, ApiConnectionActionConfiguration> UIAWaitForElementToNotExist(Expression<Func<UIAWaitForElementToNotExistInput>> uIAWaitForElementToNotExist)
+        public IBodyWorkflowAction<UiaWaitForElementToNotExistResponse, ApiConnectionActionConfiguration> UiaWaitForElementToNotExist(Expression<Func<UiaWaitForElementToNotExistInput>> uiaWaitForElementToNotExist)
         {
-            var __workflow_uIAWaitForElementToNotExist = WorkflowExpression.Compile(uIAWaitForElementToNotExist, nameof(uIAWaitForElementToNotExist), required: true);
-            return new DeferredBodyAction<UIAWaitForElementToNotExistResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaWaitForElementToNotExist = WorkflowExpression.Compile(uiaWaitForElementToNotExist, nameof(uiaWaitForElementToNotExist), required: true);
+            return new DeferredBodyAction<UiaWaitForElementToNotExistResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAWaitForElementToNotExist";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAWaitForElementToNotExist);
-                return new ApiConnectionAction<UIAWaitForElementToNotExistResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaWaitForElementToNotExist);
+                return new ApiConnectionAction<UiaWaitForElementToNotExistResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForDesktopElementToNotExistResponse, ApiConnectionActionConfiguration> UIAWaitForDesktopElementToNotExist(Expression<Func<UIAWaitForDesktopElementToNotExistInput>> uIAWaitForDesktopElementToNotExist)
+        public IBodyWorkflowAction<UiaWaitForDesktopElementToNotExistResponse, ApiConnectionActionConfiguration> UiaWaitForDesktopElementToNotExist(Expression<Func<UiaWaitForDesktopElementToNotExistInput>> uiaWaitForDesktopElementToNotExist)
         {
-            var __workflow_uIAWaitForDesktopElementToNotExist = WorkflowExpression.Compile(uIAWaitForDesktopElementToNotExist, nameof(uIAWaitForDesktopElementToNotExist), required: true);
-            return new DeferredBodyAction<UIAWaitForDesktopElementToNotExistResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaWaitForDesktopElementToNotExist = WorkflowExpression.Compile(uiaWaitForDesktopElementToNotExist, nameof(uiaWaitForDesktopElementToNotExist), required: true);
+            return new DeferredBodyAction<UiaWaitForDesktopElementToNotExistResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAWaitForDesktopElementToNotExist";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAWaitForDesktopElementToNotExist);
-                return new ApiConnectionAction<UIAWaitForDesktopElementToNotExistResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaWaitForDesktopElementToNotExist);
+                return new ApiConnectionAction<UiaWaitForDesktopElementToNotExistResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAPressElement(Expression<Func<UIAPressElementInput>> uIAPressElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaPressElement(Expression<Func<UiaPressElementInput>> uiaPressElement)
         {
-            var __workflow_uIAPressElement = WorkflowExpression.Compile(uIAPressElement, nameof(uIAPressElement), required: true);
+            var __workflow_uiaPressElement = WorkflowExpression.Compile(uiaPressElement, nameof(uiaPressElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/PressElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAPressElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaPressElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAGlobalMouseClickOnElement(Expression<Func<UIAGlobalMouseClickOnElementInput>> uIAGlobalMouseClickOnElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaGlobalMouseClickOnElement(Expression<Func<UiaGlobalMouseClickOnElementInput>> uiaGlobalMouseClickOnElement)
         {
-            var __workflow_uIAGlobalMouseClickOnElement = WorkflowExpression.Compile(uIAGlobalMouseClickOnElement, nameof(uIAGlobalMouseClickOnElement), required: true);
+            var __workflow_uiaGlobalMouseClickOnElement = WorkflowExpression.Compile(uiaGlobalMouseClickOnElement, nameof(uiaGlobalMouseClickOnElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GlobalMouseClickOnElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGlobalMouseClickOnElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGlobalMouseClickOnElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAGlobalRightMouseClickOnElement(Expression<Func<UIAGlobalRightMouseClickOnElementInput>> uIAGlobalRightMouseClickOnElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaGlobalRightMouseClickOnElement(Expression<Func<UiaGlobalRightMouseClickOnElementInput>> uiaGlobalRightMouseClickOnElement)
         {
-            var __workflow_uIAGlobalRightMouseClickOnElement = WorkflowExpression.Compile(uIAGlobalRightMouseClickOnElement, nameof(uIAGlobalRightMouseClickOnElement), required: true);
+            var __workflow_uiaGlobalRightMouseClickOnElement = WorkflowExpression.Compile(uiaGlobalRightMouseClickOnElement, nameof(uiaGlobalRightMouseClickOnElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GlobalRightMouseClickOnElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGlobalRightMouseClickOnElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGlobalRightMouseClickOnElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAGlobalMiddleMouseClickOnElement(Expression<Func<UIAGlobalMiddleMouseClickOnElementInput>> uIAGlobalMiddleMouseClickOnElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaGlobalMiddleMouseClickOnElement(Expression<Func<UiaGlobalMiddleMouseClickOnElementInput>> uiaGlobalMiddleMouseClickOnElement)
         {
-            var __workflow_uIAGlobalMiddleMouseClickOnElement = WorkflowExpression.Compile(uIAGlobalMiddleMouseClickOnElement, nameof(uIAGlobalMiddleMouseClickOnElement), required: true);
+            var __workflow_uiaGlobalMiddleMouseClickOnElement = WorkflowExpression.Compile(uiaGlobalMiddleMouseClickOnElement, nameof(uiaGlobalMiddleMouseClickOnElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GlobalMiddleMouseClickOnElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGlobalMiddleMouseClickOnElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGlobalMiddleMouseClickOnElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAGlobalDoubleLeftMouseClickOnElement(Expression<Func<UIAGlobalDoubleLeftMouseClickOnElementInput>> uIAGlobalDoubleLeftMouseClickOnElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaGlobalDoubleLeftMouseClickOnElement(Expression<Func<UiaGlobalDoubleLeftMouseClickOnElementInput>> uiaGlobalDoubleLeftMouseClickOnElement)
         {
-            var __workflow_uIAGlobalDoubleLeftMouseClickOnElement = WorkflowExpression.Compile(uIAGlobalDoubleLeftMouseClickOnElement, nameof(uIAGlobalDoubleLeftMouseClickOnElement), required: true);
+            var __workflow_uiaGlobalDoubleLeftMouseClickOnElement = WorkflowExpression.Compile(uiaGlobalDoubleLeftMouseClickOnElement, nameof(uiaGlobalDoubleLeftMouseClickOnElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GlobalDoubleLeftMouseClickOnElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGlobalDoubleLeftMouseClickOnElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGlobalDoubleLeftMouseClickOnElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIASelectElement(Expression<Func<UIASelectElementInput>> uIASelectElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaSelectElement(Expression<Func<UiaSelectElementInput>> uiaSelectElement)
         {
-            var __workflow_uIASelectElement = WorkflowExpression.Compile(uIASelectElement, nameof(uIASelectElement), required: true);
+            var __workflow_uiaSelectElement = WorkflowExpression.Compile(uiaSelectElement, nameof(uiaSelectElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/SelectElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIASelectElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaSelectElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAInputPasswordIntoElement(Expression<Func<UIAInputPasswordIntoElementInput>> uIAInputPasswordIntoElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaInputPasswordIntoElement(Expression<Func<UiaInputPasswordIntoElementInput>> uiaInputPasswordIntoElement)
         {
-            var __workflow_uIAInputPasswordIntoElement = WorkflowExpression.Compile(uIAInputPasswordIntoElement, nameof(uIAInputPasswordIntoElement), required: true);
+            var __workflow_uiaInputPasswordIntoElement = WorkflowExpression.Compile(uiaInputPasswordIntoElement, nameof(uiaInputPasswordIntoElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/InputPasswordIntoElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAInputPasswordIntoElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaInputPasswordIntoElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAInputTextIntoElement(Expression<Func<UIAInputTextIntoElementInput>> uIAInputTextIntoElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaInputTextIntoElement(Expression<Func<UiaInputTextIntoElementInput>> uiaInputTextIntoElement)
         {
-            var __workflow_uIAInputTextIntoElement = WorkflowExpression.Compile(uIAInputTextIntoElement, nameof(uIAInputTextIntoElement), required: true);
+            var __workflow_uiaInputTextIntoElement = WorkflowExpression.Compile(uiaInputTextIntoElement, nameof(uiaInputTextIntoElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/InputTextIntoElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAInputTextIntoElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaInputTextIntoElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAInputTextIntoMultipleElements(Expression<Func<UIAInputTextIntoMultipleElementsInput>> uIAInputTextIntoMultipleElements)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaInputTextIntoMultipleElements(Expression<Func<UiaInputTextIntoMultipleElementsInput>> uiaInputTextIntoMultipleElements)
         {
-            var __workflow_uIAInputTextIntoMultipleElements = WorkflowExpression.Compile(uIAInputTextIntoMultipleElements, nameof(uIAInputTextIntoMultipleElements), required: true);
+            var __workflow_uiaInputTextIntoMultipleElements = WorkflowExpression.Compile(uiaInputTextIntoMultipleElements, nameof(uiaInputTextIntoMultipleElements), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAInputTextIntoMultipleElements";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAInputTextIntoMultipleElements);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaInputTextIntoMultipleElements);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAInputReturnIntoElement(Expression<Func<UIAInputReturnIntoElementInput>> uIAInputReturnIntoElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaInputReturnIntoElement(Expression<Func<UiaInputReturnIntoElementInput>> uiaInputReturnIntoElement)
         {
-            var __workflow_uIAInputReturnIntoElement = WorkflowExpression.Compile(uIAInputReturnIntoElement, nameof(uIAInputReturnIntoElement), required: true);
+            var __workflow_uiaInputReturnIntoElement = WorkflowExpression.Compile(uiaInputReturnIntoElement, nameof(uiaInputReturnIntoElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/InputReturnIntoElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAInputReturnIntoElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaInputReturnIntoElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAFocusElement(Expression<Func<UIAFocusElementInput>> uIAFocusElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaFocusElement(Expression<Func<UiaFocusElementInput>> uiaFocusElement)
         {
-            var __workflow_uIAFocusElement = WorkflowExpression.Compile(uIAFocusElement, nameof(uIAFocusElement), required: true);
+            var __workflow_uiaFocusElement = WorkflowExpression.Compile(uiaFocusElement, nameof(uiaFocusElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/FocusElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAFocusElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaFocusElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAToggleElement(Expression<Func<UIAToggleElementInput>> uIAToggleElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaToggleElement(Expression<Func<UiaToggleElementInput>> uiaToggleElement)
         {
-            var __workflow_uIAToggleElement = WorkflowExpression.Compile(uIAToggleElement, nameof(uIAToggleElement), required: true);
+            var __workflow_uiaToggleElement = WorkflowExpression.Compile(uiaToggleElement, nameof(uiaToggleElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/ToggleElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAToggleElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaToggleElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIACheckElement(Expression<Func<UIACheckElementInput>> uIACheckElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaCheckElement(Expression<Func<UiaCheckElementInput>> uiaCheckElement)
         {
-            var __workflow_uIACheckElement = WorkflowExpression.Compile(uIACheckElement, nameof(uIACheckElement), required: true);
+            var __workflow_uiaCheckElement = WorkflowExpression.Compile(uiaCheckElement, nameof(uiaCheckElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/CheckElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIACheckElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaCheckElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIACheckMultipleElements(Expression<Func<UIACheckMultipleElementsInput>> uIACheckMultipleElements)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaCheckMultipleElements(Expression<Func<UiaCheckMultipleElementsInput>> uiaCheckMultipleElements)
         {
-            var __workflow_uIACheckMultipleElements = WorkflowExpression.Compile(uIACheckMultipleElements, nameof(uIACheckMultipleElements), required: true);
+            var __workflow_uiaCheckMultipleElements = WorkflowExpression.Compile(uiaCheckMultipleElements, nameof(uiaCheckMultipleElements), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIACheckMultipleElements";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIACheckMultipleElements);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaCheckMultipleElements);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAIsElementCheckedResponse, ApiConnectionActionConfiguration> UIAIsElementChecked(Expression<Func<UIAIsElementCheckedInput>> uIAIsElementChecked)
+        public IBodyWorkflowAction<UiaisElementCheckedResponse, ApiConnectionActionConfiguration> UiaisElementChecked(Expression<Func<UiaisElementCheckedInput>> uiaisElementChecked)
         {
-            var __workflow_uIAIsElementChecked = WorkflowExpression.Compile(uIAIsElementChecked, nameof(uIAIsElementChecked), required: true);
-            return new DeferredBodyAction<UIAIsElementCheckedResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaisElementChecked = WorkflowExpression.Compile(uiaisElementChecked, nameof(uiaisElementChecked), required: true);
+            return new DeferredBodyAction<UiaisElementCheckedResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAIsElementChecked";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAIsElementChecked);
-                return new ApiConnectionAction<UIAIsElementCheckedResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaisElementChecked);
+                return new ApiConnectionAction<UiaisElementCheckedResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIACloseElementWindow(Expression<Func<UIACloseElementWindowInput>> uIACloseElementWindow)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaCloseElementWindow(Expression<Func<UiaCloseElementWindowInput>> uiaCloseElementWindow)
         {
-            var __workflow_uIACloseElementWindow = WorkflowExpression.Compile(uIACloseElementWindow, nameof(uIACloseElementWindow), required: true);
+            var __workflow_uiaCloseElementWindow = WorkflowExpression.Compile(uiaCloseElementWindow, nameof(uiaCloseElementWindow), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/CloseElementWindow";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIACloseElementWindow);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaCloseElementWindow);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetElementTextValueResponse, ApiConnectionActionConfiguration> UIAGetElementTextValue(Expression<Func<UIAGetElementTextValueInput>> uIAGetElementTextValue)
+        public IBodyWorkflowAction<UiaGetElementTextValueResponse, ApiConnectionActionConfiguration> UiaGetElementTextValue(Expression<Func<UiaGetElementTextValueInput>> uiaGetElementTextValue)
         {
-            var __workflow_uIAGetElementTextValue = WorkflowExpression.Compile(uIAGetElementTextValue, nameof(uIAGetElementTextValue), required: true);
-            return new DeferredBodyAction<UIAGetElementTextValueResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetElementTextValue = WorkflowExpression.Compile(uiaGetElementTextValue, nameof(uiaGetElementTextValue), required: true);
+            return new DeferredBodyAction<UiaGetElementTextValueResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetElementTextValue";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetElementTextValue);
-                return new ApiConnectionAction<UIAGetElementTextValueResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetElementTextValue);
+                return new ApiConnectionAction<UiaGetElementTextValueResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetElementValueResponse, ApiConnectionActionConfiguration> UIAGetElementValue(Expression<Func<UIAGetElementValueInput>> uIAGetElementValue)
+        public IBodyWorkflowAction<UiaGetElementValueResponse, ApiConnectionActionConfiguration> UiaGetElementValue(Expression<Func<UiaGetElementValueInput>> uiaGetElementValue)
         {
-            var __workflow_uIAGetElementValue = WorkflowExpression.Compile(uIAGetElementValue, nameof(uIAGetElementValue), required: true);
-            return new DeferredBodyAction<UIAGetElementValueResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetElementValue = WorkflowExpression.Compile(uiaGetElementValue, nameof(uiaGetElementValue), required: true);
+            return new DeferredBodyAction<UiaGetElementValueResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetElementValue";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetElementValue);
-                return new ApiConnectionAction<UIAGetElementValueResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetElementValue);
+                return new ApiConnectionAction<UiaGetElementValueResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetElementLabelValueResponse, ApiConnectionActionConfiguration> UIAGetElementLabelValue(Expression<Func<UIAGetElementLabelValueInput>> uIAGetElementLabelValue)
+        public IBodyWorkflowAction<UiaGetElementLabelValueResponse, ApiConnectionActionConfiguration> UiaGetElementLabelValue(Expression<Func<UiaGetElementLabelValueInput>> uiaGetElementLabelValue)
         {
-            var __workflow_uIAGetElementLabelValue = WorkflowExpression.Compile(uIAGetElementLabelValue, nameof(uIAGetElementLabelValue), required: true);
-            return new DeferredBodyAction<UIAGetElementLabelValueResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetElementLabelValue = WorkflowExpression.Compile(uiaGetElementLabelValue, nameof(uiaGetElementLabelValue), required: true);
+            return new DeferredBodyAction<UiaGetElementLabelValueResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetElementLabelValue";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetElementLabelValue);
-                return new ApiConnectionAction<UIAGetElementLabelValueResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetElementLabelValue);
+                return new ApiConnectionAction<UiaGetElementLabelValueResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetElementPropertiesResponse, ApiConnectionActionConfiguration> UIAGetElementProperties(Expression<Func<UIAGetElementPropertiesInput>> uIAGetElementProperties)
+        public IBodyWorkflowAction<UiaGetElementPropertiesResponse, ApiConnectionActionConfiguration> UiaGetElementProperties(Expression<Func<UiaGetElementPropertiesInput>> uiaGetElementProperties)
         {
-            var __workflow_uIAGetElementProperties = WorkflowExpression.Compile(uIAGetElementProperties, nameof(uIAGetElementProperties), required: true);
-            return new DeferredBodyAction<UIAGetElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetElementProperties = WorkflowExpression.Compile(uiaGetElementProperties, nameof(uiaGetElementProperties), required: true);
+            return new DeferredBodyAction<UiaGetElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetElementProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetElementProperties);
-                return new ApiConnectionAction<UIAGetElementPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetElementProperties);
+                return new ApiConnectionAction<UiaGetElementPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetMultipleElementPropertiesResponse, ApiConnectionActionConfiguration> UIAGetMultipleElementProperties(Expression<Func<UIAGetMultipleElementPropertiesInput>> uIAGetMultipleElementProperties)
+        public IBodyWorkflowAction<UiaGetMultipleElementPropertiesResponse, ApiConnectionActionConfiguration> UiaGetMultipleElementProperties(Expression<Func<UiaGetMultipleElementPropertiesInput>> uiaGetMultipleElementProperties)
         {
-            var __workflow_uIAGetMultipleElementProperties = WorkflowExpression.Compile(uIAGetMultipleElementProperties, nameof(uIAGetMultipleElementProperties), required: true);
-            return new DeferredBodyAction<UIAGetMultipleElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetMultipleElementProperties = WorkflowExpression.Compile(uiaGetMultipleElementProperties, nameof(uiaGetMultipleElementProperties), required: true);
+            return new DeferredBodyAction<UiaGetMultipleElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetMultipleElementProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetMultipleElementProperties);
-                return new ApiConnectionAction<UIAGetMultipleElementPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetMultipleElementProperties);
+                return new ApiConnectionAction<UiaGetMultipleElementPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetDesktopElementsResponse, ApiConnectionActionConfiguration> UIAGetDesktopElements(Expression<Func<UIAGetDesktopElementsInput>> uIAGetDesktopElements)
+        public IBodyWorkflowAction<UiaGetDesktopElementsResponse, ApiConnectionActionConfiguration> UiaGetDesktopElements(Expression<Func<UiaGetDesktopElementsInput>> uiaGetDesktopElements)
         {
-            var __workflow_uIAGetDesktopElements = WorkflowExpression.Compile(uIAGetDesktopElements, nameof(uIAGetDesktopElements), required: true);
-            return new DeferredBodyAction<UIAGetDesktopElementsResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetDesktopElements = WorkflowExpression.Compile(uiaGetDesktopElements, nameof(uiaGetDesktopElements), required: true);
+            return new DeferredBodyAction<UiaGetDesktopElementsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetDesktopElements";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetDesktopElements);
-                return new ApiConnectionAction<UIAGetDesktopElementsResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetDesktopElements);
+                return new ApiConnectionAction<UiaGetDesktopElementsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAExpandElement(Expression<Func<UIAExpandElementInput>> uIAExpandElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaExpandElement(Expression<Func<UiaExpandElementInput>> uiaExpandElement)
         {
-            var __workflow_uIAExpandElement = WorkflowExpression.Compile(uIAExpandElement, nameof(uIAExpandElement), required: true);
+            var __workflow_uiaExpandElement = WorkflowExpression.Compile(uiaExpandElement, nameof(uiaExpandElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/ExpandElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAExpandElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaExpandElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIACollapseElement(Expression<Func<UIACollapseElementInput>> uIACollapseElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaCollapseElement(Expression<Func<UiaCollapseElementInput>> uiaCollapseElement)
         {
-            var __workflow_uIACollapseElement = WorkflowExpression.Compile(uIACollapseElement, nameof(uIACollapseElement), required: true);
+            var __workflow_uiaCollapseElement = WorkflowExpression.Compile(uiaCollapseElement, nameof(uiaCollapseElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/CollapseElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIACollapseElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaCollapseElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIATakeScreenShotOfElementLocationResponse, ApiConnectionActionConfiguration> UIATakeScreenShotOfElementLocation(Expression<Func<UIATakeScreenShotOfElementLocationInput>> uIATakeScreenShotOfElementLocation)
+        public IBodyWorkflowAction<UiaTakeScreenShotOfElementLocationResponse, ApiConnectionActionConfiguration> UiaTakeScreenShotOfElementLocation(Expression<Func<UiaTakeScreenShotOfElementLocationInput>> uiaTakeScreenShotOfElementLocation)
         {
-            var __workflow_uIATakeScreenShotOfElementLocation = WorkflowExpression.Compile(uIATakeScreenShotOfElementLocation, nameof(uIATakeScreenShotOfElementLocation), required: true);
-            return new DeferredBodyAction<UIATakeScreenShotOfElementLocationResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaTakeScreenShotOfElementLocation = WorkflowExpression.Compile(uiaTakeScreenShotOfElementLocation, nameof(uiaTakeScreenShotOfElementLocation), required: true);
+            return new DeferredBodyAction<UiaTakeScreenShotOfElementLocationResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/TakeScreenShotOfElementLocation";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIATakeScreenShotOfElementLocation);
-                return new ApiConnectionAction<UIATakeScreenShotOfElementLocationResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaTakeScreenShotOfElementLocation);
+                return new ApiConnectionAction<UiaTakeScreenShotOfElementLocationResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIADrawRectangleAroundElement(Expression<Func<UIADrawRectangleAroundElementInput>> uIADrawRectangleAroundElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaDrawRectangleAroundElement(Expression<Func<UiaDrawRectangleAroundElementInput>> uiaDrawRectangleAroundElement)
         {
-            var __workflow_uIADrawRectangleAroundElement = WorkflowExpression.Compile(uIADrawRectangleAroundElement, nameof(uIADrawRectangleAroundElement), required: true);
+            var __workflow_uiaDrawRectangleAroundElement = WorkflowExpression.Compile(uiaDrawRectangleAroundElement, nameof(uiaDrawRectangleAroundElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/DrawRectangleAroundElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIADrawRectangleAroundElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaDrawRectangleAroundElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetParentElementHandleResponse, ApiConnectionActionConfiguration> UIAGetParentElementHandle(Expression<Func<UIAGetParentElementHandleInput>> uIAGetParentElementHandle)
+        public IBodyWorkflowAction<UiaGetParentElementHandleResponse, ApiConnectionActionConfiguration> UiaGetParentElementHandle(Expression<Func<UiaGetParentElementHandleInput>> uiaGetParentElementHandle)
         {
-            var __workflow_uIAGetParentElementHandle = WorkflowExpression.Compile(uIAGetParentElementHandle, nameof(uIAGetParentElementHandle), required: true);
-            return new DeferredBodyAction<UIAGetParentElementHandleResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetParentElementHandle = WorkflowExpression.Compile(uiaGetParentElementHandle, nameof(uiaGetParentElementHandle), required: true);
+            return new DeferredBodyAction<UiaGetParentElementHandleResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetParentElementHandle";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetParentElementHandle);
-                return new ApiConnectionAction<UIAGetParentElementHandleResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetParentElementHandle);
+                return new ApiConnectionAction<UiaGetParentElementHandleResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetDataGridElementContentsResponse, ApiConnectionActionConfiguration> UIAGetDataGridElementContents(Expression<Func<UIAGetDataGridElementContentsInput>> uIAGetDataGridElementContents)
+        public IBodyWorkflowAction<UiaGetDataGridElementContentsResponse, ApiConnectionActionConfiguration> UiaGetDataGridElementContents(Expression<Func<UiaGetDataGridElementContentsInput>> uiaGetDataGridElementContents)
         {
-            var __workflow_uIAGetDataGridElementContents = WorkflowExpression.Compile(uIAGetDataGridElementContents, nameof(uIAGetDataGridElementContents), required: true);
-            return new DeferredBodyAction<UIAGetDataGridElementContentsResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetDataGridElementContents = WorkflowExpression.Compile(uiaGetDataGridElementContents, nameof(uiaGetDataGridElementContents), required: true);
+            return new DeferredBodyAction<UiaGetDataGridElementContentsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetDataGridElementContents";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetDataGridElementContents);
-                return new ApiConnectionAction<UIAGetDataGridElementContentsResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetDataGridElementContents);
+                return new ApiConnectionAction<UiaGetDataGridElementContentsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetDataGridElementPropertiesResponse, ApiConnectionActionConfiguration> UIAGetDataGridElementProperties(Expression<Func<UIAGetDataGridElementPropertiesInput>> uIAGetDataGridElementProperties)
+        public IBodyWorkflowAction<UiaGetDataGridElementPropertiesResponse, ApiConnectionActionConfiguration> UiaGetDataGridElementProperties(Expression<Func<UiaGetDataGridElementPropertiesInput>> uiaGetDataGridElementProperties)
         {
-            var __workflow_uIAGetDataGridElementProperties = WorkflowExpression.Compile(uIAGetDataGridElementProperties, nameof(uIAGetDataGridElementProperties), required: true);
-            return new DeferredBodyAction<UIAGetDataGridElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetDataGridElementProperties = WorkflowExpression.Compile(uiaGetDataGridElementProperties, nameof(uiaGetDataGridElementProperties), required: true);
+            return new DeferredBodyAction<UiaGetDataGridElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetDataGridElementProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetDataGridElementProperties);
-                return new ApiConnectionAction<UIAGetDataGridElementPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetDataGridElementProperties);
+                return new ApiConnectionAction<UiaGetDataGridElementPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetListElementItemsResponse, ApiConnectionActionConfiguration> UIAGetListElementItems(Expression<Func<UIAGetListElementItemsInput>> uIAGetListElementItems)
+        public IBodyWorkflowAction<UiaGetListElementItemsResponse, ApiConnectionActionConfiguration> UiaGetListElementItems(Expression<Func<UiaGetListElementItemsInput>> uiaGetListElementItems)
         {
-            var __workflow_uIAGetListElementItems = WorkflowExpression.Compile(uIAGetListElementItems, nameof(uIAGetListElementItems), required: true);
-            return new DeferredBodyAction<UIAGetListElementItemsResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetListElementItems = WorkflowExpression.Compile(uiaGetListElementItems, nameof(uiaGetListElementItems), required: true);
+            return new DeferredBodyAction<UiaGetListElementItemsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetListElementItems";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetListElementItems);
-                return new ApiConnectionAction<UIAGetListElementItemsResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetListElementItems);
+                return new ApiConnectionAction<UiaGetListElementItemsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAClickListElementItemByName(Expression<Func<UIAClickListElementItemByNameInput>> uIAClickListElementItemByName)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaClickListElementItemByName(Expression<Func<UiaClickListElementItemByNameInput>> uiaClickListElementItemByName)
         {
-            var __workflow_uIAClickListElementItemByName = WorkflowExpression.Compile(uIAClickListElementItemByName, nameof(uIAClickListElementItemByName), required: true);
+            var __workflow_uiaClickListElementItemByName = WorkflowExpression.Compile(uiaClickListElementItemByName, nameof(uiaClickListElementItemByName), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/ClickListElementItemByName";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAClickListElementItemByName);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaClickListElementItemByName);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAClickListElementItemByIndex(Expression<Func<UIAClickListElementItemByIndexInput>> uIAClickListElementItemByIndex)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaClickListElementItemByIndex(Expression<Func<UiaClickListElementItemByIndexInput>> uiaClickListElementItemByIndex)
         {
-            var __workflow_uIAClickListElementItemByIndex = WorkflowExpression.Compile(uIAClickListElementItemByIndex, nameof(uIAClickListElementItemByIndex), required: true);
+            var __workflow_uiaClickListElementItemByIndex = WorkflowExpression.Compile(uiaClickListElementItemByIndex, nameof(uiaClickListElementItemByIndex), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/ClickListElementItemByIndex";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAClickListElementItemByIndex);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaClickListElementItemByIndex);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIASetElementToNumericValue(Expression<Func<UIASetElementToNumericValueInput>> uIASetElementToNumericValue)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaSetElementToNumericValue(Expression<Func<UiaSetElementToNumericValueInput>> uiaSetElementToNumericValue)
         {
-            var __workflow_uIASetElementToNumericValue = WorkflowExpression.Compile(uIASetElementToNumericValue, nameof(uIASetElementToNumericValue), required: true);
+            var __workflow_uiaSetElementToNumericValue = WorkflowExpression.Compile(uiaSetElementToNumericValue, nameof(uiaSetElementToNumericValue), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIASetElementToNumericValue";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIASetElementToNumericValue);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaSetElementToNumericValue);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIASetElementToNumericRangeValue(Expression<Func<UIASetElementToNumericRangeValueInput>> uIASetElementToNumericRangeValue)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaSetElementToNumericRangeValue(Expression<Func<UiaSetElementToNumericRangeValueInput>> uiaSetElementToNumericRangeValue)
         {
-            var __workflow_uIASetElementToNumericRangeValue = WorkflowExpression.Compile(uIASetElementToNumericRangeValue, nameof(uIASetElementToNumericRangeValue), required: true);
+            var __workflow_uiaSetElementToNumericRangeValue = WorkflowExpression.Compile(uiaSetElementToNumericRangeValue, nameof(uiaSetElementToNumericRangeValue), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIASetElementToNumericRangeValue";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIASetElementToNumericRangeValue);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaSetElementToNumericRangeValue);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAResetAllElementHandles(Expression<Func<UIAResetAllElementHandlesInput>> uIAResetAllElementHandles)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaResetAllElementHandles(Expression<Func<UiaResetAllElementHandlesInput>> uiaResetAllElementHandles)
         {
-            var __workflow_uIAResetAllElementHandles = WorkflowExpression.Compile(uIAResetAllElementHandles, nameof(uIAResetAllElementHandles), required: true);
+            var __workflow_uiaResetAllElementHandles = WorkflowExpression.Compile(uiaResetAllElementHandles, nameof(uiaResetAllElementHandles), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAResetAllElementHandles";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAResetAllElementHandles);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaResetAllElementHandles);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAGlobalPasswordInputIntoElement(Expression<Func<UIAGlobalPasswordInputIntoElementInput>> uIAGlobalPasswordInputIntoElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaGlobalPasswordInputIntoElement(Expression<Func<UiaGlobalPasswordInputIntoElementInput>> uiaGlobalPasswordInputIntoElement)
         {
-            var __workflow_uIAGlobalPasswordInputIntoElement = WorkflowExpression.Compile(uIAGlobalPasswordInputIntoElement, nameof(uIAGlobalPasswordInputIntoElement), required: true);
+            var __workflow_uiaGlobalPasswordInputIntoElement = WorkflowExpression.Compile(uiaGlobalPasswordInputIntoElement, nameof(uiaGlobalPasswordInputIntoElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAGlobalPasswordInputIntoElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGlobalPasswordInputIntoElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGlobalPasswordInputIntoElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIAGlobalTextInputIntoElement(Expression<Func<UIAGlobalTextInputIntoElementInput>> uIAGlobalTextInputIntoElement)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaGlobalTextInputIntoElement(Expression<Func<UiaGlobalTextInputIntoElementInput>> uiaGlobalTextInputIntoElement)
         {
-            var __workflow_uIAGlobalTextInputIntoElement = WorkflowExpression.Compile(uIAGlobalTextInputIntoElement, nameof(uIAGlobalTextInputIntoElement), required: true);
+            var __workflow_uiaGlobalTextInputIntoElement = WorkflowExpression.Compile(uiaGlobalTextInputIntoElement, nameof(uiaGlobalTextInputIntoElement), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAGlobalTextInputIntoElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGlobalTextInputIntoElement);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGlobalTextInputIntoElement);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetElementPropertiesAsListResponse, ApiConnectionActionConfiguration> UIAGetElementPropertiesAsList(Expression<Func<UIAGetElementPropertiesAsListInput>> uIAGetElementPropertiesAsList)
+        public IBodyWorkflowAction<UiaGetElementPropertiesAsListResponse, ApiConnectionActionConfiguration> UiaGetElementPropertiesAsList(Expression<Func<UiaGetElementPropertiesAsListInput>> uiaGetElementPropertiesAsList)
         {
-            var __workflow_uIAGetElementPropertiesAsList = WorkflowExpression.Compile(uIAGetElementPropertiesAsList, nameof(uIAGetElementPropertiesAsList), required: true);
-            return new DeferredBodyAction<UIAGetElementPropertiesAsListResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetElementPropertiesAsList = WorkflowExpression.Compile(uiaGetElementPropertiesAsList, nameof(uiaGetElementPropertiesAsList), required: true);
+            return new DeferredBodyAction<UiaGetElementPropertiesAsListResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAGetElementPropertiesAsList";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetElementPropertiesAsList);
-                return new ApiConnectionAction<UIAGetElementPropertiesAsListResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetElementPropertiesAsList);
+                return new ApiConnectionAction<UiaGetElementPropertiesAsListResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> UIASetTransactionTimeout(Expression<Func<UIASetTransactionTimeoutInput>> uIASetTransactionTimeout)
+        public IWorkflowAction<ApiConnectionActionConfiguration> UiaSetTransactionTimeout(Expression<Func<UiaSetTransactionTimeoutInput>> uiaSetTransactionTimeout)
         {
-            var __workflow_uIASetTransactionTimeout = WorkflowExpression.Compile(uIASetTransactionTimeout, nameof(uIASetTransactionTimeout), required: true);
+            var __workflow_uiaSetTransactionTimeout = WorkflowExpression.Compile(uiaSetTransactionTimeout, nameof(uiaSetTransactionTimeout), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIASetTransactionTimeout";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIASetTransactionTimeout);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaSetTransactionTimeout);
                 return new ApiConnectionAction(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetElementAtCoordinatesResponse, ApiConnectionActionConfiguration> UIAGetElementAtCoordinates(Expression<Func<UIAGetElementAtCoordinatesInput>> uIAGetElementAtCoordinates)
+        public IBodyWorkflowAction<UiaGetElementAtCoordinatesResponse, ApiConnectionActionConfiguration> UiaGetElementAtCoordinates(Expression<Func<UiaGetElementAtCoordinatesInput>> uiaGetElementAtCoordinates)
         {
-            var __workflow_uIAGetElementAtCoordinates = WorkflowExpression.Compile(uIAGetElementAtCoordinates, nameof(uIAGetElementAtCoordinates), required: true);
-            return new DeferredBodyAction<UIAGetElementAtCoordinatesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetElementAtCoordinates = WorkflowExpression.Compile(uiaGetElementAtCoordinates, nameof(uiaGetElementAtCoordinates), required: true);
+            return new DeferredBodyAction<UiaGetElementAtCoordinatesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAGetElementAtCoordinates";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetElementAtCoordinates);
-                return new ApiConnectionAction<UIAGetElementAtCoordinatesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetElementAtCoordinates);
+                return new ApiConnectionAction<UiaGetElementAtCoordinatesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetMultipleParentElementPropertiesResponse, ApiConnectionActionConfiguration> UIAGetMultipleParentElementProperties(Expression<Func<UIAGetMultipleParentElementPropertiesInput>> uIAGetMultipleParentElementProperties)
+        public IBodyWorkflowAction<UiaGetMultipleParentElementPropertiesResponse, ApiConnectionActionConfiguration> UiaGetMultipleParentElementProperties(Expression<Func<UiaGetMultipleParentElementPropertiesInput>> uiaGetMultipleParentElementProperties)
         {
-            var __workflow_uIAGetMultipleParentElementProperties = WorkflowExpression.Compile(uIAGetMultipleParentElementProperties, nameof(uIAGetMultipleParentElementProperties), required: true);
-            return new DeferredBodyAction<UIAGetMultipleParentElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetMultipleParentElementProperties = WorkflowExpression.Compile(uiaGetMultipleParentElementProperties, nameof(uiaGetMultipleParentElementProperties), required: true);
+            return new DeferredBodyAction<UiaGetMultipleParentElementPropertiesResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAGetMultipleParentElementProperties";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetMultipleParentElementProperties);
-                return new ApiConnectionAction<UIAGetMultipleParentElementPropertiesResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetMultipleParentElementProperties);
+                return new ApiConnectionAction<UiaGetMultipleParentElementPropertiesResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIASearchForFirstParentElementResponse, ApiConnectionActionConfiguration> UIASearchForFirstParentElement(Expression<Func<UIASearchForFirstParentElementInput>> uIASearchForFirstParentElement)
+        public IBodyWorkflowAction<UiaSearchForFirstParentElementResponse, ApiConnectionActionConfiguration> UiaSearchForFirstParentElement(Expression<Func<UiaSearchForFirstParentElementInput>> uiaSearchForFirstParentElement)
         {
-            var __workflow_uIASearchForFirstParentElement = WorkflowExpression.Compile(uIASearchForFirstParentElement, nameof(uIASearchForFirstParentElement), required: true);
-            return new DeferredBodyAction<UIASearchForFirstParentElementResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaSearchForFirstParentElement = WorkflowExpression.Compile(uiaSearchForFirstParentElement, nameof(uiaSearchForFirstParentElement), required: true);
+            return new DeferredBodyAction<UiaSearchForFirstParentElementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIASearchForFirstParentElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIASearchForFirstParentElement);
-                return new ApiConnectionAction<UIASearchForFirstParentElementResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaSearchForFirstParentElement);
+                return new ApiConnectionAction<UiaSearchForFirstParentElementResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetMultipleElementsAsTableResponse, ApiConnectionActionConfiguration> UIAGetMultipleElementsAsTable(Expression<Func<UIAGetMultipleElementsAsTableInput>> uIAGetMultipleElementsAsTable)
+        public IBodyWorkflowAction<UiaGetMultipleElementsAsTableResponse, ApiConnectionActionConfiguration> UiaGetMultipleElementsAsTable(Expression<Func<UiaGetMultipleElementsAsTableInput>> uiaGetMultipleElementsAsTable)
         {
-            var __workflow_uIAGetMultipleElementsAsTable = WorkflowExpression.Compile(uIAGetMultipleElementsAsTable, nameof(uIAGetMultipleElementsAsTable), required: true);
-            return new DeferredBodyAction<UIAGetMultipleElementsAsTableResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetMultipleElementsAsTable = WorkflowExpression.Compile(uiaGetMultipleElementsAsTable, nameof(uiaGetMultipleElementsAsTable), required: true);
+            return new DeferredBodyAction<UiaGetMultipleElementsAsTableResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAGetMultipleElementsAsTable";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetMultipleElementsAsTable);
-                return new ApiConnectionAction<UIAGetMultipleElementsAsTableResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetMultipleElementsAsTable);
+                return new ApiConnectionAction<UiaGetMultipleElementsAsTableResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIASetElementScrollPercentageResponse, ApiConnectionActionConfiguration> UIASetElementScrollPercentage(Expression<Func<UIASetElementScrollPercentageInput>> uIASetElementScrollPercentage)
+        public IBodyWorkflowAction<UiaSetElementScrollPercentageResponse, ApiConnectionActionConfiguration> UiaSetElementScrollPercentage(Expression<Func<UiaSetElementScrollPercentageInput>> uiaSetElementScrollPercentage)
         {
-            var __workflow_uIASetElementScrollPercentage = WorkflowExpression.Compile(uIASetElementScrollPercentage, nameof(uIASetElementScrollPercentage), required: true);
-            return new DeferredBodyAction<UIASetElementScrollPercentageResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaSetElementScrollPercentage = WorkflowExpression.Compile(uiaSetElementScrollPercentage, nameof(uiaSetElementScrollPercentage), required: true);
+            return new DeferredBodyAction<UiaSetElementScrollPercentageResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIASetElementScrollPercentage";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIASetElementScrollPercentage);
-                return new ApiConnectionAction<UIASetElementScrollPercentageResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaSetElementScrollPercentage);
+                return new ApiConnectionAction<UiaSetElementScrollPercentageResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetElementSearchColourRegionResponse, ApiConnectionActionConfiguration> UIAGetElementSearchColourRegion(Expression<Func<UIAGetElementSearchColourRegionInput>> uIAGetElementSearchColourRegion)
+        public IBodyWorkflowAction<UiaGetElementSearchColourRegionResponse, ApiConnectionActionConfiguration> UiaGetElementSearchColourRegion(Expression<Func<UiaGetElementSearchColourRegionInput>> uiaGetElementSearchColourRegion)
         {
-            var __workflow_uIAGetElementSearchColourRegion = WorkflowExpression.Compile(uIAGetElementSearchColourRegion, nameof(uIAGetElementSearchColourRegion), required: true);
-            return new DeferredBodyAction<UIAGetElementSearchColourRegionResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetElementSearchColourRegion = WorkflowExpression.Compile(uiaGetElementSearchColourRegion, nameof(uiaGetElementSearchColourRegion), required: true);
+            return new DeferredBodyAction<UiaGetElementSearchColourRegionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAGetElementSearchColourRegion";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetElementSearchColourRegion);
-                return new ApiConnectionAction<UIAGetElementSearchColourRegionResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetElementSearchColourRegion);
+                return new ApiConnectionAction<UiaGetElementSearchColourRegionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGlobalMouseClickElementSearchColourRegionResponse, ApiConnectionActionConfiguration> UIAGlobalMouseClickElementSearchColourRegion(Expression<Func<UIAGlobalMouseClickElementSearchColourRegionInput>> uIAGlobalMouseClickElementSearchColourRegion)
+        public IBodyWorkflowAction<UiaGlobalMouseClickElementSearchColourRegionResponse, ApiConnectionActionConfiguration> UiaGlobalMouseClickElementSearchColourRegion(Expression<Func<UiaGlobalMouseClickElementSearchColourRegionInput>> uiaGlobalMouseClickElementSearchColourRegion)
         {
-            var __workflow_uIAGlobalMouseClickElementSearchColourRegion = WorkflowExpression.Compile(uIAGlobalMouseClickElementSearchColourRegion, nameof(uIAGlobalMouseClickElementSearchColourRegion), required: true);
-            return new DeferredBodyAction<UIAGlobalMouseClickElementSearchColourRegionResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGlobalMouseClickElementSearchColourRegion = WorkflowExpression.Compile(uiaGlobalMouseClickElementSearchColourRegion, nameof(uiaGlobalMouseClickElementSearchColourRegion), required: true);
+            return new DeferredBodyAction<UiaGlobalMouseClickElementSearchColourRegionResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAGlobalMouseClickElementSearchColourRegion";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGlobalMouseClickElementSearchColourRegion);
-                return new ApiConnectionAction<UIAGlobalMouseClickElementSearchColourRegionResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGlobalMouseClickElementSearchColourRegion);
+                return new ApiConnectionAction<UiaGlobalMouseClickElementSearchColourRegionResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetWin32WindowsResponse, ApiConnectionActionConfiguration> UIAGetWin32Windows(Expression<Func<UIAGetWin32WindowsInput>> uIAGetWin32Windows)
+        public IBodyWorkflowAction<UiaGetWin32WindowsResponse, ApiConnectionActionConfiguration> UiaGetWin32Windows(Expression<Func<UiaGetWin32WindowsInput>> uiaGetWin32Windows)
         {
-            var __workflow_uIAGetWin32Windows = WorkflowExpression.Compile(uIAGetWin32Windows, nameof(uIAGetWin32Windows), required: true);
-            return new DeferredBodyAction<UIAGetWin32WindowsResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetWin32Windows = WorkflowExpression.Compile(uiaGetWin32Windows, nameof(uiaGetWin32Windows), required: true);
+            return new DeferredBodyAction<UiaGetWin32WindowsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetWin32Windows";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetWin32Windows);
-                return new ApiConnectionAction<UIAGetWin32WindowsResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetWin32Windows);
+                return new ApiConnectionAction<UiaGetWin32WindowsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<SetUIAElementSearchModeResponse, ApiConnectionActionConfiguration> SetUIAElementSearchMode(Expression<Func<SetUIAElementSearchModeInput>> setUIAElementSearchMode)
+        public IBodyWorkflowAction<SetUiaElementSearchModeResponse, ApiConnectionActionConfiguration> SetUiaElementSearchMode(Expression<Func<SetUiaElementSearchModeInput>> setUiaElementSearchMode)
         {
-            var __workflow_setUIAElementSearchMode = WorkflowExpression.Compile(setUIAElementSearchMode, nameof(setUIAElementSearchMode), required: true);
-            return new DeferredBodyAction<SetUIAElementSearchModeResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_setUiaElementSearchMode = WorkflowExpression.Compile(setUiaElementSearchMode, nameof(setUiaElementSearchMode), required: true);
+            return new DeferredBodyAction<SetUiaElementSearchModeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/SetUIAElementSearchMode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setUIAElementSearchMode);
-                return new ApiConnectionAction<SetUIAElementSearchModeResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_setUiaElementSearchMode);
+                return new ApiConnectionAction<SetUiaElementSearchModeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<GetUIAElementSearchModeResponse, ApiConnectionActionConfiguration> GetUIAElementSearchMode(Expression<Func<GetUIAElementSearchModeInput>> getUIAElementSearchMode)
+        public IBodyWorkflowAction<GetUiaElementSearchModeResponse, ApiConnectionActionConfiguration> GetUiaElementSearchMode(Expression<Func<GetUiaElementSearchModeInput>> getUiaElementSearchMode)
         {
-            var __workflow_getUIAElementSearchMode = WorkflowExpression.Compile(getUIAElementSearchMode, nameof(getUIAElementSearchMode), required: true);
-            return new DeferredBodyAction<GetUIAElementSearchModeResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_getUiaElementSearchMode = WorkflowExpression.Compile(getUiaElementSearchMode, nameof(getUiaElementSearchMode), required: true);
+            return new DeferredBodyAction<GetUiaElementSearchModeResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/GetUIAElementSearchMode";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getUIAElementSearchMode);
-                return new ApiConnectionAction<GetUIAElementSearchModeResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_getUiaElementSearchMode);
+                return new ApiConnectionAction<GetUiaElementSearchModeResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAGetElementPatternsResponse, ApiConnectionActionConfiguration> UIAGetElementPatterns(Expression<Func<UIAGetElementPatternsInput>> uIAGetElementPatterns)
+        public IBodyWorkflowAction<UiaGetElementPatternsResponse, ApiConnectionActionConfiguration> UiaGetElementPatterns(Expression<Func<UiaGetElementPatternsInput>> uiaGetElementPatterns)
         {
-            var __workflow_uIAGetElementPatterns = WorkflowExpression.Compile(uIAGetElementPatterns, nameof(uIAGetElementPatterns), required: true);
-            return new DeferredBodyAction<UIAGetElementPatternsResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaGetElementPatterns = WorkflowExpression.Compile(uiaGetElementPatterns, nameof(uiaGetElementPatterns), required: true);
+            return new DeferredBodyAction<UiaGetElementPatternsResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAGetElementPatterns";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAGetElementPatterns);
-                return new ApiConnectionAction<UIAGetElementPatternsResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaGetElementPatterns);
+                return new ApiConnectionAction<UiaGetElementPatternsResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAMoveElementResponse, ApiConnectionActionConfiguration> UIAMoveElement(Expression<Func<UIAMoveElementInput>> uIAMoveElement)
+        public IBodyWorkflowAction<UiaMoveElementResponse, ApiConnectionActionConfiguration> UiaMoveElement(Expression<Func<UiaMoveElementInput>> uiaMoveElement)
         {
-            var __workflow_uIAMoveElement = WorkflowExpression.Compile(uIAMoveElement, nameof(uIAMoveElement), required: true);
-            return new DeferredBodyAction<UIAMoveElementResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaMoveElement = WorkflowExpression.Compile(uiaMoveElement, nameof(uiaMoveElement), required: true);
+            return new DeferredBodyAction<UiaMoveElementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAMoveElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAMoveElement);
-                return new ApiConnectionAction<UIAMoveElementResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaMoveElement);
+                return new ApiConnectionAction<UiaMoveElementResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAResizeElementResponse, ApiConnectionActionConfiguration> UIAResizeElement(Expression<Func<UIAResizeElementInput>> uIAResizeElement)
+        public IBodyWorkflowAction<UiaResizeElementResponse, ApiConnectionActionConfiguration> UiaResizeElement(Expression<Func<UiaResizeElementInput>> uiaResizeElement)
         {
-            var __workflow_uIAResizeElement = WorkflowExpression.Compile(uIAResizeElement, nameof(uIAResizeElement), required: true);
-            return new DeferredBodyAction<UIAResizeElementResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaResizeElement = WorkflowExpression.Compile(uiaResizeElement, nameof(uiaResizeElement), required: true);
+            return new DeferredBodyAction<UiaResizeElementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAResizeElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAResizeElement);
-                return new ApiConnectionAction<UIAResizeElementResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaResizeElement);
+                return new ApiConnectionAction<UiaResizeElementResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIALocateVisibleSearchImageWithinElementResponse, ApiConnectionActionConfiguration> UIALocateVisibleSearchImageWithinElement(Expression<Func<UIALocateVisibleSearchImageWithinElementInput>> uIALocateVisibleSearchImageWithinElement)
+        public IBodyWorkflowAction<UiaLocateVisibleSearchImageWithinElementResponse, ApiConnectionActionConfiguration> UiaLocateVisibleSearchImageWithinElement(Expression<Func<UiaLocateVisibleSearchImageWithinElementInput>> uiaLocateVisibleSearchImageWithinElement)
         {
-            var __workflow_uIALocateVisibleSearchImageWithinElement = WorkflowExpression.Compile(uIALocateVisibleSearchImageWithinElement, nameof(uIALocateVisibleSearchImageWithinElement), required: true);
-            return new DeferredBodyAction<UIALocateVisibleSearchImageWithinElementResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaLocateVisibleSearchImageWithinElement = WorkflowExpression.Compile(uiaLocateVisibleSearchImageWithinElement, nameof(uiaLocateVisibleSearchImageWithinElement), required: true);
+            return new DeferredBodyAction<UiaLocateVisibleSearchImageWithinElementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIALocateVisibleSearchImageWithinElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIALocateVisibleSearchImageWithinElement);
-                return new ApiConnectionAction<UIALocateVisibleSearchImageWithinElementResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaLocateVisibleSearchImageWithinElement);
+                return new ApiConnectionAction<UiaLocateVisibleSearchImageWithinElementResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForVisibleSearchImageWithinElementResponse, ApiConnectionActionConfiguration> UIAWaitForVisibleSearchImageWithinElement(Expression<Func<UIAWaitForVisibleSearchImageWithinElementInput>> uIAWaitForVisibleSearchImageWithinElement)
+        public IBodyWorkflowAction<UiaWaitForVisibleSearchImageWithinElementResponse, ApiConnectionActionConfiguration> UiaWaitForVisibleSearchImageWithinElement(Expression<Func<UiaWaitForVisibleSearchImageWithinElementInput>> uiaWaitForVisibleSearchImageWithinElement)
         {
-            var __workflow_uIAWaitForVisibleSearchImageWithinElement = WorkflowExpression.Compile(uIAWaitForVisibleSearchImageWithinElement, nameof(uIAWaitForVisibleSearchImageWithinElement), required: true);
-            return new DeferredBodyAction<UIAWaitForVisibleSearchImageWithinElementResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaWaitForVisibleSearchImageWithinElement = WorkflowExpression.Compile(uiaWaitForVisibleSearchImageWithinElement, nameof(uiaWaitForVisibleSearchImageWithinElement), required: true);
+            return new DeferredBodyAction<UiaWaitForVisibleSearchImageWithinElementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAWaitForVisibleSearchImageWithinElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAWaitForVisibleSearchImageWithinElement);
-                return new ApiConnectionAction<UIAWaitForVisibleSearchImageWithinElementResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaWaitForVisibleSearchImageWithinElement);
+                return new ApiConnectionAction<UiaWaitForVisibleSearchImageWithinElementResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectui")]
-        public IBodyWorkflowAction<UIAWaitForVisibleSearchImageToNotExistWithinElementResponse, ApiConnectionActionConfiguration> UIAWaitForVisibleSearchImageToNotExistWithinElement(Expression<Func<UIAWaitForVisibleSearchImageToNotExistWithinElementInput>> uIAWaitForVisibleSearchImageToNotExistWithinElement)
+        public IBodyWorkflowAction<UiaWaitForVisibleSearchImageToNotExistWithinElementResponse, ApiConnectionActionConfiguration> UiaWaitForVisibleSearchImageToNotExistWithinElement(Expression<Func<UiaWaitForVisibleSearchImageToNotExistWithinElementInput>> uiaWaitForVisibleSearchImageToNotExistWithinElement)
         {
-            var __workflow_uIAWaitForVisibleSearchImageToNotExistWithinElement = WorkflowExpression.Compile(uIAWaitForVisibleSearchImageToNotExistWithinElement, nameof(uIAWaitForVisibleSearchImageToNotExistWithinElement), required: true);
-            return new DeferredBodyAction<UIAWaitForVisibleSearchImageToNotExistWithinElementResponse, ApiConnectionActionConfiguration>(() =>
+            var __workflow_uiaWaitForVisibleSearchImageToNotExistWithinElement = WorkflowExpression.Compile(uiaWaitForVisibleSearchImageToNotExistWithinElement, nameof(uiaWaitForVisibleSearchImageToNotExistWithinElement), required: true);
+            return new DeferredBodyAction<UiaWaitForVisibleSearchImageToNotExistWithinElementResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/UIAControl/UIAWaitForVisibleSearchImageToNotExistWithinElement";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uIAWaitForVisibleSearchImageToNotExistWithinElement);
-                return new ApiConnectionAction<UIAWaitForVisibleSearchImageToNotExistWithinElementResponse>(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_uiaWaitForVisibleSearchImageToNotExistWithinElement);
+                return new ApiConnectionAction<UiaWaitForVisibleSearchImageToNotExistWithinElementResponse>(callPayload);
             });
         }
     }
@@ -1081,12 +1081,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     {
     }
 
-    public class UIADoesTopLevelWindowExistResponse
+    public class UiaDoesTopLevelWindowExistResponse
     {
         public bool WindowExists { get; set; }
     }
 
-    public class UIADoesTopLevelWindowExistInput
+    public class UiaDoesTopLevelWindowExistInput
     {
         public string SearchClassName { get; set; }
         public string SearchWindowTitle { get; set; }
@@ -1100,7 +1100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetHandleForTopLevelWindowResponse
+    public class UiaGetHandleForTopLevelWindowResponse
     {
         public int WindowHandle { get; set; }
         public string ElementName { get; set; }
@@ -1109,7 +1109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementLocalizedControlType { get; set; }
     }
 
-    public class UIAGetHandleForTopLevelWindowInput
+    public class UiaGetHandleForTopLevelWindowInput
     {
         public string SearchClassName { get; set; }
         public string SearchWindowTitle { get; set; }
@@ -1127,7 +1127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAWaitForTopLevelWindowResponse
+    public class UiaWaitForTopLevelWindowResponse
     {
         public int WindowHandle { get; set; }
         public string ElementName { get; set; }
@@ -1137,7 +1137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public bool ElementExists { get; set; }
     }
 
-    public class UIAWaitForTopLevelWindowInput
+    public class UiaWaitForTopLevelWindowInput
     {
         public string SearchClassName { get; set; }
         public string SearchWindowTitle { get; set; }
@@ -1161,14 +1161,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIADoesProcessHaveWindowResponse
+    public class UiaDoesProcessHaveWindowResponse
     {
         public bool ProcessHasWindow { get; set; }
     }
 
-    public class UIADoesProcessHaveWindowInput
+    public class UiaDoesProcessHaveWindowInput
     {
-        public UIADoesProcessHaveWindowInput(string searchProcessName)
+        public UiaDoesProcessHaveWindowInput(string searchProcessName)
         {
             this.SearchProcessName = searchProcessName;
         }
@@ -1180,7 +1180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetHandleForProcessMainWindowResponse
+    public class UiaGetHandleForProcessMainWindowResponse
     {
         public int WindowHandle { get; set; }
         public string ElementName { get; set; }
@@ -1189,9 +1189,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementLocalizedControlType { get; set; }
     }
 
-    public class UIAGetHandleForProcessMainWindowInput
+    public class UiaGetHandleForProcessMainWindowInput
     {
-        public UIAGetHandleForProcessMainWindowInput(string searchProcessName)
+        public UiaGetHandleForProcessMainWindowInput(string searchProcessName)
         {
             this.SearchProcessName = searchProcessName;
         }
@@ -1203,7 +1203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAWaitForProcessMainWindowResponse
+    public class UiaWaitForProcessMainWindowResponse
     {
         public int WindowHandle { get; set; }
         public string ElementName { get; set; }
@@ -1213,9 +1213,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public bool ElementExists { get; set; }
     }
 
-    public class UIAWaitForProcessMainWindowInput
+    public class UiaWaitForProcessMainWindowInput
     {
-        public UIAWaitForProcessMainWindowInput(string searchProcessName)
+        public UiaWaitForProcessMainWindowInput(string searchProcessName)
         {
             this.SearchProcessName = searchProcessName;
         }
@@ -1230,7 +1230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetHandleForProcessIdMainWindowResponse
+    public class UiaGetHandleForProcessIdMainWindowResponse
     {
         public int WindowHandle { get; set; }
         public string ElementName { get; set; }
@@ -1239,9 +1239,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementLocalizedControlType { get; set; }
     }
 
-    public class UIAGetHandleForProcessIdMainWindowInput
+    public class UiaGetHandleForProcessIdMainWindowInput
     {
-        public UIAGetHandleForProcessIdMainWindowInput(int processId)
+        public UiaGetHandleForProcessIdMainWindowInput(int processId)
         {
             this.ProcessId = processId;
         }
@@ -1253,7 +1253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAWaitForProcessIdMainWindowResponse
+    public class UiaWaitForProcessIdMainWindowResponse
     {
         public bool ElementExists { get; set; }
         public int WindowHandle { get; set; }
@@ -1263,9 +1263,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementLocalizedControlType { get; set; }
     }
 
-    public class UIAWaitForProcessIdMainWindowInput
+    public class UiaWaitForProcessIdMainWindowInput
     {
-        public UIAWaitForProcessIdMainWindowInput(int processId)
+        public UiaWaitForProcessIdMainWindowInput(int processId)
         {
             this.ProcessId = processId;
         }
@@ -1280,7 +1280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetHandleForFocussedElementResponse
+    public class UiaGetHandleForFocussedElementResponse
     {
         public int WindowHandle { get; set; }
         public string ElementName { get; set; }
@@ -1289,13 +1289,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementLocalizedControlType { get; set; }
     }
 
-    public class UIAGetHandleForFocussedElementInput
+    public class UiaGetHandleForFocussedElementInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetHandleForMainWindowOfFocussedElementResponse
+    public class UiaGetHandleForMainWindowOfFocussedElementResponse
     {
         public int WindowHandle { get; set; }
         public string ElementName { get; set; }
@@ -1304,13 +1304,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementLocalizedControlType { get; set; }
     }
 
-    public class UIAGetHandleForMainWindowOfFocussedElementInput
+    public class UiaGetHandleForMainWindowOfFocussedElementInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetHandleForDesktopResponse
+    public class UiaGetHandleForDesktopResponse
     {
         public int WindowHandle { get; set; }
         public string ElementName { get; set; }
@@ -1319,15 +1319,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementLocalizedControlType { get; set; }
     }
 
-    public class UIAGetHandleForDesktopInput
+    public class UiaGetHandleForDesktopInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIASetForegroundWindowInput
+    public class UiaSetForegroundWindowInput
     {
-        public UIASetForegroundWindowInput(int windowHandle)
+        public UiaSetForegroundWindowInput(int windowHandle)
         {
             this.WindowHandle = windowHandle;
         }
@@ -1348,9 +1348,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAMaximiseWindowInput
+    public class UiaMaximiseWindowInput
     {
-        public UIAMaximiseWindowInput(int windowHandle)
+        public UiaMaximiseWindowInput(int windowHandle)
         {
             this.WindowHandle = windowHandle;
         }
@@ -1362,9 +1362,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAMinimiseWindowInput
+    public class UiaMinimiseWindowInput
     {
-        public UIAMinimiseWindowInput(int windowHandle)
+        public UiaMinimiseWindowInput(int windowHandle)
         {
             this.WindowHandle = windowHandle;
         }
@@ -1376,9 +1376,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIASetWindowToNormalInput
+    public class UiaSetWindowToNormalInput
     {
-        public UIASetWindowToNormalInput(int windowHandle)
+        public UiaSetWindowToNormalInput(int windowHandle)
         {
             this.WindowHandle = windowHandle;
         }
@@ -1390,7 +1390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIADoesElementExistResponse
+    public class UiaDoesElementExistResponse
     {
         public bool ElementExists { get; set; }
         public int ElementHandle { get; set; }
@@ -1400,9 +1400,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementLocalizedControlType { get; set; }
     }
 
-    public class UIADoesElementExistInput
+    public class UiaDoesElementExistInput
     {
-        public UIADoesElementExistInput(int parentWindowHandle)
+        public UiaDoesElementExistInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -1446,7 +1446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIADoesDesktopElementExistResponse
+    public class UiaDoesDesktopElementExistResponse
     {
         public bool ElementExists { get; set; }
         public int ElementHandle { get; set; }
@@ -1456,7 +1456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementLocalizedControlType { get; set; }
     }
 
-    public class UIADoesDesktopElementExistInput
+    public class UiaDoesDesktopElementExistInput
     {
         public string SearchElementName { get; set; }
         public string SearchElementClassName { get; set; }
@@ -1495,7 +1495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAWaitForElementResponse
+    public class UiaWaitForElementResponse
     {
         public bool ElementExists { get; set; }
         public int ElementHandle { get; set; }
@@ -1505,9 +1505,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementLocalizedControlType { get; set; }
     }
 
-    public class UIAWaitForElementInput
+    public class UiaWaitForElementInput
     {
-        public UIAWaitForElementInput(int parentWindowHandle)
+        public UiaWaitForElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -1557,7 +1557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAWaitForDesktopElementResponse
+    public class UiaWaitForDesktopElementResponse
     {
         public bool ElementExists { get; set; }
         public int ElementHandle { get; set; }
@@ -1567,7 +1567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementLocalizedControlType { get; set; }
     }
 
-    public class UIAWaitForDesktopElementInput
+    public class UiaWaitForDesktopElementInput
     {
         public string SearchElementName { get; set; }
         public string SearchElementClassName { get; set; }
@@ -1614,15 +1614,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAWaitForElementToNotExistResponse
+    public class UiaWaitForElementToNotExistResponse
     {
         public bool ElementExistsBeforeWait { get; set; }
         public bool ElementExistsAfterWait { get; set; }
     }
 
-    public class UIAWaitForElementToNotExistInput
+    public class UiaWaitForElementToNotExistInput
     {
-        public UIAWaitForElementToNotExistInput(int parentWindowHandle)
+        public UiaWaitForElementToNotExistInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -1669,13 +1669,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAWaitForDesktopElementToNotExistResponse
+    public class UiaWaitForDesktopElementToNotExistResponse
     {
         public bool ElementExistsBeforeWait { get; set; }
         public bool ElementExistsAfterWait { get; set; }
     }
 
-    public class UIAWaitForDesktopElementToNotExistInput
+    public class UiaWaitForDesktopElementToNotExistInput
     {
         public string SearchElementName { get; set; }
         public string SearchElementClassName { get; set; }
@@ -1717,9 +1717,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAPressElementInput
+    public class UiaPressElementInput
     {
-        public UIAPressElementInput(int parentWindowHandle)
+        public UiaPressElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -1768,9 +1768,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGlobalMouseClickOnElementInput
+    public class UiaGlobalMouseClickOnElementInput
     {
-        public UIAGlobalMouseClickOnElementInput(int parentWindowHandle)
+        public UiaGlobalMouseClickOnElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -1801,7 +1801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetY { get; set; } = 0;
-        public UIAGlobalMouseClickOnElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
+        public UiaGlobalMouseClickOnElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxElementsToSearch { get; set; } = 0;
@@ -1821,7 +1821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAGlobalMouseClickOnElementInputOffsetRelativeToType
+    public enum UiaGlobalMouseClickOnElementInputOffsetRelativeToType
     {
         Center,
         Left,
@@ -1838,9 +1838,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         BottomRight
     }
 
-    public class UIAGlobalRightMouseClickOnElementInput
+    public class UiaGlobalRightMouseClickOnElementInput
     {
-        public UIAGlobalRightMouseClickOnElementInput(int parentWindowHandle)
+        public UiaGlobalRightMouseClickOnElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -1871,7 +1871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetY { get; set; } = 0;
-        public UIAGlobalRightMouseClickOnElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
+        public UiaGlobalRightMouseClickOnElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxElementsToSearch { get; set; } = 0;
@@ -1891,7 +1891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAGlobalRightMouseClickOnElementInputOffsetRelativeToType
+    public enum UiaGlobalRightMouseClickOnElementInputOffsetRelativeToType
     {
         Center,
         Left,
@@ -1908,9 +1908,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         BottomRight
     }
 
-    public class UIAGlobalMiddleMouseClickOnElementInput
+    public class UiaGlobalMiddleMouseClickOnElementInput
     {
-        public UIAGlobalMiddleMouseClickOnElementInput(int parentWindowHandle)
+        public UiaGlobalMiddleMouseClickOnElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -1941,7 +1941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetY { get; set; } = 0;
-        public UIAGlobalMiddleMouseClickOnElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
+        public UiaGlobalMiddleMouseClickOnElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxElementsToSearch { get; set; } = 0;
@@ -1961,7 +1961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAGlobalMiddleMouseClickOnElementInputOffsetRelativeToType
+    public enum UiaGlobalMiddleMouseClickOnElementInputOffsetRelativeToType
     {
         Center,
         Left,
@@ -1978,9 +1978,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         BottomRight
     }
 
-    public class UIAGlobalDoubleLeftMouseClickOnElementInput
+    public class UiaGlobalDoubleLeftMouseClickOnElementInput
     {
-        public UIAGlobalDoubleLeftMouseClickOnElementInput(int parentWindowHandle)
+        public UiaGlobalDoubleLeftMouseClickOnElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2014,7 +2014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetY { get; set; } = 0;
-        public UIAGlobalDoubleLeftMouseClickOnElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
+        public UiaGlobalDoubleLeftMouseClickOnElementInputOffsetRelativeToType? OffsetRelativeTo { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxElementsToSearch { get; set; } = 0;
@@ -2034,7 +2034,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAGlobalDoubleLeftMouseClickOnElementInputOffsetRelativeToType
+    public enum UiaGlobalDoubleLeftMouseClickOnElementInputOffsetRelativeToType
     {
         Center,
         Left,
@@ -2051,9 +2051,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         BottomRight
     }
 
-    public class UIASelectElementInput
+    public class UiaSelectElementInput
     {
-        public UIASelectElementInput(int parentWindowHandle)
+        public UiaSelectElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2090,9 +2090,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAInputPasswordIntoElementInput
+    public class UiaInputPasswordIntoElementInput
     {
-        public UIAInputPasswordIntoElementInput(int parentWindowHandle, string passwordToInput)
+        public UiaInputPasswordIntoElementInput(int parentWindowHandle, string passwordToInput)
         {
             this.ParentWindowHandle = parentWindowHandle;
             this.PasswordToInput = passwordToInput;
@@ -2142,9 +2142,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAInputTextIntoElementInput
+    public class UiaInputTextIntoElementInput
     {
-        public UIAInputTextIntoElementInput(int parentWindowHandle)
+        public UiaInputTextIntoElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2197,23 +2197,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAInputTextIntoMultipleElementsInput
+    public class UiaInputTextIntoMultipleElementsInput
     {
-        public UIAInputTextIntoMultipleElementsInput(string inputElementsJSON)
+        public UiaInputTextIntoMultipleElementsInput(string inputElementsJson)
         {
-            this.InputElementsJSON = inputElementsJSON;
+            this.InputElementsJson = inputElementsJson;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputElementsJSON { get; set; }
+        [JsonProperty("InputElementsJSON", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string InputElementsJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAInputReturnIntoElementInput
+    public class UiaInputReturnIntoElementInput
     {
-        public UIAInputReturnIntoElementInput(int parentWindowHandle)
+        public UiaInputReturnIntoElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2263,9 +2263,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAFocusElementInput
+    public class UiaFocusElementInput
     {
-        public UIAFocusElementInput(int parentWindowHandle)
+        public UiaFocusElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2302,9 +2302,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAToggleElementInput
+    public class UiaToggleElementInput
     {
-        public UIAToggleElementInput(int parentWindowHandle)
+        public UiaToggleElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2341,9 +2341,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIACheckElementInput
+    public class UiaCheckElementInput
     {
-        public UIACheckElementInput(int parentWindowHandle)
+        public UiaCheckElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2383,28 +2383,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIACheckMultipleElementsInput
+    public class UiaCheckMultipleElementsInput
     {
-        public UIACheckMultipleElementsInput(string inputElementsJSON)
+        public UiaCheckMultipleElementsInput(string inputElementsJson)
         {
-            this.InputElementsJSON = inputElementsJSON;
+            this.InputElementsJson = inputElementsJson;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public string InputElementsJSON { get; set; }
+        [JsonProperty("InputElementsJSON", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string InputElementsJson { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAIsElementCheckedResponse
+    public class UiaisElementCheckedResponse
     {
         public bool ElementIsChecked { get; set; }
     }
 
-    public class UIAIsElementCheckedInput
+    public class UiaisElementCheckedInput
     {
-        public UIAIsElementCheckedInput(int parentWindowHandle)
+        public UiaisElementCheckedInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2441,9 +2441,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIACloseElementWindowInput
+    public class UiaCloseElementWindowInput
     {
-        public UIACloseElementWindowInput(int parentWindowHandle)
+        public UiaCloseElementWindowInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2480,14 +2480,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetElementTextValueResponse
+    public class UiaGetElementTextValueResponse
     {
         public string ElementTextValue { get; set; }
     }
 
-    public class UIAGetElementTextValueInput
+    public class UiaGetElementTextValueInput
     {
-        public UIAGetElementTextValueInput(int parentWindowHandle)
+        public UiaGetElementTextValueInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2524,14 +2524,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetElementValueResponse
+    public class UiaGetElementValueResponse
     {
         public string ElementValue { get; set; }
     }
 
-    public class UIAGetElementValueInput
+    public class UiaGetElementValueInput
     {
-        public UIAGetElementValueInput(int parentWindowHandle)
+        public UiaGetElementValueInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2568,14 +2568,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetElementLabelValueResponse
+    public class UiaGetElementLabelValueResponse
     {
         public string ElementLabelValue { get; set; }
     }
 
-    public class UIAGetElementLabelValueInput
+    public class UiaGetElementLabelValueInput
     {
-        public UIAGetElementLabelValueInput(int parentWindowHandle)
+        public UiaGetElementLabelValueInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2612,7 +2612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetElementPropertiesResponse
+    public class UiaGetElementPropertiesResponse
     {
         public string ElementName { get; set; }
         public string ElementClassName { get; set; }
@@ -2639,9 +2639,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementTextValue { get; set; }
     }
 
-    public class UIAGetElementPropertiesInput
+    public class UiaGetElementPropertiesInput
     {
-        public UIAGetElementPropertiesInput(int parentWindowHandle)
+        public UiaGetElementPropertiesInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2687,16 +2687,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetMultipleElementPropertiesResponse
+    public class UiaGetMultipleElementPropertiesResponse
     {
         public int NumberOfElementsFound { get; set; }
         public int NumberOfElementsReturned { get; set; }
         public JToken[] ElementProperties { get; set; }
     }
 
-    public class UIAGetMultipleElementPropertiesInput
+    public class UiaGetMultipleElementPropertiesInput
     {
-        public UIAGetMultipleElementPropertiesInput(int parentWindowHandle)
+        public UiaGetMultipleElementPropertiesInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2724,14 +2724,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetDesktopElementsResponse
+    public class UiaGetDesktopElementsResponse
     {
         public int NumberOfElementsFound { get; set; }
         public int NumberOfElementsReturned { get; set; }
         public JToken[] ElementProperties { get; set; }
     }
 
-    public class UIAGetDesktopElementsInput
+    public class UiaGetDesktopElementsInput
     {
         public string SearchElementLocalizedControlType { get; set; }
 
@@ -2754,9 +2754,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAExpandElementInput
+    public class UiaExpandElementInput
     {
-        public UIAExpandElementInput(int parentWindowHandle)
+        public UiaExpandElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2793,9 +2793,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIACollapseElementInput
+    public class UiaCollapseElementInput
     {
-        public UIACollapseElementInput(int parentWindowHandle)
+        public UiaCollapseElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2832,14 +2832,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIATakeScreenShotOfElementLocationResponse
+    public class UiaTakeScreenShotOfElementLocationResponse
     {
         public string ScreenBitmapBase64 { get; set; }
     }
 
-    public class UIATakeScreenShotOfElementLocationInput
+    public class UiaTakeScreenShotOfElementLocationInput
     {
-        public UIATakeScreenShotOfElementLocationInput(int parentWindowHandle)
+        public UiaTakeScreenShotOfElementLocationInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2853,7 +2853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? SearchSubTree { get; set; } = true;
-        public UIATakeScreenShotOfElementLocationInputImageFormatType? ImageFormat { get; set; }
+        public UiaTakeScreenShotOfElementLocationInputImageFormatType? ImageFormat { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MatchIndex { get; set; } = 1;
@@ -2881,17 +2881,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIATakeScreenShotOfElementLocationInputImageFormatType
+    public enum UiaTakeScreenShotOfElementLocationInputImageFormatType
     {
-        PNG,
-        JPG,
-        BMP,
-        GIF
+        [EnumMember(Value = "PNG")]
+        Png,
+        [EnumMember(Value = "JPG")]
+        Jpg,
+        [EnumMember(Value = "BMP")]
+        Bmp,
+        [EnumMember(Value = "GIF")]
+        Gif
     }
 
-    public class UIADrawRectangleAroundElementInput
+    public class UiaDrawRectangleAroundElementInput
     {
-        public UIADrawRectangleAroundElementInput(int parentWindowHandle)
+        public UiaDrawRectangleAroundElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -2934,14 +2938,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetParentElementHandleResponse
+    public class UiaGetParentElementHandleResponse
     {
         public int ParentElementHandle { get; set; }
     }
 
-    public class UIAGetParentElementHandleInput
+    public class UiaGetParentElementHandleInput
     {
-        public UIAGetParentElementHandleInput(int elementHandle)
+        public UiaGetParentElementHandleInput(int elementHandle)
         {
             this.ElementHandle = elementHandle;
         }
@@ -2953,15 +2957,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetDataGridElementContentsResponse
+    public class UiaGetDataGridElementContentsResponse
     {
-        public string DataGridContentsJSON { get; set; }
+        [JsonProperty("DataGridContentsJSON")]
+        public string DataGridContentsJson { get; set; }
         public int NumberOfRowsInTable { get; set; }
         public int NumberOfColumnsInTable { get; set; }
         public int ThreadId { get; set; }
     }
 
-    public class UIAGetDataGridElementContentsInput
+    public class UiaGetDataGridElementContentsInput
     {
         public int? ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -2982,9 +2987,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public bool? ReturnNullValuesAsBlank { get; set; } = true;
         public string AlternativeHeaderRowName { get; set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? ReturnRowUIAName { get; set; } = false;
-        public string NameOfColumnToStoreRowUIAName { get; set; }
+        [JsonProperty("ReturnRowUIAName", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ReturnRowUiaName { get; set; } = false;
+
+        [JsonProperty("NameOfColumnToStoreRowUIAName")]
+        public string NameOfColumnToStoreRowUiaName { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MatchIndex { get; set; } = 1;
@@ -3040,7 +3047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetDataGridElementPropertiesResponse
+    public class UiaGetDataGridElementPropertiesResponse
     {
         public int NumberOfColumns { get; set; }
         public int NumberOfVisibleColumns { get; set; }
@@ -3052,9 +3059,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ScrollbarNames { get; set; }
     }
 
-    public class UIAGetDataGridElementPropertiesInput
+    public class UiaGetDataGridElementPropertiesInput
     {
-        public UIAGetDataGridElementPropertiesInput(int parentWindowHandle)
+        public UiaGetDataGridElementPropertiesInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -3092,18 +3099,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetListElementItemsResponse
+    public class UiaGetListElementItemsResponse
     {
         public int NumberOfListItems { get; set; }
-        public string ListItemsJSON { get; set; }
+
+        [JsonProperty("ListItemsJSON")]
+        public string ListItemsJson { get; set; }
         public int NumberOfSelectedItems { get; set; }
         public int IndexOfFirstSelectedItem { get; set; }
         public string SelectedItemName { get; set; }
     }
 
-    public class UIAGetListElementItemsInput
+    public class UiaGetListElementItemsInput
     {
-        public UIAGetListElementItemsInput(int parentWindowHandle)
+        public UiaGetListElementItemsInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -3152,9 +3161,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAClickListElementItemByNameInput
+    public class UiaClickListElementItemByNameInput
     {
-        public UIAClickListElementItemByNameInput(int parentWindowHandle)
+        public UiaClickListElementItemByNameInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -3199,9 +3208,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAClickListElementItemByIndexInput
+    public class UiaClickListElementItemByIndexInput
     {
-        public UIAClickListElementItemByIndexInput(int parentWindowHandle)
+        public UiaClickListElementItemByIndexInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -3248,9 +3257,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIASetElementToNumericValueInput
+    public class UiaSetElementToNumericValueInput
     {
-        public UIASetElementToNumericValueInput(int parentWindowHandle, int newValue)
+        public UiaSetElementToNumericValueInput(int parentWindowHandle, int newValue)
         {
             this.ParentWindowHandle = parentWindowHandle;
             this.NewValue = newValue;
@@ -3300,9 +3309,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIASetElementToNumericRangeValueInput
+    public class UiaSetElementToNumericRangeValueInput
     {
-        public UIASetElementToNumericRangeValueInput(int parentWindowHandle, double newValue)
+        public UiaSetElementToNumericRangeValueInput(int parentWindowHandle, double newValue)
         {
             this.ParentWindowHandle = parentWindowHandle;
             this.NewValue = newValue;
@@ -3346,15 +3355,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAResetAllElementHandlesInput
+    public class UiaResetAllElementHandlesInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGlobalPasswordInputIntoElementInput
+    public class UiaGlobalPasswordInputIntoElementInput
     {
-        public UIAGlobalPasswordInputIntoElementInput(int parentWindowHandle, string passwordToInput)
+        public UiaGlobalPasswordInputIntoElementInput(int parentWindowHandle, string passwordToInput)
         {
             this.ParentWindowHandle = parentWindowHandle;
             this.PasswordToInput = passwordToInput;
@@ -3387,8 +3396,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReplaceExistingValueUsingDoubleClickDelete { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? ReplaceExistingValueUsingCTRLADelete { get; set; } = false;
+        [JsonProperty("ReplaceExistingValueUsingCTRLADelete", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ReplaceExistingValueUsingCtrlaDelete { get; set; } = false;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string PasswordToInput { get; set; }
@@ -3422,9 +3431,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGlobalTextInputIntoElementInput
+    public class UiaGlobalTextInputIntoElementInput
     {
-        public UIAGlobalTextInputIntoElementInput(int parentWindowHandle)
+        public UiaGlobalTextInputIntoElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -3456,8 +3465,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? ReplaceExistingValueUsingDoubleClickDelete { get; set; } = false;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public bool? ReplaceExistingValueUsingCTRLADelete { get; set; } = false;
+        [JsonProperty("ReplaceExistingValueUsingCTRLADelete", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? ReplaceExistingValueUsingCtrlaDelete { get; set; } = false;
         public string TextToInput { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -3486,16 +3495,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetElementPropertiesAsListResponse
+    public class UiaGetElementPropertiesAsListResponse
     {
         public int NumberOfElementsFound { get; set; }
         public int NumberOfElementsReturned { get; set; }
-        public string UIAElementPropertiesJSON { get; set; }
+
+        [JsonProperty("UIAElementPropertiesJSON")]
+        public string UiaElementPropertiesJson { get; set; }
     }
 
-    public class UIAGetElementPropertiesAsListInput
+    public class UiaGetElementPropertiesAsListInput
     {
-        public UIAGetElementPropertiesAsListInput(int elementHandle)
+        public UiaGetElementPropertiesAsListInput(int elementHandle)
         {
             this.ElementHandle = elementHandle;
         }
@@ -3507,7 +3518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIASetTransactionTimeoutInput
+    public class UiaSetTransactionTimeoutInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public double TimeoutInSeconds { get; set; } = 5;
@@ -3516,7 +3527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetElementAtCoordinatesResponse
+    public class UiaGetElementAtCoordinatesResponse
     {
         public bool ElementFound { get; set; }
         public int ElementHandle { get; set; }
@@ -3526,7 +3537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementLocalizedControlType { get; set; }
     }
 
-    public class UIAGetElementAtCoordinatesInput
+    public class UiaGetElementAtCoordinatesInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? XCoord { get; set; } = 0;
@@ -3541,15 +3552,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetMultipleParentElementPropertiesResponse
+    public class UiaGetMultipleParentElementPropertiesResponse
     {
-        public JToken[] UIAParentElements { get; set; }
+        [JsonProperty("UIAParentElements")]
+        public JToken[] UiaParentElements { get; set; }
         public int NumberOfParentElementsReturned { get; set; }
     }
 
-    public class UIAGetMultipleParentElementPropertiesInput
+    public class UiaGetMultipleParentElementPropertiesInput
     {
-        public UIAGetMultipleParentElementPropertiesInput(int elementHandle)
+        public UiaGetMultipleParentElementPropertiesInput(int elementHandle)
         {
             this.ElementHandle = elementHandle;
         }
@@ -3564,7 +3576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIASearchForFirstParentElementResponse
+    public class UiaSearchForFirstParentElementResponse
     {
         public bool ParentElementFound { get; set; }
         public int ParentElementHandle { get; set; }
@@ -3574,9 +3586,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ParentElementLocalizedControlType { get; set; }
     }
 
-    public class UIASearchForFirstParentElementInput
+    public class UiaSearchForFirstParentElementInput
     {
-        public UIASearchForFirstParentElementInput(int elementHandle)
+        public UiaSearchForFirstParentElementInput(int elementHandle)
         {
             this.ElementHandle = elementHandle;
         }
@@ -3596,17 +3608,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetMultipleElementsAsTableResponse
+    public class UiaGetMultipleElementsAsTableResponse
     {
         public int NumberOfCellSubElementsFound { get; set; }
         public int NumberOfCellSubElementsReturned { get; set; }
-        public string TableContentsJSON { get; set; }
+
+        [JsonProperty("TableContentsJSON")]
+        public string TableContentsJson { get; set; }
         public int NumberOfRowsInTable { get; set; }
         public int NumberOfColumnsInTable { get; set; }
         public int ThreadId { get; set; }
     }
 
-    public class UIAGetMultipleElementsAsTableInput
+    public class UiaGetMultipleElementsAsTableInput
     {
         public int? ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -3695,15 +3709,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIASetElementScrollPercentageResponse
+    public class UiaSetElementScrollPercentageResponse
     {
-        public bool UIASetElementScrollPercentageResult { get; set; }
+        [JsonProperty("UIASetElementScrollPercentageResult")]
+        public bool UiaSetElementScrollPercentageResult { get; set; }
         public string ErrorMessage { get; set; }
     }
 
-    public class UIASetElementScrollPercentageInput
+    public class UiaSetElementScrollPercentageInput
     {
-        public UIASetElementScrollPercentageInput(int parentWindowHandle)
+        public UiaSetElementScrollPercentageInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -3755,7 +3770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetElementSearchColourRegionResponse
+    public class UiaGetElementSearchColourRegionResponse
     {
         public int NumberOfPixelsMatchingColour { get; set; }
         public int ColourMatchBoundingBoxElementLeftPixelXCoord { get; set; }
@@ -3772,9 +3787,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int ColourMatchBoundingBoxScreenCenterPixelYCoord { get; set; }
     }
 
-    public class UIAGetElementSearchColourRegionInput
+    public class UiaGetElementSearchColourRegionInput
     {
-        public UIAGetElementSearchColourRegionInput(int parentWindowHandle, string searchColour, int maxColourDeviation)
+        public UiaGetElementSearchColourRegionInput(int parentWindowHandle, string searchColour, int maxColourDeviation)
         {
             this.ParentWindowHandle = parentWindowHandle;
             this.SearchColour = searchColour;
@@ -3829,15 +3844,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGlobalMouseClickElementSearchColourRegionResponse
+    public class UiaGlobalMouseClickElementSearchColourRegionResponse
     {
-        public bool UIAGlobalMouseClickElementSearchColourRegionResult { get; set; }
+        [JsonProperty("UIAGlobalMouseClickElementSearchColourRegionResult")]
+        public bool UiaGlobalMouseClickElementSearchColourRegionResult { get; set; }
         public string ErrorMessage { get; set; }
     }
 
-    public class UIAGlobalMouseClickElementSearchColourRegionInput
+    public class UiaGlobalMouseClickElementSearchColourRegionInput
     {
-        public UIAGlobalMouseClickElementSearchColourRegionInput(int parentWindowHandle, string searchColour, int maxColourDeviation)
+        public UiaGlobalMouseClickElementSearchColourRegionInput(int parentWindowHandle, string searchColour, int maxColourDeviation)
         {
             this.ParentWindowHandle = parentWindowHandle;
             this.SearchColour = searchColour;
@@ -3873,7 +3889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int? BottomPixelYOffset { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAGlobalMouseClickElementSearchColourRegionInputMouseButtonType? MouseButton { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAGlobalMouseClickElementSearchColourRegionInputMouseButtonType.Left;
+        public UiaGlobalMouseClickElementSearchColourRegionInputMouseButtonType? MouseButton { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaGlobalMouseClickElementSearchColourRegionInputMouseButtonType.Left;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? ClickOffsetX { get; set; } = 0;
@@ -3882,7 +3898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int? ClickOffsetY { get; set; } = 0;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAGlobalMouseClickElementSearchColourRegionInputOffsetRelativeToType? OffsetRelativeTo { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAGlobalMouseClickElementSearchColourRegionInputOffsetRelativeToType.Center;
+        public UiaGlobalMouseClickElementSearchColourRegionInputOffsetRelativeToType? OffsetRelativeTo { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaGlobalMouseClickElementSearchColourRegionInputOffsetRelativeToType.Center;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? DelayInMilliseconds { get; set; } = 10;
@@ -3905,7 +3921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAGlobalMouseClickElementSearchColourRegionInputMouseButtonType
+    public enum UiaGlobalMouseClickElementSearchColourRegionInputMouseButtonType
     {
         Left,
         Right,
@@ -3915,7 +3931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAGlobalMouseClickElementSearchColourRegionInputOffsetRelativeToType
+    public enum UiaGlobalMouseClickElementSearchColourRegionInputOffsetRelativeToType
     {
         Center,
         Centre,
@@ -3934,13 +3950,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         BottomRight
     }
 
-    public class UIAGetWin32WindowsResponse
+    public class UiaGetWin32WindowsResponse
     {
-        public string Win32WindowsJSON { get; set; }
+        [JsonProperty("Win32WindowsJSON")]
+        public string Win32WindowsJson { get; set; }
         public int NumberOfWin32Windows { get; set; }
     }
 
-    public class UIAGetWin32WindowsInput
+    public class UiaGetWin32WindowsInput
     {
         public string SearchClassName { get; set; }
         public string SearchWindowTitle { get; set; }
@@ -3979,45 +3996,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class SetUIAElementSearchModeResponse
+    public class SetUiaElementSearchModeResponse
     {
-        public bool SetUIAElementSearchModeResult { get; set; }
+        [JsonProperty("SetUIAElementSearchModeResult")]
+        public bool SetUiaElementSearchModeResult { get; set; }
         public string ErrorMessage { get; set; }
     }
 
-    public class SetUIAElementSearchModeInput
+    public class SetUiaElementSearchModeInput
     {
-        public SetUIAElementSearchModeInput(SetUIAElementSearchModeInputUIAElementSearchModeType uIAElementSearchMode)
+        public SetUiaElementSearchModeInput(SetUiaElementSearchModeInputUiaElementSearchModeType uiaElementSearchMode)
         {
-            this.UIAElementSearchMode = uIAElementSearchMode;
+            this.UiaElementSearchMode = uiaElementSearchMode;
         }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public SetUIAElementSearchModeInputUIAElementSearchModeType UIAElementSearchMode { get; set; }
+        [JsonProperty("UIAElementSearchMode", DefaultValueHandling = DefaultValueHandling.Include)]
+        public SetUiaElementSearchModeInputUiaElementSearchModeType UiaElementSearchMode { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum SetUIAElementSearchModeInputUIAElementSearchModeType
+    public enum SetUiaElementSearchModeInputUiaElementSearchModeType
     {
         FindAll,
         TreeWalkRaw
     }
 
-    public class GetUIAElementSearchModeResponse
+    public class GetUiaElementSearchModeResponse
     {
-        public string UIAElementSearchMode { get; set; }
+        [JsonProperty("UIAElementSearchMode")]
+        public string UiaElementSearchMode { get; set; }
     }
 
-    public class GetUIAElementSearchModeInput
+    public class GetUiaElementSearchModeInput
     {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAGetElementPatternsResponse
+    public class UiaGetElementPatternsResponse
     {
         public bool ExpandCollapsePatternAvailable { get; set; }
         public bool InvokePatternAvailable { get; set; }
@@ -4041,9 +4060,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public bool TransformPatternAvailable { get; set; }
     }
 
-    public class UIAGetElementPatternsInput
+    public class UiaGetElementPatternsInput
     {
-        public UIAGetElementPatternsInput(int parentWindowHandle)
+        public UiaGetElementPatternsInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -4080,15 +4099,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string Workflow { get; set; } = "@{workflow()}";
     }
 
-    public class UIAMoveElementResponse
+    public class UiaMoveElementResponse
     {
-        public bool UIAMoveElementResult { get; set; }
+        [JsonProperty("UIAMoveElementResult")]
+        public bool UiaMoveElementResult { get; set; }
         public string ErrorMessage { get; set; }
     }
 
-    public class UIAMoveElementInput
+    public class UiaMoveElementInput
     {
-        public UIAMoveElementInput(int parentWindowHandle, int horizontalPosition, int verticalPosition)
+        public UiaMoveElementInput(int parentWindowHandle, int horizontalPosition, int verticalPosition)
         {
             this.ParentWindowHandle = parentWindowHandle;
             this.HorizontalPosition = horizontalPosition;
@@ -4124,13 +4144,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementLocalizedControlTypesNotToTraverse { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAMoveElementInputHorizontalMovementTypeType? HorizontalMovementType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAMoveElementInputHorizontalMovementTypeType.Absolute;
+        public UiaMoveElementInputHorizontalMovementTypeType? HorizontalMovementType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaMoveElementInputHorizontalMovementTypeType.Absolute;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int HorizontalPosition { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAMoveElementInputVerticalMovementTypeType? VerticalMovementType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAMoveElementInputVerticalMovementTypeType.Absolute;
+        public UiaMoveElementInputVerticalMovementTypeType? VerticalMovementType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaMoveElementInputVerticalMovementTypeType.Absolute;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int VerticalPosition { get; set; }
@@ -4140,28 +4160,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAMoveElementInputHorizontalMovementTypeType
+    public enum UiaMoveElementInputHorizontalMovementTypeType
     {
         Absolute,
         Relative
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAMoveElementInputVerticalMovementTypeType
+    public enum UiaMoveElementInputVerticalMovementTypeType
     {
         Absolute,
         Relative
     }
 
-    public class UIAResizeElementResponse
+    public class UiaResizeElementResponse
     {
-        public bool UIAResizeElementResult { get; set; }
+        [JsonProperty("UIAResizeElementResult")]
+        public bool UiaResizeElementResult { get; set; }
         public string ErrorMessage { get; set; }
     }
 
-    public class UIAResizeElementInput
+    public class UiaResizeElementInput
     {
-        public UIAResizeElementInput(int parentWindowHandle, int newWidth, int newHeight)
+        public UiaResizeElementInput(int parentWindowHandle, int newWidth, int newHeight)
         {
             this.ParentWindowHandle = parentWindowHandle;
             this.NewWidth = newWidth;
@@ -4197,13 +4218,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ElementLocalizedControlTypesNotToTraverse { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAResizeElementInputResizeWidthTypeType? ResizeWidthType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAResizeElementInputResizeWidthTypeType.Relative;
+        public UiaResizeElementInputResizeWidthTypeType? ResizeWidthType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaResizeElementInputResizeWidthTypeType.Relative;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int NewWidth { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAResizeElementInputResizeHeightTypeType? ResizeHeightType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAResizeElementInputResizeHeightTypeType.Relative;
+        public UiaResizeElementInputResizeHeightTypeType? ResizeHeightType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaResizeElementInputResizeHeightTypeType.Relative;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int NewHeight { get; set; }
@@ -4213,20 +4234,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAResizeElementInputResizeWidthTypeType
+    public enum UiaResizeElementInputResizeWidthTypeType
     {
         Absolute,
         Relative
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAResizeElementInputResizeHeightTypeType
+    public enum UiaResizeElementInputResizeHeightTypeType
     {
         Absolute,
         Relative
     }
 
-    public class UIALocateVisibleSearchImageWithinElementResponse
+    public class UiaLocateVisibleSearchImageWithinElementResponse
     {
         public bool SearchImageLocated { get; set; }
         public int WhichSearchImageLocated { get; set; }
@@ -4244,9 +4265,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int SearchImageBoundingBoxScreenCenterPixelYCoord { get; set; }
     }
 
-    public class UIALocateVisibleSearchImageWithinElementInput
+    public class UiaLocateVisibleSearchImageWithinElementInput
     {
-        public UIALocateVisibleSearchImageWithinElementInput(int parentWindowHandle)
+        public UiaLocateVisibleSearchImageWithinElementInput(int parentWindowHandle)
         {
             this.ParentWindowHandle = parentWindowHandle;
         }
@@ -4278,11 +4299,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxChildElementsToSearchPerNode { get; set; } = 0;
         public string ElementLocalizedControlTypesNotToTraverse { get; set; }
-        public UIALocateVisibleSearchImageWithinElementInputSearchImageTypeType? SearchImageType { get; set; }
+        public UiaLocateVisibleSearchImageWithinElementInputSearchImageTypeType? SearchImageType { get; set; }
         public string SearchImage { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIALocateVisibleSearchImageWithinElementInputAltSearchImageTypeType? AltSearchImageType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIALocateVisibleSearchImageWithinElementInputAltSearchImageTypeType.None;
+        public UiaLocateVisibleSearchImageWithinElementInputAltSearchImageTypeType? AltSearchImageType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaLocateVisibleSearchImageWithinElementInputAltSearchImageTypeType.None;
         public string AltSearchImage { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -4299,16 +4320,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int? BottomPixelYOffset { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIALocateVisibleSearchImageWithinElementInputPixelXOffsetsUnitType? PixelXOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIALocateVisibleSearchImageWithinElementInputPixelXOffsetsUnitType.Pixel;
+        public UiaLocateVisibleSearchImageWithinElementInputPixelXOffsetsUnitType? PixelXOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaLocateVisibleSearchImageWithinElementInputPixelXOffsetsUnitType.Pixel;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIALocateVisibleSearchImageWithinElementInputPixelYOffsetsUnitType? PixelYOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIALocateVisibleSearchImageWithinElementInputPixelYOffsetsUnitType.Pixel;
+        public UiaLocateVisibleSearchImageWithinElementInputPixelYOffsetsUnitType? PixelYOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaLocateVisibleSearchImageWithinElementInputPixelYOffsetsUnitType.Pixel;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? SearchImageIndex { get; set; } = 1;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIALocateVisibleSearchImageWithinElementInputImageSearchDirectionType? ImageSearchDirection { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIALocateVisibleSearchImageWithinElementInputImageSearchDirectionType.FromTop;
+        public UiaLocateVisibleSearchImageWithinElementInputImageSearchDirectionType? ImageSearchDirection { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaLocateVisibleSearchImageWithinElementInputImageSearchDirectionType.FromTop;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? HideAgent { get; set; } = true;
@@ -4324,7 +4345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIALocateVisibleSearchImageWithinElementInputSearchImageTypeType
+    public enum UiaLocateVisibleSearchImageWithinElementInputSearchImageTypeType
     {
         [EnumMember(Value = "DirectorFile")]
         DirectorImageFile,
@@ -4334,7 +4355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIALocateVisibleSearchImageWithinElementInputAltSearchImageTypeType
+    public enum UiaLocateVisibleSearchImageWithinElementInputAltSearchImageTypeType
     {
         None,
         [EnumMember(Value = "DirectorFile")]
@@ -4345,21 +4366,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIALocateVisibleSearchImageWithinElementInputPixelXOffsetsUnitType
+    public enum UiaLocateVisibleSearchImageWithinElementInputPixelXOffsetsUnitType
     {
         Pixel,
         Percent
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIALocateVisibleSearchImageWithinElementInputPixelYOffsetsUnitType
+    public enum UiaLocateVisibleSearchImageWithinElementInputPixelYOffsetsUnitType
     {
         Pixel,
         Percent
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIALocateVisibleSearchImageWithinElementInputImageSearchDirectionType
+    public enum UiaLocateVisibleSearchImageWithinElementInputImageSearchDirectionType
     {
         FromTop,
         FromBottom,
@@ -4367,7 +4388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         FromRight
     }
 
-    public class UIAWaitForVisibleSearchImageWithinElementResponse
+    public class UiaWaitForVisibleSearchImageWithinElementResponse
     {
         public bool SearchImageLocated { get; set; }
         public int WhichSearchImageLocated { get; set; }
@@ -4386,7 +4407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int ThreadId { get; set; }
     }
 
-    public class UIAWaitForVisibleSearchImageWithinElementInput
+    public class UiaWaitForVisibleSearchImageWithinElementInput
     {
         public int? ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -4414,11 +4435,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxChildElementsToSearchPerNode { get; set; } = 0;
         public string ElementLocalizedControlTypesNotToTraverse { get; set; }
-        public UIAWaitForVisibleSearchImageWithinElementInputSearchImageTypeType? SearchImageType { get; set; }
+        public UiaWaitForVisibleSearchImageWithinElementInputSearchImageTypeType? SearchImageType { get; set; }
         public string SearchImage { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAWaitForVisibleSearchImageWithinElementInputAltSearchImageTypeType? AltSearchImageType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAWaitForVisibleSearchImageWithinElementInputAltSearchImageTypeType.None;
+        public UiaWaitForVisibleSearchImageWithinElementInputAltSearchImageTypeType? AltSearchImageType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaWaitForVisibleSearchImageWithinElementInputAltSearchImageTypeType.None;
         public string AltSearchImage { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -4435,16 +4456,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int? BottomPixelYOffset { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAWaitForVisibleSearchImageWithinElementInputPixelXOffsetsUnitType? PixelXOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAWaitForVisibleSearchImageWithinElementInputPixelXOffsetsUnitType.Pixel;
+        public UiaWaitForVisibleSearchImageWithinElementInputPixelXOffsetsUnitType? PixelXOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaWaitForVisibleSearchImageWithinElementInputPixelXOffsetsUnitType.Pixel;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAWaitForVisibleSearchImageWithinElementInputPixelYOffsetsUnitType? PixelYOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAWaitForVisibleSearchImageWithinElementInputPixelYOffsetsUnitType.Pixel;
+        public UiaWaitForVisibleSearchImageWithinElementInputPixelYOffsetsUnitType? PixelYOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaWaitForVisibleSearchImageWithinElementInputPixelYOffsetsUnitType.Pixel;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? SearchImageIndex { get; set; } = 1;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAWaitForVisibleSearchImageWithinElementInputImageSearchDirectionType? ImageSearchDirection { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAWaitForVisibleSearchImageWithinElementInputImageSearchDirectionType.FromTop;
+        public UiaWaitForVisibleSearchImageWithinElementInputImageSearchDirectionType? ImageSearchDirection { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaWaitForVisibleSearchImageWithinElementInputImageSearchDirectionType.FromTop;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? HideAgent { get; set; } = true;
@@ -4473,7 +4494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAWaitForVisibleSearchImageWithinElementInputSearchImageTypeType
+    public enum UiaWaitForVisibleSearchImageWithinElementInputSearchImageTypeType
     {
         [EnumMember(Value = "DirectorFile")]
         DirectorImageFile,
@@ -4483,7 +4504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAWaitForVisibleSearchImageWithinElementInputAltSearchImageTypeType
+    public enum UiaWaitForVisibleSearchImageWithinElementInputAltSearchImageTypeType
     {
         None,
         [EnumMember(Value = "DirectorFile")]
@@ -4494,21 +4515,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAWaitForVisibleSearchImageWithinElementInputPixelXOffsetsUnitType
+    public enum UiaWaitForVisibleSearchImageWithinElementInputPixelXOffsetsUnitType
     {
         Pixel,
         Percent
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAWaitForVisibleSearchImageWithinElementInputPixelYOffsetsUnitType
+    public enum UiaWaitForVisibleSearchImageWithinElementInputPixelYOffsetsUnitType
     {
         Pixel,
         Percent
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAWaitForVisibleSearchImageWithinElementInputImageSearchDirectionType
+    public enum UiaWaitForVisibleSearchImageWithinElementInputImageSearchDirectionType
     {
         FromTop,
         FromBottom,
@@ -4516,7 +4537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         FromRight
     }
 
-    public class UIAWaitForVisibleSearchImageToNotExistWithinElementResponse
+    public class UiaWaitForVisibleSearchImageToNotExistWithinElementResponse
     {
         public bool SearchImagePresentBeforeWait { get; set; }
         public bool SearchImageStillPresentAfterWait { get; set; }
@@ -4524,7 +4545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int ThreadId { get; set; }
     }
 
-    public class UIAWaitForVisibleSearchImageToNotExistWithinElementInput
+    public class UiaWaitForVisibleSearchImageToNotExistWithinElementInput
     {
         public int? ParentWindowHandle { get; set; }
         public string SearchElementName { get; set; }
@@ -4552,11 +4573,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? MaxChildElementsToSearchPerNode { get; set; } = 0;
         public string ElementLocalizedControlTypesNotToTraverse { get; set; }
-        public UIAWaitForVisibleSearchImageToNotExistWithinElementInputSearchImageTypeType? SearchImageType { get; set; }
+        public UiaWaitForVisibleSearchImageToNotExistWithinElementInputSearchImageTypeType? SearchImageType { get; set; }
         public string SearchImage { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAWaitForVisibleSearchImageToNotExistWithinElementInputAltSearchImageTypeType? AltSearchImageType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAWaitForVisibleSearchImageToNotExistWithinElementInputAltSearchImageTypeType.None;
+        public UiaWaitForVisibleSearchImageToNotExistWithinElementInputAltSearchImageTypeType? AltSearchImageType { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaWaitForVisibleSearchImageToNotExistWithinElementInputAltSearchImageTypeType.None;
         public string AltSearchImage { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
@@ -4573,16 +4594,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int? BottomPixelYOffset { get; set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAWaitForVisibleSearchImageToNotExistWithinElementInputPixelXOffsetsUnitType? PixelXOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAWaitForVisibleSearchImageToNotExistWithinElementInputPixelXOffsetsUnitType.Pixel;
+        public UiaWaitForVisibleSearchImageToNotExistWithinElementInputPixelXOffsetsUnitType? PixelXOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaWaitForVisibleSearchImageToNotExistWithinElementInputPixelXOffsetsUnitType.Pixel;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAWaitForVisibleSearchImageToNotExistWithinElementInputPixelYOffsetsUnitType? PixelYOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAWaitForVisibleSearchImageToNotExistWithinElementInputPixelYOffsetsUnitType.Pixel;
+        public UiaWaitForVisibleSearchImageToNotExistWithinElementInputPixelYOffsetsUnitType? PixelYOffsetsUnit { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaWaitForVisibleSearchImageToNotExistWithinElementInputPixelYOffsetsUnitType.Pixel;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public int? SearchImageIndex { get; set; } = 1;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        public UIAWaitForVisibleSearchImageToNotExistWithinElementInputImageSearchDirectionType? ImageSearchDirection { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UIAWaitForVisibleSearchImageToNotExistWithinElementInputImageSearchDirectionType.FromTop;
+        public UiaWaitForVisibleSearchImageToNotExistWithinElementInputImageSearchDirectionType? ImageSearchDirection { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui.UiaWaitForVisibleSearchImageToNotExistWithinElementInputImageSearchDirectionType.FromTop;
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool? HideAgent { get; set; } = true;
@@ -4608,7 +4629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAWaitForVisibleSearchImageToNotExistWithinElementInputSearchImageTypeType
+    public enum UiaWaitForVisibleSearchImageToNotExistWithinElementInputSearchImageTypeType
     {
         [EnumMember(Value = "DirectorFile")]
         DirectorImageFile,
@@ -4618,7 +4639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAWaitForVisibleSearchImageToNotExistWithinElementInputAltSearchImageTypeType
+    public enum UiaWaitForVisibleSearchImageToNotExistWithinElementInputAltSearchImageTypeType
     {
         None,
         [EnumMember(Value = "DirectorFile")]
@@ -4629,21 +4650,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAWaitForVisibleSearchImageToNotExistWithinElementInputPixelXOffsetsUnitType
+    public enum UiaWaitForVisibleSearchImageToNotExistWithinElementInputPixelXOffsetsUnitType
     {
         Pixel,
         Percent
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAWaitForVisibleSearchImageToNotExistWithinElementInputPixelYOffsetsUnitType
+    public enum UiaWaitForVisibleSearchImageToNotExistWithinElementInputPixelYOffsetsUnitType
     {
         Pixel,
         Percent
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum UIAWaitForVisibleSearchImageToNotExistWithinElementInputImageSearchDirectionType
+    public enum UiaWaitForVisibleSearchImageToNotExistWithinElementInputImageSearchDirectionType
     {
         FromTop,
         FromBottom,

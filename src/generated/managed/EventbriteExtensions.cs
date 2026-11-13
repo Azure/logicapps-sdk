@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
         public string Id { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("start")]
         public CreateEventResponseStartType Start { get; set; }
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
         public string Local { get; set; }
 
         [JsonProperty("utc")]
-        public string UTC { get; set; }
+        public string Utc { get; set; }
     }
 
     public class CreateEventResponseEndType
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
         public string Local { get; set; }
 
         [JsonProperty("utc")]
-        public string UTC { get; set; }
+        public string Utc { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -448,29 +448,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EventCurrencyInput
     {
-        USD,
-        AUD,
-        CAD,
-        CHF,
-        DKK,
-        EUR,
-        GBP,
-        HKD,
+        [EnumMember(Value = "USD")]
+        Usd,
+        [EnumMember(Value = "AUD")]
+        Aud,
+        [EnumMember(Value = "CAD")]
+        Cad,
+        [EnumMember(Value = "CHF")]
+        Chf,
+        [EnumMember(Value = "DKK")]
+        Dkk,
+        [EnumMember(Value = "EUR")]
+        Eur,
+        [EnumMember(Value = "GBP")]
+        Gbp,
+        [EnumMember(Value = "HKD")]
+        Hkd,
         [EnumMember(Value = "IDR")]
-        IdR,
-        INR,
-        JPY,
-        KRW,
-        MXN,
-        MYR,
-        NOK,
-        NZD,
-        RUB,
-        SAR,
-        SEK,
-        TRY,
-        TWD,
-        ZAR
+        Idr,
+        [EnumMember(Value = "INR")]
+        Inr,
+        [EnumMember(Value = "JPY")]
+        Jpy,
+        [EnumMember(Value = "KRW")]
+        Krw,
+        [EnumMember(Value = "MXN")]
+        Mxn,
+        [EnumMember(Value = "MYR")]
+        Myr,
+        [EnumMember(Value = "NOK")]
+        Nok,
+        [EnumMember(Value = "NZD")]
+        Nzd,
+        [EnumMember(Value = "RUB")]
+        Rub,
+        [EnumMember(Value = "SAR")]
+        Sar,
+        [EnumMember(Value = "SEK")]
+        Sek,
+        [EnumMember(Value = "TRY")]
+        Try,
+        [EnumMember(Value = "TWD")]
+        Twd,
+        [EnumMember(Value = "ZAR")]
+        Zar
     }
 
     public class GetEventsForOrganizationResponseItem
@@ -485,7 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
         public string Id { get; set; }
 
         [JsonProperty("url")]
-        public string URL { get; set; }
+        public string Url { get; set; }
 
         [JsonProperty("start")]
         public GetEventsForOrganizationResponseItemStartType Start { get; set; }
@@ -539,7 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
         public string Local { get; set; }
 
         [JsonProperty("utc")]
-        public string UTC { get; set; }
+        public string Utc { get; set; }
     }
 
     public class GetEventsForOrganizationResponseItemEndType
@@ -551,7 +572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
         public string Local { get; set; }
 
         [JsonProperty("utc")]
-        public string UTC { get; set; }
+        public string Utc { get; set; }
     }
 
     public class GetOrdersResponseItem

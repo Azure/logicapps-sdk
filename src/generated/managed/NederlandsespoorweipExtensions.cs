@@ -476,11 +476,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
 
     public class GetStationsResponsePayloadTypeItem
     {
-        public string UICCode { get; set; }
+        [JsonProperty("UICCode")]
+        public string UicCode { get; set; }
 
         [JsonProperty("stationType")]
         public string StationType { get; set; }
-        public string EVACode { get; set; }
+
+        [JsonProperty("EVACode")]
+        public string EvaCode { get; set; }
 
         [JsonProperty("code")]
         public string Code { get; set; }

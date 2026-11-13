@@ -696,14 +696,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         public string ReturnName { get; set; }
 
         [JsonProperty("format", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputFormatType? Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox.BodyInputFormatType.JSON;
+        public BodyInputFormatType? Format { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox.BodyInputFormatType.Json;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputFormatType
     {
-        JSON,
-        CSV
+        [EnumMember(Value = "JSON")]
+        Json,
+        [EnumMember(Value = "CSV")]
+        Csv
     }
 }
 

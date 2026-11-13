@@ -529,9 +529,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlyip
     public enum IndexTypeInput
     {
         [EnumMember(Value = "AIRLY_CAQI")]
-        AIRLYCAQI,
-        CAQI,
-        PIJP
+        AirlyCaqi,
+        [EnumMember(Value = "CAQI")]
+        Caqi,
+        [EnumMember(Value = "PIJP")]
+        Pijp
     }
 
     public class GetNearestMeasurementsResponse

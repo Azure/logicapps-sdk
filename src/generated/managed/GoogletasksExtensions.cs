@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         public string Title { get; set; }
 
         [JsonProperty("selfLink")]
-        public string HTMLLink { get; set; }
+        public string HtmlLink { get; set; }
 
         [JsonProperty("updated")]
         public string UpdatedTime { get; set; }
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         public string Updated { get; set; }
 
         [JsonProperty("selfLink")]
-        public string HTMLLink { get; set; }
+        public string HtmlLink { get; set; }
 
         [JsonProperty("parent")]
         public string Parent { get; set; }

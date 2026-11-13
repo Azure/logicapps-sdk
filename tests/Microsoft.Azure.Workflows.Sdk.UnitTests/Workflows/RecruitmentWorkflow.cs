@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                         $"Job Interview with Contoso - {toolContext.Parameters.CandidateName}",
                         "@agentParameters('MeetingStartTime')",
                         "@agentParameters('MeetingEndTime')",
-                        ItemInputTimeZoneType.UTC0800PacificTimeUSCanada)
+                        ItemInputTimeZoneType.Utc0800PacificTimeUSCanada)
                     {
                         RequiredAttendees = toolContext.Parameters.CandidateEmail,
                         Body = $"<p class=\"editor-paragraph\">Hi {toolContext.Parameters.CandidateName} ,</p><p class=\"editor-paragraph\"><br>I would like to invite you to interview for a position at Contoso.<br><br>Please accept or decline this meeting invite.<br><br>Regards,<br><br>Contoso Hiring Team</p>",

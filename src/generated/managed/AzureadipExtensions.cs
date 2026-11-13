@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
     public class GetRiskUserResult
     {
         [JsonProperty("@@odata.context")]
-        public string OdataContext { get; set; }
+        public string ODataContext { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
     public class GetRiskDetection
     {
         [JsonProperty("@@odata.type")]
-        public string OdataType { get; set; }
+        public string ODataType { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -194,13 +194,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
     public class GetRiskDetectionLocationType
     {
         [JsonProperty("@@odata.type")]
-        public string OdataType { get; set; }
+        public string ODataType { get; set; }
     }
 
     public class GetRiskHistory
     {
         [JsonProperty("@@odata.type")]
-        public string OdataType { get; set; }
+        public string ODataType { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
     public class GetRiskHistoryActivityType
     {
         [JsonProperty("@@odata.type")]
-        public string OdataType { get; set; }
+        public string ODataType { get; set; }
     }
 }
 

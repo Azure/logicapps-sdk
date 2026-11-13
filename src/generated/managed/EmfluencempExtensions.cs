@@ -275,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public bool? Held { get; set; }
 
         [JsonProperty("contactIDs")]
-        public JToken[] ContactIDs { get; set; }
+        public JToken[] ContactIds { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }
@@ -387,7 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public int ContactId { get; set; }
 
         [JsonProperty("groupIDs")]
-        public JToken[] GroupIDs { get; set; }
+        public JToken[] GroupIds { get; set; }
 
         [JsonProperty("notes")]
         public string Notes { get; set; }
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public int ContactId { get; set; }
 
         [JsonProperty("groupIDs")]
-        public JToken[] GroupIDs { get; set; }
+        public JToken[] GroupIds { get; set; }
     }
 
     public class ContactsSaveBodyInput
@@ -579,10 +579,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public JToken ContentVariables { get; set; }
 
         [JsonProperty("groupIDs")]
-        public int[] GroupIDs { get; set; }
+        public int[] GroupIds { get; set; }
 
         [JsonProperty("removeGroupIDs")]
-        public int[] RemoveGroupIDs { get; set; }
+        public int[] RemoveGroupIds { get; set; }
     }
 }
 

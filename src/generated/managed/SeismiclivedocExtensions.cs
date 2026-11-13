@@ -193,10 +193,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputOutputsTypeItemFormatType
     {
-        PPTX,
-        DOCX,
-        PDF,
-        XLSX
+        [EnumMember(Value = "PPTX")]
+        Pptx,
+        [EnumMember(Value = "DOCX")]
+        Docx,
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "XLSX")]
+        Xlsx
     }
 
     public class BodyInputOutputsTypeItemPptxOptionsType

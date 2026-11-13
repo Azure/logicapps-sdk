@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         public string StationShortCode { get; set; }
 
         [JsonProperty("stationUICCode")]
-        public int StationUICCode { get; set; }
+        public int StationUicCode { get; set; }
 
         [JsonProperty("countryCode")]
         public string CountryCode { get; set; }
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         public string DepartureDate { get; set; }
 
         [JsonProperty("operatorUICCode")]
-        public int OperatorUICCode { get; set; }
+        public int OperatorUicCode { get; set; }
 
         [JsonProperty("operatorShortCode")]
         public string OperatorShortCode { get; set; }
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         public string StationShortCode { get; set; }
 
         [JsonProperty("stationUICCode")]
-        public int StationUICCode { get; set; }
+        public int StationUicCode { get; set; }
 
         [JsonProperty("countryCode")]
         public string CountryCode { get; set; }
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         public string DepartureDate { get; set; }
 
         [JsonProperty("operatorUICCode")]
-        public int OperatorUICCode { get; set; }
+        public int OperatorUicCode { get; set; }
 
         [JsonProperty("operatorShortCode")]
         public string OperatorShortCode { get; set; }
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         public string StationShortCode { get; set; }
 
         [JsonProperty("stationUICCode")]
-        public int StationUICCode { get; set; }
+        public int StationUicCode { get; set; }
 
         [JsonProperty("countryCode")]
         public string CountryCode { get; set; }

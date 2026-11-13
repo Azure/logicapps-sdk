@@ -66,28 +66,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faanotam
     public class GetNotamResponseItemsTypeItemPropertiesType
     {
         [JsonProperty("coreNOTAMData")]
-        public GetNotamResponseItemsTypeItemPropertiesTypeCoreNOTAMDataType CoreNOTAMData { get; set; }
+        public GetNotamResponseItemsTypeItemPropertiesTypeCoreNotamDataType CoreNotamData { get; set; }
     }
 
-    public class GetNotamResponseItemsTypeItemPropertiesTypeCoreNOTAMDataType
+    public class GetNotamResponseItemsTypeItemPropertiesTypeCoreNotamDataType
     {
         [JsonProperty("notamEvent")]
-        public GetNotamResponseItemsTypeItemPropertiesTypeCoreNOTAMDataTypeNotamEventType NotamEvent { get; set; }
+        public GetNotamResponseItemsTypeItemPropertiesTypeCoreNotamDataTypeNotamEventType NotamEvent { get; set; }
 
         [JsonProperty("notam")]
-        public GetNotamResponseItemsTypeItemPropertiesTypeCoreNOTAMDataTypeNotamType Notam { get; set; }
+        public GetNotamResponseItemsTypeItemPropertiesTypeCoreNotamDataTypeNotamType Notam { get; set; }
 
         [JsonProperty("notamTranslation")]
-        public GetNotamResponseItemsTypeItemPropertiesTypeCoreNOTAMDataTypeNotamTranslationTypeItem[] NotamTranslation { get; set; }
+        public GetNotamResponseItemsTypeItemPropertiesTypeCoreNotamDataTypeNotamTranslationTypeItem[] NotamTranslation { get; set; }
     }
 
-    public class GetNotamResponseItemsTypeItemPropertiesTypeCoreNOTAMDataTypeNotamEventType
+    public class GetNotamResponseItemsTypeItemPropertiesTypeCoreNotamDataTypeNotamEventType
     {
         [JsonProperty("scenario")]
         public string Scenario { get; set; }
     }
 
-    public class GetNotamResponseItemsTypeItemPropertiesTypeCoreNOTAMDataTypeNotamType
+    public class GetNotamResponseItemsTypeItemPropertiesTypeCoreNotamDataTypeNotamType
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faanotam
         public string Issued { get; set; }
 
         [JsonProperty("affectedFIR")]
-        public string AffectedFIR { get; set; }
+        public string AffectedFir { get; set; }
 
         [JsonProperty("selectionCode")]
         public string SelectionCode { get; set; }
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faanotam
         public string UpperLimit { get; set; }
     }
 
-    public class GetNotamResponseItemsTypeItemPropertiesTypeCoreNOTAMDataTypeNotamTranslationTypeItem
+    public class GetNotamResponseItemsTypeItemPropertiesTypeCoreNotamDataTypeNotamTranslationTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }

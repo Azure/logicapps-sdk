@@ -227,52 +227,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
-        public IBodyWorkflowAction<AADMeetingRoomCollection, ApiConnectionActionConfiguration> GetRooms()
+        public IBodyWorkflowAction<AadMeetingRoomCollection, ApiConnectionActionConfiguration> GetRooms()
         {
-            return new DeferredBodyAction<AADMeetingRoomCollection, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AadMeetingRoomCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/rooms";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<AADMeetingRoomCollection>(callPayload);
+                return new ApiConnectionAction<AadMeetingRoomCollection>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
-        public IBodyWorkflowAction<AADMeetingRoomCollection, ApiConnectionActionConfiguration> SearchMeetingRooms(Expression<Func<string>> name)
+        public IBodyWorkflowAction<AadMeetingRoomCollection, ApiConnectionActionConfiguration> SearchMeetingRooms(Expression<Func<string>> name)
         {
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
-            return new DeferredBodyAction<AADMeetingRoomCollection, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AadMeetingRoomCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rooms/findbyname/{0}", __workflow_name.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<AADMeetingRoomCollection>(callPayload);
+                return new ApiConnectionAction<AadMeetingRoomCollection>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
-        public IBodyWorkflowAction<AADMeetingRoomCollection, ApiConnectionActionConfiguration> RoomLists()
+        public IBodyWorkflowAction<AadMeetingRoomCollection, ApiConnectionActionConfiguration> RoomLists()
         {
-            return new DeferredBodyAction<AADMeetingRoomCollection, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AadMeetingRoomCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/rooms/lists";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<AADMeetingRoomCollection>(callPayload);
+                return new ApiConnectionAction<AadMeetingRoomCollection>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meetingroommap")]
-        public IBodyWorkflowAction<AADMeetingRoomCollection, ApiConnectionActionConfiguration> RoomsByListAddress(Expression<Func<string>> meetingRoomListAddress)
+        public IBodyWorkflowAction<AadMeetingRoomCollection, ApiConnectionActionConfiguration> RoomsByListAddress(Expression<Func<string>> meetingRoomListAddress)
         {
             var __workflow_meetingRoomListAddress = WorkflowExpression.Compile(meetingRoomListAddress, nameof(meetingRoomListAddress), required: true);
-            return new DeferredBodyAction<AADMeetingRoomCollection, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<AadMeetingRoomCollection, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/api/rooms/{0}", __workflow_meetingRoomListAddress.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<AADMeetingRoomCollection>(callPayload);
+                return new ApiConnectionAction<AadMeetingRoomCollection>(callPayload);
             });
         }
 
@@ -636,13 +636,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meetingroommap
         public string ThumbnailUrl { get; set; }
     }
 
-    public class AADMeetingRoomCollection
+    public class AadMeetingRoomCollection
     {
         [JsonProperty("rooms")]
-        public AADMeetingRoom[] Rooms { get; set; }
+        public AadMeetingRoom[] Rooms { get; set; }
     }
 
-    public class AADMeetingRoom
+    public class AadMeetingRoom
     {
         [JsonProperty("name")]
         public string Name { get; set; }

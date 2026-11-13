@@ -60,36 +60,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
         public BodyInputEventFiltersTypeItem[] EventFilters { get; set; }
 
         [JsonProperty("filterConnector", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputFilterConnectorType? FilterConnector { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr.BodyInputFilterConnectorType.AND;
+        public BodyInputFilterConnectorType? FilterConnector { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr.BodyInputFilterConnectorType.And;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputObjectTypeType
     {
-        PROJ,
+        [EnumMember(Value = "PROJ")]
+        Proj,
         [EnumMember(Value = "TASK")]
         TaskObject,
-        OPTASK,
-        USER,
-        DOCU,
-        PORT,
-        PRGM,
-        TMPL,
-        TMTSK,
-        HOUR,
-        NOTE,
-        APPROVAL,
-        ASSGN,
-        EXPNS,
-        CUSTRECORD
+        [EnumMember(Value = "OPTASK")]
+        Optask,
+        [EnumMember(Value = "USER")]
+        User,
+        [EnumMember(Value = "DOCU")]
+        Docu,
+        [EnumMember(Value = "PORT")]
+        Port,
+        [EnumMember(Value = "PRGM")]
+        Prgm,
+        [EnumMember(Value = "TMPL")]
+        Tmpl,
+        [EnumMember(Value = "TMTSK")]
+        Tmtsk,
+        [EnumMember(Value = "HOUR")]
+        Hour,
+        [EnumMember(Value = "NOTE")]
+        Note,
+        [EnumMember(Value = "APPROVAL")]
+        Approval,
+        [EnumMember(Value = "ASSGN")]
+        Assgn,
+        [EnumMember(Value = "EXPNS")]
+        Expns,
+        [EnumMember(Value = "CUSTRECORD")]
+        Custrecord
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputEventTypeType
     {
-        CREATE,
-        UPDATE,
-        DELETE
+        [EnumMember(Value = "CREATE")]
+        Create,
+        [EnumMember(Value = "UPDATE")]
+        Update,
+        [EnumMember(Value = "DELETE")]
+        Delete
     }
 
     public class BodyInputEventFiltersTypeItem
@@ -144,7 +161,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workfronteventsubscr
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BodyInputFilterConnectorType
     {
-        AND,
+        [EnumMember(Value = "AND")]
+        And,
         OR
     }
 }

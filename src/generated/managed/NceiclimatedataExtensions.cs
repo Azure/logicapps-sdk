@@ -2275,8 +2275,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum StatusInput
     {
-        CLOSED,
-        INACTIVE
+        [EnumMember(Value = "CLOSED")]
+        Closed,
+        [EnumMember(Value = "INACTIVE")]
+        Inactive
     }
 }
 

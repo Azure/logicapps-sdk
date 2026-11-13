@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksmuseumip
     public class GetCollectionResponseArtObjectsTypeItemWebImageType
     {
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [JsonProperty("offsetPercentageX")]
         public int OffsetPercentageX { get; set; }
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksmuseumip
     public class GetCollectionResponseArtObjectsTypeItemHeaderImageType
     {
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [JsonProperty("offsetPercentageX")]
         public int OffsetPercentageX { get; set; }
@@ -396,7 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksmuseumip
     public class GetUsersetsResponseUserSetTypeSetItemsTypeItemImageType
     {
         [JsonProperty("guid")]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [JsonProperty("parentObjectNumber")]
         public string ParentObjectNumber { get; set; }

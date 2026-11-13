@@ -438,7 +438,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
     public class SendEmailv31ResponseMessagesTypeItemToTypeItem
     {
         public string Email { get; set; }
-        public string MessageUUID { get; set; }
+
+        [JsonProperty("MessageUUID")]
+        public string MessageUuid { get; set; }
 
         [JsonProperty("MessageID")]
         public int MessageId { get; set; }
@@ -448,7 +450,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
     public class SendEmailv31ResponseMessagesTypeItemCcTypeItem
     {
         public string Email { get; set; }
-        public string MessageUUID { get; set; }
+
+        [JsonProperty("MessageUUID")]
+        public string MessageUuid { get; set; }
 
         [JsonProperty("MessageID")]
         public int MessageId { get; set; }
@@ -458,7 +462,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
     public class SendEmailv31ResponseMessagesTypeItemBccTypeItem
     {
         public string Email { get; set; }
-        public string MessageUUID { get; set; }
+
+        [JsonProperty("MessageUUID")]
+        public string MessageUuid { get; set; }
 
         [JsonProperty("MessageID")]
         public int MessageId { get; set; }
@@ -497,7 +503,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         public BodyInputMessagesTypeItemBccTypeItem[] Bcc { get; set; }
         public string Subject { get; set; }
         public string TextPart { get; set; }
-        public string HTMLPart { get; set; }
+
+        [JsonProperty("HTMLPart")]
+        public string HtmlPart { get; set; }
 
         [JsonProperty("TemplateID")]
         public int? TemplateId { get; set; }
@@ -548,7 +556,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
 
     public class Attachmentv31
     {
-        public string Filename { get; set; }
+        [JsonProperty("Filename")]
+        public string FileName { get; set; }
 
         [JsonProperty("Content-type")]
         public string ContentType { get; set; }
@@ -568,7 +577,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
 
         [JsonProperty("MessageID")]
         public int MessageId { get; set; }
-        public string MessageUUID { get; set; }
+
+        [JsonProperty("MessageUUID")]
+        public string MessageUuid { get; set; }
     }
 
     public class SendEmailv3BodyInput
@@ -621,7 +632,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
 
     public class Attachment
     {
-        public string Filename { get; set; }
+        [JsonProperty("Filename")]
+        public string FileName { get; set; }
 
         [JsonProperty("Content-type")]
         public string ContentType { get; set; }
@@ -630,7 +642,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
 
     public class BodyInputMessagesTypeItemInlineAttachmentsTypeItem
     {
-        public string Filename { get; set; }
+        [JsonProperty("Filename")]
+        public string FileName { get; set; }
 
         [JsonProperty("Content-type")]
         public string ContentType { get; set; }
@@ -665,7 +678,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         [JsonProperty("ID")]
         public int Id { get; set; }
         public bool IsClickTracked { get; set; }
-        public bool IsHTMLPartIncluded { get; set; }
+
+        [JsonProperty("IsHTMLPartIncluded")]
+        public bool IsHtmlPartIncluded { get; set; }
         public bool IsOpenTracked { get; set; }
         public bool IsTextPartIncluded { get; set; }
         public bool IsUnsubTracked { get; set; }
@@ -681,7 +696,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailjetip
         public bool StatePermanent { get; set; }
         public string Status { get; set; }
         public string Subject { get; set; }
-        public string UUID { get; set; }
+
+        [JsonProperty("UUID")]
+        public string Uuid { get; set; }
     }
 
     public enum FromTypeInput

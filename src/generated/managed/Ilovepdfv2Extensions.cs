@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFtoJPG(Expression<Func<PDFtoJPGBodyInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFtoJpg(Expression<Func<PDFtoJpgBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> ImageToPDF(Expression<Func<ImageToPDFBodyInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> ImageToPdf(Expression<Func<ImageToPdfBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFtoPDFA(Expression<Func<PDFtoPDFABodyInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFtoPdfa(Expression<Func<PDFtoPdfaBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFOCR(Expression<Func<PDFOCRBodyInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PdfOcr(Expression<Func<PdfOcrBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> OfficeToPDF(Expression<Func<DetectFormsBodyInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> OfficeToPdf(Expression<Func<DetectFormsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfv2")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PDFMarkdown(Expression<Func<DetectFormsBodyInput>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> PdfMarkdown(Expression<Func<DetectFormsBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyAction<object, ApiConnectionActionConfiguration>(() =>
@@ -399,9 +399,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string Password { get; set; }
     }
 
-    public class PDFtoJPGBodyInput
+    public class PDFtoJpgBodyInput
     {
-        public PDFtoJPGBodyInput(BodyInputFileSourceType fileSource, string fileName)
+        public PDFtoJpgBodyInput(BodyInputFileSourceType fileSource, string fileName)
         {
             this.FileSource = fileSource;
             this.FileName = fileName;
@@ -432,9 +432,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Extract
     }
 
-    public class ImageToPDFBodyInput
+    public class ImageToPdfBodyInput
     {
-        public ImageToPDFBodyInput(BodyInputFileSourceType fileSource, string fileName)
+        public ImageToPdfBodyInput(BodyInputFileSourceType fileSource, string fileName)
         {
             this.FileSource = fileSource;
             this.FileName = fileName;
@@ -472,9 +472,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Letter
     }
 
-    public class PDFtoPDFABodyInput
+    public class PDFtoPdfaBodyInput
     {
-        public PDFtoPDFABodyInput(BodyInputFileSourceType fileSource, string fileName)
+        public PDFtoPdfaBodyInput(BodyInputFileSourceType fileSource, string fileName)
         {
             this.FileSource = fileSource;
             this.FileName = fileName;
@@ -868,9 +868,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         _270
     }
 
-    public class PDFOCRBodyInput
+    public class PdfOcrBodyInput
     {
-        public PDFOCRBodyInput(BodyInputFileSourceType fileSource, string fileName)
+        public PdfOcrBodyInput(BodyInputFileSourceType fileSource, string fileName)
         {
             this.FileSource = fileSource;
             this.FileName = fileName;

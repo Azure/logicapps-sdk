@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
     public class Tyntec2faActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
-        public IBodyWorkflowAction<SendOTPResponse, ApiConnectionActionConfiguration> SendOTP(Expression<Func<string>> number, Expression<Func<string>> text = null, Expression<Func<int>> pinLength = null, Expression<Func<ViaInput>> via = null, Expression<Func<int>> applicationId = null, Expression<Func<string>> language = null, Expression<Func<string>> country = null, Expression<Func<string>> otpCode = null, Expression<Func<string>> sender = null, Expression<Func<string>> caller = null)
+        public IBodyWorkflowAction<SendOtpResponse, ApiConnectionActionConfiguration> SendOtp(Expression<Func<string>> number, Expression<Func<string>> text = null, Expression<Func<int>> pinLength = null, Expression<Func<ViaInput>> via = null, Expression<Func<int>> applicationId = null, Expression<Func<string>> language = null, Expression<Func<string>> country = null, Expression<Func<string>> otpCode = null, Expression<Func<string>> sender = null, Expression<Func<string>> caller = null)
         {
             var __workflow_number = WorkflowExpression.Compile(number, nameof(number), required: true);
             var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
             var __workflow_otpCode = WorkflowExpression.Compile(otpCode, nameof(otpCode), required: false);
             var __workflow_sender = WorkflowExpression.Compile(sender, nameof(sender), required: false);
             var __workflow_caller = WorkflowExpression.Compile(caller, nameof(caller), required: false);
-            return new DeferredBodyAction<SendOTPResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<SendOtpResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/2fa/v1/otp";
                 var apiCallHttpMethod = "post";
@@ -50,31 +50,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
                     callPayload.Queries["Sender"] = ExpressionConverter.Convert(__workflow_sender);
                 if (__workflow_caller != null)
                     callPayload.Queries["Caller"] = ExpressionConverter.Convert(__workflow_caller);
-                return new ApiConnectionAction<SendOTPResponse>(callPayload);
+                return new ApiConnectionAction<SendOtpResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
-        public IBodyWorkflowAction<DeleteOTPResponse, ApiConnectionActionConfiguration> DeleteOTP(Expression<Func<string>> otpId)
+        public IBodyWorkflowAction<DeleteOtpResponse, ApiConnectionActionConfiguration> DeleteOtp(Expression<Func<string>> otpId)
         {
             var __workflow_otpId = WorkflowExpression.Compile(otpId, nameof(otpId), required: true);
-            return new DeferredBodyAction<DeleteOTPResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DeleteOtpResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/2fa/v1/otp/{0}", __workflow_otpId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "delete";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<DeleteOTPResponse>(callPayload);
+                return new ApiConnectionAction<DeleteOtpResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
-        public IBodyWorkflowAction<ResendOTPResponse, ApiConnectionActionConfiguration> ResendOTP(Expression<Func<string>> otpId, Expression<Func<ViaInput>> via = null, Expression<Func<string>> sender = null, Expression<Func<string>> caller = null)
+        public IBodyWorkflowAction<ResendOtpResponse, ApiConnectionActionConfiguration> ResendOtp(Expression<Func<string>> otpId, Expression<Func<ViaInput>> via = null, Expression<Func<string>> sender = null, Expression<Func<string>> caller = null)
         {
             var __workflow_otpId = WorkflowExpression.Compile(otpId, nameof(otpId), required: true);
             var __workflow_via = WorkflowExpression.Compile(via, nameof(via), required: false);
             var __workflow_sender = WorkflowExpression.Compile(sender, nameof(sender), required: false);
             var __workflow_caller = WorkflowExpression.Compile(caller, nameof(caller), required: false);
-            return new DeferredBodyAction<ResendOTPResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<ResendOtpResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/2fa/v1/otp/{0}", __workflow_otpId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
@@ -86,36 +86,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
                     callPayload.Queries["Sender"] = ExpressionConverter.Convert(__workflow_sender);
                 if (__workflow_caller != null)
                     callPayload.Queries["Caller"] = ExpressionConverter.Convert(__workflow_caller);
-                return new ApiConnectionAction<ResendOTPResponse>(callPayload);
+                return new ApiConnectionAction<ResendOtpResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
-        public IBodyWorkflowAction<StatusOTPResponse, ApiConnectionActionConfiguration> StatusOTP(Expression<Func<string>> otpId)
+        public IBodyWorkflowAction<StatusOtpResponse, ApiConnectionActionConfiguration> StatusOtp(Expression<Func<string>> otpId)
         {
             var __workflow_otpId = WorkflowExpression.Compile(otpId, nameof(otpId), required: true);
-            return new DeferredBodyAction<StatusOTPResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<StatusOtpResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/2fa/v1/otp/{0}", __workflow_otpId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<StatusOTPResponse>(callPayload);
+                return new ApiConnectionAction<StatusOtpResponse>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
-        public IBodyWorkflowAction<VerifyOTPResponse, ApiConnectionActionConfiguration> VerifyOTP(Expression<Func<string>> otpId, Expression<Func<int>> otpCode = null)
+        public IBodyWorkflowAction<VerifyOtpResponse, ApiConnectionActionConfiguration> VerifyOtp(Expression<Func<string>> otpId, Expression<Func<int>> otpCode = null)
         {
             var __workflow_otpId = WorkflowExpression.Compile(otpId, nameof(otpId), required: true);
             var __workflow_otpCode = WorkflowExpression.Compile(otpCode, nameof(otpCode), required: false);
-            return new DeferredBodyAction<VerifyOTPResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<VerifyOtpResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/2fa/v1/otp/{0}/check", __workflow_otpId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_otpCode != null)
                     callPayload.Queries["otpCode"] = ExpressionConverter.Convert(__workflow_otpCode);
-                return new ApiConnectionAction<VerifyOTPResponse>(callPayload);
+                return new ApiConnectionAction<VerifyOtpResponse>(callPayload);
             });
         }
     }
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
     {
     }
 
-    public class SendOTPResponse
+    public class SendOtpResponse
     {
         [JsonProperty("otpId")]
         public string OtpId { get; set; }
@@ -163,12 +163,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ViaInput
     {
-        AUTO,
-        VOICE,
-        SMS
+        [EnumMember(Value = "AUTO")]
+        Auto,
+        [EnumMember(Value = "VOICE")]
+        Voice,
+        [EnumMember(Value = "SMS")]
+        Sms
     }
 
-    public class DeleteOTPResponse
+    public class DeleteOtpResponse
     {
         [JsonProperty("otpId")]
         public string OtpId { get; set; }
@@ -204,7 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
         public string TimestampExpire { get; set; }
     }
 
-    public class ResendOTPResponse
+    public class ResendOtpResponse
     {
         [JsonProperty("otpId")]
         public string OtpId { get; set; }
@@ -240,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
         public string TimestampExpire { get; set; }
     }
 
-    public class StatusOTPResponse
+    public class StatusOtpResponse
     {
         [JsonProperty("otpId")]
         public string OtpId { get; set; }
@@ -276,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
         public string TimestampExpire { get; set; }
     }
 
-    public class VerifyOTPResponse
+    public class VerifyOtpResponse
     {
         [JsonProperty("otpId")]
         public string OtpId { get; set; }

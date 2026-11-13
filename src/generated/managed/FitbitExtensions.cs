@@ -123,18 +123,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> GetActivityTCX(Expression<Func<string>> userId, Expression<Func<string>> logId, Expression<Func<bool>> includePartialTCX = null)
+        public IWorkflowAction<ApiConnectionActionConfiguration> GetActivityTcx(Expression<Func<string>> userId, Expression<Func<string>> logId, Expression<Func<bool>> includePartialTcx = null)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_logId = WorkflowExpression.Compile(logId, nameof(logId), required: true);
-            var __workflow_includePartialTCX = WorkflowExpression.Compile(includePartialTCX, nameof(includePartialTCX), required: false);
+            var __workflow_includePartialTcx = WorkflowExpression.Compile(includePartialTcx, nameof(includePartialTcx), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/1/user/{0}/activities/{1}.tcx", __workflow_userId.WithUrlEncoding(1), __workflow_logId.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_includePartialTCX != null)
-                    callPayload.Queries["includePartialTCX"] = ExpressionConverter.Convert(__workflow_includePartialTCX);
+                if (__workflow_includePartialTcx != null)
+                    callPayload.Queries["includePartialTCX"] = ExpressionConverter.Convert(__workflow_includePartialTcx);
                 return new ApiConnectionAction(callPayload);
             });
         }
@@ -404,16 +404,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetHRVSummarybyDateResponse, ApiConnectionActionConfiguration> GetHRVSummarybyDate(Expression<Func<string>> userId, Expression<Func<string>> date)
+        public IBodyWorkflowAction<GetHrvSummarybyDateResponse, ApiConnectionActionConfiguration> GetHrvSummarybyDate(Expression<Func<string>> userId, Expression<Func<string>> date)
         {
             var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
-            return new DeferredBodyAction<GetHRVSummarybyDateResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<GetHrvSummarybyDateResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/1/user/{0}/hrv/date/{1}.json", __workflow_userId.WithUrlEncoding(1), __workflow_date.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionAction<GetHRVSummarybyDateResponse>(callPayload);
+                return new ApiConnectionAction<GetHrvSummarybyDateResponse>(callPayload);
             });
         }
 
@@ -1213,13 +1213,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         public int Id { get; set; }
 
         [JsonProperty("maxSpeedMPH")]
-        public double MaxSpeedMPH { get; set; }
+        public double MaxSpeedMph { get; set; }
 
         [JsonProperty("mets")]
         public int Mets { get; set; }
 
         [JsonProperty("minSpeedMPH")]
-        public int MinSpeedMPH { get; set; }
+        public int MinSpeedMph { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1264,13 +1264,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         public int Id { get; set; }
 
         [JsonProperty("maxSpeedMPH")]
-        public int MaxSpeedMPH { get; set; }
+        public int MaxSpeedMph { get; set; }
 
         [JsonProperty("mets")]
         public int Mets { get; set; }
 
         [JsonProperty("minSpeedMPH")]
-        public int MinSpeedMPH { get; set; }
+        public int MinSpeedMph { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -1318,7 +1318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         public int CalorieEstimationMu { get; set; }
 
         [JsonProperty("caloriesBMR")]
-        public int CaloriesBMR { get; set; }
+        public int CaloriesBmr { get; set; }
 
         [JsonProperty("caloriesOut")]
         public int CaloriesOut { get; set; }
@@ -2026,22 +2026,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         public string Name { get; set; }
     }
 
-    public class GetHRVSummarybyDateResponse
+    public class GetHrvSummarybyDateResponse
     {
         [JsonProperty("hrv")]
-        public GetHRVSummarybyDateResponseHrvTypeItem[] Hrv { get; set; }
+        public GetHrvSummarybyDateResponseHrvTypeItem[] Hrv { get; set; }
     }
 
-    public class GetHRVSummarybyDateResponseHrvTypeItem
+    public class GetHrvSummarybyDateResponseHrvTypeItem
     {
         [JsonProperty("value")]
-        public GetHRVSummarybyDateResponseHrvTypeItemValueType Value { get; set; }
+        public GetHrvSummarybyDateResponseHrvTypeItemValueType Value { get; set; }
 
         [JsonProperty("dateTime")]
         public string DateTime { get; set; }
     }
 
-    public class GetHRVSummarybyDateResponseHrvTypeItemValueType
+    public class GetHrvSummarybyDateResponseHrvTypeItemValueType
     {
         [JsonProperty("dailyRmssd")]
         public double DailyRmssd { get; set; }
@@ -2242,7 +2242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         public string MfaEnabled { get; set; }
 
         [JsonProperty("offsetFromUTCMillis")]
-        public string OffsetFromUTCMillis { get; set; }
+        public string OffsetFromUtcMillis { get; set; }
 
         [JsonProperty("sdkDeveloper")]
         public string SdkDeveloper { get; set; }

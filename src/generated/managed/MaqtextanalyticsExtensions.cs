@@ -27,17 +27,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        public IBodyWorkflowAction<PIIScrubberResponse, ApiConnectionActionConfiguration> PIIScrubber(Expression<Func<PIIScrubberBodyInput>> body = null)
+        public IBodyWorkflowAction<PiiScrubberResponse, ApiConnectionActionConfiguration> PiiScrubber(Expression<Func<PiiScrubberBodyInput>> body = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredBodyAction<PIIScrubberResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<PiiScrubberResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/text/PIIScrubber";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_body != null)
                     callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<PIIScrubberResponse>(callPayload);
+                return new ApiConnectionAction<PiiScrubberResponse>(callPayload);
             });
         }
 
@@ -85,13 +85,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         public string Text { get; set; }
     }
 
-    public class PIIScrubberResponse
+    public class PiiScrubberResponse
     {
         [JsonProperty("scrubbed_text")]
         public string ScrubbedText { get; set; }
     }
 
-    public class PIIScrubberBodyInput
+    public class PiiScrubberBodyInput
     {
         [JsonProperty("data")]
         public string Data { get; set; }

@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
     public class ContactCreatedBodyInput
     {
         [JsonProperty("callbackURL", DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string CallbackURL { get; set; } = "#{listCallbackUrl()}";
+        internal string CallbackUrl { get; set; } = "#{listCallbackUrl()}";
 
         [JsonProperty("title", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string Title { get; set; } = "When a contact is created";

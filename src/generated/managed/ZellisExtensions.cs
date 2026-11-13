@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
 
     public class ZellisTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CRUDEntitiy(Expression<Func<CRUDEntitiyBodyInput>> body)
+        public IBodyWorkflowTrigger<JToken, ApiConnectionPollingTriggerConfiguration> CrudEntitiy(Expression<Func<CrudEntitiyBodyInput>> body)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredBodyTrigger<JToken, ApiConnectionPollingTriggerConfiguration>(() =>
@@ -186,11 +186,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         WorkerDrivingLicences,
         WorkPatterns,
         Workers,
-        WorkerPRSIDetails,
+        [EnumMember(Value = "WorkerPRSIDetails")]
+        WorkerPrsiDetails,
         WorkerPensionSchemes,
         WorkerPosts,
         WorkerRelationships,
-        WorkerUSCDetails
+        [EnumMember(Value = "WorkerUSCDetails")]
+        WorkerUscDetails
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -206,7 +208,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         Jobs,
         Locations,
         OperatorMessage,
-        ParentalLeaveKITDays,
+        [EnumMember(Value = "ParentalLeaveKITDays")]
+        ParentalLeaveKitDays,
         Posts,
         ProspectiveWorkers,
         SharedParentalLeave,
@@ -218,19 +221,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         WorkPatterns,
         Workers,
         WorkerNICategories,
-        WorkerPRSIDetails,
+        [EnumMember(Value = "WorkerPRSIDetails")]
+        WorkerPrsiDetails,
         WorkerParentalLeave,
         WorkerPassportVisas,
         WorkerPensionSchemes,
         WorkerPosts,
         WorkerRelationships,
         WorkerTaxCodeHistories,
-        WorkerUSCDetails
+        [EnumMember(Value = "WorkerUSCDetails")]
+        WorkerUscDetails
     }
 
-    public class CRUDEntitiyBodyInput
+    public class CrudEntitiyBodyInput
     {
-        public CRUDEntitiyBodyInput(string @event)
+        public CrudEntitiyBodyInput(string @event)
         {
             this.Event = @event;
         }
@@ -244,8 +249,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
         public bool IsEnabled { get; set; } = true;
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Include)]
-        internal string URL { get; set; } = "#{listCallbackUrl()}";
+        [JsonProperty("URL", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string Url { get; set; } = "#{listCallbackUrl()}";
     }
 
     public class BodyInputEventTypeType

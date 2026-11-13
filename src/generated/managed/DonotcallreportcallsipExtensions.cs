@@ -160,8 +160,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SortOrderInput
     {
-        DESC,
-        ASC
+        [EnumMember(Value = "DESC")]
+        Desc,
+        [EnumMember(Value = "ASC")]
+        Asc
     }
 
     public class ComplaintIdResponse

@@ -218,7 +218,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         public string ProductDescription { get; set; }
         public string ProductIndex { get; set; }
         public string ProductIndex2 { get; set; }
-        public int VAT { get; set; }
+
+        [JsonProperty("VAT")]
+        public int Vat { get; set; }
         public string UoM { get; set; }
         public string UoM2 { get; set; }
         public double ConversionUoM2 { get; set; }
@@ -313,7 +315,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         public string UserEmailAssigned { get; set; }
         public string UserPhoneNumberAssigned { get; set; }
         public string UserMobilePhoneNumberAssigned { get; set; }
-        public int OpuASMId { get; set; }
+
+        [JsonProperty("OpuASMId")]
+        public int OpuAsmId { get; set; }
 
         [JsonProperty("Id Status")]
         public int IdStatus { get; set; }

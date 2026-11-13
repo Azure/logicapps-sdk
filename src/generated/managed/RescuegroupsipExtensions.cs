@@ -1079,7 +1079,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string Sex { get; set; }
 
         [JsonProperty("sizeUOM")]
-        public string SizeUOM { get; set; }
+        public string SizeUom { get; set; }
 
         [JsonProperty("slug")]
         public string Slug { get; set; }
@@ -1649,7 +1649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public double SizeCurrent { get; set; }
 
         [JsonProperty("sizeUOM")]
-        public string SizeUOM { get; set; }
+        public string SizeUom { get; set; }
 
         [JsonProperty("slug")]
         public string Slug { get; set; }
@@ -2282,7 +2282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public double SizeCurrent { get; set; }
 
         [JsonProperty("sizeUOM")]
-        public string SizeUOM { get; set; }
+        public string SizeUom { get; set; }
 
         [JsonProperty("slug")]
         public string Slug { get; set; }
@@ -2747,7 +2747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string SizeGroup { get; set; }
 
         [JsonProperty("sizeUOM")]
-        public string SizeUOM { get; set; }
+        public string SizeUom { get; set; }
 
         [JsonProperty("slug")]
         public string Slug { get; set; }
@@ -3218,7 +3218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         public string SizeGroup { get; set; }
 
         [JsonProperty("sizeUOM")]
-        public string SizeUOM { get; set; }
+        public string SizeUom { get; set; }
 
         [JsonProperty("slug")]
         public string Slug { get; set; }

@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
-        public IBodyWorkflowAction<CompanySearchResponseApiResponse, ApiConnectionActionConfiguration> CompanySearch(Expression<Func<string>> dUNSNumber = null, Expression<Func<string>> companyName = null, Expression<Func<string>> nationalId = null, Expression<Func<string>> addressUnstructured = null, Expression<Func<string>> addressStreet = null, Expression<Func<string>> city = null, Expression<Func<string>> stateProvince = null, Expression<Func<string>> country = null, Expression<Func<bool>> showBranches = null, Expression<Func<string>> companyTypes = null, Expression<Func<int>> maxResults = null)
+        public IBodyWorkflowAction<CompanySearchResponseApiResponse, ApiConnectionActionConfiguration> CompanySearch(Expression<Func<string>> dunsNumber = null, Expression<Func<string>> companyName = null, Expression<Func<string>> nationalId = null, Expression<Func<string>> addressUnstructured = null, Expression<Func<string>> addressStreet = null, Expression<Func<string>> city = null, Expression<Func<string>> stateProvince = null, Expression<Func<string>> country = null, Expression<Func<bool>> showBranches = null, Expression<Func<string>> companyTypes = null, Expression<Func<int>> maxResults = null)
         {
-            var __workflow_dUNSNumber = WorkflowExpression.Compile(dUNSNumber, nameof(dUNSNumber), required: false);
+            var __workflow_dunsNumber = WorkflowExpression.Compile(dunsNumber, nameof(dunsNumber), required: false);
             var __workflow_companyName = WorkflowExpression.Compile(companyName, nameof(companyName), required: false);
             var __workflow_nationalId = WorkflowExpression.Compile(nationalId, nameof(nationalId), required: false);
             var __workflow_addressUnstructured = WorkflowExpression.Compile(addressUnstructured, nameof(addressUnstructured), required: false);
@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
                 var apiCallPath = "/Company/Search";
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_dUNSNumber != null)
-                    callPayload.Queries["DUNSNumber"] = ExpressionConverter.Convert(__workflow_dUNSNumber);
+                if (__workflow_dunsNumber != null)
+                    callPayload.Queries["DUNSNumber"] = ExpressionConverter.Convert(__workflow_dunsNumber);
                 if (__workflow_companyName != null)
                     callPayload.Queries["CompanyName"] = ExpressionConverter.Convert(__workflow_companyName);
                 if (__workflow_nationalId != null)
@@ -120,7 +120,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
     public class CompanyDetailResult
     {
         public string HitHorizonsId { get; set; }
-        public string DUNSNumber { get; set; }
+
+        [JsonProperty("DUNSNumber")]
+        public string DunsNumber { get; set; }
         public string CompanyName { get; set; }
         public string CompanySecondaryName { get; set; }
         public string AddressStreetLine1 { get; set; }
@@ -131,8 +133,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
         public string Country { get; set; }
         public string NationalId { get; set; }
         public string NationalIdType { get; set; }
-        public string SICText { get; set; }
-        public string SICCode { get; set; }
+
+        [JsonProperty("SICText")]
+        public string SicText { get; set; }
+
+        [JsonProperty("SICCode")]
+        public string SicCode { get; set; }
         public string Industry { get; set; }
         public string LocalActivityCode { get; set; }
         public string LocalActivityCodeType { get; set; }
@@ -140,8 +146,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
         public double SalesLocal { get; set; }
         public string LocalCurrency { get; set; }
         public string SalesAccuracyIndicator { get; set; }
-        public double SalesUSD { get; set; }
-        public double SalesEUR { get; set; }
+
+        [JsonProperty("SalesUSD")]
+        public double SalesUsd { get; set; }
+
+        [JsonProperty("SalesEUR")]
+        public double SalesEur { get; set; }
         public JToken HitHorizonsSalesAnalysis { get; set; }
         public int EmployeesNumber { get; set; }
         public string EmployeesNumberAccuracyIndicator { get; set; }
@@ -150,7 +160,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
         public JToken HitHorizonsEmployeesAnalysis { get; set; }
         public int CompanyType { get; set; }
         public int LocationType { get; set; }
-        public string HitHorizonsCompanyProfileURL { get; set; }
+
+        [JsonProperty("HitHorizonsCompanyProfileURL")]
+        public string HitHorizonsCompanyProfileUrl { get; set; }
     }
 
     public class CompanySearchResponseApiResponse
@@ -170,7 +182,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
     public class CompanySearchResult
     {
         public string HitHorizonsId { get; set; }
-        public string DUNSNumber { get; set; }
+
+        [JsonProperty("DUNSNumber")]
+        public string DunsNumber { get; set; }
         public string CompanyName { get; set; }
         public string CompanySecondaryName { get; set; }
         public string AddressStreetLine1 { get; set; }
@@ -182,9 +196,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
         public string NationalId { get; set; }
         public string Industry { get; set; }
         public int EstablishmentOfOwnership { get; set; }
-        public double SalesEUR { get; set; }
+
+        [JsonProperty("SalesEUR")]
+        public double SalesEur { get; set; }
         public int EmployeesNumber { get; set; }
-        public string CompanyProfileURL { get; set; }
+
+        [JsonProperty("CompanyProfileURL")]
+        public string CompanyProfileUrl { get; set; }
     }
 }
 

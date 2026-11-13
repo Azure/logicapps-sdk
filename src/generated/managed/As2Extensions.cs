@@ -101,13 +101,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
     public class MicUpdateResponse
     {
         [JsonProperty("MicUpdateStatus")]
-        public MicUpdateResponseStatusOfTheCreateOrUpdateMICActionType StatusOfTheCreateOrUpdateMICAction { get; set; }
+        public MicUpdateResponseStatusOfTheCreateOrUpdateMicActionType StatusOfTheCreateOrUpdateMicAction { get; set; }
         public MicContent ExistingMicContent { get; set; }
         public EipErrorResponseBody ErrorDetails { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum MicUpdateResponseStatusOfTheCreateOrUpdateMICActionType
+    public enum MicUpdateResponseStatusOfTheCreateOrUpdateMicActionType
     {
         MicEntryCreated,
         MicEntryUpdated,

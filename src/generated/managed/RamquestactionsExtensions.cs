@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestactions
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ramquestactions")]
-        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> CreateIdentitySearchPDF(Expression<Func<string>> smSourceFileId, Expression<Func<PubCSTitleOrderApiModelsIdentitySearchInput[]>> body)
+        public IBodyWorkflowAction<object, ApiConnectionActionConfiguration> CreateIdentitySearchPdf(Expression<Func<string>> smSourceFileId, Expression<Func<PubCSTitleOrderApiModelsIdentitySearchInput[]>> body)
         {
             var __workflow_smSourceFileId = WorkflowExpression.Compile(smSourceFileId, nameof(smSourceFileId), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -513,8 +513,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestactions
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TitleOrderV5DetailTypeAssociationType
     {
-        TLTA,
-        ALTA
+        [EnumMember(Value = "TLTA")]
+        Tlta,
+        [EnumMember(Value = "ALTA")]
+        Alta
     }
 
     public class TitleOrderV5DetailTypeDatesTypeItem
@@ -674,17 +676,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestactions
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TitleOrderV5DocumentsTypeItemFormatType
     {
-        JPEG,
-        PNG,
-        DOC,
-        DOCX,
-        XLS,
-        XLSX,
-        TXT,
-        RTF,
-        PDF,
-        CSV,
-        XML
+        [EnumMember(Value = "JPEG")]
+        Jpeg,
+        [EnumMember(Value = "PNG")]
+        Png,
+        [EnumMember(Value = "DOC")]
+        Doc,
+        [EnumMember(Value = "DOCX")]
+        Docx,
+        [EnumMember(Value = "XLS")]
+        Xls,
+        [EnumMember(Value = "XLSX")]
+        Xlsx,
+        [EnumMember(Value = "TXT")]
+        Txt,
+        [EnumMember(Value = "RTF")]
+        Rtf,
+        [EnumMember(Value = "PDF")]
+        Pdf,
+        [EnumMember(Value = "CSV")]
+        Csv,
+        [EnumMember(Value = "XML")]
+        Xml
     }
 
     public class TitleOrderV5FinancialType
@@ -1043,7 +1056,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestactions
         Townhome,
         CondoOrApartment,
         NewConstruction,
-        PUD,
+        [EnumMember(Value = "PUD")]
+        Pud,
         Duplex,
         Triplex
     }

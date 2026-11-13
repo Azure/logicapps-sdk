@@ -147,13 +147,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AssignBadgeToUser(Expression<Func<string>> username, Expression<Func<AssignBadgeToUserBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AssignBadgeToUser(Expression<Func<string>> userName, Expression<Func<AssignBadgeToUserBodyInput>> body)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/badges/", __workflow_username.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/badges/", __workflow_userName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -162,13 +162,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
-        public IWorkflowAction<ApiConnectionActionConfiguration> AssignCustomActionToUser(Expression<Func<string>> username, Expression<Func<AssignCustomActionToUserBodyInput>> body)
+        public IWorkflowAction<ApiConnectionActionConfiguration> AssignCustomActionToUser(Expression<Func<string>> userName, Expression<Func<AssignCustomActionToUserBodyInput>> body)
         {
-            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/customactions/", __workflow_username.WithUrlEncoding(1)));
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/users/{0}/customactions/", __workflow_userName.WithUrlEncoding(1)));
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
@@ -246,13 +246,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public string AudienceId { get; set; }
 
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [JsonProperty("isMandatory")]
         public bool? IsMandatory { get; set; }
 
         [JsonProperty("sendSMS")]
-        public bool? SendSMS { get; set; }
+        public bool? SendSms { get; set; }
     }
 
     public class GetAudiencesResponseItem

@@ -13,12 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
     public class DoctopdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doctopdf")]
-        public IBodyWorkflowAction<DocToPDFResponse, ApiConnectionActionConfiguration> DocToPDF(Expression<Func<BodyInput>> body, Expression<Func<string>> publickey = null, Expression<Func<string>> apikey = null)
+        public IBodyWorkflowAction<DocToPdfResponse, ApiConnectionActionConfiguration> DocToPdf(Expression<Func<BodyInput>> body, Expression<Func<string>> publickey = null, Expression<Func<string>> apikey = null)
         {
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
             var __workflow_publickey = WorkflowExpression.Compile(publickey, nameof(publickey), required: false);
             var __workflow_apikey = WorkflowExpression.Compile(apikey, nameof(apikey), required: false);
-            return new DeferredBodyAction<DocToPDFResponse, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<DocToPdfResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/api/doctopdf";
                 var apiCallHttpMethod = "post";
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
                 if (__workflow_apikey != null)
                     callPayload.Headers["apikey"] = ExpressionConverter.Convert(__workflow_apikey);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                return new ApiConnectionAction<DocToPDFResponse>(callPayload);
+                return new ApiConnectionAction<DocToPdfResponse>(callPayload);
             });
         }
     }
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
     {
     }
 
-    public class DocToPDFResponse
+    public class DocToPdfResponse
     {
         [JsonProperty("status")]
         public string Status { get; set; }

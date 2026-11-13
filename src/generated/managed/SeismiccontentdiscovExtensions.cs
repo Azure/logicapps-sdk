@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         public string ContentUniversalLink { get; set; }
 
         [JsonProperty("urlObjectUrl")]
-        public string ContentOriginURL { get; set; }
+        public string ContentOriginUrl { get; set; }
 
         [JsonProperty("thumbnailId")]
         public string ContentThumbnailId { get; set; }
@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         [JsonProperty("name")]
         public string ContentName { get; set; }
 
-        [JsonProperty("contentType")]
+        [JsonProperty("type")]
         public string ContentType { get; set; }
 
         [JsonProperty("format")]
@@ -323,6 +323,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
 
         [JsonProperty("versionId")]
         public string ContentVersionId { get; set; }
+
+        [JsonProperty("contentType")]
+        public string ContentType2 { get; set; }
 
         [JsonProperty("workspaceVersionType")]
         public string WorkspaceVersionType { get; set; }

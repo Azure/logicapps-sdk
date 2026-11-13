@@ -247,13 +247,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
 
     public class MembersPatchBodyInput
     {
-        public MembersPatchBodyInput(string[] membersOdataBind)
+        public MembersPatchBodyInput(string[] membersODataBind)
         {
-            this.MembersOdataBind = membersOdataBind;
+            this.MembersODataBind = membersODataBind;
         }
 
         [JsonProperty("members@odata.bind", DefaultValueHandling = DefaultValueHandling.Include)]
-        public string[] MembersOdataBind { get; set; }
+        public string[] MembersODataBind { get; set; }
     }
 }
 
