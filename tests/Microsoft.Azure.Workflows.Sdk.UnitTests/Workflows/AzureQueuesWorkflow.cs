@@ -72,8 +72,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             var logResult = WorkflowActions.BuiltIn.Compose(() => new
             {
-                SentMessageId = sendMessage.Output.MessageId,
-                ExpiresOn = sendMessage.Output.ExpiresOn,
+                SentMessageId = sendMessage.Body.MessageId,
+                ExpiresOn = sendMessage.Body.ExpiresOn,
             }).WithName("Log_Send_Result");
 
             var listQueues = WorkflowActions.ServiceProviders.Azurequeues("azureQueuesConnection")
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 .WithName("List_Queues");
 
             var response = WorkflowActions.BuiltIn.Response(
-                responseBody: () => $"Message sent: {sendMessage.Output.MessageId}, Queues: {listQueues.Body}")
+                responseBody: () => $"Message sent: {sendMessage.Body.MessageId}, Queues: {listQueues.Body}")
                 .WithName("HttpResponse");
 
             trigger

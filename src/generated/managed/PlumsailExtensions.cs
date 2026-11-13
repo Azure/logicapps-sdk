@@ -547,46 +547,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsail")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlowV1ProcessesFlowJobsExecuteProcess(Expression<Func<string>> processId, Expression<Func<object>> jsonContent)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FlowV1ProcessesFlowJobsExecuteProcessV2(Expression<Func<string>> processId, Expression<Func<OutputFilesAsInput>> outputFilesAs, Expression<Func<object>> jsonContent)
         {
             var __workflow_processId = WorkflowExpression.Compile(processId, nameof(processId), required: true);
+            var __workflow_outputFilesAs = WorkflowExpression.Compile(outputFilesAs, nameof(outputFilesAs), required: true);
             var __workflow_jsonContent = WorkflowExpression.Compile(jsonContent, nameof(jsonContent), required: true);
-            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = "/flow/v1/ProcessesFlow/jobs/ExecuteProcess";
+                var apiCallPath = "/flow/v1/ProcessesFlow/jobs/ExecuteProcessV2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["processId"] = ExpressionConverter.Convert(__workflow_processId);
+                callPayload.Queries["outputFilesAs"] = ExpressionConverter.Convert(__workflow_outputFilesAs);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_jsonContent);
-                return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsail")]
-        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> FlowV1ProcessesFlowJobsExecuteProcessWithGeneratedData(Expression<Func<string>> processId, Expression<Func<FlowV1ProcessesFlowJobsExecuteProcessWithGeneratedDataDataInput>> data)
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> FlowV1ProcessesFlowJobsExecuteProcessWithGeneratedDataMultipleOutputs(Expression<Func<string>> processId, Expression<Func<OutputFilesAsInput>> outputFilesAs, Expression<Func<FlowV1ProcessesFlowJobsExecuteProcessWithGeneratedDataMultipleOutputsDataInput>> data)
         {
             var __workflow_processId = WorkflowExpression.Compile(processId, nameof(processId), required: true);
+            var __workflow_outputFilesAs = WorkflowExpression.Compile(outputFilesAs, nameof(outputFilesAs), required: true);
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
-            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = "/flow/v1/ProcessesFlow/jobs/ExecuteProcessWithGeneratedData";
+                var apiCallPath = "/flow/v1/ProcessesFlow/jobs/ExecuteProcessWithGeneratedDataMultipleOutputs";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["processId"] = ExpressionConverter.Convert(__workflow_processId);
+                callPayload.Queries["outputFilesAs"] = ExpressionConverter.Convert(__workflow_outputFilesAs);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_data);
-                return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
             });
         }
     }
 
     public class PlumsailTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> FlowV1ProcessesFlowTriggersPost(Expression<Func<FlowV1ProcessesFlowTriggersPostDataInput>> data)
+        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> FlowV1ProcessesFlowTriggersV2Post(Expression<Func<FlowV1ProcessesFlowTriggersV2PostDataInput>> data)
         {
             var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
             return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
             {
-                var apiCallPath = "/flow/v1/ProcessesFlow/triggers";
+                var apiCallPath = "/flow/v1/ProcessesFlow/triggers/v2";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_data);
@@ -2978,6 +2982,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
 
         [JsonProperty("timezone")]
         public RequestInputTimeZoneType? TimeZone { get; set; }
+
+        [JsonProperty("engine", DefaultValueHandling = DefaultValueHandling.Include)]
+        public RequestInputTemplateEngineType? TemplateEngine { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail.RequestInputTemplateEngineType.Modern;
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -3692,9 +3699,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         public string[] Content { get; set; }
     }
 
-    public class FlowV1ProcessesFlowJobsExecuteProcessWithGeneratedDataDataInput
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum OutputFilesAsInput
     {
-        public FlowV1ProcessesFlowJobsExecuteProcessWithGeneratedDataDataInput(JToken templateData)
+        SeparateFiles,
+        ArrayOfFiles
+    }
+
+    public class FlowV1ProcessesFlowJobsExecuteProcessWithGeneratedDataMultipleOutputsDataInput
+    {
+        public FlowV1ProcessesFlowJobsExecuteProcessWithGeneratedDataMultipleOutputsDataInput(JToken templateData)
         {
             this.TemplateData = templateData;
         }
@@ -3703,9 +3717,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
         public JToken TemplateData { get; set; }
     }
 
-    public class FlowV1ProcessesFlowTriggersPostDataInput
+    public class FlowV1ProcessesFlowTriggersV2PostDataInput
     {
-        public FlowV1ProcessesFlowTriggersPostDataInput(string processName)
+        public FlowV1ProcessesFlowTriggersV2PostDataInput(string processName)
         {
             this.ProcessName = processName;
         }
@@ -3715,6 +3729,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail
 
         [JsonProperty("hookUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string ProcessName2 { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("outputFilesAs", DefaultValueHandling = DefaultValueHandling.Include)]
+        public DataInputOutputFilesAsType OutputFilesAs { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Plumsail.DataInputOutputFilesAsType.SeparateFiles;
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum DataInputOutputFilesAsType
+    {
+        SeparateFiles,
+        ArrayOfFiles
     }
 }
 

@@ -39,6 +39,184 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IBodyWorkflowAction<AgentVersionRecord, ApiConnectionActionConfiguration> CreateHostedAgent(Expression<Func<CreateHostedAgentBodyInput>> body)
+        {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<AgentVersionRecord, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = "/agents";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<AgentVersionRecord>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IBodyWorkflowAction<AgentRecord, ApiConnectionActionConfiguration> GetAgentFromService(Expression<Func<string>> agentName)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            return new DeferredBodyAction<AgentRecord, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}", __workflow_agentName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AgentRecord>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IBodyWorkflowAction<AgentRecord, ApiConnectionActionConfiguration> UpdateHostedAgentRouting(Expression<Func<string>> agentName, Expression<Func<UpdateHostedAgentRoutingBodyInput>> body)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<AgentRecord, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}", __workflow_agentName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<AgentRecord>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteAgent(Expression<Func<string>> agentName, Expression<Func<bool>> force = null)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_force = WorkflowExpression.Compile(force, nameof(force), required: false);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}", __workflow_agentName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["force"] = Convert.ToString(false);
+                if (__workflow_force != null)
+                    callPayload.Queries["force"] = ExpressionConverter.Convert(__workflow_force);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IWorkflowAction<ApiConnectionActionConfiguration> EnableHostedAgent(Expression<Func<string>> agentName)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}:enable", __workflow_agentName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IWorkflowAction<ApiConnectionActionConfiguration> DisableHostedAgent(Expression<Func<string>> agentName)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}:disable", __workflow_agentName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IBodyWorkflowAction<AgentVersionListResponse, ApiConnectionActionConfiguration> ListAgentVersions(Expression<Func<string>> agentName, Expression<Func<bool>> includeDrafts = null, Expression<Func<int>> limit = null, Expression<Func<OrderInput>> order = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_includeDrafts = WorkflowExpression.Compile(includeDrafts, nameof(includeDrafts), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            return new DeferredBodyAction<AgentVersionListResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/versions", __workflow_agentName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["include_drafts"] = Convert.ToString(false);
+                if (__workflow_includeDrafts != null)
+                    callPayload.Queries["include_drafts"] = ExpressionConverter.Convert(__workflow_includeDrafts);
+                callPayload.Queries["limit"] = Convert.ToString(20);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                callPayload.Queries["order"] = Convert.ToString("desc");
+                if (__workflow_order != null)
+                    callPayload.Queries["order"] = ExpressionConverter.Convert(__workflow_order);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
+                return new ApiConnectionAction<AgentVersionListResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IBodyWorkflowAction<AgentVersionRecord, ApiConnectionActionConfiguration> CreateHostedAgentVersion(Expression<Func<string>> agentName, Expression<Func<CreateHostedAgentVersionBodyInput>> body)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<AgentVersionRecord, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/versions", __workflow_agentName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<AgentVersionRecord>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IBodyWorkflowAction<AgentVersionRecord, ApiConnectionActionConfiguration> CreatePromptAgentVersion(Expression<Func<string>> agentName, Expression<Func<CreatePromptAgentVersionBodyInput>> body)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<AgentVersionRecord, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/versions/prompt", __workflow_agentName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<AgentVersionRecord>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IBodyWorkflowAction<AgentVersionRecord, ApiConnectionActionConfiguration> GetAgentVersion(Expression<Func<string>> agentName, Expression<Func<string>> agentVersion)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_agentVersion = WorkflowExpression.Compile(agentVersion, nameof(agentVersion), required: true);
+            return new DeferredBodyAction<AgentVersionRecord, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/versions/{1}", __workflow_agentName.WithUrlEncoding(1), __workflow_agentVersion.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AgentVersionRecord>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteAgentVersion(Expression<Func<string>> agentName, Expression<Func<string>> agentVersion, Expression<Func<bool>> force = null)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_agentVersion = WorkflowExpression.Compile(agentVersion, nameof(agentVersion), required: true);
+            var __workflow_force = WorkflowExpression.Compile(force, nameof(force), required: false);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/versions/{1}", __workflow_agentName.WithUrlEncoding(1), __workflow_agentVersion.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["force"] = Convert.ToString(false);
+                if (__workflow_force != null)
+                    callPayload.Queries["force"] = ExpressionConverter.Convert(__workflow_force);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<CreateThreadResponse, ApiConnectionActionConfiguration> CreateThread(Expression<Func<CreateRunApiVersionInput>> apiVersion, Expression<Func<CreateThreadRequestBodyInput>> requestBody)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
@@ -103,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<OpenAIResponse, ApiConnectionActionConfiguration> InvokeAgent(Expression<Func<InvokeAgentApiVersionInput>> apiVersion, Expression<Func<BodyInput>> body)
+        public IBodyWorkflowAction<OpenAIResponse, ApiConnectionActionConfiguration> InvokeAgent(Expression<Func<InvokeAgentApiVersionInput>> apiVersion, Expression<Func<InvokeAgentBodyInput>> body)
         {
             var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
@@ -115,6 +293,184 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
                 callPayload.Queries["api-version"] = ExpressionConverter.Convert(__workflow_apiVersion);
                 callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
                 return new ApiConnectionAction<OpenAIResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IBodyWorkflowAction<OpenAIResponse, ApiConnectionActionConfiguration> InvokeHostedAgentResponses(Expression<Func<string>> agentName, Expression<Func<InvokeHostedAgentResponsesBodyInput>> body)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<OpenAIResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/endpoint/protocols/openai/responses", __workflow_agentName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<OpenAIResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IBodyWorkflowAction<JToken, ApiConnectionActionConfiguration> InvokeHostedAgentInvocations(Expression<Func<string>> agentName, Expression<Func<object>> body)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyAction<JToken, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/endpoint/protocols/invocations", __workflow_agentName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IBodyWorkflowAction<HostedSession, ApiConnectionActionConfiguration> CreateHostedSession(Expression<Func<string>> agentName, Expression<Func<CreateHostedSessionBodyInput>> body, Expression<Func<string>> xMsUserIsolationKey = null)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            var __workflow_xMsUserIsolationKey = WorkflowExpression.Compile(xMsUserIsolationKey, nameof(xMsUserIsolationKey), required: false);
+            return new DeferredBodyAction<HostedSession, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/endpoint/sessions", __workflow_agentName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_xMsUserIsolationKey != null)
+                    callPayload.Headers["x-ms-user-isolation-key"] = ExpressionConverter.Convert(__workflow_xMsUserIsolationKey);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<HostedSession>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IBodyWorkflowAction<HostedSessionListResponse, ApiConnectionActionConfiguration> ListHostedSessions(Expression<Func<string>> agentName, Expression<Func<string>> xMsUserIsolationKey = null)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_xMsUserIsolationKey = WorkflowExpression.Compile(xMsUserIsolationKey, nameof(xMsUserIsolationKey), required: false);
+            return new DeferredBodyAction<HostedSessionListResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/endpoint/sessions", __workflow_agentName.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_xMsUserIsolationKey != null)
+                    callPayload.Headers["x-ms-user-isolation-key"] = ExpressionConverter.Convert(__workflow_xMsUserIsolationKey);
+                return new ApiConnectionAction<HostedSessionListResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IBodyWorkflowAction<HostedSession, ApiConnectionActionConfiguration> GetHostedSession(Expression<Func<string>> agentName, Expression<Func<string>> sessionId, Expression<Func<string>> xMsUserIsolationKey = null)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_xMsUserIsolationKey = WorkflowExpression.Compile(xMsUserIsolationKey, nameof(xMsUserIsolationKey), required: false);
+            return new DeferredBodyAction<HostedSession, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/endpoint/sessions/{1}", __workflow_agentName.WithUrlEncoding(1), __workflow_sessionId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_xMsUserIsolationKey != null)
+                    callPayload.Headers["x-ms-user-isolation-key"] = ExpressionConverter.Convert(__workflow_xMsUserIsolationKey);
+                return new ApiConnectionAction<HostedSession>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteHostedSession(Expression<Func<string>> agentName, Expression<Func<string>> sessionId, Expression<Func<string>> xMsUserIsolationKey = null)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_xMsUserIsolationKey = WorkflowExpression.Compile(xMsUserIsolationKey, nameof(xMsUserIsolationKey), required: false);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/endpoint/sessions/{1}", __workflow_agentName.WithUrlEncoding(1), __workflow_sessionId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_xMsUserIsolationKey != null)
+                    callPayload.Headers["x-ms-user-isolation-key"] = ExpressionConverter.Convert(__workflow_xMsUserIsolationKey);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IBodyWorkflowAction<HostedSessionFileUploadResponse, ApiConnectionActionConfiguration> UploadHostedSessionFile(Expression<Func<string>> agentName, Expression<Func<string>> sessionId, Expression<Func<string>> path, Expression<Func<string>> body, Expression<Func<string>> xMsUserIsolationKey = null)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            var __workflow_xMsUserIsolationKey = WorkflowExpression.Compile(xMsUserIsolationKey, nameof(xMsUserIsolationKey), required: false);
+            return new DeferredBodyAction<HostedSessionFileUploadResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/endpoint/sessions/{1}/files/content", __workflow_agentName.WithUrlEncoding(1), __workflow_sessionId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
+                if (__workflow_xMsUserIsolationKey != null)
+                    callPayload.Headers["x-ms-user-isolation-key"] = ExpressionConverter.Convert(__workflow_xMsUserIsolationKey);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<HostedSessionFileUploadResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IBodyWorkflowAction<string, ApiConnectionActionConfiguration> DownloadHostedSessionFile(Expression<Func<string>> agentName, Expression<Func<string>> sessionId, Expression<Func<string>> path, Expression<Func<string>> xMsUserIsolationKey = null)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
+            var __workflow_xMsUserIsolationKey = WorkflowExpression.Compile(xMsUserIsolationKey, nameof(xMsUserIsolationKey), required: false);
+            return new DeferredBodyAction<string, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/endpoint/sessions/{1}/files/content", __workflow_agentName.WithUrlEncoding(1), __workflow_sessionId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
+                if (__workflow_xMsUserIsolationKey != null)
+                    callPayload.Headers["x-ms-user-isolation-key"] = ExpressionConverter.Convert(__workflow_xMsUserIsolationKey);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IBodyWorkflowAction<HostedSessionFileListResponse, ApiConnectionActionConfiguration> ListHostedSessionFiles(Expression<Func<string>> agentName, Expression<Func<string>> sessionId, Expression<Func<string>> xMsUserIsolationKey = null, Expression<Func<string>> path = null)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_xMsUserIsolationKey = WorkflowExpression.Compile(xMsUserIsolationKey, nameof(xMsUserIsolationKey), required: false);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: false);
+            return new DeferredBodyAction<HostedSessionFileListResponse, ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/endpoint/sessions/{1}/files", __workflow_agentName.WithUrlEncoding(1), __workflow_sessionId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = Convert.ToString(".");
+                if (__workflow_path != null)
+                    callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
+                if (__workflow_xMsUserIsolationKey != null)
+                    callPayload.Headers["x-ms-user-isolation-key"] = ExpressionConverter.Convert(__workflow_xMsUserIsolationKey);
+                return new ApiConnectionAction<HostedSessionFileListResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IWorkflowAction<ApiConnectionActionConfiguration> DeleteHostedSessionFile(Expression<Func<string>> agentName, Expression<Func<string>> sessionId, Expression<Func<string>> path, Expression<Func<string>> xMsUserIsolationKey = null)
+        {
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
+            var __workflow_xMsUserIsolationKey = WorkflowExpression.Compile(xMsUserIsolationKey, nameof(xMsUserIsolationKey), required: false);
+            return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.Convert(WorkflowExpression.GeneratedPath("/agents/{0}/endpoint/sessions/{1}/files", __workflow_agentName.WithUrlEncoding(1), __workflow_sessionId.WithUrlEncoding(1)));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
+                if (__workflow_xMsUserIsolationKey != null)
+                    callPayload.Headers["x-ms-user-isolation-key"] = ExpressionConverter.Convert(__workflow_xMsUserIsolationKey);
+                return new ApiConnectionAction(callPayload);
             });
         }
 
@@ -252,6 +608,359 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
 
         [JsonProperty("createdAt")]
         public string CreatedAt { get; set; }
+    }
+
+    public class AgentVersionRecord
+    {
+        [JsonProperty("metadata")]
+        public JToken Metadata { get; set; }
+
+        [JsonProperty("object")]
+        public string ObjectEntity { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("version")]
+        public string Version { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("created_at")]
+        public int CreatedAt { get; set; }
+
+        [JsonProperty("definition")]
+        public JToken Definition { get; set; }
+
+        [JsonProperty("draft")]
+        public bool Draft { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("instance_identity")]
+        public JToken InstanceIdentity { get; set; }
+
+        [JsonProperty("blueprint")]
+        public JToken Blueprint { get; set; }
+
+        [JsonProperty("blueprint_reference")]
+        public JToken BlueprintReference { get; set; }
+
+        [JsonProperty("agent_guid")]
+        public string AgentGuid { get; set; }
+    }
+
+    public class CreateHostedAgentBodyInput
+    {
+        public CreateHostedAgentBodyInput(string agentName, HostedAgentDefinition definition)
+        {
+            this.AgentName = agentName;
+            this.Definition = definition;
+        }
+
+        [JsonProperty("name", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AgentName { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("metadata")]
+        public JToken Metadata { get; set; }
+
+        [JsonProperty("definition", DefaultValueHandling = DefaultValueHandling.Include)]
+        public HostedAgentDefinition Definition { get; set; }
+    }
+
+    public class HostedAgentDefinition
+    {
+        public HostedAgentDefinition(HostedAgentContainerConfiguration containerConfiguration, HostedAgentProtocolVersion[] protocolVersions)
+        {
+            this.ContainerConfiguration = containerConfiguration;
+            this.ProtocolVersions = protocolVersions;
+        }
+
+        [JsonProperty("kind", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal HostedAgentDefinitionKindType Kind { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice.HostedAgentDefinitionKindType.Hosted;
+
+        [JsonProperty("container_configuration", DefaultValueHandling = DefaultValueHandling.Include)]
+        public HostedAgentContainerConfiguration ContainerConfiguration { get; set; }
+
+        [JsonProperty("cpu", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string CPU { get; set; } = "1";
+
+        [JsonProperty("memory", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string Memory { get; set; } = "2Gi";
+
+        [JsonProperty("protocol_versions", DefaultValueHandling = DefaultValueHandling.Include)]
+        public HostedAgentProtocolVersion[] ProtocolVersions { get; set; }
+
+        [JsonProperty("environment_variables")]
+        public JToken EnvironmentVariables { get; set; }
+
+        [JsonProperty("rai_config")]
+        public JToken ResponsibleAIConfiguration { get; set; }
+
+        [JsonProperty("telemetry_config")]
+        public JToken TelemetryConfiguration { get; set; }
+
+        [JsonProperty("session_configuration")]
+        public JToken SessionConfiguration { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum HostedAgentDefinitionKindType
+    {
+        [EnumMember(Value = "hosted")]
+        Hosted
+    }
+
+    public class HostedAgentContainerConfiguration
+    {
+        public HostedAgentContainerConfiguration(string containerImage)
+        {
+            this.ContainerImage = containerImage;
+        }
+
+        [JsonProperty("image", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ContainerImage { get; set; }
+
+        [JsonProperty("registry_connection_id")]
+        public string RegistryConnectionId { get; set; }
+    }
+
+    public class HostedAgentProtocolVersion
+    {
+        public HostedAgentProtocolVersion(HostedAgentProtocolVersionProtocolType protocol)
+        {
+            this.Protocol = protocol;
+        }
+
+        [JsonProperty("protocol", DefaultValueHandling = DefaultValueHandling.Include)]
+        public HostedAgentProtocolVersionProtocolType Protocol { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum HostedAgentProtocolVersionProtocolType
+    {
+        [EnumMember(Value = "responses")]
+        Responses,
+        [EnumMember(Value = "invocations")]
+        Invocations
+    }
+
+    public class AgentRecord
+    {
+        [JsonProperty("object")]
+        public string ObjectEntity { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("state")]
+        public string State { get; set; }
+
+        [JsonProperty("configuration_state")]
+        public string ConfigurationState { get; set; }
+
+        [JsonProperty("state_source")]
+        public string StateSource { get; set; }
+
+        [JsonProperty("versions")]
+        public AgentRecordVersions Versions { get; set; }
+
+        [JsonProperty("agent_endpoint")]
+        public JToken AgentEndpoint { get; set; }
+
+        [JsonProperty("digital_worker_type")]
+        public string DigitalWorkerType { get; set; }
+
+        [JsonProperty("instance_identity")]
+        public JToken InstanceIdentity { get; set; }
+
+        [JsonProperty("blueprint")]
+        public JToken Blueprint { get; set; }
+
+        [JsonProperty("blueprint_reference")]
+        public JToken BlueprintReference { get; set; }
+
+        [JsonProperty("agent_card")]
+        public JToken AgentCard { get; set; }
+    }
+
+    public class AgentRecordVersions
+    {
+        [JsonProperty("latest")]
+        public AgentVersionRecord Latest { get; set; }
+    }
+
+    public class UpdateHostedAgentRoutingBodyInput
+    {
+        public UpdateHostedAgentRoutingBodyInput(HostedAgentEndpointRouting agentEndpoint)
+        {
+            this.AgentEndpoint = agentEndpoint;
+        }
+
+        [JsonProperty("agent_endpoint", DefaultValueHandling = DefaultValueHandling.Include)]
+        public HostedAgentEndpointRouting AgentEndpoint { get; set; }
+    }
+
+    public class HostedAgentEndpointRouting
+    {
+        public HostedAgentEndpointRouting(HostedAgentVersionSelector versionSelector)
+        {
+            this.VersionSelector = versionSelector;
+        }
+
+        [JsonProperty("version_selector", DefaultValueHandling = DefaultValueHandling.Include)]
+        public HostedAgentVersionSelector VersionSelector { get; set; }
+    }
+
+    public class HostedAgentVersionSelector
+    {
+        public HostedAgentVersionSelector(HostedAgentVersionSelectionRule[] versionSelectionRules)
+        {
+            this.VersionSelectionRules = versionSelectionRules;
+        }
+
+        [JsonProperty("version_selection_rules", DefaultValueHandling = DefaultValueHandling.Include)]
+        public HostedAgentVersionSelectionRule[] VersionSelectionRules { get; set; }
+    }
+
+    public class HostedAgentVersionSelectionRule
+    {
+        public HostedAgentVersionSelectionRule(string agentVersion)
+        {
+            this.AgentVersion = agentVersion;
+        }
+
+        [JsonProperty("agent_version", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string AgentVersion { get; set; }
+    }
+
+    public class AgentVersionListResponse
+    {
+        [JsonProperty("object")]
+        public string ObjectEntity { get; set; }
+
+        [JsonProperty("data")]
+        public AgentVersionRecord[] Data { get; set; }
+
+        [JsonProperty("first_id")]
+        public string FirstId { get; set; }
+
+        [JsonProperty("last_id")]
+        public string LastId { get; set; }
+
+        [JsonProperty("has_more")]
+        public bool HasMore { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum OrderInput
+    {
+        [EnumMember(Value = "asc")]
+        Asc,
+        [EnumMember(Value = "desc")]
+        Desc
+    }
+
+    public class CreateHostedAgentVersionBodyInput
+    {
+        public CreateHostedAgentVersionBodyInput(HostedAgentDefinition definition)
+        {
+            this.Definition = definition;
+        }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("metadata")]
+        public JToken Metadata { get; set; }
+
+        [JsonProperty("draft", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? CreateAsDraft { get; set; } = false;
+
+        [JsonProperty("definition", DefaultValueHandling = DefaultValueHandling.Include)]
+        public HostedAgentDefinition Definition { get; set; }
+    }
+
+    public class CreatePromptAgentVersionBodyInput
+    {
+        public CreatePromptAgentVersionBodyInput(PromptAgentDefinition definition)
+        {
+            this.Definition = definition;
+        }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("metadata")]
+        public JToken Metadata { get; set; }
+
+        [JsonProperty("draft", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? CreateAsDraft { get; set; } = false;
+
+        [JsonProperty("definition", DefaultValueHandling = DefaultValueHandling.Include)]
+        public PromptAgentDefinition Definition { get; set; }
+    }
+
+    public class PromptAgentDefinition
+    {
+        public PromptAgentDefinition(string modelDeployment)
+        {
+            this.ModelDeployment = modelDeployment;
+        }
+
+        [JsonProperty("kind", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal PromptAgentDefinitionKindType Kind { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice.PromptAgentDefinitionKindType.Prompt;
+
+        [JsonProperty("model", DefaultValueHandling = DefaultValueHandling.Include)]
+        public string ModelDeployment { get; set; }
+
+        [JsonProperty("instructions")]
+        public string Instructions { get; set; }
+
+        [JsonProperty("tools")]
+        public JToken[] Tools { get; set; }
+
+        [JsonProperty("tool_choice")]
+        public JToken ToolChoice { get; set; }
+
+        [JsonProperty("temperature")]
+        public double? Temperature { get; set; }
+
+        [JsonProperty("top_p")]
+        public double? TopP { get; set; }
+
+        [JsonProperty("text")]
+        public JToken TextConfiguration { get; set; }
+
+        [JsonProperty("reasoning")]
+        public JToken ReasoningConfiguration { get; set; }
+
+        [JsonProperty("skills")]
+        public JToken[] Skills { get; set; }
+
+        [JsonProperty("structured_inputs")]
+        public JToken StructuredInputs { get; set; }
+
+        [JsonProperty("harness")]
+        public JToken Harness { get; set; }
+    }
+
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+    public enum PromptAgentDefinitionKindType
+    {
+        [EnumMember(Value = "prompt")]
+        Prompt
     }
 
     public class CreateThreadResponse
@@ -1001,7 +1710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         _20251115Preview
     }
 
-    public class BodyInput
+    public class InvokeAgentBodyInput
     {
         [JsonProperty("metadata")]
         public JToken Metadata { get; set; }
@@ -1232,6 +1941,137 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
     {
         [EnumMember(Value = "agent_reference")]
         AgentReference
+    }
+
+    public class InvokeHostedAgentResponsesBodyInput
+    {
+        public InvokeHostedAgentResponsesBodyInput(JToken input)
+        {
+            this.Input = input;
+        }
+
+        [JsonProperty("input", DefaultValueHandling = DefaultValueHandling.Include)]
+        public JToken Input { get; set; }
+
+        [JsonProperty("previous_response_id")]
+        public string PreviousResponseId { get; set; }
+
+        [JsonProperty("instructions")]
+        public string Instructions { get; set; }
+
+        [JsonProperty("store", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? StoreResponse { get; set; } = true;
+
+        [JsonProperty("background", DefaultValueHandling = DefaultValueHandling.Include)]
+        public bool? RunInBackground { get; set; } = false;
+
+        [JsonProperty("max_output_tokens")]
+        public int? MaximumOutputTokens { get; set; }
+
+        [JsonProperty("metadata")]
+        public JToken Metadata { get; set; }
+
+        [JsonProperty("user")]
+        public string User { get; set; }
+
+        [JsonProperty("stream", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal bool Stream { get; set; } = false;
+    }
+
+    public class HostedSession
+    {
+        [JsonProperty("agent_session_id")]
+        public string AgentSessionId { get; set; }
+
+        [JsonProperty("version_indicator")]
+        public HostedSessionVersionIndicator VersionIndicator { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("created_at")]
+        public int CreatedAt { get; set; }
+
+        [JsonProperty("last_accessed_at")]
+        public int LastAccessedAt { get; set; }
+
+        [JsonProperty("expires_at")]
+        public int ExpiresAt { get; set; }
+
+        [JsonProperty("stopped_at")]
+        public int StoppedAt { get; set; }
+    }
+
+    public class HostedSessionVersionIndicator
+    {
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("agent_version")]
+        public string AgentVersion { get; set; }
+    }
+
+    public class CreateHostedSessionBodyInput
+    {
+        [JsonProperty("agent_version")]
+        public string AgentVersion { get; set; }
+    }
+
+    public class HostedSessionListResponse
+    {
+        [JsonProperty("data")]
+        public HostedSession[] Data { get; set; }
+
+        [JsonProperty("first_id")]
+        public string FirstId { get; set; }
+
+        [JsonProperty("last_id")]
+        public string LastId { get; set; }
+
+        [JsonProperty("has_more")]
+        public bool HasMore { get; set; }
+    }
+
+    public class HostedSessionFileUploadResponse
+    {
+        [JsonProperty("path")]
+        public string Path { get; set; }
+
+        [JsonProperty("bytes_written")]
+        public int BytesWritten { get; set; }
+
+        [JsonProperty("success")]
+        public bool Success { get; set; }
+
+        [JsonProperty("source_type")]
+        public string SourceType { get; set; }
+    }
+
+    public class HostedSessionFileListResponse
+    {
+        [JsonProperty("path")]
+        public string Path { get; set; }
+
+        [JsonProperty("entries")]
+        public HostedSessionFileEntry[] Entries { get; set; }
+
+        [JsonProperty("has_more")]
+        public bool HasMore { get; set; }
+    }
+
+    public class HostedSessionFileEntry
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("size")]
+        public int Size { get; set; }
+
+        [JsonProperty("is_directory")]
+        public bool IsDirectory { get; set; }
+
+        [JsonProperty("modified_time")]
+        public int ModifiedTime { get; set; }
     }
 }
 

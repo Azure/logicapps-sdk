@@ -1219,6 +1219,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
 
         [JsonProperty("eTag")]
         public string ETag { get; set; }
+
+        [JsonProperty("lastModifiedTime")]
+        public string LastModifiedTime { get; set; }
     }
 
     public class ListBlobsFromUriOutput
@@ -1258,6 +1261,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
 
         [JsonProperty("eTag")]
         public string ETag { get; set; }
+
+        [JsonProperty("lastModifiedTime")]
+        public string LastModifiedTime { get; set; }
     }
 
     public class ListBlobDirectoriesOutput

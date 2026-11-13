@@ -313,12 +313,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
-        public IBodyWorkflowAction<IcmTeamSearchResponse, ApiConnectionActionConfiguration> SearchIcMTeams(Expression<Func<string>> publicId = null, Expression<Func<string>> name = null, Expression<Func<bool>> includeMembers = null, Expression<Func<int>> skip = null)
+        public IBodyWorkflowAction<IcmTeamSearchResponse, ApiConnectionActionConfiguration> SearchIcMTeams(Expression<Func<string>> publicId = null, Expression<Func<string>> name = null, Expression<Func<bool>> includeMembers = null, Expression<Func<int>> skip = null, Expression<Func<int>> teamId = null)
         {
             var __workflow_publicId = WorkflowExpression.Compile(publicId, nameof(publicId), required: false);
             var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             var __workflow_includeMembers = WorkflowExpression.Compile(includeMembers, nameof(includeMembers), required: false);
             var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: false);
             return new DeferredBodyAction<IcmTeamSearchResponse, ApiConnectionActionConfiguration>(() =>
             {
                 var apiCallPath = "/icm/teams/search";
@@ -333,6 +334,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
                     callPayload.Queries["includeMembers"] = ExpressionConverter.Convert(__workflow_includeMembers);
                 if (__workflow_skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_teamId != null)
+                    callPayload.Queries["teamId"] = ExpressionConverter.Convert(__workflow_teamId);
                 return new ApiConnectionAction<IcmTeamSearchResponse>(callPayload);
             });
         }

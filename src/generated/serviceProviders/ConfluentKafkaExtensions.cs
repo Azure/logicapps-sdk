@@ -16,13 +16,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
     public class ConfluentKafkaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "confluentKafka")]
-        public IBodyWorkflowAction<SendMessageOutput, SendMessageActionConfiguration> SendMessage(Expression<Func<string>> topicName, Expression<Func<object>> message, Expression<Func<string>> messageKey = null, Expression<Func<object>> headers = null, Expression<Func<string>> schemaSubjectName = null)
+        public IBodyWorkflowAction<SendMessageOutput, SendMessageActionConfiguration> SendMessage(Expression<Func<string>> topicName, Expression<Func<object>> message, Expression<Func<string>> messageKey = null, Expression<Func<object>> headers = null, Expression<Func<string>> schemaSubjectName = null, Expression<Func<bool>> rawStringContent = null)
         {
             var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
             var __workflow_messageKey = WorkflowExpression.Compile(messageKey, nameof(messageKey), required: false);
             var __workflow_headers = WorkflowExpression.Compile(headers, nameof(headers), required: false);
             var __workflow_schemaSubjectName = WorkflowExpression.Compile(schemaSubjectName, nameof(schemaSubjectName), required: false);
+            var __workflow_rawStringContent = WorkflowExpression.Compile(rawStringContent, nameof(rawStringContent), required: false);
             return new DeferredBodyAction<SendMessageOutput, SendMessageActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -41,6 +42,15 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
                 if (__workflow_schemaSubjectName != null)
                 {
                     serviceProviderParameters["SchemaSubjectName"] = ExpressionConverter.ConvertO(__workflow_schemaSubjectName);
+                }
+
+                if (__workflow_rawStringContent != null)
+                {
+                    serviceProviderParameters["rawStringContent"] = ExpressionConverter.ConvertO(__workflow_rawStringContent);
+                }
+                else
+                {
+                    serviceProviderParameters["rawStringContent"] = false;
                 }
 
                 var serviceProviderInput = new ServiceProviderOperationInput

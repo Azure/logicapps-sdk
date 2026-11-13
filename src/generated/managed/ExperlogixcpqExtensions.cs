@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
             var __workflow_queryRequest = WorkflowExpression.Compile(queryRequest, nameof(queryRequest), required: false);
             return new DeferredWorkflowAction<ApiConnectionActionConfiguration>(() =>
             {
-                var apiCallPath = "/runtime/webhooks/mcp";
+                var apiCallPath = "/mcp";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (__workflow_mcpSessionId != null)

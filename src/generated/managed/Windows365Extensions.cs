@@ -207,19 +207,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
 
     public class Windows365Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger<ApiConnectionPollingTriggerConfiguration> Webhook(Expression<Func<WebhookBodyInput>> body = null)
+        public IBodyWorkflowTrigger<WebhookCloudPcProvisionedResponse, ApiConnectionPollingTriggerConfiguration> WebhookCloudPcProvisioned(Expression<Func<WebhookCloudPcProvisionedBodyInput>> body)
         {
-            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
-            return new DeferredWorkflowTrigger<ApiConnectionPollingTriggerConfiguration>(() =>
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyTrigger<WebhookCloudPcProvisionedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
             {
-                var apiCallPath = "/beta/deviceManagement/virtualEndpoint/webhooks";
+                var apiCallPath = "/beta/deviceManagement/virtualEndpoint/webhooks/cloudPcProvisioned/activate";
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                if (__workflow_body != null)
-                    callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
-                else
-                    callPayload.Body = new WebhookBodyInput().ToJToken();
-                return new ApiConnectionPollingTrigger(callPayload);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger<WebhookCloudPcProvisionedResponse>(callPayload);
+            });
+        }
+
+        public IBodyWorkflowTrigger<WebhookCloudPcRemoteActionTriggeredResponse, ApiConnectionPollingTriggerConfiguration> WebhookCloudPcRemoteActionTriggered(Expression<Func<WebhookCloudPcProvisionedBodyInput>> body)
+        {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyTrigger<WebhookCloudPcRemoteActionTriggeredResponse, ApiConnectionPollingTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/beta/deviceManagement/virtualEndpoint/webhooks/cloudPcRemoteActionTriggered/activate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger<WebhookCloudPcRemoteActionTriggeredResponse>(callPayload);
+            });
+        }
+
+        public IBodyWorkflowTrigger<WebhookCloudPcRemoteActionCompletedResponse, ApiConnectionPollingTriggerConfiguration> WebhookCloudPcRemoteActionCompleted(Expression<Func<WebhookCloudPcProvisionedBodyInput>> body)
+        {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyTrigger<WebhookCloudPcRemoteActionCompletedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/beta/deviceManagement/virtualEndpoint/webhooks/cloudPcRemoteActionCompleted/activate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger<WebhookCloudPcRemoteActionCompletedResponse>(callPayload);
+            });
+        }
+
+        public IBodyWorkflowTrigger<WebhookProvisioningPolicyCreatedResponse, ApiConnectionPollingTriggerConfiguration> WebhookProvisioningPolicyCreated(Expression<Func<WebhookProvisioningPolicyCreatedBodyInput>> body)
+        {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyTrigger<WebhookProvisioningPolicyCreatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/beta/deviceManagement/virtualEndpoint/webhooks/provisioningPolicyCreated/activate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger<WebhookProvisioningPolicyCreatedResponse>(callPayload);
+            });
+        }
+
+        public IBodyWorkflowTrigger<WebhookProvisioningPolicyUpdatedResponse, ApiConnectionPollingTriggerConfiguration> WebhookProvisioningPolicyUpdated(Expression<Func<WebhookProvisioningPolicyCreatedBodyInput>> body)
+        {
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            return new DeferredBodyTrigger<WebhookProvisioningPolicyUpdatedResponse, ApiConnectionPollingTriggerConfiguration>(() =>
+            {
+                var apiCallPath = "/beta/deviceManagement/virtualEndpoint/webhooks/provisioningPolicyUpdated/activate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionPollingTrigger<WebhookProvisioningPolicyUpdatedResponse>(callPayload);
             });
         }
     }
@@ -970,28 +1019,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         public string Locale { get; set; }
     }
 
-    public class WebhookBodyInput
+    public class WebhookCloudPcProvisionedResponse
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class WebhookCloudPcProvisionedBodyInput
     {
         [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
         internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
 
-        [JsonProperty("scenario", DefaultValueHandling = DefaultValueHandling.Include)]
-        public BodyInputScenarioType Scenario { get; set; } = global::Microsoft.Azure.Workflows.Sdk.Connectors.Windows365.BodyInputScenarioType.WhenACloudPCIsCreated;
+        [JsonProperty("cloudPcWebhookEventFilter")]
+        public WebhookCloudPcProvisionedBodyInputCloudPcWebhookEventFilterType CloudPcWebhookEventFilter { get; set; }
+    }
+
+    public class WebhookCloudPcProvisionedBodyInputCloudPcWebhookEventFilterType
+    {
+        [JsonProperty("provisioningTypeNames")]
+        public BodyInputCloudPcWebhookEventFilterTypeProvisioningTypeNamesTypeItem[] ProvisioningTypeNames { get; set; }
     }
 
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-    public enum BodyInputScenarioType
+    public enum BodyInputCloudPcWebhookEventFilterTypeProvisioningTypeNamesTypeItem
     {
-        [EnumMember(Value = "When a new provisioning policy is created")]
-        WhenANewProvisioningPolicyIsCreated,
-        [EnumMember(Value = "When a provisioning policy is updated")]
-        WhenAProvisioningPolicyIsUpdated,
-        [EnumMember(Value = "When a Cloud PC is created")]
-        WhenACloudPCIsCreated,
-        [EnumMember(Value = "When a remote action on a Cloud PC is triggered")]
-        WhenARemoteActionOnACloudPCIsTriggered,
-        [EnumMember(Value = "When a remote action on a Cloud PC completes")]
-        WhenARemoteActionOnACloudPCCompletes
+        [EnumMember(Value = "Windows 365 Enterprise")]
+        Windows365Enterprise,
+        [EnumMember(Value = "Windows 365 Flex in Dedicated mode")]
+        Windows365FlexInDedicatedMode,
+        [EnumMember(Value = "Windows 365 Flex in Shared mode")]
+        Windows365FlexInSharedMode,
+        [EnumMember(Value = "Windows 365 Reserve")]
+        Windows365Reserve
+    }
+
+    public class WebhookCloudPcRemoteActionTriggeredResponse
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class WebhookCloudPcRemoteActionCompletedResponse
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class WebhookProvisioningPolicyCreatedResponse
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
+    public class WebhookProvisioningPolicyCreatedBodyInput
+    {
+        [JsonProperty("notificationUrl", DefaultValueHandling = DefaultValueHandling.Include)]
+        internal string NotificationUrl { get; set; } = "#{listCallbackUrl()}";
+
+        [JsonProperty("cloudPcWebhookEventFilter")]
+        public WebhookProvisioningPolicyCreatedBodyInputCloudPcWebhookEventFilterType CloudPcWebhookEventFilter { get; set; }
+    }
+
+    public class WebhookProvisioningPolicyCreatedBodyInputCloudPcWebhookEventFilterType
+    {
+        [JsonProperty("provisioningPolicyNames")]
+        public string[] ProvisioningPolicyNames { get; set; }
+
+        [JsonProperty("provisioningPolicyIds")]
+        public string[] ProvisioningPolicyIds { get; set; }
+
+        [JsonProperty("provisioningTypeNames")]
+        public BodyInputCloudPcWebhookEventFilterTypeProvisioningTypeNamesTypeItem[] ProvisioningTypeNames { get; set; }
+    }
+
+    public class WebhookProvisioningPolicyUpdatedResponse
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
     }
 }
 

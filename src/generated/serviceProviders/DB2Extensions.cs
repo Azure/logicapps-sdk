@@ -16,11 +16,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
     public class DB2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IOutputWorkflowAction<DeleteRowOutput, DeleteRowActionConfiguration> DeleteRow(Expression<Func<string>> table, Expression<Func<object>> searchCondition)
+        public IBodyWorkflowAction<DeleteRowOutput, DeleteRowActionConfiguration> DeleteRow(Expression<Func<string>> table, Expression<Func<object>> searchCondition)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_searchCondition = WorkflowExpression.Compile(searchCondition, nameof(searchCondition), required: true);
-            return new DeferredOutputAction<DeleteRowOutput, DeleteRowActionConfiguration>(() =>
+            return new DeferredBodyAction<DeleteRowOutput, DeleteRowActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["table"] = ExpressionConverter.ConvertO(__workflow_table);
@@ -30,16 +30,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "deleteRow", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<DeleteRowOutput, DeleteRowActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<DeleteRowOutput, DeleteRowActionConfiguration>(serviceProviderInput);
             });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IOutputWorkflowAction<ExecuteNonQueryOutput, ExecuteNonQueryActionConfiguration> ExecuteNonQuery(Expression<Func<string>> statement, Expression<Func<object>> sqlParameters = null)
+        public IBodyWorkflowAction<ExecuteNonQueryOutput, ExecuteNonQueryActionConfiguration> ExecuteNonQuery(Expression<Func<string>> statement, Expression<Func<object>> sqlParameters = null)
         {
             var __workflow_statement = WorkflowExpression.Compile(statement, nameof(statement), required: true);
             var __workflow_sqlParameters = WorkflowExpression.Compile(sqlParameters, nameof(sqlParameters), required: false);
-            return new DeferredOutputAction<ExecuteNonQueryOutput, ExecuteNonQueryActionConfiguration>(() =>
+            return new DeferredBodyAction<ExecuteNonQueryOutput, ExecuteNonQueryActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["statement"] = ExpressionConverter.ConvertO(__workflow_statement);
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "executeNonQuery", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<ExecuteNonQueryOutput, ExecuteNonQueryActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<ExecuteNonQueryOutput, ExecuteNonQueryActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -102,11 +102,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IOutputWorkflowAction<InsertRowOutput, InsertRowActionConfiguration> InsertRow(Expression<Func<string>> table, Expression<Func<object>> insertParameters)
+        public IBodyWorkflowAction<InsertRowOutput, InsertRowActionConfiguration> InsertRow(Expression<Func<string>> table, Expression<Func<object>> insertParameters)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_insertParameters = WorkflowExpression.Compile(insertParameters, nameof(insertParameters), required: true);
-            return new DeferredOutputAction<InsertRowOutput, InsertRowActionConfiguration>(() =>
+            return new DeferredBodyAction<InsertRowOutput, InsertRowActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["table"] = ExpressionConverter.ConvertO(__workflow_table);
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "insertRow", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<InsertRowOutput, InsertRowActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<InsertRowOutput, InsertRowActionConfiguration>(serviceProviderInput);
             });
         }
 
@@ -144,12 +144,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IOutputWorkflowAction<UpdateRowOutput, UpdateRowActionConfiguration> UpdateRow(Expression<Func<string>> table, Expression<Func<object>> updatedColumns, Expression<Func<object>> searchCondition)
+        public IBodyWorkflowAction<UpdateRowOutput, UpdateRowActionConfiguration> UpdateRow(Expression<Func<string>> table, Expression<Func<object>> updatedColumns, Expression<Func<object>> searchCondition)
         {
             var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             var __workflow_updatedColumns = WorkflowExpression.Compile(updatedColumns, nameof(updatedColumns), required: true);
             var __workflow_searchCondition = WorkflowExpression.Compile(searchCondition, nameof(searchCondition), required: true);
-            return new DeferredOutputAction<UpdateRowOutput, UpdateRowActionConfiguration>(() =>
+            return new DeferredBodyAction<UpdateRowOutput, UpdateRowActionConfiguration>(() =>
             {
                 var serviceProviderParameters = new JObject();
                 serviceProviderParameters["table"] = ExpressionConverter.ConvertO(__workflow_table);
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
                     ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "updateRow", connectionName: connectionId),
                     Parameters = serviceProviderParameters
                 };
-                return new ServiceProviderOutputAction<UpdateRowOutput, UpdateRowActionConfiguration>(serviceProviderInput);
+                return new ServiceProviderBodyAction<UpdateRowOutput, UpdateRowActionConfiguration>(serviceProviderInput);
             });
         }
     }

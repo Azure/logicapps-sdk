@@ -416,6 +416,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
 
         [JsonProperty("ordinal")]
         public int StepNumber { get; set; }
+
+        [JsonProperty("status")]
+        public string StepStatus { get; set; }
+
+        [JsonProperty("checked")]
+        public string StepCompletedDate { get; set; }
+
+        [JsonProperty("checkedBy")]
+        public string CompletedBy { get; set; }
+
+        [JsonProperty("due")]
+        public string StepDueDate { get; set; }
     }
 
     public class CompleteStepCommandInput
@@ -474,12 +486,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waywedo
 
         [JsonProperty("type")]
         public ProcedureProcedureTypeType ProcedureType { get; set; }
+
+        [JsonProperty("version")]
+        public string ProcedureVersion { get; set; }
+
+        [JsonProperty("lastEdited")]
+        public string LastEdited { get; set; }
     }
 
     public enum ProcedureProcedureTypeType
     {
         _1 = 1,
-        _2 = 2
+        _2 = 2,
+        _3 = 3,
+        _4 = 4
     }
 
     public class User
