@@ -14,8 +14,6 @@ resources:
       trigger: none  # Manual trigger only for NuGet publishing
 
 variables:
-  - group: LogicAppsNuGetCredentials
-
   - name: NuGetPackagePattern
     value: Microsoft.Azure.Workflows.Sdk.*.nupkg
 
@@ -81,8 +79,7 @@ extends:
                   command: push
                   packagesToPush: '$(Pipeline.Workspace)/$(NuGetPackagePattern)'
                   nuGetFeedType: external
-                  publishFeedCredentials: LogicAppsTestSdkConnection
-                  allowPackageConflicts: true
+                  publishFeedCredentials: LogicAppsSdkNugetConnection
 
               - pwsh: |
                   Write-Host "========================================"
