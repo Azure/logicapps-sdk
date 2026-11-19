@@ -43,10 +43,13 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "workflowReferenceName">The reference name of the workflow to call.</param>
         /// <param name = "requestBody">The request body to send to the workflow (optional).</param>
         /// <param name = "headers">The request headers to include in the workflow call (optional).</param>
-        public IBodyWorkflowAction<JToken, NestedWorkflowActionConfiguration> NestedWorkflow(Expression<Func<string>> workflowReferenceName, Expression<Func<object>> requestBody = null, Expression<Func<Dictionary<string, string>>> headers = null)
+        public IBodyWorkflowAction<JToken, NestedWorkflowActionConfiguration> NestedWorkflow(string workflowReferenceName, Expression<Func<object>> requestBody = null, Expression<Func<Dictionary<string, string>>> headers = null)
         {
-            var workflowReferenceNameDescriptor = WorkflowExpression.Compile(
-                workflowReferenceName, nameof(workflowReferenceName), required: true);
+            if (string.IsNullOrWhiteSpace(workflowReferenceName))
+            {
+                throw new ArgumentException("Workflow reference name must be provided.", nameof(workflowReferenceName));
+            }
+
             var requestBodyDescriptor = WorkflowExpression.Compile(
                 requestBody, nameof(requestBody), required: false);
             var headersDescriptor = WorkflowExpression.Compile(
@@ -54,7 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new DeferredBodyAction<JToken, NestedWorkflowActionConfiguration>(() =>
             {
                 return new NestedWorkflowAction<JToken>(
-                    ExpressionConverter.Convert(workflowReferenceNameDescriptor),
+                    workflowReferenceName,
                     requestBodyDescriptor != null ? ExpressionConverter.ConvertO(requestBodyDescriptor) : null,
                     headersDescriptor != null ? ExpressionConverter.ConvertO(headersDescriptor) : null);
             });

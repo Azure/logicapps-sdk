@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             agent.AddTool(toolContext =>
                 {
                     var nestedWorkflow = WorkflowActions.BuiltIn.NestedWorkflow(
-                        workflowReferenceName: () => "HttpRequestResponse",
+                        workflowReferenceName: "HttpRequestResponse",
                         requestBody: () => toolContext.Parameters.Location);
                     return nestedWorkflow;
                 },
